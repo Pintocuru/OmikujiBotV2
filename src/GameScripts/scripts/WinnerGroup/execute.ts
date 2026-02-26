@@ -5,7 +5,6 @@ import { PostFlowMessageSchema } from '@/types/'
 import { GameParamsSchema } from './params'
 import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'
-import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
 import { getWinnersFromVisitManager } from './game'
 import { GameScriptBase } from '@/types/GameScript/GameScriptBase'
 
@@ -34,7 +33,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
     const botMessageExtra: BotMessageExtraType = BotMessageExtraSchema.parse({
       delaySeconds,
       user,
-      componentKey: 'WinnerGroup',
+      scriptKey: 'WinnerGroup',
       slots: buildSlots(winners),
     })
 

@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/Loop/LoopMotionVariantsBase.ts
-import { MotionVariants } from '@vueuse/motion'
-import { LoopMotionType } from '../MotionVariants'
 
 // ベース系
 export const loopBaseVariants = {

@@ -2,7 +2,7 @@
 <template>
   <div class="h-full flex flex-col items-center justify-center space-y-4">
     <!-- メッセージアクション -->
-    <div v-if="gameScripts && isValid" :key="gameScripts.scriptId" class="w-full">
+    <div v-if="gameScripts && isValid" :key="gameScripts.scriptId ?? undefined" class="w-full">
       <!-- フキダシ -->
       <div class="space-y-8 flex flex-col items-center">
         <CommentBubbleItem
@@ -49,7 +49,7 @@
   // キャラクター取得
   const isValid = computed(() => {
     if (!props.gameScripts) return false
-    if (props.gameScripts.scriptId === '') return false
+    if (props.gameScripts.scriptId === null) return false
 
     if (isCharacter.value) {
       const key = props.gameScripts.characterKey

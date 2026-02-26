@@ -31,7 +31,7 @@
     selectedItemKey: string | null
   }>()
 
-  const emit = defineEmits<{
+  defineEmits<{
     'update:modelValue': [value: CharacterImageType]
   }>()
 

@@ -40,7 +40,7 @@
   import { EnterMotionType } from '@main/scripts/MotionVariants/MotionVariants'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
-  const props = withDefaults(
+  withDefaults(
     defineProps<{
       displayedComments: BotMessageBubbleType[]
       removeComment: (id: string) => void
@@ -49,7 +49,7 @@
       animatedText?: boolean
     }>(),
     {
-      removeComment: () => {},
+      removeComment: () => undefined,
       enterMotion: 'slideUp',
       leaveMotion: 'slideUp',
       animatedText: false,

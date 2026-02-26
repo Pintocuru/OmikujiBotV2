@@ -61,7 +61,7 @@
     selectedIndex: number | null
   }>()
 
-  const emit = defineEmits<{
+  defineEmits<{
     'update:items': [items: OmikujiItemType[]]
     'update:weight': [payload: { index: number; weight: number }]
     select: [index: number]

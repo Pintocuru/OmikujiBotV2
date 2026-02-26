@@ -104,7 +104,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isPro } = useSettingMode()
+  const { isPro } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
   const { characterArray } = useCharacterManager()
   const { updateCommonStyleField } = useCommonStyleUpdate()

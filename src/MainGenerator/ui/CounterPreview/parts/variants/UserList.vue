@@ -41,7 +41,7 @@
     users: UserVisitRecord[]
   }>()
 
-  const { isBouncing, displayCount, displayedUsers } = useCounterDisplay(props, {
+  const { isBouncing, displayedUsers } = useCounterDisplay(props, {
     showCounter: true,
     limitUserCount: null,
   })

@@ -1,13 +1,13 @@
 // src/types/OmikujiData/MetaTriggerSchema.ts
 import { z } from 'zod'
-import { metaComparisonConditionMap, MetaSimpleComparisonConditionMap, metaTriggerConditionMap } from '../MetaMaps'
+import { metaComparisonConditionMap, metaTriggerConditionMap } from '../MetaMaps'
 
 /**
  * 比較条件のUI表示情報（label + description）
  */
 // 使わない気がするので export してない
 const metaComparisonCondition = Object.keys(metaComparisonConditionMap)
-type MetaComparisonCondition = keyof typeof metaComparisonConditionMap
+// type MetaComparisonCondition = keyof typeof metaComparisonConditionMap
 
 /**
  * MetaConditionSchema
@@ -22,7 +22,7 @@ export type MetaConditionType = z.infer<typeof MetaConditionSchema>
  * MetaSimpleComparisonCondition の部分マップ（greaterThanPeakを除く）
  */
 // 使わない気がするので export してない
-type MetaSimpleComparisonCondition = keyof typeof MetaSimpleComparisonConditionMap
+// type MetaSimpleComparisonCondition = keyof typeof MetaSimpleComparisonConditionMap
 
 /**
  * 条件タイプのラベル

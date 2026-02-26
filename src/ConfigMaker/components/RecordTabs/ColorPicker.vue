@@ -25,7 +25,7 @@
   import { computed } from 'vue'
   import { useRecordTabsStore } from './RecordTabsStore'
 
-  const props = defineProps<{
+  defineProps<{
     modelValue?: string
   }>()
 

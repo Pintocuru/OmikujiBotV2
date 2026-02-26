@@ -36,7 +36,7 @@
   // import { VueDraggable } from 'vue-draggable-plus'
   import VueDraggable from '@/DraggableWrapper.vue'
 
-  const props = withDefaults(
+  withDefaults(
     defineProps<{
       slotName: string
       title: string

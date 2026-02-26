@@ -66,7 +66,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     const categoryData = data.value[category] as Record<string, any>
 
     if (categoryData?.[key]) {
-      const { [key]: deleted, ...remaining } = categoryData
+      const { [key]: _deleted, ...remaining } = categoryData
       updateCategoryData(category, remaining as any)
     }
   }
@@ -113,7 +113,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     }
 
     const item = categoryData[oldKey]
-    const { [oldKey]: removed, ...remaining } = categoryData
+    const { [oldKey]: _removed, ...remaining } = categoryData
 
     const updatedItem = {
       ...item,

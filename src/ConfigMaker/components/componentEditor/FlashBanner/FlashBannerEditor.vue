@@ -152,7 +152,6 @@
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import FlashBannerRenderer from '@main/ui/FlashBanner/parts/FlashBannerRenderer.vue'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'

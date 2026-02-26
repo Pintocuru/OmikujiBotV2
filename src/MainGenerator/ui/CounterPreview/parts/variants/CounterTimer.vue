@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, onMounted, onBeforeUnmount } from 'vue'
+  import { ref, watch, onBeforeUnmount } from 'vue'
   import { SettingsCounterType } from '@/types/'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useCounterDisplay } from '../base/useCounterDisplay'
@@ -63,7 +63,7 @@
   // displayCount が変わったらリセット
   watch(
     () => displayCount.value,
-    (newVal, oldVal) => {
+    (newVal) => {
       if (newVal === 0) {
         // 停止
         elapsed.value = 0

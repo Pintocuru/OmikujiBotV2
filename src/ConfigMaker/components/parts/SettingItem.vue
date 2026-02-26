@@ -31,7 +31,7 @@
   import SettingItem from '@shared/components/parts/SettingItem.vue'
   import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
-  const props = withDefaults(
+  withDefaults(
     defineProps<{
       label: string
       description?: string

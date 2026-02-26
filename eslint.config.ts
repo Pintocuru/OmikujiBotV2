@@ -17,8 +17,11 @@ const baseRules: Linter.RulesRecord = {
   '@typescript-eslint/no-explicit-any': 'off',
   // const'の強制
   'prefer-const': 'off',
-  // 未使用の変数
-  '@typescript-eslint/no-unused-vars': 'warn',
+  // 未使用の変数 (_ は例外)
+  '@typescript-eslint/no-unused-vars': ['warn', {
+    argsIgnorePattern: '^_',
+    varsIgnorePattern: '^_',
+  }],
   // 空の関数定義
   '@typescript-eslint/no-empty-function': 'warn',
   // Vueコンポーネント内の未使用変数
@@ -44,6 +47,7 @@ export default defineConfigWithVueTs(
       '**/node_modules/**',
       '**/dist/**',
       '**/*.test.ts',
+      '**/shims-vue.d.ts',
     ],
   },
 

@@ -56,7 +56,7 @@ export class ExpressionEvaluator extends KeyValueMap {
     if (/[\+\-\*\/]/.test(trimmed)) {
       try {
         return this.evaluateArithmetic(trimmed)
-      } catch (e) {
+      } catch {
         // 評価失敗時は文字列として扱う
         return trimmed
       }
@@ -92,7 +92,7 @@ export class ExpressionEvaluator extends KeyValueMap {
         throw new Error('評価結果が数値ではありません')
       }
       return result
-    } catch (e) {
+    } catch {
       throw new Error(`式の評価に失敗: ${expression}`)
     }
   }

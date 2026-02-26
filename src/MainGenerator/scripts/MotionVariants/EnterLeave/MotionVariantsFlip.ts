@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/EnterLeave/MotionVariantsFlip.ts
-import { MotionVariants } from '@vueuse/motion'
-import { EnterMotionType } from '../MotionVariants'
 
 // フリップ・回転系
 export const flipVariants = {

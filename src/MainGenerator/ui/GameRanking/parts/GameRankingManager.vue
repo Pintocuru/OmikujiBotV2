@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { FlashComponent, SettingsRankingType } from '@/types/'
+  import { RankingComponent, SettingsRankingType } from '@/types/'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 
   // 各コンポーネントのインポート
@@ -19,11 +19,11 @@
   const targetRankingMessages = computed<BotMessageExtraType[]>(() => {
     const keys = props.settings.targetScriptKeys
     if (!keys?.length) return []
-    return props.botMessageExtras.filter((m) => keys.includes(m.componentKey))
+    return props.botMessageExtras.filter((m) => keys.includes(m.scriptKey))
   })
 
   // コンポーネントマッピング
-  const componentMap: Record<FlashComponent, any> = {
+  const componentMap: Record<RankingComponent, any> = {
     rankStandard: RankStandard,
   }
 

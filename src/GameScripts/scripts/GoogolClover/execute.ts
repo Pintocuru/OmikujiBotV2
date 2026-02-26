@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/GoogolClover/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostFlowType, GameStateType, ScriptResult } from '@/types/'
+import { ScriptClass, GameStateType, ScriptResult } from '@/types/'
 import { executeGame } from './sub/game'
 import { buildPostActions } from './sub/postActionBuilder'
 import { UserState } from './sub/types'
@@ -32,7 +32,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
     const user = prepareUserInfo(omiken)
 
     // ゲームの実行
-    const gameResult = executeGame(this.userStates, user, RANKING_KEY)
+    const gameResult = executeGame(this.userStates, user)
 
     // PostActionの構築
     const postActions = buildPostActions({
@@ -54,7 +54,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
     const {} = this.parseParams(queryString)
     const user = prepareUserInfo()
 
-    const gameResult = executeGame(this.userStates, user, RANKING_KEY)
+    const gameResult = executeGame(this.userStates, user)
     return gameResult.bubble
   }
 

@@ -29,7 +29,7 @@
   import OmikujiItemToolbar from '@config/components/postAction/tooltab/OmikujiItemToolbar.vue'
   import PostActionsEditorJson from '@config/components/postAction/PostActionsEditorJson.vue'
 
-  const props = defineProps<{
+  defineProps<{
     modelValue: PostFlowType[]
     gameScripts: GameScriptsType | null
   }>()

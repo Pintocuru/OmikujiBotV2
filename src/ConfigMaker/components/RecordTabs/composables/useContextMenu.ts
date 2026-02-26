@@ -1,6 +1,5 @@
 // src/ConfigMaker/components/RecordTabs/composables/useContextMenu.ts
 import { ref } from 'vue'
-import type { useRuleState } from './useRuleState'
 import { BaseRecordType } from '@shared/types'
 
 /** コンテキストメニューの状態 */
@@ -16,9 +15,7 @@ export interface ContextMenuState {
  * 右クリックコンテキストメニューの管理
  * 表示/非表示、位置、対象ルール、移動可否判定を提供
  */
-export const useContextMenu = (ruleState: ReturnType<typeof useRuleState>) => {
-  const { categoryArray } = ruleState
-
+export const useContextMenu = () => {
   /** コンテキストメニューの状態 */
   const contextMenu = ref<ContextMenuState>({
     show: false,
@@ -27,12 +24,6 @@ export const useContextMenu = (ruleState: ReturnType<typeof useRuleState>) => {
     rule: null,
     index: -1,
   })
-
-  /** ルールのインデックスを取得 */
-  const getOriginalIndex = (ruleKey: string): number => {
-    if (!categoryArray.value) return 0
-    return categoryArray.value.findIndex((rule: BaseRecordType) => rule.key === ruleKey)
-  }
 
   /** メニュー位置を画面内に調整 */
   const adjustMenuPosition = (x: number, y: number) => {

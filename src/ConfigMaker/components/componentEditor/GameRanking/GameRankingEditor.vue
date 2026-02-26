@@ -135,7 +135,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isPro, isGod } = useSettingMode()
+  const { isAdv, isGod } = useSettingMode()
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const ranking = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))

@@ -6,14 +6,12 @@ import type { GameExecutionResult } from './game'
 import { calculateScoreValue, formatScoreText, formatShort } from './utils'
 import { UserNameSchema, UserNameType } from '@shared/types'
 
+const RANKING_KEY = 'GoogolClover'
+
 /**
  * スロット実行結果からゲーム結果を構築
  */
-export function buildGameResult(
-  result: SlotExecutionResult,
-  user: UserNameType,
-  rankingKey: string
-): GameExecutionResult {
+export function buildGameResult(result: SlotExecutionResult, user: UserNameType): GameExecutionResult {
   const { failedAt, multipliers } = result
   const multipliersDisplay = multipliers.map((m) => `${m}`).join('×')
   const userName = user.userName
@@ -22,7 +20,7 @@ export function buildGameResult(
   if (failedAt > 0) {
     return {
       bubble: `${userName}はサイコロを振る! ${multipliersDisplay}! ${userName}は奈落へと消えた。`,
-      botMessageExtra: createFailureRankingData(rankingKey, user, result.state.successCount),
+      botMessageExtra: createFailureRankingData(user, result.state.successCount),
       shouldDeleteState: true,
       newState: null,
     }
@@ -38,7 +36,7 @@ export function buildGameResult(
   if (updatedState.exp >= GOAL_EXPONENT) {
     return {
       bubble: createSuccessBubble(updatedState, userName, multipliersDisplay),
-      botMessageExtra: createSuccessRankingData(updatedState, rankingKey, user, true),
+      botMessageExtra: createSuccessRankingData(updatedState, user, true),
       shouldDeleteState: false,
       newState: updatedState,
     }
@@ -47,7 +45,7 @@ export function buildGameResult(
   // 通常の成功
   return {
     bubble: createSuccessBubble(updatedState, userName, multipliersDisplay),
-    botMessageExtra: createSuccessRankingData(updatedState, rankingKey, user),
+    botMessageExtra: createSuccessRankingData(updatedState, user),
     shouldDeleteState: false,
     newState: updatedState,
   }
@@ -81,9 +79,9 @@ function createSuccessBubble(state: UserState, userName: string, multipliersDisp
 /**
  * 失敗時のランキングデータ
  */
-function createFailureRankingData(rankingKey: string, user: UserNameType, successCount: number): BotMessageExtraType {
+function createFailureRankingData(user: UserNameType, successCount: number): BotMessageExtraType {
   return BotMessageExtraSchema.parse({
-    componentKey: rankingKey,
+    scriptKey: RANKING_KEY,
     user: UserNameSchema.parse(user),
     lists: {
       listName: user.userName,
@@ -98,17 +96,12 @@ function createFailureRankingData(rankingKey: string, user: UserNameType, succes
 /**
  * 成功時のランキングデータ
  */
-function createSuccessRankingData(
-  state: UserState,
-  rankingKey: string,
-  user: UserNameType,
-  isGoogol = false
-): BotMessageExtraType {
+function createSuccessRankingData(state: UserState, user: UserNameType, isGoogol = false): BotMessageExtraType {
   const scoreText = formatScoreText(state.funds, state.exp)
   const scoreValue = calculateScoreValue(state.funds, state.exp) * 1000000
 
   return BotMessageExtraSchema.parse({
-    componentKey: rankingKey,
+    componentKey: RANKING_KEY,
     user: UserNameSchema.parse(user),
     lists: {
       listName: user.userName,

@@ -104,7 +104,7 @@ export const generateDummyMessages = (settings: SettingsRankingType): BotMessage
 
     dummyMessages.push(
       BotMessageExtraSchema.parse({
-        componentKey: 'dummy',
+        scriptKey: 'none',
         lists: ExtraListsSchema.parse({
           listName,
           text: String(points),

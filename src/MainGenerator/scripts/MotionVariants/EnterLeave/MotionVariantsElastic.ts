@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/EnterLeave/MotionVariantsElastic.ts
-import { MotionVariants } from '@vueuse/motion'
-import { EnterMotionType } from '../MotionVariants'
 
 // 弾性・特殊系
 export const elasticVariants = {

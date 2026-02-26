@@ -73,7 +73,7 @@ export function updatePlaceholderKey(oldKey: string, newKey: string): boolean {
 
     if (!placeholder || placeholders[newKey]) return false
 
-    const { key, ...data } = placeholder
+    const { key: _key, ...data } = placeholder
 
     omikujiStore.removeItem('placeholders', oldKey)
     omikujiStore.addItem('placeholders', { ...data, key: newKey })

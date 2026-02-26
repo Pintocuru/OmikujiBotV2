@@ -98,7 +98,7 @@
   import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
 
-  const props = defineProps<{
+  defineProps<{
     category: RecordCategoryType
     currentKey: string
   }>()

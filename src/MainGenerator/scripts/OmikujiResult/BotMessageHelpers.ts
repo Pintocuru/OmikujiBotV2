@@ -21,7 +21,7 @@ export function createBotMessagesFromAction(
   const hasBubble = bubble.trim().length > 0
 
   const extra = variableResult?.extra
-  const hasRanking = !!extra?.componentKey && (!!extra?.lists || !!extra?.slots)
+  const hasRanking = !!extra?.scriptKey && (!!extra?.lists || !!extra?.slots)
 
   const messages: BotMessageType[] = []
 
@@ -85,7 +85,7 @@ function createRankingMessage(
 ): BotMessageType {
   return BotMessageExtraSchema.parse({
     delaySeconds,
-    componentKey: extra.componentKey,
+    scriptKey: extra.scriptKey,
     lists: extra.lists,
     slots: extra.slots,
     user: omiken ? UserNameSchema.parse(omiken) : undefined,

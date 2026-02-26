@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/Loop/LoopMotionVariantsRotate.ts
-import { MotionVariants } from '@vueuse/motion'
-import { LoopMotionType } from '../MotionVariants'
 
 // 回転系
 export const loopRotateVariants = {

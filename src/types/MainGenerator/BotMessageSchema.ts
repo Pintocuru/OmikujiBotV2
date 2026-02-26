@@ -4,6 +4,7 @@ import { CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
 import { v4 } from 'uuid'
+import { ScriptGameExtendedKeySchema } from '../OmikujiData/ActionSet'
 
 /**
  * BotMessageBaseSchema
@@ -76,7 +77,7 @@ export type ExtraSlotsType = z.infer<typeof ExtraSlotsSchema>
  */
 export const BotMessageExtraSchema = BotMessageBaseSchema.extend({
   type: z.literal('extra').default('extra'),
-  componentKey: z.string(), // アイテム判別用key
+  scriptKey: ScriptGameExtendedKeySchema, // アイテム判別用key
   user: UserNameSchema.optional(),
   lists: ExtraListsSchema.optional(),
   slots: ExtraSlotsSchema.optional(),
@@ -92,9 +93,9 @@ export const BotMessageEmptySchema = BotMessageBaseSchema.extend({
 })
 export type BotMessageEmptyType = z.infer<typeof BotMessageEmptySchema>
 
-const BotMessageSchema = z.discriminatedUnion('type', [
+const _BotMessageSchema = z.discriminatedUnion('type', [
   BotMessageBubbleSchema,
   BotMessageExtraSchema,
   BotMessageEmptySchema,
 ])
-export type BotMessageType = z.infer<typeof BotMessageSchema>
+export type BotMessageType = z.infer<typeof _BotMessageSchema>

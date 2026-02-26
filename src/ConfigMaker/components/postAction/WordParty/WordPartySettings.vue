@@ -75,7 +75,7 @@
 
   // WordPartyIdを削除してアクションを更新
   const updateWithoutWordPartyId = (updates: Partial<PostFlowWordPartyType>) => {
-    const { wordPartyId, ...rest } = props.action
+    const { wordPartyId: _wordPartyId, ...rest } = props.action
     emit('update:action', { ...rest, ...updates } as PostFlowWordPartyType)
   }
 

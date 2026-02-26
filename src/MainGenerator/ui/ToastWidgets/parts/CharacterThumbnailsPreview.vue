@@ -8,7 +8,7 @@
   >
     <div class="avatar-group -space-x-6 rtl:space-x-reverse">
       <div
-        v-for="(character, index) in charactersArray"
+        v-for="character in charactersArray"
         :key="character.id"
         class="avatar"
         :class="clickable ? 'cursor-pointer hover:scale-120' : ''"

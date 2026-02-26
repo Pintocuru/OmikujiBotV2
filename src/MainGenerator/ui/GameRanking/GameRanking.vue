@@ -34,7 +34,7 @@
     if (!isDev || !devHoverActive.value) return []
     return [
       BotMessageExtraSchema.parse({
-        componentKey: rankingSettings.value.targetScriptKeys[0],
+        scriptKey: rankingSettings.value.targetScriptKeys[0],
         lists: {
           listName: 'テストユーザー',
           text: '12,345',
@@ -54,7 +54,7 @@
 
     const base = botMessages.value.filter((msg): msg is BotMessageExtraType => {
       if (msg.type !== 'extra' || !msg.lists) return false
-      return rankingSettings.value.targetScriptKeys.includes(msg.componentKey)
+      return rankingSettings.value.targetScriptKeys.includes(msg.scriptKey)
     })
     return isDev ? [...base, ...devScoreMessages.value] : base
   })

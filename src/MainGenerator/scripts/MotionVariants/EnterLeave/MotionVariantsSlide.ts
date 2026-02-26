@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/EnterLeave/MotionVariantsSlide.ts
-import { MotionVariants } from '@vueuse/motion'
-import { EnterMotionType } from '../MotionVariants'
 
 // スライド系
 export const slideVariants = {

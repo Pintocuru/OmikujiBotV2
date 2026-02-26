@@ -23,11 +23,7 @@ export interface GameExecutionResult {
  * @param rankingKey - ランキングキー
  * @returns ゲーム実行結果(bubble、ランキングデータ、状態更新指示)
  */
-export function executeGame(
-  userStates: Map<string, UserState>,
-  context: UserNameType,
-  rankingKey: string
-): GameExecutionResult {
+export function executeGame(userStates: Map<string, UserState>, context: UserNameType): GameExecutionResult {
   // 現在の状態を取得(初回は初期値)
   const currentState = userStates.get(context.userId) ?? {
     funds: 1.0,
@@ -40,7 +36,7 @@ export function executeGame(
   const executionResult = executeSlotSpins(currentState)
 
   // 結果の構築
-  const gameResult = buildGameResult(executionResult, context, rankingKey)
+  const gameResult = buildGameResult(executionResult, context)
 
   // 状態の更新
   if (gameResult.shouldDeleteState) {

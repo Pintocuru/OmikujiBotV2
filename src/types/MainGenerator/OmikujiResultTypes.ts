@@ -8,7 +8,7 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
  * VariablePlaceholderProcessor.ts の ProcessResult と構造を一致させる
  */
 export interface VariablePlaceholderExtra {
-  componentKey: string
+  scriptKey: string
   lists?: ExtraListsType
   slots?: ExtraSlotsType
 }

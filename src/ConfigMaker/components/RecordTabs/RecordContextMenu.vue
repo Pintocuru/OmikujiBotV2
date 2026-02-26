@@ -58,7 +58,6 @@
 
   // マルチセレクト状態の計算プロパティ
   const isMultiSelectActive = computed(() => tabsStore.isMultiSelectMode && tabsStore.selectedRuleIds.size > 0)
-  const selectedCount = computed(() => tabsStore.selectedRuleIds.size)
 
   // メニュー位置の計算（画面端での調整）
   const menuPosition = computed(() => {

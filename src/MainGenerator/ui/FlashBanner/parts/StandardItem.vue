@@ -75,7 +75,7 @@
   }
 
   // メッセージ変更時にスクロール判定
-  const { displayMessage, wrapperRef } = useMessageTransition(() => props.message)
+  const { displayMessage } = useMessageTransition(() => props.message)
 
   watch(() => displayMessage.value, checkScrollNeeded, { immediate: true })
 

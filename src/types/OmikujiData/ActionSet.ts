@@ -105,6 +105,13 @@ export const scriptGameKeys = Object.keys(gameMetaMap) as ScriptGameKey[]
 export type ScriptGameKey = keyof typeof gameMetaMap
 export const ScriptGameKeySchema = z.enum(scriptGameKeys)
 
+// ScriptGameKey + 'basicList' の拡張版
+export const ScriptGameExtendedKeySchema = z.union([
+  ScriptGameKeySchema,
+  z.literal('basicList'),
+  z.literal('none'), // デバッグ用
+])
+
 export const GameScriptsSchema = z.object({
   // TODO(v3) : scriptId -> scriptKey
   scriptId: ScriptGameKeySchema.nullish().default(null).catch(null),

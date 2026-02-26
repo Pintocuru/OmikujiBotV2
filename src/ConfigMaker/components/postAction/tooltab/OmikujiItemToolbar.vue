@@ -45,7 +45,7 @@
   import { Send, FileJson } from 'lucide-vue-next'
 
   // Props
-  const props = defineProps<{
+  defineProps<{
     modelValue: PostFlowType[]
     gameScripts: GameScriptsType | null
   }>()

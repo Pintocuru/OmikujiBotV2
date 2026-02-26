@@ -37,7 +37,7 @@
     botName: string
   }>()
 
-  const emit = defineEmits<{
+  defineEmits<{
     'update:modelValue': [value: CharacterColorType]
   }>()
 

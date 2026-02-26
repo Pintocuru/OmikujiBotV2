@@ -40,7 +40,7 @@
     <!-- プレースホルダーリスト -->
     <div class="grid grid-cols-2 gap-2 h-64 overflow-x-hidden content-start">
       <PlaceholderItem
-        v-for="(placeholder, index) in filteredPlaceholders"
+        v-for="placeholder in filteredPlaceholders"
         :key="placeholder.id"
         :placeholder="placeholder"
         :is-used="usedPlaceholderIds.has(placeholder.key)"

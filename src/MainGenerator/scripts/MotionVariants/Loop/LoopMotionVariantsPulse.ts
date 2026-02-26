@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/Loop/LoopMotionVariantsPulse.ts
-import { MotionVariants } from '@vueuse/motion'
-import { LoopMotionType } from '../MotionVariants'
 
 // パルス・拡大縮小系
 export const loopPulseVariants = {

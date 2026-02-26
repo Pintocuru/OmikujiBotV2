@@ -18,7 +18,7 @@ export const useRecordTabsStore = defineStore('ruleTabs', () => {
   const ruleOperations = useRuleOperations(ruleState)
   const multiSelect = useMultiSelect(ruleState)
   const inlineEdit = useInlineEdit(ruleOperations.handleUpdateRule)
-  const contextMenu = useContextMenu(ruleState)
+  const contextMenu = useContextMenu()
 
   /**
    * コンテキストメニューのアクション統合

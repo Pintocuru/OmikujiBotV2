@@ -45,7 +45,7 @@
   )
   const winnerExtras = computed<BotMessageExtraType[]>(() =>
     botMessages.value.filter(
-      (msg): msg is BotMessageExtraType => msg.type === 'extra' && msg.componentKey === 'WinnerGroup'
+      (msg): msg is BotMessageExtraType => msg.type === 'extra' && msg.scriptKey === 'WinnerGroup'
     )
   )
   const latestExtra = computed(() => winnerExtras.value.at(-1) ?? null)

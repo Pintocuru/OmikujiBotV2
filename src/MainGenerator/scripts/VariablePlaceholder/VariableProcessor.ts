@@ -55,7 +55,7 @@ export class VariablePlaceholderProcessor {
     return {
       bubble: processed,
       extra: {
-        componentKey: 'basicList', // basicList = BOTアクション
+        scriptKey: 'basicList', // basicList = BOTアクション
         lists: extra.lists,
         slots: extra.slots,
       },

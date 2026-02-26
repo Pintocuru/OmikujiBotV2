@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/Loop/LoopMotionVariantsFloat.ts
-import { MotionVariants } from '@vueuse/motion'
-import { LoopMotionType } from '../MotionVariants'
 
 // 浮遊・揺れ系
 export const loopFloatVariants = {

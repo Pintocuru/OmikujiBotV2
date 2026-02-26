@@ -64,7 +64,7 @@
 
   const localFilteredMessages = computed(() =>
     props.scoreMessages.filter((m) => {
-      return m.lists && props.settings.targetScriptKeys.includes(m.componentKey)
+      return m.lists && props.settings.targetScriptKeys.includes(m.scriptKey)
     })
   )
 

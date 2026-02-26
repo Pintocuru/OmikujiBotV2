@@ -6,7 +6,7 @@ import { PostActionType as OldPostActionType } from '@/common/migrations/v1_to_v
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { WeightValueSchema } from './PlaceholderSchema'
-import { MessageSquare, PartyPopper, Volume2, MessagesSquare, Sparkles } from 'lucide-vue-next'
+import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
 // PostAction delaySeconds
 const PostActionBaseSchema = z.object({

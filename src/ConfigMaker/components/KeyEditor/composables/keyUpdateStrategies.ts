@@ -12,7 +12,7 @@ import {
  * Key更新戦略マップ
  * すべてのRecordCategoryTypeに対応（BaseRecordSchema準拠）
  */
-export const updateStrategies: Record<RecordCategoryType, KeyUpdateStrategy<RecordCategoryType>> = {
+export const updateStrategies: Record<RecordCategoryType, KeyUpdateStrategy> = {
   comments: {
     updateKey: (oldKey, newKey) => updateRecordKey('comments', oldKey, newKey),
   },

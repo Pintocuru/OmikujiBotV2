@@ -37,7 +37,7 @@
     'update:modelValue': [value: CharacterColorType]
   }>()
 
-  const { isAdv, isPro, isGod } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const colorValue = computed(() => props.modelValue)
 

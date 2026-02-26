@@ -7,8 +7,6 @@
     "dev:omikujiBot": "tsx server/start-dev-server.ts",
     "soundMake:omikujiBot": "tsx tools/genSound/genSoundIndex.ts",
     "updateFilesName:omikujiBot": "tsx tools/fileName/UpdateTsFiles.ts",
-    "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
-    "lintLevel2:omikujiBot": "cross-env VITE_TS_CHECK_LEVEL=beta eslint src/**/*.{ts,vue}",
     "test:omikujiBot": "vitest run MetaTriggerEvaluator",
     "build:omikujiBotPlugin": "vite build --config tools/viteConfig/vite.botPlugin.config.ts",
     "build:omikujiBot": "tsx tools/build.ts"

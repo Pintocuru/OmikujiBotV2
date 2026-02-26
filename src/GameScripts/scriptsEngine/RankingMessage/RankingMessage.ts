@@ -39,7 +39,7 @@ export function buildBotMessageRanking(params: BuildBotMessageParams): BotMessag
   return BotMessageExtraSchema.parse({
     delaySeconds,
     user,
-    componentKey,
+    scriptKey: componentKey,
     lists: {
       listName: user.userName,
       symbol,

@@ -115,7 +115,7 @@ function remapOmikujiGroup(
       }
 
       // gameScriptsのリマップ
-      if (item.gameScripts && item.gameScripts.scriptId !== '') {
+      if (item.gameScripts && item.gameScripts.scriptId !== null) {
         remappedItem.gameScripts = remapGameScripts(item.gameScripts, remaps)
       }
 

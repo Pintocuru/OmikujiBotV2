@@ -1,7 +1,6 @@
 // src/ConfigMaker/components/KeyEditor/composables/keyEditorValidation.ts
-import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { RecordCategoryType } from '@/types/'
-import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 /**
  * Keyの基本フォーマットバリデーション

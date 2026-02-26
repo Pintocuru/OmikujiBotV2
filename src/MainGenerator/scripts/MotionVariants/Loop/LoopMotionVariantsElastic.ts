@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/Loop/LoopMotionVariantsElastic.ts
-import { MotionVariants } from '@vueuse/motion'
-import { LoopMotionType } from '../MotionVariants'
 
 // 弾性・変形系
 export const loopElasticVariants = {

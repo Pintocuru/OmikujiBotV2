@@ -27,7 +27,7 @@ function runPreBuildChecks() {
 
   // vue-tsc
   console.log('[Check] Running vue-tsc...')
-  execSync('npx vue-tsc --project tsconfig.eslint.json --noEmit', {
+  execSync('npx vue-tsc --noEmit', {
     stdio: 'inherit',
   })
   console.log('[Check] All checks passed')

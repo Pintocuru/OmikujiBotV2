@@ -1,5 +1,5 @@
 // src/GameScripts/scripts/GoogolClover/sub/postActionBuilder.ts
-import { PostFlowType, PostFlowMessageSchema, BotMessageExtraType } from '@/types'
+import { PostFlowType, PostFlowMessageSchema } from '@/types'
 
 /**
  * PostActionの構築ロジック
