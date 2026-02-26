@@ -110,3 +110,19 @@ export async function saveOmikujiData(configData: string, isExpress?: boolean): 
   const filePath = path.join(dir, 'omikujiData.js')
   await fs.writeFile(filePath, jsContent, 'utf8')
 }
+
+/**
+ * 指定フォルダが空なら削除する（presetsDir直下の1階層のみ）
+ */
+export async function deleteEmptyFolder(rootName: string, folderName: string): Promise<void> {
+  const folderPath = path.join(DIR.root, rootName, folderName) // ← DIR.root を追加
+  try {
+    const entries = await fs.readdir(folderPath)
+    if (entries.length === 0) {
+      await fs.rmdir(folderPath)
+      console.info(`🗂️ Removed empty folder: ${folderName}`)
+    }
+  } catch (error: any) {
+    if (error.code !== 'ENOENT') throw error
+  }
+}

@@ -38,7 +38,8 @@ export function useFileActions(
       await fetchFileList()
 
       // 成功トースト
-      swalToast.success({ title: `設定ファイル "${originalName}" を複製しました` })
+      const displayName = fileName.split('/').pop()!.replace('.json', '')
+      swalToast.success({ title: `設定ファイル "${displayName}" を複製しました` })
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
@@ -65,17 +66,29 @@ export function useFileActions(
   // ファイル名変更
   const renameFile = async (oldFileName: string, newFileName: string) => {
     return await handleAsyncAction(async () => {
+      // フォルダを保持
+      const folder = oldFileName.includes('/') ? oldFileName.split('/')[0] : null
+
+      const finalName = folder ? `${folder}/${newFileName}` : newFileName
+
+      // データ読み込み
       const configData = await configApi.loadConfig(oldFileName)
-      await configApi.saveConfig(newFileName, JSON.stringify(configData, null, 2))
+
+      // 新しい名前で保存
+      await configApi.saveConfig(finalName, JSON.stringify(configData, null, 2))
+
+      // 古いファイルを削除
       await configApi.deleteConfig(oldFileName)
 
-      const file = state.availableFiles.value.find((f: any) => f.name === oldFileName)
+      // ローカル状態更新
+      const file = state.availableFiles.value.find((f) => f.name === oldFileName)
       if (file) {
-        file.name = newFileName
+        file.name = finalName
+        file.displayName = newFileName.replace('.json', '')
       }
+
       await fetchFileList()
 
-      // 成功トースト
       swalToast.success({
         title: `設定ファイル名を "${oldFileName.replace('.json', '')}" から "${newFileName}" に変更しました`,
       })

@@ -56,6 +56,13 @@ export async function moveConfig(fromName: string, toName: string): Promise<Rout
     }
 
     await fileSystem.moveFile(PRESET_DIR_NAME, fromName, toName)
+
+    // 移動元のフォルダが空になったら削除
+    const fromFolder = fromName.includes('/') ? fromName.split('/')[0] : null
+    if (fromFolder) {
+      await fileSystem.deleteEmptyFolder(PRESET_DIR_NAME, fromFolder)
+    }
+
     console.info(`📦 Moved config file: ${fromName} → ${toName}`)
     return { code: 200, data: { message: 'File moved successfully', fromName, toName } }
   } catch (error: any) {
@@ -103,6 +110,13 @@ export async function deleteConfig(fileName: string): Promise<RouteResult> {
     }
 
     await fileSystem.deleteFile(PRESET_DIR_NAME, fileName)
+
+    // 削除元のフォルダが空になったら削除
+    const folder = fileName.includes('/') ? fileName.split('/')[0] : null
+    if (folder) {
+      await fileSystem.deleteEmptyFolder(PRESET_DIR_NAME, folder)
+    }
+
     console.info(`🗑️ Deleted config file: ${fileName}`)
     return { code: 200, data: { message: 'File deleted successfully', fileName } }
   } catch (error: any) {

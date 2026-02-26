@@ -34,7 +34,8 @@ export function useSaveActions(
       if (!res) throw new Error('設定の保存に失敗しました')
 
       await fetchFileList()
-      swalToast.success({ title: `設定を "${trimmedFileName}" として保存しました` })
+      const displayName = trimmedFileName.split('/').pop()!.replace('.json', '')
+      swalToast.success({ title: `設定を "${displayName}" として保存しました` })
 
       omikujiStore.resetChangeState()
       state.isServerConnected.value = true
