@@ -121,14 +121,12 @@ export class OmikujiResultProcessor {
     const messages: BotMessageType[] = []
 
     for (const item of processedActions) {
-      const { action, variableResult } = item
+      const { action, extra } = item
       const delaySeconds = action.delaySeconds + POST_SETTINGS.basicDelaySeconds
 
       switch (action.actionType) {
         case 'message':
-          messages.push(
-            ...createBotMessagesFromAction(action, variableResult, delaySeconds, this.characterManager, omiken)
-          )
+          messages.push(...createBotMessagesFromAction(action, extra, delaySeconds, this.characterManager, omiken))
           if (action.sound) playSoundDelay(action.sound, delaySeconds)
           break
 
@@ -163,7 +161,7 @@ export class OmikujiResultProcessor {
 
       return {
         action: updatedAction,
-        variableResult: result, // 解析結果を保持
+        extra: result.extra, // 解析結果を保持
       }
     })
   }

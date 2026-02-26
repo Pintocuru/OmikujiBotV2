@@ -2,7 +2,7 @@
 import { BotMessageBubbleSchema, BotMessageExtraSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { CharacterEmotionType, PostFlowMessageType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { VariablePlaceholderExtra, VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
+import { VariablePlaceholderExtra } from '@/types/MainGenerator/OmikujiResultTypes'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
 import { playRpgVoiceLoop } from '@/common/sounds'
 
@@ -11,7 +11,7 @@ import { playRpgVoiceLoop } from '@/common/sounds'
  */
 export function createBotMessagesFromAction(
   action: PostFlowMessageType,
-  variableResult: VariablePlaceholderResult | undefined,
+  extra: VariablePlaceholderExtra | undefined,
   delaySeconds: number,
   characterManager?: CharacterManager,
   omiken?: OmikenCommentType
@@ -20,7 +20,6 @@ export function createBotMessagesFromAction(
   const isToast = action.message.isToast
   const hasBubble = bubble.trim().length > 0
 
-  const extra = variableResult?.extra
   const hasRanking = !!extra?.scriptKey && (!!extra?.lists || !!extra?.slots)
 
   const messages: BotMessageType[] = []

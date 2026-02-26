@@ -46,22 +46,19 @@ export class ContentPlaceholder {
   processPostActions(postActions: PostFlowType[]): PostFlowType[] {
     return postActions.map((action) => {
       if (action.actionType === 'message') {
-        return { ...action, message: this.processObject(action.message) }
+        return {
+          ...action,
+          message: {
+            ...action.message,
+            bubble: this.processText(action.message.bubble),
+          },
+        }
       }
       if (action.actionType === 'wordParty') {
         return { ...action, wordParty: this.processText(action.wordParty) }
       }
       return action
     })
-  }
-
-  /**
-   * オブジェクト内の文字列プロパティを処理
-   */
-  private processObject<T extends Record<string, any>>(obj: T): T {
-    return Object.fromEntries(
-      Object.entries(obj).map(([key, value]) => [key, typeof value === 'string' ? this.processText(value) : value])
-    ) as T
   }
 
   /**

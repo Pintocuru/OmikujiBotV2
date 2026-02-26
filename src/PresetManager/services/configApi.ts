@@ -13,12 +13,20 @@ class ConfigApiService extends BaseApiClient {
   async getFileList(): Promise<FileItem[]> {
     const response = await this.get<any[]>('list')
 
-    return response.data.map((file) => ({
-      name: file.name,
-      folder: file.folder,
-      displayName: file.name.replace('.json', ''),
-      modified: file.modified,
-    }))
+    return response.data.map((file) => {
+      const name: string = file.name
+      const hasFolder = name.includes('/')
+
+      const folder = hasFolder ? name.split('/', 2)[0] : null
+      const displayName = hasFolder ? name.split('/', 2)[1].replace('.json', '') : name.replace('.json', '')
+
+      return {
+        name,
+        folder,
+        displayName,
+        modified: file.modified,
+      }
+    })
   }
 
   /**

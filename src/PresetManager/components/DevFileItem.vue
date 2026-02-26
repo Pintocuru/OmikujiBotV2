@@ -114,7 +114,7 @@
   const confirmRename = () => {
     const newName = editingName.value.trim()
     if (newName && newName !== props.file.displayName) {
-      devStore.moveFile(props.file.name, newName)
+      devStore.renameFile(props.file.name, newName)
     }
     cancelRename()
   }

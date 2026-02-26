@@ -111,6 +111,7 @@ export const ScriptGameExtendedKeySchema = z.union([
   z.literal('basicList'),
   z.literal('none'), // デバッグ用
 ])
+export type ScriptGameExtendedKeyType = z.infer<typeof ScriptGameExtendedKeySchema>
 
 export const GameScriptsSchema = z.object({
   // TODO(v3) : scriptId -> scriptKey
