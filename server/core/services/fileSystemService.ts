@@ -7,33 +7,63 @@ import { ensureDirectory } from './directoryService'
 import { DIR } from '../../constants'
 
 /**
- * ファイル一覧を取得
+ * ファイル一覧を再帰的に取得（フォルダネスト対応）
  */
 export async function getFileList(rootName: string | null): Promise<FileItem[]> {
   try {
-    const dir = rootName ? path.join(DIR.root, rootName) : DIR.root
+    const baseDir = rootName ? path.join(DIR.root, rootName) : DIR.root
+    await ensureDirectory(baseDir)
 
-    await ensureDirectory(dir)
-
-    const files = await fs.readdir(dir)
-    const jsonFiles = files.filter((file) => file.endsWith('.json'))
-
-    const fileDetails = await Promise.all(
-      jsonFiles.map(async (file): Promise<FileItem> => {
-        const filePath = path.join(dir, file)
-        const stats = await fs.stat(filePath)
-        return {
-          name: file,
-          modified: stats.mtime.toISOString(),
-        }
-      })
-    )
-
-    return fileDetails.sort((a, b) => new Date(b.modified).getTime() - new Date(a.modified).getTime())
+    const results = await collectJsonFiles(baseDir, baseDir)
+    return results.sort((a, b) => new Date(b.modified).getTime() - new Date(a.modified).getTime())
   } catch (error) {
     console.error('Error getting file list:', error)
     return []
   }
+}
+
+/**
+ * 再帰的にJSONファイルを収集
+ * @param currentDir 現在探索中のディレクトリ
+ * @param baseDir ルートディレクトリ（相対パス計算用）
+ */
+async function collectJsonFiles(currentDir: string, baseDir: string): Promise<FileItem[]> {
+  const entries = await fs.readdir(currentDir, { withFileTypes: true })
+  const results: FileItem[] = []
+
+  for (const entry of entries) {
+    const fullPath = path.join(currentDir, entry.name)
+
+    if (entry.isDirectory()) {
+      // サブフォルダを再帰探索
+      const nested = await collectJsonFiles(fullPath, baseDir)
+      results.push(...nested)
+    } else if (entry.isFile() && entry.name.endsWith('.json')) {
+      const stats = await fs.stat(fullPath)
+      // baseDir からの相対パスを name として返す（例: "folder/file.json"）
+      const relativePath = path.relative(baseDir, fullPath).replace(/\\/g, '/')
+      results.push({
+        name: relativePath,
+        modified: stats.mtime.toISOString(),
+      })
+    }
+  }
+
+  return results
+}
+
+/**
+ * ファイルを移動（リネーム）
+ */
+export async function moveFile(rootName: string | null, fromName: string, toName: string): Promise<void> {
+  const dir = rootName ? path.join(DIR.root, rootName) : DIR.root
+
+  const fromPath = path.join(dir, fromName)
+  const toPath = path.join(dir, toName)
+
+  // 移動先フォルダを作成
+  await ensureDirectory(path.dirname(toPath))
+  await fs.rename(fromPath, toPath)
 }
 
 /**

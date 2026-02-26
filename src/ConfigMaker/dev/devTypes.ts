@@ -15,8 +15,9 @@ export interface DevConfigStateType {
 }
 
 export interface FileItem {
-  name: string
-  displayName: string
+  name: string // "category/file.json" （APIからの値）
+  displayName: string // "file.json" （表示用）
+  folder: string | null // "category" or null
   modified: string
 }
 

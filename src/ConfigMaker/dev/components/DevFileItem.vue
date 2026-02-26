@@ -54,10 +54,13 @@
       </button>
 
       <!-- 複製・削除 -->
-      <MenuDropdown
+      <FileMenuDropdown
+        :folders="availableFolders"
+        :current-folder="file.folder"
+        :disable-delete="devStore.isDeletingFile(file.name) || devStore.isAnyLoading"
+        @move="(folder) => devStore.moveFile(file.name, folder)"
         @duplicate="devStore.duplicateFile(file.name)"
         @delete="devStore.deleteFile(file.name)"
-        :disable-delete="devStore.isDeletingFile(file.name) || devStore.isAnyLoading"
       />
     </div>
   </div>
@@ -67,12 +70,12 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, nextTick } from 'vue'
+  import { ref, nextTick, computed } from 'vue'
   import type { FileItem } from '../devTypes'
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import { useImportManager } from '@config/components/presetsImport/composables/useImportManager'
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
-  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
+  import FileMenuDropdown from './FileMenuDropdown.vue'
   import { Download, FileText, Edit } from 'lucide-vue-next'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 
@@ -92,6 +95,10 @@
   const editingName = ref('')
   const editInputRef = ref<HTMLInputElement>()
 
+  const availableFolders = computed(() => [
+    ...new Set(devStore.availableFiles.map((f) => f.folder).filter((f): f is string => f !== null)),
+  ])
+
   // 名前変更開始
   const startRename = () => {
     isEditing.value = true
@@ -106,7 +113,7 @@
   const confirmRename = () => {
     const newName = editingName.value.trim()
     if (newName && newName !== props.file.displayName) {
-      devStore.renameFile(props.file.name, newName)
+      devStore.moveFile(props.file.name, newName)
     }
     cancelRename()
   }

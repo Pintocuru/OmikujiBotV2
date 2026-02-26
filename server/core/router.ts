@@ -34,7 +34,7 @@ export async function routeRequest(req: UnifiedRequest, isExpress?: boolean): Pr
 
   // メソッド別にルーティング
   if (method === 'GET') {
-    return handleGetRequest(action, params, isExpress)
+    return handleGetRequest(action, params)
   }
 
   if (method === 'POST') {
@@ -47,11 +47,7 @@ export async function routeRequest(req: UnifiedRequest, isExpress?: boolean): Pr
 /**
  * GETリクエストのルーティング
  */
-async function handleGetRequest(
-  action: string,
-  params: Record<string, string>,
-  isExpress?: boolean
-): Promise<UnifiedResponse> {
+async function handleGetRequest(action: string, params: Record<string, string>): Promise<UnifiedResponse> {
   switch (action) {
     case 'health':
       return { code: 200, data: { status: 'OK', message: 'API is running' } }
@@ -80,6 +76,9 @@ async function handlePostRequest(
   isExpress?: boolean
 ): Promise<UnifiedResponse> {
   switch (action) {
+    case 'move':
+      return configHandler.moveConfig(body.fromName, body.toName)
+
     case 'save':
       return configHandler.saveConfig(body.fileName, body.data)
 

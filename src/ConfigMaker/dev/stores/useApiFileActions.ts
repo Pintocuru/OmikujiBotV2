@@ -2,6 +2,7 @@
 import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '@config/dev/devTypes'
 import { configApi } from '@config/dev/services/configApi'
+import { toFileItem } from '../services/apiServiceUtils'
 
 export function useFileActions(
   state: DevConfigStateType,
@@ -11,7 +12,7 @@ export function useFileActions(
   const fetchFileList = async () => {
     return await handleAsyncAction(async () => {
       const files = await configApi.getFileList()
-      state.availableFiles.value = files
+      state.availableFiles.value = files.map(toFileItem)
       state.isServerConnected.value = true
       return files
     }, 'isLoadingFileList')
@@ -41,6 +42,24 @@ export function useFileActions(
       state.isServerConnected.value = true
       return null
     }, 'isSaving')
+  }
+
+  // ファイルを別フォルダへ移動
+  const moveFile = async (fromName: string, toFolder: string) => {
+    const fileName = fromName.split('/').pop()! // "file.json"
+    const toName = toFolder ? `${toFolder}/${fileName}` : fileName
+
+    if (fromName === toName) return
+
+    return await handleAsyncAction(async () => {
+      await configApi.moveConfig(fromName, toName)
+      await fetchFileList()
+
+      // 成功トースト
+      swalToast.success({
+        title: `設定ファイル名を "${fromName.replace('.json', '')}" から "${toFolder}" に変更しました`,
+      })
+    }, 'isLoading')
   }
 
   // ファイル名変更
@@ -103,6 +122,7 @@ export function useFileActions(
     fetchFileData,
     duplicateFile,
     renameFile,
+    moveFile,
     deleteFile,
   }
 }

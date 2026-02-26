@@ -40,7 +40,13 @@ export function useLoadActions(
     }, 'isLoading')
   }
 
+  // ファイルデータのみ取得
+  const fetchFileData = async (fileName: string) => {
+    return await configApi.loadConfig(fileName)
+  }
+
   return {
     applyConfigFile,
+    fetchFileData,
   }
 }

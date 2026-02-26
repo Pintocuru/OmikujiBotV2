@@ -1,5 +1,7 @@
 // src/ConfigMaker/dev/services/apiServiceUtils.ts
 
+import { FileItem } from '../devTypes'
+
 /**
  * 日付文字列をフォーマットする
  */
@@ -79,4 +81,17 @@ export function getErrorMessage(url: string, status: number): string {
     }
   }
   return `APIリクエストに失敗しました (${status})`
+}
+
+// src/ConfigMaker/dev/services/apiServiceUtils.ts に追加
+export function toFileItem(raw: { name: string; modified: string }): FileItem {
+  const parts = raw.name.split('/')
+  const displayName = parts[parts.length - 1].replace(/\.json$/, '')
+  const folder = parts.length > 1 ? parts.slice(0, -1).join('/') : null
+  return {
+    name: raw.name,
+    displayName,
+    folder,
+    modified: raw.modified,
+  }
 }

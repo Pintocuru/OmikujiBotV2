@@ -44,6 +44,30 @@ export async function loadConfig(fileName: string): Promise<RouteResult> {
 }
 
 /**
+ * 設定ファイルを移動
+ */
+export async function moveConfig(fromName: string, toName: string): Promise<RouteResult> {
+  try {
+    if (!fromName || !toName) {
+      return { code: 400, data: { error: 'fromName and toName are required' } }
+    }
+    if (!validateFileName(fromName) || !validateFileName(toName)) {
+      return { code: 400, data: { error: 'Invalid file name' } }
+    }
+
+    await fileSystem.moveFile(PRESET_DIR_NAME, fromName, toName)
+    console.info(`📦 Moved config file: ${fromName} → ${toName}`)
+    return { code: 200, data: { message: 'File moved successfully', fromName, toName } }
+  } catch (error: any) {
+    console.error('Move file error:', error)
+    if (error.code === 'ENOENT') {
+      return { code: 404, data: { error: 'File not found' } }
+    }
+    return { code: 500, data: { error: 'Failed to move file' } }
+  }
+}
+
+/**
  * 設定ファイルを保存
  */
 export async function saveConfig(fileName: string, data: string): Promise<RouteResult> {

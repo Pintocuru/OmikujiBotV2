@@ -15,6 +15,7 @@ class ConfigApiService extends BaseApiClient {
 
     return response.data.map((file) => ({
       name: file.name,
+      folder: file.folder,
       displayName: file.name.replace('.json', ''),
       modified: file.modified,
     }))
@@ -38,6 +39,14 @@ class ConfigApiService extends BaseApiClient {
       }
       throw new Error('設定の読み込み中に通信エラーが発生しました')
     }
+  }
+
+  /**
+   * ファイル移動
+   */
+  async moveConfig(fromName: string, toName: string): Promise<boolean> {
+    const result = await this.post('move', { fromName, toName })
+    return result !== null
   }
 
   /**
