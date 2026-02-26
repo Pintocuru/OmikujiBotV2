@@ -71,7 +71,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, nextTick, computed } from 'vue'
+  import { ref, nextTick } from 'vue'
   import type { FileItem } from '../devTypes'
   import { useDevStore } from '@config/dev/stores/useDevStore'
   import { useImportManager } from '@config/components/presetsImport/composables/useImportManager'
@@ -85,6 +85,7 @@
   const props = defineProps<{
     file: FileItem
     formatFileDate: (date: string) => string
+    availableFolders: string[]
   }>()
 
   // stores
@@ -98,10 +99,6 @@
   const isEditing = ref(false)
   const editingName = ref('')
   const editInputRef = ref<HTMLInputElement>()
-
-  const availableFolders = computed(() => [
-    ...new Set(devStore.availableFiles.map((f) => f.folder).filter((f): f is string => f !== null)),
-  ])
 
   // 名前変更開始
   const startRename = () => {

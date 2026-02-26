@@ -2,16 +2,19 @@
 <template>
   <div class="card bg-base-200 p-2 space-y-2">
     <template v-if="devStore.availableFiles.length > 0">
-      <!-- フォルダなし（ルート直下） -->
-      <div v-if="rootFiles.length > 0">
-        <div class="grid grid-cols-2 md:grid-cols-3 gap-1">
-          <DevFileItem v-for="file in rootFiles" :key="file.name" :file="file" :format-file-date="formatFileDate" />
-        </div>
+      <!-- ルート直下 -->
+      <div v-if="rootFiles.length > 0" class="grid grid-cols-2 md:grid-cols-3 gap-1">
+        <DevFileItem
+          v-for="file in rootFiles"
+          :key="file.name"
+          :file="file"
+          :format-file-date="formatFileDate"
+          :available-folders="availableFolders"
+        />
       </div>
 
-      <!-- フォルダごとにグループ表示 -->
+      <!-- フォルダグループ（デフォルト閉じ） -->
       <div v-for="(files, folder) in folderGroups" :key="folder">
-        <!-- フォルダヘッダー（開閉可能） -->
         <button
           class="flex items-center gap-1 text-xs font-bold opacity-70 hover:opacity-100 w-full text-left mb-1"
           @click="toggleFolder(folder)"
@@ -22,17 +25,15 @@
           <span class="opacity-50">（{{ files.length }}）</span>
         </button>
 
-        <!-- フォルダの中身 -->
         <div v-if="openFolders.has(folder)" class="grid grid-cols-2 md:grid-cols-3 gap-1 pl-2">
-          <DevFileItem v-for="file in files" :key="file.name" :file="file" :format-file-date="formatFileDate" />
+          <DevFileItem
+            v-for="file in files"
+            :key="file.name"
+            :file="file"
+            :format-file-date="formatFileDate"
+            :available-folders="availableFolders"
+          />
         </div>
-      </div>
-
-      <!-- さらに表示ボタン（ルートファイルが多い場合） -->
-      <div v-if="devStore.availableFiles.length > MAX_VISIBLE" class="text-center">
-        <button class="btn btn-xs btn-outline" @click="toggleExpand">
-          {{ showAll ? '隠す' : `さらに表示（${devStore.availableFiles.length - MAX_VISIBLE}件）` }}
-        </button>
       </div>
     </template>
 
@@ -55,13 +56,9 @@
   import { Folder, ChevronDown, ChevronRight } from 'lucide-vue-next'
 
   const devStore = useDevStore()
-  const MAX_VISIBLE = 9
-  const showAll = ref(false)
 
-  // フォルダなしのファイル（ルート直下）
   const rootFiles = computed(() => devStore.availableFiles.filter((f) => f.folder === null))
 
-  // フォルダごとにグループ化
   const folderGroups = computed(() => {
     const groups: Record<string, typeof devStore.availableFiles> = {}
     for (const file of devStore.availableFiles) {
@@ -72,7 +69,10 @@
     return groups
   })
 
-  // フォルダの開閉状態
+  // フォルダ一覧（FileMenuDropdown の移動先候補用）
+  const availableFolders = computed(() => Object.keys(folderGroups.value))
+
+  // デフォルト閉じ
   const openFolders = ref<Set<string>>(new Set())
   const toggleFolder = (folder: string) => {
     if (openFolders.value.has(folder)) {
@@ -80,9 +80,5 @@
     } else {
       openFolders.value.add(folder)
     }
-  }
-
-  const toggleExpand = () => {
-    showAll.value = !showAll.value
   }
 </script>
