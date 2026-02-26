@@ -25,6 +25,17 @@ export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
       ...migratedData,
       ...migrateDisplaySettings(migratedData),
     }
+
+    // Characterのデータ注入（displaySettings がある場合のみ）
+    const allKeys = Object.keys(data.characters)
+    const showCharacterPersistent = data.displaySettings.base.showCharacterPersistent
+    migratedData.components.bubble.showCharacters = {
+      center: !showCharacterPersistent ? allKeys : [],
+      slot1: showCharacterPersistent ? allKeys : [],
+      slot2: [],
+      slot3: [],
+      slot4: [],
+    }
   }
 
   // actionSets の手動マイグレーション
@@ -35,17 +46,6 @@ export function migrateV130ToV200(data: OmikujiDataTypeV1): OmikujiDataType {
       // ソート処理も必要
       actionSet.postActions.sort((a: any, b: any) => a.delaySeconds - b.delaySeconds)
     }
-  }
-
-  // Characterのデータ注入
-  const allKeys = Object.keys(data.characters)
-  const showCharacterPersistent = data.displaySettings.base.showCharacterPersistent
-  migratedData.components.bubble.showCharacters = {
-    center: !showCharacterPersistent ? allKeys : [],
-    slot1: showCharacterPersistent ? allKeys : [],
-    slot2: [],
-    slot3: [],
-    slot4: [],
   }
 
   console.log('Migration to v2.0 completed: omikuji keys補完完了')

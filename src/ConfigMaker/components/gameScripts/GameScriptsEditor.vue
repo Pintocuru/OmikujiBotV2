@@ -31,19 +31,17 @@
         :variant="isScriptIdEmpty ? 'warning' : undefined"
         :showWarning="isScriptIdEmpty"
       >
-        <select
-          :value="gameScripts.scriptId"
-          @change="updateScriptId(($event.target as HTMLSelectElement).value as ScriptGameKey)"
-          class="select select-bordered select-sm w-full"
-          :disabled="!hasAvailableScripts"
-        >
-          <option :value="null">
-            {{ hasAvailableScripts ? '-- スクリプトを選択 --' : '-- 利用可能なスクリプトがありません --' }}
-          </option>
-          <option v-for="scriptId in availableGameScripts" :key="scriptId" :value="scriptId">
-            {{ getScriptName(scriptId) }}
-          </option>
-        </select>
+        <div class="flex flex-wrap gap-2">
+          <div
+            v-for="id in availableGameScripts"
+            :key="id"
+            class="badge badge-outline cursor-pointer"
+            :class="{ 'badge-primary': gameScripts.scriptId === id }"
+            @click="updateScriptId(id)"
+          >
+            {{ getScriptName(id) }}
+          </div>
+        </div>
       </SettingItem>
 
       <!-- 利用可能なスクリプトがない場合の警告 -->
@@ -74,17 +72,17 @@
         :variant="isCharacterKeyEmpty ? 'warning' : undefined"
         :showWarning="isCharacterKeyEmpty"
       >
-        <select
-          :value="gameScripts.characterKey"
-          @change="updateCharacterKey(($event.target as HTMLSelectElement).value)"
-          class="select select-bordered select-sm w-full"
-          :disabled="!hasAvailableScripts"
-        >
-          <option value="">-- キャラクターを選択 --</option>
-          <option v-for="character in charactersList" :key="character.key" :value="character.key">
+        <div class="flex flex-wrap gap-2">
+          <div
+            v-for="character in charactersList"
+            :key="character.key"
+            class="badge badge-outline cursor-pointer"
+            :class="{ 'badge-primary': gameScripts.characterKey === character.key }"
+            @click="updateCharacterKey(character.key)"
+          >
             {{ character.name }}
-          </option>
-        </select>
+          </div>
+        </div>
       </SettingItem>
     </div>
   </div>
@@ -148,11 +146,11 @@
   }
 
   // Update Functions
-  const updateScriptId = (value: ScriptGameKey) => {
+  const updateScriptId = (value: ScriptGameKey | null) => {
     updateGameScripts(() => ({ scriptId: value || null }))
   }
 
-  const updateCharacterKey = (value: string) => {
+  const updateCharacterKey = (value: string | null) => {
     updateGameScripts(() => ({ characterKey: value }))
   }
 

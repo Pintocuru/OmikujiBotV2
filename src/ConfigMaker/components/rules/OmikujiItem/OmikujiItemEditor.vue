@@ -25,9 +25,7 @@
 
   <!-- サブタイトル -->
   <SubSectionHeader
-    class="pt-4"
     :icon="actionSetKindMap[omikujiItem.type].icon"
-    variant="warning"
     :title="actionSetKindMap[omikujiItem.type].label"
     :description="actionSetKindMap[omikujiItem.type].description"
   />

@@ -39,7 +39,6 @@
   </SettingItem>
 
   <SubSectionHeader
-    class="pt-4"
     icon="ShieldAlert"
     title="連投制限"
     description="同じユーザーが続けておみくじを引ける回数を制限します"
