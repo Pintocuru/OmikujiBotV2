@@ -1,5 +1,5 @@
 // tools/build.ts
-import { CoreBuildTarget, SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
+import { SystemCommonData } from '@shared/utils/webpackBuild/BuildTypes'
 import { CreateShimsVue } from '@shared/utils/webpackBuild/utils/CreateShimsVue'
 import { WebpackBuilder } from '@shared/utils/webpackBuild/WebpackBuilder'
 import { APP_VERSION, DATA_VERSION } from '@/version'
@@ -8,7 +8,8 @@ import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'
 
-import { getAllProjects, packageTargets } from './packages'
+import { coreTargets, getAllProjects, packageTargets } from './packages'
+import { execSync } from 'child_process'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
@@ -17,18 +18,26 @@ if (!process.env.PACKAGE_ROOT) throw new Error('.envファイルが読めない�
 const packageRoot = process.env.PACKAGE_ROOT
 
 /**
- * コアビルド設定リスト
- * エディターを更新したら必ずビルドする基盤部分
+ * 型チェック + ESLint を本番前チェックとして実行
  */
-const coreTargets: CoreBuildTarget[] = [
-  { project: 'OmikujiBot' }, // MainGenerator + ConfigMaker
-  { project: 'OmikujiBotMain' }, // MainGenerator のみ
-]
+function runPreBuildChecks() {
+  // EsLint
+  console.log('[Check] Running ESLint...')
+  execSync('npx eslint src', { stdio: 'inherit' })
+
+  // vue-tsc
+  console.log('[Check] Running vue-tsc...')
+  execSync('npx vue-tsc --project tsconfig.eslint.json --noEmit', {
+    stdio: 'inherit',
+  })
+  console.log('[Check] All checks passed')
+
+  // shims-vue.d.ts を生成
+  CreateShimsVue(packageRoot)
+}
 
 ;(async () => {
   try {
-    CreateShimsVue(packageRoot)
-
     const systemCommonData: SystemCommonData = {
       alias,
       author: 'Pintocuru(せすじピンとしてます)',
@@ -40,6 +49,13 @@ const coreTargets: CoreBuildTarget[] = [
 
     const builder = new WebpackBuilder(systemCommonData)
     builder.registerProject(getAllProjects(packageRoot))
+
+    // 型チェック + ESLint
+    await builder.build({
+      coreTargets,
+      packageTargets,
+      onBeforeCoreBuild: runPreBuildChecks,
+    })
 
     await builder.build({ coreTargets, packageTargets })
 

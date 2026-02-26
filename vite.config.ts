@@ -15,8 +15,6 @@ const base = baseViteConfig(projectRoot)
 export const alias = { ...rootAlias, ...createViteAliases(projectRoot) }
 
 export default defineConfig(() => {
-  const checkLevel = process.env.VITE_TS_CHECK_LEVEL || 'development'
-
   const overrideConfig: UserConfig = {
     root: path.resolve(projectRoot),
     resolve: { alias },
@@ -26,6 +24,5 @@ export default defineConfig(() => {
       },
     },
   }
-
   return mergeConfig(base, overrideConfig)
 })

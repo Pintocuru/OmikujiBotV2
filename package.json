@@ -4,9 +4,7 @@
   "data_version": 2.20040004,
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
-    "dev:omikujiBot": "concurrently \"npm run devApi:omikujiBot\" \"npm run devHot:omikujiBot\"",
-    "devHot:omikujiBot": "vite",
-    "devApi:omikujiBot": "tsx server/start-dev-server.ts",
+    "dev:omikujiBot": "tsx server/start-dev-server.ts",
     "soundMake:omikujiBot": "tsx tools/genSound/genSoundIndex.ts",
     "updateFilesName:omikujiBot": "tsx tools/fileName/UpdateTsFiles.ts",
     "lint:omikujiBot": "eslint src/**/*.{ts,vue}",
