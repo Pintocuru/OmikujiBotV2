@@ -35,6 +35,9 @@ export class VariablePlaceholderProcessor {
     // 3: cond関数を処理（変数参照の前に実行）
     processed = this.processCondFunction(processed)
 
+    // cond 処理後に追加
+    this.resolveDeferredVariables()
+
     // 4: 変数参照を処理
     processed = this.processVariableReferences(processed)
 
@@ -68,9 +71,8 @@ export class VariablePlaceholderProcessor {
   private processVariableDeclarations(text: string): string {
     return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
-        const value = this.evaluator.evaluate(expression.trim())
-        this.evaluator.set(varName, value)
-        return '' // 宣言は削除
+        this.evaluator.set(varName, expression.trim())
+        return ''
       } catch (error) {
         console.warn(`変数宣言の評価に失敗: ${match}`, error)
         return match
@@ -106,6 +108,17 @@ export class VariablePlaceholderProcessor {
         return match
       }
     })
+  }
+
+  private resolveDeferredVariables() {
+    const entries = this.evaluator.getAll()
+
+    for (const [key, value] of Object.entries(entries)) {
+      if (typeof value === 'string') {
+        const evaluated = this.evaluator.evaluate(value)
+        this.evaluator.set(key, evaluated)
+      }
+    }
   }
 
   /**

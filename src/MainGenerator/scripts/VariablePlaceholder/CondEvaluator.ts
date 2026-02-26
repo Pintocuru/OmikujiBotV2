@@ -1,5 +1,6 @@
 // src/MainGenerator/scripts/VariablePlaceholder/CondEvaluator.ts
 import { ComparisonParser } from './ComparisonParser'
+import { ExpressionEvaluator } from './ExpressionEvaluator'
 
 /**
  * cond関数評価器
@@ -8,28 +9,22 @@ import { ComparisonParser } from './ComparisonParser'
 export class CondEvaluator {
   /**
    * cond関数を評価
-   * @param condition - 条件式（例: "score > 100" or "is_member"）
-   * @param trueValue - 条件が真の場合の値
-   * @param falseValue - 条件が偽の場合の値
-   * @param getValue - 変数名から値を取得する関数
-   * @returns 評価結果
    */
   static evaluate(
     condition: string,
     trueValue: string,
     falseValue: string,
-    getValue: (varName: string) => string | number | undefined
-  ): string {
-    // ネストチェック: trueValue/falseValue に cond( が含まれていたらエラー
+    evaluator: ExpressionEvaluator
+  ): string | number {
     if (this.containsNestedCond(trueValue) || this.containsNestedCond(falseValue)) {
       throw new Error('cond関数のネストは許可されていません')
     }
 
-    // 条件評価
-    const isTrue = this.evaluateCondition(condition, getValue)
+    const isTrue = this.evaluateCondition(condition, (varName) => evaluator.get(varName))
 
-    // 結果の値を返す
-    return isTrue ? trueValue : falseValue
+    // ★ 選択された値を再評価する
+    const chosen = isTrue ? trueValue : falseValue
+    return evaluator.evaluate(chosen)
   }
 
   /**

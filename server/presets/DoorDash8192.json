@@ -1186,25 +1186,17 @@
   "components": {
     "conditions": [
       {
-        "slot": "primary",
-        "kind": "bubble"
-      },
-      {
-        "slot": "secondary",
-        "kind": "toast"
-      },
-      {
         "slot": "extra",
         "kind": "ranking"
       }
     ],
     "enableSecondary": true,
     "commonStyle": {
-      "fontFamily": "wdxlLubrifont",
+      "fontFamily": "mplus1p",
       "defaultColor": {
         "isTheme": true,
-        "daisyUiTheme": "luxury",
-        "backFrom": "neutral",
+        "daisyUiTheme": "acid",
+        "backFrom": "primary",
         "backTo": "secondary",
         "nameColor": "#212121",
         "textColor": "#212121",
@@ -1242,8 +1234,8 @@
         "targetScriptKeys": [
           "basicList"
         ],
-        "title": "🐍毒占い履歴💀",
-        "color": "luxury",
+        "title": "🚪ドアダッシュ🚪",
+        "color": "acid",
         "limit": 5,
         "sortOrder": "new",
         "component": "rankStandard"
@@ -1285,6 +1277,6 @@
   "settings": {
     "commentType": "OneComme",
     "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
-    "daisyUiTheme": "nord"
+    "daisyUiTheme": "acid"
   }
 }

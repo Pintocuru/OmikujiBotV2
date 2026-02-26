@@ -29,14 +29,18 @@ export class ExpressionEvaluator extends KeyValueMap {
     }
 
     // cond(condition, trueValue, falseValue)関数
-    const condMatch = trimmed.match(/^cond\s*\(\s*(.+?)\s*,\s*(.+?)\s*,\s*(.+?)\s*\)$/i)
+    const condMatch = trimmed.match(/^cond\s*\((.*)\)$/i)
     if (condMatch) {
-      const condition = condMatch[1].trim()
-      const trueValue = condMatch[2].trim()
-      const falseValue = condMatch[3].trim()
+      const inner = condMatch[1]
 
-      // CondEvaluatorに委譲
-      return CondEvaluator.evaluate(condition, trueValue, falseValue, (varName) => this.get(varName))
+      const parts = this.splitCondArguments(inner)
+      if (parts.length !== 3) {
+        throw new Error(`condの引数が不正: ${expression}`)
+      }
+
+      const [condition, trueValue, falseValue] = parts
+
+      return CondEvaluator.evaluate(condition, trueValue, falseValue, this)
     }
 
     // 数値リテラル
@@ -64,6 +68,34 @@ export class ExpressionEvaluator extends KeyValueMap {
 
     // その他は文字列として扱う
     return trimmed
+  }
+
+  /**
+   * cond引数を安全に分割する関数
+   */
+  private splitCondArguments(input: string): string[] {
+    const result: string[] = []
+    let depth = 0
+    let current = ''
+
+    for (let i = 0; i < input.length; i++) {
+      const char = input[i]
+
+      if (char === '(') depth++
+      if (char === ')') depth--
+
+      if (char === ',' && depth === 0) {
+        result.push(current.trim())
+        current = ''
+        continue
+      }
+
+      current += char
+    }
+
+    if (current) result.push(current.trim())
+
+    return result
   }
 
   /**
