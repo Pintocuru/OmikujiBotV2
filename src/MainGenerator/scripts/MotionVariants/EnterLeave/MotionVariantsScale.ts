@@ -1,6 +1,4 @@
 // src/MainGenerator/scripts/MotionVariants/EnterLeave/MotionVariantsScale.ts
-import { MotionVariants } from '@vueuse/motion'
-import { EnterMotionType } from '../MotionVariants'
 
 // スケール・ズーム系
 export const scaleVariants = {

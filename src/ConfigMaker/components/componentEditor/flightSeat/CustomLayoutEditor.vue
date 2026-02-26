@@ -61,11 +61,6 @@
     return layoutStringToArray(props.customLayoutString)
   })
 
-  // カスタム配列からの総座席数
-  const totalSeatsFromCustom = computed(() => {
-    return parsedLayout.value.reduce((sum, n) => sum + n, 0)
-  })
-
   // 現在の配列が特定のプリセットと一致するかチェック
   const isSelectedPreset = (presetKey: CustomLayoutPresetKey) => {
     const presetLayout = getPresetLayout(presetKey)

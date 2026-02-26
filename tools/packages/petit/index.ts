@@ -14,7 +14,6 @@ const targets: PackageBuildTarget[] = [
   { project: 'HonjoFox', type: 'JSON', accessLevel: 'basic' },
   ...BreakingSyokenProject.buildTargets,
    */
-  ...BreakingSyokenProject.buildTargets,
 ]
 
 export default {

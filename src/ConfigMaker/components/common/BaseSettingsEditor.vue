@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { RecordCategoryType } from '@/types/OmikujiData/'
   import BaseTagEditor from './BaseTagEditor.vue'
   import KeyEditor from '@config/components/KeyEditor/KeyEditor.vue'
@@ -58,19 +58,6 @@
   const emit = defineEmits<{
     'update:modelValue': [value: BaseRecordType]
   }>()
-
-  const newTag = ref('')
-
-  const addTag = () => {
-    const value = newTag.value.trim()
-    if (!value) return
-    tags.value = [...(tags.value ?? []), value]
-    newTag.value = ''
-  }
-
-  const removeTag = (index: number) => {
-    tags.value = tags.value.filter((_, i) => i !== index)
-  }
 
   // 各プロパティのcomputed getter/setter
   const createComputed = <T extends keyof BaseRecordType>(key: T) =>

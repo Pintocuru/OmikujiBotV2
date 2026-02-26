@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/PostOmikuji/PostOmikujiService.ts
-import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType, DisplayOptionType } from '@/types/'
+import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types/'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'

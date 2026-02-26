@@ -70,7 +70,7 @@ export function useFlashBannerLogic() {
   })
 
   // インターバル時の処理を外部から登録できるようにする
-  let _onInterval: () => void = () => {}
+  let _onInterval: () => void = () => undefined
   function registerIntervalHook(fn: () => void) {
     _onInterval = fn
   }

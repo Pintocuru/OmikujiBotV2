@@ -57,8 +57,6 @@ function runPreBuildChecks() {
       onBeforeCoreBuild: runPreBuildChecks,
     })
 
-    await builder.build({ coreTargets, packageTargets })
-
     console.log('[Build] All builds completed successfully!')
   } catch (error) {
     console.error('[Build] Build failed:', error)

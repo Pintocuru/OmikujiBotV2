@@ -24,7 +24,7 @@
   import { PostFlowType } from '@/types/'
   import PostActionRow from './tooltab/PostActionRow.vue'
 
-  const props = defineProps<{
+  defineProps<{
     actions: PostFlowType[]
   }>()
 

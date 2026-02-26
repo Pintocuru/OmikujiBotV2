@@ -1,5 +1,5 @@
 // src/types/MetaMaps/ActionSetMaps.ts
-import { MessageSquare, PartyPopper, Volume2, MessagesSquare, Bot, Gamepad2, Zap } from 'lucide-vue-next'
+import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
 /**
  * PostAction タイプのUI表示情報

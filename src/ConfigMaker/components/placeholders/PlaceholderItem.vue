@@ -86,7 +86,6 @@
   import { computed, ref, onMounted } from 'vue'
   import { PlaceholderType } from '@/types/'
   import CopyButton from '@config/components/parts/CopyButton.vue'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { ArrowRight } from 'lucide-vue-next'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
 
