@@ -4,28 +4,49 @@
     <label tabindex="0" class="btn btn-ghost btn-xs">
       <Menu class="w-3 h-3" />
     </label>
-    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-40">
-      <!-- フォルダへ移動 -->
-      <li v-if="folders.length > 0">
+    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-44">
+      <!-- フォルダへ移動（isDev のみ） -->
+      <li v-if="showMove">
         <details>
           <summary class="text-sm">
             <FolderInput class="w-4 h-4" />
             移動
           </summary>
           <ul>
-            <!-- ルートへ移動（現在ルートなら非表示） -->
+            <!-- ルートへ移動 -->
             <li v-if="currentFolder !== null">
               <button class="text-sm" @click="$emit('move', '')">
                 <Folder class="w-4 h-4" />
                 ルート
               </button>
             </li>
-            <!-- 各フォルダへ移動（現在のフォルダは非表示） -->
+            <!-- 既存フォルダ -->
             <li v-for="folder in folders" :key="folder">
               <button v-if="folder !== currentFolder" class="text-sm" @click="$emit('move', folder)">
                 <Folder class="w-4 h-4" />
                 {{ folder }}
               </button>
+            </li>
+
+            <!-- 新規フォルダ作成 -->
+            <li>
+              <div>
+                <button class="text-sm text-success" @click.stop="isCreatingFolder = true">
+                  <FolderPlus class="w-4 h-4" />
+                  新規フォルダ
+                </button>
+                <input
+                  ref="newFolderInputRef"
+                  v-model="newFolderName"
+                  class="input input-xs flex-1 min-w-0"
+                  placeholder="フォルダ名"
+                  @keydown.enter="confirmNewFolder"
+                  @keydown.escape="cancelNewFolder"
+                />
+                <button class="btn btn-xs btn-success" @click="confirmNewFolder">
+                  <Check class="w-3 h-3" />
+                </button>
+              </div>
             </li>
           </ul>
         </details>
@@ -48,17 +69,41 @@
 </template>
 
 <script setup lang="ts">
-  import { Menu, Copy, Trash2, Folder, FolderInput } from 'lucide-vue-next'
+  import { ref, nextTick, watch } from 'vue'
+  import { Menu, Copy, Trash2, Folder, FolderInput, FolderPlus, Check } from 'lucide-vue-next'
 
-  defineProps<{
-    folders: string[] // 移動先の候補フォルダ一覧
-    currentFolder: string | null // 現在のフォルダ（自分自身を除外するため）
+  const props = defineProps<{
+    folders: string[]
+    currentFolder: string | null
+    showMove?: boolean
     disableDelete?: boolean
   }>()
 
-  defineEmits<{
-    move: [folder: string] // '' はルートを意味する
+  const emit = defineEmits<{
+    move: [folder: string]
     duplicate: []
     delete: []
   }>()
+
+  const isCreatingFolder = ref(false)
+  const newFolderName = ref('')
+  const newFolderInputRef = ref<HTMLInputElement>()
+
+  watch(isCreatingFolder, (val) => {
+    if (val) nextTick(() => newFolderInputRef.value?.focus())
+  })
+
+  const confirmNewFolder = () => {
+    const name = newFolderName.value.trim()
+    // 英数字・ハイフン・アンダースコアのみ（サーバー側バリデーションと合わせる）
+    if (name && /^[\w\-]+$/.test(name) && name !== props.currentFolder) {
+      emit('move', name)
+    }
+    cancelNewFolder()
+  }
+
+  const cancelNewFolder = () => {
+    isCreatingFolder.value = false
+    newFolderName.value = ''
+  }
 </script>

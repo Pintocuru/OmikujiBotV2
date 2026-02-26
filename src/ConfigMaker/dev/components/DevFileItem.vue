@@ -57,6 +57,7 @@
       <FileMenuDropdown
         :folders="availableFolders"
         :current-folder="file.folder"
+        :show-move="isGod || isDev"
         :disable-delete="devStore.isDeletingFile(file.name) || devStore.isAnyLoading"
         @move="(folder) => devStore.moveFile(file.name, folder)"
         @duplicate="devStore.duplicateFile(file.name)"
@@ -78,6 +79,8 @@
   import FileMenuDropdown from './FileMenuDropdown.vue'
   import { Download, FileText, Edit } from 'lucide-vue-next'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { isDev } from '@/types'
 
   const props = defineProps<{
     file: FileItem
@@ -89,6 +92,7 @@
 
   // インポートマネージャー
   const importManager = useImportManager()
+  const { isGod } = useSettingMode()
 
   // 名前編集関連
   const isEditing = ref(false)
