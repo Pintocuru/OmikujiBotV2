@@ -59,9 +59,9 @@
   import ConfigImportModal from './components/presetsImport/ConfigImportModal.vue'
   import { useImportManager } from './components/presetsImport/composables/useImportManager'
   import { useOmikujiStore } from './stores/useOmikujiStore'
-  import PresetTool from './dev/DevConfigs.vue'
-  import { useDevStore } from './dev/stores/useDevStore'
-  import { generatorApi } from './dev/services/generatorApi'
+  import PresetTool from '@/PresetManager//DevConfigs.vue'
+  import { useDevStore } from '../PresetManager/stores/useDevStore'
+  import { generatorApi } from '../PresetManager/services/generatorApi'
 
   // stores
   const omikujiStore = useOmikujiStore()

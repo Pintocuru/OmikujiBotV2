@@ -73,7 +73,7 @@
 <script setup lang="ts">
   import { ref, nextTick } from 'vue'
   import type { FileItem } from '../devTypes'
-  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useImportManager } from '@config/components/presetsImport/composables/useImportManager'
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import FileMenuDropdown from './FileMenuDropdown.vue'

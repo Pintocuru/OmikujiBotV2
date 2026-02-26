@@ -25,7 +25,7 @@
   import { isDev } from '@/types'
   import DevHeader from './components/DevHeader.vue'
   import DevFileList from './components/DevFileList.vue'
-  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   const devStore = useDevStore()

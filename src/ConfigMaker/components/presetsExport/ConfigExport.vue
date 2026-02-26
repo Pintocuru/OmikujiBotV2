@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
   import { useConfigExport } from './useConfigExport'
-  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { storeToRefs } from 'pinia'

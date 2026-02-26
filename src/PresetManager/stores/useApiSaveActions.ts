@@ -1,7 +1,7 @@
 // src/ConfigMaker/dev/stores/useApiSaveActions.ts
-import { DevConfigStateType } from '@config/dev/devTypes'
-import { configApi } from '@config/dev/services/configApi'
-import { generatorApi } from '@config/dev/services/generatorApi'
+import { DevConfigStateType } from '@/PresetManager/devTypes'
+import { configApi } from '@/PresetManager/services/configApi'
+import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 

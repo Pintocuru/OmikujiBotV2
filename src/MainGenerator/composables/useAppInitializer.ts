@@ -2,7 +2,7 @@
 import { ComputedRef } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
-import { generatorApi } from '@config/dev/services/generatorApi'
+import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 
 export function useAppInitializer(isComment: ComputedRef<boolean>) {

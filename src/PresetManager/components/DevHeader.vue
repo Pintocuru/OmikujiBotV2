@@ -72,9 +72,9 @@
 <script setup lang="ts">
   import { storeToRefs } from 'pinia'
   import { isDev } from '@/types'
-  import { generateDateFileName } from '@config/dev/services/apiServiceUtils'
-  import { generatorApi } from '@config/dev/services/generatorApi'
-  import { useDevStore } from '@config/dev/stores/useDevStore'
+  import { generateDateFileName } from '@/PresetManager/services/apiServiceUtils'
+  import { generatorApi } from '@/PresetManager/services/generatorApi'
+  import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { Download, Save } from 'lucide-vue-next'

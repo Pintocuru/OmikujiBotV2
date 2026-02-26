@@ -1,7 +1,7 @@
 // src/ConfigMaker/dev/stores/useApiLoadActions.ts
 import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
-import { DevConfigStateType } from '@config/dev/devTypes'
-import { configApi } from '@config/dev/services/configApi'
+import { DevConfigStateType } from '@/PresetManager/devTypes'
+import { configApi } from '@/PresetManager/services/configApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 export function useLoadActions(
