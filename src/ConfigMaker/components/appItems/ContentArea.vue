@@ -53,7 +53,7 @@
   import ComponentEditor from '@config/components/componentEditor/ComponentEditor.vue'
   import AppInfoEditor from '@config/components/appInfo/AppInfoEditor.vue'
   import JsonMergeEditor from '@config/components/JsonMerge/JsonMergeEditor.vue'
-  import { resolveLucideIcon } from '../common/useLucideIcon'
+  import { resolveLucideIcon } from '../../../common/LucideIcon/useLucideIcon'
 
   const navigationStore = useNavigationStore()
   const { selectedCategory } = storeToRefs(navigationStore)

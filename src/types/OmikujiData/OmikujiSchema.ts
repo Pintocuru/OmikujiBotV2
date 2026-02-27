@@ -2,7 +2,7 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CriteriaThresholdSchema } from './CriteriaThresholdSchema'
-import { ActionSetSchema } from './ActionSet'
+import { ActionSetSchema, PostFlowMessageSchema } from './ActionSet'
 
 /**
  * OmikujiItemSchema
@@ -19,22 +19,12 @@ export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
 /**
  * OmikujiSet おみくじ
  */
-export const OmikujiSetSchema = z
-  .array(OmikujiItemSchema)
-  .default([
-    OmikujiItemSchema.parse({
-      postActions: [
-        {
-          characterKey: '',
-          iconKey: 'default',
-          actionType: 'message',
-          message: {
-            bubble: '<<user>>さんの運勢は【大吉】',
-          },
-          delaySeconds: 0,
-        },
-      ],
+const parse = OmikujiItemSchema.parse({
+  postActions: [
+    PostFlowMessageSchema.parse({
+      message: { bubble: '<<user>>さんの運勢は【大吉】' },
     }),
-  ])
-  .catch([])
+  ],
+})
+export const OmikujiSetSchema = z.array(OmikujiItemSchema).default([parse]).catch([parse])
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>

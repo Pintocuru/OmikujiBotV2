@@ -14,7 +14,7 @@
     <!-- 種別アイコン -->
     <div class="flex-1 min-w-0">
       <div class="flex flex-wrap gap-1 items-center">
-        <component v-if="icon" :is="icon" class="w-6 h-6" />
+        <component v-if="resolvedIcon" :is="resolvedIcon" class="w-6 h-6" />
       </div>
     </div>
   </div>
@@ -26,6 +26,7 @@
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { resolveLucideIcon } from '@/common/LucideIcon/useLucideIcon'
 
   const props = defineProps<{
     action: PostFlowType
@@ -34,7 +35,8 @@
   const { isCharacter } = useVisibilityAccess()
   const { iconSrc } = useCharacterManager()
 
-  const iconMap = Object.fromEntries(PostFlowKindMaps.map((v) => [v.type, v.icon]))
-
-  const icon = computed(() => iconMap[props.action.actionType])
+  const resolvedIcon = computed(() => {
+    const iconName = PostFlowKindMaps[props.action.actionType]?.icon
+    return resolveLucideIcon(iconName)
+  })
 </script>

@@ -1,18 +1,15 @@
 // src/types/MetaMaps/ActionSetMaps.ts
-import { MessageSquare, PartyPopper, Volume2, MessagesSquare } from 'lucide-vue-next'
 
 /**
  * PostAction タイプのUI表示情報
  */
-// TODO(v3) : PostFlowKindMaps はRecord型にする
-export const PostFlowKindMaps = [
-  // TODO(v3) : type -> kind
-  { type: 'message', label: 'メッセージ', icon: MessageSquare },
-  { type: 'sound', label: 'サウンド', icon: Volume2 },
-  { type: 'wordParty', label: 'WordParty', icon: PartyPopper },
+export const PostFlowKindMaps = {
+  message: { label: 'メッセージ', icon: 'MessageSquare' },
+  sound: { label: 'サウンド', icon: 'Volume2' },
+  wordParty: { label: 'WordParty', icon: 'PartyPopper' },
   // TODO(v3) : actionSet -> flowCall
-  { type: 'actionSet', label: 'アクションセット', icon: MessagesSquare },
-] as const
+  actionSet: { label: 'アクションセット', icon: 'MessagesSquare' },
+} as const
 
 /**
  * 特殊動作のUI表示情報

@@ -29,7 +29,7 @@
   import { computed } from 'vue'
   import { CheckCircle, XCircle } from 'lucide-vue-next'
   import type { AccessLevelType } from '@shared/types'
-  import { resolveLucideIcon } from '../../common/useLucideIcon'
+  import { resolveLucideIcon } from '@/common/LucideIcon/useLucideIcon'
 
   const props = defineProps<{
     title: string

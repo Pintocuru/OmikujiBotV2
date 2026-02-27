@@ -1,5 +1,5 @@
 // src/ConfigMaker/components/common/useLucideIcon.ts
-import * as LucideIcons from 'lucide-vue-next'
+import * as Icons from 'lucide-vue-next'
 import { Package } from 'lucide-vue-next'
 import type { Component } from 'vue'
 
@@ -8,5 +8,5 @@ import type { Component } from 'vue'
  */
 export function resolveLucideIcon(iconName: string | undefined): Component {
   if (!iconName) return Package
-  return (LucideIcons as Record<string, any>)[iconName] ?? Package
+  return (Icons as Record<string, any>)[iconName] ?? Package
 }

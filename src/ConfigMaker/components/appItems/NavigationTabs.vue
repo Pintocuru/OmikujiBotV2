@@ -51,7 +51,7 @@
   import { useCategoryUtils } from './useCategoryUtils'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
-  import { resolveLucideIcon } from '../common/useLucideIcon'
+  import { resolveLucideIcon } from '@/common/LucideIcon/useLucideIcon'
 
   const navigationStore = useNavigationStore()
 

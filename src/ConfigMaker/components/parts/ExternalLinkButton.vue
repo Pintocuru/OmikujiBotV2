@@ -9,14 +9,15 @@
   import { ExternalLink } from 'lucide-vue-next'
 
   // Props
-  interface Props {
-    url: string
-    title?: string
-  }
-
-  const props = withDefaults(defineProps<Props>(), {
-    title: 'サイトを開く',
-  })
+  const props = withDefaults(
+    defineProps<{
+      url: string
+      title?: string
+    }>(),
+    {
+      title: 'サイトを開く',
+    }
+  )
 
   // URL検証
   const isValidUrl = (urlValue: string): boolean => {

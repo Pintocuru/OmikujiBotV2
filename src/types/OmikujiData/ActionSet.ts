@@ -75,7 +75,7 @@ export const PostFlowCallSchema = z.object({
 export type PostFlowCallType = z.infer<typeof PostFlowCallSchema>
 
 // アクションタイプの定義
-export type PostFlowKind = (typeof PostFlowKindMaps)[number]['type']
+export type PostFlowKind = keyof typeof PostFlowKindMaps
 
 // PostFlow わんコメ・BOTちゃんに投稿する型定義
 export const PostFlowSchema = z.discriminatedUnion('actionType', [
@@ -83,6 +83,7 @@ export const PostFlowSchema = z.discriminatedUnion('actionType', [
   PostFlowSoundSchema,
   PostFlowWordPartySchema,
   PostFlowCallSchema,
+  //  PostFlowGameSchema, // v3時追加
 ])
 export type PostFlowType = z.infer<typeof PostFlowSchema>
 
@@ -114,6 +115,7 @@ export const ScriptGameExtendedKeySchema = z.union([
 export type ScriptGameExtendedKeyType = z.infer<typeof ScriptGameExtendedKeySchema>
 
 export const GameScriptsSchema = z.object({
+  ...PostFlowBaseSchema.shape, // v3に向けた追加
   // TODO(v3) : scriptId -> scriptKey
   scriptId: ScriptGameKeySchema.nullish().default(null).catch(null),
   queryString: z.string().default('').catch(''),
@@ -144,3 +146,23 @@ export const ActionSetSchema = z.object({
   special: normalizedObject(ActionSpecialSchema),
 })
 export type ActionSetType = z.infer<typeof ActionSetSchema>
+
+/**
+TODO(v3):
+
+gameScripts -> postActions の一部にする
+既存の gameScripts は廃止。マイグレーション時に transform で変換を行う。
+
+export const PostFlowGameSchema = z.object({
+  ...PostFlowBaseSchema.shape,
+  actionType: z.literal('gameScript'),
+  scriptId: ScriptGameKeySchema.nullish().default(null).catch(null),
+  queryString: z.string().default('').catch(''),
+  characterKey: z.string().nullish().default(null).catch(null),
+})
+export type PostFlowGameType = z.infer<typeof PostFlowGameSchema>
+
+
+
+
+ */

@@ -11,15 +11,17 @@
     <div class="col-span-2 space-y-2">
       <!-- ActionType -->
       <SettingItem label="🚀 アクションタイプ" description="種類を選択します">
-        <select
-          class="select select-sm w-full max-w-xs"
-          :value="action.actionType"
-          @change="updateActionType(($event.target as HTMLSelectElement).value as PostFlowKind)"
-        >
-          <option v-for="t in PostFlowKindMaps" :key="t.type" :value="t.type">
-            {{ t.label }}
-          </option>
-        </select>
+        <div class="flex flex-wrap gap-2">
+          <span
+            v-for="[type, meta] in Object.entries(PostFlowKindMaps)"
+            :key="type"
+            class="badge badge-sm cursor-pointer"
+            :class="action.actionType === type ? 'badge-primary' : 'badge-outline'"
+            @click="updateActionType(type as PostFlowKind)"
+          >
+            {{ meta.label }}
+          </span>
+        </div>
       </SettingItem>
 
       <!-- 遅延秒数（全タイプ共通） -->
