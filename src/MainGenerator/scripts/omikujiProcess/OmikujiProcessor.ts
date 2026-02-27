@@ -106,12 +106,21 @@ export class OmikujiProcessor {
     return DefaultPlaceholdersCommentSchema.parse({
       ...base,
       user: `{{icon ${omiken.userId}}}${omiken.userName}`,
-      userId: omiken.userId,
+      userId: this.sanitizeKey(omiken.userId),
       price: omiken.giftPrice,
       lc: omiken.meta.lc,
       tc: omiken.meta.tc,
       draws: omiken.meta.draws,
     })
+  }
+
+  // 変数プレースホルダー用のuserId変換器
+  private sanitizeKey(raw: string): string {
+    let h = 0
+    for (let i = 0; i < raw.length; i++) {
+      h = (h * 31 + raw.charCodeAt(i)) >>> 0
+    }
+    return `v${h.toString(36)}`
   }
 
   /**

@@ -14,31 +14,25 @@ import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } fr
  * 変数プレースホルダー処理エンジン
  *
  * v2 対応構文（推奨）:
- *   {{name = 'value'}}          文字列代入
- *   {{score = 100}}             数値代入
- *   {{score += 10}}             複合代入
+ *   {{name = 'value'}}                文字列代入
+ *   {{score = 100}}                   数値代入
+ *   {{score += 10}}                   複合代入
  *   {{result = score >= 10 ? 1 : 0}}  三項演算子
- *   {{a = 1; b = 2}}            複数式（セミコロン区切り）
- *   {{name}}                    変数参照（出力）
+ *   {{a = 1; b = 2}}                  複数式（セミコロン区切り）
+ *   {{name}}                          変数参照（出力）
  *
  * v1 互換構文（非推奨・後方互換）:
- *   {{var name = value}}        旧変数宣言
- *   {{rand(1, 10)}}             旧ランダム生成
+ *   {{var name = value}}              旧変数宣言
+ *   {{rand(1, 10)}}                   旧ランダム生成
  *
  * 処理順序:
- *   改行除去 → v1 var → v1 rand → v2 式評価 → 変数参照
- *
- * v1 を先に処理することで後方互換を保証する。
+ *   改行除去 → 非ASCII識別子のサニタイズ → v1 var → v1 rand → v2 式評価 → 変数参照
  */
 export class VariablePlaceholderProcessor {
   private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
-  private keyMap = new Map<string, string>()
 
   process(text: string): VariablePlaceholderResult {
     let processed = text.replace(/\n/g, '')
-
-    // 英数字でない場合は変換してしまう
-    processed = processed.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*\[[^\]]+\])/g, (match) => this.toSafeKey(match))
 
     // v1 互換処理（非推奨・後方互換）
     processed = this.processLegacyVarDeclarations(processed)
@@ -67,10 +61,6 @@ export class VariablePlaceholderProcessor {
     }
   }
 
-  /**
-   * v2: 式評価 {{式}} または {{式; 式; ...}}
-   * 代入式はテキストから除去、非代入式（rand など）はその場で出力
-   */
   private processExpressions(text: string): string {
     return text.replace(EXPRESSION_PATTERN, (match, expression) => {
       try {
@@ -83,14 +73,9 @@ export class VariablePlaceholderProcessor {
     })
   }
 
-  /**
-   * 変数参照 {{name}} → 値に置換して出力
-   */
   private processVariableReferences(text: string): string {
     return text.replace(VAR_REFERENCE_PATTERN, (match, varName) => {
-      if (this.evaluator.has(varName)) {
-        return String(this.evaluator.get(varName))
-      }
+      if (this.evaluator.has(varName)) return String(this.evaluator.get(varName))
       console.warn(`未定義の変数: ${varName}`)
       return match
     })
@@ -100,9 +85,7 @@ export class VariablePlaceholderProcessor {
   // v1 互換処理（非推奨）
   // ----------------------------------------------------------------
 
-  /**
-   * @deprecated v2 では {{name = value}} を使用してください
-   */
+  /** @deprecated v2 では {{name = value}} を使用してください */
   private processLegacyVarDeclarations(text: string): string {
     return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
@@ -116,9 +99,7 @@ export class VariablePlaceholderProcessor {
     })
   }
 
-  /**
-   * @deprecated v2 では {{result = rand(1,10)}} を使用してください
-   */
+  /** @deprecated v2 では {{result = rand(1,10)}} を使用してください */
   private processLegacyRandFunction(text: string): string {
     return text.replace(RAND_PATTERN, (match, minStr, maxStr) => {
       const min = parseInt(minStr, 10)
@@ -176,33 +157,5 @@ export class VariablePlaceholderProcessor {
       console.warn('Extra data construction failed:', error)
       return {}
     }
-  }
-
-  private normalizeVariableName(name: string): string {
-    // 英数字以外は _
-    let normalized = name.replace(/[^a-zA-Z0-9_]/g, '_')
-
-    // 先頭が英字でなければ v_ を付与
-    if (!/^[a-zA-Z]/.test(normalized)) {
-      normalized = `v_${normalized}`
-    }
-
-    return normalized
-  }
-
-  private toSafeKey(original: string): string {
-    if (this.keyMap.has(original)) {
-      return this.keyMap.get(original)!
-    }
-
-    // シンプルなハッシュ
-    let hash = 0
-    for (let i = 0; i < original.length; i++) {
-      hash = (hash * 31 + original.charCodeAt(i)) >>> 0
-    }
-
-    const safe = `v_${hash.toString(36)}`
-    this.keyMap.set(original, safe)
-    return safe
   }
 }
