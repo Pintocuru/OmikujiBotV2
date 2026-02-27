@@ -1,11 +1,14 @@
 // src/MainGenerator/scripts/VariablePlaceholder/ReservedKeys.ts
 
 export const RESERVED_KEYS = [
-  'text',
-  'symbol',
   'name',
+  'symbol',
+  'text',
+  'order',
   'variant',
   'unique',
+  'visible',
+  'flag',
   'slot0',
   'slot1',
   'slot2',

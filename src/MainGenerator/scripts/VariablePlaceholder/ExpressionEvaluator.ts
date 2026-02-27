@@ -37,6 +37,18 @@ export class ExpressionEvaluator extends KeyValueMap {
       const hi = Math.max(min, max)
       return Math.floor(Math.random() * (hi - lo + 1)) + lo
     }
+
+    // str / num / bool
+    this.parser.functions.str = (...args: any[]) => args.map((v) => String(v)).join('')
+
+    this.parser.functions.num = (v: any) => {
+      const n = Number(v)
+      return isNaN(n) ? 0 : n
+    }
+
+    this.parser.functions.bool = (v: any) => {
+      return Number(v) !== 0 ? 1 : 0
+    }
   }
 
   /**

@@ -71,7 +71,7 @@ export class ContentPlaceholder {
     const sanitized = sanitizeText(text)
     if (sanitized === '') return ''
 
-    let result = sanitized
+    let result = text
 
     // 無限ループ防止のため最大試行回数を設定
     let safetyCounter = 0

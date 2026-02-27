@@ -20,13 +20,13 @@
   },
   "jsonMerge": [],
   "comments": {
-    "Server200Fortune": {
+    "DoorDash8192": {
       "id": "Server200Fortune",
-      "key": "Server200Fortune",
-      "name": "サーバーコード占い",
-      "description": "生命にあれ",
+      "key": "DoorDash8192",
+      "name": "ドアダッシュ",
+      "description": "",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-02-16T06:21:27.737Z",
+      "updatedAt": "2026-02-27T06:47:04.781Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
@@ -37,36 +37,29 @@
       "accessLevel": "basic",
       "omikuji": [
         {
-          "id": "a3bba6c1-3fe0-4375-99f1-7b228ee29e66",
-          "key": "1757800562314",
-          "name": "100 番台：兆し・予兆(20%)",
-          "createdAt": "2025-09-13T21:56:02.314Z",
-          "updatedAt": "2025-09-13T21:56:02.314Z",
+          "id": "4eb74945-792b-490f-b29f-b8cf42429fc3",
+          "key": "333e28ad-1249-46d8-9e87-8855a5d6707a",
+          "name": "成功",
+          "createdAt": "2026-02-27T03:58:41.707Z",
+          "updatedAt": "2026-02-27T03:58:41.707Z",
           "order": 0,
-          "tags": [
-            "サーバーコード占い"
-          ],
+          "tags": [],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKeys": [
-                {
-                  "weight": 1,
-                  "content": "PenguinOracleFirst"
-                }
-              ]
+              "actionType": "wordParty",
+              "wordParty": "DoorDashSuccess"
             },
             {
-              "delaySeconds": 3.5,
+              "delaySeconds": 1.5,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": null,
               "iconKey": "default",
-              "sound": "collect",
+              "sound": "",
               "message": {
-                "bubble": "<<user>>さんは【{{text}}】<<ServerCode100>>今日のラッキーアイテムは【<<ServerItem>>】",
+                "bubble": "{{\n  val = bool(door_fail<<userId>>) ? 1 : door_suc<<userId>>;\n  suc = door_s_count<<userId>>;\n\n  val = bool(door_suc<<userId>>) ? val * 2 : 2;\n  suc = suc + 1;\n\n  door_suc<<userId>> = val;\n  door_s_count<<userId>> = suc;\n  door_fail<<userId>>=0;\n\n  text = str('1/', val);\n  symbol = str('◯', door_s_count<<userId>> , ' ×' , door_f_count<<userId>> );\n  variant = 'primary';\n  unique = 'true';\n}}\n",
                 "isToast": false
               }
             }
@@ -74,187 +67,7 @@
           "gameScripts": {
             "scriptId": null,
             "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 2,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "997cad09-3589-4e12-a9cd-8ef8ab748289",
-          "key": "997cad09-3589-4e12-a9cd-8ef8ab748289",
-          "name": "200 番台：大吉（世界は正常・あなたも順調）(30%)",
-          "createdAt": "2025-09-13T21:56:02.314Z",
-          "updatedAt": "2025-09-13T21:56:02.314Z",
-          "order": 0,
-          "tags": [
-            "サーバーコード占い"
-          ],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKeys": [
-                {
-                  "weight": 1,
-                  "content": "PenguinOracleFirst"
-                }
-              ]
-            },
-            {
-              "delaySeconds": 3.5,
-              "actionType": "message",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<user>>さんは【{{text}}】<<ServerCode200>>今日のラッキーアイテムは【<<ServerItem>>】",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": null,
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 3,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "2788b17f-ec6d-4428-9d30-3ec4076e8308",
-          "key": "2788b17f-ec6d-4428-9d30-3ec4076e8308",
-          "name": "300 番台：吉〜小吉（揺らぎ・回り道・リダイレクト）(20%)",
-          "createdAt": "2025-09-13T21:56:02.314Z",
-          "updatedAt": "2025-09-13T21:56:02.314Z",
-          "order": 0,
-          "tags": [
-            "サーバーコード占い"
-          ],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKeys": [
-                {
-                  "weight": 1,
-                  "content": "PenguinOracleFirst"
-                }
-              ]
-            },
-            {
-              "delaySeconds": 3.5,
-              "actionType": "message",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<user>>さんは【{{text}}】<<ServerCode300>>今日のラッキーアイテムは【<<ServerItem>>】",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": null,
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 2,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "5ede0459-227e-4f5c-a4ff-2dd0ea3ff1a9",
-          "key": "5ede0459-227e-4f5c-a4ff-2dd0ea3ff1a9",
-          "name": "400 番台：凶（すれ違い・届かない・拒否）(20%)",
-          "createdAt": "2025-09-13T21:56:02.314Z",
-          "updatedAt": "2025-09-13T21:56:02.314Z",
-          "order": 0,
-          "tags": [
-            "サーバーコード占い"
-          ],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKeys": [
-                {
-                  "weight": 1,
-                  "content": "PenguinOracleFirst"
-                }
-              ]
-            },
-            {
-              "delaySeconds": 3.5,
-              "actionType": "message",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<user>>さんは【{{text}}】<<ServerCode400>>今日のラッキーアイテムは【<<ServerItem>>】",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": null,
-            "queryString": "",
-            "characterKey": ""
-          },
-          "special": "return",
-          "weight": 2,
-          "isPriority": false,
-          "criteria": null
-        },
-        {
-          "id": "1b099c54-3343-4e7b-8c75-33a6c19cd779",
-          "key": "1b099c54-3343-4e7b-8c75-33a6c19cd779",
-          "name": "500 番台：大凶〜中凶（世界側の不調・エラー・限界）(10%)",
-          "createdAt": "2025-09-13T21:56:02.314Z",
-          "updatedAt": "2025-09-13T21:56:02.314Z",
-          "order": 0,
-          "tags": [
-            "サーバーコード占い"
-          ],
-          "accessLevel": "basic",
-          "type": "postActions",
-          "postActions": [
-            {
-              "delaySeconds": 0,
-              "actionType": "actionSet",
-              "actionSetKeys": [
-                {
-                  "weight": 1,
-                  "content": "PenguinOracleFirst"
-                }
-              ]
-            },
-            {
-              "delaySeconds": 3.5,
-              "actionType": "message",
-              "characterKey": "omiken",
-              "iconKey": "default",
-              "sound": "collect",
-              "message": {
-                "bubble": "<<user>>さんは【{{text}}】<<ServerCode500>>今日のラッキーアイテムは【<<ServerItem>>】",
-                "isToast": false
-              }
-            }
-          ],
-          "gameScripts": {
-            "scriptId": null,
-            "queryString": "",
-            "characterKey": ""
+            "characterKey": null
           },
           "special": "return",
           "weight": 1,
@@ -262,53 +75,42 @@
           "criteria": null
         },
         {
-          "id": "b4f1628a-6591-4a85-9f57-18adc4f0e541",
-          "key": "1766921349743",
-          "name": "回数超過(6回目以降)",
-          "createdAt": "2025-12-28T11:29:09.743Z",
-          "updatedAt": "2025-12-28T11:29:09.743Z",
+          "id": "55ee8a10-f88c-4dfd-823f-7dbaca47fe79",
+          "key": "55ee8a10-f88c-4dfd-823f-7dbaca47fe79",
+          "name": "失敗",
+          "createdAt": "2026-02-27T03:58:41.707Z",
+          "updatedAt": "2026-02-27T03:58:41.707Z",
           "order": 0,
-          "tags": [
-            "サーバーコード占い"
-          ],
+          "tags": [],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
+              "actionType": "wordParty",
+              "wordParty": "DoorDashFailed"
+            },
+            {
+              "delaySeconds": 1.5,
               "actionType": "message",
-              "characterKey": "omiken",
+              "characterKey": null,
               "iconKey": "default",
-              "sound": "warn",
+              "sound": "",
               "message": {
-                "bubble": "<<user>>さんは5回を超えているよ。また明日占ってみてね。",
-                "isToast": true
+                "bubble": "{{\n  val = bool(door_suc<<userId>>) ? 1 : door_fail<<userId>>;\n  suc =  door_f_count<<userId>>;\n\n  val = bool(door_fail<<userId>>) ? val * 2 : 2;\n  suc = suc + 1;\n\n   door_fail<<userId>> = val;\n   door_f_count<<userId>> = suc;\n  door_suc<<userId>> = 0;\n\n  text = str('1/', val);\n  symbol = str('◯', door_s_count<<userId>> , ' ×' , door_f_count<<userId>> );\n  variant = 'neutral';\n  unique = 'true';\n}}\n",
+                "isToast": false
               }
             }
           ],
           "gameScripts": {
             "scriptId": null,
             "queryString": "",
-            "characterKey": ""
+            "characterKey": null
           },
           "special": "return",
           "weight": 1,
-          "isPriority": true,
-          "criteria": {
-            "conditions": [
-              "count"
-            ],
-            "userName": [],
-            "access": [],
-            "gift": [],
-            "syoken": [],
-            "count": {
-              "comparison": "lowerBound",
-              "unit": "draws",
-              "value": 6
-            },
-            "comment": []
-          }
+          "isPriority": false,
+          "criteria": null
         }
       ],
       "ruleType": "comments",
@@ -320,13 +122,7 @@
         "access": [],
         "gift": [],
         "comment": [
-          "^毒",
-          "^どく",
-          "^poison",
-          "^うらな",
-          "^占",
-          "^オラクル",
-          "^oracle"
+          "ドア"
         ]
       },
       "limits": {

@@ -32,9 +32,13 @@ import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } fr
  */
 export class VariablePlaceholderProcessor {
   private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
+  private keyMap = new Map<string, string>()
 
   process(text: string): VariablePlaceholderResult {
     let processed = text.replace(/\n/g, '')
+
+    // 英数字でない場合は変換してしまう
+    processed = processed.replace(/\b([a-zA-Z_][a-zA-Z0-9_]*\[[^\]]+\])/g, (match) => this.toSafeKey(match))
 
     // v1 互換処理（非推奨・後方互換）
     processed = this.processLegacyVarDeclarations(processed)
@@ -172,5 +176,33 @@ export class VariablePlaceholderProcessor {
       console.warn('Extra data construction failed:', error)
       return {}
     }
+  }
+
+  private normalizeVariableName(name: string): string {
+    // 英数字以外は _
+    let normalized = name.replace(/[^a-zA-Z0-9_]/g, '_')
+
+    // 先頭が英字でなければ v_ を付与
+    if (!/^[a-zA-Z]/.test(normalized)) {
+      normalized = `v_${normalized}`
+    }
+
+    return normalized
+  }
+
+  private toSafeKey(original: string): string {
+    if (this.keyMap.has(original)) {
+      return this.keyMap.get(original)!
+    }
+
+    // シンプルなハッシュ
+    let hash = 0
+    for (let i = 0; i < original.length; i++) {
+      hash = (hash * 31 + original.charCodeAt(i)) >>> 0
+    }
+
+    const safe = `v_${hash.toString(36)}`
+    this.keyMap.set(original, safe)
+    return safe
   }
 }

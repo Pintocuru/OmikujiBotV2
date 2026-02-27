@@ -12,6 +12,13 @@ interface RuleProcessResult {
   botMessages: BotMessageType[]
 }
 
+let omikujiProcessor: OmikujiProcessor | null = null
+
+function getOmikujiProcessor() {
+  if (!omikujiProcessor) omikujiProcessor = new OmikujiProcessor()
+  return omikujiProcessor
+}
+
 /**
  * ユーザーコメントの処理
  */
@@ -72,8 +79,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
   userSession.visits.record(rule.key, userName)
 
   // 4. おみくじ実行
-  const omikujiProcessor = new OmikujiProcessor()
-  const botMessages = omikujiProcessor.executeOmikuji(rule.omikuji, omiken)
+  const botMessages = getOmikujiProcessor().executeOmikuji(rule.omikuji, omiken)
 
   // チャットワード起動かどうかを判定
   const isCommentTriggered = rule.trigger.conditions.includes('comment')
