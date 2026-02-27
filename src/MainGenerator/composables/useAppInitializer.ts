@@ -1,13 +1,14 @@
 // src/MainGenerator/composables/useAppInitializer.ts
-import { ComputedRef } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
 import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
+import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
 
-export function useAppInitializer(isComment: ComputedRef<boolean>) {
+export function useAppInitializer() {
   const initialize = async () => {
     const appStore = useAppStore()
+    const { isComment } = useVisibilityAccess()
 
     // 初期化開始を明示（status: 'initializing' はストア初期値のため呼び出し不要だが、
     // 再初期化ケースに備えて明示的に設定する）

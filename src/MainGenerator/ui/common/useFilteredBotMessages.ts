@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@main/stores/useAppStore'
 import type { BotMessageBubbleType, UiKind } from '@/types'
-import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 
 export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | null, iconSize?: number) {
   const appStore = useAppStore()

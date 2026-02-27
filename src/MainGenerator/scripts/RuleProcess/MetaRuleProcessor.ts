@@ -4,7 +4,7 @@ import { OmikujiDataType } from '@/types/OmikujiData/'
 import { MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { evaluateMetaTrigger } from '@/MainGenerator/stores/MetaState/MetaTriggerEvaluator'
+import { evaluateMetaTrigger } from '@main/stores/MetaState/MetaTriggerEvaluator'
 
 /**
  * メタルールの実行を管理

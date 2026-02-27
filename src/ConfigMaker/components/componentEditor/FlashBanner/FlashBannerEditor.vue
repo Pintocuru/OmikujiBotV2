@@ -153,7 +153,7 @@
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import FlashBannerRenderer from '@main/ui/FlashBanner/parts/FlashBannerRenderer.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
-  import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
+  import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
   import MessageTextEditor from '@config/components/postAction/Message/MessageTextEditor.vue'

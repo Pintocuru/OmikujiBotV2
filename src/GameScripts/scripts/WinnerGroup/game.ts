@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/WinnerGroup/game.ts
 import { candidateNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
-import { UserManager } from '@/MainGenerator/stores/UserManager/UserManager'
+import { UserManager } from '@main/stores/UserManager/UserManager'
 import { UserNameSchema, UserNameType } from '@shared/types'
 
 export function getWinnersFromVisitManager(

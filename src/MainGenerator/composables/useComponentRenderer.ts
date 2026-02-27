@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useComponentRenderer.ts
-import { computed, ComputedRef } from 'vue'
-import { ComponentsConditions, UiKind, UiSlotType } from '@/types'
+import { computed } from 'vue'
+import { UiKind, UiSlotType } from '@/types'
 import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
 import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
 import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
@@ -8,6 +8,8 @@ import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
 import WinnerGroup from '@main/ui/WinnerGroup/WinnerGroup.vue'
 import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
 import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
+import { useAppStore } from '../stores/useAppStore'
+import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
 
 /**
  * 各UiKindに対応するVueコンポーネントと、レンダリング可否の条件を管理するマップ
@@ -49,11 +51,11 @@ const SLOT_PRIORITY = { primary: 2, secondary: 2, extra: 1 } as const
  * conditions に基づいてアクティブなコンポーネント一覧を返す
  * shouldRender が false を返すエントリは除外される
  */
-export function useComponentRenderer(
-  conditions: ComputedRef<ComponentsConditions>,
-  isComment: ComputedRef<boolean>,
-  isTimer: ComputedRef<boolean>
-) {
+export function useComponentRenderer() {
+  const appStore = useAppStore()
+  const conditions = computed(() => appStore.data.components.conditions)
+  const { isComment, isTimer } = useVisibilityAccess()
+
   const activeComponents = computed(() => {
     return conditions.value
       .map((condition) => {

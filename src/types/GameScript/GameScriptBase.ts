@@ -1,5 +1,5 @@
 // src/types/GameScript/GameScriptBase.ts
-import { UserManager } from '@/MainGenerator/stores/UserManager/UserManager'
+import { UserManager } from '@main/stores/UserManager/UserManager'
 
 // store のマネージャ呼び出し
 export abstract class GameScriptBase {

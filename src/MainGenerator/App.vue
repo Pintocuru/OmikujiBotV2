@@ -25,24 +25,21 @@
 
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import { useAppStore } from '@main/stores/useAppStore'
-  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useFontFamily } from '@/types/'
   import { useComponentRenderer } from '@main/composables/useComponentRenderer'
   import { useAppInitializer } from '@main/composables/useAppInitializer'
-  import { useRuleProcessorLifecycle } from '@main/composables/useRuleProcessorLifecycle'
-  import { useFontFamily } from '@/types/'
+  import { useRuleProcessor } from '@main/composables/useRuleProcessor'
+  import { useAppStore } from '@main/stores/useAppStore'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
 
   const appStore = useAppStore()
-  const conditions = computed(() => appStore.data.components.conditions)
-  const { isComment, isTimer } = useVisibilityAccess()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
 
-  const { activeComponents } = useComponentRenderer(conditions, isComment, isTimer)
-  const { initialize } = useAppInitializer(isComment)
+  const { activeComponents } = useComponentRenderer()
+  const { initialize } = useAppInitializer()
 
   onMounted(initialize)
-  useRuleProcessorLifecycle(isTimer)
+  useRuleProcessor()
 </script>

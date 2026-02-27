@@ -1,7 +1,7 @@
 // src/MainGenerator/ui/common/usePlaceholderResolver.ts
 import { useAppStore } from '@main/stores/useAppStore'
 import { storeToRefs } from 'pinia'
-import { ContentPlaceholder } from '@/MainGenerator/scripts/ContentPlaceholder/processor'
+import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 
 /**
  * プレースホルダー変換
