@@ -8,7 +8,7 @@ import { countUnitConditionMap } from '@shared/types/trigger'
  */
 export const defaultPlaceholderMap = {
   user: { slot: 'comment', label: 'コメントしたユーザー', short: '[ユーザー名]' },
-  userId: { slot: 'comment', label: 'コメントしたユーザーID', short: '[ユーザーID]' },
+  userId: { slot: 'comment', label: 'コメントしたユーザーID', short: 'test_userId' },
   price: { slot: 'comment', label: 'ギフト金額', short: '[ギフト金額]' },
   commenter: { slot: 'event', label: 'コメントをしたユーザー数', short: '[コメントしたユーザー数]' },
   syoken: { slot: 'event', label: '初見さんの数', short: '[初見さん数]' },
