@@ -1,10 +1,10 @@
 // src/MainGenerator/scripts/VariablePlaceholder/PatternMatcher.ts
-import { CALC_PATTERN, COND_PATTERN, RAND_PATTERN, RESERVED_KEYS, VAR_DECLARATION_PATTERN } from './ReservedKeys'
+import { CALC_PATTERN, RAND_PATTERN, RESERVED_KEYS, VAR_DECLARATION_PATTERN } from './ReservedKeys'
 
 /**
  * 変数宣言の型
  */
-export interface VariableDeclaration {
+interface VariableDeclaration {
   name: string
   value: string
 }
@@ -12,7 +12,7 @@ export interface VariableDeclaration {
 /**
  * calc宣言の型
  */
-export interface CalcDeclaration {
+interface CalcDeclaration {
   name: string
   operator: string
   expression: string
@@ -21,18 +21,9 @@ export interface CalcDeclaration {
 /**
  * rand関数の型
  */
-export interface RandFunction {
+interface RandFunction {
   min: string
   max: string
-}
-
-/**
- * cond関数の型
- */
-export interface CondFunction {
-  condition: string
-  trueValue: string
-  falseValue: string
 }
 
 /**
@@ -91,26 +82,6 @@ export class PatternMatcher {
         functions.push({
           min: match[1],
           max: match[2],
-        })
-      }
-    }
-
-    return functions
-  }
-
-  /**
-   * cond関数を全て抽出
-   */
-  static extractCondFunctions(text: string): CondFunction[] {
-    const matches = text.matchAll(COND_PATTERN)
-    const functions: CondFunction[] = []
-
-    for (const match of matches) {
-      if (match[1] && match[2] && match[3]) {
-        functions.push({
-          condition: match[1].trim(),
-          trueValue: match[2].trim(),
-          falseValue: match[3].trim(),
         })
       }
     }

@@ -3,7 +3,6 @@ import { VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTy
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 import {
   CALC_PATTERN,
-  COND_PATTERN,
   RAND_PATTERN,
   RESERVED_KEYS,
   VAR_DECLARATION_PATTERN,
@@ -13,52 +12,58 @@ import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } fr
 
 /**
  * 変数プレースホルダー処理エンジン
- * {{var variableName = value}}, {{variableName}}, {{rand(min,max)}}, {{calc varName op= expr}}, {{cond(var, true, false)}}を処理
+ *
+ * 対応構文:
+ *   {{var name = 値}}          変数宣言（文字列・数値・変数参照・三項演算子）
+ *   {{calc name = 式}}         式評価して代入
+ *   {{calc name += 式}}        複合代入（+=, -=, *=, /=）
+ *   {{name}}                   変数参照
+ *   {{rand(min, max)}}         乱数生成
+ *
+ * var の右辺評価ルール（優先順位順）:
+ *   1. 'シングルクォート' → 文字列
+ *   2. 数値のみ           → 数値
+ *   3. ? を含む           → 三項演算子として式評価
+ *   4. 既存の変数名       → その変数の値をコピー
+ *   5. その他             → 文字列としてそのまま保存
+ *
+ * calc の右辺は常に式評価（未定義変数は 0）
+ * cond タグは廃止。三項演算子は var で代替。
  */
 export class VariablePlaceholderProcessor {
   private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
   /**
    * テキスト内のプレースホルダーを処理
-   * 処理順序: 改行除去 → var宣言 → calc → cond → 変数参照 → rand
+   * 処理順序: 改行除去 → var宣言 → calc → 変数参照 → rand
    */
   process(text: string): VariablePlaceholderResult {
-    // 改行を除去
     let processed = text.replace(/\n/g, '')
 
-    // 1: 変数宣言を処理
+    // 1: var 宣言を処理
     processed = this.processVariableDeclarations(processed)
 
-    // 2: calc関数を処理
+    // 2: calc を処理
     processed = this.processCalcFunction(processed)
 
-    // 3: cond関数を処理（変数参照の前に実行）
-    processed = this.processCondFunction(processed)
-
-    // cond 処理後に追加
-    this.resolveDeferredVariables()
-
-    // 4: 変数参照を処理
+    // 3: 変数参照を処理
     processed = this.processVariableReferences(processed)
 
-    // 5: rand関数を処理
+    // 4: rand を処理
     processed = this.processRandFunction(processed)
 
-    // すべての処理した変数を取得
     const allVars = Object.fromEntries(
       Object.entries(this.evaluator.getAll()).map(([k, v]) => [k, String(v)])
     ) as Record<string, string>
 
-    // 予約語からランキングデータを構築
     const extra = this.buildExtraData(allVars)
 
-    // 予約語の削除
     for (const key of RESERVED_KEYS) this.evaluator.remove(key)
 
     return {
       bubble: processed,
       extra: {
-        scriptKey: 'basicList', // basicList = BOTアクション
+        scriptKey: 'basicList',
         lists: extra.lists,
         slots: extra.slots,
       },
@@ -66,59 +71,51 @@ export class VariablePlaceholderProcessor {
   }
 
   /**
-   * 変数宣言を処理 {{var name = value}}
+   * var 宣言を処理 {{var name = value}}
+   *
+   * 右辺の評価ルールは ExpressionEvaluator.evaluateVarRhs() に委譲。
+   * ? を含む場合（三項演算子）は式評価され、それ以外はルールに従い保存される。
    */
   private processVariableDeclarations(text: string): string {
     return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
-        this.evaluator.set(varName, expression.trim())
+        const value = this.evaluator.evaluateVarRhs(expression.trim())
+        this.evaluator.set(varName, value)
         return ''
       } catch (error) {
-        console.warn(`変数宣言の評価に失敗: ${match}`, error)
+        console.warn(`var宣言の評価に失敗: ${match}`, error)
         return match
       }
     })
   }
 
   /**
-   * calc関数を処理 {{calc varName += expr}}
+   * calc を処理
+   *
+   * {{calc score = foo_user01}}  → 式評価して代入（単純代入）
+   * {{calc score += 5}}              → 複合代入
+   *
+   * CALC_PATTERN の演算子グループ: [\+\-\*\/]?=
+   *   複合代入: +=, -=, *=, /=
+   *   単純代入: =
    */
   private processCalcFunction(text: string): string {
     return text.replace(CALC_PATTERN, (match, varName, operator, expression) => {
       try {
-        this.evaluator.calculate(varName, operator, expression.trim())
-        return '' // calc宣言は削除
+        if (operator === '=') {
+          // 単純代入: 右辺を式評価して保存
+          const value = this.evaluator.evaluateCalcRhs(expression.trim())
+          this.evaluator.set(varName, value)
+        } else {
+          // 複合代入: +=, -=, *=, /=
+          this.evaluator.calculate(varName, operator, expression.trim())
+        }
+        return ''
       } catch (error) {
         console.warn(`calc関数の評価に失敗: ${match}`, error)
         return match
       }
     })
-  }
-
-  /**
-   * cond関数を処理 {{cond(condition, trueValue, falseValue)}}
-   */
-  private processCondFunction(text: string): string {
-    return text.replace(COND_PATTERN, (match, condition, trueValue, falseValue) => {
-      try {
-        const result = this.evaluator.evaluate(`cond(${condition}, ${trueValue}, ${falseValue})`)
-        return String(result)
-      } catch (error) {
-        console.warn(`cond関数の評価に失敗: ${match}`, error)
-        return match
-      }
-    })
-  }
-
-  private resolveDeferredVariables() {
-    const entries = this.evaluator.getAll()
-
-    for (const [key, value] of Object.entries(entries)) {
-      if (typeof value === 'string') {
-        const evaluated = this.evaluator.evaluate(value)
-        this.evaluator.set(key, evaluated)
-      }
-    }
   }
 
   /**
@@ -135,75 +132,37 @@ export class VariablePlaceholderProcessor {
   }
 
   /**
-   * rand関数を処理 {{rand(min,max)}}
+   * rand 関数を処理 {{rand(min,max)}}
    */
   private processRandFunction(text: string): string {
     return text.replace(RAND_PATTERN, (match, minStr, maxStr) => {
-      let min = parseInt(minStr, 10)
-      let max = parseInt(maxStr, 10)
+      const min = parseInt(minStr, 10)
+      const max = parseInt(maxStr, 10)
       if (isNaN(min) || isNaN(max)) {
         console.warn(`無効なrand関数: ${match}`)
         return match
       }
-      if (min > max) [min, max] = [max, min]
-      return String(this.evaluator.evaluate(`rand(${min},${max})`))
+      return String(this.evaluator.evaluatePureExpression(`rand(${Math.min(min, max)},${Math.max(min, max)})`))
     })
   }
 
   /**
-   * 取得した変数の中から予約語を抽出し、ExtraMessageSchema に適合する形に変換
+   * 予約語を抽出して ExtraData を構築
    */
-  private buildRankingData(vars: Record<string, string>): ExtraListsType | undefined {
-    // slot0 - slot9 を収集
-    const slots: string[] = []
-    for (let i = 0; i <= 9; i++) {
-      const key = `slot${i}`
-      if (vars[key] !== undefined) {
-        slots.push(vars[key])
-      }
-    }
-
-    // text (scoreText) が無い、あるいはslotsが空の場合はランキングを生成しない
-    if (!vars['text'] && slots.length === 0) return
-
-    try {
-      // Zod スキーマを使用して安全にパース
-      return ExtraListsSchema.parse({
-        listName: vars['name'],
-        symbol: vars['symbol'],
-        scoreText: vars['text'],
-        variant: vars['variant'],
-        isUnique: vars['unique'] !== 'false',
-        isVisible: true,
-        slots: slots.length > 0 ? slots : undefined,
-      })
-    } catch (error) {
-      console.warn('Ranking data construction failed:', error)
-      return undefined
-    }
-  }
-
   private buildExtraData(vars: Record<string, string>): {
     lists?: ExtraListsType
     slots?: ExtraSlotsType
   } {
-    // slot0 - slot9 を収集
     const slotEntries: Record<string, string> = {}
-
     for (let i = 0; i <= 9; i++) {
       const key = `slot${i}`
-      if (vars[key] !== undefined) {
-        slotEntries[key] = vars[key]
-      }
+      if (vars[key] !== undefined) slotEntries[key] = vars[key]
     }
 
     const hasSlots = Object.keys(slotEntries).length > 0
-    // TODO: flag = true としているが、これでいいんだろうか？
     const hasListData = vars['text'] !== undefined || vars['flag'] === 'true'
 
-    if (!hasSlots && !hasListData) {
-      return {}
-    }
+    if (!hasSlots && !hasListData) return {}
 
     let lists: ExtraListsType | undefined
     let slots: ExtraSlotsType | undefined
@@ -221,11 +180,9 @@ export class VariablePlaceholderProcessor {
           flag: vars['flag'] === 'true',
         })
       }
-
       if (hasSlots) {
         slots = ExtraSlotsSchema.parse(slotEntries)
       }
-
       return { lists, slots }
     } catch (error) {
       console.warn('Extra data construction failed:', error)
