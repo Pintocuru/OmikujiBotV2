@@ -26,9 +26,7 @@
         <span v-for="decl in customDeclarations" :key="decl.name + decl.value" class="mx-1">
           var: {{ decl.name }} = {{ decl.value }}
         </span>
-        <span v-for="calc in calcDeclarations" :key="calc.name + calc.operator + calc.expression" class="mx-1">
-          calc: {{ calc.name }} {{ calc.operator }}= {{ calc.expression }}
-        </span>
+
         <span v-for="(func, index) in randFunctions" :key="'rand-' + index" class="mx-1">
           rand({{ func.min }},{{ func.max }})
         </span>
@@ -52,11 +50,6 @@
     return PatternMatcher.extractVariableDeclarations(props.text)
   })
 
-  // calc宣言を抽出
-  const calcDeclarations = computed(() => {
-    return PatternMatcher.extractCalcDeclarations(props.text)
-  })
-
   // rand関数を抽出
   const randFunctions = computed(() => {
     return PatternMatcher.extractRandFunctions(props.text)
@@ -76,9 +69,7 @@
   const hasReservedDeclarations = computed(() => reservedDeclarations.value.length > 0)
 
   // カスタム宣言・calc・関数が存在するかチェック
-  const hasCustomDeclarations = computed(
-    () => customDeclarations.value.length > 0 || calcDeclarations.value.length > 0 || randFunctions.value.length > 0
-  )
+  const hasCustomDeclarations = computed(() => customDeclarations.value.length > 0 || randFunctions.value.length > 0)
 
   // 何らかの宣言が存在するかチェック
   const hasAnyDeclarations = computed(() => hasReservedDeclarations.value || hasCustomDeclarations.value)

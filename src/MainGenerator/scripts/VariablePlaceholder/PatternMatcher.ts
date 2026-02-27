@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/VariablePlaceholder/PatternMatcher.ts
-import { CALC_PATTERN, RAND_PATTERN, RESERVED_KEYS, VAR_DECLARATION_PATTERN } from './ReservedKeys'
+import { RAND_PATTERN, RESERVED_KEYS, VAR_DECLARATION_PATTERN } from './ReservedKeys'
 
 /**
  * 変数宣言の型
@@ -7,15 +7,6 @@ import { CALC_PATTERN, RAND_PATTERN, RESERVED_KEYS, VAR_DECLARATION_PATTERN } fr
 interface VariableDeclaration {
   name: string
   value: string
-}
-
-/**
- * calc宣言の型
- */
-interface CalcDeclaration {
-  name: string
-  operator: string
-  expression: string
 }
 
 /**
@@ -43,26 +34,6 @@ export class PatternMatcher {
         declarations.push({
           name: match[1].trim(),
           value: match[2].trim(),
-        })
-      }
-    }
-
-    return declarations
-  }
-
-  /**
-   * calc宣言を全て抽出
-   */
-  static extractCalcDeclarations(text: string): CalcDeclaration[] {
-    const matches = text.matchAll(CALC_PATTERN)
-    const declarations: CalcDeclaration[] = []
-
-    for (const match of matches) {
-      if (match[1] && match[2] && match[3]) {
-        declarations.push({
-          name: match[1].trim(),
-          operator: match[2],
-          expression: match[3].trim(),
         })
       }
     }

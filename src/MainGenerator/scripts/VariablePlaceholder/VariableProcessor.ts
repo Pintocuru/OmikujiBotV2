@@ -2,7 +2,7 @@
 import { VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
 import { ExpressionEvaluator } from './ExpressionEvaluator'
 import {
-  CALC_PATTERN,
+  EXPRESSION_PATTERN,
   RAND_PATTERN,
   RESERVED_KEYS,
   VAR_DECLARATION_PATTERN,
@@ -13,51 +13,44 @@ import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } fr
 /**
  * 変数プレースホルダー処理エンジン
  *
- * 対応構文:
- *   {{var name = 値}}          変数宣言（文字列・数値・変数参照・三項演算子）
- *   {{calc name = 式}}         式評価して代入
- *   {{calc name += 式}}        複合代入（+=, -=, *=, /=）
- *   {{name}}                   変数参照
- *   {{rand(min, max)}}         乱数生成
+ * v2 対応構文（推奨）:
+ *   {{name = 'value'}}          文字列代入
+ *   {{score = 100}}             数値代入
+ *   {{score += 10}}             複合代入
+ *   {{result = score >= 10 ? 1 : 0}}  三項演算子
+ *   {{a = 1; b = 2}}            複数式（セミコロン区切り）
+ *   {{name}}                    変数参照（出力）
  *
- * var の右辺評価ルール（優先順位順）:
- *   1. 'シングルクォート' → 文字列
- *   2. 数値のみ           → 数値
- *   3. ? を含む           → 三項演算子として式評価
- *   4. 既存の変数名       → その変数の値をコピー
- *   5. その他             → 文字列としてそのまま保存
+ * v1 互換構文（非推奨・後方互換）:
+ *   {{var name = value}}        旧変数宣言
+ *   {{rand(1, 10)}}             旧ランダム生成
  *
- * calc の右辺は常に式評価（未定義変数は 0）
- * cond タグは廃止。三項演算子は var で代替。
+ * 処理順序:
+ *   改行除去 → v1 var → v1 rand → v2 式評価 → 変数参照
+ *
+ * v1 を先に処理することで後方互換を保証する。
  */
 export class VariablePlaceholderProcessor {
   private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
 
-  /**
-   * テキスト内のプレースホルダーを処理
-   * 処理順序: 改行除去 → var宣言 → calc → 変数参照 → rand
-   */
   process(text: string): VariablePlaceholderResult {
     let processed = text.replace(/\n/g, '')
 
-    // 1: var 宣言を処理
-    processed = this.processVariableDeclarations(processed)
+    // v1 互換処理（非推奨・後方互換）
+    processed = this.processLegacyVarDeclarations(processed)
+    processed = this.processLegacyRandFunction(processed)
 
-    // 2: calc を処理
-    processed = this.processCalcFunction(processed)
+    // v2 処理（推奨）
+    processed = this.processExpressions(processed)
 
-    // 3: 変数参照を処理
+    // 変数参照（v1・v2 共通）
     processed = this.processVariableReferences(processed)
-
-    // 4: rand を処理
-    processed = this.processRandFunction(processed)
 
     const allVars = Object.fromEntries(
       Object.entries(this.evaluator.getAll()).map(([k, v]) => [k, String(v)])
     ) as Record<string, string>
 
     const extra = this.buildExtraData(allVars)
-
     for (const key of RESERVED_KEYS) this.evaluator.remove(key)
 
     return {
@@ -71,55 +64,23 @@ export class VariablePlaceholderProcessor {
   }
 
   /**
-   * var 宣言を処理 {{var name = value}}
-   *
-   * 右辺の評価ルールは ExpressionEvaluator.evaluateVarRhs() に委譲。
-   * ? を含む場合（三項演算子）は式評価され、それ以外はルールに従い保存される。
+   * v2: 式評価 {{式}} または {{式; 式; ...}}
+   * 代入式はテキストから除去、非代入式（rand など）はその場で出力
    */
-  private processVariableDeclarations(text: string): string {
-    return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
+  private processExpressions(text: string): string {
+    return text.replace(EXPRESSION_PATTERN, (match, expression) => {
       try {
-        const value = this.evaluator.evaluateVarRhs(expression.trim())
-        this.evaluator.set(varName, value)
-        return ''
+        const { output, hasOutput } = this.evaluator.evaluateExpression(expression.trim())
+        return hasOutput ? output : ''
       } catch (error) {
-        console.warn(`var宣言の評価に失敗: ${match}`, error)
+        console.warn(`式の評価に失敗: ${match}`, error)
         return match
       }
     })
   }
 
   /**
-   * calc を処理
-   *
-   * {{calc score = foo_user01}}  → 式評価して代入（単純代入）
-   * {{calc score += 5}}              → 複合代入
-   *
-   * CALC_PATTERN の演算子グループ: [\+\-\*\/]?=
-   *   複合代入: +=, -=, *=, /=
-   *   単純代入: =
-   */
-  private processCalcFunction(text: string): string {
-    return text.replace(CALC_PATTERN, (match, varName, operator, expression) => {
-      try {
-        if (operator === '=') {
-          // 単純代入: 右辺を式評価して保存
-          const value = this.evaluator.evaluateCalcRhs(expression.trim())
-          this.evaluator.set(varName, value)
-        } else {
-          // 複合代入: +=, -=, *=, /=
-          this.evaluator.calculate(varName, operator, expression.trim())
-        }
-        return ''
-      } catch (error) {
-        console.warn(`calc関数の評価に失敗: ${match}`, error)
-        return match
-      }
-    })
-  }
-
-  /**
-   * 変数参照を処理 {{variableName}}
+   * 変数参照 {{name}} → 値に置換して出力
    */
   private processVariableReferences(text: string): string {
     return text.replace(VAR_REFERENCE_PATTERN, (match, varName) => {
@@ -131,24 +92,47 @@ export class VariablePlaceholderProcessor {
     })
   }
 
+  // ----------------------------------------------------------------
+  // v1 互換処理（非推奨）
+  // ----------------------------------------------------------------
+
   /**
-   * rand 関数を処理 {{rand(min,max)}}
+   * @deprecated v2 では {{name = value}} を使用してください
    */
-  private processRandFunction(text: string): string {
-    return text.replace(RAND_PATTERN, (match, minStr, maxStr) => {
-      const min = parseInt(minStr, 10)
-      const max = parseInt(maxStr, 10)
-      if (isNaN(min) || isNaN(max)) {
-        console.warn(`無効なrand関数: ${match}`)
+  private processLegacyVarDeclarations(text: string): string {
+    return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
+      try {
+        const value = this.evaluator.evaluateVarRhs(expression.trim())
+        this.evaluator.set(varName, value)
+        return ''
+      } catch (error) {
+        console.warn(`[非推奨] var宣言の評価に失敗: ${match}`, error)
         return match
       }
-      return String(this.evaluator.evaluatePureExpression(`rand(${Math.min(min, max)},${Math.max(min, max)})`))
     })
   }
 
   /**
-   * 予約語を抽出して ExtraData を構築
+   * @deprecated v2 では {{result = rand(1,10)}} を使用してください
    */
+  private processLegacyRandFunction(text: string): string {
+    return text.replace(RAND_PATTERN, (match, minStr, maxStr) => {
+      const min = parseInt(minStr, 10)
+      const max = parseInt(maxStr, 10)
+      if (isNaN(min) || isNaN(max)) {
+        console.warn(`[非推奨] 無効なrand関数: ${match}`)
+        return match
+      }
+      const lo = Math.min(min, max)
+      const hi = Math.max(min, max)
+      return String(Math.floor(Math.random() * (hi - lo + 1)) + lo)
+    })
+  }
+
+  // ----------------------------------------------------------------
+  // 予約語処理
+  // ----------------------------------------------------------------
+
   private buildExtraData(vars: Record<string, string>): {
     lists?: ExtraListsType
     slots?: ExtraSlotsType

@@ -18,19 +18,25 @@ export const RESERVED_KEYS = [
   'slot9',
 ]
 
-// パターン定数
+// ----------------------------------------------------------------
+// v2 パターン（推奨）
+// ----------------------------------------------------------------
 
-// {{var name = value}} - 通常代入（文字列・数値・変数参照・三項演算子）
-export const VAR_DECLARATION_PATTERN = /\{\{\s*[Vv][Aa][Rr]\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.*?)\s*\}\}/g
-
-// {{varName}}
+// {{score}} - 単体変数参照（出力）
 export const VAR_REFERENCE_PATTERN = /\{\{\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\}\}/g
 
+// {{式}} - 式評価（代入・複合代入・三項演算子など）
+// 単体変数参照と区別するため、= を含むものにマッチ
+export const EXPRESSION_PATTERN = /\{\{\s*([^}]+?[=+\-*\/][^}]+?)\s*\}\}/g
+
+// ----------------------------------------------------------------
+// v1 パターン（非推奨・後方互換）
+// ----------------------------------------------------------------
+
+// {{var name = value}}
+/** @deprecated v2 では {{name = value}} を使用してください */
+export const VAR_DECLARATION_PATTERN = /\{\{\s*[Vv][Aa][Rr]\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.*?)\s*\}\}/g
+
 // {{rand(1,6)}}
+/** @deprecated v2 では {{result = rand(1,6)}} を使用してください */
 export const RAND_PATTERN = /\{\{\s*[Rr][Aa][Nn][Dd]\s*\(\s*(\d+)\s*,\s*(\d+)\s*\)\s*\}\}/g
-
-// {{calc score += 10}}  複合代入: +=, -=, *=, /=
-// {{calc score = expr}} 単純代入: 式評価して保存
-export const CALC_PATTERN = /\{\{\s*[Cc][Aa][Ll][Cc]\s+([a-zA-Z_][a-zA-Z0-9_]*)\s*([\+\-\*\/]?=)\s*(.*?)\s*\}\}/g
-
-// cond タグは廃止。三項演算子は {{var result = 条件 ? 真値 : 偽値}} で代替。

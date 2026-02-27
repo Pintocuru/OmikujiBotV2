@@ -62,17 +62,14 @@ export function normalizeData(data: unknown): OmikujiDataType {
 
   // v2.0.4 → v2.0.5
   if (currentDataVersion < 2.05) {
-    console.log('Migrating data: v2.04 → v2.05')
+    console.log('Migrating data: v2.0.4 → v2.0.5')
     updatedData = migrateV204ToV205(updatedData)
   }
 
   // v2.0.5 → v2.1.0
   if (currentDataVersion < 2.09003) {
-    console.log('Migrating data: v2.05 → v2.10')
+    console.log('Migrating data: v2.0.5 → v2.1.0')
     updatedData = migrateV205ToV210(updatedData)
-
-    // マイグレーション通知
-    // swalToast.success({ title: 'Welcome to v2.1!', text: 'データが v2.1 形式にアップグレードされました。' })
   }
 
   // スキーマで保証

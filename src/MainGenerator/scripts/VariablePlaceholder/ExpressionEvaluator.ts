@@ -6,12 +6,16 @@ const MAX_VALUE = 999999999
 const MIN_VALUE = -999999999
 
 /**
- * expr-eval-fork を使った式評価エンジン
+ * expr-eval-fork ベースの式評価エンジン
  *
- * 設計方針:
- * - var の右辺評価・calc の式評価を担当
- * - 副作用（式内代入）は禁止
+ * v2 設計方針:
+ * - {{ }} の中身はすべて式として評価する
+ * - 代入・複合代入・三項演算子・関数呼び出しをサポート
  * - 未定義変数は 0 として扱う
+ * - 文字列はシングルクォートで明示する
+ *
+ * v1 互換（非推奨）:
+ * - var タグ・rand タグは後方互換のため動作を維持
  */
 export class ExpressionEvaluator extends KeyValueMap {
   private readonly parser: Parser
@@ -20,14 +24,14 @@ export class ExpressionEvaluator extends KeyValueMap {
     super()
     this.parser = new Parser({
       operators: {
-        assignment: false, // 式内代入禁止
+        assignment: true, // v2: 式内代入を許可
         logical: true,
         comparison: true,
         in: false,
       },
     })
 
-    // ホワイトリスト: rand 関数
+    // ホワイトリスト関数: rand
     this.parser.functions.rand = (min: number, max: number): number => {
       const lo = Math.min(min, max)
       const hi = Math.max(min, max)
@@ -36,84 +40,57 @@ export class ExpressionEvaluator extends KeyValueMap {
   }
 
   /**
-   * var の右辺を評価する
+   * 式を評価してステートを更新し、結果を返す
    *
-   * 評価ルール（優先順位順）:
-   * 1. 'シングルクォート' → 文字列として保存
-   * 2. 数値のみ           → 数値として保存
-   * 3. ? を含む           → 三項演算子として式評価
-   * 4. 既存の変数名       → その変数の値をコピー
-   * 5. その他             → 文字列としてそのまま保存
+   * セミコロン区切りで複数式を記述可能。
+   * 最後の式の評価結果を返す。
+   * 代入式の結果は空文字（テキストに出力しない）。
    *
    * 例:
-   *   {{var msg = 'hello'}}                         → "hello"（文字列）
-   *   {{var level = 50}}                            → 50（数値）
-   *   {{var result = score >= 10 ? 'A' : 'B'}}     → 式評価
-   *   {{var copy = source}}                         → source の値をコピー
-   *   {{var key = foo_userhoge01}}                  → "foo_userhoge01"（未定義なら文字列）
+   *   "score = 0"                          → state更新、出力なし
+   *   "score += 10"                        → state更新、出力なし
+   *   "result = score >= 50 ? 'A' : 'B'"  → state更新、出力なし
+   *   "a = 1; b = 2; c = a + b"           → state更新、出力なし
+   *   "rand(1, 10)"                        → 数値を返す（出力あり）
    */
-  evaluateVarRhs(expression: string): string | number {
+  evaluateExpression(expression: string): { output: string; hasOutput: boolean } {
     const trimmed = expression.trim()
 
-    // 1. シングルクォートで囲まれた文字列
-    const singleQuoteMatch = trimmed.match(/^'(.*)'$/)
-    if (singleQuoteMatch) return singleQuoteMatch[1]
+    // セミコロン区切りで複数式を処理
+    const statements = trimmed
+      .split(';')
+      .map((s) => s.trim())
+      .filter(Boolean)
 
-    // 2. 数値リテラル
-    const numMatch = trimmed.match(/^-?\d+(\.\d+)?$/)
-    if (numMatch) return parseFloat(trimmed)
+    let lastResult: string | number | boolean = ''
+    let hasAssignment = false
 
-    // 3. 三項演算子（? を含む場合は式評価）
-    if (trimmed.includes('?')) {
-      return this.evaluatePureExpression(trimmed)
+    for (const statement of statements) {
+      const isAssignment = /[a-zA-Z_][a-zA-Z0-9_]*\s*[\+\-\*\/]?=/.test(statement)
+      if (isAssignment) hasAssignment = true
+
+      const result = this.evaluateSingle(statement)
+      lastResult = result
     }
 
-    // 4. 既存の変数名
-    if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(trimmed) && this.has(trimmed)) {
-      return this.get(trimmed)!
+    // 代入式はテキストに出力しない
+    if (hasAssignment) {
+      return { output: '', hasOutput: false }
     }
 
-    // 5. その他は文字列としてそのまま保存
-    return trimmed
+    return { output: String(lastResult), hasOutput: true }
   }
 
   /**
-   * calc の右辺を評価する
-   * var と異なり、常に式として評価を試みる。未定義変数は 0。
-   *
-   * 例:
-   *   {{calc oldScore = foo_userhoge01}}  → 変数 foo_userhoge01 の値（数値）
-   *   {{calc result = a >= 5 ? 1 : 0}}   → 三項演算子も評価可
+   * 単一の式を評価してステートを更新
    */
-  evaluateCalcRhs(expression: string): string | number {
+  private evaluateSingle(expression: string): string | number | boolean {
     const trimmed = expression.trim()
 
-    // シングルクォートで囲まれた文字列はそのまま返す
-    const singleQuoteMatch = trimmed.match(/^'(.*)'$/)
-    if (singleQuoteMatch) return singleQuoteMatch[1]
-
-    // 数値リテラル
-    const numMatch = trimmed.match(/^-?\d+(\.\d+)?$/)
-    if (numMatch) return parseFloat(trimmed)
-
-    // 式評価（変数参照・四則演算・三項演算子など）
-    return this.evaluatePureExpression(trimmed)
-  }
-
-  /**
-   * 純粋式評価（expr-eval-fork に委譲）
-   * state をコンテキストとして渡す。未定義変数は 0。
-   *
-   * expr-eval-fork は未定義変数があると例外を投げるため、
-   * .variables() で式中の変数を事前に取得し、
-   * コンテキストに存在しないものは 0 で補完してから評価する。
-   */
-  evaluatePureExpression(expression: string): string | number {
-    const trimmed = expression.trim()
     try {
       const context = this.buildContext()
 
-      // 式中の変数を事前取得し、未定義のものを 0 で補完
+      // 式中の未定義変数を事前に 0 で補完
       const expr = this.parser.parse(trimmed)
       for (const varName of expr.variables()) {
         if (!(varName in context)) {
@@ -122,50 +99,36 @@ export class ExpressionEvaluator extends KeyValueMap {
       }
 
       const result = expr.evaluate(context)
-      if (typeof result === 'boolean') return result ? 1 : 0
-      if (typeof result === 'number' || typeof result === 'string') return result
-      return trimmed
+
+      // 代入式の場合、ステートを更新
+      const assignMatch = trimmed.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*[\+\-\*\/]?=/)
+      if (assignMatch) {
+        const varName = assignMatch[1]
+        if (varName in context) {
+          const newValue = context[varName]
+          const clamped = this.clampIfNumber(newValue)
+          this.set(varName, clamped)
+        }
+      }
+
+      return result
     } catch (error) {
       throw new Error(`式の評価に失敗しました: "${trimmed}" - ${error}`)
     }
   }
 
   /**
-   * 複合代入演算を実行（+=, -=, *=, /=）
-   * 変数が存在しない・数値でない場合は 0 として扱う
+   * 数値なら範囲クランプ・丸めを適用、文字列はそのまま返す
    */
-  calculate(varName: string, operator: string, expression: string): number {
-    const currentValue = this.getNumericValue(varName)
-    const operand = this.toNumber(this.evaluateCalcRhs(expression))
-
-    let result: number
-    switch (operator) {
-      case '+=':
-        result = currentValue + operand
-        break
-      case '-=':
-        result = currentValue - operand
-        break
-      case '*=':
-        result = currentValue * operand
-        break
-      case '/=':
-        result = operand !== 0 ? currentValue / operand : currentValue
-        break
-      default:
-        throw new Error(`無効な演算子: ${operator}`)
-    }
-
-    // 小数点以下 0.01 まで丸め、範囲内にクランプ
-    result = Math.round(result * 100) / 100
-    result = Math.max(MIN_VALUE, Math.min(MAX_VALUE, result))
-    this.set(varName, result)
-    return result
+  private clampIfNumber(value: string | number | boolean): string | number {
+    if (typeof value === 'boolean') return value ? 1 : 0
+    if (typeof value !== 'number') return value
+    const rounded = Math.round(value * 100) / 100
+    return Math.max(MIN_VALUE, Math.min(MAX_VALUE, rounded))
   }
 
   /**
    * 全変数を expr-eval-fork のコンテキストとして構築
-   * 数値変換できない値は文字列のまま渡す
    */
   private buildContext(): Record<string, string | number> {
     const context: Record<string, string | number> = {}
@@ -180,9 +143,28 @@ export class ExpressionEvaluator extends KeyValueMap {
     return context
   }
 
-  private getNumericValue(varName: string): number {
-    if (!this.has(varName)) return 0
-    return this.toNumber(this.get(varName) ?? 0)
+  // ----------------------------------------------------------------
+  // v1 互換メソッド（非推奨）
+  // ----------------------------------------------------------------
+
+  /**
+   * @deprecated v2 では evaluateExpression を使用してください
+   * var タグの右辺評価（後方互換）
+   */
+  evaluateVarRhs(expression: string): string | number {
+    const trimmed = expression.trim()
+
+    const singleQuoteMatch = trimmed.match(/^'(.*)'$/)
+    if (singleQuoteMatch) return singleQuoteMatch[1]
+
+    const numMatch = trimmed.match(/^-?\d+(\.\d+)?$/)
+    if (numMatch) return parseFloat(trimmed)
+
+    if (/^[a-zA-Z_][a-zA-Z0-9_]*$/.test(trimmed) && this.has(trimmed)) {
+      return this.get(trimmed)!
+    }
+
+    return trimmed
   }
 
   toNumber(value: string | number): number {
