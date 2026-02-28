@@ -49,6 +49,8 @@ import {
   Bot,
   ShieldAlert,
   Ban,
+  Settings,
+  Sparkles,
 } from 'lucide-vue-next'
 
 // map（as const で literal 型を保持）
@@ -98,6 +100,8 @@ export const lucideIconMap = {
   Bot,
   ShieldAlert,
   Ban,
+  Settings,
+  Sparkles,
 } as const
 
 // map から union 型を生成
