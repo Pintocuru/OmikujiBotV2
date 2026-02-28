@@ -50,3 +50,10 @@ export const flightSeatLayoutMap = {
   circle: 'サークル',
   custom: 'カスタム配列',
 } as const
+
+/**
+ * ライバーカウンターコンポーネントの表示名マップ
+ */
+export const liverComponents = {
+  basicCircle: 'シンプル丸型',
+} as const

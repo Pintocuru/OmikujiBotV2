@@ -6,12 +6,14 @@ import {
   counterComponents,
   flashComponents,
   flightSeatLayoutMap,
+  liverComponents,
   rankingComponents,
   rankingSortOrderMap,
   winnerComponents,
 } from '../MetaMaps'
 import { normalizedObject } from './ParsedDefault'
 import { ScriptGameExtendedKeySchema } from './ActionSet'
+import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
 
 /**
  * フキダシ・キャラクター
@@ -121,8 +123,6 @@ export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
 export type SeatLayout = keyof typeof flightSeatLayoutMap
 
 export const SettingsFlightSeatSchema = z.object({
-  slotType: z.literal('extra').default('extra').catch('extra'),
-
   layout: z
     .enum(Object.keys(flightSeatLayoutMap) as [keyof typeof flightSeatLayoutMap])
     .default('square')
@@ -150,6 +150,26 @@ export const SettingsFlightSeatSchema = z.object({
 export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>
 
 /**
+ * ライバーカウンターv2 LiverCounter
+ */
+
+export type LiverComponent = keyof typeof liverComponents
+const liverComponentValues = Object.keys(liverComponents) as LiverComponent[]
+
+export const LiverCounterKeyValues = ['upVote', 'viewer', 'syoken', 'commenter', 'lc', 'totalPrice'] as const
+
+export const SettingsLiverCounterSchema = z.object({
+  component: z.enum(liverComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
+  color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUiテーマ
+  colorPattern: z.enum(BaseVariantLabels).nullable().default('primary').catch('primary'), // 奇数color
+  colorPattern2: z.enum(BaseVariantLabels).nullable().default(null).catch(null), // 偶数color
+  defaultCounters: z.array(z.enum(LiverCounterKeyValues)), // デフォルトカウンター（6種から選ぶ、順序なし）
+  eventCounters: z.array(z.string()).max(8), // event カウンター CommentRuleSchema.key
+  label: z.string().default('今日のランチ代').catch('今日のランチ代'), // 特定のアイテムのタイトル
+})
+export type SettingsLiverCounterType = z.infer<typeof SettingsLiverCounterSchema>
+
+/**
  * settings オブジェクトのスキーマ
  */
 export const UiSettingsSchema = z.object({
@@ -160,6 +180,7 @@ export const UiSettingsSchema = z.object({
   winnerGroup: SettingsWinnerGroupSchema.optional(),
   flightSeat: SettingsFlightSeatSchema.optional(),
   flashBanner: SettingsFlashBannerSchema.optional(),
+  liverCounter: SettingsLiverCounterSchema.optional(),
 })
 
 export type UiSettingsType = z.infer<typeof UiSettingsSchema>

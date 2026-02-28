@@ -19,9 +19,9 @@ export function useAppInitializer() {
       const isInit = await GetOmikenComments((omikens) => {
         // ユーザー記録
         for (const omiken of omikens) {
-          const lc = omiken.meta.lc
-          const tc = omiken.meta.tc
-          appStore.userSession.stats.recordComment(omiken, tc, lc)
+          const { lc, tc } = omiken.meta
+          const giftPrice = omiken.giftPrice ?? 0
+          appStore.userSession.stats.recordComment(omiken, tc, lc, giftPrice)
         }
 
         // コメント処理

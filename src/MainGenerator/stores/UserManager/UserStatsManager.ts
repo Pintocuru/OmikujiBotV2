@@ -11,28 +11,38 @@ type StatsEventListener = (record: UserStatsRecord) => void
 export class UserStatsManager {
   private readonly stats = new Map<string, UserStatsRecord>()
   private liveComments = 0
+  private totalPrice = 0
   private readonly listeners = new Set<StatsEventListener>()
   private syoken = 0
 
   /** コメントを受け取った時に呼び出す */
-  recordComment(user: UserNameType, tc: number, lc: number): UserStatsRecord {
+  recordComment(user: UserNameType, tc: number, lc: number, giftPrice = 0): UserStatsRecord {
     if (tc === 1) this.syoken++ // 1回目のコメントなら初見さん
     this.liveComments = lc
+    this.totalPrice += giftPrice
     const { userId, userName, profileImage, timestamp } = user
 
     const existing = this.stats.get(userId)
     const record: UserStatsRecord = existing
-      ? { ...existing, userName, profileImage, lastVisit: timestamp }
+      ? {
+          ...existing,
+          timestamp,
+          userName,
+          profileImage,
+          giftPrice: existing.giftPrice + giftPrice,
+          lastVisit: timestamp,
+        }
       : {
           userId,
           userName,
           profileImage,
           timestamp,
-          lastVisit: timestamp,
           team: 'error',
           score: 0,
           tags: [],
           badges: [],
+          giftPrice,
+          lastVisit: timestamp,
         }
 
     this.stats.set(userId, record)
@@ -54,22 +64,27 @@ export class UserStatsManager {
     return { commenter, winners: shuffled.slice(0, Math.min(count, 9)) }
   }
 
-  /** 指定ユーザーの統計を取得 */
+  // 指定ユーザーの統計を取得
   get(userId: string): UserStatsRecord | null {
     return this.stats.get(userId) ?? null
   }
 
-  /** 全ユーザーの統計一覧を取得 */
+  // 全ユーザーの統計一覧を取得
   getAll(): UserStatsRecord[] {
     return Array.from(this.stats.values())
   }
 
-  /** 配信の累計コメント数 */
+  // 配信の累計コメント数
   getLiveComments(): number {
     return this.liveComments
   }
 
-  /** ユニークユーザー数（コメントしたことがある人） */
+  // 配信の累計ギフト金額
+  getTotalPrice(): number {
+    return this.totalPrice
+  }
+
+  // ユニークユーザー数（コメントしたことがある人）
   getUniqueCount(): number {
     return this.stats.size
   }

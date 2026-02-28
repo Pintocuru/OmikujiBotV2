@@ -23,6 +23,7 @@ export const UserStatsRecordSchema = z.object({
   score: z.number().default(0),
   tags: z.array(z.string()).default([]), // タグ
   badges: z.array(z.string()).default([]), // バッジ
+  giftPrice: z.number().default(0), // 個人ギフト金額
   lastVisit: z.number().default(() => Date.now()),
 })
 export type UserStatsRecord = z.infer<typeof UserStatsRecordSchema>
