@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
   import { watch, ref } from 'vue'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { UserVisitRecord } from '@/types/MainGenerator/'
   import ValentineUserCard from './ValentineUserCard.vue'
   import { Heart, HeartCrack } from 'lucide-vue-next'
 

@@ -29,11 +29,11 @@
   import { computed } from 'vue'
   import { CheckCircle, XCircle } from 'lucide-vue-next'
   import type { AccessLevelType } from '@shared/types'
-  import { resolveLucideIcon } from '@/common/LucideIcon/useLucideIcon'
+  import { LucideIconName, resolveLucideIcon } from '@/common/LucideIcon/useLucideIcon'
 
   const props = defineProps<{
     title: string
-    icon: string
+    icon: LucideIconName
     accessLevel: AccessLevelType
     description: string
     featureKey?: string

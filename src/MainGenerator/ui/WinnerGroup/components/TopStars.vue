@@ -44,11 +44,10 @@
 </template>
 
 <script setup lang="ts">
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import { Users } from 'lucide-vue-next'
+  import { UserVisitRecord } from '@/types/MainGenerator/'
   import TopStarsContent from './TopStars/content.vue'
   import TopStarsPlaceholder from './TopStars/placeholder.vue'
-  import { Star } from 'lucide-vue-next'
+  import { Star, Users } from 'lucide-vue-next'
 
   defineProps<{
     users: UserVisitRecord[]

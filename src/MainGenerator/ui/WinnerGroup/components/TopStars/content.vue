@@ -153,7 +153,7 @@
 </template>
 
 <script setup lang="ts">
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { UserVisitRecord } from '@/types/MainGenerator/'
   import { Star, Crown, Trophy, Medal, Sparkles } from 'lucide-vue-next'
 
   defineProps<{

@@ -12,12 +12,12 @@
   </SectionCard>
 
   <!-- 各アイテム設定 -->
-  <template v-for="item in componentItems" :key="item.type">
+  <template v-for="(item, type) in componentItemMap" :key="type">
     <SectionCard
       v-if="item.shouldShow"
       :icon="item.icon"
-      :isOpen="activeSection === item.type"
-      @toggle="toggleSection(item.type)"
+      :isOpen="activeSection === type"
+      @toggle="toggleSection(type)"
       :title="item.title"
       :description="item.description"
     >
@@ -46,6 +46,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import { LucideIconName } from '@/common/LucideIcon/useLucideIcon'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -63,96 +64,97 @@
 
   const hasComponentKind = (kind: UiKind): boolean => conditions.value.some((c) => c.kind === kind)
 
-  const componentItems = computed(() => [
-    // フキダシ
+  type ComponentItemType =
+    | 'bubble'
+    | 'bubbleCharacter'
+    | 'flashBanner'
+    | 'toast'
+    | 'ranking'
+    | 'counter'
+    | 'winnerGroup'
+    | 'flightSeat'
+    | 'defaultColor'
+    | 'fontFamily'
+
+  const componentItemMap: Record<
+    ComponentItemType,
     {
-      type: 'bubble',
+      icon: LucideIconName
+      title: string
+      description: string
+      component: any
+      shouldShow: boolean
+    }
+  > = {
+    bubble: {
       icon: 'MessageSquare',
       title: 'フキダシアイテム',
       description: 'BOTが喋るフキダシの設定',
       component: CommentBubbleEditor,
       shouldShow: hasComponentKind('bubble'),
     },
-    // フキダシ(キャラクター)
-    {
-      type: 'bubbleCharacter',
+    bubbleCharacter: {
       icon: 'UserSquare',
       title: 'フキダシアイテム(キャラクター)',
       description: 'キャラクターの表示位置設定',
       component: BubbleCharacterEditor,
       shouldShow: hasComponentKind('bubble') && isCharacter.value,
     },
-    // ニュースバナー
-    {
-      type: 'flashBanner',
+    flashBanner: {
       icon: 'Megaphone',
       title: 'ニュースアイテム',
       description: 'ニュースバナー風のフキダシ設定',
       component: FlashBannerEditor,
       shouldShow: hasComponentKind('flashBanner'),
     },
-    // トースト・サムネイル
-    {
-      type: 'toast',
+    toast: {
       icon: 'Bell',
       title: 'トースト・サムネイルアイテム',
       description: 'お知らせとして表示されるチャット表示',
       component: ToastComponentEditor,
       shouldShow: hasComponentKind('toast'),
     },
-    // ランキング
-    {
-      type: 'ranking',
+    ranking: {
       icon: 'Trophy',
       title: 'ランキングアイテム',
       description: 'ゲームスクリプトで使う、ランキング表示',
       component: GameRankingEditor,
       shouldShow: hasComponentKind('ranking'),
     },
-    // カウンター
-    {
-      type: 'counter',
+    counter: {
       icon: 'Hash',
       title: 'カウンターアイテム',
       description: 'コメントが来るたびに数値が増えるカウンターの表示',
       component: CounterPreviewEditor,
       shouldShow: hasComponentKind('counter') && isComment.value,
     },
-    // ラッキーメンバーズ
-    {
-      type: 'winnerGroup',
+    winnerGroup: {
       icon: 'Crown',
       title: 'ラッキーメンバーズアイテム',
       description: 'ランダムに選ばれたユーザーの表示',
       component: WinnerGroupEditor,
       shouldShow: hasComponentKind('winnerGroup'),
     },
-    // フライトシート
-    {
-      type: 'flightSeat',
+    flightSeat: {
       icon: 'Plane',
       title: 'フライトシートアイテム',
       description: '8時間フライト、どの席に座る？視聴者の座席配置表示',
       component: FlightSeatEditor,
       shouldShow: hasComponentKind('flightSeat') && isComment.value,
     },
-    // デフォルトカラー
-    {
-      type: 'defaultColor',
+    defaultColor: {
       icon: 'Palette',
       title: 'デフォルトカラー',
       description: 'キャラクターが設定されてない場合のデフォルトカラーを設定',
       component: DefaultColorEditor,
       shouldShow: !isCharacter.value,
     },
-    // フォントファミリー
-    {
-      type: 'fontFamily',
+    fontFamily: {
       icon: 'Type',
       title: 'フォント',
       description: '各種アイテムのフォントを設定',
       component: FontFamilyEditor,
       shouldShow: isPro.value,
     },
-  ])
+  }
 </script>

@@ -1,12 +1,109 @@
 // src/common/LucideIcon/useLucideIcon.ts
-import * as Icons from 'lucide-vue-next'
-import { Package } from 'lucide-vue-next'
+// TODO:Shared行きだろう
 import type { Component } from 'vue'
 
-/**
- * アイコン名の文字列 → Lucide Vueコンポーネントに解決するユーティリティ
- */
-export function resolveLucideIcon(iconName: string | undefined): Component {
-  if (!iconName) return Package
-  return (Icons as Record<string, any>)[iconName] ?? Package
+// 使うアイコンだけ import
+import {
+  Layers,
+  MessageSquare,
+  Timer,
+  Activity,
+  Zap,
+  Brackets,
+  Users,
+  LayoutGrid,
+  Info,
+  Package,
+  Volume2,
+  PartyPopper,
+  MessagesSquare,
+  Crown,
+  Megaphone,
+  Bell,
+  Trophy,
+  Hash,
+  Plane,
+  Apple,
+  Bomb,
+  Rabbit,
+  Flower2,
+  Clover,
+  Swords,
+  Search,
+  SlidersHorizontal,
+  ListChecks,
+  Cpu,
+  Palette,
+  Image,
+  Settings2,
+  Type,
+  UserSquare,
+  Merge,
+  Filter,
+  Clock,
+  Gamepad2,
+  Box,
+  Sliders,
+  Notebook,
+  ToggleRight,
+  Bot,
+  ShieldAlert,
+  Ban,
+} from 'lucide-vue-next'
+
+// map（as const で literal 型を保持）
+export const lucideIconMap = {
+  Layers,
+  MessageSquare,
+  Timer,
+  Activity,
+  Zap,
+  Brackets,
+  Users,
+  LayoutGrid,
+  Info,
+  Package,
+  Volume2,
+  PartyPopper,
+  MessagesSquare,
+  Crown,
+  Megaphone,
+  Bell,
+  Trophy,
+  Hash,
+  Plane,
+  Apple,
+  Bomb,
+  Rabbit,
+  Flower2,
+  Clover,
+  Swords,
+  Search,
+  SlidersHorizontal,
+  ListChecks,
+  Cpu,
+  Palette,
+  Image,
+  Settings2,
+  Type,
+  UserSquare,
+  Merge,
+  Filter,
+  Clock,
+  Gamepad2,
+  Box,
+  Sliders,
+  Notebook,
+  ToggleRight,
+  Bot,
+  ShieldAlert,
+  Ban,
+} as const
+
+// map から union 型を生成
+export type LucideIconName = keyof typeof lucideIconMap
+
+// map だけを参照する安全な resolver
+export function resolveLucideIcon(iconName: LucideIconName | undefined): Component {
+  return lucideIconMap[iconName ?? 'Package']
 }

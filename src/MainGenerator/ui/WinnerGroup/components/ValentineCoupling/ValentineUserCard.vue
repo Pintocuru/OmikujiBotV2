@@ -40,7 +40,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { UserVisitRecord } from '@/types/MainGenerator/'
   import { Heart } from 'lucide-vue-next'
 
   const props = defineProps<{

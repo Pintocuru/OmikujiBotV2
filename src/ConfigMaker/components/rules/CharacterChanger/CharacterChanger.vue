@@ -74,13 +74,13 @@
   import CharacterMappingEditor from './CharacterMappingEditor.vue'
   import MappingPreview from './MappingPreview.vue'
   import { TargetCategoryType, useDataExtractor } from './useDataExtractor'
-  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { useCharacterStats } from './useCharacterStats'
   import { useModalState } from './useModalState'
   import { useCharacterUpdater } from './useCharacterUpdater'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
-  import { Users } from 'lucide-vue-next'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { Users } from 'lucide-vue-next'
 
   const props = defineProps<{
     category: TargetCategoryType

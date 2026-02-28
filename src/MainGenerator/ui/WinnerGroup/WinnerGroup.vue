@@ -100,6 +100,7 @@
 
     // WinnerGroup の実行
     const result = appStore.scriptManager.playScript({
+      delaySeconds: 0,
       scriptId: 'WinnerGroup',
       queryString: winnerSetting.value.queryString,
       characterKey: null,

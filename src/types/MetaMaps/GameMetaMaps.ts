@@ -54,4 +54,4 @@ export const gameMetaMap = {
     url: `${MAIN}/WinnerGroup/WinnerGroup.md`,
     banner: `${RAW}/WinnerGroup/images/thumb_WinnerGroup.webp`,
   },
-}
+} as const

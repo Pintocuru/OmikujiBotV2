@@ -63,15 +63,14 @@
 
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
-  import { OmikujiItemSchema, OmikujiItemType } from '@/types/OmikujiData/'
+  import { OmikujiItemSchema, OmikujiItemType, RulesCategoryType } from '@/types/OmikujiData/'
+  import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
   import CharacterChanger from '@config/components/rules/CharacterChanger/CharacterChanger.vue'
   import OmikujiItemEditor from '@config/components/rules/OmikujiItem/OmikujiItemEditor.vue'
-  import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
   import { useTestPost } from '@config/scripts/useTestPost'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { Dices, Plus, X } from 'lucide-vue-next'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { Dices, Plus, X } from 'lucide-vue-next'
 
   const props = defineProps<{
     category: RulesCategoryType

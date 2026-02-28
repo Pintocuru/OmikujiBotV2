@@ -76,8 +76,8 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import { Clock, History, Hash, User, Trash2, FileQuestion } from 'lucide-vue-next'
   import { UserNameType } from '@shared/types'
+  import { Clock, History, Hash, User, Trash2, FileQuestion } from 'lucide-vue-next'
 
   interface HistoryItem {
     id: string

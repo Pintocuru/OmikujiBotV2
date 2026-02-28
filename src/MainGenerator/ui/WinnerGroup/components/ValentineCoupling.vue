@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+  import { UserVisitRecord } from '@/types/MainGenerator/'
   import ValentineCouplingContent from './ValentineCoupling/content.vue'
   import ValentineCouplingPlaceholder from './ValentineCoupling/Placeholder.vue'
   import { Heart } from 'lucide-vue-next'
