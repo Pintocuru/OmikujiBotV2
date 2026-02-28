@@ -31,6 +31,9 @@ export type OmikujiDataType = z.infer<typeof OmikujiDataSchema>
 
 /**
 // v3から
+// events はRecord -> Arrayに変更する
+// (assetsはRecordのまま)
+// これにより、orderの管理を廃止。
 export const OmikujiDataSchema = z.object({
   ...PackageJsonSchema.shape,
 

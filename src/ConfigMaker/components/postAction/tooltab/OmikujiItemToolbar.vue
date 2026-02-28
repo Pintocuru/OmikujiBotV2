@@ -21,16 +21,30 @@
           テスト投稿
         </button>
 
-        <!-- JSON編集ボタン(isGod) -->
+        <!-- JSONコピー・ペーストボタン (isGod) -->
+
+        <!-- JSONコピー -->
         <button
-          v-if="isGod"
-          @click="$emit('toggleJson')"
+          @click="handleCopy"
           class="btn btn-sm btn-secondary tooltip tooltip-top"
-          data-tip="JSON形式で編集ができます(上級者向け)"
+          data-tip="PostActions を JSON としてクリップボードにコピーします"
           type="button"
+          :disabled="clipboard.isCopying.value"
         >
-          <FileJson :size="16" />
-          JSON編集
+          <ClipboardCopy :size="16" />
+          JSONコピー
+        </button>
+
+        <!-- JSONペースト -->
+        <button
+          @click="handlePaste"
+          class="btn btn-sm btn-secondary tooltip tooltip-top"
+          data-tip="クリップボードの JSON を PostActions として読み込みます"
+          type="button"
+          :disabled="clipboard.isPasting.value"
+        >
+          <ClipboardPaste :size="16" />
+          JSONペースト
         </button>
       </div>
     </div>
@@ -39,19 +53,58 @@
 
 <script setup lang="ts">
   import { GameScriptsType, PostFlowType } from '@/types/OmikujiData/'
+  import { PostFlowArraySchema } from '@/types/OmikujiData/ActionSet'
   import DelaySecondsAdjuster from './DelaySecondsAdjuster.vue'
   import { useTestPost } from '@config/scripts/useTestPost'
-  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { Send, FileJson } from 'lucide-vue-next'
+  import { useJsonClipboard } from '@config/scripts/JsonClipboard/useJsonClipboard'
+  import { Send, ClipboardCopy, ClipboardPaste } from 'lucide-vue-next'
+  import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   // Props
-  defineProps<{
+  const props = defineProps<{
     modelValue: PostFlowType[]
     gameScripts: GameScriptsType | null
   }>()
 
   // Emits
-  const emit = defineEmits(['update:modelValue', 'toggleJson'])
+  const emit = defineEmits<{
+    'update:modelValue': [value: PostFlowType[]]
+  }>()
 
-  const { isGod } = useSettingMode()
+  // PostFlowType[] 用クリップボード
+  const clipboard = useJsonClipboard<PostFlowType[]>({
+    parse: (raw) => {
+      const result = PostFlowArraySchema.safeParse(raw)
+      return result.success ? result.data : null
+    },
+  })
+
+  const handleCopy = async () => {
+    await clipboard.copyJson(props.modelValue)
+  }
+
+  const handlePaste = async () => {
+    const parsed = await clipboard.pasteJson()
+
+    if (parsed === null) {
+      swalToast.error({
+        title: `[OmikujiItemToolbar] JSONペースト失敗: ${clipboard.lastError.value}`,
+      })
+      return
+    }
+
+    // 上書き確認
+    const result = await swalModal.confirmDelete({
+      title: '現在の内容を上書きしますか？',
+      confirmButtonText: '上書きする',
+    })
+
+    if (!result.isConfirmed) return
+
+    emit('update:modelValue', parsed)
+
+    swalToast.success({
+      title: 'クリップボードから貼り付けました',
+    })
+  }
 </script>

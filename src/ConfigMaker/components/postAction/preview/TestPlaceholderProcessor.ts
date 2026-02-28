@@ -3,22 +3,33 @@ import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
+import { ScriptVariableContext } from '@/MainGenerator/scripts/VariablePlaceholder/ScriptVariableContext'
+import { DisplayVariableResolver } from '@/MainGenerator/scripts/DisplayVariable/DisplayVariableResolver'
 
 /**
  * テスト用：メッセージのプレースホルダーを処理して bubble を返す
  */
 export const processTestPlaceholder = (message: string, placeholders: Record<string, PlaceholderType>): string => {
-  // 静的プレースホルダー
-  const contentPlaceholder = new ContentPlaceholder(placeholders)
-  const context = new PlaceholderContext()
-  context.updateValues(defaultPlaceholdersShortLabels)
-  contentPlaceholder.updateResolvedValues(context.getAll())
+  try {
+    // 参照プレースホルダー
+    const dummyContext = new ScriptVariableContext()
+    const displayVariable = new DisplayVariableResolver(dummyContext)
+    const resolved = displayVariable.resolve(message)
 
-  const withStatic = contentPlaceholder.processText(message)
+    // プレースホルダー
+    const contentPlaceholder = new ContentPlaceholder(placeholders)
+    const context = new PlaceholderContext()
+    context.updateValues(defaultPlaceholdersShortLabels)
+    contentPlaceholder.updateResolvedValues(context.getAll())
+    const withStatic = contentPlaceholder.processText(resolved)
 
-  // 動的プレースホルダー
-  const dynamicProcessor = new VariablePlaceholderProcessor()
-  const processed = dynamicProcessor.process(withStatic)
+    // 評価ブロック(変数プレースホルダー)
+    const dynamicProcessor = new VariablePlaceholderProcessor(dummyContext)
+    const processed = dynamicProcessor.process(withStatic)
 
-  return processed.bubble
+    return processed.bubble
+  } catch {
+    // ★ プレビューでは失敗しても原文を返す
+    return message
+  }
 }

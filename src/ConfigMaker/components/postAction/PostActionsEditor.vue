@@ -2,32 +2,17 @@
 <template>
   <div class="space-y-2">
     <!-- ツールバー -->
-    <OmikujiItemToolbar
-      :modelValue="modelValue"
-      :gameScripts="gameScripts"
-      @update:modelValue="updatePostActions"
-      @toggleJson="toggleEditMode"
-    />
-
-    <!-- JSON編集モード -->
-    <PostActionsEditorJson
-      v-if="isJsonMode"
-      :modelValue="modelValue"
-      @update:modelValue="updatePostActions"
-      @close="isJsonMode = false"
-    />
+    <OmikujiItemToolbar :modelValue="modelValue" :gameScripts="gameScripts" @update:modelValue="updatePostActions" />
 
     <!-- PostActionsタブエディター -->
-    <PostActionsTabs v-else :modelValue="modelValue" @update:actions="updatePostActions" />
+    <PostActionsTabs :modelValue="modelValue" @update:actions="updatePostActions" />
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref } from 'vue'
   import { GameScriptsType, PostFlowType } from '@/types/OmikujiData/'
   import PostActionsTabs from './tooltab/PostActionsTabs.vue'
   import OmikujiItemToolbar from '@config/components/postAction/tooltab/OmikujiItemToolbar.vue'
-  import PostActionsEditorJson from '@config/components/postAction/PostActionsEditorJson.vue'
 
   defineProps<{
     modelValue: PostFlowType[]
@@ -38,14 +23,6 @@
     'update:modelValue': [value: PostFlowType[]]
   }>()
 
-  // Refs
-  const isJsonMode = ref(false)
-
-  const toggleEditMode = () => {
-    isJsonMode.value = !isJsonMode.value
-  }
-
-  // PostActionsの更新
   const updatePostActions = (newActions: PostFlowType[]) => {
     emit('update:modelValue', newActions)
   }

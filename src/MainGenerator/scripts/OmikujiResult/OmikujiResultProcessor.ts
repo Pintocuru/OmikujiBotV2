@@ -14,14 +14,20 @@ import { CharacterManager, checkIsCharacterMode } from '../CharacterManager/Char
 import { createBotMessagesFromAction } from './BotMessageHelpers'
 import { playSoundDelay } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
+import { ScriptVariableContext } from '../VariablePlaceholder/ScriptVariableContext'
+import { DisplayVariableResolver } from '../DisplayVariable/DisplayVariableResolver'
 
 /**
  * おみくじ結果の処理とBotMessage生成を担当
  */
 export class OmikujiResultProcessor {
+  private readonly displayResolver: DisplayVariableResolver
   private readonly placeProcess: ContentPlaceholder
   private readonly placeContext: PlaceholderContext = new PlaceholderContext()
-  private readonly variableProcessor: VariablePlaceholderProcessor = new VariablePlaceholderProcessor()
+
+  private readonly variableContext = new ScriptVariableContext()
+  private readonly variableProcessor: VariablePlaceholderProcessor
+
   private readonly postMessage: PostOmikujiService
   private readonly characterManager?: CharacterManager
   private readonly actionSets: Record<string, ActionSetType>
@@ -30,7 +36,9 @@ export class OmikujiResultProcessor {
     omikujiData: OmikujiDataType,
     private readonly playScript: GameScriptManager['playScript']
   ) {
+    this.displayResolver = new DisplayVariableResolver(this.variableContext)
     this.placeProcess = new ContentPlaceholder(omikujiData.placeholders)
+    this.variableProcessor = new VariablePlaceholderProcessor(this.variableContext)
     this.actionSets = omikujiData.actionSets
 
     // isCharacterMode の影響を受けるコード
@@ -96,15 +104,19 @@ export class OmikujiResultProcessor {
     defaultPlaceholders: Record<string, string | number>,
     omiken?: OmikenCommentType
   ): BotMessageType[] {
-    // プレースホルダー処理
-    this.setupPlaceholders(defaultPlaceholders)
-
-    // アクションを展開・プレースホルダー処理
+    // アクションを展開
     const expandedActions = ActionSetExpander.expand(actionItem.postActions, this.actionSets)
-    const resolvedActions = this.placeProcess.processPostActions(expandedActions)
+
+    // 変数展開
+    const displayResolved = this.displayResolver.processPostActions(expandedActions)
+
+    // プレースホルダー処理
+    this.placeContext.updateValues(defaultPlaceholders)
+    this.placeProcess.updateResolvedValues(this.placeContext.getAll())
+    const resolvedActions = this.placeProcess.processPostActions(displayResolved)
     this.placeContext.clear()
 
-    // 1. 変数プレースホルダーを処理 (ここでランキング等の解析を行う)
+    // 1. 評価ブロック(変数プレースホルダー)を処理
     const processedActions = this.processVariables(resolvedActions)
 
     // 2. わんコメへ投稿
@@ -164,13 +176,5 @@ export class OmikujiResultProcessor {
         extra: result.extra, // 解析結果を保持
       }
     })
-  }
-
-  /**
-   * プレースホルダー処理
-   */
-  private setupPlaceholders(defaultPlaceholders: Record<string, string | number>): void {
-    this.placeContext.updateValues(defaultPlaceholders)
-    this.placeProcess.updateResolvedValues(this.placeContext.getAll())
   }
 }

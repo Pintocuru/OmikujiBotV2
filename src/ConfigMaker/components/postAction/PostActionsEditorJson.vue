@@ -1,4 +1,5 @@
 <!-- src/ConfigMaker/components/postAction/PostActionsEditorJson.vue -->
+<!-- ! 廃止 -->
 <template>
   <div class="space-y-2">
     <textarea

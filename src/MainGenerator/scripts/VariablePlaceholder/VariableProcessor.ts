@@ -9,6 +9,7 @@ import {
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
 import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } from '@/types'
+import { ScriptVariableContext } from './ScriptVariableContext'
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -29,27 +30,29 @@ import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } fr
  *   改行除去 → 非ASCII識別子のサニタイズ → v1 var → v1 rand → v2 式評価 → 変数参照
  */
 export class VariablePlaceholderProcessor {
-  private readonly evaluator: ExpressionEvaluator = new ExpressionEvaluator()
+  constructor(private readonly context: ScriptVariableContext) {}
 
   process(text: string): VariablePlaceholderResult {
+    const evaluator = this.context.getEvaluator()
     let processed = text.replace(/\n/g, '')
 
     // v1 互換処理（非推奨・後方互換）
-    processed = this.processLegacyVarDeclarations(processed)
+    processed = this.processLegacyVarDeclarations(processed, evaluator)
     processed = this.processLegacyRandFunction(processed)
 
     // v2 処理（推奨）
-    processed = this.processExpressions(processed)
+    processed = this.processExpressions(processed, evaluator)
 
     // 変数参照（v1・v2 共通）
-    processed = this.processVariableReferences(processed)
+    processed = this.processVariableReferences(processed, evaluator)
 
-    const allVars = Object.fromEntries(
-      Object.entries(this.evaluator.getAll()).map(([k, v]) => [k, String(v)])
-    ) as Record<string, string>
+    const allVars = Object.fromEntries(Object.entries(evaluator.getAll()).map(([k, v]) => [k, String(v)])) as Record<
+      string,
+      string
+    >
 
     const extra = this.buildExtraData(allVars)
-    for (const key of RESERVED_KEYS) this.evaluator.remove(key)
+    for (const key of RESERVED_KEYS) evaluator.remove(key)
 
     return {
       bubble: processed,
@@ -61,10 +64,10 @@ export class VariablePlaceholderProcessor {
     }
   }
 
-  private processExpressions(text: string): string {
+  private processExpressions(text: string, evaluator: ExpressionEvaluator): string {
     return text.replace(EXPRESSION_PATTERN, (match, expression) => {
       try {
-        const { output, hasOutput } = this.evaluator.evaluateExpression(expression.trim())
+        const { output, hasOutput } = evaluator.evaluateExpression(expression.trim())
         return hasOutput ? output : ''
       } catch (error) {
         console.warn(`式の評価に失敗: ${match}`, error)
@@ -73,9 +76,9 @@ export class VariablePlaceholderProcessor {
     })
   }
 
-  private processVariableReferences(text: string): string {
+  private processVariableReferences(text: string, evaluator: ExpressionEvaluator): string {
     return text.replace(VAR_REFERENCE_PATTERN, (match, varName) => {
-      if (this.evaluator.has(varName)) return String(this.evaluator.get(varName))
+      if (evaluator.has(varName)) return String(evaluator.get(varName))
       console.warn(`未定義の変数: ${varName}`)
       return match
     })
@@ -86,11 +89,11 @@ export class VariablePlaceholderProcessor {
   // ----------------------------------------------------------------
 
   /** @deprecated v2 では {{name = value}} を使用してください */
-  private processLegacyVarDeclarations(text: string): string {
+  private processLegacyVarDeclarations(text: string, evaluator: ExpressionEvaluator): string {
     return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
-        const value = this.evaluator.evaluateVarRhs(expression.trim())
-        this.evaluator.set(varName, value)
+        const value = evaluator.evaluateVarRhs(expression.trim())
+        evaluator.set(varName, value)
         return ''
       } catch (error) {
         console.warn(`[非推奨] var宣言の評価に失敗: ${match}`, error)
