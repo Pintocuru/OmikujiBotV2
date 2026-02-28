@@ -1,3 +1,4 @@
+<!-- src/common/LucideIcon/LucideIcon.vue -->
 <template>
   <component v-if="resolvedIcon" :is="resolvedIcon" :class="sizeClass" />
 </template>

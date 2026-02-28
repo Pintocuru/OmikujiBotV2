@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/dev/components/FileMenuDropdown.vue -->
+<!-- src/PresetManager/components/FileMenuDropdown.vue -->
 <template>
   <div class="dropdown dropdown-end">
     <label tabindex="0" class="btn btn-ghost btn-xs">

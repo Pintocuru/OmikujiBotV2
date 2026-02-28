@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageUsageSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FlagsSettings/UsageUsageSettings.vue -->
 <template>
   <SubSectionHeader icon="Palette" title="Recordアイテム表示" description="アイテムの表示・非表示を制御" />
 

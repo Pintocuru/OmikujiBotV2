@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/services/configApi.ts
+// src/PresetManager/services/configApi.ts
 import { BaseApiClient } from './baseApiClient'
 import { ensureJsonExtension } from './apiServiceUtils'
 import type { FileItem } from '../devTypes'

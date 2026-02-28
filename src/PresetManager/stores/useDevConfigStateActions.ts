@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/stores/useDevConfigStateActions.ts
+// src/PresetManager/stores/useDevConfigStateActions.ts
 import { FileItem, DevConfigStateType } from '../devTypes'
 
 export function useDevConfigStateActions(state: DevConfigStateType) {

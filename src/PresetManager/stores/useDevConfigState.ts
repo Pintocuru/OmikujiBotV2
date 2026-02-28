@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/stores/useDevConfigState.ts
+// src/PresetManager/stores/useDevConfigState.ts
 import { ref, reactive } from 'vue'
 import { FileItem } from '../devTypes'
 import { isDev } from '@/types'

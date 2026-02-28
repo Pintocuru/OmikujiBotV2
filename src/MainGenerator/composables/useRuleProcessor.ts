@@ -1,4 +1,4 @@
-// src/MainGenerator/composables/useRuleProcessorLifecycle.ts
+// src/MainGenerator/composables/useRuleProcessor.ts
 import { watch, onUnmounted } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikujiDataType } from '@/types/OmikujiData/'

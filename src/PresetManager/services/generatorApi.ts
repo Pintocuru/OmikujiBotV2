@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/services/generatorApi.ts
+// src/PresetManager/services/generatorApi.ts
 import { BaseApiClient } from './baseApiClient'
 
 /**

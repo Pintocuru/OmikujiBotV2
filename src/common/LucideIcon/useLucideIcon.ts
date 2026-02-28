@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/common/useLucideIcon.ts
+// src/common/LucideIcon/useLucideIcon.ts
 import * as Icons from 'lucide-vue-next'
 import { Package } from 'lucide-vue-next'
 import type { Component } from 'vue'

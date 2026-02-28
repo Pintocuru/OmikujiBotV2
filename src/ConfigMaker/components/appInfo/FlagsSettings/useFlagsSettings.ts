@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/appInfo/FeatureUsageSettings/useFlagsSettings.ts
+// src/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'

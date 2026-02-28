@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/dev/components/DevFileItem.vue -->
+<!-- src/PresetManager/components/DevFileItem.vue -->
 <template>
   <div class="flex items-center justify-between bg-base-300 rounded p-2 text-sm">
     <div class="flex-1 min-w-0">

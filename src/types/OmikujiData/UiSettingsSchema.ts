@@ -1,4 +1,4 @@
-// src/types/OmikujiData/ComponentsSettingsSchema.ts
+// src/types/OmikujiData/UiSettingsSchema.ts
 import { z } from 'zod'
 import { enterMotionKeys } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'

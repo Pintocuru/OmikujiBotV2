@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageComponentsSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FlagsSettings/UsageComponentsSettings.vue -->
 <template>
   <SubSectionHeader icon="LayoutGrid" title="アイテム設定" description="ジェネレーターのアイテム表示制御" />
 

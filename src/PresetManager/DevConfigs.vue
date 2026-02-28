@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/dev/DevConfigs.vue -->
+<!-- src/PresetManager/DevConfigs.vue -->
 <template>
   <div class="card bg-gradient-to-r from-primary to-secondary">
     <div class="card-body px-4 py-2">

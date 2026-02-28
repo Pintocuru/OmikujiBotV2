@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/UsageGamesSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FlagsSettings/UsageGamesSettings.vue -->
 <template>
   <SubSectionHeader icon="Gamepad2" title="ゲームスクリプト設定" description="ゲームスクリプト関連の表示制御" />
 

@@ -1,4 +1,4 @@
-// src/GameScripts/scripts/BomberSpin/main.ts
+// src/GameScripts/scripts/FortuneRanking/main.ts
 import { ScriptPreset } from '@/types/GameScript/GameScriptTypes'
 import execute from './execute'
 

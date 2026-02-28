@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/componentEditor/componentRules.ts
+// src/ConfigMaker/components/appInfo/FlagsInfo/proAddFeature.ts
 
 // アイテム
 export const PRO_COMPONENTS = ['bubble', 'toast', 'ranking', 'counter', 'flashBanner'] as const

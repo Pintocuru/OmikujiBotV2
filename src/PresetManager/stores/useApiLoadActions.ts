@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/stores/useApiLoadActions.ts
+// src/PresetManager/stores/useApiLoadActions.ts
 import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '@/PresetManager/devTypes'
 import { configApi } from '@/PresetManager/services/configApi'

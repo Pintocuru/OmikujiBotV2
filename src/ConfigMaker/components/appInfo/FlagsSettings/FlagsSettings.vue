@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appInfo/FeatureUsageSettings/FlagsSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FlagsSettings/FlagsSettings.vue -->
 <template>
   <div class="space-y-4">
     <!-- プリセットボタン -->

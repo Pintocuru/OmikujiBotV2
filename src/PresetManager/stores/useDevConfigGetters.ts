@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/stores/useDevConfigGetters.ts
+// src/PresetManager/stores/useDevConfigGetters.ts
 import { computed } from 'vue'
 import { DevConfigStateType } from '../devTypes'
 

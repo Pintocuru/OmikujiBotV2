@@ -1,4 +1,4 @@
-// src/ConfigMaker/dev/stores/useApiSaveActions.ts
+// src/PresetManager/stores/useApiSaveActions.ts
 import { DevConfigStateType } from '@/PresetManager/devTypes'
 import { configApi } from '@/PresetManager/services/configApi'
 import { generatorApi } from '@/PresetManager/services/generatorApi'
