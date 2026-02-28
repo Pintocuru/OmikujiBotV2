@@ -8,15 +8,7 @@
     "generatorVersion": "2.3.4",
     "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "占い",
-      "ゆっくり",
-      "ゆっくり霊夢",
-      "ゆっくり魔理沙",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "おみくじ", "占い", "ゆっくり", "ゆっくり霊夢", "ゆっくり魔理沙", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5471598"
   },
@@ -32,10 +24,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -68,7 +57,7 @@
               "iconKey": "happy",
               "sound": "baseball",
               "message": {
-                "bubble": "{{var text='大吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji01>>",
+                "bubble": "{{text='大吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji01>>",
                 "isToast": false
               }
             }
@@ -113,7 +102,7 @@
               "iconKey": "happy",
               "sound": "twinkle",
               "message": {
-                "bubble": "{{var text='吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji02>>",
+                "bubble": "{{text='吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji02>>",
                 "isToast": false
               }
             }
@@ -158,7 +147,7 @@
               "iconKey": "default",
               "sound": "congrats",
               "message": {
-                "bubble": "{{var text='中吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji03>>",
+                "bubble": "{{text='中吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji03>>",
                 "isToast": false
               }
             }
@@ -203,7 +192,7 @@
               "iconKey": "default",
               "sound": "jingle",
               "message": {
-                "bubble": "{{var text='小吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji04>>",
+                "bubble": "{{text='小吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji04>>",
                 "isToast": false
               }
             }
@@ -248,7 +237,7 @@
               "iconKey": "wink",
               "sound": "bounce",
               "message": {
-                "bubble": "{{var text='末吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji05>>",
+                "bubble": "{{text='末吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji05>>",
                 "isToast": false
               }
             }
@@ -293,7 +282,7 @@
               "iconKey": "sad",
               "sound": "fail",
               "message": {
-                "bubble": "{{var text='凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji06>>",
+                "bubble": "{{text='凶'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji06>>",
                 "isToast": false
               }
             }
@@ -338,7 +327,7 @@
               "iconKey": "sad",
               "sound": "explosion",
               "message": {
-                "bubble": "{{var text='大凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
+                "bubble": "{{text='大凶'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji07>>",
                 "isToast": false
               }
             }
@@ -383,7 +372,7 @@
               "iconKey": "wink",
               "sound": "explosion",
               "message": {
-                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
+                "bubble": "{{text='残念賞'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji08>>",
                 "isToast": false
               }
             }
@@ -401,20 +390,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ ",
-          "^みくじ",
-          "^omikuji",
-          "^御神籤",
-          "^運勢",
-          "^うんせい"
-        ]
+        "comment": ["おみくじ ", "^みくじ", "^omikuji", "^御神籤", "^運勢", "^うんせい"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -437,10 +417,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。",
@@ -474,10 +451,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。",
@@ -511,10 +485,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "思いがけない幸運があるかも。チャンスを逃さないようにね。",
@@ -548,10 +519,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。",
@@ -585,10 +553,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "油断が思わぬ結果に繋がるわ。慎重に行動して。",
@@ -622,10 +587,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "運気はやや下がり気味。慎重に行動するといいわ。",
@@ -659,10 +621,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "運気が深く沈み込みやすい時期。一度立ち止まって状況を整理してね。",
@@ -696,10 +655,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。",
@@ -736,10 +692,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -786,10 +739,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -864,10 +814,7 @@
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": [
-            "omiken",
-            "omiken_2"
-          ],
+          "center": ["omiken", "omiken_2"],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -884,9 +831,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": [
-          "basicList"
-        ],
+        "targetScriptKeys": ["basicList"],
         "title": "🥠おみくじ履歴⛩️",
         "color": "light",
         "limit": 5,
@@ -915,11 +860,7 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking",
-      "bubble"
-    ],
+    "components": ["toast", "ranking", "bubble"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

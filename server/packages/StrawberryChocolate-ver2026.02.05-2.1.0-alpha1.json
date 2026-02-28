@@ -8,12 +8,7 @@
     "generatorVersion": "2.1.0-alpha2",
     "dataVersion": 2.09002,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "ストロベリーショコラ",
-      "占い",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "ストロベリーショコラ", "占い", "じゃんけん"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7733810"
   },
@@ -152,10 +147,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -229,15 +221,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "syoken"
-            ],
+            "syoken": ["syoken"],
             "count": {
               "comparison": "equal",
               "unit": "tc",
@@ -277,9 +265,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -295,17 +281,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "初見(?!さん)",
-          "所見",
-          "はじめまして"
-        ]
+        "comment": ["初見(?!さん)", "所見", "はじめまして"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -324,10 +304,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "コメント数表示"
-      ],
+      "tags": ["ショコラ", "コメント数表示"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -368,15 +345,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^コメント$"
-        ]
+        "comment": ["^コメント$"]
       },
       "limits": {
         "cooldownSeconds": 0,
@@ -395,10 +368,7 @@
       "order": 17,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
+      "tags": ["ショコラ", "ギフト"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -443,14 +413,10 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "gift"
-        ],
+        "conditions": ["gift"],
         "userName": [],
         "access": [],
-        "gift": [
-          "all"
-        ],
+        "gift": ["all"],
         "comment": []
       },
       "limits": {
@@ -470,10 +436,7 @@
       "order": 18,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -509,15 +472,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "syoken"
-            ],
+            "syoken": ["syoken"],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -557,15 +516,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "again"
-            ],
+            "syoken": ["again"],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -605,15 +560,11 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "syoken"
-            ],
+            "conditions": ["syoken"],
             "userName": [],
             "access": [],
             "gift": [],
-            "syoken": [
-              "firstVisit"
-            ],
+            "syoken": ["firstVisit"],
             "count": {
               "comparison": "lowerBound",
               "unit": "draws",
@@ -648,10 +599,7 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "コメントチェック"
-      ],
+      "tags": ["ショコラ", "コメントチェック"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -687,9 +635,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -733,9 +679,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -774,10 +718,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -810,7 +751,7 @@
               "iconKey": "happy",
               "sound": "baseball",
               "message": {
-                "bubble": "{{var text='大吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji01>>",
+                "bubble": "{{text='大吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji01>>",
                 "isToast": false
               }
             }
@@ -855,7 +796,7 @@
               "iconKey": "happy",
               "sound": "twinkle",
               "message": {
-                "bubble": "{{var text='吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji02>>",
+                "bubble": "{{text='吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji02>>",
                 "isToast": false
               }
             }
@@ -900,7 +841,7 @@
               "iconKey": "default",
               "sound": "congrats",
               "message": {
-                "bubble": "{{var text='中吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji03>>",
+                "bubble": "{{text='中吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji03>>",
                 "isToast": false
               }
             }
@@ -945,7 +886,7 @@
               "iconKey": "default",
               "sound": "jingle",
               "message": {
-                "bubble": "{{var text='小吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji04>>",
+                "bubble": "{{text='小吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji04>>",
                 "isToast": false
               }
             }
@@ -990,7 +931,7 @@
               "iconKey": "wink",
               "sound": "bounce",
               "message": {
-                "bubble": "{{var text='末吉'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji05>>",
+                "bubble": "{{text='末吉'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji05>>",
                 "isToast": false
               }
             }
@@ -1035,7 +976,7 @@
               "iconKey": "sad",
               "sound": "fail",
               "message": {
-                "bubble": "{{var text='凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji06>>",
+                "bubble": "{{text='凶'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji06>>",
                 "isToast": false
               }
             }
@@ -1080,7 +1021,7 @@
               "iconKey": "default",
               "sound": "explosion",
               "message": {
-                "bubble": "{{var text='残念賞'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji08>>",
+                "bubble": "{{text='残念賞'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji08>>",
                 "isToast": false
               }
             }
@@ -1125,7 +1066,7 @@
               "iconKey": "default",
               "sound": "explosion",
               "message": {
-                "bubble": "{{var text='大凶'}}<<user>>さんの運勢は【{{text}}】<<MaidenOmikuji07>>",
+                "bubble": "{{text='大凶'}}<<user>>さんの運勢は【[[text]]】<<MaidenOmikuji07>>",
                 "isToast": false
               }
             }
@@ -1143,9 +1084,7 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
@@ -1181,9 +1120,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット"
-      ],
+      "tags": ["タロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -1193,19 +1130,14 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": [
-            "タロット",
-            "逆位置"
-          ],
+          "tags": ["タロット", "逆位置"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "TarotCardIntro"
-              ]
+              "actionSetKeys": ["TarotCardIntro"]
             },
             {
               "delaySeconds": 3.5,
@@ -1231,9 +1163,7 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
@@ -1266,9 +1196,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -1326,9 +1254,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -1344,20 +1270,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^suika",
-          "^suica",
-          "^すいか",
-          "^スイカ",
-          "^西瓜",
-          "^🍉$"
-        ]
+        "comment": ["^suika", "^suica", "^すいか", "^スイカ", "^西瓜", "^🍉$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -1376,10 +1293,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター",
-        "カボチャジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター", "カボチャジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -1437,9 +1351,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -1455,19 +1367,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^pumpkin",
-          "^かぼちゃ",
-          "^カボチャ",
-          "^南瓜",
-          "^🎃$"
-        ]
+        "comment": ["^pumpkin", "^かぼちゃ", "^カボチャ", "^南瓜", "^🎃$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -1486,10 +1390,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スイカジェネレーター",
-        "クジラジェネレーター"
-      ],
+      "tags": ["スイカジェネレーター", "クジラジェネレーター"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -1547,9 +1448,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -1565,20 +1464,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^whale",
-          "^くじら",
-          "^クジラ",
-          "^鯨",
-          "^🐋$",
-          "^🐳$"
-        ]
+        "comment": ["^whale", "^くじら", "^クジラ", "^鯨", "^🐋$", "^🐳$"]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -1597,10 +1487,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "ボンバースロット"
-      ],
+      "tags": ["スロット", "ボンバースロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -1809,14 +1696,10 @@
           "weight": 0,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -1858,9 +1741,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -1876,21 +1757,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^スロット",
-          "^すろっと",
-          "^slot",
-          "^ボンバー",
-          "^ぼんばー",
-          "^bomber",
-          "^🎰"
-        ]
+        "comment": ["^スロット", "^すろっと", "^slot", "^ボンバー", "^ぼんばー", "^bomber", "^🎰"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1909,10 +1780,7 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "うさぎスロット"
-      ],
+      "tags": ["スロット", "うさぎスロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2006,14 +1874,10 @@
           "weight": 3,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -2055,9 +1919,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -2073,23 +1935,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^うさぎ",
-          "^ウサギ",
-          "^ドワーフ",
-          "^どわーふ",
-          "^rabbit",
-          "^dwarf",
-          "^usagi",
-          "🐰",
-          "🐇"
-        ]
+        "comment": ["^うさぎ", "^ウサギ", "^ドワーフ", "^どわーふ", "^rabbit", "^dwarf", "^usagi", "🐰", "🐇"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2108,10 +1958,7 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "スロット",
-        "桜吹雪スロット"
-      ],
+      "tags": ["スロット", "桜吹雪スロット"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2205,14 +2052,10 @@
           "weight": 2,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "gift"
-            ],
+            "conditions": ["gift"],
             "userName": [],
             "access": [],
-            "gift": [
-              "all"
-            ],
+            "gift": ["all"],
             "syoken": [],
             "count": {
               "comparison": "lowerBound",
@@ -2254,9 +2097,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -2272,25 +2113,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^さくら",
-          "^サクラ",
-          "^桜",
-          "^sakura",
-          "桜吹雪",
-          "⛈️",
-          "🌙",
-          "🎍",
-          "🌊",
-          "🌸",
-          "🌟"
-        ]
+        "comment": ["^さくら", "^サクラ", "^桜", "^sakura", "桜吹雪", "⛈️", "🌙", "🎍", "🌊", "🌸", "🌟"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2309,9 +2136,7 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2487,17 +2312,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^じゃんけん",
-          "^ジャンケン",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2516,9 +2335,7 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2608,18 +2425,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2638,9 +2448,7 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2730,17 +2538,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2759,9 +2561,7 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2851,18 +2651,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2881,9 +2674,7 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ"
-      ],
+      "tags": ["超おみくじ"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -2893,9 +2684,7 @@
           "createdAt": "2025-09-13T09:35:21.625Z",
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
-          "tags": [
-            "超おみくじ"
-          ],
+          "tags": ["超おみくじ"],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -2933,17 +2722,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^超$",
-          "^超おみくじ",
-          "^BigBang"
-        ]
+        "comment": ["^超$", "^超おみくじ", "^BigBang"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2964,10 +2747,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "ショコラ",
-        "閲覧数チェック"
-      ],
+      "tags": ["ショコラ", "閲覧数チェック"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3055,10 +2835,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "ショコラ",
-        "告知"
-      ],
+      "tags": ["ショコラ", "告知"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -3208,11 +2985,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺",
-        "thinking"
-      ],
+      "tags": ["ショコラ", "初見詐欺", "thinking"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3245,10 +3018,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3281,10 +3051,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3317,10 +3084,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3364,10 +3128,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
+      "tags": ["ショコラ", "ギフト"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3400,10 +3161,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3441,10 +3199,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3477,10 +3232,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3513,10 +3265,7 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "コメントチェック"
-      ],
+      "tags": ["ショコラ", "コメントチェック"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3549,10 +3298,7 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "コメントチェック"
-      ],
+      "tags": ["ショコラ", "コメントチェック"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3585,10 +3331,7 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "イントロ"
-      ],
+      "tags": ["タロット", "イントロ"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3630,10 +3373,7 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "占い結果"
-      ],
+      "tags": ["タロット", "占い結果"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3666,9 +3406,7 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3701,9 +3439,7 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -3736,18 +3472,14 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -3766,7 +3498,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
+            "bubble": "{{text='負け'}}{{symbol='グー'}}{{unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
             "isToast": false
           }
         }
@@ -3788,18 +3520,14 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -3818,7 +3546,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
+            "bubble": "{{text='負け'}}{{symbol='グー'}}{{unique='false'}}{{variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
             "isToast": false
           }
         }
@@ -3840,18 +3568,14 @@
       "order": 17,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -3870,7 +3594,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
+            "bubble": "{{text='負け'}}{{symbol='チョキ'}}{{unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
             "isToast": false
           }
         }
@@ -3892,18 +3616,14 @@
       "order": 18,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -3922,7 +3642,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
+            "bubble": "{{text='負け'}}{{symbol='チョキ'}}{{unique='false'}}{{variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
             "isToast": false
           }
         }
@@ -3944,18 +3664,14 @@
       "order": 19,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -3974,7 +3690,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
+            "bubble": "{{text='負け'}}{{symbol='パー'}}{{unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
             "isToast": false
           }
         }
@@ -3996,18 +3712,14 @@
       "order": 20,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -4026,7 +3738,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
+            "bubble": "{{text='負け'}}{{symbol='パー'}}{{unique='false'}}{{variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
             "isToast": false
           }
         }
@@ -4048,18 +3760,14 @@
       "order": 21,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -4078,7 +3786,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='グー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4100,18 +3808,14 @@
       "order": 22,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -4130,7 +3834,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='グー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4152,18 +3856,14 @@
       "order": 23,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -4182,7 +3882,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='チョキ'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4204,18 +3904,14 @@
       "order": 24,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -4234,7 +3930,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='チョキ'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4256,18 +3952,14 @@
       "order": 25,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -4286,7 +3978,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='パー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4308,18 +4000,14 @@
       "order": 26,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -4338,7 +4026,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='パー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4360,18 +4048,14 @@
       "order": 27,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -4390,7 +4074,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='I Love You'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='I Love You'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4412,18 +4096,14 @@
       "order": 28,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -4442,7 +4122,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='I Love You'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='I Love You'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -4463,10 +4143,7 @@
       "updatedAt": "2026-01-13T06:20:18.752Z",
       "order": 29,
       "isEnabled": true,
-      "tags": [
-        "超おみくじ",
-        "イントロ"
-      ],
+      "tags": ["超おみくじ", "イントロ"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -4497,10 +4174,7 @@
       "updatedAt": "2026-01-13T06:20:18.752Z",
       "order": 30,
       "isEnabled": true,
-      "tags": [
-        "超おみくじ",
-        "占い結果"
-      ],
+      "tags": ["超おみくじ", "占い結果"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -4535,10 +4209,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "values": [
         "あら？<<user>>さん、初見だったかしら？",
@@ -4558,10 +4229,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "values": [
         "えぇ!? <<user>>さんが初見？でも私、前にお話ししたの覚えてるんだけど…",
@@ -4581,10 +4249,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#3F51B5",
-      "tags": [
-        "ショコラ",
-        "初見詐欺"
-      ],
+      "tags": ["ショコラ", "初見詐欺"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、記憶喪失かしら？あたしのハグで治る？",
@@ -4604,10 +4269,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "ショコラ",
-        "ギフト"
-      ],
+      "tags": ["ショコラ", "ギフト"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、ギフトありがとう！配信主もきっと喜ぶわ♡",
@@ -4627,10 +4289,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、来てくれてありがとう、ゆっくり楽しんでね。",
@@ -4650,10 +4309,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "values": [
         "<<user>>さん、お久しぶりね♡ 来てくれて嬉しいわ、元気にしてた？",
@@ -4673,10 +4329,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E65100",
-      "tags": [
-        "ショコラ",
-        "初見判定"
-      ],
+      "tags": ["ショコラ", "初見判定"],
       "accessLevel": "basic",
       "values": [
         "あら、<<user>>さん、今日も来てくれて嬉しい♡",
@@ -4696,10 +4349,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "ショコラ",
-        "告知"
-      ],
+      "tags": ["ショコラ", "告知"],
       "accessLevel": "basic",
       "values": [
         "チャンネル登録＆高評価すると、配信主が喜ぶわ。よろしくね♡",
@@ -4720,13 +4370,9 @@
       "order": 64,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
-      "values": [
-        "ショゴス"
-      ]
+      "values": ["ショゴス"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -4738,13 +4384,9 @@
       "order": 65,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
-      "values": [
-        "あたし"
-      ]
+      "values": ["あたし"]
     },
     "MaidenOmikuji01": {
       "id": "MaidenOmikuji01",
@@ -4755,10 +4397,7 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "人との縁が幸運を呼び込みそう。感謝の気持ちを忘れないことが大事よ。",
@@ -4792,10 +4431,7 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "積極的に行動すると運気は上がるわ。新しい挑戦はチャンスよ。",
@@ -4829,10 +4465,7 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "思いがけない幸運があるかも。チャンスを逃さないようにね。",
@@ -4866,10 +4499,7 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "いまは焦らず、一歩ずつ進むことね。努力すれば、願いは叶うと出ているわ。",
@@ -4903,10 +4533,7 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "油断が思わぬ結果に繋がるわ。慎重に行動して。",
@@ -4940,10 +4567,7 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "運気はやや下がり気味。慎重に行動するといいわ。",
@@ -4977,10 +4601,7 @@
       "order": 17,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "運気が深く沈み込みやすい時期。一度立ち止まって状況を整理してね。",
@@ -5014,10 +4635,7 @@
       "order": 18,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじ",
-        "巫女さんのおみくじ"
-      ],
+      "tags": ["おみくじ", "巫女さんのおみくじ"],
       "accessLevel": "basic",
       "values": [
         "笑いすぎに注意だぜ。腹筋が崩壊するかもしれないぜ。",
@@ -5051,56 +4669,53 @@
       "order": 19,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "占い結果"
-      ],
+      "tags": ["タロット", "占い結果"],
       "accessLevel": "basic",
       "values": [
-        "{{var text='愚者(正位置)'}}【{{text}}】 <<TarotCardFool_U>>",
-        "{{var variant='neutral'}}{{var text='愚者(逆位置)'}}【{{text}}】 <<TarotCardFool_R>>",
-        "{{var text='魔術師(正位置)'}}【{{text}}】 <<TarotCardMagician_U>>",
-        "{{var variant='neutral'}}{{var text='魔術師(逆位置)'}}【{{text}}】 <<TarotCardMagician_R>>",
-        "{{var text='女教皇(正位置)'}}【{{text}}】 <<TarotCardHighPriestess_U>>",
-        "{{var variant='neutral'}}{{var text='女教皇(逆位置)'}}【{{text}}】 <<TarotCardHighPriestess_R>>",
-        "{{var text='女帝(正位置)'}}【{{text}}】 <<TarotCardEmpress_U>>",
-        "{{var variant='neutral'}}{{var text='女帝(逆位置)'}}【{{text}}】 <<TarotCardEmpress_R>>",
-        "{{var text='皇帝(正位置)'}}【{{text}}】 <<TarotCardEmperor_U>>",
-        "{{var variant='neutral'}}{{var text='皇帝(逆位置)'}}【{{text}}】 <<TarotCardEmperor_R>>",
-        "{{var text='法王(正位置)'}}【{{text}}】 <<TarotCardHierophant_U>>",
-        "{{var variant='neutral'}}{{var text='法王(逆位置)'}}【{{text}}】 <<TarotCardHierophant_R>>",
-        "{{var text='恋人(正位置)'}}【{{text}}】 <<TarotCardLovers_U>>",
-        "{{var variant='neutral'}}{{var text='恋人(逆位置)'}}【{{text}}】 <<TarotCardLovers_R>>",
-        "{{var text='戦車(正位置)'}}【{{text}}】 <<TarotCardChariot_U>>",
-        "{{var variant='neutral'}}{{var text='戦車(逆位置)'}}【{{text}}】 <<TarotCardChariot_R>>",
-        "{{var text='力(正位置)'}}【{{text}}】 <<TarotCardStrength_U>>",
-        "{{var variant='neutral'}}{{var text='力(逆位置)'}}【{{text}}】 <<TarotCardStrength_R>>",
-        "{{var text='隠者(正位置)'}}【{{text}}】 <<TarotCardHermit_U>>",
-        "{{var variant='neutral'}}{{var text='隠者(逆位置)'}}【{{text}}】 <<TarotCardHermit_R>>",
-        "{{var text='運命の輪(正位置)'}}【{{text}}】 <<TarotCardWheelOfFortune_U>>",
-        "{{var variant='neutral'}}{{var text='運命の輪(逆位置)'}}【{{text}}】 <<TarotCardWheelOfFortune_R>>",
-        "{{var text='正義(正位置)'}}【{{text}}】 <<TarotCardJustice_U>>",
-        "{{var variant='neutral'}}{{var text='正義(逆位置)'}}【{{text}}】 <<TarotCardJustice_R>>",
-        "{{var text='吊るされた男(正位置)'}}【{{text}}】 <<TarotCardHangedMan_U>>",
-        "{{var variant='neutral'}}{{var text='吊るされた男(逆位置)'}}【{{text}}】 <<TarotCardHangedMan_R>>",
-        "{{var text='死神(正位置)'}}【{{text}}】 <<TarotCardDeath_U>>",
-        "{{var variant='neutral'}}{{var text='死神(逆位置)'}}【{{text}}】 <<TarotCardDeath_R>>",
-        "{{var text='節制(正位置)'}}【{{text}}】 <<TarotCardTemperance_U>>",
-        "{{var variant='neutral'}}{{var text='節制(逆位置)'}}【{{text}}】 <<TarotCardTemperance_R>>",
-        "{{var text='悪魔(正位置)'}}【{{text}}】 <<TarotCardDevil_U>>",
-        "{{var variant='neutral'}}{{var text='悪魔(逆位置)'}}【{{text}}】 <<TarotCardDevil_R>>",
-        "{{var text='塔(正位置)'}}【{{text}}】 <<TarotCardTower_U>>",
-        "{{var variant='neutral'}}{{var text='塔(逆位置)'}}【{{text}}】 <<TarotCardTower_R>>",
-        "{{var text='星(正位置)'}}【{{text}}】 <<TarotCardStar_U>>",
-        "{{var variant='neutral'}}{{var text='星(逆位置)'}}【{{text}}】 <<TarotCardStar_R>>",
-        "{{var text='月(正位置)'}}【{{text}}】 <<TarotCardMoon_U>>",
-        "{{var variant='neutral'}}{{var text='月(逆位置)'}}【{{text}}】 <<TarotCardMoon_R>>",
-        "{{var text='太陽(正位置)'}}【{{text}}】 <<TarotCardSun_U>>",
-        "{{var variant='neutral'}}{{var text='太陽(逆位置)'}}【{{text}}】 <<TarotCardSun_R>>",
-        "{{var text='審判(正位置)'}}【{{text}}】 <<TarotCardJudgement_U>>",
-        "{{var variant='neutral'}}{{var text='審判(逆位置)'}}【{{text}}】 <<TarotCardJudgement_R>>",
-        "{{var text='世界(正位置)'}}【{{text}}】 <<TarotCardWorld_U>>",
-        "{{var variant='neutral'}}{{var text='世界(逆位置)'}}【{{text}}】 <<TarotCardWorld_R>>"
+        "{{text='愚者(正位置)'}}【[[text]]】 <<TarotCardFool_U>>",
+        "{{variant='neutral'}}{{text='愚者(逆位置)'}}【[[text]]】 <<TarotCardFool_R>>",
+        "{{text='魔術師(正位置)'}}【[[text]]】 <<TarotCardMagician_U>>",
+        "{{variant='neutral'}}{{text='魔術師(逆位置)'}}【[[text]]】 <<TarotCardMagician_R>>",
+        "{{text='女教皇(正位置)'}}【[[text]]】 <<TarotCardHighPriestess_U>>",
+        "{{variant='neutral'}}{{text='女教皇(逆位置)'}}【[[text]]】 <<TarotCardHighPriestess_R>>",
+        "{{text='女帝(正位置)'}}【[[text]]】 <<TarotCardEmpress_U>>",
+        "{{variant='neutral'}}{{text='女帝(逆位置)'}}【[[text]]】 <<TarotCardEmpress_R>>",
+        "{{text='皇帝(正位置)'}}【[[text]]】 <<TarotCardEmperor_U>>",
+        "{{variant='neutral'}}{{text='皇帝(逆位置)'}}【[[text]]】 <<TarotCardEmperor_R>>",
+        "{{text='法王(正位置)'}}【[[text]]】 <<TarotCardHierophant_U>>",
+        "{{variant='neutral'}}{{text='法王(逆位置)'}}【[[text]]】 <<TarotCardHierophant_R>>",
+        "{{text='恋人(正位置)'}}【[[text]]】 <<TarotCardLovers_U>>",
+        "{{variant='neutral'}}{{text='恋人(逆位置)'}}【[[text]]】 <<TarotCardLovers_R>>",
+        "{{text='戦車(正位置)'}}【[[text]]】 <<TarotCardChariot_U>>",
+        "{{variant='neutral'}}{{text='戦車(逆位置)'}}【[[text]]】 <<TarotCardChariot_R>>",
+        "{{text='力(正位置)'}}【[[text]]】 <<TarotCardStrength_U>>",
+        "{{variant='neutral'}}{{text='力(逆位置)'}}【[[text]]】 <<TarotCardStrength_R>>",
+        "{{text='隠者(正位置)'}}【[[text]]】 <<TarotCardHermit_U>>",
+        "{{variant='neutral'}}{{text='隠者(逆位置)'}}【[[text]]】 <<TarotCardHermit_R>>",
+        "{{text='運命の輪(正位置)'}}【[[text]]】 <<TarotCardWheelOfFortune_U>>",
+        "{{variant='neutral'}}{{text='運命の輪(逆位置)'}}【[[text]]】 <<TarotCardWheelOfFortune_R>>",
+        "{{text='正義(正位置)'}}【[[text]]】 <<TarotCardJustice_U>>",
+        "{{variant='neutral'}}{{text='正義(逆位置)'}}【[[text]]】 <<TarotCardJustice_R>>",
+        "{{text='吊るされた男(正位置)'}}【[[text]]】 <<TarotCardHangedMan_U>>",
+        "{{variant='neutral'}}{{text='吊るされた男(逆位置)'}}【[[text]]】 <<TarotCardHangedMan_R>>",
+        "{{text='死神(正位置)'}}【[[text]]】 <<TarotCardDeath_U>>",
+        "{{variant='neutral'}}{{text='死神(逆位置)'}}【[[text]]】 <<TarotCardDeath_R>>",
+        "{{text='節制(正位置)'}}【[[text]]】 <<TarotCardTemperance_U>>",
+        "{{variant='neutral'}}{{text='節制(逆位置)'}}【[[text]]】 <<TarotCardTemperance_R>>",
+        "{{text='悪魔(正位置)'}}【[[text]]】 <<TarotCardDevil_U>>",
+        "{{variant='neutral'}}{{text='悪魔(逆位置)'}}【[[text]]】 <<TarotCardDevil_R>>",
+        "{{text='塔(正位置)'}}【[[text]]】 <<TarotCardTower_U>>",
+        "{{variant='neutral'}}{{text='塔(逆位置)'}}【[[text]]】 <<TarotCardTower_R>>",
+        "{{text='星(正位置)'}}【[[text]]】 <<TarotCardStar_U>>",
+        "{{variant='neutral'}}{{text='星(逆位置)'}}【[[text]]】 <<TarotCardStar_R>>",
+        "{{text='月(正位置)'}}【[[text]]】 <<TarotCardMoon_U>>",
+        "{{variant='neutral'}}{{text='月(逆位置)'}}【[[text]]】 <<TarotCardMoon_R>>",
+        "{{text='太陽(正位置)'}}【[[text]]】 <<TarotCardSun_U>>",
+        "{{variant='neutral'}}{{text='太陽(逆位置)'}}【[[text]]】 <<TarotCardSun_R>>",
+        "{{text='審判(正位置)'}}【[[text]]】 <<TarotCardJudgement_U>>",
+        "{{variant='neutral'}}{{text='審判(逆位置)'}}【[[text]]】 <<TarotCardJudgement_R>>",
+        "{{text='世界(正位置)'}}【[[text]]】 <<TarotCardWorld_U>>",
+        "{{variant='neutral'}}{{text='世界(逆位置)'}}【[[text]]】 <<TarotCardWorld_R>>"
       ]
     },
     "TarotCardFool_U": {
@@ -5112,10 +4727,7 @@
       "order": 20,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
@@ -5134,10 +4746,7 @@
       "order": 21,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
@@ -5156,10 +4765,7 @@
       "order": 22,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
@@ -5178,10 +4784,7 @@
       "order": 23,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
@@ -5200,10 +4803,7 @@
       "order": 24,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
@@ -5222,10 +4822,7 @@
       "order": 25,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
@@ -5244,10 +4841,7 @@
       "order": 26,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
@@ -5266,10 +4860,7 @@
       "order": 27,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
@@ -5288,10 +4879,7 @@
       "order": 28,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
@@ -5310,10 +4898,7 @@
       "order": 29,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
@@ -5332,10 +4917,7 @@
       "order": 30,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
@@ -5354,10 +4936,7 @@
       "order": 31,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
@@ -5376,10 +4955,7 @@
       "order": 32,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
@@ -5398,10 +4974,7 @@
       "order": 33,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
@@ -5420,10 +4993,7 @@
       "order": 34,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
@@ -5442,10 +5012,7 @@
       "order": 35,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
@@ -5464,10 +5031,7 @@
       "order": 36,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
@@ -5486,10 +5050,7 @@
       "order": 37,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
@@ -5508,10 +5069,7 @@
       "order": 38,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
@@ -5530,10 +5088,7 @@
       "order": 39,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
@@ -5552,10 +5107,7 @@
       "order": 40,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
@@ -5574,10 +5126,7 @@
       "order": 41,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
@@ -5596,10 +5145,7 @@
       "order": 42,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
@@ -5618,10 +5164,7 @@
       "order": 43,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
@@ -5640,10 +5183,7 @@
       "order": 44,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
@@ -5662,10 +5202,7 @@
       "order": 45,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
@@ -5684,10 +5221,7 @@
       "order": 46,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
@@ -5706,10 +5240,7 @@
       "order": 47,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
@@ -5728,10 +5259,7 @@
       "order": 48,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
@@ -5750,10 +5278,7 @@
       "order": 49,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "バランスを崩しやすい時期。無理な行動は運を乱します。",
@@ -5772,10 +5297,7 @@
       "order": 50,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
@@ -5794,10 +5316,7 @@
       "order": 51,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "束縛から解放される兆し。執着を手放せば自由が訪れます。",
@@ -5816,10 +5335,7 @@
       "order": 52,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
@@ -5838,10 +5354,7 @@
       "order": 53,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
@@ -5860,10 +5373,7 @@
       "order": 54,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
@@ -5882,10 +5392,7 @@
       "order": 55,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
@@ -5904,10 +5411,7 @@
       "order": 56,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
@@ -5926,10 +5430,7 @@
       "order": 57,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
@@ -5948,10 +5449,7 @@
       "order": 58,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
@@ -5970,10 +5468,7 @@
       "order": 59,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
@@ -5992,10 +5487,7 @@
       "order": 60,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "過去の努力が報われるとき。新しい扉が開きます。",
@@ -6014,10 +5506,7 @@
       "order": 61,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
@@ -6036,10 +5525,7 @@
       "order": 62,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "正位置"
-      ],
+      "tags": ["タロット", "正位置"],
       "accessLevel": "basic",
       "values": [
         "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
@@ -6058,10 +5544,7 @@
       "order": 63,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "タロット",
-        "逆位置"
-      ],
+      "tags": ["タロット", "逆位置"],
       "accessLevel": "basic",
       "values": [
         "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
@@ -6081,9 +5564,7 @@
       "order": 66,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "負けは次につながるチャンスです!ネバーギブアップ!",
@@ -6102,9 +5583,7 @@
       "order": 67,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
@@ -6122,9 +5601,7 @@
       "order": 68,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
@@ -6143,9 +5620,7 @@
       "order": 69,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
@@ -6163,9 +5638,7 @@
       "order": 70,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
@@ -6184,9 +5657,7 @@
       "order": 71,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
@@ -6204,9 +5675,7 @@
       "order": 72,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
@@ -6225,11 +5694,7 @@
       "order": 73,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "装飾",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "装飾", "吉"],
       "accessLevel": "basic",
       "values": [
         "光彩",
@@ -6324,10 +5789,7 @@
       "order": 74,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "装飾"
-      ],
+      "tags": ["超おみくじ", "装飾"],
       "accessLevel": "basic",
       "values": [
         "魑魅",
@@ -6421,27 +5883,24 @@
       "order": 75,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "占い結果"
-      ],
+      "tags": ["超おみくじ", "占い結果"],
       "accessLevel": "basic",
       "values": [
         {
           "weight": 122,
-          "content": "{{var text='<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB4>>!!!!"
+          "content": "{{text='<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶'}}【[[text]]】、希少度は<<BigBangB4>>!!!!"
         },
         {
           "weight": 138,
-          "content": "{{var text='<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB3>>!!!"
+          "content": "{{text='<<BigBangDecoB>><<BigBangDecoB>><<BigBangDecoB>>凶'}}【[[text]]】、希少度は<<BigBangB3>>!!!"
         },
         {
           "weight": 154,
-          "content": "{{var text='<<BigBangDecoB>><<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB2>>!!"
+          "content": "{{text='<<BigBangDecoB>><<BigBangDecoB>>凶'}}【[[text]]】、希少度は<<BigBangB2>>!!"
         },
         {
           "weight": 215,
-          "content": "{{var text='<<BigBangDecoB>>凶'}}【{{text}}】、希少度は<<BigBangB1>>!"
+          "content": "{{text='<<BigBangDecoB>>凶'}}【[[text]]】、希少度は<<BigBangB1>>!"
         },
         {
           "weight": 46,
@@ -6449,39 +5908,39 @@
         },
         {
           "weight": 245,
-          "content": "{{var text='<<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG1>>!"
+          "content": "{{text='<<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG1>>!"
         },
         {
           "weight": 270,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG2>>!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG2>>!!"
         },
         {
           "weight": 357,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG3>>!!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG3>>!!!"
         },
         {
           "weight": 460,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG4>>!!!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG4>>!!!!"
         },
         {
           "weight": 570,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG5>>!!!!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG5>>!!!!!"
         },
         {
           "weight": 426,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG6>>!!!!!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG6>>!!!!!!"
         },
         {
           "weight": 282,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG7>>!!!!!!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG7>>!!!!!!!"
         },
         {
           "weight": 138,
-          "content": "{{var text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【{{text}}】、希少度は<<BigBangG8>>!!!!!!!!"
+          "content": "{{text='<<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>><<BigBangDecoG>>吉'}}【[[text]]】、希少度は<<BigBangG8>>!!!!!!!!"
         },
         {
           "weight": 5,
-          "content": "{{var text='<<BigBangG9>>吉'}}【{{text}}】、希少度は9999無量大数!!!!!!!!!"
+          "content": "{{text='<<BigBangG9>>吉'}}【[[text]]】、希少度は9999無量大数!!!!!!!!!"
         }
       ]
     },
@@ -6494,10 +5953,7 @@
       "order": 76,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6527,10 +5983,7 @@
       "order": 77,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6560,10 +6013,7 @@
       "order": 78,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6593,10 +6043,7 @@
       "order": 79,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "凶"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6630,20 +6077,16 @@
       "order": 80,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉",
-        "凶"
-      ],
+      "tags": ["超おみくじ", "吉", "凶"],
       "accessLevel": "basic",
       "values": [
-        "{{var text='大吉'}}【{{text}}】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
-        "{{var text='吉'}}【{{text}}】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
-        "{{var text='中吉'}}【{{text}}】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
-        "{{var text='小吉'}}【{{text}}】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
-        "{{var text='末吉'}}【{{text}}】希少度は3.{{rand(10,99)}}",
-        "{{var text='凶'}}【{{text}}】希少度は2.{{rand(10,99)}}",
-        "{{var text='大凶'}}【{{text}}】希少度は1.{{rand(10,99)}}"
+        "{{text='大吉'}}【[[text]]】希少度は{{rand(8,9)}}.{{rand(10,99)}}",
+        "{{text='吉'}}【[[text]]】希少度は{{rand(7,8)}}.{{rand(10,99)}}",
+        "{{text='中吉'}}【[[text]]】希少度は{{rand(5,6)}}.{{rand(10,99)}}",
+        "{{text='小吉'}}【[[text]]】希少度は{{rand(4,5)}}.{{rand(10,99)}}",
+        "{{text='末吉'}}【[[text]]】希少度は3.{{rand(10,99)}}",
+        "{{text='凶'}}【[[text]]】希少度は2.{{rand(10,99)}}",
+        "{{text='大凶'}}【[[text]]】希少度は1.{{rand(10,99)}}"
       ]
     },
     "BigBangG1": {
@@ -6655,10 +6098,7 @@
       "order": 81,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6692,10 +6132,7 @@
       "order": 82,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6729,10 +6166,7 @@
       "order": 83,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6770,10 +6204,7 @@
       "order": 84,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6823,10 +6254,7 @@
       "order": 85,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6888,10 +6316,7 @@
       "order": 86,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -6953,10 +6378,7 @@
       "order": 87,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -7018,10 +6440,7 @@
       "order": 88,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         {
@@ -7083,10 +6502,7 @@
       "order": 89,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": [
-        "超おみくじ",
-        "吉"
-      ],
+      "tags": ["超おみくじ", "吉"],
       "accessLevel": "basic",
       "values": [
         "完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻",
@@ -7111,62 +6527,25 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじBOT",
-        "ショコラ"
-      ],
+      "tags": ["おみくじBOT", "ショコラ"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://pintocuru.booth.pm/",
       "displayName": "ショコラ",
       "image": {
-        "default": [
-          "chocolate/default.webp",
-          "chocolate/face.webp"
-        ],
-        "happy": [
-          "chocolate/happy.webp",
-          "chocolate/face.webp"
-        ],
-        "excited": [
-          "chocolate/excited.webp",
-          "chocolate/face.webp"
-        ],
-        "laughing": [
-          "chocolate/laughing.webp",
-          "chocolate/face.webp"
-        ],
-        "blushing": [
-          "chocolate/blushing.webp",
-          "chocolate/face.webp"
-        ],
-        "surprised": [
-          "chocolate/surprised.webp",
-          "chocolate/face.webp"
-        ],
-        "sad": [
-          "chocolate/sad.webp",
-          "chocolate/face.webp"
-        ],
-        "angry": [
-          "chocolate/angry.webp",
-          "chocolate/face.webp"
-        ],
-        "thinking": [
-          "chocolate/thinking.webp",
-          "chocolate/face.webp"
-        ],
-        "wink": [
-          "chocolate/wink.webp",
-          "chocolate/face.webp"
-        ],
-        "singing": [
-          "chocolate/singing.webp"
-        ],
-        "sleepy": [
-          "chocolate/sleepy.webp"
-        ]
+        "default": ["chocolate/default.webp", "chocolate/face.webp"],
+        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
+        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
+        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
+        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
+        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
+        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
+        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
+        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
+        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
+        "singing": ["chocolate/singing.webp"],
+        "sleepy": ["chocolate/sleepy.webp"]
       },
       "color": {
         "isTheme": false,
@@ -7195,10 +6574,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -7245,10 +6621,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -7287,16 +6660,11 @@
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast"
-    ],
+    "conditions": ["bubble", "toast"],
     "bubble": {
       "showCharacters": {
         "center": [],
-        "slot1": [
-          "chocolate"
-        ],
+        "slot1": ["chocolate"],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -7322,9 +6690,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
+      "targetScriptKeys": ["basicList"],
       "title": "🍉スイカランキング🍉",
       "color": "lofi",
       "limit": 5,
@@ -7352,10 +6718,7 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [
-      "bubble",
-      "toast"
-    ],
+    "components": ["bubble", "toast"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

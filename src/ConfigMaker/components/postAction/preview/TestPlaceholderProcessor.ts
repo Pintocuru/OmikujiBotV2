@@ -23,9 +23,12 @@ export const processTestPlaceholder = (message: string, placeholders: Record<str
     contentPlaceholder.updateResolvedValues(context.getAll())
     const withStatic = contentPlaceholder.processText(resolved)
 
+    // プレースホルダー展開後、もう1回変換する
+    const resolved2 = displayVariable.resolve(withStatic)
+
     // 評価ブロック(変数プレースホルダー)
     const dynamicProcessor = new VariablePlaceholderProcessor(dummyContext)
-    const processed = dynamicProcessor.process(withStatic)
+    const processed = dynamicProcessor.process(resolved2)
 
     return processed.bubble
   } catch {

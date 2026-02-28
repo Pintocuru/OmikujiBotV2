@@ -39,9 +39,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "EidolonGachaDragon"
-              ]
+              "actionSetKeys": ["EidolonGachaDragon"]
             },
             {
               "delaySeconds": 2,
@@ -84,9 +82,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "EidolonGachaDragon"
-              ]
+              "actionSetKeys": ["EidolonGachaDragon"]
             },
             {
               "delaySeconds": 2,
@@ -134,9 +130,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "EidolonGachaDragon"
-              ]
+              "actionSetKeys": ["EidolonGachaDragon"]
             },
             {
               "delaySeconds": 2,
@@ -189,9 +183,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "EidolonGachaDragon"
-              ]
+              "actionSetKeys": ["EidolonGachaDragon"]
             },
             {
               "delaySeconds": 2,
@@ -233,16 +225,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment",
-          "access"
-        ],
+        "conditions": ["comment", "access"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -307,15 +294,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -505,15 +488,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -620,15 +599,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -666,7 +641,7 @@
               "iconKey": "default",
               "sound": "",
               "message": {
-                "bubble": "{{var text='<<RiderLicenseUp>><<RiderLicenseBottom>>'}}<<user>>さんは【{{text}}】",
+                "bubble": "{{text='<<RiderLicenseUp>><<RiderLicenseBottom>>'}}<<user>>さんは【[[text]]】",
                 "isToast": false
               }
             }
@@ -684,15 +659,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -748,15 +719,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "カップ"
-        ]
+        "comment": ["カップ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -795,7 +762,7 @@
               "iconKey": "default",
               "sound": "",
               "message": {
-                "bubble": "{{var flag=true}}",
+                "bubble": "{{flag=true}}",
                 "isToast": false
               }
             }
@@ -813,15 +780,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "おみくじ"
-        ]
+        "comment": ["おみくじ"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -2017,9 +1980,7 @@
       "editorColor": "#4CAF50",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "{{var a = rand(1,9)}}{{var b = rand(1,9)}} {{a}}、{{b}}"
-      ]
+      "values": ["{{a = rand(1,9)}}{{b = rand(1,9)}} {{a}}、{{b}}"]
     },
     "GachaFirstSecond": {
       "id": "GachaFirstSecond",
@@ -2848,9 +2809,7 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "くいしんぼうライセンス"
-      ],
+      "tags": ["くいしんぼうライセンス"],
       "accessLevel": "basic",
       "values": [
         "期待の",
@@ -2983,9 +2942,7 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "くいしんぼうライセンス"
-      ],
+      "tags": ["くいしんぼうライセンス"],
       "accessLevel": "basic",
       "values": [
         "新星",
@@ -3121,62 +3078,25 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://pintocuru.booth.pm/",
       "displayName": "ショコラ",
       "image": {
-        "default": [
-          "chocolate/default.webp",
-          "chocolate/face.webp"
-        ],
-        "happy": [
-          "chocolate/happy.webp",
-          "chocolate/face.webp"
-        ],
-        "excited": [
-          "chocolate/excited.webp",
-          "chocolate/face.webp"
-        ],
-        "laughing": [
-          "chocolate/laughing.webp",
-          "chocolate/face.webp"
-        ],
-        "blushing": [
-          "chocolate/blushing.webp",
-          "chocolate/face.webp"
-        ],
-        "surprised": [
-          "chocolate/surprised.webp",
-          "chocolate/face.webp"
-        ],
-        "sad": [
-          "chocolate/sad.webp",
-          "chocolate/face.webp"
-        ],
-        "angry": [
-          "chocolate/angry.webp",
-          "chocolate/face.webp"
-        ],
-        "thinking": [
-          "chocolate/thinking.webp",
-          "chocolate/face.webp"
-        ],
-        "wink": [
-          "chocolate/wink.webp",
-          "chocolate/face.webp"
-        ],
-        "singing": [
-          "chocolate/singing.webp"
-        ],
-        "sleepy": [
-          "chocolate/sleepy.webp"
-        ]
+        "default": ["chocolate/default.webp", "chocolate/face.webp"],
+        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
+        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
+        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
+        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
+        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
+        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
+        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
+        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
+        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
+        "singing": ["chocolate/singing.webp"],
+        "sleepy": ["chocolate/sleepy.webp"]
       },
       "color": {
         "isTheme": true,
@@ -3211,9 +3131,7 @@
       "author": "Pintocuru",
       "displayName": "カペラテ",
       "image": {
-        "default": [
-          "cafelatte/default.webp"
-        ],
+        "default": ["cafelatte/default.webp"],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3257,11 +3175,7 @@
       "author": "Pintocuru",
       "displayName": "きつね",
       "image": {
-        "default": [
-          "honjoFox/head-1.gif",
-          "honjoFox/body.gif",
-          "honjoFox/tail-1.gif"
-        ],
+        "default": ["honjoFox/head-1.gif", "honjoFox/body.gif", "honjoFox/tail-1.gif"],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3301,10 +3215,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3351,10 +3262,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -3421,13 +3329,7 @@
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": [
-            "chocolate",
-            "cafelatte",
-            "honjoFox",
-            "omiken",
-            "omiken_2"
-          ],
+          "center": ["chocolate", "cafelatte", "honjoFox", "omiken", "omiken_2"],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -3444,9 +3346,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": [
-          "basicList"
-        ],
+        "targetScriptKeys": ["basicList"],
         "title": "🍉スイカランキング🍉",
         "color": "lofi",
         "limit": 5,
@@ -3503,15 +3403,7 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [
-      "bubble",
-      "toast",
-      "flashBanner",
-      "ranking",
-      "winnerGroup",
-      "flightSeat",
-      "counter"
-    ],
+    "components": ["bubble", "toast", "flashBanner", "ranking", "winnerGroup", "flightSeat", "counter"],
     "gameScripts": [
       "BomberSpin",
       "MultiplyBonanza",

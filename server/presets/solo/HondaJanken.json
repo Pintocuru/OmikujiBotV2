@@ -8,10 +8,7 @@
     "generatorVersion": "2.3.4",
     "dataVersion": 2.20030044002,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7383088"
   },
@@ -27,9 +24,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -205,17 +200,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^じゃんけん",
-          "^ジャンケン",
-          "^janken"
-        ]
+        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -234,9 +223,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -326,18 +313,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^グー",
-          "^ぐー",
-          "✊️",
-          "👊"
-        ]
+        "comment": ["^グー", "^ぐー", "✊️", "👊"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -356,9 +336,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -448,17 +426,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^チョキ",
-          "^ちょき",
-          "✌️"
-        ]
+        "comment": ["^チョキ", "^ちょき", "✌️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -477,9 +449,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -569,18 +539,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^パー",
-          "^ぱー",
-          "✋️",
-          "🖐️"
-        ]
+        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -603,9 +566,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -638,9 +599,7 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -673,18 +632,14 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -703,7 +658,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
+            "bubble": "{{text='負け'}}{{symbol='グー'}}{{unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA1>>",
             "isToast": false
           }
         }
@@ -725,18 +680,14 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -755,7 +706,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
+            "bubble": "{{text='負け'}}{{symbol='グー'}}{{unique='false'}}{{variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenA2>>",
             "isToast": false
           }
         }
@@ -777,18 +728,14 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -807,7 +754,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
+            "bubble": "{{text='負け'}}{{symbol='チョキ'}}{{unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB1>>",
             "isToast": false
           }
         }
@@ -829,18 +776,14 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -859,7 +802,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
+            "bubble": "{{text='負け'}}{{symbol='チョキ'}}{{unique='false'}}{{variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenB2>>",
             "isToast": false
           }
         }
@@ -881,18 +824,14 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -911,7 +850,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
+            "bubble": "{{text='負け'}}{{symbol='パー'}}{{unique='false'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC1>>",
             "isToast": false
           }
         }
@@ -933,18 +872,14 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -963,7 +898,7 @@
           "iconKey": "happy",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='負け'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
+            "bubble": "{{text='負け'}}{{symbol='パー'}}{{unique='false'}}{{variant='secondary'}}<<HondaJankenOre>>の勝ち!<<HondaJankenC2>>",
             "isToast": false
           }
         }
@@ -985,18 +920,14 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -1015,7 +946,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='グー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1037,18 +968,14 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -1067,7 +994,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='グー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='グー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1089,18 +1016,14 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -1119,7 +1042,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='チョキ'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1141,18 +1064,14 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -1171,7 +1090,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='チョキ'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='チョキ'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1193,18 +1112,14 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -1223,7 +1138,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='パー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1245,18 +1160,14 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -1275,7 +1186,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='パー'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='パー'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1297,18 +1208,14 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyA"
-          ]
+          "actionSetKeys": ["HondaJankenReadyA"]
         },
         {
           "delaySeconds": 0.4,
@@ -1327,7 +1234,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='I Love You'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='I Love You'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1349,18 +1256,14 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": [
-            "HondaJankenReadyB"
-          ]
+          "actionSetKeys": ["HondaJankenReadyB"]
         },
         {
           "delaySeconds": 0.4,
@@ -1379,7 +1282,7 @@
           "iconKey": "sad",
           "sound": "decision",
           "message": {
-            "bubble": "{{var text='勝ち'}}{{var symbol='I Love You'}}{{var unique='false'}}{{var variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
+            "bubble": "{{text='勝ち'}}{{symbol='I Love You'}}{{unique='false'}}{{variant='warning'}}<<HondaJankenOre>>の負け!<<HondaJankenV>>",
             "isToast": false
           }
         }
@@ -1403,13 +1306,9 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
-      "values": [
-        "ケイスケ ホンダ"
-      ]
+      "values": ["ケイスケ ホンダ"]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -1421,13 +1320,9 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
-      "values": [
-        "俺"
-      ]
+      "values": ["俺"]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -1439,9 +1334,7 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "負けは次につながるチャンスです!ネバーギブアップ!",
@@ -1460,9 +1353,7 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
@@ -1480,9 +1371,7 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
@@ -1501,9 +1390,7 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
@@ -1521,9 +1408,7 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
@@ -1542,9 +1427,7 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
@@ -1562,9 +1445,7 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "じゃんけん"
-      ],
+      "tags": ["じゃんけん"],
       "accessLevel": "basic",
       "values": [
         "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
@@ -1585,31 +1466,20 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": [
-          "HondaJanken/default.webp"
-        ],
-        "happy": [
-          "HondaJanken/cora.webp",
-          "HondaJanken/default.webp"
-        ],
+        "default": ["HondaJanken/default.webp"],
+        "happy": ["HondaJanken/cora.webp", "HondaJanken/default.webp"],
         "excited": [],
         "laughing": [],
         "blushing": [],
         "surprised": [],
-        "sad": [
-          "HondaJanken/coraWin.webp",
-          "HondaJanken/default.webp"
-        ],
+        "sad": ["HondaJanken/coraWin.webp", "HondaJanken/default.webp"],
         "angry": [],
         "thinking": [],
         "wink": [],
@@ -1643,31 +1513,20 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": [
-          "HondaJanken/default.webp"
-        ],
-        "happy": [
-          "HondaJanken/cora.webp",
-          "HondaJanken/default.webp"
-        ],
+        "default": ["HondaJanken/default.webp"],
+        "happy": ["HondaJanken/cora.webp", "HondaJanken/default.webp"],
         "excited": [],
         "laughing": [],
         "blushing": [],
         "surprised": [],
-        "sad": [
-          "HondaJanken/coraWin.webp",
-          "HondaJanken/default.webp"
-        ],
+        "sad": ["HondaJanken/coraWin.webp", "HondaJanken/default.webp"],
         "angry": [],
         "thinking": [],
         "wink": [],
@@ -1730,10 +1589,7 @@
       "bubble": {
         "showCharacters": {
           "center": [],
-          "slot1": [
-            "omiken",
-            "omiken_2"
-          ],
+          "slot1": ["omiken", "omiken_2"],
           "slot2": [],
           "slot3": [],
           "slot4": []
@@ -1749,9 +1605,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": [
-          "basicList"
-        ],
+        "targetScriptKeys": ["basicList"],
         "title": "👊 じゃんけん 🖐️",
         "color": "garden",
         "limit": 5,
@@ -1780,11 +1634,7 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking",
-      "bubble"
-    ],
+    "components": ["toast", "ranking", "bubble"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

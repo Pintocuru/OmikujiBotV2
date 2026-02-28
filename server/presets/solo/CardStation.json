@@ -8,10 +8,7 @@
     "generatorVersion": "2.0.4",
     "dataVersion": 2.04,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "じゃんけん"
-    ],
+    "tags": ["おみくじBOT", "じゃんけん"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7412886"
   },
@@ -27,9 +24,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
-      "tags": [
-        "カード駅"
-      ],
+      "tags": ["カード駅"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -46,9 +41,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -62,7 +55,7 @@
               "iconKey": "default",
               "sound": "decision",
               "message": {
-                "bubble": "{{var symbol=<<CardStation>>}}\n{{var text=<<CardTypeNormal>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!【{{text}}!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
+                "bubble": "{{symbol=<<CardStation>>}}\n{{text=<<CardTypeNormal>>}}\n<<CardRole>>![[symbol]]駅のカードですぞ!【[[text]]!】<<CardTypeNormalAdd>><<CardTypeNormalAdd>>",
                 "isToast": false
               }
             }
@@ -91,9 +84,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -107,7 +98,7 @@
               "iconKey": "default",
               "sound": "twinkle",
               "message": {
-                "bubble": "{{var symbol=<<CardStation>>}}\n{{var text=<<CardTypeNice>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!【{{text}}!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
+                "bubble": "{{symbol=<<CardStation>>}}\n{{text=<<CardTypeNice>>}}\n<<CardRole>>![[symbol]]駅のカードですぞ!【[[text]]!】<<CardTypeNiceAdd>><<CardTypeNiceAdd>>ナイスですね～",
                 "isToast": false
               }
             }
@@ -136,9 +127,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -152,7 +141,7 @@
               "iconKey": "default",
               "sound": "baseball",
               "message": {
-                "bubble": "{{var symbol=<<CardStation>>}}\n{{var text=<<CardTypeSpecial>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!【{{text}}!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
+                "bubble": "{{symbol=<<CardStation>>}}\n{{text=<<CardTypeSpecial>>}}\n<<CardRole>>![[symbol]]駅のカードですぞ!【[[text]]!】<<CardTypeSpecialAdd>><<CardTypeSpecialAdd>>スペシャルですね～",
                 "isToast": false
               }
             }
@@ -181,9 +170,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -197,7 +184,7 @@
               "iconKey": "default",
               "sound": "fail",
               "message": {
-                "bubble": "{{var symbol=ボンビラス}}\n{{var text=<<CardTypeDevil>>}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!\n【{{text}}!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
+                "bubble": "{{symbol=ボンビラス}}\n{{text=<<CardTypeDevil>>}}\n<<CardRole>>![[symbol]]駅のカードですぞ!\n【[[text]]!】【<<CardTypeDevil>>!】【<<CardTypeDevil>>!】",
                 "isToast": false
               }
             }
@@ -226,9 +213,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -242,7 +227,7 @@
               "iconKey": "default",
               "sound": "negative",
               "message": {
-                "bubble": "{{var symbol=ボンビラス}}\n{{var text=<<CardStation>>に行け!カード}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!\n【{{text}}!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
+                "bubble": "{{symbol=ボンビラス}}\n{{text=<<CardStation>>に行け!カード}}\n<<CardRole>>![[symbol]]駅のカードですぞ!\n【[[text]]!】【<<CardStation>>に行け!カード!】【<<CardStation>>に行け!カード!】",
                 "isToast": false
               }
             }
@@ -271,9 +256,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "StationCardFirst"
-              ]
+              "actionSetKeys": ["StationCardFirst"]
             },
             {
               "delaySeconds": 1.5,
@@ -287,7 +270,7 @@
               "iconKey": "default",
               "sound": "explosion",
               "message": {
-                "bubble": "{{var text=<<'プロ野球','Jリーグ','仮面ライダー','ユーチューバー','よしもと芸人','ラグビー日本代表'>>チップスカード}}\n{{var symbol=ボンビュラス}}\n<<CardRole>>!{{symbol}}駅のカードですぞ!\n【{{text}}!】いらんわ!こんなカード",
+                "bubble": "{{text=<<'プロ野球','Jリーグ','仮面ライダー','ユーチューバー','よしもと芸人','ラグビー日本代表'>>チップスカード}}\n{{symbol=ボンビュラス}}\n<<CardRole>>![[symbol]]駅のカードですぞ!\n【[[text]]!】いらんわ!こんなカード",
                 "isToast": false
               }
             }
@@ -305,18 +288,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^カード",
-          "^かーど",
-          "^card",
-          "^station"
-        ]
+        "comment": ["^カード", "^かーど", "^card", "^station"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1029,10 +1005,7 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "【<<CardTypeNice>>!】",
-        "<<null>>"
-      ]
+      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -1354,13 +1327,13 @@
       "values": [
         {
           "weight": 12,
-          "content": "{{var name = <<user>>社長}}{{name}}"
+          "content": "{{name = <<user>>社長}}{{name}}"
         },
         {
           "weight": 3,
-          "content": "{{var name = <<user>><<CardRoleUncommon>>}}{{name}}"
+          "content": "{{name = <<user>><<CardRoleUncommon>>}}{{name}}"
         },
-        "{{var name = <<user>><<CardRoleRare>>}}{{name}}"
+        "{{name = <<user>><<CardRoleRare>>}}{{name}}"
       ]
     },
     "CardRoleUncommon": {
@@ -1521,12 +1494,7 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": [
-        "<<CardStationDomestic>>",
-        "<<CardStationEast>>",
-        "<<CardStationWest>>",
-        "<<CardStationAbroad>>"
-      ]
+      "values": ["<<CardStationDomestic>>", "<<CardStationEast>>", "<<CardStationWest>>", "<<CardStationAbroad>>"]
     },
     "CardStationDomestic": {
       "id": "CardStationDomestic",
@@ -3290,19 +3258,14 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": [
-          "CardStation/CardStation_1.webp"
-        ],
+        "default": ["CardStation/CardStation_1.webp"],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3342,19 +3305,14 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": [
-          "CardStation/CardStation_2.webp"
-        ],
+        "default": ["CardStation/CardStation_2.webp"],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3394,19 +3352,14 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": [
-          "CardStation/CardStation_3.webp"
-        ],
+        "default": ["CardStation/CardStation_3.webp"],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3438,19 +3391,11 @@
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["bubble", "toast", "ranking"],
     "bubble": {
       "showCharacters": {
         "center": [],
-        "slot1": [
-          "card01",
-          "card02",
-          "card03"
-        ],
+        "slot1": ["card01", "card02", "card03"],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -3476,9 +3421,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
+      "targetScriptKeys": ["basicList"],
       "title": "🚄カード履歴🎴",
       "color": "garden",
       "limit": 5,
@@ -3505,11 +3448,7 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
+    "components": ["bubble", "toast", "ranking"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

@@ -8,13 +8,7 @@
     "generatorVersion": "2.1.0-alpha1",
     "dataVersion": 2.03001,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "占い",
-      "Fortune",
-      "ルノルマンカード",
-      "Lenormand"
-    ],
+    "tags": ["おみくじBOT", "占い", "Fortune", "ルノルマンカード", "Lenormand"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7915987"
   },
@@ -108,9 +102,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -126,9 +118,7 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
@@ -212,42 +202,42 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "{{var symbol='🏇'}}{{var text='騎士'}} 【{{symbol}}{{text}}】<<LenormandOracleRider>>",
-        "{{var symbol='🍀'}}{{var text='クローバー'}} 【{{symbol}}{{text}}】<<LenormandOracleClover>>",
-        "{{var symbol='🚢'}}{{var text='船'}} 【{{symbol}}{{text}}】<<LenormandOracleShip>>",
-        "{{var symbol='🏠'}}{{var text='家'}} 【{{symbol}}{{text}}】<<LenormandOracleHouse>>",
-        "{{var symbol='🌳'}}{{var text='木'}} 【{{symbol}}{{text}}】<<LenormandOracleTree>>",
-        "{{var symbol='☁️'}}{{var text='雲'}} 【{{symbol}}{{text}}】<<LenormandOracleClouds>>",
-        "{{var symbol='🐍'}}{{var text='蛇'}} 【{{symbol}}{{text}}】<<LenormandOracleSnake>>",
-        "{{var symbol='⚰'}}{{var text='棺'}} 【{{symbol}}{{text}}】<<LenormandOracleCoffin>>",
-        "{{var symbol='💐'}}{{var text='花束'}} 【{{symbol}}{{text}}】<<LenormandOracleBouquet>>",
-        "{{var symbol='🔪'}}{{var text='鎌'}} 【{{symbol}}{{text}}】<<LenormandOracleScythe>>",
-        "{{var symbol='🏏'}}{{var text='鞭'}} 【{{symbol}}{{text}}】<<LenormandOracleWhip>>",
-        "{{var symbol='🐦'}}{{var text='鳥'}} 【{{symbol}}{{text}}】<<LenormandOracleBirds>>",
-        "{{var symbol='👶'}}{{var text='子供'}} 【{{symbol}}{{text}}】<<LenormandOracleChild>>",
-        "{{var symbol='🦊'}}{{var text='狐'}} 【{{symbol}}{{text}}】<<LenormandOracleFox>>",
-        "{{var symbol='🐻'}}{{var text='熊'}} 【{{symbol}}{{text}}】<<LenormandOracleBear>>",
-        "{{var symbol='⭐'}}{{var text='星'}} 【{{symbol}}{{text}}】<<LenormandOracleStars>>",
-        "{{var symbol='🕊'}}{{var text='コウノトリ'}} 【{{symbol}}{{text}}】<<LenormandOracleStork>>",
-        "{{var symbol='🐕'}}{{var text='犬'}} 【{{symbol}}{{text}}】<<LenormandOracleDog>>",
-        "{{var symbol='🗼'}}{{var text='塔'}} 【{{symbol}}{{text}}】<<LenormandOracleTower>>",
-        "{{var symbol='🌸'}}{{var text='庭園'}} 【{{symbol}}{{text}}】<<LenormandOracleGarden>>",
-        "{{var symbol='🗻'}}{{var text='山'}} 【{{symbol}}{{text}}】<<LenormandOracleMountain>>",
-        "{{var symbol='🛣'}}{{var text='道'}} 【{{symbol}}{{text}}】<<LenormandOracleCrossroads>>",
-        "{{var symbol='🐭'}}{{var text='ネズミ'}} 【{{symbol}}{{text}}】<<LenormandOracleMice>>",
-        "{{var symbol='❤️'}}{{var text='心臓'}} 【{{symbol}}{{text}}】<<LenormandOracleHeart>>",
-        "{{var symbol='💍'}}{{var text='指輪'}} 【{{symbol}}{{text}}】<<LenormandOracleRing>>",
-        "{{var symbol='📖'}}{{var text='本'}} 【{{symbol}}{{text}}】<<LenormandOracleBook>>",
-        "{{var symbol='💌'}}{{var text='手紙'}} 【{{symbol}}{{text}}】<<LenormandOracleLetter>>",
-        "{{var symbol='👨'}}{{var text='男性'}} 【{{symbol}}{{text}}】<<LenormandOracleMan>>",
-        "{{var symbol='👩'}}{{var text='女性'}} 【{{symbol}}{{text}}】<<LenormandOracleWoman>>",
-        "{{var symbol='🌷'}}{{var text='百合'}} 【{{symbol}}{{text}}】<<LenormandOracleLily>>",
-        "{{var symbol='☀️'}}{{var text='太陽'}} 【{{symbol}}{{text}}】<<LenormandOracleSun>>",
-        "{{var symbol='🌙'}}{{var text='月'}} 【{{symbol}}{{text}}】<<LenormandOracleMoon>>",
-        "{{var symbol='🔑'}}{{var text='鍵'}} 【{{symbol}}{{text}}】<<LenormandOracleKey>>",
-        "{{var symbol='🐟'}}{{var text='魚'}} 【{{symbol}}{{text}}】<<LenormandOracleFish>>",
-        "{{var symbol='⚓'}}{{var text='錨'}} 【{{symbol}}{{text}}】<<LenormandOracleAnchor>>",
-        "{{var symbol='✝'}}{{var text='十字架'}} 【{{symbol}}{{text}}】<<LenormandOracleCross>>"
+        "{{symbol='🏇'}}{{text='騎士'}} 【[[symbol]][[text]]】<<LenormandOracleRider>>",
+        "{{symbol='🍀'}}{{text='クローバー'}} 【[[symbol]][[text]]】<<LenormandOracleClover>>",
+        "{{symbol='🚢'}}{{text='船'}} 【[[symbol]][[text]]】<<LenormandOracleShip>>",
+        "{{symbol='🏠'}}{{text='家'}} 【[[symbol]][[text]]】<<LenormandOracleHouse>>",
+        "{{symbol='🌳'}}{{text='木'}} 【[[symbol]][[text]]】<<LenormandOracleTree>>",
+        "{{symbol='☁️'}}{{text='雲'}} 【[[symbol]][[text]]】<<LenormandOracleClouds>>",
+        "{{symbol='🐍'}}{{text='蛇'}} 【[[symbol]][[text]]】<<LenormandOracleSnake>>",
+        "{{symbol='⚰'}}{{text='棺'}} 【[[symbol]][[text]]】<<LenormandOracleCoffin>>",
+        "{{symbol='💐'}}{{text='花束'}} 【[[symbol]][[text]]】<<LenormandOracleBouquet>>",
+        "{{symbol='🔪'}}{{text='鎌'}} 【[[symbol]][[text]]】<<LenormandOracleScythe>>",
+        "{{symbol='🏏'}}{{text='鞭'}} 【[[symbol]][[text]]】<<LenormandOracleWhip>>",
+        "{{symbol='🐦'}}{{text='鳥'}} 【[[symbol]][[text]]】<<LenormandOracleBirds>>",
+        "{{symbol='👶'}}{{text='子供'}} 【[[symbol]][[text]]】<<LenormandOracleChild>>",
+        "{{symbol='🦊'}}{{text='狐'}} 【[[symbol]][[text]]】<<LenormandOracleFox>>",
+        "{{symbol='🐻'}}{{text='熊'}} 【[[symbol]][[text]]】<<LenormandOracleBear>>",
+        "{{symbol='⭐'}}{{text='星'}} 【[[symbol]][[text]]】<<LenormandOracleStars>>",
+        "{{symbol='🕊'}}{{text='コウノトリ'}} 【[[symbol]][[text]]】<<LenormandOracleStork>>",
+        "{{symbol='🐕'}}{{text='犬'}} 【[[symbol]][[text]]】<<LenormandOracleDog>>",
+        "{{symbol='🗼'}}{{text='塔'}} 【[[symbol]][[text]]】<<LenormandOracleTower>>",
+        "{{symbol='🌸'}}{{text='庭園'}} 【[[symbol]][[text]]】<<LenormandOracleGarden>>",
+        "{{symbol='🗻'}}{{text='山'}} 【[[symbol]][[text]]】<<LenormandOracleMountain>>",
+        "{{symbol='🛣'}}{{text='道'}} 【[[symbol]][[text]]】<<LenormandOracleCrossroads>>",
+        "{{symbol='🐭'}}{{text='ネズミ'}} 【[[symbol]][[text]]】<<LenormandOracleMice>>",
+        "{{symbol='❤️'}}{{text='心臓'}} 【[[symbol]][[text]]】<<LenormandOracleHeart>>",
+        "{{symbol='💍'}}{{text='指輪'}} 【[[symbol]][[text]]】<<LenormandOracleRing>>",
+        "{{symbol='📖'}}{{text='本'}} 【[[symbol]][[text]]】<<LenormandOracleBook>>",
+        "{{symbol='💌'}}{{text='手紙'}} 【[[symbol]][[text]]】<<LenormandOracleLetter>>",
+        "{{symbol='👨'}}{{text='男性'}} 【[[symbol]][[text]]】<<LenormandOracleMan>>",
+        "{{symbol='👩'}}{{text='女性'}} 【[[symbol]][[text]]】<<LenormandOracleWoman>>",
+        "{{symbol='🌷'}}{{text='百合'}} 【[[symbol]][[text]]】<<LenormandOracleLily>>",
+        "{{symbol='☀️'}}{{text='太陽'}} 【[[symbol]][[text]]】<<LenormandOracleSun>>",
+        "{{symbol='🌙'}}{{text='月'}} 【[[symbol]][[text]]】<<LenormandOracleMoon>>",
+        "{{symbol='🔑'}}{{text='鍵'}} 【[[symbol]][[text]]】<<LenormandOracleKey>>",
+        "{{symbol='🐟'}}{{text='魚'}} 【[[symbol]][[text]]】<<LenormandOracleFish>>",
+        "{{symbol='⚓'}}{{text='錨'}} 【[[symbol]][[text]]】<<LenormandOracleAnchor>>",
+        "{{symbol='✝'}}{{text='十字架'}} 【[[symbol]][[text]]】<<LenormandOracleCross>>"
       ]
     },
     "LenormandOracleRider": {
@@ -1090,10 +1080,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "おみくじBOT",
-        "シンプル"
-      ],
+      "tags": ["おみくじBOT", "シンプル"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1132,16 +1119,10 @@
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["bubble", "toast", "ranking"],
     "bubble": {
       "showCharacters": {
-        "center": [
-          "omiken"
-        ],
+        "center": ["omiken"],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -1168,9 +1149,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
+      "targetScriptKeys": ["basicList"],
       "title": "🔮ルノルマンカード 占い履歴🔮",
       "color": "dim",
       "limit": 5,
@@ -1197,11 +1176,7 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking",
-      "bubble"
-    ],
+    "components": ["toast", "ranking", "bubble"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

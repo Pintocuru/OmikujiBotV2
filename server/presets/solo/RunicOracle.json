@@ -8,14 +8,7 @@
     "generatorVersion": "2.1.0-alpha1",
     "dataVersion": 2.03001,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "おみくじBOT",
-      "占い",
-      "Fortune",
-      "ルーン",
-      "rune",
-      "runic"
-    ],
+    "tags": ["おみくじBOT", "占い", "Fortune", "ルーン", "rune", "runic"],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7919298"
   },
@@ -48,9 +41,7 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": [
-                "RunicOracleFirst"
-              ]
+              "actionSetKeys": ["RunicOracleFirst"]
             },
             {
               "delaySeconds": 3.5,
@@ -106,9 +97,7 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": [
-              "count"
-            ],
+            "conditions": ["count"],
             "userName": [],
             "access": [],
             "gift": [],
@@ -124,24 +113,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^ルーン",
-          "^るーん",
-          "^rune",
-          "^runic",
-          "^stone",
-          "^うらな",
-          "^占",
-          "^石",
-          "^オラクル",
-          "^oracle"
-        ]
+        "comment": ["^ルーン", "^るーん", "^rune", "^runic", "^stone", "^うらな", "^占", "^石", "^オラクル", "^oracle"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -209,31 +185,31 @@
       "tags": [],
       "accessLevel": "basic",
       "values": [
-        "{{var text='フェオ'}}{{var symbol='ᚠ'}}【{{symbol}}{{text}}】<<RunicOracleFehu>>",
-        "{{var text='ウルズ'}}{{var symbol='ᚢ'}}【{{symbol}}{{text}}】<<RunicOracleUruz>>",
-        "{{var text='ソーン'}}{{var symbol='ᚦ'}}【{{symbol}}{{text}}】<<RunicOracleThurisaz>>",
-        "{{var text='アンスール'}}{{var symbol='ᚨ'}}【{{symbol}}{{text}}】<<RunicOracleAnsuz>>",
-        "{{var text='ライドー'}}{{var symbol='ᚱ'}}【{{symbol}}{{text}}】<<RunicOracleRaidho>>",
-        "{{var text='ケナズ'}}{{var symbol='ᚲ'}}【{{symbol}}{{text}}】<<RunicOracleKenaz>>",
-        "{{var text='ゲボ'}}{{var symbol='ᚷ'}}【{{symbol}}{{text}}】<<RunicOracleGebo>>",
-        "{{var text='ヴンヨ'}}{{var symbol='ᚹ'}}【{{symbol}}{{text}}】<<RunicOracleWunjo>>",
-        "{{var text='ハガル'}}{{var symbol='ᚺ'}}【{{symbol}}{{text}}】<<RunicOracleHagalaz>>",
-        "{{var text='ナウシズ'}}{{var symbol='ᚾ'}}【{{symbol}}{{text}}】<<RunicOracleNauthiz>>",
-        "{{var text='イサ'}}{{var symbol='ᛁ'}}【{{symbol}}{{text}}】<<RunicOracleIsa>>",
-        "{{var text='イェラ'}}{{var symbol='ᛃ'}}【{{symbol}}{{text}}】<<RunicOracleJera>>",
-        "{{var text='エイワズ'}}{{var symbol='ᛇ'}}【{{symbol}}{{text}}】<<RunicOracleEihwaz>>",
-        "{{var text='ペルソ'}}{{var symbol='ᛈ'}}【{{symbol}}{{text}}】<<RunicOraclePerthro>>",
-        "{{var text='アルギズ'}}{{var symbol='ᛉ'}}【{{symbol}}{{text}}】<<RunicOracleAlgiz>>",
-        "{{var text='ソウィロ'}}{{var symbol='ᛊ'}}【{{symbol}}{{text}}】<<RunicOracleSowilo>>",
-        "{{var text='ティワズ'}}{{var symbol='ᛏ'}}【{{symbol}}{{text}}】<<RunicOracleTiwaz>>",
-        "{{var text='ベルカナ'}}{{var symbol='ᛒ'}}【{{symbol}}{{text}}】<<RunicOracleBerkana>>",
-        "{{var text='エワズ'}}{{var symbol='ᛖ'}}【{{symbol}}{{text}}】<<RunicOracleEhwaz>>",
-        "{{var text='マンナズ'}}{{var symbol='ᛗ'}}【{{symbol}}{{text}}】<<RunicOracleMannaz>>",
-        "{{var text='ラグズ'}}{{var symbol='ᛚ'}}【{{symbol}}{{text}}】<<RunicOracleLaguz>>",
-        "{{var text='イングズ'}}{{var symbol='ᛜ'}}【{{symbol}}{{text}}】<<RunicOracleIngwaz>>",
-        "{{var text='ダガズ'}}{{var symbol='ᛞ'}}【{{symbol}}{{text}}】<<RunicOracleDagaz>>",
-        "{{var text='オーサラ'}}{{var symbol='ᛟ'}}【{{symbol}}{{text}}】<<RunicOracleOthala>>",
-        "{{var text='空白のルーン'}}{{var symbol=''}}【{{symbol}}{{text}}】<<RunicOracleWyrd>>"
+        "{{text='フェオ'}}{{symbol='ᚠ'}}【[[symbol]][[text]]】<<RunicOracleFehu>>",
+        "{{text='ウルズ'}}{{symbol='ᚢ'}}【[[symbol]][[text]]】<<RunicOracleUruz>>",
+        "{{text='ソーン'}}{{symbol='ᚦ'}}【[[symbol]][[text]]】<<RunicOracleThurisaz>>",
+        "{{text='アンスール'}}{{symbol='ᚨ'}}【[[symbol]][[text]]】<<RunicOracleAnsuz>>",
+        "{{text='ライドー'}}{{symbol='ᚱ'}}【[[symbol]][[text]]】<<RunicOracleRaidho>>",
+        "{{text='ケナズ'}}{{symbol='ᚲ'}}【[[symbol]][[text]]】<<RunicOracleKenaz>>",
+        "{{text='ゲボ'}}{{symbol='ᚷ'}}【[[symbol]][[text]]】<<RunicOracleGebo>>",
+        "{{text='ヴンヨ'}}{{symbol='ᚹ'}}【[[symbol]][[text]]】<<RunicOracleWunjo>>",
+        "{{text='ハガル'}}{{symbol='ᚺ'}}【[[symbol]][[text]]】<<RunicOracleHagalaz>>",
+        "{{text='ナウシズ'}}{{symbol='ᚾ'}}【[[symbol]][[text]]】<<RunicOracleNauthiz>>",
+        "{{text='イサ'}}{{symbol='ᛁ'}}【[[symbol]][[text]]】<<RunicOracleIsa>>",
+        "{{text='イェラ'}}{{symbol='ᛃ'}}【[[symbol]][[text]]】<<RunicOracleJera>>",
+        "{{text='エイワズ'}}{{symbol='ᛇ'}}【[[symbol]][[text]]】<<RunicOracleEihwaz>>",
+        "{{text='ペルソ'}}{{symbol='ᛈ'}}【[[symbol]][[text]]】<<RunicOraclePerthro>>",
+        "{{text='アルギズ'}}{{symbol='ᛉ'}}【[[symbol]][[text]]】<<RunicOracleAlgiz>>",
+        "{{text='ソウィロ'}}{{symbol='ᛊ'}}【[[symbol]][[text]]】<<RunicOracleSowilo>>",
+        "{{text='ティワズ'}}{{symbol='ᛏ'}}【[[symbol]][[text]]】<<RunicOracleTiwaz>>",
+        "{{text='ベルカナ'}}{{symbol='ᛒ'}}【[[symbol]][[text]]】<<RunicOracleBerkana>>",
+        "{{text='エワズ'}}{{symbol='ᛖ'}}【[[symbol]][[text]]】<<RunicOracleEhwaz>>",
+        "{{text='マンナズ'}}{{symbol='ᛗ'}}【[[symbol]][[text]]】<<RunicOracleMannaz>>",
+        "{{text='ラグズ'}}{{symbol='ᛚ'}}【[[symbol]][[text]]】<<RunicOracleLaguz>>",
+        "{{text='イングズ'}}{{symbol='ᛜ'}}【[[symbol]][[text]]】<<RunicOracleIngwaz>>",
+        "{{text='ダガズ'}}{{symbol='ᛞ'}}【[[symbol]][[text]]】<<RunicOracleDagaz>>",
+        "{{text='オーサラ'}}{{symbol='ᛟ'}}【[[symbol]][[text]]】<<RunicOracleOthala>>",
+        "{{text='空白のルーン'}}{{symbol=''}}【[[symbol]][[text]]】<<RunicOracleWyrd>>"
       ]
     },
     "RunicOracleFehu": {
@@ -1022,10 +998,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": [
-        "Yukkuri",
-        "Reimu"
-      ],
+      "tags": ["Yukkuri", "Reimu"],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1064,16 +1037,10 @@
     }
   },
   "components": {
-    "conditions": [
-      "bubble",
-      "toast",
-      "ranking"
-    ],
+    "conditions": ["bubble", "toast", "ranking"],
     "bubble": {
       "showCharacters": {
-        "center": [
-          "omiken"
-        ],
+        "center": ["omiken"],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -1100,9 +1067,7 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": [
-        "basicList"
-      ],
+      "targetScriptKeys": ["basicList"],
       "title": "🌙ルーン占い 履歴🔯",
       "color": "lemonade",
       "limit": 5,
@@ -1129,11 +1094,7 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": [
-      "toast",
-      "ranking",
-      "bubble"
-    ],
+    "components": ["toast", "ranking", "bubble"],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
