@@ -3,7 +3,7 @@
 /**
  * ニュースフラッシュ コンポーネントの選択肢
  */
-export const flashComponents = {
+export const flashComponentMap = {
   standard: 'シンプル',
   ticker: 'ティッカー',
   glass: 'ガラス',
@@ -20,14 +20,14 @@ export const rankingSortOrderMap = {
 } as const
 
 // ランキングコンポーネントの選択肢
-export const rankingComponents = {
+export const rankingComponentMap = {
   rankStandard: 'カウンター+最後のユーザー',
 } as const
 
 /**
  * カウンターコンポーネントの表示名マップ
  */
-export const counterComponents = {
+export const counterComponentMap = {
   counterUser: 'カウンター+最後のユーザー',
   counterTimer: '最後のユーザーからの経過時間',
   userList: 'ユーザーリスト(バッジ)',
@@ -37,7 +37,7 @@ export const counterComponents = {
 /**
  * ラッキーメンバーズコンポーネントの表示名マップ
  */
-export const winnerComponents = {
+export const winnerComponentMap = {
   valentineCoupling: 'バレンタイン・カップリング',
   topStars: 'トップスターズ',
 } as const
@@ -54,6 +54,15 @@ export const flightSeatLayoutMap = {
 /**
  * ライバーカウンターコンポーネントの表示名マップ
  */
-export const liverComponents = {
+export const liverComponentMap = {
   basicCircle: 'シンプル丸型',
+} as const
+
+export const liverDefaultMap = {
+  upVote: '高評価数',
+  viewer: '視聴者数',
+  syoken: '初見さん数',
+  commenter: 'コメントしたユーザー数',
+  lc: '配信コメント数',
+  totalPrice: '合計金額',
 } as const

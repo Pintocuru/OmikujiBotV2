@@ -12,7 +12,7 @@
   <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(style, key) in counterComponents"
+        v-for="(style, key) in counterComponentMap"
         :key="key"
         class="badge cursor-pointer"
         :class="counter.component === key ? 'badge-primary' : 'badge-outline'"
@@ -83,7 +83,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { counterComponents, SettingsCounterSchema, useFontFamily } from '@/types/'
+  import { counterComponentMap, SettingsCounterSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'

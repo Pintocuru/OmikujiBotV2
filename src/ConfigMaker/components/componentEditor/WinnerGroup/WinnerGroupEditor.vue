@@ -15,7 +15,7 @@
   <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(style, key) in winnerComponents"
+        v-for="(style, key) in winnerComponentMap"
         :key="key"
         class="badge cursor-pointer"
         :class="winnerSetting.component === key ? 'badge-primary' : 'badge-outline'"
@@ -87,7 +87,7 @@
 <script setup lang="ts">
   import { computed, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsWinnerGroupSchema, useFontFamily, winnerComponents } from '@/types/'
+  import { SettingsWinnerGroupSchema, useFontFamily, winnerComponentMap } from '@/types/'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

@@ -25,7 +25,7 @@
   <SettingItem v-if="isDev && isGod" label="表示スタイル" description="ランキングの表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(style, key) in rankingComponents"
+        v-for="(style, key) in rankingComponentMap"
         :key="key"
         class="badge cursor-pointer"
         :class="ranking.component === key ? 'badge-primary' : 'badge-outline'"
@@ -119,7 +119,7 @@
   import {
     gameMetaMap,
     isDev,
-    rankingComponents,
+    rankingComponentMap,
     rankingSortOrderMap,
     ScriptGameKey,
     scriptGameKeys,

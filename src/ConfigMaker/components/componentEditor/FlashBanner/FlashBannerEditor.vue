@@ -23,7 +23,7 @@
   <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(style, key) in flashComponents"
+        v-for="(style, key) in flashComponentMap"
         :key="key"
         class="badge cursor-pointer"
         :class="flashBanner.component === key ? 'badge-primary' : 'badge-outline'"
@@ -145,7 +145,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { defaultPlaceholdersShortLabels, flashComponents, SettingsFlashBannerSchema, useFontFamily } from '@/types/'
+  import { defaultPlaceholdersShortLabels, flashComponentMap, SettingsFlashBannerSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CharacterSelectorSingle from '@config/components/componentEditor/ToastWidgets/CharacterSelectorSingle.vue'

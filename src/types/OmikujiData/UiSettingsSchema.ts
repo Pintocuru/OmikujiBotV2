@@ -3,13 +3,14 @@ import { z } from 'zod'
 import { enterMotionKeys } from '@main/scripts/MotionVariants/MotionVariants'
 import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import {
-  counterComponents,
-  flashComponents,
+  counterComponentMap,
+  flashComponentMap,
   flightSeatLayoutMap,
-  liverComponents,
-  rankingComponents,
+  liverComponentMap,
+  liverDefaultMap,
+  rankingComponentMap,
   rankingSortOrderMap,
-  winnerComponents,
+  winnerComponentMap,
 } from '../MetaMaps'
 import { normalizedObject } from './ParsedDefault'
 import { ScriptGameExtendedKeySchema } from './ActionSet'
@@ -51,8 +52,8 @@ export type SettingsToastType = z.infer<typeof SettingsToastSchema>
 /**
  * ニュースフラッシュ FlashBanner
  */
-const flashComponentsEnum = Object.keys(flashComponents) as FlashComponent[]
-export type FlashComponent = keyof typeof flashComponents
+const flashComponentsEnum = Object.keys(flashComponentMap) as FlashComponent[]
+export type FlashComponent = keyof typeof flashComponentMap
 
 export const SettingsFlashBannerSchema = z.object({
   component: z.enum(flashComponentsEnum).default('standard').catch('standard'),
@@ -74,8 +75,8 @@ export type SettingsFlashBannerType = z.infer<typeof SettingsFlashBannerSchema>
 const rankingSortOrder = Object.keys(rankingSortOrderMap) as RankingSortOrder[]
 export type RankingSortOrder = keyof typeof rankingSortOrderMap
 
-const rankingComponentsEnum = Object.keys(rankingComponents) as RankingComponent[]
-export type RankingComponent = keyof typeof rankingComponents
+const rankingComponentsEnum = Object.keys(rankingComponentMap) as RankingComponent[]
+export type RankingComponent = keyof typeof rankingComponentMap
 
 export const SettingsRankingSchema = z.object({
   targetScriptKeys: z.array(ScriptGameExtendedKeySchema).default(['basicList']).catch(['basicList']),
@@ -90,8 +91,8 @@ export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
 /**
  * カウンター・ユーザーリスト Counter
  */
-const counterComponentValues = Object.keys(counterComponents) as CounterComponent[]
-export type CounterComponent = keyof typeof counterComponents
+const counterComponentValues = Object.keys(counterComponentMap) as CounterComponent[]
+export type CounterComponent = keyof typeof counterComponentMap
 
 export const SettingsCounterSchema = z.object({
   component: z.enum(counterComponentValues).default('counterUser').catch('counterUser'),
@@ -105,8 +106,8 @@ export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
 /**
  * ラッキーメンバーズ WinnerGroup
  */
-export type WinnerComponent = keyof typeof winnerComponents
-const winnerComponentValues = Object.keys(winnerComponents) as WinnerComponent[]
+export type WinnerComponent = keyof typeof winnerComponentMap
+const winnerComponentValues = Object.keys(winnerComponentMap) as WinnerComponent[]
 
 export const SettingsWinnerGroupSchema = z.object({
   component: z.enum(winnerComponentValues).default('valentineCoupling').catch('valentineCoupling'),
@@ -153,17 +154,18 @@ export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>
  * ライバーカウンターv2 LiverCounter
  */
 
-export type LiverComponent = keyof typeof liverComponents
-const liverComponentValues = Object.keys(liverComponents) as LiverComponent[]
+const liverComponentValues = Object.keys(liverComponentMap) as LiverComponent[]
+export type LiverComponent = keyof typeof liverComponentMap
 
-export const LiverCounterKeyValues = ['upVote', 'viewer', 'syoken', 'commenter', 'lc', 'totalPrice'] as const
+const liverDefaultKeyLabels = Object.keys(liverDefaultMap) as LiverDefaultKey[]
+export type LiverDefaultKey = keyof typeof liverDefaultMap
 
 export const SettingsLiverCounterSchema = z.object({
   component: z.enum(liverComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUiテーマ
   colorPattern: z.enum(BaseVariantLabels).nullable().default('primary').catch('primary'), // 奇数color
   colorPattern2: z.enum(BaseVariantLabels).nullable().default(null).catch(null), // 偶数color
-  defaultCounters: z.array(z.enum(LiverCounterKeyValues)), // デフォルトカウンター（6種から選ぶ、順序なし）
+  defaultCounters: z.array(z.enum(liverDefaultKeyLabels)), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8), // event カウンター CommentRuleSchema.key
   label: z.string().default('今日のランチ代').catch('今日のランチ代'), // 特定のアイテムのタイトル
 })
