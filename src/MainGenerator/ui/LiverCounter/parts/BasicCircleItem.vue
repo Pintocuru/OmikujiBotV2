@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/LiverCounter/parts/BasicCircleItem.vue -->
 <template>
   <div
     class="w-24 h-24 rounded-full flex flex-col items-center justify-center shadow-md text-base-100"

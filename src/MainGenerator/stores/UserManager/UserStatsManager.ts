@@ -74,24 +74,14 @@ export class UserStatsManager {
     return Array.from(this.stats.values())
   }
 
-  // 配信の累計コメント数
-  getLiveComments(): number {
-    return this.liveComments
-  }
-
-  // 配信の累計ギフト金額
-  getTotalPrice(): number {
-    return this.totalPrice
-  }
-
-  // ユニークユーザー数（コメントしたことがある人）
-  getUniqueCount(): number {
-    return this.stats.size
-  }
-
-  // 初見さんを返す
-  getSyoken(): number {
-    return this.syoken
+  // 各ステータス取得
+  getStats(): { liveComments: number; uniqueCount: number; syoken: number; totalPrice: number } {
+    return {
+      liveComments: this.liveComments, // 配信の累計コメント数
+      uniqueCount: this.stats.size, // ユニークユーザー数（コメントしたことがある人）
+      syoken: this.syoken, // 初見さんを返す
+      totalPrice: this.totalPrice, // 配信の累計ギフト金額
+    }
   }
 
   /** 最新コメントユーザーを取得 */

@@ -36,6 +36,7 @@
   import ToastComponentEditor from './ToastWidgets/ToastWidgetsEditor.vue'
   import GameRankingEditor from './GameRanking/GameRankingEditor.vue'
   import CounterPreviewEditor from './CounterPreview/CounterPreviewEditor.vue'
+  import LiverCounterEditor from './LiverCounter/LiverCounterEditor.vue'
   import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
   import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
   import FlashBannerEditor from './FlashBanner/FlashBannerEditor.vue'
@@ -71,6 +72,7 @@
     | 'toast'
     | 'ranking'
     | 'counter'
+    | 'liverCounter'
     | 'winnerGroup'
     | 'flightSeat'
     | 'defaultColor'
@@ -127,6 +129,13 @@
       description: 'コメントが来るたびに数値が増えるカウンターの表示',
       component: CounterPreviewEditor,
       shouldShow: hasComponentKind('counter') && isComment.value,
+    },
+    liverCounter: {
+      icon: 'Hash',
+      title: 'ライバーカウンターアイテム',
+      description: '高評価・同接数等、複数のカウンターの表示',
+      component: LiverCounterEditor,
+      shouldShow: hasComponentKind('liverCounter'),
     },
     winnerGroup: {
       icon: 'Crown',

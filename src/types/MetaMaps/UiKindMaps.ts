@@ -65,6 +65,13 @@ export const uiKindMap = {
     icon: 'Hash',
     description: '数値の増減やユーザーリストを表示します。',
   },
+  liverCounter: {
+    primarySlot: 'extra',
+    slots: ['extra'],
+    icon: 'Hash',
+    label: 'ライバーカウンター',
+    description: '高評価・同接数等、複数のさまざまなカウンターを表示します',
+  },
   winnerGroup: {
     primarySlot: 'extra',
     slots: ['extra'],

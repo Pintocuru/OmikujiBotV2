@@ -165,8 +165,8 @@ export const SettingsLiverCounterSchema = z.object({
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUiテーマ
   colorPattern: z.enum(BaseVariantLabels).nullable().default('primary').catch('primary'), // 奇数color
   colorPattern2: z.enum(BaseVariantLabels).nullable().default(null).catch(null), // 偶数color
-  defaultCounters: z.array(z.enum(liverDefaultKeyLabels)), // デフォルトカウンター（6種から選ぶ、順序なし）
-  eventCounters: z.array(z.string()).max(8), // event カウンター CommentRuleSchema.key
+  defaultCounters: z.array(z.enum(liverDefaultKeyLabels)).default(['lc']).catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
+  eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
   label: z.string().default('今日のランチ代').catch('今日のランチ代'), // 特定のアイテムのタイトル
 })
 export type SettingsLiverCounterType = z.infer<typeof SettingsLiverCounterSchema>

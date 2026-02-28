@@ -17,6 +17,9 @@
 
     <!-- meta -->
     <MetaDebugPanel v-if="0" />
+
+    <!-- test -->
+    <LiverCounter v-if="1" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -31,6 +34,7 @@
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
+  import LiverCounter from '@main/ui/LiverCounter/LiverCounter.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
 

@@ -131,9 +131,7 @@ export class OmikujiProcessor {
     const { userSession } = this.store
 
     // commenter: コメントした全ユーザー数、winner: ランダム当選者
-    const lc = userSession.stats.getLiveComments()
-    const commenter = userSession.stats.getUniqueCount()
-    const syoken = userSession.stats.getSyoken()
+    const { liveComments, uniqueCount, syoken } = userSession.stats.getStats()
     const { winners } = userSession.stats.drawWinners(1)
     const firstWinner = winners[0]
 
@@ -141,8 +139,8 @@ export class OmikujiProcessor {
       viewer: meta?.viewer ?? 0,
       upVote: meta?.upVote ?? 0,
       follower: meta?.follower ?? 0,
-      lc,
-      commenter,
+      lc: liveComments,
+      commenter: uniqueCount,
       syoken,
       winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',
     })

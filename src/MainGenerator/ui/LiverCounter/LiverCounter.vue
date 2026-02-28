@@ -1,6 +1,7 @@
+<!-- src/MainGenerator/ui/LiverCounter/LiverCounter.vue -->
 <template>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
-    <LiverCounterManager :settings="rankingSettings" :counters="counters" />
+    <LiverCounterManager :settings="liverSettings" :counters="counters" :event-labels="eventLabels" />
   </div>
 </template>
 
@@ -14,8 +15,7 @@
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
 
-  // 設定を取得
-  const rankingSettings = computed(
+  const liverSettings = computed(
     () => data.value.components.settings.liverCounter ?? SettingsLiverCounterSchema.parse({})
   )
 
@@ -28,19 +28,32 @@
     totalPrice: 0,
   })
 
-  let timer: number | null = null
+  // eventCounters の key → name マッピング
+  // comments は Record<string, BaseRecordType> で、BaseRecordType.key が eventCounters の値と対応
+  const eventLabels = computed<Record<string, string>>(() => {
+    const comments = data.value.comments
+    const result: Record<string, string> = {}
+    for (const record of Object.values(comments)) {
+      if (record.key) result[record.key] = record.name
+    }
+    return result
+  })
 
-  const fetchMeta = async () => {
-    const meta = appStore.metaState.getCurrent()
-    counters.value.upVote = meta?.upVote ?? 0
-    counters.value.viewer = meta?.viewer ?? 0
+  const fetchStats = () => {
+    const { liveComments, uniqueCount, syoken, totalPrice } = appStore.userSession.stats.getStats()
+    counters.value.lc = liveComments
+    counters.value.commenter = uniqueCount
+    counters.value.syoken = syoken
+    counters.value.totalPrice = totalPrice
   }
 
-  const fetchStats = async () => {
-    counters.value.lc = appStore.userSession.stats.getLiveComments()
-    counters.value.commenter = appStore.userSession.stats.getUniqueCount()
-    counters.value.syoken = appStore.userSession.stats.getSyoken()
-    counters.value.totalPrice = appStore.userSession.stats.getTotalPrice()
+  const fetchEventCounters = () => {
+    const grouped = appStore.userSession.visits.getGroupedByRule() ?? {}
+    const eventKeys = liverSettings.value?.eventCounters ?? []
+    for (const ruleId of eventKeys) {
+      const records = grouped[ruleId] ?? []
+      counters.value[ruleId] = records.reduce((sum, r) => sum + (r.visitCount ?? 0), 0)
+    }
   }
 
   const previewTick = computed(() => botMessages.value.length)
@@ -48,16 +61,25 @@
   watchEffect(() => {
     const _ = previewTick.value
     fetchStats()
+    fetchEventCounters()
   })
 
+  let unsubscribeMeta: (() => void) | null = null
+
   onMounted(() => {
-    fetchMeta()
-    timer = window.setInterval(() => {
-      fetchMeta()
-    }, 5000)
+    // getCurrent() で初期値を即時反映
+    const initial = appStore.metaState.getCurrent()
+    counters.value.upVote = initial?.upVote ?? 0
+    counters.value.viewer = initial?.viewer ?? 0
+
+    // 以降は subscribe でリアルタイム更新
+    unsubscribeMeta = appStore.metaState.subscribe((event) => {
+      counters.value.upVote = event.current.upVote
+      counters.value.viewer = event.current.viewer
+    })
   })
 
   onUnmounted(() => {
-    if (timer) clearInterval(timer)
+    unsubscribeMeta?.()
   })
 </script>
