@@ -19,5 +19,5 @@ if (typeof window !== 'undefined') window.omikujiData = omikujiData;
 export const generateJsonContent = (configData: string) => {
   const parsedData = JSON.parse(configData)
   const templateData = { ...parsedData }
-  return JSON.stringify(templateData, null, 2)
+  return JSON.stringify(templateData)
 }

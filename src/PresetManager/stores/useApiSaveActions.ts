@@ -29,7 +29,7 @@ export function useSaveActions(
     if (!trimmedFileName) return false
 
     return await handleAsyncAction(async () => {
-      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      const configData = JSON.stringify(omikujiStore.data)
       const res = await configApi.saveConfig(trimmedFileName, configData)
       if (!res) throw new Error('設定の保存に失敗しました')
 
@@ -75,7 +75,7 @@ export function useSaveActions(
     }
 
     return await handleAsyncAction(async () => {
-      const configData = JSON.stringify(dataForSave, null, 2)
+      const configData = JSON.stringify(dataForSave)
       await generatorApi.saveGeneratorConfig(configData)
       await fetchFileList()
       omikujiStore.resetChangeState()
@@ -101,7 +101,7 @@ export function useSaveActions(
     const omikujiStore = useOmikujiStore()
 
     return await handleAsyncAction(async () => {
-      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      const configData = JSON.stringify(omikujiStore.data)
       await configApi.saveConfig(fileName, configData)
       await fetchFileList()
 
@@ -127,7 +127,7 @@ export function useSaveActions(
     const omikujiStore = useOmikujiStore()
 
     return await handleAsyncAction(async () => {
-      const configData = JSON.stringify(omikujiStore.data, null, 2)
+      const configData = JSON.stringify(omikujiStore.data)
       await configApi.saveOmikujiData(configData)
       await fetchFileList()
 

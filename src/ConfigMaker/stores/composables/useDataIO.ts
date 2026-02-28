@@ -33,19 +33,12 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
   }
 
   /**
-   * 現在のデータをバリデーション
-   */
-  const safeValidateData = () => {
-    return OmikujiDataSchema.safeParse(data.value)
-  }
-
-  /**
    * データをJSON形式でエクスポート
    */
   const exportData = () => {
-    const validation = safeValidateData()
+    const validation = OmikujiDataSchema.safeParse(data.value)
     if (validation.success) {
-      return JSON.stringify(data.value, null, 2)
+      return JSON.stringify(data.value)
     }
 
     swalModal.error({
@@ -57,7 +50,6 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
   return {
     loadData,
     openLocalOmikujiData,
-    safeValidateData,
     exportData,
   }
 }

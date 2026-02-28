@@ -5,10 +5,16 @@
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
     "version": "ver2026.02.05-2.1.0-alpha1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha2",
-    "dataVersion": 2.09002,
+    "generatorVersion": "2.5.1-alpha1",
+    "dataVersion": 2.20050021001,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "占い", "Fortune", "ルノルマンカード", "Lenormand"],
+    "tags": [
+      "おみくじBOT",
+      "占い",
+      "Fortune",
+      "ルノルマンカード",
+      "Lenormand"
+    ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7915987"
   },
@@ -20,11 +26,14 @@
       "name": "ペンギン占い",
       "description": "16種の個性豊かなペンギンたちの相性占い",
       "createdAt": "2025-09-13T22:02:36.595Z",
-      "updatedAt": "2026-02-07T01:59:15.458Z",
+      "updatedAt": "2026-02-28T04:39:56.578Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["占い", "ペンギン"],
+      "tags": [
+        "占い",
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -34,7 +43,9 @@
           "createdAt": "2025-09-13T21:56:02.314Z",
           "updatedAt": "2025-09-13T21:56:02.314Z",
           "order": 0,
-          "tags": ["ペンギン"],
+          "tags": [
+            "ペンギン"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -55,13 +66,14 @@
               "iconKey": "default",
               "sound": "collect",
               "message": {
-                "bubble": "<<user>>さんは、<<PenguinOracle>>",
+                "bubble": "{{symbol='<<PenguinPartner>>'}}\n<<user>>さんは、<<PenguinOracle>>",
                 "isToast": false
               }
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "delaySeconds": 0,
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -77,7 +89,9 @@
           "createdAt": "2025-12-28T11:29:09.743Z",
           "updatedAt": "2025-12-28T11:29:09.743Z",
           "order": 0,
-          "tags": ["ペンギン"],
+          "tags": [
+            "ペンギン"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -94,7 +108,8 @@
             }
           ],
           "gameScripts": {
-            "scriptId": "",
+            "delaySeconds": 0,
+            "scriptId": null,
             "queryString": "",
             "characterKey": ""
           },
@@ -102,7 +117,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -118,11 +135,21 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ペンギン", "^ぺんぎん", "^peng", "^うらな", "^占", "^オラクル", "^oracle"]
+        "comment": [
+          "^ペンギン",
+          "^ぺんぎん",
+          "^peng",
+          "^うらな",
+          "^占",
+          "^オラクル",
+          "^oracle"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -144,7 +171,9 @@
       "updatedAt": "2026-02-07T01:53:26.378Z",
       "order": 1,
       "isEnabled": true,
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -170,7 +199,8 @@
         }
       ],
       "gameScripts": {
-        "scriptId": "",
+        "delaySeconds": 0,
+        "scriptId": null,
         "queryString": "",
         "characterKey": ""
       },
@@ -183,29 +213,31 @@
       "key": "PenguinOracle",
       "name": "ペンギン:占い結果",
       "createdAt": "2025-09-13T22:12:07.988Z",
-      "updatedAt": "2026-02-07T02:15:32.035Z",
+      "updatedAt": "2026-02-28T04:41:31.898Z",
       "order": 1,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
-        "{{symbol='<<PenguinPartner>>'}}{{text='アデリーペンギン'}}<<'好奇心旺盛な','怖いもの知らずの','勢いのある'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinAdelie>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='コウテイペンギン'}}<<'忍耐強い','責任感のある','リーダー的存在'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinEmperor>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='オウサマペンギン'}}<<'統率のとれた','安定感のある','堂々とした'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinKing>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='ジェンツーペンギン'}}<<'勘の鋭い','ものわかりのいい','スマートな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinGentoo>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='ヒゲペンギン'}}<<'空気の読める','気配り上手な','調整役の'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinChinstrap>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='マカロニペンギン'}}<<'個性際立つ','センス溢れる','華のある'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinMacaroni>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='イワトビペンギン'}}<<'情熱的な','ガッツのある','負けず嫌いな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinRockhopper>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='コガタペンギン'}}<<'感性豊かな','繊細な','癒やし系'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinFairy>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='キンメペンギン'}}<<'冷静沈着な','思慮深い','マイペースな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinYellowEyed>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='フンボルトペンギン'}}<<'親しみやすい','器用でそつのない','リアリズムな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinHumboldt>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='ガラパゴスペンギン'}}<<'自由奔放な','ユニークな','縛られない'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinGalapagos>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='マゼランペンギン'}}<<'誠実で真面目な','一途な','ヤンキーな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinMagellanic>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='シュレーターペンギン'}}<<'意志の強い','情熱溢れる','自分を曲げない'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinErectCrested>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='ケープペンギン'}}<<'社交的な','お喋り好きな','ムードメーカーの'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinAfrican>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='ロイヤルペンギン'}}<<'美意識の高い','理想主義の','気品のある'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinRoyal>>",
-        "{{symbol='<<PenguinPartner>>'}}{{text='キマユペンギン'}}<<'ミステリアスな','深い感性を持つ','魅惑的な'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinFiordland>>"
+        "{{text='アデリーペンギン'}}<<'好奇心旺盛な','怖いもの知らずの','勢いのある'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinAdelie>>",
+        "{{text='コウテイペンギン'}}<<'忍耐強い','責任感のある','リーダー的存在'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinEmperor>>",
+        "{{text='オウサマペンギン'}}<<'統率のとれた','安定感のある','堂々とした'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinKing>>",
+        "{{text='ジェンツーペンギン'}}<<'勘の鋭い','ものわかりのいい','スマートな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinGentoo>>",
+        "{{text='ヒゲペンギン'}}<<'空気の読める','気配り上手な','調整役の'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinChinstrap>>",
+        "{{text='マカロニペンギン'}}<<'個性際立つ','センス溢れる','華のある'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinMacaroni>>",
+        "{{text='イワトビペンギン'}}<<'情熱的な','ガッツのある','負けず嫌いな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinRockhopper>>",
+        "{{text='コガタペンギン'}}<<'感性豊かな','繊細な','癒やし系'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinFairy>>",
+        "{{text='キンメペンギン'}}<<'冷静沈着な','思慮深い','マイペースな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinYellowEyed>>",
+        "{{text='フンボルトペンギン'}}<<'親しみやすい','器用でそつのない','リアリズムな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinHumboldt>>",
+        "{{text='ガラパゴスペンギン'}}<<'自由奔放な','ユニークな','縛られない'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinGalapagos>>",
+        "{{text='マゼランペンギン'}}<<'誠実で真面目な','一途な','ヤンキーな'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinMagellanic>>",
+        "{{text='シュレーターペンギン'}}<<'意志の強い','情熱溢れる','自分を曲げない'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinErectCrested>>",
+        "{{text='ケープペンギン'}}<<'社交的な','お喋り好きな','ムードメーカーの'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinAfrican>>",
+        "{{text='ロイヤルペンギン'}}<<'美意識の高い','理想主義の','気品のある'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinRoyal>>",
+        "{{text='キマユペンギン'}}<<'ミステリアスな','深い感性を持つ','魅惑的な'>>【[[text]]】、パートナーは【[[symbol]]ペンギン】<<PenguinFiordland>>"
       ]
     },
     "PenguinPartner": {
@@ -218,7 +250,9 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "アデリー",
@@ -249,7 +283,9 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "あなたの突撃力に相手が共鳴！二人が組めば、どんな氷山も砕いて進める最強の突撃隊になります。",
@@ -272,7 +308,9 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "王者の風格を持つあなたに、相手が絶対的な信頼を寄せています。二人の絆は極寒をも溶かすほど熱い！",
@@ -295,7 +333,9 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "統率力あるあなたを相手が全力サポート。二人で立てた計画は、揺るぎない成功へと繋がっています。",
@@ -318,7 +358,9 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "あなたの速さに相手が必死についてきます。そのスピード感こそが、今日という日を切り拓く最強の武器！",
@@ -341,7 +383,9 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "抜群のチームプレー。相手と呼吸を合わせることで、一人では不可能な難局もスマートに突破できます。",
@@ -364,7 +408,9 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "華やかなあなたを相手が最高に引き立てます。二人が並べば、そこはもうランウェイ！最強の主役コンビ。",
@@ -387,7 +433,9 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "どんな岩場も二人でジャンプ！困難に立ち向かうあなたの背中を、相手が全力で押し上げてくれるはず。",
@@ -410,7 +458,9 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "小さなあなたの大きな愛を、相手が全力で守ります。二人の間には、世界で一番優しい時間が流れるはず。",
@@ -433,7 +483,9 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "あなたの緻密な計画を、相手が完璧に実行。二人の連携に隙はなく、確実に目的を達成できる鉄壁のバディ！",
@@ -456,7 +508,9 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "現実的なあなたの判断を、相手が全面的に支持。どんな環境の変化も、二人なら笑って順応していけるはず。",
@@ -479,7 +533,9 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "常識に縛られない二人の道。相手もあなたのユニークさを愛しています。誰も歩んだことのない航路へ進もう！",
@@ -502,7 +558,9 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "相手への深い愛情が奇跡を起こします。一途な想いが通じ合い、二人でひとつの夢を実現できる幸せな日。",
@@ -525,7 +583,9 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "あなたの熱いパッションに相手が心酔！二人のコンビネーションで、周囲を巻き込む大きなムーブメントを。",
@@ -548,7 +608,9 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "お喋りが止まらないほど意気投合！二人でいれば退屈とは無縁。笑い声が幸運をどんどん引き寄せるよ。",
@@ -571,7 +633,9 @@
       "order": 17,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "高い理想を共有する二人。美しく完璧な仕上がりを目指せば、周囲もため息をつくような成果が出せます。",
@@ -594,7 +658,9 @@
       "order": 18,
       "isEnabled": true,
       "editorColor": "#A5D6A7",
-      "tags": ["ペンギン"],
+      "tags": [
+        "ペンギン"
+      ],
       "accessLevel": "basic",
       "values": [
         "深い霧の中でも繋がっているような特別な絆。二人だけの秘密を共有することで、運勢がぐんと強まります。",
@@ -619,7 +685,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -653,20 +722,28 @@
         "mode": "comment",
         "imageBase64": "",
         "frameId": "OmikujiBot",
-        "rpgVoice": ""
+        "rpgVoice": "rpg_voice_a5"
       }
     }
   },
   "components": {
-    "conditions": ["bubble", "toast", "ranking"],
-    "bubble": {
-      "showCharacters": {
-        "center": ["omiken"],
-        "slot1": [],
-        "slot2": [],
-        "slot3": [],
-        "slot4": []
+    "conditions": [
+      {
+        "slot": "primary",
+        "kind": "bubble"
       },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
+    ],
+    "enableSecondary": true,
+    "commonStyle": {
+      "fontFamily": "kaiseiDecol",
       "defaultColor": {
         "isTheme": true,
         "daisyUiTheme": "wireframe",
@@ -676,34 +753,54 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "characterSize": 48,
-      "fontFamily": "kaiseiDecol",
-      "bubbleMotionEnter": "flipX",
-      "bubbleTextAnimate": false,
-      "bubbleTextSpeed": 50
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
-    "toast": {
-      "showToastsOnRight": true,
-      "showToastsCharacter": false,
-      "showThumbnail": []
-    },
-    "ranking": {
-      "targetScriptKeys": ["basicList"],
-      "title": "🐧ペンギン占い🐧",
-      "color": "autumn",
-      "limit": 5,
-      "sortOrder": "new",
-      "component": "rankStandard"
-    },
-    "counter": {
-      "ruleKey": null,
-      "component": "counterUser",
-      "target": "draw",
-      "label": "Counter",
-      "color": {
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "secondary"
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "omiken"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "flipX",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🐧ペンギン占い🐧",
+        "color": "autumn",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "ruleKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
@@ -716,11 +813,16 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",
-      "jsonMergeSettings": "none"
+      "jsonMergeSettings": "none",
+      "itemSlotEnabled": "basic"
     }
   },
   "settings": {

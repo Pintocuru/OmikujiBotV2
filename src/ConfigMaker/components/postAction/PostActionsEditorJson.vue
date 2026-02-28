@@ -43,7 +43,7 @@
   // JSON関連の処理
   const updateJsonText = () => {
     try {
-      jsonText.value = JSON.stringify(props.modelValue, null, 2)
+      jsonText.value = JSON.stringify(props.modelValue)
       jsonError.value = ''
     } catch (error) {
       jsonError.value = error instanceof Error ? error.message : 'JSONの生成に失敗しました'

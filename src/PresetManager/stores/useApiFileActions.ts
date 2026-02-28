@@ -34,7 +34,7 @@ export function useFileActions(
       const originalName = fileName.replace('.json', '')
       const duplicateName = `${originalName}_copy`
 
-      await configApi.saveConfig(duplicateName, JSON.stringify(configData, null, 2))
+      await configApi.saveConfig(duplicateName, JSON.stringify(configData))
       await fetchFileList()
 
       // 成功トースト
@@ -75,7 +75,7 @@ export function useFileActions(
       const configData = await configApi.loadConfig(oldFileName)
 
       // 新しい名前で保存
-      await configApi.saveConfig(finalName, JSON.stringify(configData, null, 2))
+      await configApi.saveConfig(finalName, JSON.stringify(configData))
 
       // 古いファイルを削除
       await configApi.deleteConfig(oldFileName)
