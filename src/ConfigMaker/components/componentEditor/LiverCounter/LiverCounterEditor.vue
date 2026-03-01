@@ -269,11 +269,11 @@
   // ---- プレビュー用ダミーデータ ----
   const previewCounters = computed<Record<string, number>>(() => {
     const result: Record<string, number> = {
-      upVote: 123,
-      viewer: 456,
-      syoken: 12,
-      commenter: 789,
-      lc: 234,
+      upVote: 456,
+      viewer: 123,
+      syoken: 123,
+      commenter: 456,
+      lc: 7890,
       totalPrice: 5000,
     }
     for (const key of liverCounter.value.eventCounters) {
