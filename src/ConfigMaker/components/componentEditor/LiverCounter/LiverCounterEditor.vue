@@ -21,7 +21,7 @@
   </SettingItem>
 
   <!-- テーマ -->
-  <SettingItem label="テーマ" description="カラーテーマを選択します">
+  <SettingItem v-if="isAdv" label="テーマ" description="カラーテーマを選択します" forceMode="adv">
     <select
       class="select select-bordered"
       :value="liverCounter.color"

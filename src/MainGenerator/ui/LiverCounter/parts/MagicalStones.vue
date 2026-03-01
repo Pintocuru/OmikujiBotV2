@@ -4,12 +4,16 @@
       <div class="petal-inner" :class="`text-${getPattern(key)}`">
         <!-- 中身 -->
         <div class="w-full h-full flex flex-col items-center justify-center" :class="`text-${getPattern(key)}-content`">
+          <!-- アイコン -->
           <component :is="getLabel(key)" v-if="isComponent(getLabel(key))" class="icon-svg" />
-          <span v-else class="icon-text">
+
+          <!-- ラベル -->
+          <span v-else class="icon-text font-bold truncate">
             {{ getLabel(key) }}
           </span>
 
-          <div class="petal-value">
+          <!-- 数値 -->
+          <div class="petal-value text-xl font-bold">
             {{ formatValue(counters[key] ?? 0) }}
           </div>
         </div>

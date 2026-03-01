@@ -6,20 +6,6 @@
   </div>
   <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
 
-  <!-- テーマカラー -->
-  <SettingItem label="カラー" description="ランキングのテーマカラーを選択します" :forceMode="'pro'">
-    <select
-      class="select select-bordered"
-      :value="ranking.color"
-      :disabled="!isAdv"
-      @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
-    >
-      <option v-for="theme in themes" :key="theme" :value="theme">
-        {{ theme }}
-      </option>
-    </select>
-  </SettingItem>
-
   <!-- コンポーネント選択 -->
   <!-- !現在は使わないのでisDev -->
   <SettingItem v-if="isDev && isGod" label="表示スタイル" description="ランキングの表示形式を選択" forceMode="pro">
@@ -34,6 +20,20 @@
         {{ style }}
       </div>
     </div>
+  </SettingItem>
+
+  <!-- テーマカラー -->
+  <SettingItem v-if="isAdv" label="カラー" description="ランキングのテーマカラーを選択します" forceMode="adv">
+    <select
+      class="select select-bordered"
+      :value="ranking.color"
+      :disabled="!isAdv"
+      @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
+    >
+      <option v-for="theme in themes" :key="theme" :value="theme">
+        {{ theme }}
+      </option>
+    </select>
   </SettingItem>
 
   <!-- 対象スクリプトID -->
