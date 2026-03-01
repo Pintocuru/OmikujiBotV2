@@ -1,6 +1,7 @@
 // src/MainGenerator/ui/LiverCounter/composables/useLiverCounterDisplay.ts
 import { computed, type Ref } from 'vue'
 import type { SettingsLiverCounterType } from '@/types/'
+import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
 /**
  * LiverCounter 系コンポーネント共通のキー列挙・カラーパターン取得ロジック
@@ -20,7 +21,7 @@ export function useLiverCounterDisplay(settings: Ref<SettingsLiverCounterType>) 
   /**
    * キーのインデックスに応じたカラーパターン文字列を返す
    */
-  const getPattern = (key: string): string => {
+  const getPattern = (key: string): BaseVariant => {
     const index = allKeys.value.indexOf(key)
     if (settings.value.colorOdd === null) {
       return settings.value.colorCycle[index % settings.value.colorCycle.length]

@@ -56,6 +56,10 @@ export const flightSeatLayoutMap = {
  */
 export const liverComponentMap = {
   basicCircle: 'シンプル丸型',
+  magicalStone: '魔法石',
+  starBurst: '星',
+  pixelBadge: 'ピクセルバッジ',
+  hexGrid: 'ヘキサゴン',
 } as const
 
 export const liverDefaultMap = {
