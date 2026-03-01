@@ -3,6 +3,7 @@ import { GameScriptsType, ScriptClass, ScriptGameKey, scriptGameKeys, ScriptResu
 import { gameExecuteMap } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserManager } from '../UserManager/UserManager'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 export class GameScriptManager {
   private scriptInstances: Record<string, ScriptClass> = {}
@@ -36,6 +37,7 @@ export class GameScriptManager {
       }
     } catch (error) {
       console.error('スクリプト初期化エラー:', error)
+      postSystemMessage(`❌ スクリプト初期化エラー: ${error}`)
     }
   }
 
@@ -60,6 +62,7 @@ export class GameScriptManager {
       return scriptResult
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
+      postSystemMessage(`❌ スクリプト初期化エラー: ${error}`)
       return null
     }
   }
@@ -81,7 +84,7 @@ export class GameScriptManager {
       return scriptInstance.sampleRun(queryString)
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
-      return 'スクリプト実行エラー。詳細はコンソールをご確認ください。'
+      return `スクリプト実行エラー(${scriptId}): ${error}`
     }
   }
 

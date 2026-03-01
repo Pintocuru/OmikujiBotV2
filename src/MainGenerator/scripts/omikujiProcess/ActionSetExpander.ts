@@ -15,7 +15,7 @@ export class ActionSetExpander {
     if (depth >= this.MAX_DEPTH) {
       const msg = `アクションセットの展開が最大階層(${this.MAX_DEPTH})に達しました`
       console.warn(msg)
-      postSystemMessage(msg, 'warn')
+      postSystemMessage(msg, { username: 'warn' })
       return actions
     }
 

@@ -4,6 +4,7 @@ import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProce
 import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 export function useAppInitializer() {
   const initialize = async () => {
@@ -15,21 +16,31 @@ export function useAppInitializer() {
     appStore.setStatus('initializing')
 
     try {
-      // コメント購読開始（内部で PingOneSDK によるリトライ付き接続確認を実施）
+      // コメント購読
       const isInit = await GetOmikenComments((omikens) => {
-        // ユーザー記録
-        for (const omiken of omikens) {
-          const { lc, tc } = omiken.meta
-          const giftPrice = omiken.giftPrice ?? 0
-          appStore.userSession.stats.recordComment(omiken, tc, lc, giftPrice)
+        try {
+          // ユーザー記録
+          for (const omiken of omikens) {
+            const { lc, tc } = omiken.meta
+            const giftPrice = omiken.giftPrice ?? 0
+            appStore.userSession.stats.recordComment(omiken, tc, lc, giftPrice)
+          }
+
+          // コメント処理
+          if (!isComment.value) return
+
+          const commentProcessor = new RuleCommentProcessor()
+          const botMessages = commentProcessor.respondToComments(omikens)
+          appStore.scheduleBotMessages(botMessages)
+        } catch (error) {
+          // コメント処理中のエラーはアプリを止めず、ログのみ
+          // （次のコメントで回復できる可能性があるため）
+          console.error('[useAppInitializer] コメント処理エラー:', error)
+          postSystemMessage(`コメント処理エラー: ${error}`, {
+            speech: false,
+            throttle: true,
+          })
         }
-
-        // コメント処理
-        if (!isComment.value) return
-
-        const commentProcessor = new RuleCommentProcessor()
-        const botMessages = commentProcessor.respondToComments(omikens)
-        appStore.scheduleBotMessages(botMessages)
       })
 
       // PingOneSDK のリトライが全て失敗した場合のみ error に遷移
@@ -42,14 +53,22 @@ export function useAppInitializer() {
       const isHealth = await generatorApi.getHealth()
       if (isHealth) {
         const serverData = await generatorApi.loadGeneratorConfig()
-        if (serverData) appStore.loadData(serverData)
+        if (serverData) {
+          appStore.loadData(serverData)
+          const name = appStore.data.meta.name
+          postSystemMessage(`エディタープラグイン から ${name} のデータを読み込みました`, {
+            username: '__INFO__',
+            speech: false,
+          })
+        }
       }
 
       // ready へ
       appStore.setStatus('ready')
     } catch (error) {
       console.error('❌ 初期化エラー:', error)
-      appStore.setStatus('error')
+      appStore.setError(error instanceof Error ? error.message : String(error))
+      postSystemMessage(`❌ 初期化エラー: ${error}`)
     }
   }
 

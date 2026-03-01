@@ -1,14 +1,14 @@
 // src/MainGenerator/scripts/PostOmikuji/PostOmikujiService.ts
 import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types/'
+import { BOT_ICON } from './BotIcon'
+import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
+import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
-import { Service } from '@onecomme.com/onesdk/types/Service'
-import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
 import { executeWordParty } from '@shared/sdk/postMessage/PostWordParty'
-import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'
-import { BOT_ICON } from './BotIcon'
+import { Service } from '@onecomme.com/onesdk/types/Service'
 
 const MAX_REPEAT_COUNT = 30
 

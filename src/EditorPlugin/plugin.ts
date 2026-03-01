@@ -18,7 +18,7 @@ const plugin: OnePlugin = {
 
   async init(api, initialData) {
     try {
-      postSystemMessage(`【${PLUGIN_NAME}】を起動しました`, 'info')
+      postSystemMessage(`【${PLUGIN_NAME}】を起動しました`, { username: '__INFO__' })
     } catch (error) {
       console.error('Plugin initialization failed:', error)
       postSystemMessage(`プラグインの初期化に失敗しました: ${error}`)
@@ -28,6 +28,8 @@ const plugin: OnePlugin = {
 
   async filterComment(comment, service, userData) {
     const omiken = processOmikenComment(comment)
+    if (!omiken) return comment
+
     hoge(omiken)
 
     // コメント自体はそのまま返す
@@ -38,7 +40,7 @@ const plugin: OnePlugin = {
     return await pluginRequest(req)
   },
   destroy() {
-    postSystemMessage(`【${PLUGIN_NAME}】を終了しました`, 'info')
+    postSystemMessage(`【${PLUGIN_NAME}】を終了しました`, { username: '__INFO__' })
   },
 }
 

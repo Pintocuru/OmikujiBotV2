@@ -1,6 +1,7 @@
 // src/MainGenerator/stores/MetaState/MetaStateService.ts
 import { GetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
 export class MetaStateService {
   private current: NormalizedMeta | null = null
@@ -8,6 +9,8 @@ export class MetaStateService {
   private peak = { upVote: 0, viewer: 0 }
   private subscribers: Array<(meta: MetaUpdateEvent) => void> = []
   private static instance: MetaStateService | null = null
+  private lastError: unknown | null = null
+  private status: 'idle' | 'loading' | 'ready' | 'error' = 'idle'
 
   static getInstance() {
     if (!this.instance) this.instance = new MetaStateService()
@@ -18,26 +21,40 @@ export class MetaStateService {
     this.initialize()
   }
 
-  private initialize() {
+  private async initialize() {
     const metas = GetMetas.getInstance()
-    metas.fetchMeta((rawServiceMeta) => {
-      const normalized = this.normalize(rawServiceMeta)
-
-      this.previous = this.current
-      this.current = normalized
-
-      // peakChanged を計算してから peak を更新
-      const peakChanged = this.updatePeak(normalized)
-
-      this.notifySubscribers(peakChanged)
+    const result = await metas.fetchMeta((raw) => {
+      try {
+        this.handleMeta(raw)
+      } catch (e) {
+        this.notifyError(e)
+      }
     })
+
+    if (!result?.ok) {
+      postSystemMessage(`❌ Meta取得失敗`, {
+        speech: false,
+        throttle: true,
+      })
+      this.notifyError(new Error('Meta initialization failed'))
+    }
+  }
+
+  private handleMeta(rawServiceMeta: ServiceMeta | null) {
+    const normalized = this.normalize(rawServiceMeta)
+
+    this.previous = this.current
+    this.current = normalized
+
+    const peakChanged = this.updatePeak(normalized)
+    this.notifySubscribers(peakChanged)
   }
 
   private normalize(meta: ServiceMeta | null): NormalizedMeta {
     return {
-      upVote: Number(meta?.upVote ?? 0),
-      viewer: Number(meta?.viewer ?? 0),
-      follower: Number(meta?.subscriberCount ?? meta?.follower ?? 0),
+      upVote: this.toNumber(meta?.upVote),
+      viewer: this.toNumber(meta?.viewer),
+      follower: this.toNumber(meta?.subscriberCount ?? meta?.follower),
       startTime: meta?.startTime ?? null,
     }
   }
@@ -62,14 +79,22 @@ export class MetaStateService {
    * peakChanged を受け取る
    */
   private notifySubscribers(peakChanged: { upVote: boolean; viewer: boolean }) {
+    if (!this.current) return
+
     const event: MetaUpdateEvent = {
-      current: this.current!,
+      current: this.current,
       previous: this.previous,
       peak: this.peak,
       peakChanged,
     }
 
-    for (const fn of this.subscribers) fn(event)
+    for (const fn of this.subscribers) {
+      try {
+        fn(event)
+      } catch (e) {
+        console.error('Meta subscriber error', e)
+      }
+    }
   }
 
   subscribe(fn: (meta: MetaUpdateEvent) => void): () => void {
@@ -86,6 +111,28 @@ export class MetaStateService {
 
   getPeak() {
     return { ...this.peak }
+  }
+
+  private toNumber(value: unknown) {
+    const n = Number(value)
+    return Number.isFinite(n) ? n : 0
+  }
+
+  private errorSubscribers: Array<(error: unknown) => void> = []
+
+  private notifyError(error: unknown) {
+    for (const fn of this.errorSubscribers) {
+      try {
+        fn(error)
+      } catch {}
+    }
+  }
+
+  subscribeError(fn: (error: unknown) => void) {
+    this.errorSubscribers.push(fn)
+    return () => {
+      this.errorSubscribers = this.errorSubscribers.filter((f) => f !== fn)
+    }
   }
 }
 

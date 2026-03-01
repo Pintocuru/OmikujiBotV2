@@ -1,25 +1,30 @@
 <template>
-  <div class="flex flex-wrap justify-center gap-3 px-2 py-3">
-    <div v-for="key in allKeys" :key="key" class="relative w-[72px] h-[72px]">
+  <div class="flex flex-wrap justify-center gap-6 px-4 py-6">
+    <div v-for="key in allKeys" :key="key" class="relative w-30 h-30">
       <div class="petal-inner" :class="`text-${getPattern(key)}`">
         <!-- 中身 -->
-        <div class="w-full h-full flex flex-col items-center justify-center" :class="`text-${getPattern(key)}-content`">
+        <div
+          class="w-full h-full flex flex-col items-center justify-center gap-2"
+          :class="`text-${getPattern(key)}-content`"
+        >
           <!-- アイコン -->
-          <component :is="getLabel(key)" v-if="isComponent(getLabel(key))" class="icon-svg" />
+          <component :is="getLabel(key)" v-if="isComponent(getLabel(key))" class="icon-svg scale-150" />
 
           <!-- ラベル -->
-          <span v-else class="icon-text font-bold truncate">
+          <span v-else class="icon-text text-2xl font-bold truncate">
             {{ getLabel(key) }}
           </span>
 
           <!-- 数値 -->
-          <div class="petal-value text-xl font-bold">
+          <div class="petal-value text-4xl font-bold">
             {{ formatValue(counters[key] ?? 0) }}
           </div>
         </div>
 
         <!-- ハイライト -->
-        <div class="absolute top-2 left-3 w-7 h-3 rounded-full bg-white/40 rotate-[-20deg] pointer-events-none"></div>
+        <div
+          class="absolute top-4 left-6 w-12 h-8 rounded-full bg-white/40 rotate-[-20deg] pointer-events-none blur-[8px]"
+        ></div>
       </div>
     </div>
   </div>
@@ -28,8 +33,7 @@
 <script setup lang="ts">
   import { toRef, type Component } from 'vue'
   import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
-  import { ThumbsUp, Eye, Sparkles, MessageCircle, TrendingUp, BadgeDollarSign } from 'lucide-vue-next'
-
+  import { DEFAULT_LABELS } from '../composables/DefaultLabels'
   import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
 
   const props = defineProps<{
@@ -37,15 +41,6 @@
     counters: Record<string, number>
     eventLabels: Record<string, string>
   }>()
-
-  const DEFAULT_LABELS: Record<LiverDefaultKey, string | Component> = {
-    upVote: ThumbsUp,
-    viewer: Eye,
-    syoken: Sparkles,
-    commenter: MessageCircle,
-    lc: TrendingUp,
-    totalPrice: BadgeDollarSign,
-  }
 
   const getLabel = (key: string): string | Component => {
     if (key in DEFAULT_LABELS) return DEFAULT_LABELS[key as LiverDefaultKey]

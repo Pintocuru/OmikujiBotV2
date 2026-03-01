@@ -2,9 +2,10 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import { OmikujiDataType } from '@/types/'
+import { useAppStatus } from './useAppStatus'
 import { useBotMessageActions } from './useBotMessageActions'
-import { normalizeData } from '@/common/migrations'
 import { createAppServices } from './createAppServices'
+import { normalizeData } from '@/common/migrations'
 
 // グローバルデータの初期化
 const { omikujiData: rawOmikujiData } = window
@@ -20,6 +21,8 @@ export const useAppStore = defineStore('app', () => {
     data.value = normalizeData(newData)
     console.log('✅ loadData: 完了')
   }
+  // アプリ状態
+  const appStatus = useAppStatus()
 
   // botMessage
   const botMessageActions = useBotMessageActions()
@@ -28,9 +31,10 @@ export const useAppStore = defineStore('app', () => {
   const services = createAppServices()
 
   return {
-    // 状態
     data,
     loadData,
+
+    ...appStatus,
     ...botMessageActions,
     ...services,
   }
