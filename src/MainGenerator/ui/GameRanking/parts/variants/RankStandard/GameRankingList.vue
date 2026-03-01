@@ -47,7 +47,7 @@
 
           <!--スコア -->
           <div class="flex-shrink-0">
-            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.lists?.variant as BaseVariant)">
+            <div class="badge badge-lg p-2 font-bold" :class="scoreBadgeClass(msg.lists?.variant)">
               {{ msg.lists?.text || 0 }}
             </div>
           </div>
@@ -119,28 +119,7 @@
 
   // スコアのカラー
   const scoreBadgeClass = (variant?: BaseVariant): string => {
-    switch (variant) {
-      case 'primary':
-        return 'badge-primary'
-      case 'secondary':
-        return 'badge-secondary'
-      case 'accent':
-        return 'badge-accent'
-      case 'info':
-        return 'badge-info'
-      case 'success':
-        return 'badge-success'
-      case 'warning':
-        return 'badge-warning'
-      case 'error':
-        return 'badge-error'
-      case 'neutral':
-        return 'badge-neutral'
-      case 'none':
-        return ''
-      default:
-        return 'badge-primary'
-    }
+    return variant ? `badge-${variant}` : 'badge-primary'
   }
 </script>
 

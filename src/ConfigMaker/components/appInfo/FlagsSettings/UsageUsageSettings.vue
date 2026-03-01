@@ -37,15 +37,15 @@
 
   const { categoryVisibility } = useFlagsSettings()
 
-  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant> = {
+  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant | null> = {
     none: 'neutral',
-    basic: 'none',
+    basic: null,
     adv: 'info',
     pro: 'accent',
     godMode: 'warning',
   }
 
-  const getVariant = (category: RecordCategoryType): BaseVariant => {
+  const getVariant = (category: RecordCategoryType): BaseVariant | null => {
     const level = categoryVisibility(category).value
     return levelVariantMap[level]
   }

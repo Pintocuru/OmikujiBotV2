@@ -16,10 +16,10 @@
     </template>
 
     <!-- meta -->
-    <MetaDebugPanel v-if="0" />
+    <MetaDebugPanel v-if="isDev && 0" />
 
     <!-- test -->
-    <LiverCounter v-if="1" />
+    <LiverCounter v-if="isDev && 0" />
   </div>
 
   <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
-  import { useFontFamily } from '@/types/'
+  import { isDev, useFontFamily } from '@/types/'
   import { useComponentRenderer } from '@main/composables/useComponentRenderer'
   import { useAppInitializer } from '@main/composables/useAppInitializer'
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'

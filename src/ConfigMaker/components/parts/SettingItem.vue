@@ -35,7 +35,7 @@
     defineProps<{
       label: string
       description?: string
-      variant?: BaseVariant
+      variant?: BaseVariant | null
       showReset?: boolean
       showWarning?: boolean
       devMemo?: string
@@ -43,7 +43,7 @@
     }>(),
     {
       showReset: false,
-      variant: 'none',
+      variant: null,
     }
   )
 

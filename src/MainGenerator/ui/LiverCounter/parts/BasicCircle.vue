@@ -12,9 +12,11 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { toRef, type Component } from 'vue'
   import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
+  import { ThumbsUp, Eye, Sparkles, MessageCircle, TrendingUp, BadgeDollarSign } from 'lucide-vue-next'
   import BasicCircleItem from './BasicCircleItem.vue'
+  import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
 
   const props = defineProps<{
     settings: SettingsLiverCounterType
@@ -22,37 +24,23 @@
     eventLabels: Record<string, string>
   }>()
 
-  const DEFAULT_LABELS: Record<LiverDefaultKey, string> = {
-    upVote: '👍',
-    viewer: '👀',
-    syoken: '🆕',
-    commenter: '💬',
-    lc: '📈',
-    totalPrice: '💰',
+  // string のほかに lucide-vue-next の Component も許可
+  // 理由: syoken のアイコンが分かりづらいので、よりわかりやすいアイコンに変更できるように
+  const DEFAULT_LABELS: Record<LiverDefaultKey, string | Component> = {
+    upVote: ThumbsUp,
+    viewer: Eye,
+    syoken: Sparkles,
+    commenter: MessageCircle,
+    lc: TrendingUp,
+    totalPrice: BadgeDollarSign,
   }
 
-  const RAINBOW_PATTERN = ['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'] as const
-
-  const allKeys = computed(() => {
-    const defaults = props.settings.defaultCounters as string[]
-    const events = props.settings.eventCounters ?? []
-    const maxEvents = Math.max(0, 8 - defaults.length)
-    return [...defaults, ...events.slice(0, maxEvents)]
-  })
-
-  const getLabel = (key: string): string => {
+  const getLabel = (key: string): string | Component => {
     // defaultCounters のキーならラベルマップから
     if (key in DEFAULT_LABELS) return DEFAULT_LABELS[key as LiverDefaultKey]
     // eventCounters のキーなら comments から取得した name を使用、なければキーそのまま
     return props.eventLabels[key] ?? key
   }
 
-  const getPattern = (key: string): string => {
-    const index = allKeys.value.indexOf(key)
-    if (props.settings.colorPattern === null) {
-      return RAINBOW_PATTERN[index % RAINBOW_PATTERN.length]
-    }
-    if (index % 2 === 0) return props.settings.colorPattern
-    return props.settings.colorPattern2 ?? props.settings.colorPattern
-  }
+  const { allKeys, getPattern } = useLiverCounterDisplay(toRef(props, 'settings'))
 </script>

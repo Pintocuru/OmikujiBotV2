@@ -10,6 +10,7 @@ import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
 import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
 import { useAppStore } from '../stores/useAppStore'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
+import LiverCounter from '../ui/LiverCounter/LiverCounter.vue'
 
 /**
  * 各UiKindに対応するVueコンポーネントと、レンダリング可否の条件を管理するマップ
@@ -33,6 +34,9 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
   counter: {
     component: CounterPreview,
     shouldRender: ({ isComment }) => isComment,
+  },
+  liverCounter: {
+    component: LiverCounter,
   },
   winnerGroup: {
     component: WinnerGroup,

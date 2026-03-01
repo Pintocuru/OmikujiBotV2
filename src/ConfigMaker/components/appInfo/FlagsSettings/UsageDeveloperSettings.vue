@@ -37,9 +37,9 @@
     { key: 'itemSlotEnabled', label: 'アイテム表示設定の表示', model: itemSlotEnabled },
   ]
 
-  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant> = {
+  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant | null> = {
     none: 'neutral',
-    basic: 'none',
+    basic: null,
     adv: 'info',
     pro: 'accent',
     godMode: 'warning',

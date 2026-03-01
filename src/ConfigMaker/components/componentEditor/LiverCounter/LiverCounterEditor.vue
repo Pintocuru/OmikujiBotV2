@@ -35,27 +35,22 @@
   </SettingItem>
 
   <!-- カラーパターン（奇数） -->
-  <SettingItem
-    label="メインカラー"
-    description="奇数番目のカウンターの色。未設定で七色表示"
-    :showReset="true"
-    @reset="resetMap.colorPattern"
-  >
+  <SettingItem label="メインカラー" description="奇数番目のカウンターの色" :showReset="true" @reset="resetMap.colorOdd">
     <div class="flex flex-wrap gap-2 items-center">
       <!-- null オプション -->
       <div
         class="badge cursor-pointer"
-        :class="liverCounter.colorPattern === null ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorPattern', null)"
+        :class="liverCounter.colorOdd === null ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('colorOdd', null)"
       >
-        🌈 七色
+        🔧カスタム
       </div>
       <div
         v-for="variant in BaseVariantLabels"
         :key="variant"
         class="badge cursor-pointer"
-        :class="liverCounter.colorPattern === variant ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorPattern', variant)"
+        :class="liverCounter.colorOdd === variant ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('colorOdd', variant)"
       >
         {{ variant }}
       </div>
@@ -64,17 +59,18 @@
 
   <!-- カラーパターン2（偶数） -->
   <SettingItem
+    v-if="liverCounter.colorOdd !== null && totalCounterCount > 1"
     label="サブカラー"
-    description="偶数番目のカウンターの色。未設定でメインカラーと同じ"
+    description="偶数番目のカウンターの色"
     :showReset="true"
-    @reset="resetMap.colorPattern2"
+    @reset="resetMap.colorEven"
   >
     <div class="flex flex-wrap gap-2 items-center">
       <!-- null オプション -->
       <div
         class="badge cursor-pointer"
-        :class="liverCounter.colorPattern2 === null ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorPattern2', null)"
+        :class="liverCounter.colorEven === null ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('colorEven', null)"
       >
         メインと同じ
       </div>
@@ -82,18 +78,43 @@
         v-for="variant in BaseVariantLabels"
         :key="variant"
         class="badge cursor-pointer"
-        :class="liverCounter.colorPattern2 === variant ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorPattern2', variant)"
+        :class="liverCounter.colorEven === variant ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('colorEven', variant)"
       >
         {{ variant }}
       </div>
     </div>
   </SettingItem>
 
+  <!-- colorCycle（任意カラーリスト） -->
+  <SettingItem
+    v-if="liverCounter.colorOdd === null"
+    label="カスタムパターン"
+    description="複数の色を順番に適用します"
+    :showReset="true"
+    @reset="resetMap.colorCycle"
+  >
+    <input
+      type="text"
+      class="input input-bordered w-full"
+      :value="liverCounter.colorCycle.join(',')"
+      @input="
+        (e) => {
+          const raw = (e.target as HTMLInputElement).value
+          const arr = raw
+            .split(',')
+            .map((s) => s.trim())
+            .filter(Boolean)
+          updateField('colorCycle', arr)
+        }
+      "
+    />
+  </SettingItem>
+
   <!-- デフォルトカウンター選択 -->
   <SettingItem
     label="表示するカウンター"
-    description="表示するデフォルトカウンターを選択します（最大8件）"
+    description="クリックした順番に並びます"
     :showReset="true"
     @reset="resetMap.defaultCounters"
   >
@@ -108,13 +129,12 @@
         {{ label }}
       </div>
     </div>
-    <div class="text-xs text-base-content/50 mt-1">選択中: {{ liverCounter.defaultCounters.length }}件</div>
   </SettingItem>
 
   <!-- イベントカウンター選択 -->
   <SettingItem
     label="イベントカウンター"
-    description="コメントルールをカウンターとして表示します（defaultとの合計最大8件）"
+    description="クリックした順番に並びます"
     :showReset="true"
     @reset="resetMap.eventCounters"
   >
@@ -135,11 +155,20 @@
         {{ rule.name }}
       </div>
     </div>
-    <div class="text-xs text-base-content/50 mt-1">合計 {{ totalCounterCount }}/8 件</div>
+    <div class="text-xs text-base-content/50 mt-1">
+      合計 {{ totalCounterCount }}/8 件
+      <span v-if="totalCounterCount >= 8"> これ以上表示できません</span>
+    </div>
   </SettingItem>
 
   <!-- ラベル（特定アイテム用） -->
-  <SettingItem label="ラベル" description="特定のカウンターに使うタイトル" :showReset="true" @reset="resetMap.label">
+  <SettingItem
+    v-if="false"
+    label="ラベル"
+    description="特定のカウンターに使うタイトル"
+    :showReset="true"
+    @reset="resetMap.label"
+  >
     <input
       type="text"
       class="input input-bordered w-full"
@@ -183,8 +212,9 @@
   }
 
   const resetMap = {
-    colorPattern: () => resetField('colorPattern'),
-    colorPattern2: () => resetField('colorPattern2'),
+    colorOdd: () => resetField('colorOdd'),
+    colorEven: () => resetField('colorEven'),
+    colorCycle: () => resetField('colorCycle'),
     defaultCounters: () => resetField('defaultCounters'),
     eventCounters: () => resetField('eventCounters'),
     label: () => resetField('label'),
@@ -242,7 +272,7 @@
       upVote: 123,
       viewer: 456,
       syoken: 12,
-      commenter: 89,
+      commenter: 789,
       lc: 234,
       totalPrice: 5000,
     }

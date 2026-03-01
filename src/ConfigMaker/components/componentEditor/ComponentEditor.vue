@@ -78,16 +78,18 @@
     | 'defaultColor'
     | 'fontFamily'
 
-  const componentItemMap: Record<
-    ComponentItemType,
-    {
-      icon: LucideIconName
-      title: string
-      description: string
-      component: any
-      shouldShow: boolean
-    }
-  > = {
+  const componentItemMap = computed<
+    Record<
+      ComponentItemType,
+      {
+        icon: LucideIconName
+        title: string
+        description: string
+        component: any
+        shouldShow: boolean
+      }
+    >
+  >(() => ({
     bubble: {
       icon: 'MessageSquare',
       title: 'フキダシアイテム',
@@ -165,5 +167,5 @@
       component: FontFamilyEditor,
       shouldShow: isPro.value,
     },
-  }
+  }))
 </script>
