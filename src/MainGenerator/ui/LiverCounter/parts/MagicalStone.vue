@@ -15,8 +15,20 @@
         </span>
 
         <!-- 数値 -->
-        <div class="petal-value text-4xl font-bold">
-          {{ value }}
+        <div class="flex items-baseline justify-center whitespace-nowrap">
+          <TransitionGroup
+            name="matrix"
+            tag="span"
+            class="inline-flex"
+            enter-active-class="transition-all duration-200"
+            enter-from-class="opacity-0 scale-50"
+            leave-to-class="opacity-0 scale-150"
+            leave-active-class="absolute"
+          >
+            <span :key="value" class="text-4xl font-bold">
+              {{ value }}
+            </span>
+          </TransitionGroup>
         </div>
       </div>
 

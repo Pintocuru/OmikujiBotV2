@@ -1,7 +1,7 @@
 {
   "name": "omikuji-bot",
-  "version": "2.5.3",
-  "data_version": 2.20050033001,
+  "version": "2.5.4-alpha1",
+  "data_version": 2.20050041001,
   "description": "おみくじ付きBOTジェネレーター",
   "scripts": {
     "dev:omikujiBot": "tsx server/start-dev-server.ts",

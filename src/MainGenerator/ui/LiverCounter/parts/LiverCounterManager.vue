@@ -1,18 +1,34 @@
 <!-- src/MainGenerator/ui/LiverCounter/parts/LiverCounterManager.vue -->
 <template>
   <div class="w-full bg-base-100" :data-theme="settings.color">
-    <component :is="currentComponent" :counters="counters" :settings="settings" :event-labels="eventLabels" />
+    <div class="flex flex-wrap justify-center gap-4 py-4">
+      <div v-for="(key, index) in allKeys" :key="key">
+        <component
+          :is="currentItem"
+          :index="index"
+          :label="getLabel(key)"
+          :value="formatValue(counters[key] ?? 0)"
+          :color-pattern="getPattern(key)"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, type Component } from 'vue'
-  import type { LiverComponent, SettingsLiverCounterType } from '@/types/'
-  import basicCircle from './BasicCircle.vue'
-  import magicalStone from './MagicalStones.vue'
-  import starBurst from './StarBurst.vue'
-  import pixelBadge from './PixelBadge.vue'
-  import hexGrid from './HexGrid.vue'
+  import { computed, toRef, type Component } from 'vue'
+  import type { SettingsLiverCounterType, LiverComponent } from '@/types/'
+
+  import BasicCirclePlainItem from './BasicCirclePlain.vue'
+  import BasicCircleItem from './BasicCircle.vue'
+  import PixelBadgePlainItem from './PixelBadgePlain.vue'
+  import PixelBadgeItem from './PixelBadge.vue'
+  import MagicalStoneItem from './MagicalStone.vue'
+  import StarBurstItem from './StarBurst.vue'
+  import HexGridItem from './HexGrid.vue'
+
+  import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
+  import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
 
   const props = defineProps<{
     settings: SettingsLiverCounterType
@@ -20,16 +36,18 @@
     eventLabels: Record<string, string>
   }>()
 
-  const componentMap: Record<LiverComponent, Component> = {
-    basicCircle,
-    basicCirclePlain: basicCircle,
-    magicalStone,
-    starBurst,
-    pixelBadge,
-    hexGrid,
+  const { getLabel } = useLiverLabelResolver(props.eventLabels)
+  const { allKeys, getPattern, formatValue } = useLiverCounterDisplay(toRef(props, 'settings'))
+
+  const itemMap: Record<LiverComponent, Component> = {
+    basicCirclePlain: BasicCirclePlainItem,
+    basicCircle: BasicCircleItem,
+    pixelBadge: PixelBadgeItem,
+    pixelBadgePlain: PixelBadgePlainItem,
+    magicalStone: MagicalStoneItem,
+    starBurst: StarBurstItem,
+    hexGrid: HexGridItem,
   }
 
-  const currentComponent = computed(() => {
-    return componentMap[props.settings.component] ?? basicCircle
-  })
+  const currentItem = computed(() => itemMap[props.settings.component] ?? BasicCircleItem)
 </script>

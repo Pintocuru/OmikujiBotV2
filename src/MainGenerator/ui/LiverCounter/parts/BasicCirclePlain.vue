@@ -24,7 +24,7 @@
           leave-to-class="opacity-0 scale-90 translate-y-5"
           leave-active-class="absolute"
         >
-          <span :key="value" class="text-3xl font-bold `text-base-200` transition-all duration-300">
+          <span :key="value" class="text-4xl font-bold `text-base-200` transition-all duration-300">
             {{ value }}
           </span>
         </TransitionGroup>

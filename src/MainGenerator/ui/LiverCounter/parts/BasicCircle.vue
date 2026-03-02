@@ -1,44 +1,62 @@
-<!-- src/MainGenerator/ui/LiverCounter/parts/BasicCircle.vue -->
+<!-- BasicCircle.vue -->
 <template>
-  <div class="flex flex-wrap justify-center gap-4 py-4">
-    <template v-if="settings.component === 'basicCircle'">
-      <BasicCircleItem
-        v-for="(key, index) in allKeys"
-        :key="key"
-        :index="index"
-        :label="getLabel(key)"
-        :value="formatValue(counters[key] ?? 0)"
-        :color-pattern="getPattern(key)"
-      />
-    </template>
+  <div class="relative w-32 h-32 flex items-center justify-center">
+    <!-- 外側リング -->
+    <div class="absolute inset-0 rounded-full opacity-90 shadow-xl" :class="gradientClass"></div>
 
-    <template v-else>
-      <BasicCirclePlainItem
-        v-for="(key, index) in allKeys"
-        :key="key"
-        :index="index"
-        :label="getLabel(key)"
-        :value="formatValue(counters[key] ?? 0)"
-        :color-pattern="getPattern(key)"
-      />
-    </template>
+    <!-- 内側円 -->
+    <div
+      class="absolute rounded-full w-24 h-24 shadow-inner flex flex-col items-center justify-center"
+      :class="[innerBgClass]"
+    >
+      <!-- アイコン -->
+      <component :is="label" v-if="isComponent" class="w-8 h-8" />
+      <!-- ラベル -->
+      <div v-else class="text-xl font-bold truncate">{{ label }}</div>
+
+      <!-- カウント表示 -->
+      <div class="flex items-baseline justify-center whitespace-nowrap">
+        <TransitionGroup
+          name="count"
+          tag="span"
+          class="inline-flex"
+          enter-active-class="transition-all duration-500"
+          enter-from-class="opacity-0 scale-90 -translate-y-5"
+          leave-to-class="opacity-0 scale-90 translate-y-5"
+          leave-active-class="absolute"
+        >
+          <span :key="value" class="text-4xl font-bold transition-all duration-300" :class="[textClass]">
+            {{ value }}
+          </span>
+        </TransitionGroup>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { toRef } from 'vue'
-  import type { SettingsLiverCounterType } from '@/types/'
-  import BasicCircleItem from './BasicCircleItem.vue'
-  import BasicCirclePlainItem from './BasicCirclePlainItem.vue'
-  import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
-  import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
+  import { type Component, computed } from 'vue'
+  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = defineProps<{
-    settings: SettingsLiverCounterType
-    counters: Record<string, number>
-    eventLabels: Record<string, string>
+    label: string | Component
+    value: string
+    colorPattern: BaseVariant | null
   }>()
 
-  const { getLabel } = useLiverLabelResolver(props.eventLabels)
-  const { allKeys, getPattern, formatValue } = useLiverCounterDisplay(toRef(props, 'settings'))
+  const isComponent = computed(() => typeof props.label !== 'string')
+
+  const colorToken = computed(() => props.colorPattern || 'primary')
+
+  // 内側円の背景色
+  const innerBgClass = computed(() => `bg-${colorToken.value}-content text-${colorToken.value}`)
+
+  // 外側リング
+  const gradientClass = computed(() => {
+    const c = colorToken.value
+    return ['bg-gradient-to-br', `from-${c}`, `to-[color-mix(in_srgb,var(--${c})_70%,black)]`].join(' ')
+  })
+
+  // テキストカラー
+  const textClass = computed(() => `text-${colorToken.value}`)
 </script>

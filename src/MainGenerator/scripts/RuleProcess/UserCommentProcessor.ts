@@ -72,6 +72,7 @@ function processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProc
   }
 
   // 3. おみくじ成功時に回数をインクリメント
+  // TODO:actionItem.type === 'special' の内容によって、 回数をインクリメントするかを決める
   omiken.meta.draws = userSession.visits.getCount(omiken.userId, rule.key) + 1
   omiken.meta.ruleKey = rule.key
 

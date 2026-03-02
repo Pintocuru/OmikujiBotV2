@@ -55,11 +55,12 @@ export const flightSeatLayoutMap = {
  * ライバーカウンターコンポーネントの表示名マップ
  */
 export const liverComponentMap = {
-  basicCircle: 'カラー丸型',
-  basicCirclePlain: 'シンプル丸型',
+  basicCirclePlain: '丸型シンプル',
+  basicCircle: '丸型カラー',
+  pixelBadgePlain: 'ピクセルバッジ',
+  pixelBadge: 'ピクセルカラー',
   magicalStone: '魔法石',
   starBurst: '星',
-  pixelBadge: 'ピクセルバッジ',
   hexGrid: 'ヘキサゴン',
 } as const
 

@@ -2,7 +2,7 @@
 <template>
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden">
-    <LiverCounterManager :settings="liverCounter" :counters="previewCounters" :event-labels="previewEventLabels" />
+    <LiverCounterPreview :liver-counter="liverCounter" :event-labels="previewEventLabels" />
   </div>
 
   <!-- コンポーネント選択 -->
@@ -133,15 +133,13 @@
 
   <!-- イベントカウンター選択 -->
   <SettingItem
+    v-if="availableEventRules.length !== 0"
     label="イベントカウンター"
     description="クリックした順番に並びます"
     :showReset="true"
     @reset="resetMap.eventCounters"
   >
-    <div v-if="availableEventRules.length === 0" class="text-xs text-base-content/50">
-      コメントルールが設定されていません
-    </div>
-    <div v-else class="flex flex-wrap gap-2">
+    <div class="flex flex-wrap gap-2">
       <div
         v-for="rule in availableEventRules"
         :key="rule.key"
@@ -167,10 +165,10 @@
   import { storeToRefs } from 'pinia'
   import { SettingsLiverCounterSchema, liverComponentMap, liverDefaultMap } from '@/types/'
   import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
+  import LiverCounterPreview from './LiverCounterPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import LiverCounterManager from '@main/ui/LiverCounter/parts/LiverCounterManager.vue'
   import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
   import { themes } from '@shared/styles/DaisyUiTheme'
 
@@ -248,22 +246,6 @@
       updateField('eventCounters', [...current, key])
     }
   }
-
-  // ---- プレビュー用ダミーデータ ----
-  const previewCounters = computed<Record<string, number>>(() => {
-    const result: Record<string, number> = {
-      upVote: 456,
-      viewer: 123,
-      syoken: 123,
-      commenter: 456,
-      lc: 7890,
-      totalPrice: 5000,
-    }
-    for (const key of liverCounter.value.eventCounters) {
-      result[key] = 7
-    }
-    return result
-  })
 
   const previewEventLabels = computed<Record<string, string>>(() => {
     const result: Record<string, string> = {}
