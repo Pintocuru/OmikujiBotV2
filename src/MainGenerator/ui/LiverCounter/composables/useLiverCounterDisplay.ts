@@ -30,5 +30,8 @@ export function useLiverCounterDisplay(settings: Ref<SettingsLiverCounterType>) 
     return settings.value.colorEven ?? settings.value.colorOdd
   }
 
-  return { allKeys, getPattern }
+  // 数値に , を付与する
+  const formatValue = (v: number) => new Intl.NumberFormat().format(v)
+
+  return { allKeys, getPattern, formatValue }
 }

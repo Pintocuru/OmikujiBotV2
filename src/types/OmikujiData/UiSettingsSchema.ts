@@ -171,7 +171,6 @@ export const SettingsLiverCounterSchema = z.object({
     .catch([]), // 任意color
   defaultCounters: z.array(z.enum(liverDefaultKeyLabels)).default(['lc']).catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
-  label: z.string().default('今日のランチ代').catch('今日のランチ代'), // 特定のアイテムのタイトル
 })
 export type SettingsLiverCounterType = z.infer<typeof SettingsLiverCounterSchema>
 

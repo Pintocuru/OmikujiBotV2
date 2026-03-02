@@ -1,3 +1,4 @@
+<!-- C:\_root\_nodejs\OmikenTemplates\templates\OmikujiBot\src\MainGenerator\ui\LiverCounter\parts\MagicalStones.vue -->
 <template>
   <div class="flex flex-wrap justify-center gap-6 px-4 py-6">
     <div v-for="key in allKeys" :key="key" class="relative w-30 h-30">
@@ -31,10 +32,10 @@
 </template>
 
 <script setup lang="ts">
-  import { toRef, type Component } from 'vue'
-  import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
-  import { DEFAULT_LABELS } from '../composables/DefaultLabels'
+  import { toRef } from 'vue'
+  import type { SettingsLiverCounterType } from '@/types/'
   import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
+  import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
 
   const props = defineProps<{
     settings: SettingsLiverCounterType
@@ -42,16 +43,8 @@
     eventLabels: Record<string, string>
   }>()
 
-  const getLabel = (key: string): string | Component => {
-    if (key in DEFAULT_LABELS) return DEFAULT_LABELS[key as LiverDefaultKey]
-    return props.eventLabels[key] ?? key
-  }
-
-  const isComponent = (label: string | Component): label is Component => typeof label !== 'string'
-
-  const formatValue = (v: number) => new Intl.NumberFormat().format(v)
-
-  const { allKeys, getPattern } = useLiverCounterDisplay(toRef(props, 'settings'))
+  const { getLabel, isComponent } = useLiverLabelResolver(props.eventLabels)
+  const { allKeys, getPattern, formatValue } = useLiverCounterDisplay(toRef(props, 'settings'))
 </script>
 
 <style scoped>

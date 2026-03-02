@@ -17,7 +17,7 @@
         <component :is="getLabel(key)" v-if="isComponent(getLabel(key))" class="w-10 h-10" />
 
         <!-- ラベル -->
-        <span v-else class="text-xl font-bold leading-none truncate">
+        <span v-else class="text-xl font-bold truncate">
           {{ getLabel(key) }}
         </span>
 
@@ -35,11 +35,11 @@
 </template>
 
 <script setup lang="ts">
-  import { toRef, type Component } from 'vue'
-  import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
-  import { Star } from 'lucide-vue-next'
+  import { toRef } from 'vue'
+  import type { SettingsLiverCounterType } from '@/types/'
   import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
-  import { DEFAULT_LABELS } from '../composables/DefaultLabels'
+  import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
+  import { Star } from 'lucide-vue-next'
 
   const props = defineProps<{
     settings: SettingsLiverCounterType
@@ -47,16 +47,8 @@
     eventLabels: Record<string, string>
   }>()
 
-  const getLabel = (key: string): string | Component => {
-    if (key in DEFAULT_LABELS) return DEFAULT_LABELS[key as LiverDefaultKey]
-    return props.eventLabels[key] ?? key
-  }
-
-  const isComponent = (label: string | Component): label is Component => typeof label !== 'string'
-
-  const formatValue = (v: number) => new Intl.NumberFormat().format(v)
-
-  const { allKeys, getPattern } = useLiverCounterDisplay(toRef(props, 'settings'))
+  const { getLabel, isComponent } = useLiverLabelResolver(props.eventLabels)
+  const { allKeys, getPattern, formatValue } = useLiverCounterDisplay(toRef(props, 'settings'))
 
   const getStarStyle = (index: number) => {
     return {

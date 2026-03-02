@@ -160,22 +160,6 @@
       <span v-if="totalCounterCount >= 8"> これ以上表示できません</span>
     </div>
   </SettingItem>
-
-  <!-- ラベル（特定アイテム用） -->
-  <SettingItem
-    v-if="false"
-    label="ラベル"
-    description="特定のカウンターに使うタイトル"
-    :showReset="true"
-    @reset="resetMap.label"
-  >
-    <input
-      type="text"
-      class="input input-bordered w-full"
-      :value="liverCounter.label"
-      @input="(e) => updateField('label', (e.target as HTMLInputElement).value)"
-    />
-  </SettingItem>
 </template>
 
 <script setup lang="ts">
@@ -217,7 +201,6 @@
     colorCycle: () => resetField('colorCycle'),
     defaultCounters: () => resetField('defaultCounters'),
     eventCounters: () => resetField('eventCounters'),
-    label: () => resetField('label'),
   }
 
   // ---- defaultCounters トグル ----

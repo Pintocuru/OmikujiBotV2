@@ -22,6 +22,7 @@
 
   const componentMap: Record<LiverComponent, Component> = {
     basicCircle,
+    basicCirclePlain: basicCircle,
     magicalStone,
     starBurst,
     pixelBadge,
