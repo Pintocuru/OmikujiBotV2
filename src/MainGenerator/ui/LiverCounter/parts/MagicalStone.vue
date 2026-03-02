@@ -1,11 +1,8 @@
 <template>
-  <div class="relative w-30 h-30" :class="getNthClass(index)">
-    <div class="petal-inner" :class="`text-${colorPattern}`">
+  <div class="magic-burst relative w-30 h-30" :class="getNthClass(index)">
+    <div class="w-full h-full flex petal-inner" :class="`text-${activeColor}`">
       <!-- 中身 -->
-      <div
-        class="w-full h-full flex flex-col items-center justify-center gap-2"
-        :class="`text-${colorPattern}-content`"
-      >
+      <div class="w-full h-full flex flex-col items-center justify-center gap-2" :class="`text-${activeColor}-content`">
         <!-- アイコン -->
         <component :is="label" v-if="isComponent" class="icon-svg scale-150" />
 
@@ -41,8 +38,8 @@
 </template>
 
 <script setup lang="ts">
-  import { type Component, computed } from 'vue'
-  import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { type Component, computed, ref, watch } from 'vue'
+  import { BaseVariantLabels, type BaseVariant } from '@shared/components/parts/ItemVariantTypes'
 
   const props = defineProps<{
     index: number
@@ -59,12 +56,26 @@
     if (i % 2 === 1) return 'petal-variant-2'
     return ''
   }
+
+  const activeColor = ref<BaseVariant>(props.colorPattern)
+
+  let prev = Number(props.value)
+
+  watch(
+    () => props.value,
+    (v) => {
+      const next = Number(v)
+      if (next > prev) {
+        const random = BaseVariantLabels[Math.floor(Math.random() * BaseVariantLabels.length)]
+        activeColor.value = random
+      }
+      prev = next
+    }
+  )
 </script>
 
 <style scoped>
   .petal-inner {
-    width: 100%;
-    height: 100%;
     border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
 
     background: linear-gradient(135deg, currentColor, color-mix(in srgb, currentColor 70%, white));
@@ -107,6 +118,25 @@
     }
     50% {
       transform: translateY(-4px) rotate(1.5deg);
+    }
+  }
+
+  .magic-burst {
+    animation: magicFlash 0.3s ease;
+  }
+
+  @keyframes magicFlash {
+    0% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    50% {
+      transform: scale(1.1);
+      filter: brightness(1.4);
+    }
+    100% {
+      transform: scale(1);
+      filter: brightness(1);
     }
   }
 </style>

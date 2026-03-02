@@ -1,6 +1,6 @@
 <!-- BasicCircle.vue -->
 <template>
-  <div class="relative w-32 h-32 flex items-center justify-center">
+  <div class="relative w-32 h-32 flex items-center justify-center transition duration-150 pixel-badge">
     <!-- 外側リング -->
     <div class="absolute inset-0 rounded-full opacity-90 shadow-xl" :class="gradientClass"></div>
 
@@ -53,10 +53,27 @@
 
   // 外側リング
   const gradientClass = computed(() => {
-    const c = colorToken.value
-    return ['bg-gradient-to-br', `from-${c}`, `to-[color-mix(in_srgb,var(--${c})_70%,black)]`].join(' ')
+    const c = props.colorPattern || 'primary'
+    return ['bg-gradient-to-br', `from-${c}`, `to-${c}-content`].join(' ')
   })
 
   // テキストカラー
   const textClass = computed(() => `text-${colorToken.value}`)
 </script>
+
+<style scoped>
+  .pixel-badge {
+    animation: badgeDrop 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes badgeDrop {
+    from {
+      opacity: 0;
+      transform: translateY(-10px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+</style>

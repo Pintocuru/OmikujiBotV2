@@ -8,7 +8,7 @@
   themes: all;
 }
 
-/* theme transparent : 背景色を透明化 */
+/* theme transparent : 背景色を透明化
 :root,
 :root:has(input.theme-controller[value='transparent']:checked) {
   --color-base-100: transparent !important;
@@ -17,3 +17,4 @@
 [data-theme='transparent'] .bg-base-100 {
   background-color: transparent !important;
 }
+ */

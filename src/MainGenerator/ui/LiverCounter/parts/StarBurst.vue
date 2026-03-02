@@ -1,14 +1,12 @@
 <template>
-  <div
-    class="flex justify-center w-32 h-32 star-item"
-    :class="`text-${colorPattern}`"
-    :style="{ animationDelay: `${index * 0.15}s` }"
-  >
-    <!-- 背景の星形 -->
-    <Star class="absolute inset-0 w-full h-full" fill="currentColor" />
+  <div class="relative flex justify-center w-32 h-32" :class="`text-${colorPattern}`">
+    <!-- 回転させる星レイヤー -->
+    <div class="absolute inset-0 star-rotate" :class="{ spinning: isIncreasing }">
+      <Star class="w-full h-full" fill="currentColor" />
+    </div>
 
-    <!-- コンテンツ -->
-    <div class="relative flex flex-col items-center justify-center pt-2" :class="`text-${colorPattern}-content`">
+    <!-- 固定コンテンツ -->
+    <div class="relative z-10 flex flex-col items-center justify-center pt-2" :class="`text-${colorPattern}-content`">
       <!-- アイコン -->
       <component :is="label" v-if="isComponent" class="w-10 h-10" />
 
@@ -35,7 +33,10 @@
         </TransitionGroup>
       </div>
     </div>
-
+    <!-- ハイライト -->
+    <div
+      class="absolute top-8 left-8 w-8 h-6 rounded-full bg-white/40 rotate-[-20deg] pointer-events-none blur-[8px]"
+    ></div>
     <!-- パーティクル -->
     <span class="sparkle sparkle-1 absolute rounded-full bg-white pointer-events-none w-3 h-3 top-4 right-5" />
     <span class="sparkle sparkle-2 absolute rounded-full bg-white pointer-events-none w-2 h-2 bottom-6 left-4" />
@@ -43,7 +44,7 @@
 </template>
 
 <script setup lang="ts">
-  import { type Component, computed } from 'vue'
+  import { type Component, computed, ref, watch } from 'vue'
   import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
   import { Star } from 'lucide-vue-next'
 
@@ -55,6 +56,21 @@
   }>()
 
   const isComponent = computed(() => typeof props.label !== 'string')
+
+  const isIncreasing = ref(false)
+  let prev = Number(props.value)
+
+  watch(
+    () => props.value,
+    (v) => {
+      const next = Number(v)
+      if (next > prev) {
+        isIncreasing.value = true
+        setTimeout(() => (isIncreasing.value = false), 600)
+      }
+      prev = next
+    }
+  )
 </script>
 
 <style scoped>
@@ -117,6 +133,26 @@
     80% {
       transform: scale(0);
       opacity: 0;
+    }
+  }
+
+  .star-rotate {
+    animation: starPulse 3.5s ease-in-out infinite;
+  }
+
+  .spinning {
+    animation: spinFast 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  @keyframes spinFast {
+    0% {
+      transform: rotate(0deg);
+    }
+    80% {
+      transform: rotate(720deg);
+    }
+    100% {
+      transform: rotate(740deg);
     }
   }
 </style>

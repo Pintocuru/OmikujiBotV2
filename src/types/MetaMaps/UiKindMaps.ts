@@ -87,3 +87,12 @@ export const uiKindMap = {
     description: '座席風レイアウトでコメントしたユーザーを一覧表示します。',
   },
 } as const
+
+// specialSet
+export const uiSpecialSetMap = {
+  templa: {
+    label: 'てんぷらさん用セット',
+    description: 'ライバーカウンター＋スナイプタイマーのセット',
+    kinds: ['flashBanner', 'ranking'],
+  },
+} as const

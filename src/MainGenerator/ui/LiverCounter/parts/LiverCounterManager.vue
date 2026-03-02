@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/LiverCounter/parts/LiverCounterManager.vue -->
 <template>
-  <div class="w-full bg-base-100" :data-theme="settings.color">
-    <div class="flex flex-wrap justify-center gap-4 py-4">
+  <div class="w-full bg-transparent" :data-theme="settings.color">
+    <div class="flex flex-wrap justify-center gap-2 py-2">
       <div v-for="(key, index) in allKeys" :key="key">
         <component
           :is="currentItem"

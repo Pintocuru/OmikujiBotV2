@@ -1,5 +1,5 @@
 // src/common/migrations/v2_to_v3/v2_05_to_v2_10.ts
-import { ComponentsSchema } from '@/types/OmikujiData/UiSchema'
+import { UiSchema } from '@/types/OmikujiData/UiSchema'
 import { CharacterColorScheme } from '@/types/OmikujiData/CharacterSchema'
 
 /**
@@ -103,7 +103,7 @@ export function migrateV205ToV210(data: any): any {
   }
 
   // 5. スキーマでバリデーション & デフォルト値適用
-  const validatedComponents = ComponentsSchema.parse(newComponents)
+  const validatedComponents = UiSchema.parse(newComponents)
 
   // 6. データ全体を更新
   return {

@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
-import { ComponentsType, ComponentsConditions, ComponentsCommonStyle, FlagsType, SettingsType } from '@/types/'
+import { UiType, UiConditions, UiCommonStyleType, FlagsType, SettingsType } from '@/types/'
 
 /**
  * カテゴリに属さないプロパティの操作機能を提供するコンポーザブル
@@ -17,7 +17,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
   /**
    * components を更新
    */
-  const updateComponents = (updates: Partial<ComponentsType>) => {
+  const updateComponents = (updates: Partial<UiType>) => {
     data.value.components = {
       ...data.value.components,
       ...updates,
@@ -29,7 +29,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
    * v2.1: components.conditions を更新
    * スロットと種類の組み合わせ配列を更新
    */
-  const updateComponentsConditions = (newConditions: ComponentsConditions) => {
+  const updateComponentsConditions = (newConditions: UiConditions) => {
     data.value.components.conditions = newConditions
     hasChanged.value = true
   }
@@ -38,7 +38,7 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
    * v2.1: components.commonStyle を更新
    * 共通スタイル設定を更新
    */
-  const updateComponentsCommonStyle = (updates: Partial<ComponentsCommonStyle>) => {
+  const updateComponentsCommonStyle = (updates: Partial<UiCommonStyleType>) => {
     data.value.components.commonStyle = {
       ...data.value.components.commonStyle,
       ...updates,
@@ -50,14 +50,14 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
    * v2.1: components.settings のネスト更新
    * 特定のコンポーネント設定を更新
    */
-  const updateComponentSettings = <T extends keyof ComponentsType['settings']>(
+  const updateComponentSettings = <T extends keyof UiType['settings']>(
     key: T,
-    updates: Partial<ComponentsType['settings'][T]>
+    updates: Partial<UiType['settings'][T]>
   ) => {
     data.value.components.settings[key] = {
       ...data.value.components.settings[key],
       ...updates,
-    } as ComponentsType['settings'][T]
+    } as UiType['settings'][T]
     hasChanged.value = true
   }
 

@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { CharacterColorScheme, DisplayOptionSchema } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
-import { fontFamilyMap, uiKindMap, UiSlotMap } from '../MetaMaps'
+import { fontFamilyMap, uiKindMap, UiSlotMap, uiSpecialSetMap } from '../MetaMaps'
 import { UiSettingsSchema } from './UiSettingsSchema'
 
 /**
@@ -30,7 +30,7 @@ export function getKindsForSlot(slot: UiSlotType): UiKind[] {
  * コンポーネント条件（スロットと種類の組み合わせ）
  * kindとslotの整合性をバリデーション
  */
-export const ComponentsConditionSchema = z
+export const UiConditionSchema = z
   .object({
     slot: z.enum(uiSlots as [UiSlotType, ...UiSlotType[]]),
     kind: z.enum(uiKinds as [UiKind, ...UiKind[]]),
@@ -38,16 +38,22 @@ export const ComponentsConditionSchema = z
   .refine((data) => (uiKindMap[data.kind].slots as readonly string[]).includes(data.slot), {
     message: 'kindとslotの組み合わせが不正です',
   })
-export type ComponentsCondition = z.infer<typeof ComponentsConditionSchema>
+export type UiConditionType = z.infer<typeof UiConditionSchema>
 
 /**
  * コンポーネント条件配列（最大3つ、スロット重複不可）
  */
-export const ComponentsConditionsSchema = z
-  .array(ComponentsConditionSchema)
+export const UiConditionsSchema = z
+  .array(UiConditionSchema)
   .max(3)
   .refine((v) => new Set(v.map((c) => c.slot)).size === v.length, { message: 'slot は重複不可' })
-export type ComponentsConditions = z.infer<typeof ComponentsConditionsSchema>
+export type UiConditions = z.infer<typeof UiConditionsSchema>
+
+/**
+ * SpecialSet
+ */
+const uiSpecialSetOptions = Object.keys(uiSpecialSetMap) as UiSpecialSetType[]
+export type UiSpecialSetType = keyof typeof uiSpecialSetMap
 
 /**
  * fontFamilyMap
@@ -59,18 +65,18 @@ export const useFontFamily = (font: FontFamilyType) => fontFamilyMap[font].class
 /**
  * 共通スタイル設定
  */
-export const ComponentsCommonStyleSchema = z.object({
+export const UiCommonStyleSchema = z.object({
   fontFamily: z.enum(fontFamilyOptions).default('default').catch('default'),
   defaultColor: normalizedObject(CharacterColorScheme),
   defaultVoice: normalizedObject(DisplayOptionSchema),
 })
-export type ComponentsCommonStyle = z.infer<typeof ComponentsCommonStyleSchema>
+export type UiCommonStyleType = z.infer<typeof UiCommonStyleSchema>
 
 /**
  * ComponentsSchema
  */
-export const ComponentsSchema = z.object({
-  conditions: ComponentsConditionsSchema.default([
+export const UiSchema = z.object({
+  conditions: UiConditionsSchema.default([
     { slot: 'primary', kind: 'bubble' },
     { slot: 'secondary', kind: 'toast' },
   ]).catch([
@@ -79,12 +85,15 @@ export const ComponentsSchema = z.object({
   ]),
   enableSecondary: z.boolean().default(true).catch(true), // 表示形式 を使用するか
 
-  commonStyle: ComponentsCommonStyleSchema.default(
-    ComponentsCommonStyleSchema.parse({
+  // スペシャルセット nullでないなら conditions より優先
+  specialSet: z.enum(uiSpecialSetOptions).nullable().default(null).catch(null),
+
+  commonStyle: UiCommonStyleSchema.default(
+    UiCommonStyleSchema.parse({
       defaultVoice: { mode: 'voice' },
     })
-  ).catch(ComponentsCommonStyleSchema.parse({})),
+  ).catch(UiCommonStyleSchema.parse({})),
   settings: normalizedObject(UiSettingsSchema),
 })
 
-export type ComponentsType = z.infer<typeof ComponentsSchema>
+export type UiType = z.infer<typeof UiSchema>

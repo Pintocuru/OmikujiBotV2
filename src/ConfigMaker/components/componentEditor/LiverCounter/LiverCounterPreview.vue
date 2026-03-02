@@ -1,13 +1,19 @@
 <!-- src/ConfigMaker/components/componentEditor/LiverCounter/LiverCounterPreview.vue -->
 <template>
   <div class="max-h-56 overflow-y-hidden relative">
-    <LiverCounterManager :settings="liverCounter" :counters="previewCounters" :event-labels="previewEventLabels" />
-    <button
-      class="btn btn-xs btn-ghost absolute bottom-1 right-1 opacity-60 hover:opacity-100"
-      @click="incrementRandom"
-    >
-      🎲 +1
-    </button>
+    <div :style="bgStyle">
+      <LiverCounterManager :settings="liverCounter" :counters="previewCounters" :event-labels="previewEventLabels" />
+
+      <!-- +1ボタン -->
+      <button
+        class="btn btn-xs btn-ghost absolute bottom-1 right-1 opacity-60 hover:opacity-100"
+        @click="incrementRandom"
+      >
+        🎲 +1
+      </button>
+
+      <input type="range" min="0" max="100" v-model="lightness" class="range range-xs absolute bottom-1 left-1 w-24" />
+    </div>
   </div>
 </template>
 
@@ -53,4 +59,12 @@
     const key = keys[Math.floor(Math.random() * keys.length)]
     counters.value = { ...counters.value, [key]: (counters.value[key] ?? 0) + 1 }
   }
+
+  //
+  const lightness = ref(90) // 0〜100
+  const bgStyle = computed(() => {
+    return {
+      backgroundColor: `hsl(200 80% ${lightness.value}%)`, // hue=200, saturation=80%
+    }
+  })
 </script>

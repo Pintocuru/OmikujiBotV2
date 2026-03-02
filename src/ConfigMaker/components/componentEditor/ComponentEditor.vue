@@ -51,7 +51,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isComment, isCharacter } = useVisibilityAccess()
+  const { isComment, isCharacter, isPrimarySlot, isSecondarySlot } = useVisibilityAccess()
   const { itemSlotEnabled } = useFlagsSettings()
   const { hasAccess } = useAccessChecker()
   const { isPro } = useSettingMode()
@@ -158,7 +158,7 @@
       title: 'デフォルトカラー',
       description: 'キャラクターが設定されてない場合のデフォルトカラーを設定',
       component: DefaultColorEditor,
-      shouldShow: !isCharacter.value,
+      shouldShow: !isCharacter.value && (isPrimarySlot.value || isSecondarySlot.value),
     },
     fontFamily: {
       icon: 'Type',

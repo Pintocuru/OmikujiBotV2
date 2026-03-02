@@ -1,29 +1,31 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <!-- 接続状態インジケーター（全状態で常時マウント） -->
-  <ConnectionStatusIndicator :status="appStore.status" />
+  <div class="bg-transparent">
+    <!-- 接続状態インジケーター（全状態で常時マウント） -->
+    <ConnectionStatusIndicator :status="appStore.status" />
 
-  <!-- 初期化完了後のメイン表示 -->
-  <div
-    v-if="appStore.status === 'ready'"
-    class="h-screen overflow-hidden"
-    :class="[fontFamily]"
-    data-theme="transparent"
-  >
-    <!-- 動的コンポーネント表示 -->
-    <template v-for="item in activeComponents" :key="item?.slot">
-      <component v-if="item" :is="item.component" />
-    </template>
+    <!-- 初期化完了後のメイン表示 -->
+    <div
+      v-if="appStore.status === 'ready'"
+      class="h-screen overflow-hidden"
+      :class="[fontFamily]"
+      data-theme="transparent"
+    >
+      <!-- 動的コンポーネント表示 -->
+      <template v-for="item in activeComponents" :key="item?.slot">
+        <component v-if="item" :is="item.component" />
+      </template>
 
-    <!-- meta -->
-    <MetaDebugPanel v-if="isDev && 0" />
+      <!-- meta -->
+      <MetaDebugPanel v-if="isDev && 0" />
 
-    <!-- test -->
-    <LiverCounter v-if="isDev && 0" />
+      <!-- test -->
+      <LiverCounter v-if="isDev && 0" />
+    </div>
+
+    <!-- わんコメが起動されていない場合のエラー表示 -->
+    <ErrorInitComponent v-else-if="appStore.status === 'error'" :pluginUid="null" />
   </div>
-
-  <!-- わんコメが起動されていない場合のエラー表示 -->
-  <ErrorInitComponent v-else-if="appStore.status === 'error'" :pluginUid="null" />
 </template>
 
 <script setup lang="ts">
