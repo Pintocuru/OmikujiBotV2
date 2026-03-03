@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { OmikujiDataSchema, OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { normalizeData } from '@/common/migrations'
-import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
+import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 
 /**
  * データの入出力（読み込み・保存・エクスポート）を提供
@@ -29,7 +29,6 @@ export function useDataIO(data: Ref<OmikujiDataType>) {
   //
   const openLocalOmikujiData = () => {
     loadData(window.omikujiData)
-    swalToast.success({ title: '読み込み完了', text: 'omikujiData.js を読み込みました。' })
   }
 
   /**

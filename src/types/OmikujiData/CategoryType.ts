@@ -13,6 +13,7 @@ import {
   TimerRuleSchema,
   TimerRuleType,
 } from './RulesSchema'
+import { categoryMap } from '../MetaMaps'
 
 /**
  * RecordCategory
@@ -60,5 +61,5 @@ export type SettingsCategoryType = (typeof settingsCategoryLabel)[number]
 /**
  * CategoryType
  */
-export const categoryType = [...recordCategoryLabel, ...settingsCategoryLabel] as const
-export type CategoryType = (typeof categoryType)[number]
+export const categoryTypeLabel = Object.keys(categoryMap) as CategoryType[]
+export type CategoryType = keyof typeof categoryMap

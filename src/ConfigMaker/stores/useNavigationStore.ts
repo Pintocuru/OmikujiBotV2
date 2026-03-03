@@ -21,26 +21,26 @@ export const useNavigationStore = defineStore('navigation', () => {
    * 計算プロパティ
    */
 
-  /** RecordCategory かどうかの型ガード */
+  // RecordCategory かどうかの型ガード */
   const isRecordCategory = (category: CategoryType): category is RecordCategoryType =>
     recordCategoryLabel.includes(category as RecordCategoryType)
 
-  /** 現在のカテゴリがRecordCategoryかどうか */
+  // 現在のカテゴリがRecordCategoryかどうか */
   const isCurrentRecordCategory = computed(() => isRecordCategory(selectedCategory.value))
 
-  /** 型安全な現在のカテゴリ（RecordCategoryの場合のみ値を返す） */
+  // 型安全な現在のカテゴリ（RecordCategoryの場合のみ値を返す） */
   const validCategory = computed((): RecordCategoryType | undefined =>
     isRecordCategory(selectedCategory.value) ? selectedCategory.value : undefined
   )
 
-  /** 現在のカテゴリの配列データ */
+  // 現在のカテゴリの配列データ */
   const categoryArray = computed(() => {
     const category = validCategory.value
     if (!category) return undefined
     return getCategoryArray(category)
   })
 
-  /** 選択されているアイテムの詳細データ */
+  // 選択されているアイテムの詳細データ */
   const selectedItem = computed(() => {
     const category = validCategory.value
     if (!category || !selectedItemKey.value || !categoryArray.value) return null
@@ -51,29 +51,30 @@ export const useNavigationStore = defineStore('navigation', () => {
    * 操作
    */
 
-  /** カテゴリを選択（自動的に最初のアイテムを選択） */
-  const selectCategory = (category: CategoryType) => {
-    selectedCategory.value = category
+  // カテゴリを選択（自動的に最初のアイテムを選択） */
+  const selectCategory = (category?: CategoryType) => {
+    const safeCategory = category ?? 'comments'
+    selectedCategory.value = safeCategory
 
-    if (!isRecordCategory(category)) {
+    if (!isRecordCategory(safeCategory)) {
       selectedItemKey.value = null
     } else {
-      const firstItem = getCategoryArray(category)[0]
+      const firstItem = getCategoryArray(safeCategory)[0]
       selectedItemKey.value = firstItem?.key ?? null
     }
   }
 
-  /** アイテムを選択 */
+  // アイテムを選択 */
   const selectItem = (key: string | null) => {
     selectedItemKey.value = key
   }
 
-  /** 選択をクリア */
+  // 選択をクリア */
   const clearSelection = () => {
     selectedItemKey.value = null
   }
 
-  /** 次のアイテムを選択（現在のアイテムが削除された時などに使用） */
+  // 次のアイテムを選択（現在のアイテムが削除された時などに使用） */
   const selectNextItem = () => {
     if (!categoryArray.value || categoryArray.value.length === 0) {
       selectedItemKey.value = null

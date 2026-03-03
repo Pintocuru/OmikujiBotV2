@@ -4,7 +4,7 @@
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
     <select
       :value="settings.daisyUiTheme"
-      @change="(e) => updateSettingsField('daisyUiTheme', (e.target as HTMLSelectElement).value as ThemeType)"
+      @change="(e) => updateSettingsField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
       :disabled="!isPro"
     >
@@ -41,17 +41,35 @@
       </span>
     </div>
   </SettingItem>
+
+  <!-- DaisyUIテーマ -->
+  <SettingItem
+    v-if="isGod"
+    label="起動時に開くカテゴリ"
+    description="起動時に最初に開くカテゴリを設定します"
+    forceMode="god"
+  >
+    <select
+      :value="settings.initialCategory"
+      @change="(e) => updateSettingsField('initialCategory', (e.target as HTMLSelectElement).value)"
+      class="select select-bordered w-full max-w-xs"
+    >
+      <option v-for="(value, key) in categoryMap" :key="key" :value="key">
+        {{ value.label }}
+      </option>
+    </select>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev } from '@/types/'
+  import { categoryMap, isDev } from '@/types/'
   import { getKey, resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { themes, ThemeType } from '@shared/styles/DaisyUiTheme'
+  import { themes } from '@shared/styles/DaisyUiTheme'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
@@ -64,7 +82,7 @@
   const settings = computed(() => data.value.settings)
 
   // settings の単一フィールド更新
-  const updateSettingsField = <K extends keyof SettingsType>(field: K, value: SettingsType[K]) => {
+  const updateSettingsField = <K extends keyof SettingsType>(field: K, value: any) => {
     omikujiStore.updateSettings({ [field]: value })
   }
 
@@ -72,8 +90,6 @@
   const updateLicenseKeyHash = (value: string) => {
     omikujiStore.updateSettings({ licenseKeyHash: value })
   }
-
-  // …既存コード…
 
   // ライセンスキー変更時のモーダル表示
   watch(

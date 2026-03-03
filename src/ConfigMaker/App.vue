@@ -48,7 +48,7 @@
 <script setup lang="ts">
   import { onMounted, computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev } from '@/types/'
+  import { isDev, OmikujiDataType } from '@/types/'
   import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
   import NavigationTabs from './components/appItems/NavigationTabs.vue'
@@ -62,12 +62,15 @@
   import PresetTool from '@/PresetManager//DevConfigs.vue'
   import { useDevStore } from '../PresetManager/stores/useDevStore'
   import { generatorApi } from '../PresetManager/services/generatorApi'
+  import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
+  import { useNavigationStore } from './stores/useNavigationStore'
 
   // stores
   const omikujiStore = useOmikujiStore()
   const devStore = useDevStore()
   const { data } = storeToRefs(omikujiStore)
   const { isServerConnected } = storeToRefs(devStore)
+  const navigationStore = useNavigationStore()
 
   // インポートマネージャー
   const importManager = useImportManager()
@@ -90,9 +93,11 @@
       isServerConnected.value = true
       if (isDev) return // devならデータを読まない
       try {
-        const lowData = await generatorApi.loadGeneratorConfig()
+        const lowData = (await generatorApi.loadGeneratorConfig()) as OmikujiDataType
         if (lowData) {
           omikujiStore.loadData(lowData)
+          navigationStore.selectCategory(data.value.settings.initialCategory)
+          swalToast.success({ title: '読み込み完了', text: `${lowData.meta.name} を読み込みました` })
           return
         }
       } catch (e) {
@@ -102,5 +107,7 @@
 
     // ローカルを読む
     omikujiStore.openLocalOmikujiData()
+    navigationStore.selectCategory(data.value.settings.initialCategory)
+    swalToast.success({ title: '読み込み完了', text: 'omikujiData.js を読み込みました。' })
   })
 </script>

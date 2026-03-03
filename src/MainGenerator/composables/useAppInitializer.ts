@@ -5,10 +5,12 @@ import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
 
 export function useAppInitializer() {
   const initialize = async () => {
     const appStore = useAppStore()
+    const navigationStore = useNavigationStore()
     const { isComment } = useVisibilityAccess()
 
     // 初期化開始を明示（status: 'initializing' はストア初期値のため呼び出し不要だが、
@@ -55,6 +57,7 @@ export function useAppInitializer() {
         const serverData = await generatorApi.loadGeneratorConfig()
         if (serverData) {
           appStore.loadData(serverData)
+          navigationStore.selectCategory(appStore.data.settings.initialCategory)
           const name = appStore.data.meta.name
           postSystemMessage(`エディタープラグイン から ${name} のデータを読み込みました`, {
             username: '__INFO__',

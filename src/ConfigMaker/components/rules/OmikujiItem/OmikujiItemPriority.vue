@@ -20,12 +20,7 @@
 
     <!-- 優先度 -->
     <div v-if="hasCriteria" class="card p-4 space-y-2 bg-base-200 rounded-lg shadow-lg">
-      <SubSectionHeader
-        icon="Filter"
-        variant="primary"
-        title="追加条件"
-        description="このおみくじが適用される追加の条件を設定します"
-      />
+      <SubSectionHeader icon="Filter" title="追加条件" description="このおみくじが適用される追加の条件を設定します" />
       <SettingItem label="優先度" description="追加条件達成時、優先で選ばれます">
         <label class="label cursor-pointer gap-2">
           <input

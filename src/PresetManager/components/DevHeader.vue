@@ -77,11 +77,13 @@
   import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
   import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
   import { Download, Save } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()
   const { data, hasChanged } = storeToRefs(omikujiStore)
+  const navigationStore = useNavigationStore()
   const devStore = useDevStore()
   const { isExpressMode } = storeToRefs(devStore)
   const { isPro } = useSettingMode()
@@ -127,6 +129,7 @@
       // ファイル読み込み
       devStore.setSaveFileName()
       loadData(data)
+      navigationStore.selectCategory(data.settings.initialCategory)
       hasChanged.value = false // 読み込み後は変更なし状態に戻す
 
       swalToast.success({ title: 'ジェネレーター設定を読み込みました' })

@@ -1,5 +1,6 @@
 // src/PresetManager/stores/useApiLoadActions.ts
 import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
+import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
 import { DevConfigStateType } from '@/PresetManager/devTypes'
 import { configApi } from '@/PresetManager/services/configApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -11,6 +12,7 @@ export function useLoadActions(
   // 設定読み込み
   const applyConfigFile = async (fileName: string) => {
     const omikujiStore = useOmikujiStore()
+    const navigationStore = useNavigationStore()
     const hasChanged = omikujiStore.hasChanged
 
     // 変更があるなら確認ダイアログ
@@ -31,6 +33,7 @@ export function useLoadActions(
       const configData = await configApi.loadConfig(fileName)
 
       omikujiStore.loadData(configData)
+      navigationStore.selectCategory(configData.settings.initialCategory)
       state.saveFileName.value = fileName
 
       omikujiStore.resetChangeState()

@@ -3,7 +3,7 @@
   <div class="flex gap-2">
     <!-- ローカルのデータを読む -->
     <template v-if="!hasChanged">
-      <button class="btn btn-primary" @click="omikujiStore.openLocalOmikujiData()">omikujiData.js を開く</button>
+      <button class="btn btn-primary" @click="handleOpenLocalOmikujiData">omikujiData.js を開く</button>
     </template>
 
     <!-- Dev jsonファイルの保存(Server利用) -->
@@ -51,15 +51,19 @@
 </template>
 
 <script setup lang="ts">
+  import { storeToRefs } from 'pinia'
   import { useConfigExport } from './useConfigExport'
   import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { storeToRefs } from 'pinia'
+  import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
   import { Save } from 'lucide-vue-next'
+  import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 
   // Pinia store
   const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
+  const navigationStore = useNavigationStore()
   const devStore = useDevStore()
   const { hasChanged } = storeToRefs(omikujiStore)
   const { saveFileName } = storeToRefs(devStore)
@@ -67,4 +71,10 @@
   // コンポーザブル
   const { isPro } = useSettingMode()
   const { isExporting, exportFile } = useConfigExport()
+
+  const handleOpenLocalOmikujiData = () => {
+    omikujiStore.openLocalOmikujiData()
+    navigationStore.selectCategory(data.value.settings.initialCategory)
+    swalToast.success({ title: '読み込み完了', text: 'omikujiData.js を読み込みました。' })
+  }
 </script>
