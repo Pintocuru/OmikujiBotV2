@@ -6,7 +6,7 @@ import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
 import { UiKind } from '@/types/'
-import type { LucideIconName } from '@/common/LucideIcon/useLucideIcon'
+import type { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
 
 import CommentBubbleEditor from '@/ConfigMaker/components/UiEditor/CommentBubble/CommentBubbleEditor.vue'
 import BubbleCharacterEditor from '@/ConfigMaker/components/UiEditor/CommentBubble/BubbleCharacterEditor.vue'

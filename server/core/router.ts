@@ -83,9 +83,6 @@ async function handlePostRequest(
       return configHandler.saveConfig(body.fileName, body.data)
 
     case 'delete':
-      // TODOこれどっちなの？
-      console.info('params.fileName : ' + params.fileName)
-      console.info('body.fileName : ' + body.fileName)
       return configHandler.deleteConfig(params.fileName || body.fileName)
 
     case 'save-generator':

@@ -52,7 +52,6 @@ export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
   const isCharacter = computed(() => hasAccess(usage.value.characters) && Object.keys(data.value.characters).length > 0)
 
   // itemSlot
-  // TODO:必要に応じて新しい関数を用意すること。この関数はconfigでは使わないので。
   const hasSlot = (slot: UiSlotType) => data.value.components.conditions.some((c) => c.slot === slot)
   function hasCondition(slot: UiSlotType, kind: UiKind): boolean {
     return data.value.components.conditions.some((c) => c.slot === slot && c.kind === kind)

@@ -26,7 +26,7 @@
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-  import { resolveLucideIcon } from '@/common/LucideIcon/useLucideIcon'
+  import { resolveLucideIcon } from '@shared/utils/LucideIcon/useLucideIcon'
 
   const props = defineProps<{
     action: PostFlowType
