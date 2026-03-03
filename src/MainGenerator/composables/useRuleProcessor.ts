@@ -1,7 +1,6 @@
 // src/MainGenerator/composables/useRuleProcessor.ts
 import { watch, onUnmounted } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
-import { OmikujiDataType } from '@/types/OmikujiData/'
 import { RuleTimerProcessor } from '@main/scripts/RuleProcess/RuleTimerProcessor'
 import { MetaRuleProcessor } from '@main/scripts/RuleProcess/MetaRuleProcessor'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
@@ -24,7 +23,7 @@ export function useRuleProcessor() {
       }
       console.log('🔄 RuleProcessor起動')
 
-      processor = createRuleProcessor(appStore.data)
+      processor = createRuleProcessor()
       const schedule = appStore.scheduleBotMessages
 
       if (isTimer.value) {
@@ -49,9 +48,10 @@ export function useRuleProcessor() {
 /**
  * RuleProcessorファクトリー
  */
-function createRuleProcessor(data: OmikujiDataType) {
-  const timer = new RuleTimerProcessor(data)
-  const meta = new MetaRuleProcessor(data)
+function createRuleProcessor() {
+  const appStore = useAppStore()
+  const timer = new RuleTimerProcessor(appStore.data)
+  const meta = new MetaRuleProcessor(appStore.data.metas, appStore.metaState)
 
   return {
     timer: {

@@ -17,7 +17,7 @@ const MIN_VALUE = -999999999
  * v1 互換（非推奨）:
  * - var タグ・rand タグは後方互換のため動作を維持
  */
-export class ExpressionEvaluator extends KeyValueMap {
+export class ExpressionEngine extends KeyValueMap {
   private readonly parser: Parser
 
   constructor() {

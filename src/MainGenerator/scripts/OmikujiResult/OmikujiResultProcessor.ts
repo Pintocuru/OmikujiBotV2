@@ -14,7 +14,7 @@ import { CharacterManager, checkIsCharacterMode } from '../CharacterManager/Char
 import { createBotMessagesFromAction } from './BotMessageHelpers'
 import { playSoundDelay } from '@sounds/PlaySound'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
-import { ScriptVariableContext } from '../VariablePlaceholder/ScriptVariableContext'
+import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 import { DisplayVariableResolver } from '../DisplayVariable/DisplayVariableResolver'
 
 /**
@@ -25,7 +25,6 @@ export class OmikujiResultProcessor {
   private readonly placeProcess: ContentPlaceholder
   private readonly placeContext: PlaceholderContext = new PlaceholderContext()
 
-  private readonly variableContext = new ScriptVariableContext()
   private readonly variableProcessor: VariablePlaceholderProcessor
 
   private readonly postMessage: PostOmikujiService
@@ -34,11 +33,12 @@ export class OmikujiResultProcessor {
 
   constructor(
     omikujiData: OmikujiDataType,
-    private readonly playScript: GameScriptManager['playScript']
+    private readonly playScript: GameScriptManager['playScript'],
+    variable: PlaceholderVariableType
   ) {
-    this.displayResolver = new DisplayVariableResolver(this.variableContext)
+    this.displayResolver = new DisplayVariableResolver(variable)
     this.placeProcess = new ContentPlaceholder(omikujiData.placeholders)
-    this.variableProcessor = new VariablePlaceholderProcessor(this.variableContext)
+    this.variableProcessor = new VariablePlaceholderProcessor(variable)
     this.actionSets = omikujiData.actionSets
 
     // isCharacterMode の影響を受けるコード

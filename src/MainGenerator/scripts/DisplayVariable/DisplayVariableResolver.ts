@@ -1,9 +1,9 @@
 // src/MainGenerator/scripts/DisplayVariable/DisplayVariableResolver.ts
 import { PostFlowType } from '@/types'
-import { ScriptVariableContext } from '../VariablePlaceholder/ScriptVariableContext'
+import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 
 export class DisplayVariableResolver {
-  constructor(private readonly context: ScriptVariableContext) {}
+  constructor(private readonly context: PlaceholderVariableType) {}
 
   /**
    * PostAction配列のプレースホルダーを置換して返す

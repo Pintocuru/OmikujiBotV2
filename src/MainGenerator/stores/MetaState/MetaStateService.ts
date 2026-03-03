@@ -3,7 +3,16 @@ import { GetMetas } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 
-export class MetaStateService {
+export interface MetaStateServiceType {
+  subscribe(fn: (meta: MetaUpdateEvent) => void): () => void
+  subscribeError(fn: (error: unknown) => void): () => void
+  getStatus(): MetaServiceStatus
+  getLastError(): unknown
+  getCurrent(): NormalizedMeta | null
+  getPeak(): { upVote: number; viewer: number }
+}
+
+export class MetaStateService implements MetaStateServiceType {
   private current: NormalizedMeta | null = null
   private previous: NormalizedMeta | null = null
   private peak = { upVote: 0, viewer: 0 }
@@ -22,22 +31,27 @@ export class MetaStateService {
   }
 
   private async initialize() {
+    this.setStatus('loading')
+
     const metas = GetMetas.getInstance()
     const result = await metas.fetchMeta((raw) => {
       try {
         this.handleMeta(raw)
+        // 初回データ受信時に ready へ
+        if (this.status === 'loading') this.setStatus('ready')
       } catch (e) {
         this.notifyError(e)
       }
     })
 
     if (!result?.ok) {
-      postSystemMessage(`❌ Meta取得失敗`, {
-        speech: false,
-        throttle: true,
-      })
+      postSystemMessage(`❌ Meta取得失敗`, { speech: false, throttle: true })
       this.notifyError(new Error('Meta initialization failed'))
     }
+  }
+
+  private setStatus(next: MetaServiceStatus) {
+    this.status = next
   }
 
   private handleMeta(rawServiceMeta: ServiceMeta | null) {
@@ -105,14 +119,6 @@ export class MetaStateService {
     }
   }
 
-  getCurrent(): NormalizedMeta | null {
-    return this.current
-  }
-
-  getPeak() {
-    return { ...this.peak }
-  }
-
   private toNumber(value: unknown) {
     const n = Number(value)
     return Number.isFinite(n) ? n : 0
@@ -121,6 +127,11 @@ export class MetaStateService {
   private errorSubscribers: Array<(error: unknown) => void> = []
 
   private notifyError(error: unknown) {
+    this.lastError = error
+    this.setStatus('error')
+
+    console.error('[MetaStateService]', error)
+
     for (const fn of this.errorSubscribers) {
       try {
         fn(error)
@@ -134,7 +145,25 @@ export class MetaStateService {
       this.errorSubscribers = this.errorSubscribers.filter((f) => f !== fn)
     }
   }
+
+  getStatus(): MetaServiceStatus {
+    return this.status
+  }
+
+  getLastError(): unknown {
+    return this.lastError
+  }
+
+  getCurrent(): NormalizedMeta | null {
+    return this.current
+  }
+
+  getPeak() {
+    return { ...this.peak }
+  }
 }
+
+export type MetaServiceStatus = 'idle' | 'loading' | 'ready' | 'error'
 
 export interface NormalizedMeta {
   upVote: number

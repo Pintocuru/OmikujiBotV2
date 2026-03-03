@@ -3,7 +3,7 @@ import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
-import { ScriptVariableContext } from '@/MainGenerator/scripts/VariablePlaceholder/ScriptVariableContext'
+import { PlaceholderVariable } from '@/MainGenerator/stores/PlaceholderVariable/PlaceholderVariable'
 import { DisplayVariableResolver } from '@/MainGenerator/scripts/DisplayVariable/DisplayVariableResolver'
 
 /**
@@ -12,7 +12,7 @@ import { DisplayVariableResolver } from '@/MainGenerator/scripts/DisplayVariable
 export const processTestPlaceholder = (message: string, placeholders: Record<string, PlaceholderType>): string => {
   try {
     // 参照プレースホルダー
-    const dummyContext = new ScriptVariableContext()
+    const dummyContext = new PlaceholderVariable()
     const displayVariable = new DisplayVariableResolver(dummyContext)
     const resolved = displayVariable.resolve(message)
 

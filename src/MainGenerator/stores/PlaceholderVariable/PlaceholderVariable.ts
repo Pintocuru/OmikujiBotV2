@@ -1,14 +1,21 @@
 // src/MainGenerator/scripts/VariablePlaceholder/ScriptVariableContext.ts
-import { ExpressionEvaluator } from './ExpressionEvaluator'
+import { ExpressionEngine } from './ExpressionEngine'
+
+export interface PlaceholderVariableType {
+  getEvaluator(): ExpressionEngine
+  getAll(): Record<string, string | number>
+  clear(): void
+  remove(key: string): void
+}
 
 /**
  * スクリプト実行中の変数状態を保持するコンテキスト
  * セッション単位で利用する
  */
-export class ScriptVariableContext {
-  private readonly evaluator = new ExpressionEvaluator()
+export class PlaceholderVariable implements PlaceholderVariableType {
+  private readonly evaluator = new ExpressionEngine()
 
-  getEvaluator(): ExpressionEvaluator {
+  getEvaluator(): ExpressionEngine {
     return this.evaluator
   }
 

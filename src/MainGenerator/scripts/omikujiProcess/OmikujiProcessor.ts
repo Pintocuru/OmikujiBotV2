@@ -5,10 +5,9 @@ import {
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
 } from '@/types/'
-import { BotMessageEmptySchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { createFirstBotMessages } from '@main/scripts/RuleProcess/createBotMessages'
 import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
 import { OmikenCommentType, ServiceMetaCondition } from '@shared/types'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
@@ -21,52 +20,17 @@ export class OmikujiProcessor {
   private readonly omikujiResult: OmikujiResultProcessor
 
   constructor() {
-    this.omikujiResult = new OmikujiResultProcessor(this.store.data, this.store.scriptManager.playScript)
-  }
-
-  /**
-   * おみくじ実行
-   */
-  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
-    const actionItem = this.lotteryOmikujiItem(omikujiSet, omiken)
-    if (!actionItem) return []
-
-    // special アクション
-    if (actionItem.type === 'special') {
-      return this.handleSpecialAction(actionItem)
-    }
-
-    const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
-    return this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
-  }
-
-  /**
-   * special アクションの処理
-   */
-  private handleSpecialAction(actionItem: ActionSetType): BotMessageType[] {
-    const { userSession } = this.store
-
-    if (actionItem.special === 'return') return [BotMessageEmptySchema.parse({})]
-    if (actionItem.special === 'continue') return []
-
-    if (actionItem.special === 'reset') {
-      userSession.visits.resetRule(actionItem.key)
-      return createFirstBotMessages(`${actionItem.name}のおみくじ回数をリセットしたよ`)
-    }
-
-    if (actionItem.special === 'log') {
-      const totalVisits = userSession.visits.getTotalByRuleId(actionItem.key)
-      const totalUnique = userSession.visits.getUniqueCountByRuleId(actionItem.key)
-      return createFirstBotMessages(`${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`)
-    }
-
-    return []
+    this.omikujiResult = new OmikujiResultProcessor(
+      this.store.data,
+      this.store.scriptManager.playScript,
+      this.store.placeholderVariable
+    )
   }
 
   /**
    * おみくじ抽選
    */
-  private lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): ActionSetType | null {
+  lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): ActionSetType | null {
     try {
       const filtered = omiken ? this.filterOmikujiByCriteria(omikujiSet, omiken) : omikujiSet
 
@@ -144,5 +108,18 @@ export class OmikujiProcessor {
       syoken,
       winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',
     })
+  }
+
+  executeActionItem(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
+    // 早期return
+    if (actionItem.type === 'special') return []
+    return this.omikujiResult.process(actionItem, this.getDefaultPlaceholders(omiken), omiken)
+  }
+
+  // timer等の既存呼び出し互換用
+  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
+    const actionItem = this.lotteryOmikujiItem(omikujiSet, omiken)
+    if (!actionItem) return []
+    return this.executeActionItem(actionItem, omiken)
   }
 }

@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/VariablePlaceholder/VariableProcessor.ts
 import { VariablePlaceholderResult } from '@/types/MainGenerator/OmikujiResultTypes'
-import { ExpressionEvaluator } from './ExpressionEvaluator'
+import { ExpressionEngine } from '@main/stores/PlaceholderVariable/ExpressionEngine'
 import {
   EXPRESSION_PATTERN,
   RAND_PATTERN,
@@ -9,7 +9,7 @@ import {
   VAR_REFERENCE_PATTERN,
 } from './ReservedKeys'
 import { ExtraListsSchema, ExtraListsType, ExtraSlotsSchema, ExtraSlotsType } from '@/types'
-import { ScriptVariableContext } from './ScriptVariableContext'
+import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 
 /**
  * 変数プレースホルダー処理エンジン
@@ -30,7 +30,7 @@ import { ScriptVariableContext } from './ScriptVariableContext'
  *   改行除去 → 非ASCII識別子のサニタイズ → v1 var → v1 rand → v2 式評価 → 変数参照
  */
 export class VariablePlaceholderProcessor {
-  constructor(private readonly context: ScriptVariableContext) {}
+  constructor(private readonly context: PlaceholderVariableType) {}
 
   process(text: string): VariablePlaceholderResult {
     const evaluator = this.context.getEvaluator()
@@ -64,7 +64,7 @@ export class VariablePlaceholderProcessor {
     }
   }
 
-  private processExpressions(text: string, evaluator: ExpressionEvaluator): string {
+  private processExpressions(text: string, evaluator: ExpressionEngine): string {
     return text.replace(EXPRESSION_PATTERN, (match, expression) => {
       try {
         const { output, hasOutput } = evaluator.evaluateExpression(expression.trim())
@@ -76,7 +76,7 @@ export class VariablePlaceholderProcessor {
     })
   }
 
-  private processVariableReferences(text: string, evaluator: ExpressionEvaluator): string {
+  private processVariableReferences(text: string, evaluator: ExpressionEngine): string {
     return text.replace(VAR_REFERENCE_PATTERN, (match, varName) => {
       if (evaluator.has(varName)) return String(evaluator.get(varName))
       console.warn(`未定義の変数: ${varName}`)
@@ -89,7 +89,7 @@ export class VariablePlaceholderProcessor {
   // ----------------------------------------------------------------
 
   /** @deprecated v2 では {{name = value}} を使用してください */
-  private processLegacyVarDeclarations(text: string, evaluator: ExpressionEvaluator): string {
+  private processLegacyVarDeclarations(text: string, evaluator: ExpressionEngine): string {
     return text.replace(VAR_DECLARATION_PATTERN, (match, varName, expression) => {
       try {
         const value = evaluator.evaluateVarRhs(expression.trim())
