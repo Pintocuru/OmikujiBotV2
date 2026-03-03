@@ -1,4 +1,4 @@
-//
+// src/MainGenerator/ui/LiverCounter/composables/DefaultLabels.ts
 import type { Component } from 'vue'
 import { LiverDefaultKey } from '@/types'
 import { ThumbsUp, Eye, Sprout, MessageCircle, Users, BadgeDollarSign } from 'lucide-vue-next'

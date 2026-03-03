@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/LiverCounter/parts/StarBurst.vue -->
 <template>
   <div class="relative flex justify-center w-32 h-32" :class="`text-${colorPattern}`">
     <!-- 回転させる星レイヤー -->

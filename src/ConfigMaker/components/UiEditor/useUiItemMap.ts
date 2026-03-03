@@ -1,4 +1,4 @@
-// composables/useUiItemMap.ts
+// src/ConfigMaker/components/UiEditor/useUiItemMap.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'

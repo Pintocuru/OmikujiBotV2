@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/ComponentEditor.vue -->
+<!-- src/ConfigMaker/components/UiEditor/UiEditor.vue -->
 <template>
   <!-- アイテム表示設定 -->
   <SectionCard

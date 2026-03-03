@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/LiverCounter/parts/PixelBadgePlain.vue -->
 <template>
   <div
     class="relative w-32 h-28 flex items-center justify-center overflow-hidden border-6 shadow-xl transition duration-150 pixel-badge bg-base-content"
