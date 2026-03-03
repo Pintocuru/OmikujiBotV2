@@ -3,7 +3,7 @@ import { watch, onUnmounted } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { RuleTimerProcessor } from '@main/scripts/RuleProcess/RuleTimerProcessor'
 import { MetaRuleProcessor } from '@main/scripts/RuleProcess/MetaRuleProcessor'
-import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
+import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 
 export function useRuleProcessor() {
   const appStore = useAppStore()

@@ -7,7 +7,7 @@
     "dev:omikujiBot": "tsx server/start-dev-server.ts",
     "soundMake:omikujiBot": "tsx tools/genSound/genSoundIndex.ts",
     "updateFilesName:omikujiBot": "tsx tools/fileName/UpdateTsFiles.ts",
-    "test:omikujiBot": "vitest run MetaTriggerEvaluator",
+    "test:omikujiBot": "vitest run MetaRuleProcessor",
     "build:omikujiBotPlugin": "vite build --config tools/viteConfig/vite.botPlugin.config.ts",
     "build:omikujiBot": "tsx tools/build.ts"
   },
