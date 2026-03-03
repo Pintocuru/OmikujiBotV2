@@ -23,11 +23,8 @@ export function useLiverCounterDisplay(settings: Ref<SettingsLiverCounterType>) 
    */
   const getPattern = (key: string): BaseVariant => {
     const index = allKeys.value.indexOf(key)
-    if (settings.value.colorOdd === null) {
-      return settings.value.colorCycle[index % settings.value.colorCycle.length]
-    }
-    if (index % 2 === 0) return settings.value.colorOdd
-    return settings.value.colorEven ?? settings.value.colorOdd
+    if (index === -1) return 'neutral'
+    return settings.value.colorCycle[index % settings.value.colorCycle.length]
   }
 
   // 数値に , を付与する

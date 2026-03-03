@@ -163,8 +163,6 @@ export type LiverDefaultKey = keyof typeof liverDefaultMap
 export const SettingsLiverCounterSchema = z.object({
   component: z.enum(liverComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUiテーマ
-  colorOdd: z.enum(BaseVariantLabels).nullable().default('primary').catch('primary'), // 奇数color
-  colorEven: z.enum(BaseVariantLabels).nullable().default(null).catch(null), // 偶数color
   colorCycle: z
     .array(z.enum(BaseVariantLabels))
     .default(['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'])

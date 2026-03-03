@@ -34,82 +34,8 @@
     </select>
   </SettingItem>
 
-  <!-- カラーパターン（奇数） -->
-  <SettingItem label="メインカラー" description="奇数番目のカウンターの色" :showReset="true" @reset="resetMap.colorOdd">
-    <div class="flex flex-wrap gap-2 items-center">
-      <!-- null オプション -->
-      <div
-        class="badge cursor-pointer"
-        :class="liverCounter.colorOdd === null ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorOdd', null)"
-      >
-        🔧カスタム
-      </div>
-      <div
-        v-for="variant in BaseVariantLabels"
-        :key="variant"
-        class="badge cursor-pointer"
-        :class="liverCounter.colorOdd === variant ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorOdd', variant)"
-      >
-        {{ variant }}
-      </div>
-    </div>
-  </SettingItem>
-
-  <!-- カラーパターン2（偶数） -->
-  <SettingItem
-    v-if="liverCounter.colorOdd !== null && totalCounterCount > 1"
-    label="サブカラー"
-    description="偶数番目のカウンターの色"
-    :showReset="true"
-    @reset="resetMap.colorEven"
-  >
-    <div class="flex flex-wrap gap-2 items-center">
-      <!-- null オプション -->
-      <div
-        class="badge cursor-pointer"
-        :class="liverCounter.colorEven === null ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorEven', null)"
-      >
-        メインと同じ
-      </div>
-      <div
-        v-for="variant in BaseVariantLabels"
-        :key="variant"
-        class="badge cursor-pointer"
-        :class="liverCounter.colorEven === variant ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('colorEven', variant)"
-      >
-        {{ variant }}
-      </div>
-    </div>
-  </SettingItem>
-
-  <!-- colorCycle（任意カラーリスト） -->
-  <SettingItem
-    v-if="liverCounter.colorOdd === null"
-    label="カスタムパターン"
-    description="複数の色を順番に適用します"
-    :showReset="true"
-    @reset="resetMap.colorCycle"
-  >
-    <input
-      type="text"
-      class="input input-bordered w-full"
-      :value="liverCounter.colorCycle.join(',')"
-      @input="
-        (e) => {
-          const raw = (e.target as HTMLInputElement).value
-          const arr = raw
-            .split(',')
-            .map((s) => s.trim())
-            .filter(Boolean)
-          updateField('colorCycle', arr)
-        }
-      "
-    />
-  </SettingItem>
+  <!-- カラーサイクル設定（分離コンポーネント） -->
+  <ColorCycleEditor :colorCycle="liverCounter.colorCycle" @update:colorCycle="(v) => updateField('colorCycle', v)" />
 
   <!-- デフォルトカウンター選択 -->
   <SettingItem
@@ -166,10 +92,10 @@
   import { SettingsLiverCounterSchema, liverComponentMap, liverDefaultMap } from '@/types/'
   import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
   import LiverCounterPreview from './LiverCounterPreview.vue'
+  import ColorCycleEditor from './ColorCycleEditor.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
   import { themes } from '@shared/styles/DaisyUiTheme'
 
   const omikujiStore = useOmikujiStore()
@@ -194,9 +120,6 @@
   }
 
   const resetMap = {
-    colorOdd: () => resetField('colorOdd'),
-    colorEven: () => resetField('colorEven'),
-    colorCycle: () => resetField('colorCycle'),
     defaultCounters: () => resetField('defaultCounters'),
     eventCounters: () => resetField('eventCounters'),
   }
@@ -216,8 +139,7 @@
     }
   }
 
-  // ---- eventCounters トグル ----
-  // data.value.comments は Record<string, BaseRecordType> で、key フィールドがルールIDに対応
+  // ---- eventCounters ----
   const availableEventRules = computed(() => {
     return Object.values(data.value.comments).map((record) => ({
       key: record.key,
