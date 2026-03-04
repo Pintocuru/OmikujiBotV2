@@ -59,7 +59,7 @@
         :repeat="action.repeat"
       />
       <SoundTestButton
-        v-if="action.actionType === 'sound' || action.actionType === 'message'"
+        v-if="!muteSound && (action.actionType === 'sound' || action.actionType === 'message')"
         label="サウンドのテスト実行"
         :pattern="action.sound"
       />
@@ -88,6 +88,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isCharacter } = useVisibilityAccess()
+  const muteSound = computed(() => data.value.settings.muteSound)
 
   const enableSecondary = computed(() => data.value.components.enableSecondary)
   const characters = computed(() => data.value.characters)

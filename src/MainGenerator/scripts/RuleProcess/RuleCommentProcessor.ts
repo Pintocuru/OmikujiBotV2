@@ -11,6 +11,7 @@ import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ActionSetType } from '@/types/OmikujiData/'
+import { shouldIgnoreUser } from '@/common/filters/shouldIgnoreUser'
 
 const TIME_THRESHOLD = 10000
 
@@ -30,6 +31,7 @@ export class RuleCommentProcessor {
    */
   respondToComments(omikens: OmikenCommentType[]): BotMessageType[] {
     if (!omikens.length) return []
+    const pattern = this.store.data.settings.ignoreUserPattern
 
     const botMessages: BotMessageType[] = []
     const limitedComments = omikens.slice().reverse().slice(0, 5)
@@ -45,6 +47,9 @@ export class RuleCommentProcessor {
 
       // 除外条件をチェック
       if (this.isOldComment(timestamp)) return botMessages
+
+      // グローバル除外（管理者・BOT・特定ユーザー）
+      if (shouldIgnoreUser(omiken.userName, pattern)) continue
 
       // おみくじチェック
       this.appliedCommentIds.add(id)

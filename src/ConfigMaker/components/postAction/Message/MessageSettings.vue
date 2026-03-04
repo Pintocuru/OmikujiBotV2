@@ -35,7 +35,7 @@
   <PlaceholderChecker :text="bubbleText" />
 
   <!-- サウンド -->
-  <SettingItem label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
+  <SettingItem v-if="!muteSound" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
     <select v-model="sound" class="select select-bordered select-sm w-full">
       <option value="">（なし）</option>
       <option v-for="(value, key) in soundMetaMap" :key="key" :value="key">
@@ -70,6 +70,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
   const enableSecondary = computed(() => data.components.enableSecondary)
+  const muteSound = computed(() => data.settings.muteSound)
 
   const updateAction = (updates: Partial<PostFlowMessageType>) => {
     emit('update:action', { ...props.action, ...updates })

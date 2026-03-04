@@ -1,5 +1,31 @@
 <!-- src/ConfigMaker/components/appInfo/settings/SettingsEditor.vue -->
 <template>
+  <!-- ジェネレーター設定 -->
+  <SubSectionHeader
+    icon="Sparkles"
+    title="ジェネレーター設定"
+    description="UI・効果音など、配信挙動に関わる設定をまとめるセクション"
+  />
+
+  <!-- 効果音をミュートにする -->
+  <SettingItem label="効果音をミュートにする" description="BOTの効果音を再生しないようにします">
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" class="toggle toggle-primary" :checked="settings.muteSound" @change="handleMuteSound" />
+      <span>{{ settings.muteSound ? 'ミュートする' : 'ミュートしない' }}</span>
+    </label>
+  </SettingItem>
+
+  <!-- VisitUserにユーザーを入れない -->
+  <SettingItem label="ユーザーを記録しないリスト" description="BOTや管理者の名前を正規表現で指定">
+    <MessageTextEditor v-model="bubbleText" />
+  </SettingItem>
+
+  <!-- コンフィグエディター設定 -->
+  <SubSectionHeader
+    icon="Settings"
+    title="コンフィグエディター設定"
+    description="エディターそのものの見た目・動作・ライセンスなど、アプリ本体の設定をまとめるセクション"
+  />
   <!-- DaisyUIテーマ -->
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
     <select
@@ -42,7 +68,7 @@
     </div>
   </SettingItem>
 
-  <!-- DaisyUIテーマ -->
+  <!-- 起動時に開くカテゴリ -->
   <SettingItem
     v-if="isGod"
     label="起動時に開くカテゴリ"
@@ -72,8 +98,10 @@
   import { themes } from '@shared/styles/DaisyUiTheme'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
   import Swal from 'sweetalert2'
+  import MessageTextEditor from '@/ConfigMaker/components/postAction/Message/MessageTextEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -90,6 +118,26 @@
   const updateLicenseKeyHash = (value: string) => {
     omikujiStore.updateSettings({ licenseKeyHash: value })
   }
+
+  // 効果音ミュート切り替え
+  const handleMuteSound = (event: Event) => {
+    const checked = (event.target as HTMLInputElement).checked
+    updateSettingsField('muteSound', checked)
+  }
+
+  const bubbleText = computed<string>({
+    get: () => settings.value.ignoreUserPattern ?? '',
+    set: (value: string) => {
+      // 複数行を OR で結合して正規化
+      const normalized = value
+        .split(/\r?\n/) // 行ごとに分割
+        .map((line) => line.trim())
+        .filter((line) => line.length > 0)
+        .join('|') // OR で結合
+
+      updateSettingsField('ignoreUserPattern', normalized)
+    },
+  })
 
   // ライセンスキー変更時のモーダル表示
   watch(

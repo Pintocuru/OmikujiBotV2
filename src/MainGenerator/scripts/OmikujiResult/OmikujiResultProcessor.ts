@@ -30,6 +30,7 @@ export class OmikujiResultProcessor {
   private readonly postMessage: PostOmikujiService
   private readonly characterManager?: CharacterManager
   private readonly actionSets: Record<string, ActionSetType>
+  private readonly muteSound: boolean
 
   constructor(
     omikujiData: OmikujiDataType,
@@ -40,6 +41,7 @@ export class OmikujiResultProcessor {
     this.placeProcess = new ContentPlaceholder(omikujiData.placeholders)
     this.variableProcessor = new VariablePlaceholderProcessor(variable)
     this.actionSets = omikujiData.actionSets
+    this.muteSound = omikujiData.settings.muteSound
 
     // isCharacterMode の影響を受けるコード
     const isCharacterMode = checkIsCharacterMode(omikujiData)
@@ -139,11 +141,11 @@ export class OmikujiResultProcessor {
       switch (action.actionType) {
         case 'message':
           messages.push(...createBotMessagesFromAction(action, extra, delaySeconds, this.characterManager, omiken))
-          if (action.sound) playSoundDelay(action.sound, delaySeconds)
+          if (action.sound && !this.muteSound) playSoundDelay(action.sound, delaySeconds)
           break
 
         case 'sound':
-          if (action.sound) playSoundDelay(action.sound, delaySeconds)
+          if (action.sound && !this.muteSound) playSoundDelay(action.sound, delaySeconds)
           break
       }
     }

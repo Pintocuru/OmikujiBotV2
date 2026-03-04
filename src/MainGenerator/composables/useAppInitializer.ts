@@ -6,10 +6,13 @@ import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmiken
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
+import { shouldIgnoreUser } from '@/common/filters/shouldIgnoreUser'
+import { storeToRefs } from 'pinia'
 
 export function useAppInitializer() {
   const initialize = async () => {
     const appStore = useAppStore()
+    const { data } = storeToRefs(appStore)
     const navigationStore = useNavigationStore()
     const { isComment } = useVisibilityAccess()
 
@@ -21,8 +24,12 @@ export function useAppInitializer() {
       // コメント購読
       const isInit = await GetOmikenComments((omikens) => {
         try {
+          const pattern = data.value.settings.ignoreUserPattern
           // ユーザー記録
           for (const omiken of omikens) {
+            // ユーザー記録を除外するか
+            if (shouldIgnoreUser(omiken.userName, pattern)) continue
+
             const { lc, tc } = omiken.meta
             const giftPrice = omiken.giftPrice ?? 0
             appStore.userSession.stats.recordComment(omiken, tc, lc, giftPrice)

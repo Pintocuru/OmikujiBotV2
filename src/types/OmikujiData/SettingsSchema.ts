@@ -14,7 +14,9 @@ export const SettingsSchema = z.object({
   commentType: z.enum(commentModeTypes).default('OneComme').catch('OneComme'),
   licenseKeyHash: z.string().default('').catch(''),
   daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
-  initialCategory: z.enum(categoryTypeLabel).default('comments').catch('comments'),
+  initialCategory: z.enum(categoryTypeLabel).default('comments').catch('comments'), // 読み込み時開くカテゴリ
+  muteSound: z.boolean().default(false).catch(false), // 効果音をなしにするか
+  ignoreUserPattern: z.string().default('__INFO__|__ERROR__').catch('__INFO__|__ERROR__'), // VisitUserを無視するリスト
 })
 
 export type SettingsType = z.infer<typeof SettingsSchema>
