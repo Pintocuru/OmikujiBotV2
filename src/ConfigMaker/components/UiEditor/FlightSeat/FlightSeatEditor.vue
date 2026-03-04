@@ -1,25 +1,18 @@
 <!-- src/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatEditor.vue -->
 <template>
   <NoParamsCard v-if="!isComment" :message="'コメント機能を有効にしてください'" />
-
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" :data-theme="flightSeat.color">
-    <SeatGrid
-      :seats="previewSeats"
-      :layout="flightSeat.layout"
-      :rows="flightSeat.rows"
-      :cols="flightSeat.cols"
-      :customLayout="parsedCustomLayout"
-      :circleSeats="flightSeat.circleSeats"
-    />
-  </div>
-
-  <!-- 座席数の表示 -->
-  <InformationCard variant="neutral">
-    <p class="text-base">
-      現在の総座席数: <span class="label bg-primary text-primary-content">{{ totalSeats }}</span>
-    </p>
-  </InformationCard>
+  <HudPreview v-else>
+    <div class="bg-base-100 transparent-bg" :class="[fontFamily]" :data-theme="flightSeat.color">
+      <SeatGrid
+        :seats="previewSeats"
+        :layout="flightSeat.layout"
+        :rows="flightSeat.rows"
+        :cols="flightSeat.cols"
+        :customLayout="parsedCustomLayout"
+        :circleSeats="flightSeat.circleSeats"
+      /></div
+  ></HudPreview>
 
   <!-- タイトル -->
   <SettingItem label="タイトル" description="座席表のタイトルを設定します" :showReset="true" @reset="resetMap.label">
@@ -157,10 +150,10 @@
   import SeatGrid from '@main/ui/FlightSeat/parts/SeatGrid.vue'
   import { calculateTotalSeats } from '@main/ui/FlightSeat/seatLayoutUtils'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import CustomLayoutEditor from './CustomLayoutEditor.vue'
   import { layoutStringToArray } from './CustomLayoutPresets'
   import { themes } from '@shared/styles/DaisyUiTheme'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

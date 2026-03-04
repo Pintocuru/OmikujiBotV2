@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div class="bg-base-100">
+  <div class="bg-base-100 transparent-bg">
     <!-- 接続状態インジケーター（全状態で常時マウント） -->
     <ConnectionStatusIndicator :status="appStore.status" />
 
@@ -24,7 +24,7 @@
     </div>
 
     <!-- わんコメが起動されていない場合のエラー表示 -->
-    <ErrorInitComponent v-else-if="appStore.status === 'error'" :pluginUid="null" />
+    <ErrorInitComponent v-else-if="appStore.status === 'error'" />
   </div>
 </template>
 

@@ -1,7 +1,10 @@
 <!-- src/DevApp.vue -->
 <template>
   <ConfigMaker v-if="!showMain" />
-  <MainGenerator v-else />
+
+  <HudPreview v-else :maxHeightClass="''">
+    <MainGenerator />
+  </HudPreview>
 
   <!-- 表示トグルボタン -->
   <div class="fixed top-10 right-0 w-24 h-24 z-9999 group pointer-events-none">
@@ -19,6 +22,7 @@
   import { ref } from 'vue'
   import MainGenerator from './MainGenerator/App.vue'
   import ConfigMaker from './ConfigMaker/App.vue'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { Settings, Cpu } from 'lucide-vue-next'
 
   const showMain = ref(false)

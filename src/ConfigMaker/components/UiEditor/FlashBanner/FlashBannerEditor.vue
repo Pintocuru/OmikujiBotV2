@@ -1,15 +1,17 @@
 <!-- src/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]" @click="handlePreviewClick">
-    <FlashBannerRenderer
-      :settings="flashBanner"
-      :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
-      :layers="iconSrc(flashBanner.defaultCharacterKey, 'default')"
-      :color="getCharacterColor(flashBanner.defaultCharacterKey)"
-      :label-class="blinkClass"
-    />
-  </div>
+  <HudPreview :maxHeightClass="isDev ? 'min-h-32' : ''" :isAdminOnly="isDev">
+    <div :class="[fontFamily]" @click="handlePreviewClick">
+      <FlashBannerRenderer
+        :settings="flashBanner"
+        :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
+        :layers="iconSrc(flashBanner.defaultCharacterKey, 'default')"
+        :color="getCharacterColor(flashBanner.defaultCharacterKey)"
+        :label-class="blinkClass"
+      />
+    </div>
+  </HudPreview>
 
   <!-- デフォルトカラー設定 -->
   <template v-if="!flashBanner.defaultCharacterKey || !isCharacter">
@@ -145,7 +147,13 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { defaultPlaceholdersShortLabels, flashComponentMap, SettingsFlashBannerSchema, useFontFamily } from '@/types/'
+  import {
+    defaultPlaceholdersShortLabels,
+    flashComponentMap,
+    isDev,
+    SettingsFlashBannerSchema,
+    useFontFamily,
+  } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CharacterSelectorSingle from '@config/components/UiEditor/ToastWidgets/CharacterSelectorSingle.vue'
@@ -157,6 +165,7 @@
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
   import MessageTextEditor from '@config/components/postAction/Message/MessageTextEditor.vue'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

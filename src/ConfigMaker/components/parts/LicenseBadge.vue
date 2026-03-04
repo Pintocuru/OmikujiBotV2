@@ -12,7 +12,7 @@
   const { isAdv, isPro, isGod } = useSettingMode()
 
   const props = defineProps<{
-    forceMode?: 'god' | 'pro' | 'adv'
+    forceMode?: Mode
     godTip?: string
     proTip?: string
     advTip?: string

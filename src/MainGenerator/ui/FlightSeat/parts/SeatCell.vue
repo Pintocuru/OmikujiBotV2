@@ -7,7 +7,7 @@
     <!-- ユーザーが座っている場合 -->
     <div v-if="seat" class="flex flex-col items-center gap-1 w-full">
       <div class="avatar">
-        <div class="w-10 h-10 rounded-full">
+        <div class="w-8 h-8 rounded-full">
           <img v-if="seat.profileImage" :src="seat.profileImage" :alt="seat.userName" />
           <div
             v-else
@@ -17,12 +17,12 @@
           </div>
         </div>
       </div>
-      <div class="text-xs text-center truncate w-full px-1">
+      <div class="text-base text-center truncate w-full px-1">
         {{ seat.userName }}
       </div>
     </div>
     <!-- 空席の場合 -->
-    <div v-else class="text-sm">
+    <div v-else class="text-xl">
       {{ index + 1 }}
     </div>
   </div>
@@ -38,8 +38,8 @@
   }>()
 
   const getSeatClass = computed(() => {
-    if (props.seat) return `bg-success/50 border-success`
-    if (props.index % 2 === 0) return `bg-info/50`
-    return `bg-warning/50`
+    if (props.seat) return `bg-success text-success-content border-success`
+    if (props.index % 2 === 0) return `bg-info text-info-content `
+    return `bg-warning text-warning-content`
   })
 </script>

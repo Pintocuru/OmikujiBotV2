@@ -12,7 +12,6 @@ import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
 import { OmikenCommentType, ServiceMetaCondition } from '@shared/types'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
-import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 
 export class OmikujiProcessor {
   private readonly store = useAppStore()
@@ -27,15 +26,22 @@ export class OmikujiProcessor {
     )
   }
 
-  /**
-   * おみくじ抽選
-   */
-  lotteryOmikujiItem(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): ActionSetType | null {
-    try {
-      const filtered = omiken ? this.filterOmikujiByCriteria(omikujiSet, omiken) : omikujiSet
+  // おみくじ抽選&おみくじ処理
+  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
+    const actionItem = this.lotteryOmikujiItem(omikujiSet)
+    if (!actionItem) return []
+    return this.executeActionItem(actionItem, omiken)
+  }
 
-      if (!filtered.length) return null
-      return (drawOmikuji(filtered) as ActionSetType) ?? null
+  /**
+   * おみくじ抽選。
+   * criteria フィルタが必要な場合は呼び出し側で事前に適用すること
+   * (コメントルールは RuleCommentProcessor.lotteryWithCriteria を使用)。
+   */
+  lotteryOmikujiItem(omikujiSet: OmikujiSetType): ActionSetType | null {
+    try {
+      if (!omikujiSet.length) return null
+      return (drawOmikuji(omikujiSet) as ActionSetType) ?? null
     } catch (error) {
       const msg = `おみくじ実行エラー ${error}`
       console.error(msg)
@@ -44,31 +50,22 @@ export class OmikujiProcessor {
     }
   }
 
-  /**
-   * 条件フィルタ
-   */
-  private filterOmikujiByCriteria(items: OmikujiSetType, omiken: OmikenCommentType): OmikujiSetType {
-    return items
-      .filter((item) => {
-        if (!item.criteria) return true
-        return checkAllTriggers(omiken, item.criteria)
-      })
-      .map((item) => ({
-        ...item,
-        rank: item.isPriority ? 1 : 0,
-      }))
+  executeActionItem(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
+    if (actionItem.type === 'special') return []
+    const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
+    return this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
   }
 
   /**
    * comment用デフォルトのプレースホルダー情報を設定
    */
   private getDefaultPlaceholders(omiken?: OmikenCommentType): Record<string, string | number> {
-    const base = this.getBasePlaceholders()
+    const basePlaceholders = this.getBasePlaceholders()
 
-    if (!omiken) return base
+    if (!omiken) return basePlaceholders
 
     return DefaultPlaceholdersCommentSchema.parse({
-      ...base,
+      ...basePlaceholders,
       user: `{{icon ${omiken.userId}}}${omiken.userName}`,
       userId: this.sanitizeKey(omiken.userId),
       price: omiken.giftPrice,
@@ -94,7 +91,6 @@ export class OmikujiProcessor {
     const meta = this.metaStateService.getCurrent()
     const { userSession } = this.store
 
-    // commenter: コメントした全ユーザー数、winner: ランダム当選者
     const { liveComments, uniqueCount, syoken } = userSession.stats.getStats()
     const { winners } = userSession.stats.drawWinners(1)
     const firstWinner = winners[0]
@@ -108,18 +104,5 @@ export class OmikujiProcessor {
       syoken,
       winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',
     })
-  }
-
-  executeActionItem(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
-    // 早期return
-    if (actionItem.type === 'special') return []
-    return this.omikujiResult.process(actionItem, this.getDefaultPlaceholders(omiken), omiken)
-  }
-
-  // timer等の既存呼び出し互換用
-  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
-    const actionItem = this.lotteryOmikujiItem(omikujiSet, omiken)
-    if (!actionItem) return []
-    return this.executeActionItem(actionItem, omiken)
   }
 }

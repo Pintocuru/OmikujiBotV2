@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/UiEditor/CommentBubble/CommentBubblePreview.vue -->
 <template>
-  <div class="flex flex-col items-center space-y-2">
+  <div  class="flex flex-col items-center space-y-2">
     <!-- 横幅調整スライダー -->
     <div v-if="isSlider" class="flex items-center gap-4 p-2 bg-base-200 rounded-lg">
       <label class="text-sm font-medium">横幅:</label>
@@ -149,7 +149,3 @@
     currentPreview.value = previewDataList[newIndex]
   }
 </script>
-
-<style scoped>
-  @import url('../../../../../assets/styles/font.css');
-</style>

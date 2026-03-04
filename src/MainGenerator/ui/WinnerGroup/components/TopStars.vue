@@ -3,7 +3,7 @@
   <div class="relative p-4">
     <!-- 背景レイヤー -->
     <div
-      class="absolute inset-0 rounded-2xl border-5 border-warning/30 bg-base-100/95 backdrop-blur-sm pointer-events-none"
+      class="absolute inset-0 rounded-2xl border-5 border-warning/30 bg-base-200/95 backdrop-blur-sm pointer-events-none"
     ></div>
 
     <!-- タイトル -->

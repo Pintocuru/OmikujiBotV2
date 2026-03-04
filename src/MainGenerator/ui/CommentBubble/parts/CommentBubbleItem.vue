@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/CommentBubble/parts/CommentBubbleItem.vue -->
 <template>
   <div
-    class="relative inline-block max-w-3xl min-w-[10rem]"
+    class="relative bg-base-100 transparent-bg inline-block max-w-3xl min-w-[10rem]"
     :data-theme="uiMap.themeDataAttr"
     :class="uiMap.bubble.class"
     :style="uiMap.bubble.style"

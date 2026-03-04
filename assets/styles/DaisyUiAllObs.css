@@ -9,11 +9,10 @@
 }
 
 /* theme transparent : 背景色を透明化 */
-:root,
-:root:has(input.theme-controller[value='transparent']:checked) {
+:root {
   --color-base-100: transparent !important;
 }
 
-[data-theme='transparent'] .bg-base-100 {
+.bg-base-100.transparent-bg {
   background-color: transparent !important;
 }

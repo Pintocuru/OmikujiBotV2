@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/FlashBanner/parts/FlashBannerRenderer.vue -->
 <template>
-  <div v-if="message" class="w-full bg-base-100" :data-theme="color?.daisyUiTheme">
+  <div v-if="message" class="w-full bg-base-100 transparent-bg" :data-theme="color?.daisyUiTheme">
     <component
       :is="currentComponent"
       :settings="settings"

@@ -1,12 +1,16 @@
 // src/MainGenerator/scripts/RuleProcess/RuleCommentProcessor.ts
-import { BotMessageEmptySchema, BotMessageType, CommentRuleType } from '@/types/'
-import { buildRestrictionMessages, createFirstBotMessages } from './createBotMessages'
+import { BotMessageType, CommentRuleType } from '@/types/'
+import { OmikujiSetType } from '@/types/OmikujiData/'
+import { buildRestrictionMessages } from './createBotMessages'
 import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
+import { SpecialActionProcessor } from '../OmikujiProcess/SpecialActionProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
+import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
+import { ActionSetType } from '@/types/OmikujiData/'
 
 const TIME_THRESHOLD = 10000
 
@@ -19,6 +23,7 @@ export class RuleCommentProcessor {
   private appliedCommentIds = new Set<string>()
   private readonly store = useAppStore()
   private readonly omikujiProcessor = new OmikujiProcessor()
+  private readonly specialActionProcessor = new SpecialActionProcessor()
 
   /**
    * メイン処理: コメントを処理して拡張コメントを作成
@@ -65,7 +70,6 @@ export class RuleCommentProcessor {
 
         // ルールが成功し、botメッセージが生成された場合はここで終了
         if (result.botMessages.length > 0) {
-          // コメントでの発動なら、クールダウンを設定する
           if (result.isCommentTriggered) {
             this.store.cooldownManager.updateLastProcessedTime()
           }
@@ -84,7 +88,7 @@ export class RuleCommentProcessor {
    * 単一ルールの処理
    */
   private processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
-    const { userSession, data } = this.store
+    const { data } = this.store
 
     // 1. コメントルールの条件チェック
     if (!checkAllTriggers(omiken, rule.trigger)) {
@@ -102,92 +106,76 @@ export class RuleCommentProcessor {
       }
     }
 
-    // 3. 先に抽選してspecialかどうかを確認
-    this.hoge(omiken, rule)
-    console.log(omiken.meta.draws)
-    // 4. 抽選
-    const actionItem = this.omikujiProcessor.lotteryOmikujiItem(rule.omikuji, omiken)
+    // 3. drawsカウンタを omiken.meta に反映
+    this.setDrawsMeta(omiken, rule)
 
+    // 4. criteria フィルタ適用後に抽選
+    const actionItem = this.lotteryWithCriteria(rule.omikuji, omiken)
     if (!actionItem) return { isCommentTriggered: false, botMessages: [] }
 
-    // 4. specialの場合はインクリメントせず即実行
-    if (actionItem.type === 'special') {
-      console.log('special')
-      // return なら、カウントはして止める
-      if (actionItem.special === 'return') {
-        this.draw(omiken, rule)
-        console.log('return')
-        return { isCommentTriggered: true, botMessages: [BotMessageEmptySchema.parse({})] }
+    // 5. special 処理を委譲
+    const specialResult = this.specialActionProcessor.process(actionItem, omiken, rule)
+    if (specialResult.handled) {
+      return {
+        isCommentTriggered: specialResult.isCommentTriggered,
+        botMessages: specialResult.botMessages,
       }
-
-      // return なら、カウントはせずスルーする
-      if (actionItem.special === 'continue') {
-        console.log('continue')
-        return { isCommentTriggered: false, botMessages: [] }
-      }
-
-      // おみくじ回数リセット
-      if (actionItem.special === 'reset') {
-        userSession.visits.resetRule(actionItem.key)
-        return {
-          isCommentTriggered: false,
-          botMessages: createFirstBotMessages(`${actionItem.name}のおみくじ回数をリセットしたよ`),
-        }
-      }
-
-      // ログを出す
-      if (actionItem.special === 'log') {
-        const totalVisits = userSession.visits.getTotalByRuleId(actionItem.key)
-        const totalUnique = userSession.visits.getUniqueCountByRuleId(actionItem.key)
-        return {
-          isCommentTriggered: false,
-          botMessages: createFirstBotMessages(
-            `${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`
-          ),
-        }
-      }
-
-      // フォールバック:continue と同じ
-      return { isCommentTriggered: false, botMessages: [] }
     }
 
-    // 5. インクリメント
-    this.draw(omiken, rule)
-
-    // 6. 抽選済みアイテムで実行
+    // 6. 通常アクション: カウントしてから実行
+    this.recordDraw(omiken, rule)
     const botMessages = this.omikujiProcessor.executeActionItem(actionItem, omiken)
     const isCommentTriggered = rule.trigger.conditions.includes('comment')
 
     return { isCommentTriggered, botMessages }
   }
 
-  private getSortedEnabledRules(): CommentRuleType[] {
-    return Object.values(useAppStore().data.comments)
-      .filter((rule) => rule.isEnabled)
-      .sort((a, b) => a.order - b.order)
+  /**
+   * criteria フィルタを適用してからおみくじ抽選する。
+   * (OmikujiProcessor から移管。コメントルール専用のフィルタのため)
+   */
+  private lotteryWithCriteria(omikujiSet: OmikujiSetType, omiken: OmikenCommentType): ActionSetType | null {
+    const filtered = omikujiSet
+      .filter((item) => {
+        if (!item.criteria) return true
+        return checkAllTriggers(omiken, item.criteria)
+      })
+      .map((item) => ({
+        ...item,
+        rank: item.isPriority ? 1 : 0,
+      }))
+
+    if (!filtered.length) return null
+    return (drawOmikuji(filtered) as ActionSetType) ?? null
   }
 
-  private hoge(omiken: OmikenCommentType, rule: CommentRuleType): void {
+  /**
+   * omiken.meta.draws と ruleKey を設定する (抽選前に呼ぶ)
+   */
+  private setDrawsMeta(omiken: OmikenCommentType, rule: CommentRuleType): void {
     const { userSession } = this.store
     omiken.meta.draws = userSession.visits.getCount(omiken.userId, rule.key) + 1
     omiken.meta.ruleKey = rule.key
   }
 
-  private draw(omiken: OmikenCommentType, rule: CommentRuleType): void {
+  /**
+   * ドロー記録
+   */
+  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType): void {
     const { userSession } = this.store
     userSession.visits.record(rule.key, UserNameSchema.parse(omiken))
   }
 
-  /**
-   * Botのコメントかどうかを判定
-   */
+  private getSortedEnabledRules(): CommentRuleType[] {
+    return Object.values(this.store.data.comments)
+      .filter((rule) => rule.isEnabled)
+      .sort((a, b) => a.order - b.order)
+  }
+
   private isBotComment(userId: string): boolean {
     return userId === POST_SETTINGS.botUserId
   }
 
-  /**
-   * 古いコメント（時間閾値を超過）かどうかを判定
-   */
   private isOldComment(timestamp: number): boolean {
     return Date.now() - timestamp > TIME_THRESHOLD
   }

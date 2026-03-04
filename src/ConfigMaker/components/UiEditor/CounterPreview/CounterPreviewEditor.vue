@@ -1,9 +1,10 @@
 <!-- src/ConfigMaker/components/UiEditor/CounterPreview/CounterPreviewEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]">
-    <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyUserNames(100)" />
-  </div>
+  <HudPreview :isAdminOnly="true">
+    <div :class="[fontFamily]">
+      <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyUserNames(100)" /></div
+  ></HudPreview>
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor :model-value="counter.color" @update:model-value="(newValue) => updateField('color', newValue)" />
@@ -90,6 +91,7 @@
   import CounterPreviewManager from '@main/ui/CounterPreview/parts/CounterPreviewManager.vue'
   import { generateDummyUserNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

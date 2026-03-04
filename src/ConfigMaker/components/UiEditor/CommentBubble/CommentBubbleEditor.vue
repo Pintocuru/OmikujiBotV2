@@ -1,16 +1,16 @@
 <!-- src/ConfigMaker/components/UiEditor/CommentBubble/CommentBubbleEditor.vue -->
 <template>
   <!-- プレビュー表示 -->
-  <CommentBubblePreview
-    :color="localColor"
-    :is-slider="true"
-    :fontFamily="commonStyle.fontFamily"
-    :custom-classes="localColor.customClasses"
-    :animated-text="bubble.bubbleTextAnimate"
-    :animated-text-speed="bubble.bubbleTextSpeed"
-    v-bind="bubble"
-  />
-
+  <HudPreview>
+    <CommentBubblePreview
+      :color="localColor"
+      :fontFamily="commonStyle.fontFamily"
+      :custom-classes="localColor.customClasses"
+      :animated-text="bubble.bubbleTextAnimate"
+      :animated-text-speed="bubble.bubbleTextSpeed"
+      v-bind="bubble"
+    />
+  </HudPreview>
   <!-- デフォルトカラー設定 -->
   <template v-if="!isCharacter">
     <ColorModeSelector
@@ -101,6 +101,7 @@
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import { enterMotionMap } from '@/types/MetaMaps/enterMotionMaps'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

@@ -1,11 +1,13 @@
 <!-- src/MainGenerator/ui/CounterPreview/CounterPreview.vue -->
 <template>
-  <div class="overflow-hidden">
-    <CounterPreviewManager
-      :counter-setting="counterSetting"
-      :count="count"
-      :users="hasPreviewData ? userList : generateDummyUserNames(500)"
-    />
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+    <div class="overflow-hidden">
+      <CounterPreviewManager
+        :counter-setting="counterSetting"
+        :count="count"
+        :users="hasPreviewData ? userList : generateDummyUserNames(500)"
+      />
+    </div>
   </div>
 </template>
 

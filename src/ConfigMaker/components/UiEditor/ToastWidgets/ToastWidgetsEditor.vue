@@ -1,34 +1,36 @@
 <!-- src/ConfigMaker/components/UiEditor/ToastWidgets/ToastWidgetsEditor.vue -->
 <template>
   <!-- サンプル表示 -->
-  <div class="flex flex-col" :class="[fontFamily]">
-    <!-- トーストサンプル -->
-    <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
-      <ToastBubbleItem
-        v-for="(message, i) in previewMessages"
-        :key="i"
-        :message="message.bubble?.message ?? '(未記入)'"
-        :color="getCharacterColor(message.bubble.characterKey)"
-        :iconLayers="
-          toastSettings.showToastsCharacter
-            ? iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')
-            : []
-        "
-        :showToastsOnRight="toastSettings.showToastsOnRight"
-      />
-    </div>
+  <HudPreview>
+    <div class="flex flex-col" :class="[fontFamily]">
+      <!-- トーストサンプル -->
+      <div :class="!toastSettings.showToastsOnRight ? 'self-start' : 'self-end'">
+        <ToastBubbleItem
+          v-for="(message, i) in previewMessages"
+          :key="i"
+          :message="message.bubble?.message ?? '(未記入)'"
+          :color="getCharacterColor(message.bubble.characterKey)"
+          :iconLayers="
+            toastSettings.showToastsCharacter
+              ? iconSrc(message.bubble?.characterKey ?? null, message.bubble?.iconKey ?? 'default')
+              : []
+          "
+          :showToastsOnRight="toastSettings.showToastsOnRight"
+        />
+      </div>
 
-    <!-- サムネイルサンプル表示 -->
-    <div
-      v-if="isCharacter"
-      class="flex flex-row gap-4 mt-2"
-      :class="toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start'"
-    >
-      <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
-      <CharacterThumbnailsPreview :charactersArray="characterArray" :hoverVisibility="true" />
-      <CharacterThumbnailsPreview :charactersArray="thumbnailCharacters" :hoverVisibility="false" />
+      <!-- サムネイルサンプル表示 -->
+      <div
+        v-if="isCharacter"
+        class="flex flex-row gap-4 mt-2"
+        :class="toastSettings.showToastsOnRight ? 'flex-row self-end' : 'flex-row-reverse self-start'"
+      >
+        <div>(OBSの対話モードでマウスを近づけると、キャラクターが表示され投稿テストができます)</div>
+        <CharacterThumbnailsPreview :charactersArray="characterArray" :hoverVisibility="true" />
+        <CharacterThumbnailsPreview :charactersArray="thumbnailCharacters" :hoverVisibility="false" />
+      </div>
     </div>
-  </div>
+  </HudPreview>
 
   <!-- デフォルトカラー設定 -->
   <template v-if="!isCharacter">
@@ -106,6 +108,7 @@
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

@@ -4,8 +4,8 @@
     <div
       v-for="(count, row) in seatLayout"
       :key="row"
-      class="grid gap-3"
-      :style="{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))` }"
+      class="grid gap-3 mx-auto w-full"
+      :style="{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))`, maxWidth: `${count * 5}rem` }"
     >
       <SeatCell
         v-for="i in count"

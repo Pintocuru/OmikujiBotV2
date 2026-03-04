@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/WinnerGroup/WinnerGroup.vue -->
 <template>
-  <div class="relative">
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
     <!-- 履歴ボタン -->
     <HistoryButton :history-items="historyItems" :color="winnerSetting.color" @clear="clearHistory" />
 

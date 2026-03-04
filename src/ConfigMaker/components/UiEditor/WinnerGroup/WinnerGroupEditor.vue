@@ -1,15 +1,17 @@
 <!-- src/ConfigMaker/components/UiEditor/WinnerGroup/WinnerGroupEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-96 overflow-y-hidden" :class="[fontFamily]" :data-theme="winnerSetting.color">
-    <WinnerGroupRenderer
-      :key="previewKey"
-      :winnerSetting="winnerSetting"
-      :users="previewUsers"
-      :isVisible="true"
-      @click="handleClick"
-    />
-  </div>
+  <HudPreview maxHeightClass="max-h-96" :isAdminOnly="true">
+    <div :class="[fontFamily]">
+      <WinnerGroupRenderer
+        :key="previewKey"
+        :winnerSetting="winnerSetting"
+        :users="previewUsers"
+        :isVisible="true"
+        @click="handleClick"
+      />
+    </div>
+  </HudPreview>
 
   <!-- コンポーネント選択 -->
   <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
@@ -96,6 +98,7 @@
   import { generateDummyWinnerUsers } from '@main/ui/GameRanking/parts/useDummyBotMessages'
   import { parseQueryString } from '@/GameScripts/parseQueryString'
   import { themes } from '@shared/styles/DaisyUiTheme'
+  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

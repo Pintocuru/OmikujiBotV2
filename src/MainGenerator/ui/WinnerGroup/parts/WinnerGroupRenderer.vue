@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/WinnerGroup/parts/WinnerGroupRenderer.vue -->
 <template>
-  <div class="relative w-full max-w-2xl mx-auto" :data-theme="winnerSetting.color" @click="handleClick">
+  <div class="w-full mx-auto" :data-theme="winnerSetting.color" @click="handleClick">
     <component :is="currentComponent" :users="users" :label="winnerSetting.label" :is-visible="isVisible" />
   </div>
 </template>

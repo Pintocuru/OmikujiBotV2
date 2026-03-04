@@ -80,6 +80,12 @@
         textArea.style.opacity = '0'
         document.body.appendChild(textArea)
         textArea.select()
+        /**
+         * 'document.execCommand' のシグネチャ '(commandId: string, showUI?: boolean | undefined, value?: string | undefined): boolean' は非推奨です。ts-plugin(6387)
+lib.dom.d.ts(10253, 8): この宣言はここで非推奨とマークされました。
+(method) Document.execCommand(commandId: string, showUI?: boolean | undefined, value?: string | undefined): boolean
+The execCommand method implements multiple different commands.
+         */
         document.execCommand('copy')
         document.body.removeChild(textArea)
 

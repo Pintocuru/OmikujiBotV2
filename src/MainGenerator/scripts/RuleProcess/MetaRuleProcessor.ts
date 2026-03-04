@@ -73,7 +73,8 @@ export class MetaRuleProcessor {
 
     for (const rule of enabledRules) {
       if (evaluateMetaTrigger(rule.trigger, resolvedEvent)) {
-        onMetaTrigger(this.omikujiProcessor.executeOmikuji(rule.omikuji))
+        const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
+        onMetaTrigger(omikujiMessages)
       }
     }
   }
