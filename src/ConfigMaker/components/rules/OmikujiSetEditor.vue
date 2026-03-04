@@ -8,11 +8,7 @@
 
       <!-- おみくじテストボタン -->
       <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
-        <button
-          class="btn btn-info"
-          @click="useTestPost().postTestOmikuji(omikujiSets)"
-          :disabled="omikujiSets.length === 0"
-        >
+        <button class="btn btn-info" @click="postTestOmikuji(omikujiSets)" :disabled="omikujiSets.length === 0">
           <Dices class="w-4 h-4" />
           抽選テスト
         </button>
@@ -79,6 +75,7 @@
 
   const { updateRecordProperty } = useOmikujiStore()
   const { getItem } = useGetRecordData()
+  const { postTestOmikuji } = useTestPost()
 
   // 選択されたおみくじアイテムのインデックス
   const selectedOmikujiIndex = ref<number | null>(0)

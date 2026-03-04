@@ -48,7 +48,7 @@
 <script setup lang="ts">
   import { onMounted, computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, OmikujiDataType } from '@/types/'
+  import { isDev, OmikujiDataType } from '@/types'
   import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
   import NavigationTabs from './components/appItems/NavigationTabs.vue'

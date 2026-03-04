@@ -12,7 +12,7 @@
 
         <!-- テスト投稿ボタン -->
         <button
-          @click="() => useTestPost().postTestOmikujiItem(modelValue, gameScripts)"
+          @click="() => postTestOmikujiItem(modelValue, gameScripts)"
           class="btn btn-sm btn-info tooltip tooltip-top"
           data-tip="わんコメを起動すると、投稿の確認ができます"
           :disabled="modelValue.length === 0 && !gameScripts"
@@ -20,8 +20,6 @@
           <Send :size="16" />
           テスト投稿
         </button>
-
-        <!-- JSONコピー・ペーストボタン (isGod) -->
 
         <!-- JSONコピー -->
         <button
@@ -70,6 +68,8 @@
   const emit = defineEmits<{
     'update:modelValue': [value: PostFlowType[]]
   }>()
+
+  const { postTestOmikujiItem } = useTestPost()
 
   // PostFlowType[] 用クリップボード
   const clipboard = useJsonClipboard<PostFlowType[]>({

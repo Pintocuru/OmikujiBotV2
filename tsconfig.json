@@ -1,16 +1,17 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  },
   "compilerOptions": {
+    "noEmit": false,
+    "resolveJsonModule": true,
+    "noEmitOnError": true,
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "target": "ES2022",
-    "lib": [
-      "ES2022",
-      "DOM"
-    ],
-    "types": [
-      "node"
-    ],
+    "lib": ["ES2022", "DOM"],
+    "types": ["node"],
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
@@ -18,30 +19,14 @@
     "jsx": "preserve",
     "outDir": "./dist",
     "paths": {
-      "@shared/*": [
-        "../../shared/*"
-      ],
-      "@assets/*": [
-        "./assets/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ],
-      "@main/*": [
-        "./src/MainGenerator/*"
-      ],
-      "@config/*": [
-        "./src/ConfigMaker/*"
-      ],
-      "@game/*": [
-        "./src/GameScripts/*"
-      ],
-      "@sounds/*": [
-        "./src/common/sounds/*"
-      ],
-      "@migrations/*": [
-        "./src/common/migrations/*"
-      ]
+      "@shared/*": ["../../shared/*"],
+      "@assets/*": ["./assets/*"],
+      "@/*": ["./src/*"],
+      "@main/*": ["./src/MainGenerator/*"],
+      "@config/*": ["./src/ConfigMaker/*"],
+      "@game/*": ["./src/GameScripts/*"],
+      "@sounds/*": ["./src/common/sounds/*"],
+      "@migrations/*": ["./src/common/migrations/*"]
     }
   },
   "include": [
@@ -53,10 +38,9 @@
     "src/**/*.vue",
     "server/**/*.ts",
     "tools/**/*.ts",
-    "eslint.config.ts"
+    "eslint.config.ts",
+    "vite.config.ts",
+    "vitest.config.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "archives"
-  ]
+  "exclude": ["node_modules", "archives", "**/*.test.ts"]
 }

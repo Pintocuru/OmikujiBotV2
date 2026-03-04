@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { MetaStateServiceType, MetaUpdateEvent, NormalizedMeta } from '@main/stores/MetaState/MetaStateService'
-import { MetaRuleSchema, MetaRuleType } from '@/types/OmikujiData/'
+import { MetaRuleSchema, MetaRuleType, MetaTriggerSchema } from '@/types/OmikujiData/'
 import { MetaRuleProcessor } from '@/MainGenerator/scripts/RuleProcess/MetaRuleProcessor'
 
 // ─── トップレベルで関数参照を固定 ────────────────────────────────────────────
@@ -50,9 +50,19 @@ function makeMetaStateMock(snapshot: NormalizedMeta | null = null): {
     },
   }
 }
-
+/**
+ * テストルール
+ */
 function makeRule(overrides: Partial<MetaRuleType> = {}): MetaRuleType {
-  return MetaRuleSchema.parse({ name: 'テストルール', isEnabled: true, ...overrides })
+  return MetaRuleSchema.parse({
+    name: 'テストルール',
+    isEnabled: true,
+    trigger: MetaTriggerSchema.parse({
+      condition: 'upVote',
+      upVote: { comparison: 'greaterThanPeak', value: 10 },
+    }),
+    ...overrides,
+  })
 }
 
 function makeEvent(overrides: Partial<MetaUpdateEvent> = {}): MetaUpdateEvent {
