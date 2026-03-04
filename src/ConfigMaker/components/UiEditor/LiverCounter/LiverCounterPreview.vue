@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterPreview.vue -->
 <template>
   <HudPreview>
     <LiverCounterManager :settings="liverCounter" :counters="previewCounters" :event-labels="previewEventLabels" />

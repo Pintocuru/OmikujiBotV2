@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/RuleProcess/SpecialActionProcessor.ts
+// src/MainGenerator/scripts/OmikujiProcess/SpecialActionProcessor.ts
 import { BotMessageEmptySchema, BotMessageType } from '@/types/'
 import { ActionSetType } from '@/types/OmikujiData/'
 import { createFirstBotMessages } from '../RuleProcess/createBotMessages'

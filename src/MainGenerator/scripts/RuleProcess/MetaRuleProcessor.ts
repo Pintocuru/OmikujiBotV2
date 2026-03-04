@@ -1,3 +1,4 @@
+// src/MainGenerator/scripts/RuleProcess/MetaRuleProcessor.ts
 import { BotMessageType } from '@/types/'
 import { MetaRuleType } from '@/types/OmikujiData/'
 import { MetaStateServiceType, MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'

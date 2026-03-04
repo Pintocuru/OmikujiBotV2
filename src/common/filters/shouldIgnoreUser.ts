@@ -1,4 +1,4 @@
-//
+// src/common/filters/shouldIgnoreUser.ts
 
 /**
  * ユーザー記録を除外するかどうかを判定する
