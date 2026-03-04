@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div class="bg-transparent">
+  <div class="bg-base-100">
     <!-- 接続状態インジケーター（全状態で常時マウント） -->
     <ConnectionStatusIndicator :status="appStore.status" />
 

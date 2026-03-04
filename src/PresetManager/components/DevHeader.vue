@@ -41,30 +41,30 @@
           サーバーに保存
         </button>
       </template>
+      <template v-else>
+        <button
+          @click="devStore.overwriteOmikujiData"
+          :disabled="devStore.isSaving"
+          class="btn btn-primary btn-sm tooltip tooltip-top"
+          data-tip="assets/omikujiData.js を上書き保存"
+        >
+          <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
+          <Save class="w-4 h-4 mr-2" />
+          omikujiData.js に保存
+        </button>
 
-      <button
-        v-else-if="Object.keys(data.comments).length > 0"
-        @click="devStore.overwriteOmikujiData"
-        :disabled="devStore.isSaving"
-        class="btn btn-primary btn-sm tooltip tooltip-top"
-        data-tip="assets/omikujiData.js を上書き保存"
-      >
-        <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
-        <Save class="w-4 h-4 mr-2" />
-        omikujiData.js に保存
-      </button>
-
-      <button
-        v-if="isPro || isDev"
-        @click="saveConfigAutoName"
-        :disabled="devStore.isSaving"
-        class="btn btn-success btn-sm tooltip tooltip-bottom"
-        data-tip="現在の設定を日付ファイル名で保存"
-      >
-        <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
-        <Save class="w-4 h-4 mr-2" />
-        新規保存
-      </button>
+        <button
+          v-if="isPro || isDev"
+          @click="saveConfigAutoName"
+          :disabled="devStore.isSaving"
+          class="btn btn-success btn-sm tooltip tooltip-bottom"
+          data-tip="現在の設定を日付ファイル名で保存"
+        >
+          <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
+          <Save class="w-4 h-4 mr-2" />
+          新規保存
+        </button>
+      </template>
     </div>
   </div>
 </template>
@@ -82,7 +82,7 @@
   import { Download, Save } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()
-  const { data, hasChanged } = storeToRefs(omikujiStore)
+  const { hasChanged } = storeToRefs(omikujiStore)
   const navigationStore = useNavigationStore()
   const devStore = useDevStore()
   const { isExpressMode } = storeToRefs(devStore)

@@ -103,19 +103,26 @@ export class RuleCommentProcessor {
     }
 
     // 3. 先に抽選してspecialかどうかを確認
+    this.hoge(omiken, rule)
+    console.log(omiken.meta.draws)
+    // 4. 抽選
     const actionItem = this.omikujiProcessor.lotteryOmikujiItem(rule.omikuji, omiken)
+
     if (!actionItem) return { isCommentTriggered: false, botMessages: [] }
 
     // 4. specialの場合はインクリメントせず即実行
     if (actionItem.type === 'special') {
+      console.log('special')
       // return なら、カウントはして止める
       if (actionItem.special === 'return') {
         this.draw(omiken, rule)
+        console.log('return')
         return { isCommentTriggered: true, botMessages: [BotMessageEmptySchema.parse({})] }
       }
 
       // return なら、カウントはせずスルーする
       if (actionItem.special === 'continue') {
+        console.log('continue')
         return { isCommentTriggered: false, botMessages: [] }
       }
 
@@ -160,10 +167,14 @@ export class RuleCommentProcessor {
       .sort((a, b) => a.order - b.order)
   }
 
-  private draw(omiken: OmikenCommentType, rule: CommentRuleType): void {
+  private hoge(omiken: OmikenCommentType, rule: CommentRuleType): void {
     const { userSession } = this.store
     omiken.meta.draws = userSession.visits.getCount(omiken.userId, rule.key) + 1
     omiken.meta.ruleKey = rule.key
+  }
+
+  private draw(omiken: OmikenCommentType, rule: CommentRuleType): void {
+    const { userSession } = this.store
     userSession.visits.record(rule.key, UserNameSchema.parse(omiken))
   }
 

@@ -4,21 +4,21 @@ import { defaultPlaceholderMap } from '../MetaMaps'
 
 // Zod スキーマ
 export const DefaultPlaceholdersMetaSchema = z.object({
-  viewer: z.coerce.number().default(0),
-  upVote: z.coerce.number().default(0),
-  follower: z.coerce.number().default(0),
-  lc: z.coerce.number().default(0),
-  commenter: z.coerce.number().default(0),
-  syoken: z.coerce.number().default(0),
-  winner: z.string().default('テストユーザー'),
+  viewer: z.coerce.number().default(0).catch(0),
+  upVote: z.coerce.number().default(0).catch(0),
+  follower: z.coerce.number().default(0).catch(0),
+  lc: z.coerce.number().default(0).catch(0),
+  commenter: z.coerce.number().default(0).catch(0),
+  syoken: z.coerce.number().default(0).catch(0),
+  winner: z.string().default('テストユーザー').catch('テストユーザー'),
 })
 
 export const DefaultPlaceholdersCommentSchema = z.object({
-  user: z.string().default('テストユーザー'),
-  userId: z.string().default('test'),
-  price: z.coerce.number().default(0),
-  tc: z.coerce.number().default(0),
-  draws: z.coerce.number().default(0),
+  user: z.string().default('テストユーザー').catch('テストユーザー'),
+  userId: z.string().default('test').catch('test'),
+  price: z.coerce.number().default(0).catch(0),
+  tc: z.coerce.number().default(0).catch(0),
+  draws: z.coerce.number().default(0).catch(0),
   ...DefaultPlaceholdersMetaSchema.shape,
 })
 

@@ -3,7 +3,7 @@ import { defineConfig, mergeConfig, UserConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import { createViteAliases } from './CreateViteAliases'
-import { baseViteConfig, rootAlias } from '../../../../shared/utils/ViteConfig/viteConfigBase'
+import { baseViteConfig,  } from '../../../../shared/utils/ViteConfig/viteConfigBase'
 
 // projectRoot の設定
 const __filename = fileURLToPath(import.meta.url)
@@ -12,7 +12,7 @@ const projectRoot = path.resolve(__dirname, '../../')
 const base = baseViteConfig(projectRoot)
 
 // tsconfig.json からエイリアスを生成
-export const alias = { ...rootAlias, ...createViteAliases(projectRoot) }
+export const alias = {  ...createViteAliases(projectRoot) }
 
 export default defineConfig(() => {
   const overrideConfig: UserConfig = {

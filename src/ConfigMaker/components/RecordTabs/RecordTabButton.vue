@@ -24,7 +24,7 @@
       @blur="tabsStore.finishInlineEdit"
       @keyup.enter="tabsStore.finishInlineEdit"
       @keyup.escape="tabsStore.cancelInlineEdit"
-      class="bg-transparent border-none outline-none text-current text-center hover:bg-base-200"
+      class="bg-base-100 border-none outline-none text-current text-center hover:bg-base-200"
       :ref="tabsStore.setEditInput"
       @click.stop
     />

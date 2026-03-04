@@ -89,7 +89,7 @@ export type BotMessageExtraType = z.infer<typeof BotMessageExtraSchema>
  * 特殊な動作 returnで使用
  */
 export const BotMessageEmptySchema = BotMessageBaseSchema.extend({
-  type: z.literal('empty'),
+  type: z.literal('empty').default('empty'),
 })
 export type BotMessageEmptyType = z.infer<typeof BotMessageEmptySchema>
 

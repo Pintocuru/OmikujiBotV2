@@ -88,7 +88,7 @@ export class OmikujiProcessor {
   }
 
   /**
-   * timer用デフォルトのプレースホルダー情報を設定
+   * デフォルトのプレースホルダー情報を設定
    */
   private getBasePlaceholders(): Record<ServiceMetaCondition, string | number> {
     const meta = this.metaStateService.getCurrent()
