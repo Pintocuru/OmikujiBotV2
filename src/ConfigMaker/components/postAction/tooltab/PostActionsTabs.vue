@@ -1,22 +1,12 @@
 <!-- src/ConfigMaker/components/postAction/tooltab/PostActionsTabs.vue -->
 <template>
   <!-- タブヘッダー -->
-  <div class="tabs">
-    <!-- プレースホルダータブ（固定） -->
-    <button
-      v-if="isPlaceholder"
-      class="tab tab-sm rounded"
-      :class="{ 'tab-active bg-info text-info-content': activeTab === -1 }"
-      @click="setActiveTab(-1)"
-    >
-      📝 プレースホルダー
-    </button>
-
+  <div class="tabs tabs-box">
     <!-- PostActionタブ -->
     <button
       v-for="(action, index) in props.modelValue"
       :key="`action-${index}`"
-      class="tab tab-sm rounded pr-1 flex items-center justify-between gap-2"
+      class="tab"
       :class="activeTab === index ? 'tab-active bg-info text-info-content' : ''"
       @click="setActiveTab(index)"
     >
@@ -28,7 +18,7 @@
 
       <!-- 右側：メニュー -->
       <div @click.stop>
-        <MenuDropdown v-if="activeTab === index" @duplicate="duplicateAction(index)" @delete="removeAction(index)" />
+        <MenuDropdown @duplicate="duplicateAction(index)" @delete="removeAction(index)" />
       </div>
     </button>
 
@@ -41,11 +31,6 @@
   <template v-if="props.modelValue.length === 0">
     <NoParamsCard message="PostActionがありません" />
     <button @click="addNewAction" class="btn btn-primary btn-sm">最初のアクションを追加</button>
-  </template>
-
-  <!-- プレースホルダーリストタブの内容 -->
-  <template v-else-if="activeTab === -1">
-    <PlaceholderList :actions="props.modelValue" @open-placeholder="handleOpenPlaceholder" />
   </template>
 
   <!-- PostActionタブの内容 -->
@@ -66,8 +51,6 @@
   import PostActionRow from './PostActionRow.vue'
   import { usePostActionsTab } from '../composables/usePostActionsTab'
   import PostActionItem from '../items/PostActionItem.vue'
-  import PlaceholderList from '@config/components/placeholders/PlaceholderList.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
 
@@ -80,18 +63,10 @@
     'open-placeholder': [placeholderId: string, editorColor?: string | null]
   }>()
 
-  // Store
-  const { isPlaceholder } = useVisibilityAccess()
-
   // タブロジックをコンポーザブルから取得
   const { activeTab, currentAction, setActiveTab, updateCurrentAction, addNewAction, duplicateAction, removeAction } =
     usePostActionsTab(
       computed(() => props.modelValue),
       (event, actions) => emit(event, actions)
     )
-
-  // プレースホルダーを開く処理
-  const handleOpenPlaceholder = (placeholderId: string, editorColor?: string | null) => {
-    emit('open-placeholder', placeholderId, editorColor)
-  }
 </script>

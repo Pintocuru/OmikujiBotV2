@@ -1,4 +1,5 @@
 <!-- src/ConfigMaker/components/placeholders/PlaceholderItem.vue -->
+<!-- !使用しない -->
 <template>
   <div
     :class="cardClasses"

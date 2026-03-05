@@ -15,7 +15,7 @@ export const SettingsSchema = z.object({
   licenseKeyHash: z.string().default('').catch(''),
   daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
   initialCategory: z.enum(categoryTypeLabel).default('comments').catch('comments'), // 読み込み時開くカテゴリ
-  muteSound: z.boolean().default(false).catch(false), // 効果音をなしにするか
+  soundEnabled: z.boolean().default(true).catch(true), // サウンドを有効にするか
   ignoreUserPattern: z.string().default('__INFO__|__ERROR__').catch('__INFO__|__ERROR__'), // VisitUserを無視するリスト
 })
 

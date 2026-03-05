@@ -25,22 +25,15 @@
   </SettingItem>
 
   <!-- 単一の入力欄：isToast に応じてラベル／説明／プレースホルダを切替 -->
-  <SettingItem :label="isToast ? '📝 トースト内容' : '💬 フキダシ内容'" description="プレースホルダーが使えます">
-    <MessageTextEditor v-model="bubbleText" />
+  <SettingItem label="💬 メッセージ内容" description="プレースホルダーが使えます">
+    <MessageTextDialog v-model="bubbleText" />
   </SettingItem>
-  <!-- 変数プレースホルダーチェッカー -->
-  <VariableDeclarationChecker :text="bubbleText" />
-
-  <!-- プレースホルダーチェッカー -->
-  <PlaceholderChecker :text="bubbleText" />
 
   <!-- サウンド -->
-  <SettingItem v-if="!muteSound" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
+  <SettingItem v-if="soundEnabled" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
     <select v-model="sound" class="select select-bordered select-sm w-full">
       <option value="">（なし）</option>
-      <option v-for="(value, key) in soundMetaMap" :key="key" :value="key">
-        {{ value }}
-      </option>
+      <option v-for="(value, key) in soundMetaMap" :key="key" :value="key">{{ value }} ({{ key }})</option>
     </select>
   </SettingItem>
 </template>
@@ -50,11 +43,10 @@
   import { CharacterEmotionType, PostFlowMessageType, soundMetaMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import VariableDeclarationChecker from '../items/VariableDeclarationChecker.vue'
-  import PlaceholderChecker from '../items/PlaceholderChecker.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import MessageTextEditor from './MessageTextEditor.vue'
+  import MessageTextDialog from './MessageTextDialog.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
@@ -70,7 +62,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
   const enableSecondary = computed(() => data.components.enableSecondary)
-  const muteSound = computed(() => data.settings.muteSound)
+  const soundEnabled = computed(() => data.settings.soundEnabled)
 
   const updateAction = (updates: Partial<PostFlowMessageType>) => {
     emit('update:action', { ...props.action, ...updates })

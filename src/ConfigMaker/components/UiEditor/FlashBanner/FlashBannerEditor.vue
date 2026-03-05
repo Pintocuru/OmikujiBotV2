@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <HudPreview :maxHeightClass="isDev ? 'min-h-32' : ''" :isAdminOnly="isDev">
+  <HudPreview :maxHeightClass="isDev ? 'min-h-32' : ''" :isAdminOnly="true">
     <div :class="[fontFamily]" @click="handlePreviewClick">
       <FlashBannerRenderer
         :settings="flashBanner"
@@ -139,7 +139,12 @@
   </SettingItem>
 
   <!-- デフォルトで表示させるメッセージ -->
-  <SettingItem label="デフォルトメッセージ" description="プレースホルダーが使えます">
+  <SettingItem
+    label="デフォルトメッセージ"
+    description="プレースホルダーが使えます"
+    :showReset="true"
+    @reset="resetMap.defaultMessage"
+  >
     <MessageTextEditor v-model="bubbleText" />
   </SettingItem>
 </template>

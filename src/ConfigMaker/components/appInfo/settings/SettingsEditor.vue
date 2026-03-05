@@ -7,16 +7,21 @@
     description="UI・効果音など、配信挙動に関わる設定をまとめるセクション"
   />
 
-  <!-- 効果音をミュートにする -->
-  <SettingItem label="効果音をミュートにする" description="BOTの効果音を再生しないようにします">
+  <!-- 効果音を鳴らす -->
+  <SettingItem label="効果音を鳴らす" description="BOTの効果音を再生するか">
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="toggle toggle-primary" :checked="settings.muteSound" @change="handleMuteSound" />
-      <span>{{ settings.muteSound ? 'ミュートする' : 'ミュートしない' }}</span>
+      <input type="checkbox" class="toggle toggle-primary" :checked="settings.soundEnabled" @change="handleMuteSound" />
+      <span>{{ settings.soundEnabled ? '音を鳴らす' : 'ミュートする' }}</span>
     </label>
   </SettingItem>
 
   <!-- VisitUserにユーザーを入れない -->
-  <SettingItem label="ユーザーを記録しないリスト" description="BOTや管理者の名前を正規表現で指定">
+  <SettingItem
+    label="ユーザーを記録しないリスト"
+    description="BOTや管理者の名前を正規表現で指定"
+    :showReset="true"
+    @reset="resetMap.ignoreUserPattern"
+  >
     <MessageTextEditor v-model="bubbleText" />
   </SettingItem>
 
@@ -30,7 +35,7 @@
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">
     <select
       :value="settings.daisyUiTheme"
-      @change="(e) => updateSettingsField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
+      @change="(e) => updateField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
       :disabled="!isPro"
     >
@@ -73,11 +78,13 @@
     v-if="isGod"
     label="起動時に開くカテゴリ"
     description="起動時に最初に開くカテゴリを設定します"
+    :showReset="true"
+    @reset="resetMap.initialCategory"
     forceMode="god"
   >
     <select
       :value="settings.initialCategory"
-      @change="(e) => updateSettingsField('initialCategory', (e.target as HTMLSelectElement).value)"
+      @change="(e) => updateField('initialCategory', (e.target as HTMLSelectElement).value)"
       class="select select-bordered w-full max-w-xs"
     >
       <option v-for="(value, key) in categoryMap" :key="key" :value="key">
@@ -90,7 +97,7 @@
 <script setup lang="ts">
   import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { categoryMap, isDev } from '@/types/'
+  import { categoryMap, isDev, SettingsSchema, soundMetaMap } from '@/types/'
   import { getKey, resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -102,6 +109,7 @@
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
   import Swal from 'sweetalert2'
   import MessageTextEditor from '@/ConfigMaker/components/postAction/Message/MessageTextEditor.vue'
+  import { playSound } from '@/common/sounds'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -110,7 +118,7 @@
   const settings = computed(() => data.value.settings)
 
   // settings の単一フィールド更新
-  const updateSettingsField = <K extends keyof SettingsType>(field: K, value: any) => {
+  const updateField = <K extends keyof SettingsType>(field: K, value: any) => {
     omikujiStore.updateSettings({ [field]: value })
   }
 
@@ -119,10 +127,10 @@
     omikujiStore.updateSettings({ licenseKeyHash: value })
   }
 
-  // 効果音ミュート切り替え
+  // 効果音切り替え
   const handleMuteSound = (event: Event) => {
     const checked = (event.target as HTMLInputElement).checked
-    updateSettingsField('muteSound', checked)
+    updateField('soundEnabled', checked)
   }
 
   const bubbleText = computed<string>({
@@ -135,9 +143,19 @@
         .filter((line) => line.length > 0)
         .join('|') // OR で結合
 
-      updateSettingsField('ignoreUserPattern', normalized)
+      updateField('ignoreUserPattern', normalized)
     },
   })
+
+  const resetField = (field: keyof typeof settings.value) => {
+    const defaults = SettingsSchema.parse({})
+    updateField(field, defaults[field])
+  }
+
+  const resetMap = {
+    initialCategory: () => resetField('initialCategory'),
+    ignoreUserPattern: () => resetField('ignoreUserPattern'),
+  }
 
   // ライセンスキー変更時のモーダル表示
   watch(
@@ -174,6 +192,20 @@
           text: '一部の機能を反映するには設定の保存とエディターの再起動が必要です。',
         })
       }
+    }
+  )
+
+  const playRandomSound = () => {
+    const keys = Object.keys(soundMetaMap) as Array<keyof typeof soundMetaMap>
+    if (keys.length === 0) return
+    const randomKey = keys[Math.floor(Math.random() * keys.length)]
+    playSound(randomKey)
+  }
+
+  watch(
+    () => settings.value.soundEnabled,
+    (newVal, oldVal) => {
+      if (!oldVal && newVal) playRandomSound()
     }
   )
 </script>
