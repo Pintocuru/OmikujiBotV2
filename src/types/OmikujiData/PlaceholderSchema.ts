@@ -52,6 +52,7 @@ export function handelNormalizedValues(values: WeightValuesArrayType): WeightVal
 }
 
 // PlaceholderValueType から ランダム抽選で値を選択
+// TODO: なんでこんなところにあるの？
 export function selectValue(values: WeightValuesArrayType): string {
   const normalizedValues = handelNormalizedValues(values)
   if (normalizedValues.length === 0) return ''

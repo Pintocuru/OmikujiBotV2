@@ -6,6 +6,17 @@ import { countUnitConditionMap } from '@shared/types/trigger'
  * プレースホルダー一覧
  * slot:'comment', (コメントイベントのみ)と、 slot:'event', (全体)
  */
+export const defaultBasePlaceholderLabel = [
+  'viewer',
+  'upVote',
+  'follower',
+  'lc',
+  'commenter',
+  'syoken',
+  'winner',
+] as const
+export const defaultPlaceholderLabel = [...defaultBasePlaceholderLabel, 'user', 'userId', 'price', 'tc', 'draws']
+
 export const defaultPlaceholderMap = {
   user: { slot: 'comment', label: 'コメントしたユーザー', short: '[ユーザー名]' },
   userId: { slot: 'comment', label: 'コメントしたユーザーID', short: 'test_userId' },

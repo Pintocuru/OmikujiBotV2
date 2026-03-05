@@ -26,7 +26,8 @@
 
   <!-- 単一の入力欄：isToast に応じてラベル／説明／プレースホルダを切替 -->
   <SettingItem label="💬 メッセージ内容" description="プレースホルダーが使えます">
-    <MessageTextDialog v-model="bubbleText" />
+    <MessageTextDialog v-model="bubbleText" :isCommentMode="true" />
+    <!-- <MessageTextEditor v-model="bubbleText" /> -->
   </SettingItem>
 
   <!-- サウンド -->
@@ -45,7 +46,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
-  import MessageTextEditor from './MessageTextEditor.vue'
+  // import MessageTextEditor from './MessageTextEditor.vue'
   import MessageTextDialog from './MessageTextDialog.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 

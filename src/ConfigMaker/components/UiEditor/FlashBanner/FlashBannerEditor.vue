@@ -145,7 +145,7 @@
     :showReset="true"
     @reset="resetMap.defaultMessage"
   >
-    <MessageTextEditor v-model="bubbleText" />
+    <MessageTextDialog v-model="messageText" />
   </SettingItem>
 </template>
 
@@ -169,7 +169,7 @@
   import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
-  import MessageTextEditor from '@config/components/postAction/Message/MessageTextEditor.vue'
+  import MessageTextDialog from '@config/components/postAction/Message/MessageTextDialog.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const omikujiStore = useOmikujiStore()
@@ -219,7 +219,7 @@
   }
 
   // Message Text
-  const bubbleText = computed<string>({
+  const messageText = computed<string>({
     get: () => flashBanner.value.defaultMessage ?? '',
     set: (value) => {
       updateField('defaultMessage', value)
@@ -233,6 +233,6 @@
     void defaultMessageRefreshKey.value
     const contentPlaceholder = new ContentPlaceholder(data.value.placeholders)
     contentPlaceholder.updateResolvedValues(defaultPlaceholdersShortLabels)
-    return contentPlaceholder.processText(bubbleText.value)
+    return contentPlaceholder.processText(messageText.value)
   })
 </script>
