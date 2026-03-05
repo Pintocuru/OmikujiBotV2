@@ -1,5 +1,5 @@
 // src/MainGenerator/stores/GameScript/GameScriptManager.ts
-import { GameScriptsType, ScriptClass, ScriptGameKey, scriptGameKeys, ScriptResult } from '@/types/'
+import { GameScriptsType, GameStateType, ScriptClass, ScriptGameKey, scriptGameKeys, ScriptResult } from '@/types/'
 import { gameExecuteMap } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserManager } from '../UserManager/UserManager'
@@ -99,6 +99,15 @@ export class GameScriptManager {
         instance.initialize(userSession)
       }
     })
+  }
+
+  /**
+   * ランキングデータを取得
+   */
+  getGameState(targetKey: string): GameStateType | null {
+    const instance = this.scriptInstances[targetKey as ScriptGameKey]
+    if (!instance || !instance.getGameState) return null
+    return instance.getGameState()
   }
 
   /**

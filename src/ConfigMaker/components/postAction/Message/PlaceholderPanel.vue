@@ -3,7 +3,7 @@
   <div class="w-64 shrink-0 flex flex-col bg-base-100">
     <!-- ヘッダー -->
     <div class="px-3 py-2 bg-base-200 border-b border-base-300 shrink-0 flex items-center justify-between">
-      <span class="text-xs font-semibold uppercase tracking-wide text-base-content/60">プレースホルダー</span>
+      <span class="text-xs font-semibold text-base-content">プレースホルダー</span>
       <div class="flex gap-1">
         <button class="btn btn-xs btn-ghost gap-1" title="簡易プレースホルダーを挿入" @click="emit('openInlinePh')">
           <Braces :size="12" />
@@ -40,8 +40,8 @@
     <!-- スクロールエリア -->
     <div class="flex-1 overflow-y-auto">
       <!-- デフォルトプレースホルダー -->
+      <div class="divider my-1 px-2 text-xs">デフォルト</div>
       <div class="px-2 pt-2 pb-1">
-        <p class="text-xs font-semibold text-base-content/40 uppercase tracking-wide mb-1">デフォルト</p>
         <div class="flex flex-wrap gap-1">
           <button
             v-for="ph in defaultPlaceholderList"

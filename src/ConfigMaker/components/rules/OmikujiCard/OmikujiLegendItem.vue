@@ -2,7 +2,7 @@
 <template>
   <div
     class="flex items-center gap-2 text-xs bg-base-100 p-2 rounded shadow-sm hover:shadow-md transition-all cursor-pointer"
-    :class="{ 'ring-2 ring-primary': isSelected }"
+    :class="{ 'bg-primary text-primary-content': isSelected }"
     @click="$emit('select')"
   >
     <!-- ドラッグハンドル -->
@@ -18,7 +18,7 @@
       <div class="truncate font-medium">
         {{ item.name || `アイテム${index + 1}` }}
       </div>
-      <div class="text-base-content/60">{{ percentage }}%</div>
+      {{ percentage }}%
 
       <div class="text-base">
         <span v-if="item?.isPriority" class="badge badge-xs badge-primary"> 優先 </span>
@@ -27,16 +27,18 @@
     </div>
 
     <!-- Weight編集 -->
-    <input
-      v-if="!item?.isPriority"
-      type="number"
-      :value="item.weight"
-      @input="handleWeightUpdate"
-      @click.stop
-      min="0"
-      step="1"
-      class="input input-xs input-bordered w-16 flex-shrink-0"
-    />
+    <div class="text-base">
+      <input
+        v-if="!item?.isPriority"
+        type="number"
+        :value="item.weight"
+        @input="handleWeightUpdate"
+        @click.stop
+        min="0"
+        step="1"
+        class="input input-xs input-bordered w-16 flex-shrink-0"
+      />
+    </div>
   </div>
 </template>
 

@@ -135,16 +135,43 @@ export type ActionSpecialType = keyof typeof actionSpecialMap
  */
 export const actionSetKind = Object.keys(actionSetKindMap) as ActionSetKind[]
 export type ActionSetKind = keyof typeof actionSetKindMap
+// behavior : special の代わり
+export const ActionBehaviorSchema = z.object({
+  type: z.enum(actionSpecial).default('return'),
+  countEvent: z.boolean().default(true), // eventとしてカウントするか
+  targetKey: z.string().optional(), // log用、対象となるeventKey、GameScript の scriptKey
+  logFormat: z.string().optional(), // log用のフォーマット
+  logLimit: z.number().optional(), // 最大出力件数
+})
+export type ActionBehaviorType = z.infer<typeof ActionBehaviorSchema>
 
-export const ActionSetSchema = z.object({
+export const ActionSetBaseSchema = z.object({
   ...BaseRecordSchema.shape,
   // TODO(v3) : type -> kind
   type: z.enum(actionSetKind).default('postActions').catch('postActions'),
   // TODO(v3) : postActions -> postFlows
   postActions: PostFlowArraySchema,
   gameScripts: normalizedObject(GameScriptsSchema),
-  special: normalizedObject(ActionSpecialSchema),
+  // TODO(v3) :  behavior -> special に戻す
+  special: ActionSpecialSchema.optional(),
+  behavior: normalizedObject(ActionBehaviorSchema),
 })
+
+export const ActionSetSchema = ActionSetBaseSchema.transform((value) => {
+  // 旧データ（string）の場合は自動変換
+  if (value.special !== undefined) {
+    return {
+      ...value,
+      behavior: {
+        type: (value.special === 'return' ? 'return' : 'continue') as ActionBehaviorType['type'],
+        countEvent: value.special === 'return',
+      },
+      special: undefined,
+    }
+  }
+  return value
+})
+
 export type ActionSetType = z.infer<typeof ActionSetSchema>
 
 /**

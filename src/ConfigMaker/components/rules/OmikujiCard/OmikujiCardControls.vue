@@ -1,13 +1,13 @@
 <!-- src/ConfigMaker/components/rules/OmikujiCard/OmikujiCardControls.vue -->
 <template>
   <div class="space-y-4">
-    <!-- ツールバー -->
+    <!-- ツールバー 
     <OmikujiControlsToolbar
       :itemCount="itemCount"
       :totalWeight="totalWeight"
       @sort="$emit('sort', $event)"
       @weight-operation="handleWeightOperation"
-    />
+    />-->
 
     <!-- プログレスバーと凡例 -->
     <OmikujiWeightProgressBar
@@ -23,9 +23,9 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { OmikujiItemType } from '@/types/OmikujiData/'
-  import OmikujiControlsToolbar from './OmikujiControlsToolbar.vue'
+  // import OmikujiControlsToolbar from './OmikujiControlsToolbar.vue'
   import OmikujiWeightProgressBar from './OmikujiWeightProgressBar.vue'
-  import { useWeightCalculation } from '../composables/useWeightCalculation'
+  // import { useWeightCalculation } from '../composables/useWeightCalculation'
 
   const props = defineProps<{
     items: OmikujiItemType[]
@@ -44,11 +44,6 @@
     set: (value) => emit('update:items', value),
   })
 
-  // weight計算のコンポーザブルを使用
-  const { totalWeight } = useWeightCalculation(localItems)
-
-  const itemCount = computed(() => props.items.length)
-
   // Weight更新
   const handleWeightUpdate = (payload: { index: number; weight: number }) => {
     const updatedItems = [...localItems.value]
@@ -63,6 +58,11 @@
   const handleSelect = (index: number) => {
     emit('select', index)
   }
+
+  /**
+  // weight計算のコンポーザブルを使用
+  // const { totalWeight } = useWeightCalculation(localItems)
+  // const itemCount = computed(() => props.items.length)
 
   // Weight操作
   const handleWeightOperation = (operation: string, targetTotal?: number) => {
@@ -96,6 +96,7 @@
 
     emit('update:items', updatedItems)
   }
+     
 
   const scaleWeightsToTotal = (items: OmikujiItemType[], targetSum: number): OmikujiItemType[] => {
     const currentTotal = items.reduce((sum, item) => sum + item.weight, 0)
@@ -107,4 +108,5 @@
       weight: Math.max(1, Math.round(item.weight * ratio)),
     }))
   }
+  */
 </script>

@@ -17,23 +17,40 @@ export const PostFlowKindMaps = {
 export const actionSpecialMap = {
   return: {
     label: '処理を終了する(return)',
-    description: 'このルールで処理を終了し、以降のルールは実行されません。',
+    description: 'BOTアクションを何もせず、このイベントで処理を終了します。',
     variant: 'warning',
   },
   continue: {
     label: '次のルールへ進む(continue)',
-    description: '次のルールへ処理を進めます。通常の動作と同じです。',
+    description: 'BOTアクションを何もせず、次のイベントへ処理を進めます。',
     variant: 'info',
   },
-  log: {
-    label: 'ログを出力する(log)',
-    description: 'わんコメにおみくじ回数のログを投稿します。',
-    variant: 'success',
-  },
-  reset: {
+  resetOmikuji: {
     label: 'おみくじ回数をリセットする(reset)',
     description: 'おみくじの抽選回数をリセットします。',
     variant: 'neutral',
+  },
+
+  // --- log 系（4 種類に分割） ---
+  logUserState: {
+    label: 'ユーザー状態を出力する(logUserState)',
+    description: 'コメントをしたユーザーの情報を、フォーマットに従って出力します。',
+    variant: 'success',
+  },
+  logOmikuji: {
+    label: 'おみくじ履歴を出力する(logOmikuji)',
+    description: 'このおみくじを発動したユーザーの情報を、フォーマットに従って出力します。',
+    variant: 'success',
+  },
+  logGame: {
+    label: 'ゲーム状態を出力する(logGame)',
+    description: 'ゲームスクリプト のランキングを出力します。',
+    variant: 'success',
+  },
+  logVariable: {
+    label: '変数データを出力する(logVariable)',
+    description: '評価ブロックの値を出力します。',
+    variant: 'success',
   },
 } as const
 

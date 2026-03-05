@@ -5,7 +5,7 @@
     <textarea
       v-model="displayValue"
       rows="3"
-      class="textarea textarea-bordered textarea-sm w-full pr-10"
+      class="textarea textarea-bordered textarea-sm w-full"
       :placeholder="'メッセージを入力... (例: <<userName>> さん、こんにちは！)'"
     ></textarea>
     <button class="btn btn-sm btn-primary gap-1" @click="openDialog">
@@ -18,30 +18,25 @@
   <dialog ref="dialogRef" class="modal modal-bottom sm:modal-middle">
     <div class="modal-box w-11/12 max-w-5xl h-[80vh] flex flex-col overflow-hidden">
       <!-- ヘッダー -->
-      <div class="flex items-center justify-between p-4 border-b border-base-300 bg-base-200 shrink-0">
-        <div class="flex items-center gap-2">
-          <MessageSquare :size="18" class="text-primary" />
-          <h3 class="font-bold text-base">メッセージ詳細エディター</h3>
-        </div>
-        <button class="btn btn-sm btn-ghost btn-circle" @click="closeDialog">
-          <X :size="16" />
-        </button>
+      <div class="pb-4">
+        <SubSectionHeader icon="MessageSquare" title="メッセージ詳細エディター">
+          <button class="btn btn-sm btn-ghost btn-circle" @click="closeDialog">
+            <X :size="16" />
+          </button>
+        </SubSectionHeader>
       </div>
 
       <!-- 本体 2〜3カラム -->
       <div class="flex flex-1 min-h-0 divide-x divide-base-300">
         <!-- 左: プレビュー（md以上のみ） -->
-        <div class="hidden md:flex w-72 shrink-0 flex-col bg-base-100">
-          <div class="p-2 bg-base-200 border-b border-base-300 shrink-0">
-            <span class="text-xs font-semibold uppercase tracking-wide text-base-content/60">プレビュー</span>
-          </div>
+        <div class="hidden md:flex w-60 shrink-0 flex-col bg-base-100">
           <MessagePreviewPanel :draft-text="draftText" />
         </div>
 
         <!-- 中央: エディター -->
         <div class="flex-1 flex flex-col min-w-0">
           <div class="px-3 py-2 bg-base-200 border-b border-base-300 shrink-0 flex items-center justify-between">
-            <span class="text-xs font-semibold uppercase tracking-wide text-base-content/60">メッセージ編集</span>
+            <span class="text-xs font-semibold text-base-content">メッセージ編集</span>
             <div class="flex items-center gap-2">
               <button class="md:hidden btn btn-xs btn-ghost gap-1" @click="showInlinePreview = !showInlinePreview">
                 <Eye :size="12" />
@@ -88,8 +83,17 @@
       </div>
 
       <!-- フッター -->
-      <div class="flex justify-between items-center px-5 py-3 border-t border-base-300 bg-base-200 shrink-0">
-        <div class="text-xs text-base-content/50">プレースホルダーをクリックして本文に挿入できます</div>
+      <div class="flex justify-between items-center px-4 py-2 border-t border-base-300 bg-base-200 shrink-0">
+        <div class="text-xs text-base-content">
+          <a
+            class="link no-underline hover:underline"
+            href="https://github.com/Pintocuru/OmikujiBot-Docs/blob/main/core/ConfigEditor/sub/VariablePlaceholderCheatSheet.md"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            評価ブロック(変数プレースホルダー) チートリスト
+          </a>
+        </div>
         <div class="flex gap-2">
           <button class="btn btn-sm btn-ghost" @click="closeDialog">キャンセル</button>
           <button class="btn btn-sm btn-primary gap-1" @click="saveAndClose">
@@ -112,7 +116,8 @@
   import PlaceholderPanel from './PlaceholderPanel.vue'
   import MessagePreviewPanel from './MessagePreviewPanel.vue'
   import InlinePlaceholderDialog from './InlinePlaceholderDialog.vue'
-  import { PencilLine, MessageSquare, X, Check, Eye } from 'lucide-vue-next'
+  import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { PencilLine, X, Check, Eye } from 'lucide-vue-next'
 
   const props = defineProps<{
     modelValue: string

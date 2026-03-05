@@ -2,16 +2,16 @@
 <template>
   <div class="flex-1 overflow-y-auto p-1 flex flex-col gap-2 items-center justify-start">
     <div class="w-full">
+      <div class="divider text-xs my-1">プレビュー</div>
       <div class="chat chat-start">
         <div class="chat-bubble text-sm whitespace-pre-wrap break-words" v-html="renderedPreview" />
       </div>
       <p v-if="!draftText.trim()" class="text-xs text-center text-base-content/40 mt-1">
         テキストを入力するとプレビューが表示されます
       </p>
-    </div>
 
-    <!-- プレースホルダー展開例 -->
-    <div class="w-full">
+      <!-- プレースホルダー展開例 -->
+
       <div class="divider text-xs my-1">展開例</div>
       <div
         class="bg-base-200 rounded-lg px-3 py-2 text-xs font-mono text-base-content/70 whitespace-pre-wrap break-words cursor-pointer hover:bg-base-300 transition-colors select-none relative group"
@@ -19,16 +19,12 @@
         v-html="expandedPreviewDisplay"
         @click="refresh"
       ></div>
-      <p class="text-xs text-center text-base-content/30 mt-1">
-        <RefreshCw :size="10" class="inline mr-0.5" />クリックで再抽選
-      </p>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { RefreshCw } from 'lucide-vue-next'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { processTestPlaceholder } from '../preview/TestPlaceholderProcessor'
 

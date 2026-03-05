@@ -1,4 +1,5 @@
 <!-- src/ConfigMaker/components/rules/OmikujiCard/OmikujiControlsToolbar.vue -->
+<!-- !使用しない -->
 <template>
   <div class="card bg-base-100 p-4">
     <div class="flex flex-wrap items-center gap-3">

@@ -1,55 +1,144 @@
 // src/MainGenerator/scripts/OmikujiProcess/SpecialActionProcessor.ts
 import { BotMessageEmptySchema, BotMessageType } from '@/types/'
-import { ActionSetType } from '@/types/OmikujiData/'
+import { ActionBehaviorType, ActionSetType } from '@/types/OmikujiData/'
 import { createFirstBotMessages } from '../RuleProcess/createBotMessages'
 import { useAppStore } from '@main/stores/useAppStore'
-import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType, UserNameSchema, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { CommentRuleType } from '@/types/'
 
 export interface SpecialActionResult {
-  /** trueのとき呼び出し元でルール処理を終了する */
-  handled: boolean
-  /** コメントトリガーのクールダウンを更新すべきか */
-  isCommentTriggered: boolean
+  handled: boolean // trueのとき呼び出し元でルール処理を終了する
+  isCommentTriggered: boolean // コメントトリガーのクールダウンを更新すべきか
   botMessages: BotMessageType[]
 }
 
 /**
- * type === 'special' のアクションアイテムをすべて処理するクラス
- *
- * 対応する special 値:
- *  - return   : カウントして処理を終了
- *  - continue : カウントせず次のルールへ
- *  - reset    : 対象ルールのおみくじ回数をリセット
- *  - log      : 対象ルールの統計をトーストで表示
+ * type === 'special' のアクションアイテムを処理するクラス
  */
 export class SpecialActionProcessor {
   private readonly store = useAppStore()
 
-  /**
-   * special アクションを処理する。
-   * type が 'special' でない場合は handled: false を返す。
-   */
   process(actionItem: ActionSetType, omiken: OmikenCommentType, rule: CommentRuleType): SpecialActionResult {
     if (actionItem.type !== 'special') {
       return { handled: false, isCommentTriggered: false, botMessages: [] }
     }
 
-    switch (actionItem.special) {
-      // カウントして処理終了
+    const behavior = actionItem.behavior
+
+    // おみくじとしてカウントするか
+    if (behavior.countEvent) this.recordDraw(omiken, rule)
+
+    switch (behavior.type) {
       case 'return': {
-        this.recordDraw(omiken, rule)
         return {
           handled: true,
-          isCommentTriggered: true,
+          isCommentTriggered: behavior.countEvent,
           botMessages: [BotMessageEmptySchema.parse({})],
         }
       }
 
-      // カウントせず次のルールへ
       case 'continue': {
-        return { handled: true, isCommentTriggered: false, botMessages: [] }
+        return {
+          handled: false,
+          isCommentTriggered: false,
+          botMessages: [],
+        }
       }
+
+      // --- 以下は実装用プレースホルダー ---
+
+      case 'resetOmikuji': {
+        // TODO: reset処理
+        return {
+          handled: true,
+          isCommentTriggered: behavior.countEvent ?? false,
+          botMessages: [],
+        }
+      }
+
+      case 'logUserState': {
+        // ユーザー状態ログ
+
+        const format = behavior.logFormat ?? '<<user>> <<score>> <<createdAt>>'
+        const targetKey = behavior.targetKey ?? ''
+        const logs = this.store.scriptManager.getGameState(targetKey)?.logs
+        if (!logs) return { handled: true, isCommentTriggered: false, botMessages: [] }
+
+        const lines = logs.map((log, i) => {
+          const user = this.resolveUserName(log.userId)
+          if (!user) return ''
+          return format
+            .replace('<<index>>', String(i + 1))
+            .replace('<<user>>', user.userName)
+            .replace('<<userId>>', user.userId)
+            .replace('<<score>>', String(log.score))
+            .replace('<<item>>', log.item ?? '')
+            .replace('<<flag>>', log.flag ? 'true' : 'false')
+            .replace('<<createdAt>>', this.formatDate(log.createdAt))
+        })
+
+        // TODO:ログをわんコメのコメントテスターに投稿
+        return {
+          handled: true,
+          isCommentTriggered: behavior.countEvent ?? false,
+          botMessages: [],
+        }
+      }
+
+      case 'logOmikuji': {
+        // TODO: おみくじ履歴ログ
+        return {
+          handled: true,
+          isCommentTriggered: behavior.countEvent ?? false,
+          botMessages: [],
+        }
+      }
+
+      case 'logGame': {
+        // TODO: ゲーム状態ログ
+        return {
+          handled: true,
+          isCommentTriggered: behavior.countEvent ?? false,
+          botMessages: [],
+        }
+      }
+
+      case 'logVariable': {
+        // TODO: 変数ログ
+        return {
+          handled: true,
+          isCommentTriggered: behavior.countEvent ?? false,
+          botMessages: [],
+        }
+      }
+
+      default: {
+        return {
+          handled: true,
+          isCommentTriggered: behavior.countEvent ?? false,
+          botMessages: [],
+        }
+      }
+    }
+  }
+
+  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType): void {
+    this.store.userSession.visits.record(rule.key, UserNameSchema.parse(omiken))
+  }
+
+  private resolveUserName(userId: string): UserNameType | null {
+    const hoge = this.store.userSession.stats.get(userId)
+    return hoge ?? null
+  }
+  private formatDate(timestamp: number): string {
+    const date = new Date(timestamp)
+    return date.toLocaleString()
+  }
+}
+
+/**
+ * 
+
 
       // おみくじ回数リセット
       case 'reset': {
@@ -74,14 +163,4 @@ export class SpecialActionProcessor {
         }
       }
 
-      // フォールバック: continue 相当
-      default: {
-        return { handled: true, isCommentTriggered: false, botMessages: [] }
-      }
-    }
-  }
-
-  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType): void {
-    this.store.userSession.visits.record(rule.key, UserNameSchema.parse(omiken))
-  }
-}
+ */

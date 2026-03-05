@@ -2,13 +2,13 @@
 // 250722_1 OmikujiLimits の新規作成
 import { z } from 'zod'
 import { CriteriaThresholdSchema } from './CriteriaThresholdSchema'
-import { ActionSetSchema, PostFlowMessageSchema } from './ActionSet'
+import { ActionSetBaseSchema, PostFlowMessageSchema } from './ActionSet'
 
 /**
  * OmikujiItemSchema
  */
 export const OmikujiItemSchema = z.object({
-  ...ActionSetSchema.shape,
+  ...ActionSetBaseSchema.shape,
   weight: z.number().min(0).default(1).catch(1), // 出現割合
   rank: z.number().min(0).max(1).optional(), // 優先度
   isPriority: z.boolean().default(false).catch(false), // 優先 trueならrank=1

@@ -79,6 +79,5 @@ export default defineConfigWithVueTs(
     name: 'app/base-rules',
     rules: baseRules,
   },
-
   skipFormatting,
 )

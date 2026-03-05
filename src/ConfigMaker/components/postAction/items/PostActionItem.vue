@@ -106,7 +106,6 @@
       ...props.action,
       delaySeconds: props.action.delaySeconds,
       actionType: newType,
-      special: 'return',
       actionSetKeys: [''],
     }
 
