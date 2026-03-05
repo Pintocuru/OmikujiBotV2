@@ -5,6 +5,7 @@ import { applyRemaps } from './remaps'
 import { loadSourceFile } from './fileLoader'
 import { mergeOmikujiData } from './merger'
 import { applyKeySuffix } from './KeySuffix'
+import { findJsonPath } from '../buildOptions/baseSettings'
 
 /**
  * jsonMergeがある場合にマージ処理を実行
@@ -21,7 +22,8 @@ export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: stri
   // 各マージアイテムについて、ファイル読み込み→リマップ→順序付与→accessLevel統一を実行
   for (const mergeItem of jsonData.jsonMerge) {
     // 1. ソースファイルを読み込む
-    const sourceData = loadSourceFile(mergeItem.sourceFile, jsonPathRoot)
+    const resolvedSourcePath = findJsonPath(jsonPathRoot, mergeItem.sourceFile)
+    const sourceData = loadSourceFile(resolvedSourcePath, jsonPathRoot)
 
     // 2. リマップ処理を適用（characterKey, iconKeyの置き換え）
     const remappedData = applyRemaps(sourceData, mergeItem.remaps)
@@ -43,7 +45,7 @@ export async function processMerge(jsonData: OmikujiDataType, jsonPathRoot: stri
   }
 
   // メインデータの order も最後にずらす
-  const { jsonMerge, ...dataWithoutMerge } = jsonData
+  const { jsonMerge: _jsonMerge, ...dataWithoutMerge } = jsonData
   const shiftedMainData = applyOrderOffset({ ...dataWithoutMerge, jsonMerge: [] }, orderOffset)
 
   dataToMerge.push({ ...shiftedMainData, jsonMerge: [] })

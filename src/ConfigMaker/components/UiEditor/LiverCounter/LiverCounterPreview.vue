@@ -2,11 +2,7 @@
 <template>
   <HudPreview>
     <LiverCounterManager :settings="liverCounter" :counters="previewCounters" :event-labels="previewEventLabels" />
-
-    <button
-      class="btn btn-xs btn-ghost absolute bottom-1 right-1 opacity-60 hover:opacity-100"
-      @click="incrementRandom"
-    >
+    <button class="btn btn-xs btn-ghost absolute bottom-1 right-1 opacity-60 hover:opacity-100" @click="incrementAll">
       🎲 +1
     </button>
   </HudPreview>
@@ -50,10 +46,10 @@
 
   const previewEventLabels = computed(() => props.eventLabels)
 
-  const incrementRandom = () => {
+  const incrementAll = () => {
     const keys = [...Object.keys(baseCounters), ...props.liverCounter.eventCounters]
-    if (keys.length === 0) return
-    const key = keys[Math.floor(Math.random() * keys.length)]
-    counters.value = { ...counters.value, [key]: (counters.value[key] ?? 0) + 1 }
+    const updated: Record<string, number> = { ...counters.value }
+    for (const key of keys) updated[key] = (updated[key] ?? 0) + 1
+    counters.value = updated
   }
 </script>
