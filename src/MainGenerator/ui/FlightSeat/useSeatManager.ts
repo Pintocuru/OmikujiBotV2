@@ -3,6 +3,7 @@ import { ref, computed, type Ref } from 'vue'
 import { UserNameType } from '@shared/types'
 import { UserStatsRecord } from '@/types'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAddToastMessage } from '@/MainGenerator/scripts/BotMessage/addToastMessage'
 
 interface SeatHistory {
   seats: (UserStatsRecord | null)[]
@@ -19,6 +20,7 @@ const HISTORY_LIMIT = 10
 export function useSeatManager(options: SeatManagerOptions) {
   const appStore = useAppStore()
   const { totalSeats, isRandomReplacement } = options
+  const { addToastMessage } = useAddToastMessage()
 
   const seats = ref<(UserStatsRecord | null)[]>([])
   const seatHistory = ref<SeatHistory[]>([])
@@ -81,7 +83,9 @@ export function useSeatManager(options: SeatManagerOptions) {
   // 満席時の処理: isRandomReplacement=true ならランダムに誰かを降ろす
   function handleFullSeats(user: UserNameType): boolean {
     if (!isRandomReplacement.value) {
-      addDebugLog(`満席のため ${user.userName} を配置できません（置き換えなし）`)
+      const log = `満席のため ${user.userName} さんを配置できませんでした`
+      addToastMessage(user.userName, log)
+      addDebugLog(log)
       return false
     }
 

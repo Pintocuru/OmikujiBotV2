@@ -39,11 +39,11 @@
         非表示
       </div>
       <div
-        v-for="label in statKeyNum"
-        :key="label"
+        v-for="(label, key) in statKeyLabelMap"
+        :key="key"
         class="badge badge-lg cursor-pointer"
-        :class="flightSeat.statKey === label ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('statKey', label)"
+        :class="flightSeat.statKey === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('statKey', key)"
       >
         {{ label }}
       </div>
@@ -92,13 +92,13 @@
   <SettingItem
     v-else-if="flightSeat.layout === 'circle'"
     label="外周の座席数"
-    description="円周上に配置する座席数（3〜30）"
+    description="円周上に配置する座席数"
     :showReset="true"
     @reset="resetMap.circleSeats"
   >
     <input
       type="number"
-      min="3"
+      min="5"
       max="30"
       class="input input-bordered w-24"
       :value="flightSeat.circleSeats"
@@ -117,7 +117,7 @@
   <SettingItem
     v-if="isComment"
     label="対象イベントキー"
-    description="対象とするイベントキーを指定します。空欄の場合は全コメントを対象にします"
+    description="対象とするイベントを指定します"
     :showReset="true"
     @reset="resetMap.targetEventKey"
   >
@@ -146,7 +146,7 @@
   <!-- 満席時のランダム置き換え -->
   <SettingItem
     label="満席時のランダム置き換え"
-    description="満席の場合に、ランダムなユーザーを降ろして新しいユーザーを着席させます"
+    description="満席時、ランダムなユーザーを降ろします"
     :showReset="true"
     @reset="resetMap.isRandomReplacement"
   >
@@ -169,7 +169,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flightSeatLayoutMap, SettingsFlightSeatSchema, statKeyNum } from '@/types/'
+  import { flightSeatLayoutMap, SettingsFlightSeatSchema, StatKeyNum } from '@/types/'
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -203,5 +203,12 @@
     circleSeats: () => resetField('circleSeats'),
     targetEventKey: () => resetField('targetEventKey'),
     isRandomReplacement: () => resetField('isRandomReplacement'),
+  }
+
+  const statKeyLabelMap: Record<StatKeyNum, string> = {
+    userName: 'ユーザー名',
+    tc: 'チャット数',
+    // score: 'スコア(未実装)',
+    giftPrice: 'ギフト金額',
   }
 </script>

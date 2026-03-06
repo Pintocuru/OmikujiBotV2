@@ -132,7 +132,12 @@ export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
  */
 export type SeatLayout = keyof typeof flightSeatLayoutMap
 
-export const statKeyNum = ['userName', 'tc', 'score', 'giftPrice'] as const
+export const statKeyNum = [
+  'userName', // ユーザーネーム
+  'tc', // 個人の総チャット数
+  // 'score', // スコア(未実装)
+  'giftPrice', // ギフト金額
+] as const
 export type StatKeyNum = (typeof statKeyNum)[number]
 export const SettingsFlightSeatSchema = z.object({
   layout: z
@@ -148,7 +153,7 @@ export const SettingsFlightSeatSchema = z.object({
   targetEventKey: z.string().default('').catch(''),
 
   // circle専用
-  circleSeats: z.number().min(3).max(30).default(12).optional(),
+  circleSeats: z.number().min(5).max(30).default(12).optional(),
 
   // custom専用: 各行の座席数を配列で指定
   customLayout: z.string().default('[4, 6, 6, 6]').catch('[4, 6, 6, 6]'),
