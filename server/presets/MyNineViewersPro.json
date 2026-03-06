@@ -1,0 +1,162 @@
+{
+  "meta": {
+    "id": "MyNineViewersPro-ver2026.03.07-2.7.0",
+    "name": "おみくじ BOT おみくじ BOT 私を構成する 9 人のユーザー。 Pro OmikujiBot MyNineViewersPro-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.03.07-2.7.0",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.7.0",
+    "dataVersion": 2.20070003001,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "ユーザーリスト",
+      "フライトシート",
+      "おみくじ",
+      "BOT",
+      "ブラウザゲーム",
+      "ゲーム配信",
+      "雑談配信",
+      "朝活配信",
+      "わんコメ",
+      "初見歓迎",
+      "コメントチェック",
+      "初見判定ちゃん"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/8060471"
+  },
+  "jsonMerge": [],
+  "comments": {},
+  "timers": {},
+  "metas": {},
+  "actionSets": {},
+  "placeholders": {},
+  "characters": {},
+  "components": {
+    "conditions": [
+      {
+        "slot": "extra",
+        "kind": "flightSeat"
+      },
+      {
+        "slot": "primary",
+        "kind": "toast"
+      }
+    ],
+    "enableSecondary": false,
+    "specialSet": null,
+    "commonStyle": {
+      "fontFamily": "default",
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "winter",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": {
+        "mode": "none",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
+    },
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "chocolate",
+            "cafelatte",
+            "honjoFox",
+            "omiken",
+            "omiken_2"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🍉スイカランキング🍉",
+        "color": "lofi",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "targetEventKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
+      },
+      "winnerGroup": {
+        "component": "valentineCoupling",
+        "targetEventKey": "",
+        "label": "バレンタイン・カップリング",
+        "color": "valentine",
+        "queryString": "count=2&label=今日のカップリング"
+      },
+      "flightSeat": {
+        "layout": "custom",
+        "rows": 5,
+        "cols": 5,
+        "targetEventKey": "",
+        "circleSeats": 12,
+        "customLayout": "[4,6,6,6]",
+        "label": "私を構成する9人のユーザー。",
+        "color": "silk",
+        "statKey": "tc",
+        "isRandomReplacement": true
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "none",
+      "timers": "none",
+      "metas": "none",
+      "actionSets": "none",
+      "placeholders": "none",
+      "characters": "none"
+    },
+    "components": [
+      "flightSeat",
+      "toast"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none",
+      "itemSlotEnabled": "pro"
+    }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "daisyUiTheme": "silk",
+    "initialCategory": "components",
+    "soundEnabled": true,
+    "ignoreUserPattern": "__INFO__|__ERROR__"
+  }
+}

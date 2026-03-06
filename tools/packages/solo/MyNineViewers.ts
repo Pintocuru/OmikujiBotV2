@@ -43,7 +43,7 @@ function createProject(packageRoot: string, color: ColorVariant): ProjectConfig 
     template: {
       name: `おみくじ BOT ${PROJECT_TITLE} ${color ? color + ' ' : ''}OmikujiBot ${PROJECT_ID}`,
       boothURL: `https://pintocuru.booth.pm/items/${boothURLNumber}`,
-      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/petit/${PROJECT_KEY}`,
+      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/solo/${PROJECT_KEY}`,
       description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
     },
 
