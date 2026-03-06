@@ -47,7 +47,7 @@
       </div>
 
       <!-- 統計情報 & デバッグログ -->
-      <template v-if="isDev">
+      <template v-if="isDev && 0">
         <div class="stats shadow w-full">
           <div class="stat">
             <div class="stat-title">現在の乗車人数</div>

@@ -12,6 +12,7 @@ import TarotCardProject from './TarotCard'
 import ValentineCoupling from './ValentineCoupling'
 import MaidenOmikujiNormalProject from './MaidenOmikujiNormal'
 import FlowerFortuneProject from './FlowerFortune'
+import MyNineViewersProject from './MyNineViewers'
 
 function projects(packageRoot: string): ProjectConfig[] {
   return [
@@ -27,6 +28,7 @@ function projects(packageRoot: string): ProjectConfig[] {
     ValentineCoupling(packageRoot),
     MaidenOmikujiNormalProject(packageRoot),
     FlowerFortuneProject(packageRoot),
+    ...MyNineViewersProject.getProjects(packageRoot),
   ]
 }
 
@@ -52,7 +54,9 @@ const targets: PackageBuildTarget[] = [
   { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
   { project: 'MaidenOmikujiNormal', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
+     ...MyNineViewersProject.buildTargets,
    */
+  ...MyNineViewersProject.buildTargets,
 ]
 
 export default {
