@@ -63,7 +63,6 @@
   const statClassMap: Record<StatKeyNum, string> = {
     userName: 'text-xs',
     tc: 'text-xl',
-    score: 'text-xl',
     giftPrice: 'text-xl',
   }
 </script>

@@ -46,12 +46,27 @@
   })
 
   const scale = computed(() => {
-    const rows = flightSeat.value.rows ?? 1
+    const layout = flightSeat.value.layout
 
-    if (rows <= 3) return 0.8
-    if (rows <= 5) return 0.6
-    if (rows <= 7) return 0.5
-    return 0.4
+    // 実際の行数を求める
+    let effectiveRows = 1
+
+    if (layout === 'square') {
+      effectiveRows = flightSeat.value.rows
+    } else if (layout === 'custom') {
+      effectiveRows = parsedCustomLayout.value?.length ?? 1
+    } else if (layout === 'circle') {
+      // circle は 1 行扱い（円形なので）
+      effectiveRows = 1
+    }
+
+    // 行数に応じて scale を決定
+    if (effectiveRows <= 3) return 0.8
+    if (effectiveRows <= 4) return 0.6
+    if (effectiveRows <= 5) return 0.5
+    if (effectiveRows <= 7) return 0.4
+    if (effectiveRows <= 9) return 0.3
+    return 0.2
   })
 
   const totalSeats = computed(() => {

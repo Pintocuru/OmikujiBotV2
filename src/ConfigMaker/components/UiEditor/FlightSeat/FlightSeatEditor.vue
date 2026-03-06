@@ -14,7 +14,7 @@
   </SettingItem>
 
   <!-- 座席配置パターン -->
-  <SettingItem label="座席配置" description="座席の並び方を選択します">
+  <SettingItem v-if="isPro" label="座席配置" description="座席の並び方を選択します" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
         v-for="(label, key) in flightSeatLayoutMap"
@@ -51,7 +51,7 @@
   </SettingItem>
 
   <!-- テーマカラー -->
-  <SettingItem label="テーマカラー" description="座席表のテーマカラーを選択">
+  <SettingItem v-if="isAdv" label="テーマカラー" description="座席表のテーマカラーを選択" forceMode="adv">
     <select
       class="select select-bordered"
       :value="flightSeat.color"
@@ -64,8 +64,14 @@
   </SettingItem>
 
   <!-- square の場合: 縦×横 -->
-  <div v-if="flightSeat.layout === 'square'" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-    <SettingItem label="縦（行数）" description="縦方向の座席数" :showReset="true" @reset="resetMap.rows">
+  <div v-if="flightSeat.layout === 'square' && isAdv" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+    <SettingItem
+      label="縦（行数）"
+      description="縦方向の座席数"
+      :showReset="true"
+      @reset="resetMap.rows"
+      forceMode="adv"
+    >
       <input
         type="number"
         min="1"
@@ -76,7 +82,13 @@
       />
     </SettingItem>
 
-    <SettingItem label="横（列数）" description="横方向の座席数" :showReset="true" @reset="resetMap.cols">
+    <SettingItem
+      label="横（列数）"
+      description="横方向の座席数"
+      :showReset="true"
+      @reset="resetMap.cols"
+      forceMode="adv"
+    >
       <input
         type="number"
         min="1"
@@ -175,13 +187,14 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CustomLayoutEditor from './CustomLayoutEditor.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
   const rulesComment = computed(() => data.value.comments)
 
+  const { isAdv, isPro } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
   const updateField = (field: keyof typeof flightSeat.value, value: any) => {

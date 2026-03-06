@@ -35,7 +35,7 @@
       <div
         class="badge cursor-pointer"
         :class="winnerSetting.targetEventKey === '' ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('ruleKey', '')"
+        @click="updateField('targetEventKey', '')"
       >
         すべて
       </div>
@@ -45,7 +45,7 @@
         :key="key"
         class="badge cursor-pointer"
         :class="winnerSetting.targetEventKey === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('ruleKey', key)"
+        @click="updateField('targetEventKey', key)"
       >
         {{ value.name || '名称未設定' }}
       </div>
