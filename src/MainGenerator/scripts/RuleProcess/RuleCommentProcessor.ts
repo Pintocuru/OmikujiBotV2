@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/RuleProcess/RuleCommentProcessor.ts
-import { BotMessageType, CommentRuleType } from '@/types/'
+import { BotMessageEmptySchema, BotMessageType, CommentRuleType } from '@/types/'
 import { OmikujiSetType } from '@/types/OmikujiData/'
 import { buildRestrictionMessages } from './createBotMessages'
 import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'
@@ -120,10 +120,12 @@ export class RuleCommentProcessor {
 
     // 5. special 処理を委譲
     const specialResult = this.specialActionProcessor.process(actionItem, omiken, rule)
-    if (specialResult.handled) {
+    if (specialResult) {
+      const { handled, isCountEvent } = specialResult
+      if (isCountEvent) this.recordDraw(omiken, rule)
       return {
-        isCommentTriggered: specialResult.isCommentTriggered,
-        botMessages: specialResult.botMessages,
+        isCommentTriggered: handled,
+        botMessages: handled ? [BotMessageEmptySchema.parse({})] : [],
       }
     }
 

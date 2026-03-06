@@ -1,15 +1,13 @@
 // src/MainGenerator/scripts/OmikujiProcess/SpecialActionProcessor.ts
-import { BotMessageEmptySchema, BotMessageType } from '@/types/'
-import { ActionBehaviorType, ActionSetType } from '@/types/OmikujiData/'
-import { createFirstBotMessages } from '../RuleProcess/createBotMessages'
+import { ActionSetType, CommentRuleType } from '@/types/OmikujiData/'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType, UserNameSchema, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { CommentRuleType } from '@/types/'
+import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { GameStateType } from '@/types'
 
 export interface SpecialActionResult {
   handled: boolean // trueのとき呼び出し元でルール処理を終了する
-  isCommentTriggered: boolean // コメントトリガーのクールダウンを更新すべきか
-  botMessages: BotMessageType[]
+  isCountEvent: boolean // カウントを行うか
 }
 
 /**
@@ -18,108 +16,96 @@ export interface SpecialActionResult {
 export class SpecialActionProcessor {
   private readonly store = useAppStore()
 
-  process(actionItem: ActionSetType, omiken: OmikenCommentType, rule: CommentRuleType): SpecialActionResult {
-    if (actionItem.type !== 'special') {
-      return { handled: false, isCommentTriggered: false, botMessages: [] }
-    }
+  process(actionItem: ActionSetType, omiken: OmikenCommentType, rule: CommentRuleType): SpecialActionResult | null {
+    if (actionItem.type !== 'special') return null
 
-    const behavior = actionItem.behavior
+    const { type, isCountEvent, log } = actionItem.behavior
+    const { targetKey, logFormat, logLimit } = log
 
-    // おみくじとしてカウントするか
-    if (behavior.countEvent) this.recordDraw(omiken, rule)
+    if (isCountEvent) this.recordDraw(omiken, rule)
 
-    switch (behavior.type) {
-      case 'return': {
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent,
-          botMessages: [BotMessageEmptySchema.parse({})],
-        }
-      }
+    switch (type) {
+      // 処理を終了する
+      case 'return':
+        return { handled: true, isCountEvent }
 
-      case 'continue': {
-        return {
-          handled: false,
-          isCommentTriggered: false,
-          botMessages: [],
-        }
-      }
+      // 次のルールへ進む
+      case 'continue':
+        return { handled: false, isCountEvent }
 
-      // --- 以下は実装用プレースホルダー ---
-
+      // おみくじ回数をリセットする
       case 'resetOmikuji': {
-        // TODO: reset処理
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent ?? false,
-          botMessages: [],
-        }
+        this.store.userSession.visits.resetRule(actionItem.key)
+        postSystemMessage(`${actionItem.name}のおみくじ回数をリセットしました`, { username: '__INFO__' })
+        return { handled: true, isCountEvent }
       }
 
       case 'logUserState': {
-        // ユーザー状態ログ
-
-        const format = behavior.logFormat ?? '<<user>> <<score>> <<createdAt>>'
-        const targetKey = behavior.targetKey ?? ''
         const logs = this.store.scriptManager.getGameState(targetKey)?.logs
-        if (!logs) return { handled: true, isCommentTriggered: false, botMessages: [] }
+        if (!logs) return { handled: true, isCountEvent }
 
-        const lines = logs.map((log, i) => {
-          const user = this.resolveUserName(log.userId)
-          if (!user) return ''
-          return format
-            .replace('<<index>>', String(i + 1))
-            .replace('<<user>>', user.userName)
-            .replace('<<userId>>', user.userId)
-            .replace('<<score>>', String(log.score))
-            .replace('<<item>>', log.item ?? '')
-            .replace('<<flag>>', log.flag ? 'true' : 'false')
-            .replace('<<createdAt>>', this.formatDate(log.createdAt))
-        })
-
-        // TODO:ログをわんコメのコメントテスターに投稿
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent ?? false,
-          botMessages: [],
-        }
+        const message = this.formatLogs(logs, logFormat, logLimit)
+        postSystemMessage(message, { username: '__INFO__', speech: false })
+        return { handled: true, isCountEvent }
       }
 
       case 'logOmikuji': {
-        // TODO: おみくじ履歴ログ
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent ?? false,
-          botMessages: [],
-        }
+        const { totalVisits, uniqueUsers, averageVisitsPerUser } = this.store.userSession.visits.getStatistics(
+          actionItem.key
+        )
+        const message = `${actionItem.name}/ 実行総数:${totalVisits}回 ユーザー数:${uniqueUsers}人 1人あたり平均:${averageVisitsPerUser}回`
+        postSystemMessage(message, { username: '__INFO__', speech: false })
+        return { handled: true, isCountEvent }
       }
 
+      /**
+       * ログ出力系
+       */
       case 'logGame': {
-        // TODO: ゲーム状態ログ
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent ?? false,
-          botMessages: [],
-        }
+        const logs = this.store.scriptManager.getGameState(targetKey)?.logs
+        if (!logs) return { handled: true, isCountEvent: false }
+
+        const message = this.formatLogs(logs, logFormat, logLimit)
+        postSystemMessage(message, { username: '__INFO__', speech: false })
+        return { handled: true, isCountEvent }
       }
 
       case 'logVariable': {
-        // TODO: 変数ログ
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent ?? false,
-          botMessages: [],
-        }
+        const allData = this.store.placeholderVariable.getAll()
+        const message =
+          allData.length === 0
+            ? '（変数はまだありません）'
+            : Object.entries(allData)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .map(([key, value]) => `${key}: ${value}`)
+                .join('\n')
+        postSystemMessage(message, { username: '__INFO__', speech: false })
+        return { handled: true, isCountEvent }
       }
 
-      default: {
-        return {
-          handled: true,
-          isCommentTriggered: behavior.countEvent ?? false,
-          botMessages: [],
-        }
-      }
+      default:
+        return { handled: false, isCountEvent }
     }
+  }
+
+  /** ログ配列をフォーマット文字列に従って整形し、件数制限して結合する */
+  private formatLogs(logs: GameStateType['logs'] = [], logFormat: string, logLimit: number): string {
+    return logs
+      .map((log, i) => {
+        const user = this.resolveUserName(log.userId)
+        if (!user) return ''
+        return logFormat
+          .replace('<<index>>', String(i + 1))
+          .replace('<<user>>', user.userName)
+          .replace('<<userId>>', user.userId)
+          .replace('<<score>>', String(log.score))
+          .replace('<<item>>', log.item ?? '')
+          .replace('<<flag>>', log.flag ? 'true' : 'false')
+          .replace('<<createdAt>>', this.formatDate(log.createdAt))
+      })
+      .filter(Boolean)
+      .slice(0, logLimit)
+      .join('\n')
   }
 
   private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType): void {
@@ -127,40 +113,11 @@ export class SpecialActionProcessor {
   }
 
   private resolveUserName(userId: string): UserNameType | null {
-    const hoge = this.store.userSession.stats.get(userId)
-    return hoge ?? null
+    const hogg = this.store.userSession.stats.get(userId)
+    return hogg ?? null
   }
   private formatDate(timestamp: number): string {
     const date = new Date(timestamp)
     return date.toLocaleString()
   }
 }
-
-/**
- * 
-
-
-      // おみくじ回数リセット
-      case 'reset': {
-        this.store.userSession.visits.resetRule(actionItem.key)
-        return {
-          handled: true,
-          isCommentTriggered: false,
-          botMessages: createFirstBotMessages(`${actionItem.name}のおみくじ回数をリセットしたよ`),
-        }
-      }
-
-      // 統計ログ表示
-      case 'log': {
-        const totalVisits = this.store.userSession.visits.getTotalByRuleId(actionItem.key)
-        const totalUnique = this.store.userSession.visits.getUniqueCountByRuleId(actionItem.key)
-        return {
-          handled: true,
-          isCommentTriggered: false,
-          botMessages: createFirstBotMessages(
-            `${actionItem.name}は、総数${totalVisits}回、${totalUnique}人が遊んでくれたよ`
-          ),
-        }
-      }
-
- */

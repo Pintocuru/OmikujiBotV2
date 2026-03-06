@@ -136,14 +136,24 @@ export type ActionSpecialType = keyof typeof actionSpecialMap
 export const actionSetKind = Object.keys(actionSetKindMap) as ActionSetKind[]
 export type ActionSetKind = keyof typeof actionSetKindMap
 // behavior : special の代わり
-export const ActionBehaviorSchema = z.object({
-  type: z.enum(actionSpecial).default('return'),
-  countEvent: z.boolean().default(true), // eventとしてカウントするか
-  targetKey: z.string().optional(), // log用、対象となるeventKey、GameScript の scriptKey
-  logFormat: z.string().optional(), // log用のフォーマット
-  logLimit: z.number().optional(), // 最大出力件数
+
+// ログ出力系アクション（logUserState / logGame / logOmikuji / logVariable）の設定 */
+export const LOG_FORMAT_DEFAULT = '<<user>> <<score>> <<createdAt>>'
+const ActionBehaviorLogSchema = z.object({
+  targetKey: z.string().default('').catch(''), // 対象の eventKey または GameScript の scriptKey
+  // ログ1行のフォーマット文字列（使用可能: <<index>> <<user>> <<userId>> <<score>> <<item>> <<flag>> <<createdAt>>）
+  logFormat: z.string().default(LOG_FORMAT_DEFAULT).catch(LOG_FORMAT_DEFAULT),
+  logLimit: z.number().min(1).max(100).default(5).catch(5), // 最大出力件数（1〜100）
 })
+
+export const ActionBehaviorSchema = z.object({
+  type: z.enum(actionSpecial).default('return'), // 特殊アクションの種別 */,
+  isCountEvent: z.boolean().default(true), // このアクションをおみくじカウントとして記録するか */,
+  log: normalizedObject(ActionBehaviorLogSchema), // ログ出力系アクションの設定 */,
+})
+
 export type ActionBehaviorType = z.infer<typeof ActionBehaviorSchema>
+export type ActionBehaviorLogType = z.infer<typeof ActionBehaviorLogSchema>
 
 export const ActionSetBaseSchema = z.object({
   ...BaseRecordSchema.shape,
@@ -162,10 +172,10 @@ export const ActionSetSchema = ActionSetBaseSchema.transform((value) => {
   if (value.special !== undefined) {
     return {
       ...value,
-      behavior: {
-        type: (value.special === 'return' ? 'return' : 'continue') as ActionBehaviorType['type'],
+      behavior: ActionBehaviorSchema.parse({
+        type: value.special === 'return' ? 'return' : 'continue',
         countEvent: value.special === 'return',
-      },
+      }),
       special: undefined,
     }
   }

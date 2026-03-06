@@ -5,7 +5,7 @@
     <SettingItem label="特殊動作の種類" description="実行する特殊動作を選択してください">
       <select
         :value="behavior.type"
-        @change="updateValue('type', ($event.target as HTMLSelectElement).value)"
+        @change="updateBehavior('type', ($event.target as HTMLSelectElement).value)"
         class="select select-bordered select-sm w-full"
       >
         <option v-for="(info, key) in actionSpecialMap" :key="key" :value="key">
@@ -14,64 +14,59 @@
       </select>
     </SettingItem>
 
-    <!-- countEvent -->
+    <!-- isCountEvent -->
     <SettingItem label="イベントとしてカウント" description="ONでおみくじ回数としてカウントされます">
       <label class="label cursor-pointer gap-3">
         <input
           type="checkbox"
           class="toggle toggle-primary"
-          :checked="behavior.countEvent"
-          @change="updateValue('countEvent', ($event.target as HTMLInputElement).checked)"
+          :checked="behavior.isCountEvent"
+          @change="updateBehavior('isCountEvent', ($event.target as HTMLInputElement).checked)"
         />
-        <span class="label-text">カウント{{ behavior.countEvent ? 'する' : 'しない' }}</span>
+        <span class="label-text">カウント{{ behavior.isCountEvent ? 'する' : 'しない' }}</span>
       </label>
     </SettingItem>
 
-    <!-- targetKey -->
-    <!-- 条件設定の説明 -->
-    <InformationCard>
-      <p>
-        発動条件が複数の場合は、
-        <code class="label bg-accent text-accent-content">すべての条件を満たしたとき</code
-        >にルールが発動します。(ANDのみ)
-      </p>
-    </InformationCard>
-
-    <SettingItem label="対象キー" description="ログ出力対象の eventKey / scriptKey">
-      <input
-        type="text"
-        class="input input-bordered input-sm w-full"
-        :value="behavior.targetKey ?? ''"
-        @input="updateValue('targetKey', ($event.target as HTMLInputElement).value)"
-      />
-    </SettingItem>
-
     <!-- log系処理 -->
-    <template v-if="behavior.type.includes('log')">
+    <template v-if="isLogType">
+      <InformationCard variant="warning">
+        <p>これらの項目は、現時点では実験的な機能です。動作や仕様は予告なく変更される可能性があります。</p>
+      </InformationCard>
+
+      <!-- targetKey -->
+      <SettingItem label="対象キー" description="ログ出力対象の eventKey / scriptKey">
+        <input
+          type="text"
+          class="input input-bordered input-sm w-full"
+          :value="behavior.log.targetKey"
+          @input="updateLog('targetKey', ($event.target as HTMLInputElement).value)"
+        />
+      </SettingItem>
+
       <!-- logFormat -->
       <SettingItem
         label="ログフォーマット"
-        description="わんコメに投稿するログの最大件数"
+        description="1行の表示形式（使用可能: <<index>> <<user>> <<userId>> <<score>> <<item>> <<flag>> <<createdAt>>）"
         :showReset="true"
-        @reset="behavior.logFormat = '<<user>> <<score>> <<createdAt>>'"
+        @reset="updateLog('logFormat', LOG_FORMAT_DEFAULT)"
       >
         <input
           type="text"
           class="input input-bordered input-sm w-full"
-          :value="behavior.logFormat ?? ''"
-          @input="updateValue('logFormat', ($event.target as HTMLInputElement).value)"
+          :value="behavior.log.logFormat"
+          @input="updateLog('logFormat', ($event.target as HTMLInputElement).value)"
         />
       </SettingItem>
 
       <!-- logLimit -->
-      <SettingItem label="最大出力件数" description="わんコメに投稿するログの最大件数">
+      <SettingItem label="最大出力件数" description="わんコメに投稿するログの最大件数（1〜100）">
         <input
           type="number"
-          min="0"
+          min="1"
           max="100"
           class="input input-bordered input-sm w-full"
-          :value="behavior.logLimit ?? ''"
-          @input="updateValue('logLimit', Number(($event.target as HTMLInputElement).value))"
+          :value="behavior.log.logLimit"
+          @input="updateLog('logLimit', Number(($event.target as HTMLInputElement).value))"
         />
       </SettingItem>
     </template>
@@ -80,7 +75,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RulesCategoryType, ActionBehaviorType, actionSpecialMap } from '@/types/'
+  import {
+    RulesCategoryType,
+    ActionBehaviorType,
+    ActionBehaviorLogType,
+    actionSpecialMap,
+    LOG_FORMAT_DEFAULT,
+  } from '@/types/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
@@ -97,21 +98,32 @@
 
   const omikujiSets = computed(() => {
     if (!props.selectedItemKey) return []
-    const record = getItem(props.category, props.selectedItemKey)
-    return record?.omikuji || []
+    return getItem(props.category, props.selectedItemKey)?.omikuji ?? []
   })
 
-  const omikujiItem = computed(() => omikujiSets.value[props.index] || null)
+  const omikujiItem = computed(() => omikujiSets.value[props.index] ?? null)
   const behavior = computed<ActionBehaviorType>(() => omikujiItem.value?.behavior)
 
-  const updateValue = (key: keyof ActionBehaviorType, value: any) => {
-    if (props.index === -1 || !props.selectedItemKey) return
+  /** type が log系かどうか */
+  const isLogType = computed(() => behavior.value.type.includes('log'))
 
+  /** behavior 直下のフィールドを更新 */
+  const updateBehavior = (key: keyof ActionBehaviorType, value: unknown) => {
+    if (props.index === -1 || !props.selectedItemKey) return
+    updateOmikujiByIndex(props.category, props.selectedItemKey, props.index, (item) => ({
+      ...item,
+      behavior: { ...item.behavior, [key]: value },
+    }))
+  }
+
+  /** behavior.log 配下のフィールドを更新 */
+  const updateLog = (key: keyof ActionBehaviorLogType, value: unknown) => {
+    if (props.index === -1 || !props.selectedItemKey) return
     updateOmikujiByIndex(props.category, props.selectedItemKey, props.index, (item) => ({
       ...item,
       behavior: {
         ...item.behavior,
-        [key]: value,
+        log: { ...item.behavior.log, [key]: value },
       },
     }))
   }
