@@ -5,7 +5,7 @@
       <CounterPreviewManager
         :counter-setting="counterSetting"
         :count="count"
-        :users="hasPreviewData ? userList : generateDummyUserNames(500)"
+        :users="hasPreviewData ? userList : generateDummyVisitRecords(500)"
       />
     </div>
   </div>
@@ -17,7 +17,7 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewManager from './parts/CounterPreviewManager.vue'
-  import { generateDummyUserNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
+  import { generateDummyVisitRecords } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
   import { SettingsCounterSchema } from '@/types'
 
   const appStore = useAppStore()
@@ -29,7 +29,7 @@
 
   const count = computed<number | null>(() => {
     const _ = previewTick.value
-    const { ruleKey, target } = counterSetting.value
+    const { targetEventKey: ruleKey, target } = counterSetting.value
     const effectiveRuleKey = ruleKey ?? ''
 
     return target === 'draw'
@@ -41,7 +41,7 @@
 
   const lastUserName = computed<UserVisitRecord | null>(() => {
     const _ = previewTick.value
-    const effectiveRuleKey = counterSetting.value.ruleKey ?? ''
+    const effectiveRuleKey = counterSetting.value.targetEventKey ?? ''
     return appStore.userSession.visits.getLatestByRuleId(effectiveRuleKey)
   })
 

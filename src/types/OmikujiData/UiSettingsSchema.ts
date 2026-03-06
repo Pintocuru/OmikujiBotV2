@@ -105,7 +105,7 @@ export type CounterComponent = keyof typeof counterComponentMap
 
 export const SettingsCounterSchema = z.object({
   component: z.enum(counterComponentValues).default('counterUser').catch('counterUser'),
-  ruleKey: z.string().default('').catch(''), // どのruleを対象にするか
+  targetEventKey: z.string().default('').catch(''), // どのruleを対象にするか
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
   color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
@@ -120,7 +120,7 @@ const winnerComponentValues = Object.keys(winnerComponentMap) as WinnerComponent
 
 export const SettingsWinnerGroupSchema = z.object({
   component: z.enum(winnerComponentValues).default('valentineCoupling').catch('valentineCoupling'),
-  ruleKey: z.string().default('').catch(''), // どのruleを対象にするか
+  targetEventKey: z.string().default('').catch(''), // どのruleを対象にするか
   label: z.string().default('ラッキーメンバーズ').catch('ラッキーメンバーズ'), // ラベル
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUIテーマカラー
   queryString: z.string().default('count=2&label=今日のラッキーさん').catch('count=2&label=今日のラッキーさん'), // クリックで実行するクエリ文字列
@@ -132,6 +132,8 @@ export type SettingsWinnerGroupType = z.infer<typeof SettingsWinnerGroupSchema>
  */
 export type SeatLayout = keyof typeof flightSeatLayoutMap
 
+export const statKeyNum = ['userName', 'tc', 'score', 'giftPrice'] as const
+export type StatKeyNum = (typeof statKeyNum)[number]
 export const SettingsFlightSeatSchema = z.object({
   layout: z
     .enum(Object.keys(flightSeatLayoutMap) as [keyof typeof flightSeatLayoutMap])
@@ -139,22 +141,24 @@ export const SettingsFlightSeatSchema = z.object({
     .catch('square'),
 
   // square の場合: 縦×横
-  rows: z.number().min(1).max(10).default(4).catch(4), // 縦（行数）
-  cols: z.number().min(1).max(15).default(6).catch(6), // 横（列数）
+  rows: z.number().min(1).max(30).default(4).catch(4), // 縦（行数）
+  cols: z.number().min(1).max(40).default(6).catch(6), // 横（列数）
+
+  // どのeventを対象にするか。空文字なら全体から
+  targetEventKey: z.string().default('').catch(''),
 
   // circle専用
   circleSeats: z.number().min(3).max(30).default(12).optional(),
 
   // custom専用: 各行の座席数を配列で指定
-  customLayout: z.string().default('[1,2,3,4,5]').catch('[1,2,3,4,5]').optional(),
+  customLayout: z.string().default('[4, 6, 6, 6]').catch('[4, 6, 6, 6]'),
 
   label: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
   color: z.enum(themes).default('lofi').catch('lofi'),
+  statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
 
-  // 過去の座席に乗っていたユーザーでも、空席があれば再度座れるようにするか
-  allowReseating: z.boolean().default(true).catch(true),
-  // 履歴保存数
-  historyLimit: z.number().min(0).max(20).default(10).catch(10),
+  // 満席の場合に新しいユーザーが入った時、ランダムで下ろすか
+  isRandomReplacement: z.boolean().default(true).catch(true),
 })
 
 export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>

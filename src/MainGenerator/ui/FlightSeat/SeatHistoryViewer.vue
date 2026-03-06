@@ -29,6 +29,7 @@
       :cols="cols"
       :customLayout="customLayout"
       :circleSeats="circleSeats"
+      :statKey="statKey"
     />
 
     <!-- インジケーター -->
@@ -45,12 +46,11 @@
 
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
-  import { SeatLayout } from '@/types'
+  import { SeatLayout, UserStatsRecord, StatKeyNum } from '@/types'
   import SeatGrid from './parts/SeatGrid.vue'
-  import { UserNameType } from '@shared/types'
 
   interface SeatHistory {
-    seats: (UserNameType | null)[]
+    seats: (UserStatsRecord | null)[]
     clearedAt: number
   }
 
@@ -61,6 +61,7 @@
     cols: number
     customLayout?: number[]
     circleSeats?: number
+    statKey: StatKeyNum | null
   }>()
 
   const currentHistoryIndex = ref(0)

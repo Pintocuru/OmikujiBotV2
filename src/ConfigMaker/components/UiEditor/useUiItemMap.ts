@@ -101,7 +101,7 @@ export const useUiItemMap = () => {
       title: 'フライトシートアイテム',
       description: '視聴者の座席配置表示',
       component: FlightSeatEditor,
-      shouldShow: hasComponentKind('flightSeat') && isComment.value,
+      shouldShow: hasComponentKind('flightSeat'),
     },
     defaultColor: {
       icon: 'Palette',

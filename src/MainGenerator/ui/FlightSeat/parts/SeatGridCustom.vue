@@ -4,14 +4,15 @@
     <div
       v-for="(count, row) in seatLayout"
       :key="row"
-      class="grid gap-3 mx-auto w-full"
+      class="grid gap-3 mx-auto"
       :style="{ gridTemplateColumns: `repeat(${count}, minmax(0, 1fr))`, maxWidth: `${count * 5}rem` }"
     >
       <SeatCell
         v-for="i in count"
-        :key="i"
+        :key="displaySeats[rowOffsets[row] + i - 1]?.userId + '-' + displaySeats[rowOffsets[row] + i - 1]?.tc"
         :seat="displaySeats[rowOffsets[row] + i - 1]"
         :index="rowOffsets[row] + i - 1"
+        :statKey="statKey"
       />
     </div>
   </div>
@@ -20,14 +21,15 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SeatCell from './SeatCell.vue'
-  import { UserNameType } from '@shared/types'
+  import { UserStatsRecord, StatKeyNum } from '@/types'
 
   const props = defineProps<{
-    seats: (UserNameType | null)[]
+    seats: (UserStatsRecord | null)[]
     customLayout: number[]
     layout?: string
     rows?: number
     cols?: number
+    statKey: StatKeyNum | null
   }>()
 
   // カスタム配列をそのまま使用

@@ -1,25 +1,33 @@
 <!-- src/MainGenerator/ui/FlightSeat/parts/SeatGridSquare.vue -->
 <template>
-  <div
-    class="grid gap-3 mx-auto"
-    :style="{
-      gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
-      maxWidth: `${cols * 5}rem`,
-    }"
-  >
-    <SeatCell v-for="(seat, i) in displaySeats" :key="i" :seat="seat" :index="i" />
+  <div class="flex justify-center">
+    <div
+      class="grid gap-3 mx-auto"
+      :style="{
+        gridTemplateColumns: `repeat(${cols}, 5rem)`,
+      }"
+    >
+      <SeatCell
+        v-for="(seat, i) in displaySeats"
+        :key="seat ? seat.userId + '-' + i : i"
+        :seat="seat"
+        :index="i"
+        :statKey="statKey"
+      />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import SeatCell from './SeatCell.vue'
-  import { UserNameType } from '@shared/types'
+  import { UserStatsRecord, StatKeyNum } from '@/types'
 
   const props = defineProps<{
-    seats: (UserNameType | null)[]
+    seats: (UserStatsRecord | null)[]
     rows: number
     cols: number
+    statKey: StatKeyNum | null
   }>()
 
   const displaySeats = computed(() => Array.from({ length: props.rows * props.cols }, (_, i) => props.seats[i] ?? null))

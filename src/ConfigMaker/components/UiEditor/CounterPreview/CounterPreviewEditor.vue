@@ -3,8 +3,9 @@
   <!-- プレビュー -->
   <HudPreview :isAdminOnly="true">
     <div :class="[fontFamily]">
-      <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyUserNames(100)" /></div
-  ></HudPreview>
+      <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyVisitRecords(100)" />
+    </div>
+  </HudPreview>
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor :model-value="counter.color" @update:model-value="(newValue) => updateField('color', newValue)" />
@@ -30,8 +31,8 @@
       <!-- すべて -->
       <div
         class="badge cursor-pointer"
-        :class="counter.ruleKey === '' ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('ruleKey', '')"
+        :class="counter.targetEventKey === '' ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('targetEventKey', '')"
       >
         すべて
       </div>
@@ -40,8 +41,8 @@
         v-for="(value, key) in rulesComment"
         :key="key"
         class="badge cursor-pointer"
-        :class="counter.ruleKey === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('ruleKey', key)"
+        :class="counter.targetEventKey === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('targetEventKey', key)"
       >
         {{ value.name || '名称未設定' }}
       </div>
@@ -89,7 +90,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import CounterPreviewManager from '@main/ui/CounterPreview/parts/CounterPreviewManager.vue'
-  import { generateDummyUserNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
+  import { generateDummyVisitRecords } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
@@ -117,7 +118,7 @@
   }
 
   const resetMap = {
-    ruleKey: () => resetField('ruleKey'),
+    ruleKey: () => resetField('targetEventKey'),
     component: () => resetField('component'),
     target: () => resetField('target'),
     label: () => resetField('label'),

@@ -34,7 +34,7 @@
       <!-- すべて -->
       <div
         class="badge cursor-pointer"
-        :class="winnerSetting.ruleKey === '' ? 'badge-primary' : 'badge-outline'"
+        :class="winnerSetting.targetEventKey === '' ? 'badge-primary' : 'badge-outline'"
         @click="updateField('ruleKey', '')"
       >
         すべて
@@ -44,7 +44,7 @@
         v-for="(value, key) in rulesComment"
         :key="key"
         class="badge cursor-pointer"
-        :class="winnerSetting.ruleKey === key ? 'badge-primary' : 'badge-outline'"
+        :class="winnerSetting.targetEventKey === key ? 'badge-primary' : 'badge-outline'"
         @click="updateField('ruleKey', key)"
       >
         {{ value.name || '名称未設定' }}
@@ -95,7 +95,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import WinnerGroupRenderer from '@main/ui/WinnerGroup/parts/WinnerGroupRenderer.vue'
-  import { generateDummyWinnerUsers } from '@main/ui/GameRanking/parts/useDummyBotMessages'
+  import { generateDummyWinnerUsers } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
   import { parseQueryString } from '@/GameScripts/parseQueryString'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'

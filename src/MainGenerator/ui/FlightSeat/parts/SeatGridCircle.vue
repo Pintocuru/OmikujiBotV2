@@ -1,8 +1,13 @@
 <!-- src/MainGenerator/ui/FlightSeat/parts/SeatGridCircle.vue -->
 <template>
   <div class="relative mx-auto" :style="{ width: diameter + 'px', height: diameter + 'px' }">
-    <div v-for="(seat, i) in displaySeats" :key="i" class="absolute" :style="getSeatPosition(i)">
-      <SeatCell :seat="seat" :index="i" />
+    <div
+      v-for="(seat, i) in displaySeats"
+      :key="seat ? seat.userId + '-' + i : i"
+      class="absolute"
+      :style="getSeatPosition(i)"
+    >
+      <SeatCell :seat="seat" :index="i" :statKey="statKey" />
     </div>
   </div>
 </template>
@@ -10,11 +15,12 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SeatCell from './SeatCell.vue'
-  import { UserNameType } from '@shared/types'
+  import { UserStatsRecord, StatKeyNum } from '@/types'
 
   const props = defineProps<{
-    seats: (UserNameType | null)[]
+    seats: (UserStatsRecord | null)[]
     circleSeats: number
+    statKey: StatKeyNum | null
   }>()
 
   const diameter = 400 // 円の直径

@@ -1,5 +1,5 @@
 // src/GameScripts/scripts/WinnerGroup/game.ts
-import { candidateNames } from '@main/ui/GameRanking/parts/useDummyBotMessages'
+import { CANDIDATE_NAMES } from '@/MainGenerator/ui/GameRanking/parts/dummyConstants'
 import { UserManager } from '@main/stores/UserManager/UserManager'
 import { UserNameSchema, UserNameType } from '@shared/types'
 
@@ -23,8 +23,8 @@ export function getWinnersFromVisitManager(
 }
 
 function getDummyWinners(count: number): UserNameType[] {
-  const max = Math.min(count, candidateNames.length)
-  const shuffled = [...candidateNames].sort(() => Math.random() - 0.5)
+  const max = Math.min(count, CANDIDATE_NAMES.length)
+  const shuffled = [...CANDIDATE_NAMES].sort(() => Math.random() - 0.5)
 
   return shuffled.slice(0, max).map((name, index) =>
     UserNameSchema.parse({

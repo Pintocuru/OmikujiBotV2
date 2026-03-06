@@ -26,6 +26,7 @@ export class UserStatsManager {
     const record: UserStatsRecord = existing
       ? {
           ...existing,
+          tc,
           timestamp,
           userName,
           profileImage,
@@ -37,7 +38,9 @@ export class UserStatsManager {
           userName,
           profileImage,
           timestamp,
-          team: 'error',
+          tc,
+          isSyoken: tc === 1,
+          team: null,
           score: 0,
           tags: [],
           badges: [],

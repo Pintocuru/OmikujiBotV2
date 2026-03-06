@@ -49,7 +49,7 @@
     )
   )
   const latestExtra = computed(() => winnerExtras.value.at(-1) ?? null)
-  const ruleKey = computed(() => winnerSetting.value.ruleKey)
+  const ruleKey = computed(() => winnerSetting.value.targetEventKey)
 
   const selectedUserIds = computed<string[]>(() => {
     if (!latestExtra.value?.slots) return []

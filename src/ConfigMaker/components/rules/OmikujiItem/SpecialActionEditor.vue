@@ -46,7 +46,7 @@
       <!-- logFormat -->
       <SettingItem
         label="ログフォーマット"
-        description="1行の表示形式（使用可能: <<index>> <<user>> <<userId>> <<score>> <<item>> <<flag>> <<createdAt>>）"
+        description="1行の表示形式"
         :showReset="true"
         @reset="updateLog('logFormat', LOG_FORMAT_DEFAULT)"
       >
@@ -56,6 +56,7 @@
           :value="behavior.log.logFormat"
           @input="updateLog('logFormat', ($event.target as HTMLInputElement).value)"
         />
+        <span class="text-sm text-base-content/60">仕様は未確定です</span>
       </SettingItem>
 
       <!-- logLimit -->
