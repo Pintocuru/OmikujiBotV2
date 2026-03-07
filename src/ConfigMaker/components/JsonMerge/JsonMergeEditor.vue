@@ -20,8 +20,8 @@
 
       <!-- 基本設定セクション -->
       <div class="space-y-4">
-        <!-- ルール名 -->
-        <SettingItem label="ルール名" description="識別しやすい名前">
+        <!-- イベント名 -->
+        <SettingItem label="イベント名" description="識別しやすい名前">
           <input
             type="text"
             v-model="merge[i].name"

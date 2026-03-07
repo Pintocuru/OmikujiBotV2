@@ -73,7 +73,7 @@ export class EventCommentProcessor {
       for (const rule of sortedRules) {
         const result = this.processRule(omiken, rule)
 
-        // ルールが成功し、botメッセージが生成された場合はここで終了
+        // イベントが成功し、botメッセージが生成された場合はここで終了
         if (result.botMessages.length > 0) {
           if (result.isCommentTriggered) {
             this.store.cooldownManager.updateLastProcessedTime()
@@ -90,12 +90,12 @@ export class EventCommentProcessor {
   }
 
   /**
-   * 単一ルールの処理
+   * 単一イベントの処理
    */
   private processRule(omiken: OmikenCommentType, rule: CommentRuleType): ProcessResult {
     const { data } = this.store
 
-    // 1. コメントルールの条件チェック
+    // 1. コメントイベントの条件チェック
     if (!checkAllTriggers(omiken, rule.trigger)) {
       return { isCommentTriggered: false, botMessages: [] }
     }
@@ -139,7 +139,7 @@ export class EventCommentProcessor {
 
   /**
    * criteria フィルタを適用してからおみくじ抽選する。
-   * (OmikujiProcessor から移管。コメントルール専用のフィルタのため)
+   * (OmikujiProcessor から移管。コメントイベント専用のフィルタのため)
    */
   private lotteryWithCriteria(omikujiSet: OmikujiSetType, omiken: OmikenCommentType): ActionSetType | null {
     const filtered = omikujiSet

@@ -33,7 +33,7 @@ export const useDragAndDrop = () => {
 
   /**
    * ドラッグ操作による順序変更を処理
-   * 新しい順序に基づいて各ルールの位置を更新
+   * 新しい順序に基づいて各イベントの位置を更新
    */
   const handleReorderFromDrag = (newOrder: BaseRecordType[]) => {
     if (!validCategory.value || !categoryArray.value) return

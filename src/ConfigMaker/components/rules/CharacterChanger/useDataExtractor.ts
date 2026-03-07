@@ -26,7 +26,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
 
   // スコープに応じたラベル
   const scopeLabel = computed(() => {
-    if (changeScope.value === 'single') return 'このルール'
+    if (changeScope.value === 'single') return 'このイベント'
     return `${categoryMap[category].label}全体`
   })
 

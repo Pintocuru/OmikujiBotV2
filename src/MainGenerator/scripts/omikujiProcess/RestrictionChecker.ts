@@ -35,7 +35,7 @@ export function checkRestrictions(omiken: OmikenCommentType, rule: CommentRuleTy
     return { isBlocked: false, restrictionType: null }
   }
 
-  // 2. 連投制限チェック（コメントベースのルールのみ）
+  // 2. 連投制限チェック（コメントベースのイベントのみ）
   if (isRepeatBlocked(omiken.userId, rule.key, rule.limits.isRepeatAllowed)) {
     return {
       isBlocked: true,

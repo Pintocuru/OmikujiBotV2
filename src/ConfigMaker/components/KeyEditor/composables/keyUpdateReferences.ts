@@ -5,7 +5,7 @@ import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
- * ルールカテゴリ（comments, timers）のpostActions更新
+ * イベントカテゴリ（comments, timers）のpostActions更新
  */
 function updateRuleCategoriesPostActions(updateFn: (action: PostFlowType) => PostFlowType): void {
   const { updateItem } = useOmikujiStore()

@@ -6,7 +6,7 @@
     @mouseenter="$emit('mouseenter')"
   >
     <div class="space-y-2">
-      <!-- ルール名 -->
+      <!-- イベント名 -->
       <div class="font-medium text-base">
         {{ rule.name || '名前未設定' }}
         <span v-if="isDev"> ( Key: {{ rule.key }} )</span>

@@ -5,7 +5,9 @@
     v-if="isCharacter"
     class="tooltip tooltip-bottom"
     :data-tip="
-      hasInvalidCharacters ? '存在しないキャラクターが使用されています！' : 'すべてのルールのキャラクターを一括変更する'
+      hasInvalidCharacters
+        ? '存在しないキャラクターが使用されています！'
+        : 'すべてのイベントのキャラクターを一括変更する'
     "
   >
     <button :class="['btn', hasInvalidCharacters ? 'btn-error animate-pulse' : 'btn-secondary']" @click="openModal">
@@ -91,7 +93,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { getCharacterName } = useCharacterManager()
 
-  // データ抽出（selectedIdがある場合は単一ルールのみ対象）
+  // データ抽出（selectedIdがある場合は単一イベントのみ対象）
   const { changeScope, scopeLabel, allItems, allActionSets, totalItems } = useDataExtractor(
     props.category,
     props.selectedId

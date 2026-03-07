@@ -4,7 +4,7 @@
   <InformationCard>
     <p>
       <code class="label bg-accent text-accent-content">発動条件設定</code>では、
-      ユーザーのギフト有無やチャット数などを基にルール発動を制御します。
+      ユーザーのギフト有無やチャット数などを基にイベント発動を制御します。
     </p>
     <p>条件が複数ある場合は、すべて満たしたときのみ発動します。(ANDのみ対応)</p>
     <p class="text-xs opacity-70">

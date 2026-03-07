@@ -61,7 +61,7 @@
           <!-- 統計 -->
           <div class="text-xs text-base-content/60">
             <span v-if="store.isFilterActive">{{ store.filteredSortedItems.length }} /</span>
-            {{ store.sortedItems.length }} 件のルールが表示されています
+            {{ store.sortedItems.length }} 件のイベントが表示されています
 
             <button
               v-if="store.isFilterActive"

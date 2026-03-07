@@ -93,7 +93,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     isMultiSelectMode.value = false
   }
 
-  // 選択されたルールを取得
+  // 選択されたイベントを取得
   const getSelectedRules = (): BaseRecordType[] => {
     return Array.from(selectedRuleIds.value)
       .map((key) => filteredSortedItems.value.find((rule: BaseRecordType) => rule.key === key))
@@ -110,7 +110,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
 
     // SweetAlert2 で確認ダイアログを出す（この方が非同期制御が確実です）
     const result = await swalModal.confirmDelete({
-      title: `${count}件のルールを削除しますか？`,
+      title: `${count}件のイベントを削除しますか？`,
     })
 
     if (result.isConfirmed) {
@@ -124,7 +124,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
       isMultiSelectMode.value = false
 
       // 3. 完了通知
-      swalToast.success({ title: `${count}件のルールを削除しました` })
+      swalToast.success({ title: `${count}件のイベントを削除しました` })
     }
   }
 
@@ -183,7 +183,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     })
 
     const count = selectedRules.length
-    swalToast.success({ title: `${count}件のルールのカラーを変更しました` })
+    swalToast.success({ title: `${count}件のイベントのカラーを変更しました` })
   }
 
   // 一括複製
@@ -202,7 +202,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
 
     const count = selectedRules.length
 
-    swalToast.success({ title: `${count}件のルールを複製しました` })
+    swalToast.success({ title: `${count}件のイベントを複製しました` })
   }
 
   // 一括削除の確認ダイアログ
@@ -213,7 +213,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
     const count = rulesToDelete.length
 
     const result = await swalModal.confirmDelete({
-      title: `${count}件のルールを削除しますか？`,
+      title: `${count}件のイベントを削除しますか？`,
       text: `削除対象: ${ruleNames.length > 50 ? ruleNames.substring(0, 50) + '...' : ruleNames}`,
       confirmButtonText: `${count}件削除する`,
     })
@@ -233,7 +233,7 @@ export const useMultiSelect = (ruleState: ReturnType<typeof useRuleState>) => {
       omikujiStore.removeItem(validCategory.value as RecordCategoryType, rule.key)
     })
 
-    swalToast.success({ title: `${count}件のルールを削除しました` })
+    swalToast.success({ title: `${count}件のイベントを削除しました` })
   }
 
   return {

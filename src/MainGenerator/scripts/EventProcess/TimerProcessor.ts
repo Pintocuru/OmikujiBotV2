@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/RuleProcess/RuleTimerProcessor.ts
-import { BotMessageType } from '@/types/'
-import { TimerRuleType, OmikujiDataType } from '@/types/OmikujiData/'
+import { TimerRuleType } from '@/types/OmikujiData/'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
+import { useAppStore } from '@main/stores/useAppStore'
 
 interface TimerState {
   timerId: number
@@ -11,40 +11,54 @@ interface TimerState {
 }
 
 /**
- * タイマールールの実行を管理
+ * タイマーイベントの実行を管理
  *
- * このクラスはコンストラクタで受け取ったデータに基づいてタイマーを管理します。
- * データが更新された場合は、古いインスタンスをstopTimers()で停止し、
- * 新しいインスタンスを生成してstartTimers()を呼び出してください。
+ * データは useAppStore から直接取得します。
+ * データが更新された場合は、stopTimers() を呼んでから startTimers() を再度呼び出してください。
  */
 export class EventTimerProcessor {
   private readonly activeTimers = new Map<string, TimerState>()
   private readonly omikujiProcessor: OmikujiProcessor = new OmikujiProcessor()
-  private readonly data: OmikujiDataType
-
-  constructor(data: OmikujiDataType) {
-    this.data = data
-  }
 
   /**
    * すべてのタイマーを開始
+   * onStart イベントは即時実行のみ行い、タイマー管理には含めない
    */
-  startTimers(onTimerTrigger: (messages: BotMessageType[]) => void): void {
+  startTimers(): void {
     this.stopTimers()
 
-    const enabledTimers = Object.values(this.data.timers)
+    const appStore = useAppStore()
+    const enabledTimers = Object.values(appStore.data.timers)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 
     enabledTimers.forEach((rule) => {
-      this.startTimer(rule, onTimerTrigger)
+      if (rule.mode === 'onStart') {
+        this.executeOnStart(rule)
+      } else {
+        // mode === 'interval'（デフォルト）
+        this.startIntervalTimer(rule)
+      }
     })
   }
 
   /**
-   * 個別のタイマーを開始
+   * onStart モード: 起動時に一度だけ scheduleBotMessages を直接呼び出す
    */
-  private startTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessageType[]) => void): void {
+  private executeOnStart(rule: TimerRuleType): void {
+    try {
+      const appStore = useAppStore()
+      const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
+      appStore.scheduleBotMessages(omikujiMessages)
+    } catch (error) {
+      console.error(`onStart ${rule.key} execution error:`, error)
+    }
+  }
+
+  /**
+   * interval モード: 定期実行
+   */
+  private startIntervalTimer(rule: TimerRuleType): void {
     const intervalMs = rule.intervalSeconds * 1000
     let initialDelay = intervalMs
 
@@ -52,18 +66,16 @@ export class EventTimerProcessor {
     if (rule.isBaseZero) {
       const now = new Date()
       const msSinceHourStart = now.getMinutes() * 60_000 + now.getSeconds() * 1000 + now.getMilliseconds()
-
-      const timeToNextInterval = intervalMs - (msSinceHourStart % intervalMs)
-      initialDelay = timeToNextInterval
+      initialDelay = intervalMs - (msSinceHourStart % intervalMs)
     }
 
     // 初回実行用のタイマー
     const initialTimerId = window.setTimeout(() => {
-      this.executeTimer(rule, onTimerTrigger)
+      this.executeTimer(rule)
 
       // 定期実行を開始
       const intervalTimerId = window.setInterval(() => {
-        this.executeTimer(rule, onTimerTrigger)
+        this.executeTimer(rule)
       }, intervalMs)
 
       // タイマー状態を更新
@@ -86,10 +98,11 @@ export class EventTimerProcessor {
   /**
    * タイマー実行時の処理
    */
-  private executeTimer(rule: TimerRuleType, onTimerTrigger: (messages: BotMessageType[]) => void): void {
+  private executeTimer(rule: TimerRuleType): void {
     try {
+      const appStore = useAppStore()
       const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
-      onTimerTrigger(omikujiMessages)
+      appStore.scheduleBotMessages(omikujiMessages)
     } catch (error) {
       console.error(`Timer ${rule.key} execution error:`, error)
     }

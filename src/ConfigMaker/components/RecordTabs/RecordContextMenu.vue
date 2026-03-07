@@ -97,7 +97,7 @@
       if (result) {
         const { count, accessLevel } = result
         swalToast.success({
-          title: `${count}件のルールのアクセスレベルを「${accessLevel}」に変更しました`,
+          title: `${count}件のイベントのアクセスレベルを「${accessLevel}」に変更しました`,
         })
       }
     } else if (tabsStore.contextMenu.rule) {

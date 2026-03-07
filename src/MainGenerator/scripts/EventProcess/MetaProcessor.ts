@@ -1,12 +1,11 @@
 // src/MainGenerator/scripts/RuleProcess/MetaRuleProcessor.ts
-import { BotMessageType } from '@/types/'
-import { MetaRuleType } from '@/types/OmikujiData/'
-import { MetaStateServiceType, MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'
+import { MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { evaluateMetaTrigger } from '@main/stores/MetaState/MetaTriggerEvaluator'
+import { useAppStore } from '@main/stores/useAppStore'
 
 /**
- * メタルールの実行を管理
+ * メタイベントの実行を管理
  */
 export class EventMetaProcessor {
   private readonly omikujiProcessor = new OmikujiProcessor()
@@ -15,30 +14,27 @@ export class EventMetaProcessor {
   private lastUpVote: number | null = null
   private lastViewer: number | null = null
 
-  constructor(
-    private readonly metas: Record<string, MetaRuleType>,
-    private readonly metaState: MetaStateServiceType
-  ) {}
-
   /**
-   * メタルール監視を開始
+   * メタイベント監視を開始
    */
-  startMetaRules(onMetaTrigger: (messages: BotMessageType[]) => void): void {
+  startMetaRules(): void {
     this.stopMetaRules()
 
+    const appStore = useAppStore()
+
     // 購読開始時点の値をスナップショットとして保存
-    const snapshot = this.metaState.getCurrent()
+    const snapshot = appStore.metaState.getCurrent()
     this.lastUpVote = snapshot?.upVote ?? null
     this.lastViewer = snapshot?.viewer ?? null
 
     // 購読の開始
-    this.unsubscribe = this.metaState.subscribe((event) => {
-      this.processMetaRules(event, onMetaTrigger)
+    this.unsubscribe = appStore.metaState.subscribe((event) => {
+      this.processMetaRules(event)
     })
   }
 
   /**
-   * メタルール監視を停止
+   * メタイベント監視を停止
    */
   stopMetaRules(): void {
     if (this.unsubscribe) {
@@ -52,7 +48,9 @@ export class EventMetaProcessor {
   /**
    * メタデータ更新時の処理
    */
-  private processMetaRules(event: MetaUpdateEvent, onMetaTrigger: (messages: BotMessageType[]) => void): void {
+  private processMetaRules(event: MetaUpdateEvent): void {
+    const appStore = useAppStore()
+
     // previousがない場合（MetaStateService側で初回）は
     // スナップショット値をpreviousとして補完する
     const resolvedEvent: MetaUpdateEvent =
@@ -68,14 +66,14 @@ export class EventMetaProcessor {
           }
         : event
 
-    const enabledRules = Object.values(this.metas)
+    const enabledRules = Object.values(appStore.data.metas)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 
     for (const rule of enabledRules) {
       if (evaluateMetaTrigger(rule.trigger, resolvedEvent)) {
         const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
-        onMetaTrigger(omikujiMessages)
+        appStore.scheduleBotMessages(omikujiMessages)
       }
     }
   }

@@ -45,13 +45,13 @@
                   <span class="font-bold">📊 このキャラクターの使用状況:</span>
                   <ul class="list-disc list-inside mt-2 space-y-1">
                     <li v-if="characterUsage.comments.length > 0">
-                      コメントルール: <span class="font-bold">{{ characterUsage.comments.length }}箇所</span>
+                      コメントイベント: <span class="font-bold">{{ characterUsage.comments.length }}箇所</span>
                     </li>
                     <li v-if="characterUsage.timers.length > 0">
-                      タイマールール: <span class="font-bold">{{ characterUsage.timers.length }}箇所</span>
+                      タイマーイベント: <span class="font-bold">{{ characterUsage.timers.length }}箇所</span>
                     </li>
                     <li v-if="characterUsage.metas.length">
-                      メタルール: <span class="font-bold">{{ characterUsage.metas.length }}箇所</span>
+                      メタイベント: <span class="font-bold">{{ characterUsage.metas.length }}箇所</span>
                     </li>
                     <li v-if="characterUsage.comments.length === 0 && characterUsage.timers.length === 0">
                       使用されていません
@@ -76,7 +76,7 @@
                   }}を参照している他の設定も影響を受ける可能性があります。
                 </span>
                 <span v-if="category === 'characters'" class="block mt-2">
-                  キャラクターの場合、ルール系の投稿アクションも自動的に更新されます。
+                  キャラクターの場合、イベント系の投稿アクションも自動的に更新されます。
                 </span>
               </span>
             </div>

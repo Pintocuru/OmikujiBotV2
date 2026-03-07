@@ -2,7 +2,7 @@
 <template>
   <div class="flex items-center gap-2 mb-3">
     <!-- 新規追加ボタン -->
-    <button class="btn btn-sm btn-primary" @click="store.handleAddItem" title="新しいルールを追加">
+    <button class="btn btn-sm btn-primary" @click="store.handleAddItem" title="新しいイベントを追加">
       <span class="flex items-center gap-2">
         <Plus class="w-4 h-4" />
         追加

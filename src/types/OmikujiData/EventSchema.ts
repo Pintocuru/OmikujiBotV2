@@ -52,7 +52,7 @@ export type CommentRuleType = z.infer<typeof CommentRuleSchema>
 export const TimerRuleSchema = z.object({
   ...BaseRuleSchema.shape,
   // TODO(v3) : ruleType -> kind
-  ruleType: z.literal('timers').default('timers'), // ルールタイプ（タイマー）
+  ruleType: z.literal('timers').default('timers'), // イベントタイプ（タイマー）
   mode: z.enum(['interval', 'onStart']).default('interval'), // モード
 
   // 間隔時間（秒）

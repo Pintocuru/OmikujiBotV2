@@ -52,11 +52,11 @@ function makeMetaStateMock(snapshot: NormalizedMeta | null = null): {
   }
 }
 /**
- * テストルール
+ * テストイベント
  */
 function makeRule(overrides: Partial<MetaRuleType> = {}): MetaRuleType {
   return MetaRuleSchema.parse({
-    name: 'テストルール',
+    name: 'テストイベント',
     isEnabled: true,
     trigger: MetaTriggerSchema.parse({
       condition: 'upVote',
@@ -95,7 +95,7 @@ describe('MetaRuleProcessor — executeOmikuji が呼ばれないケース', () 
     expect(mockExecuteOmikuji).not.toHaveBeenCalled()
   })
 
-  it('isEnabled=false のルールは executeOmikuji が呼ばれない', () => {
+  it('isEnabled=false のイベントは executeOmikuji が呼ばれない', () => {
     mockEvaluate.mockReturnValue(true)
     const rule = makeRule({ isEnabled: false })
     const { mock, triggerSubscriber } = makeMetaStateMock()
@@ -120,7 +120,7 @@ describe('MetaRuleProcessor — executeOmikuji が呼ばれないケース', () 
     expect(mockEvaluate).toHaveBeenCalledOnce()
   })
 
-  it('ルールが複数あり全て evaluateMetaTrigger=false なら executeOmikuji は呼ばれない', () => {
+  it('イベントが複数あり全て evaluateMetaTrigger=false なら executeOmikuji は呼ばれない', () => {
     mockEvaluate.mockReturnValue(false)
     const rules = {
       'rule-1': makeRule({ id: 'rule-1', order: 0 }),

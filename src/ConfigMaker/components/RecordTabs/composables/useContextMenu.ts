@@ -13,7 +13,7 @@ export interface ContextMenuState {
 
 /**
  * 右クリックコンテキストメニューの管理
- * 表示/非表示、位置、対象ルール、移動可否判定を提供
+ * 表示/非表示、位置、対象イベント、移動可否判定を提供
  */
 export const useContextMenu = () => {
   /** コンテキストメニューの状態 */

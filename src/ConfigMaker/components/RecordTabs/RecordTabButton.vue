@@ -16,7 +16,7 @@
       {{ rule.order != null ? rule.order : 'order:error!' }}
     </div>
 
-    <!-- ルール名（インライン編集対応） -->
+    <!-- イベント名（インライン編集対応） -->
     <input
       v-if="isEditing"
       :value="tabsStore.editingName"

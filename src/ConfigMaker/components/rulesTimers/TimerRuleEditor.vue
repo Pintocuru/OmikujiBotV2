@@ -8,7 +8,7 @@
   <!-- タブ部分 -->
   <RecordTabs />
 
-  <!-- ルール編集エリア -->
+  <!-- イベント編集エリア -->
   <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
@@ -22,14 +22,14 @@
       <BaseSettingsEditor v-model="selectedItem" category="timers" />
     </SectionCard>
 
-    <template v-if="selectedItem.isEnabled !== false">
+    <template v-if="selectedItem.isEnabled">
       <!-- タイマー設定セクション -->
       <SectionCard
         icon="Clock"
         :isOpen="activeSection === 'timerInterval'"
         @toggle="toggleSection('timerInterval')"
         title="タイマー設定"
-        :subTitle="`(${selectedItem.intervalSeconds}秒毎${selectedItem.isBaseZero ? '、基準調整あり' : ''})`"
+        :subTitle="timerSubTitle"
         description="発動する間隔やタイミングの設定"
       >
         <TimerIntervalEditor v-model="selectedItem" />
@@ -50,8 +50,8 @@
 
     <!-- 無効のときのメッセージ -->
     <InformationCard v-else variant="error" class="mt-4 p-4">
-      現在、このルールは無効になっています。<br />
-      編集を行うには、まずルールを有効にしてください。
+      現在、このイベントは無効になっています。<br />
+      編集を行うには、まずイベントを有効にしてください。
     </InformationCard>
   </template>
 </template>
@@ -94,5 +94,19 @@
     set: (value: TimerRuleType) => {
       updateItem('timers', value.key, value)
     },
+  })
+
+  const timerSubTitle = computed(() => {
+    if (!selectedItem.value) return ''
+
+    const item = selectedItem.value
+
+    // 起動時のみ
+    if (item.mode === 'onStart') {
+      return '(起動時に一度だけ実行)'
+    }
+
+    // interval モード
+    return `(${item.intervalSeconds}秒毎${item.isBaseZero ? '、基準調整あり' : ''})`
   })
 </script>

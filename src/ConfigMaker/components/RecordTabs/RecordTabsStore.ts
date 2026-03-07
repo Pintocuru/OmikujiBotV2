@@ -7,7 +7,7 @@ import { useContextMenu } from './composables/useContextMenu'
 import { useInlineEdit } from './composables/useInlineEdit'
 
 /**
- * ルールタブ機能の統合ストア
+ * イベントタブ機能の統合ストア
  * 各composableの機能を統合し、UIコンポーネントに必要な機能を提供
  */
 export const useRecordTabsStore = defineStore('ruleTabs', () => {

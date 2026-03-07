@@ -6,7 +6,7 @@ import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { GameStateType } from '@/types'
 
 export interface SpecialActionResult {
-  handled: boolean // trueのとき呼び出し元でルール処理を終了する
+  handled: boolean // trueのとき呼び出し元でイベント処理を終了する
   isCountEvent: boolean // カウントを行うか
 }
 
@@ -29,7 +29,7 @@ export class SpecialActionProcessor {
       case 'return':
         return { handled: true, isCountEvent }
 
-      // 次のルールへ進む
+      // 次のイベントへ進む
       case 'continue':
         return { handled: false, isCountEvent }
 

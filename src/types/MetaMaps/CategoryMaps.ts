@@ -10,17 +10,17 @@ export const categoryMap = {
     icon: 'Layers',
   },
   comments: {
-    label: 'コメントルール',
+    label: 'コメントイベント',
     description: 'チャット内容やユーザー情報を基におみくじを発動します',
     icon: 'MessageSquare',
   },
   timers: {
-    label: 'タイマールール',
+    label: 'タイマーイベント',
     description: '指定した時間経過で、自動的におみくじを発動します',
     icon: 'Timer',
   },
   metas: {
-    label: 'メタルール',
+    label: 'メタイベント',
     description: '配信の視聴数・高評価の変動でおみくじを発動します',
     icon: 'Activity',
   },

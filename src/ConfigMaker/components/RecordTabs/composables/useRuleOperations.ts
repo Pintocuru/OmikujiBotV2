@@ -20,17 +20,17 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     return callback(category)
   }
 
-  // 新しいルールを追加
+  // 新しいイベントを追加
   const handleAddItem = () => {
     withValidCategory((category) => {
       const editorColor = filterOptions.value.colorFilter || undefined
       const newId = omikujiStore.addItem?.(category, { editorColor })
       selectItem(newId)
-      swalToast.success({ title: '新しいルールを追加しました' })
+      swalToast.success({ title: '新しいイベントを追加しました' })
     })
   }
 
-  // ルールの内容を更新
+  // イベントの内容を更新
   const handleUpdateRule = <C extends RecordCategoryType>(
     ruleId: string,
     updates: Partial<RecordCategoryItemTypeMap[C]>
@@ -45,7 +45,7 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     })
   }
 
-  // ルール削除（確認ダイアログ）
+  // イベント削除（確認ダイアログ）
   const handleDeleteRule = (ruleId: string, ruleName?: string) => {
     withValidCategory(async (category) => {
       const name = ruleName || '名前未設定'
@@ -60,11 +60,11 @@ export const useRuleOperations = (ruleState: ReturnType<typeof useRuleState>) =>
     })
   }
 
-  // ルール複製
+  // イベント複製
   const handleDuplicateRule = (ruleId: string) => {
     withValidCategory((category) => {
       omikujiStore.duplicateItem(category, ruleId)
-      swalToast.success({ title: 'ルールを複製しました' })
+      swalToast.success({ title: 'イベントを複製しました' })
     })
   }
 

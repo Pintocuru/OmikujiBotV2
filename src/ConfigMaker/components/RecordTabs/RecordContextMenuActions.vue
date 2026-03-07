@@ -93,7 +93,7 @@
     if (!result) return
 
     const { count, action } = result
-    swalToast.success({ title: `${count}件のルールを${action}にしました` })
+    swalToast.success({ title: `${count}件のイベントを${action}にしました` })
     emit('close')
   }
 

@@ -26,12 +26,12 @@ export class UserVisitManager {
     return record
   }
 
-  /** 指定ユーザー・ルールの訪問回数を取得 */
+  /** 指定ユーザー・イベントの訪問回数を取得 */
   getCount(eventKey: string, ruleId: string): number {
     return this.visits.get(this.createKey(eventKey, ruleId))?.visitCount ?? 0
   }
 
-  /** 指定ユーザー・ルールの訪問記録を取得 */
+  /** 指定ユーザー・イベントの訪問記録を取得 */
   getRecord(eventKey: string, ruleId: string): UserVisitRecord | null {
     return this.visits.get(this.createKey(eventKey, ruleId)) ?? null
   }
@@ -42,36 +42,36 @@ export class UserVisitManager {
     return this.getCount(eventKey, ruleId) >= drawLimit
   }
 
-  /** 指定ルールの訪問記録一覧を取得 */
+  /** 指定イベントの訪問記録一覧を取得 */
   getByRuleId(eventKey: string): UserVisitRecord[] {
     return Array.from(this.visits.values()).filter((r) => r.ruleId === eventKey)
   }
 
-  /** 指定ルールのユニーク訪問者数 */
+  /** 指定イベントのユニーク訪問者数 */
   getUniqueCountByRuleId(eventKey: string): number {
     return this.getByRuleId(eventKey).length
   }
 
-  /** 指定ルールの総訪問回数 */
+  /** 指定イベントの総訪問回数 */
   getTotalByRuleId(eventKey: string): number {
     return this.getByRuleId(eventKey).reduce((sum, r) => sum + r.visitCount, 0)
   }
 
-  /** 指定ルールの最新訪問ユーザーを取得 */
+  /** 指定イベントの最新訪問ユーザーを取得 */
   getLatestByRuleId(eventKey: string): UserVisitRecord | null {
     return this.getByRuleId(eventKey).sort((a, b) => b.timestamp - a.timestamp)[0] ?? null
   }
 
-  /** 指定ルールの訪問回数ランキングを取得 */
+  /** 指定イベントの訪問回数ランキングを取得 */
   getRankingByRuleId(eventKey: string, limit?: number): UserVisitRecord[] {
     const sorted = this.getByRuleId(eventKey).sort((a, b) => b.visitCount - a.visitCount)
     return limit ? sorted.slice(0, limit) : sorted
   }
 
   /**
-   * 指定ルールからランダムに当選者を選出
+   * 指定イベントからランダムに当選者を選出
    * @param count 当選者数（最大9）
-   * @param eventKey 対象ルールID
+   * @param eventKey 対象イベントID
    */
   drawWinners(eventKey: string, count = 1): { commenter: number; winners: UserVisitRecord[] } {
     const commenter = this.getUniqueCountByRuleId(eventKey)
@@ -91,7 +91,7 @@ export class UserVisitManager {
   }
 
   /**
-   * 指定ユーザーの全ルール訪問記録を Record<eventKey, visitCount> 形式で取得
+   * 指定ユーザーの全イベント訪問記録を Record<eventKey, visitCount> 形式で取得
    * OmikenCommentType.omikujiRecords に直接セット可能
    */
   getOmikujiRecords(userId: string): Record<string, number> {
@@ -130,12 +130,12 @@ export class UserVisitManager {
     }
   }
 
-  /** 指定ユーザー・ルールの記録を削除 */
+  /** 指定ユーザー・イベントの記録を削除 */
   resetUser(userId: string, ruleId: string): void {
     this.visits.delete(this.createKey(userId, ruleId))
   }
 
-  /** 指定ルールの記録を全削除 */
+  /** 指定イベントの記録を全削除 */
   resetRule(eventKey: string): void {
     for (const key of this.visits.keys()) {
       if (key.endsWith(`:${eventKey}`)) this.visits.delete(key)

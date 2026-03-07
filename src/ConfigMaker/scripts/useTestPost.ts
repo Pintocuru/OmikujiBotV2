@@ -38,7 +38,7 @@ export function useTestPost() {
   const scriptManager = GameScriptManager.getInstance()
   const placeholderVariable = new PlaceholderVariable()
 
-  // 選択されているルールを取得（型安全性を確保）
+  // 選択されているイベントを取得（型安全性を確保）
   const selectedRule = computed((): RuleType | null => {
     const key = selectedItemKey.value
     if (!key || !isRulesCategory(selectedCategory.value)) return null
@@ -65,7 +65,7 @@ export function useTestPost() {
       ? { ...omikujiItem, postActions }
       : ActionSetSchema.parse({ postActions, gameScripts })
 
-    // ルールなし: postActionsのみで簡易実行
+    // イベントなし: postActionsのみで簡易実行
     const processItem = selectedRule.value ? actionItem : ActionSetSchema.parse({ postActions })
 
     const botMessages = resultProcessor.process(processItem, defaultPlaceholdersShortLabels, MOCK_COMMENT)
@@ -77,8 +77,8 @@ export function useTestPost() {
   const postTestOmikuji = (omikujiSet: OmikujiItemType[]) => {
     if (!selectedRule.value) {
       swalToast.error({
-        title: 'ルールが選択されていません',
-        text: 'テスト投稿の対象となるルールを選択してください。',
+        title: 'イベントが選択されていません',
+        text: 'テスト投稿の対象となるイベントを選択してください。',
       })
       return
     }

@@ -12,12 +12,12 @@
   </SettingItem>
 
   <!-- 有効・無効の切り替えボタン -->
-  <SettingItem v-if="isIsEnabled" label="ルールを有効にする" description="有効にすると、おみくじができます">
+  <SettingItem v-if="isIsEnabled" label="イベントを有効にする" description="有効にすると、おみくじができます">
     <input type="checkbox" v-model="isEnabled" class="toggle toggle-primary" />
   </SettingItem>
 
-  <!-- ルール名 -->
-  <SettingItem label="ルール名" description="識別しやすい名前">
+  <!-- イベント名 -->
+  <SettingItem label="イベント名" description="識別しやすい名前">
     <input type="text" v-model="name" class="input w-full" />
   </SettingItem>
 

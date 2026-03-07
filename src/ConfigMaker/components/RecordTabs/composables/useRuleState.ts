@@ -10,7 +10,7 @@ export interface FilterOptions {
 }
 
 /**
- * ルールのフィルタリング・検索機能を提供
+ * イベントのフィルタリング・検索機能を提供
  * ナビゲーション状態は useNavigationStore から取得
  */
 export function useRuleState() {
@@ -47,12 +47,12 @@ export function useRuleState() {
    * 計算プロパティ
    */
 
-  /** orderでソート済みのルール一覧 */
+  /** orderでソート済みのイベント一覧 */
   const sortedItems = computed(() =>
     Array.isArray(categoryArray.value) ? [...categoryArray.value].sort((a, b) => a.order - b.order) : []
   )
 
-  /** フィルター適用済みのルール一覧 */
+  /** フィルター適用済みのイベント一覧 */
   const filteredSortedItems = computed(() => {
     let filtered = sortedItems.value
 

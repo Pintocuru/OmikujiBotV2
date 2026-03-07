@@ -142,7 +142,7 @@
       >
         すべて
       </div>
-      <!-- 通常のルール -->
+      <!-- 通常のイベント -->
       <div
         v-for="(value, key) in rulesComment"
         :key="key"

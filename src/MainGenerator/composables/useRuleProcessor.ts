@@ -24,15 +24,14 @@ export function useRuleProcessor() {
       console.log('🔄 RuleProcessor起動')
 
       processor = createRuleProcessor()
-      const schedule = appStore.scheduleBotMessages
 
       if (isTimer.value) {
-        console.log('▶️ タイマールール起動')
-        processor.timer.start(schedule)
+        console.log('▶️ タイマーイベント起動')
+        processor.timer.start()
       }
 
-      console.log('▶️ メタルール起動')
-      processor.meta.start(schedule)
+      console.log('▶️ メタイベント起動')
+      processor.meta.start()
     },
     { immediate: true }
   )
@@ -49,9 +48,8 @@ export function useRuleProcessor() {
  * RuleProcessorファクトリー
  */
 function createRuleProcessor() {
-  const appStore = useAppStore()
-  const timer = new EventTimerProcessor(appStore.data)
-  const meta = new EventMetaProcessor(appStore.data.metas, appStore.metaState)
+  const timer = new EventTimerProcessor()
+  const meta = new EventMetaProcessor()
 
   return {
     timer: {

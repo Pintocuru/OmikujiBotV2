@@ -61,8 +61,8 @@
 
     <!-- 無効のときのメッセージ -->
     <InformationCard v-else variant="error" class="mt-4 p-4">
-      現在、このルールは無効になっています。<br />
-      編集を行うには、まずルールを有効にしてください。
+      現在、このイベントは無効になっています。<br />
+      編集を行うには、まずイベントを有効にしてください。
     </InformationCard>
   </template>
 </template>

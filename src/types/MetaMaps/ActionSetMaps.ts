@@ -20,7 +20,7 @@ export const actionSpecialMap = {
     description: 'BOTアクションを何もせず、このイベントで処理を終了します。',
   },
   continue: {
-    label: '次のルールへ進む(continue)',
+    label: '次のイベントへ進む(continue)',
     description: 'BOTアクションを何もせず、次のイベントへ処理を進めます。',
   },
   resetOmikuji: {

@@ -36,7 +36,7 @@ export class OmikujiProcessor {
   /**
    * おみくじ抽選。
    * criteria フィルタが必要な場合は呼び出し側で事前に適用すること
-   * (コメントルールは RuleCommentProcessor.lotteryWithCriteria を使用)。
+   * (コメントイベントは RuleCommentProcessor.lotteryWithCriteria を使用)。
    */
   lotteryOmikujiItem(omikujiSet: OmikujiSetType): ActionSetType | null {
     try {

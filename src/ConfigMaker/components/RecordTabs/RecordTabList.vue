@@ -27,14 +27,14 @@
 
   <!-- フィルター結果が空の場合のメッセージ -->
   <div v-else>
-    <NoParamsCard :message="`一致するルールが見つかりませんでした。`" :sub="`${store.filterDescription}`" />
+    <NoParamsCard :message="`一致するイベントが見つかりませんでした。`" :sub="`${store.filterDescription}`" />
 
     <div class="text-center">
       <!-- 新規追加ボタン（フィルター結果が空の場合） -->
       <button
         class="btn border-primary mt-4 transition-all duration-200 hover:btn-primary"
         @click="store.handleAddItem"
-        title="新しいルールを追加"
+        title="新しいイベントを追加"
       >
         <span class="flex items-center gap-2">
           <Plus class="w-4 h-4" />

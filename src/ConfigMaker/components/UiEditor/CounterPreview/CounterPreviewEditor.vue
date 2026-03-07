@@ -26,7 +26,7 @@
   </SettingItem>
 
   <!-- 設定項目 -->
-  <SettingItem label="対象ルールキー" description="どのルールを対象にするか">
+  <SettingItem label="対象イベントキー" description="どのイベントを対象にするか">
     <div class="flex flex-wrap gap-2">
       <!-- すべて -->
       <div
@@ -36,7 +36,7 @@
       >
         すべて
       </div>
-      <!-- 通常のルール -->
+      <!-- 通常のイベント -->
       <div
         v-for="(value, key) in rulesComment"
         :key="key"

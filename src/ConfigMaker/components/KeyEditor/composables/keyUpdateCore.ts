@@ -5,7 +5,7 @@ import { RecordCategoryType } from '@/types/OmikujiData/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
 /**
- * 汎用ルールKey更新処理（BaseRecordSchema対応）
+ * 汎用イベントKey更新処理（BaseRecordSchema対応）
  */
 export function updateRecordKey(category: RecordCategoryType, oldKey: string, newKey: string): boolean {
   try {
