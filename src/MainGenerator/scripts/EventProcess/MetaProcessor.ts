@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/RuleProcess/MetaRuleProcessor.ts
+// src/MainGenerator/scripts/EventProcess/MetaProcessor.ts
 import { MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { evaluateMetaTrigger } from '@main/stores/MetaState/MetaTriggerEvaluator'

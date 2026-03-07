@@ -1,3 +1,4 @@
+// src/MainGenerator/ui/GameRanking/parts/dummyGenerators.ts
 import { ExtraListsSchema, SettingsRankingType } from '@/types/'
 import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 import {

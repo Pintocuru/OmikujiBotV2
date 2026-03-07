@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/RuleProcess/RuleTimerProcessor.ts
+// src/MainGenerator/scripts/EventProcess/TimerProcessor.ts
 import { TimerRuleType } from '@/types/OmikujiData/'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'

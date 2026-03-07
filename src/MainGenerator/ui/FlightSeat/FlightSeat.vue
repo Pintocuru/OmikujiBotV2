@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/FlightSeat/FlightSeat.vue -->
 <template>
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
     <div class="card w-full bg-base-200 mx-auto p-4 space-y-2" :data-theme="settings.color">

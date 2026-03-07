@@ -1,3 +1,4 @@
+// src/MainGenerator/ui/GameRanking/parts/dummyConstants.ts
 /**
  * ダミーデータ生成用の定数
  */
