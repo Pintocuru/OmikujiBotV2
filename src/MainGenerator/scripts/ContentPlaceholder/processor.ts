@@ -1,7 +1,8 @@
 // src/MainGenerator/scripts/ContentPlaceholder/processor.ts
-import { PostFlowType, PlaceholderType, selectValue } from '@/types/'
+import { PostFlowType, PlaceholderType, handelNormalizedValues, WeightValuesArrayType, WeightValueType } from '@/types/'
 import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
 import { sanitizeText } from './context'
+import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 /**
  * プレースホルダー処理のメインクラス
@@ -166,4 +167,13 @@ export class ContentPlaceholder {
       return this.resolvePlaceholder(match, placeholderId.trim(), depth)
     })
   }
+}
+
+// PlaceholderValueType から ランダム抽選で値を選択
+function selectValue(values: WeightValuesArrayType): string {
+  const normalizedValues = handelNormalizedValues(values)
+  if (normalizedValues.length === 0) return ''
+
+  const drawnValue = drawOmikuji(normalizedValues) as WeightValueType
+  return drawnValue.content || normalizedValues[0].content || ''
 }

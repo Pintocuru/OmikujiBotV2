@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/postAction/Message/usePlaceholderEditor.ts
 import { computed, Ref, ref } from 'vue'
-import { PlaceholderSchema, PlaceholderType, WeightValuesArrayType, handelNormalizedValues } from '@/types/'
+import { PlaceholderSchema, PlaceholderType, handelNormalizedValues } from '@/types/'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { defaultBasePlaceholderLabel, defaultPlaceholderMap } from '@/types/MetaMaps/DefaultPlaceholderMaps'
@@ -70,9 +70,6 @@ export function usePlaceholderEditor(draftText: Ref<string>, isCommentMode?: boo
     expandedKeys.value = s
   }
 
-  // 値の正規化
-  const normalizedValues = (values: WeightValuesArrayType) => handelNormalizedValues(values)
-
   // プレースホルダー値の更新
   const updatePlaceholderValue = (phKey: string, idx: number, e: Event) => {
     const ph = placeholderMap.value[phKey]
@@ -120,7 +117,6 @@ export function usePlaceholderEditor(draftText: Ref<string>, isCommentMode?: boo
     sortedUserPlaceholders,
     usedKeys,
     togglePlaceholder,
-    normalizedValues,
     updatePlaceholderValue,
     removePlaceholderValue,
     addPlaceholderValue,

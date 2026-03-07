@@ -109,7 +109,11 @@
             </button>
 
             <div class="space-y-1">
-              <div v-for="(val, idx) in normalizedValues(ph.values)" :key="idx" class="flex items-center gap-1 group">
+              <div
+                v-for="(val, idx) in handelNormalizedValues(ph.values)"
+                :key="idx"
+                class="flex items-center gap-1 group"
+              >
                 <span class="badge badge-xs badge-ghost font-mono shrink-0">{{ val.weight }}</span>
                 <input
                   type="text"
@@ -142,6 +146,7 @@
   import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import { usePlaceholderEditor } from './usePlaceholderEditor'
   import { toRef } from 'vue'
+  import { handelNormalizedValues } from '@/types'
 
   const props = defineProps<{
     draftText: string
@@ -163,7 +168,6 @@
     sortedUserPlaceholders,
     usedKeys,
     togglePlaceholder,
-    normalizedValues,
     updatePlaceholderValue,
     removePlaceholderValue,
     addPlaceholderValue,

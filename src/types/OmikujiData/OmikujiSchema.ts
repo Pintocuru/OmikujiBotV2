@@ -28,3 +28,35 @@ const parse = OmikujiItemSchema.parse({
 })
 export const OmikujiSetSchema = z.array(OmikujiItemSchema).default([parse]).catch([parse])
 export type OmikujiSetType = z.infer<typeof OmikujiSetSchema>
+
+/**
+TODO(v3):
+
+// 優先アイテム（weight を使わない）
+const OmikujiPrioritySchema = z.object({
+  isPriority: z.literal(true),
+  criteria: normalizedObject(CriteriaThresholdSchema),
+});
+
+// 通常アイテム（weight を使う）
+const OmikujiWeightedSchema = z.object({
+  isPriority: z.literal(false).default(false),
+  weight: z.number().min(0).default(1),
+  criteria: z.union([CriteriaThresholdSchema, z.null()]).default(null),
+})
+
+// 統合
+export const OmikujiLotterySchema = z.discriminatedUnion('isPriority', [
+  OmikujiPrioritySchema,
+  OmikujiWeightedSchema,
+])
+
+
+const OmikujiItemSchema = ActionSetSchema.extend({
+  omikuji: : normalizedObject(OmikujiLotterySchema),
+})
+export type OmikujiItemType = z.infer<typeof OmikujiItemSchema>
+
+
+
+ */

@@ -1,7 +1,7 @@
 // src/types/OmikujiData/ActionSet.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { WeightValueSchema } from './PlaceholderSchema'
+import { WeightValuesArraySchema } from './PlaceholderSchema'
 import { soundKeys } from './SoundKey'
 import { normalizedObject } from './ParsedDefault'
 import { actionSetKindMap, PostFlowKindMaps, actionSpecialMap } from '../MetaMaps'
@@ -21,9 +21,9 @@ const PostFlowBaseSchema = z.object({
 // PostFlow message
 export const PostFlowMessageContentSchema = z.object({
   bubble: z.string().default('').catch(''),
+  // TODO(v3) : isToast -> isOneComme 、マイグレーション時にbool値を入れ替える
   isToast: z.boolean().default(false).catch(false),
 })
-
 export type PostFlowMessageContentType = z.infer<typeof PostFlowMessageContentSchema>
 
 export const PostFlowMessageSchema = z.object({
@@ -58,10 +58,23 @@ export const PostFlowWordPartySchema = z.object({
   // TODO(v3) : actionType -> kind
   actionType: z.literal('wordParty').default('wordParty'),
   wordPartyId: z.string().optional(),
+  // TODO(v3) : wordParty -> wordPartyPattern
   wordParty: z.string().default('').catch(''),
   repeat: z.union([z.number().int().min(1), z.enum(['viewer', 'upVote'])]).optional(),
 })
 export type PostFlowWordPartyType = z.infer<typeof PostFlowWordPartySchema>
+
+// PostFlow bot
+export const PostFlowBotSchema = PostFlowBaseSchema.extend({
+  // TODO(v3) : actionType -> kind
+  actionType: z.literal('bot').default('bot'),
+  botName: z.string().default('').catch(''),
+  userId: z.string().default('').catch(''),
+  comment: z.string().default('').catch(''),
+  imageBase64: z.string().default('').catch(''), // 表示時のアイコン
+  frameId: z.string().default('').catch(''), // わんコメの枠指定
+})
+export type PostFlowBotType = z.infer<typeof PostFlowBotSchema>
 
 // PostFlow actionSet
 export const PostFlowCallSchema = z.object({
@@ -70,7 +83,7 @@ export const PostFlowCallSchema = z.object({
   // TODO(v3) : actionSet -> flowCall
   actionType: z.literal('actionSet').default('actionSet'),
   // TODO(v3) : actionSetKeys -> callKeys
-  actionSetKeys: z.array(z.union([z.string(), WeightValueSchema])),
+  actionSetKeys: WeightValuesArraySchema,
 })
 export type PostFlowCallType = z.infer<typeof PostFlowCallSchema>
 
@@ -83,6 +96,7 @@ export const PostFlowSchema = z.discriminatedUnion('actionType', [
   PostFlowSoundSchema,
   PostFlowWordPartySchema,
   PostFlowCallSchema,
+  // PostFlowBotSchema, // TODO:実装
   //  PostFlowGameSchema, // v3時追加
 ])
 export type PostFlowType = z.infer<typeof PostFlowSchema>
@@ -114,6 +128,7 @@ export const ScriptGameExtendedKeySchema = z.union([
 ])
 export type ScriptGameExtendedKeyType = z.infer<typeof ScriptGameExtendedKeySchema>
 
+// TODO(v3) : GameScriptsSchema -> PostFlowGameSchema
 export const GameScriptsSchema = z.object({
   ...PostFlowBaseSchema.shape, // v3に向けた追加
   // TODO(v3) : scriptId -> scriptKey
@@ -147,9 +162,9 @@ const ActionBehaviorLogSchema = z.object({
 })
 
 export const ActionBehaviorSchema = z.object({
-  type: z.enum(actionSpecial).default('return'), // 特殊アクションの種別 */,
-  isCountEvent: z.boolean().default(true), // このアクションをおみくじカウントとして記録するか */,
-  log: normalizedObject(ActionBehaviorLogSchema), // ログ出力系アクションの設定 */,
+  type: z.enum(actionSpecial).default('return'), // 特殊アクションの種別
+  isCountEvent: z.boolean().default(true), // このアクションをおみくじカウントとして記録するか
+  log: normalizedObject(ActionBehaviorLogSchema), // ログ出力系アクションの設定
 })
 
 export type ActionBehaviorType = z.infer<typeof ActionBehaviorSchema>
@@ -200,6 +215,48 @@ export const PostFlowGameSchema = z.object({
 export type PostFlowGameType = z.infer<typeof PostFlowGameSchema>
 
 
+
+
+
+const ActionSetPostSchema = BaseRecordSchema.extend({
+  // TODO(v3) : type -> kind
+  type: z.literal('postActions'),
+  // TODO(v3) : postActions -> postFlows
+  postActions: PostFlowArraySchema,
+})
+
+const ActionSetGameSchema = BaseRecordSchema.extend({
+  type: z.literal('gameScripts'),
+  gameScripts: normalizedObject(GameScriptsSchema),
+})
+
+const ActionSetSpecialSchema = BaseRecordSchema.extend({
+  type: z.literal('special'),
+  // TODO(v3) :  behavior -> special に戻す
+  special: z.enum(actionSpecial).optional(),
+  behavior: normalizedObject(ActionBehaviorSchema),
+}).transform((value) => {
+  // 旧データ（string）の場合は自動変換
+  if (value.special !== undefined) {
+    return {
+      ...value,
+      behavior: ActionBehaviorSchema.parse({
+        type: value.special === 'return' ? 'return' : 'continue',
+        countEvent: value.special === 'return',
+      }),
+      special: undefined,
+    }
+  }
+  return value
+})
+
+
+
+export const ActionSetBaseSchema = z.discriminatedUnion('type', [
+  ActionSetPostSchema,
+  ActionSetGameSchema,
+  ActionSetSpecialSchema,
+])
 
 
  */

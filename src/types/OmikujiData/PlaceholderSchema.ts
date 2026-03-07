@@ -1,7 +1,6 @@
 // src/types/OmikujiData/PlaceholderSchema.ts
 import { z } from 'zod'
 import { BaseRecordSchema } from '@shared/types'
-import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 /**
  * WeightValueSchema: 重み付きのコンテンツオブジェクト
@@ -49,14 +48,4 @@ export function handelNormalizedValues(values: WeightValuesArrayType): WeightVal
     if (typeof item === 'string') return { content: item, weight: 1 }
     else return item
   })
-}
-
-// PlaceholderValueType から ランダム抽選で値を選択
-// TODO: なんでこんなところにあるの？
-export function selectValue(values: WeightValuesArrayType): string {
-  const normalizedValues = handelNormalizedValues(values)
-  if (normalizedValues.length === 0) return ''
-
-  const drawnValue = drawOmikuji(normalizedValues) as WeightValueType
-  return drawnValue.content || normalizedValues[0].content || ''
 }
