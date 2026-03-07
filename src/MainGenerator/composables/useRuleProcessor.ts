@@ -1,8 +1,8 @@
 // src/MainGenerator/composables/useRuleProcessor.ts
 import { watch, onUnmounted } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
-import { RuleTimerProcessor } from '@main/scripts/RuleProcess/RuleTimerProcessor'
-import { MetaRuleProcessor } from '@main/scripts/RuleProcess/MetaRuleProcessor'
+import { EventTimerProcessor } from '@/MainGenerator/scripts/EventProcess/TimerProcessor'
+import { EventMetaProcessor } from '@/MainGenerator/scripts/EventProcess/MetaProcessor'
 import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 
 export function useRuleProcessor() {
@@ -50,8 +50,8 @@ export function useRuleProcessor() {
  */
 function createRuleProcessor() {
   const appStore = useAppStore()
-  const timer = new RuleTimerProcessor(appStore.data)
-  const meta = new MetaRuleProcessor(appStore.data.metas, appStore.metaState)
+  const timer = new EventTimerProcessor(appStore.data)
+  const meta = new EventMetaProcessor(appStore.data.metas, appStore.metaState)
 
   return {
     timer: {

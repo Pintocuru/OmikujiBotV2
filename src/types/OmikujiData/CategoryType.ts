@@ -12,7 +12,7 @@ import {
   RuleType,
   TimerRuleSchema,
   TimerRuleType,
-} from './RulesSchema'
+} from './EventSchema'
 import { categoryMap } from '../MetaMaps'
 
 /**

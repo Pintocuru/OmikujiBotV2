@@ -70,7 +70,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CommentRuleType } from '@/types/OmikujiData/RulesSchema'
+  import { CommentRuleType } from '@/types/OmikujiData/'
   import CommentTriggerEditor from './CommentTriggerEditor.vue'
   import OmikujiLimitsEditor from './OmikujiLimitsEditor.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'

@@ -39,7 +39,8 @@ export const BaseRuleSchema = z.object({
  */
 export const CommentRuleSchema = z.object({
   ...BaseRuleSchema.shape,
-  ruleType: z.literal('comments').default('comments').catch('comments'),
+  // TODO(v3) : ruleType -> kind
+  ruleType: z.literal('comments').default('comments'),
   trigger: normalizedObject(CommentTriggerSchema),
   limits: normalizedObject(OmikujiLimitsSchema),
 })
@@ -50,11 +51,14 @@ export type CommentRuleType = z.infer<typeof CommentRuleSchema>
  */
 export const TimerRuleSchema = z.object({
   ...BaseRuleSchema.shape,
-  ruleType: z.literal('timers').default('timers').catch('timers'), // ルールタイプ（タイマー）
+  // TODO(v3) : ruleType -> kind
+  ruleType: z.literal('timers').default('timers'), // ルールタイプ（タイマー）
+  mode: z.enum(['interval', 'onStart']).default('interval'), // モード
+
   // 間隔時間（秒）
   intervalSeconds: z
     .number()
-    .min(5)
+    .min(30)
     .max(60 * 60)
     .default(60 * 5)
     .catch(60 * 5),
@@ -67,7 +71,8 @@ export type TimerRuleType = z.infer<typeof TimerRuleSchema>
  */
 export const MetaRuleSchema = z.object({
   ...BaseRuleSchema.shape,
-  ruleType: z.literal('metas').default('metas').catch('metas'),
+  // TODO(v3) : ruleType -> kind
+  ruleType: z.literal('metas').default('metas'),
   trigger: normalizedObject(MetaTriggerSchema),
 })
 export type MetaRuleType = z.infer<typeof MetaRuleSchema>

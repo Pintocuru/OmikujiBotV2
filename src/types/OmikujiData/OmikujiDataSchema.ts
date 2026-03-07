@@ -2,7 +2,7 @@
 import { z } from 'zod'
 import { PlaceholderSchema } from './PlaceholderSchema'
 import { CharacterSchema } from './CharacterSchema'
-import { CommentRuleSchema, MetaRuleSchema, TimerRuleSchema } from './RulesSchema'
+import { CommentRuleSchema, MetaRuleSchema, TimerRuleSchema } from './EventSchema'
 import { PackageJsonSchema } from '@shared/types'
 import { JsonMergeSchema } from './JsonMergeType'
 import { UiSchema } from './UiSchema'

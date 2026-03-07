@@ -8,7 +8,7 @@ import { evaluateMetaTrigger } from '@main/stores/MetaState/MetaTriggerEvaluator
 /**
  * メタルールの実行を管理
  */
-export class MetaRuleProcessor {
+export class EventMetaProcessor {
   private readonly omikujiProcessor = new OmikujiProcessor()
   private unsubscribe: (() => void) | null = null
   // 購読開始時点の値を記録（初回イベントのpreviousとして使用）

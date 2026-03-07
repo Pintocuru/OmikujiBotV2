@@ -17,7 +17,7 @@ interface TimerState {
  * データが更新された場合は、古いインスタンスをstopTimers()で停止し、
  * 新しいインスタンスを生成してstartTimers()を呼び出してください。
  */
-export class RuleTimerProcessor {
+export class EventTimerProcessor {
   private readonly activeTimers = new Map<string, TimerState>()
   private readonly omikujiProcessor: OmikujiProcessor = new OmikujiProcessor()
   private readonly data: OmikujiDataType

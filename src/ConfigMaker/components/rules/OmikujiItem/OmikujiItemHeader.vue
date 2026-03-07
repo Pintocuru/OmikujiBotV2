@@ -32,7 +32,7 @@
 <script setup lang="ts">
   import { OmikujiItemType } from '@/types/OmikujiData/'
   import OmikujiItemPriority from './OmikujiItemPriority.vue'
-  import { RulesCategoryType } from '@/types/OmikujiData/RulesSchema'
+  import { RulesCategoryType } from '@/types/OmikujiData/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'

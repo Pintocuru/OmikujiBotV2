@@ -1,6 +1,6 @@
 // src/MainGenerator/composables/useAppInitializer.ts
 import { useAppStore } from '@main/stores/useAppStore'
-import { RuleCommentProcessor } from '@main/scripts/RuleProcess/RuleCommentProcessor'
+import { EventCommentProcessor } from '@/MainGenerator/scripts/EventProcess/CommentProcessor'
 import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
@@ -38,7 +38,7 @@ export function useAppInitializer() {
           // コメント処理
           if (!isComment.value) return
 
-          const commentProcessor = new RuleCommentProcessor()
+          const commentProcessor = new EventCommentProcessor()
           const botMessages = commentProcessor.respondToComments(omikens)
           appStore.scheduleBotMessages(botMessages)
         } catch (error) {

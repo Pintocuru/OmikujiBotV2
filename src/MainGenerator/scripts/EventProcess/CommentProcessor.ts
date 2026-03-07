@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/RuleProcess/RuleCommentProcessor.ts
 import { BotMessageEmptySchema, BotMessageType, CommentRuleType } from '@/types/'
 import { OmikujiSetType } from '@/types/OmikujiData/'
-import { buildRestrictionMessages } from './createBotMessages'
+import { buildRestrictionMessages } from '../BotMessage/createBotMessages'
 import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { SpecialActionProcessor } from '../OmikujiProcess/SpecialActionProcessor'
@@ -15,12 +15,12 @@ import { shouldIgnoreUser } from '@/common/filters/shouldIgnoreUser'
 
 const TIME_THRESHOLD = 10000
 
-interface RuleProcessResult {
+interface ProcessResult {
   isCommentTriggered: boolean
   botMessages: BotMessageType[]
 }
 
-export class RuleCommentProcessor {
+export class EventCommentProcessor {
   private appliedCommentIds = new Set<string>()
   private readonly store = useAppStore()
   private readonly omikujiProcessor = new OmikujiProcessor()
@@ -92,7 +92,7 @@ export class RuleCommentProcessor {
   /**
    * 単一ルールの処理
    */
-  private processRule(omiken: OmikenCommentType, rule: CommentRuleType): RuleProcessResult {
+  private processRule(omiken: OmikenCommentType, rule: CommentRuleType): ProcessResult {
     const { data } = this.store
 
     // 1. コメントルールの条件チェック

@@ -1,7 +1,7 @@
 // src/ConfigMaker/stores/composables/useRecordProperties.ts
 import { Ref } from 'vue'
 import { WeightValuesArraySchema, WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
-import { RulesCategoryType, RuleType } from '@/types/OmikujiData/RulesSchema'
+import { RulesCategoryType, RuleType } from '@/types/OmikujiData/'
 import type { useRecordCRUD } from './useRecordCRUD'
 import {
   OmikujiDataType,

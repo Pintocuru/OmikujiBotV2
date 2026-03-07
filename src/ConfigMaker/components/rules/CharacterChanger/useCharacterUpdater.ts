@@ -1,7 +1,7 @@
 // src/ConfigMaker/components/rules/CharacterChanger/useCharacterUpdater.ts
 import { ComputedRef } from 'vue'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { RuleType } from '@/types/OmikujiData/RulesSchema'
+import { RuleType } from '@/types/OmikujiData/'
 import { ActionSetType, OmikujiItemType } from '@/types/OmikujiData/'
 import { TargetCategoryType } from './useDataExtractor'
 import { usePostActionCharacters } from './usePostActionCharacters'
