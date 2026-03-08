@@ -90,7 +90,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import CounterPreviewManager from '@main/ui/CounterPreview/parts/CounterPreviewManager.vue'
-  import { generateDummyVisitRecords } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
+  import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 

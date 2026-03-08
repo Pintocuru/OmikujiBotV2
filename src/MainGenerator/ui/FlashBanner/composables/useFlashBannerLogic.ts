@@ -3,7 +3,7 @@ import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { useDelayedBlink } from '../parts/useDelayedBlink'
 import { SettingsFlashBannerSchema } from '@/types/OmikujiData/'
-import { usePlaceholderResolver } from '../../common/usePlaceholderResolver'
+import { usePlaceholderResolver } from '@main/ui/common/usePlaceholderResolver'
 
 const DEFAULT_MESSAGE_REFRESH_INTERVAL = 30000
 

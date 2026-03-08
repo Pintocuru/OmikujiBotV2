@@ -95,7 +95,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import WinnerGroupRenderer from '@main/ui/WinnerGroup/parts/WinnerGroupRenderer.vue'
-  import { generateDummyWinnerUsers } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
+  import { generateDummyWinnerUsers } from '@/common/MockUser/MockGenerators'
   import { parseQueryString } from '@/GameScripts/parseQueryString'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'

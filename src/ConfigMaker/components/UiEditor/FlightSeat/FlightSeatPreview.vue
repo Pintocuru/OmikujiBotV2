@@ -32,7 +32,7 @@
   import { calculateTotalSeats } from '@main/ui/FlightSeat/seatLayoutUtils'
   import { layoutStringToArray } from './CustomLayoutPresets'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
-  import { generateDummyUserStats } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
+  import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

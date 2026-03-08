@@ -60,7 +60,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
-  import { generateDummyMessages } from '../../dummyGenerators'
+  import { generateDummyMessages } from '@/common/MockUser/MockGenerators'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
   import { SettingsRankingType } from '@/types/OmikujiData'
 

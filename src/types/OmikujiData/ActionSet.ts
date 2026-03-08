@@ -69,7 +69,7 @@ export const PostFlowBotSchema = PostFlowBaseSchema.extend({
   // TODO(v3) : actionType -> kind
   actionType: z.literal('bot').default('bot'),
   botName: z.string().default('').catch(''),
-  userId: z.string().default('').catch(''),
+  userId: z.string().default('OmikujiBot').catch('OmikujiBot'),
   comment: z.string().default('').catch(''),
   imageBase64: z.string().default('').catch(''), // 表示時のアイコン
   frameId: z.string().default('').catch(''), // わんコメの枠指定

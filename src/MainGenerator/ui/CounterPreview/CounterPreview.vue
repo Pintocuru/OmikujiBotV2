@@ -17,7 +17,7 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
   import CounterPreviewManager from './parts/CounterPreviewManager.vue'
-  import { generateDummyVisitRecords } from '@/MainGenerator/ui/GameRanking/parts/dummyGenerators'
+  import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
   import { SettingsCounterSchema } from '@/types'
 
   const appStore = useAppStore()
