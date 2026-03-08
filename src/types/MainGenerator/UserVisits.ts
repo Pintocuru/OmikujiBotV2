@@ -18,7 +18,8 @@ export type UserVisitRecord = z.infer<typeof UserVisitRecordSchema>
  */
 export const UserStatsRecordSchema = z.object({
   ...UserNameSchema.shape,
-  tc: z.number().default(0), // コメント数
+  tc: z.number().default(0), // コメント数(総合)
+  no: z.number().default(0), // コメント数(配信内)
   isSyoken: z.boolean().default(false), // その配信で初見かどうか
   order: z.number().optional(), // 並び替え用（UI 側で自由に使える）
   team: z.enum(BaseVariantLabels).nullable().default(null),

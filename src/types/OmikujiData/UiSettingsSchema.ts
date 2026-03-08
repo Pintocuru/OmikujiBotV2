@@ -161,11 +161,7 @@ export const SettingsFlightSeatSchema = z.object({
   label: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
   color: z.enum(themes).default('lofi').catch('lofi'),
   statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
-
-  // 満席の場合に新しいユーザーが入った時、ランダムで下ろすか
-  isRandomReplacement: z.boolean().default(true).catch(true),
 })
-
 export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSeatSchema>
 
 /**

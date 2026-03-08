@@ -100,7 +100,7 @@ export const generateDummyVisitRecords = (count: number, locale: LocaleType = 'j
 
 // プレビュー用: tc / score / giftPrice などの統計付きユーザーリストを生成
 export const generateDummyUserStats = (count: number, locale: LocaleType = 'ja'): UserStatsRecord[] => {
-  const { tc, score, giftPrice } = USER_STATS_RANGES
+  const { tc, no, score, giftPrice } = USER_STATS_RANGES
   const maxCount = Math.min(count, 300)
 
   return Array.from({ length: maxCount }, () => {
@@ -109,6 +109,7 @@ export const generateDummyUserStats = (count: number, locale: LocaleType = 'ja')
       userName,
       userId: userName,
       tc: randInt(tc.min, tc.max),
+      no: randInt(no.min, no.max),
       score: randInt(score.min, score.max),
       giftPrice: Math.random() < giftPrice.zeroProbability ? 0 : randInt(giftPrice.min, giftPrice.max),
     })

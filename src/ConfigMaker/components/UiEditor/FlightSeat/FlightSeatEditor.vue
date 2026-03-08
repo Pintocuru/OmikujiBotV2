@@ -154,28 +154,6 @@
       </div>
     </div>
   </SettingItem>
-
-  <!-- 満席時のランダム置き換え -->
-  <SettingItem
-    label="満席時のランダム置き換え"
-    description="満席時、ランダムなユーザーを降ろします"
-    :showReset="true"
-    @reset="resetMap.isRandomReplacement"
-  >
-    <div class="form-control">
-      <label class="label cursor-pointer justify-start gap-4">
-        <input
-          type="checkbox"
-          class="toggle toggle-primary"
-          :checked="flightSeat.isRandomReplacement"
-          @change="(e) => updateField('isRandomReplacement', (e.target as HTMLInputElement).checked)"
-        />
-        <span class="label-text">{{
-          flightSeat.isRandomReplacement ? '有効（誰かを降ろして着席）' : '無効（満席なら無視）'
-        }}</span>
-      </label>
-    </div>
-  </SettingItem>
 </template>
 
 <script setup lang="ts">
@@ -215,7 +193,6 @@
     cols: () => resetField('cols'),
     circleSeats: () => resetField('circleSeats'),
     targetEventKey: () => resetField('targetEventKey'),
-    isRandomReplacement: () => resetField('isRandomReplacement'),
   }
 
   const statKeyLabelMap: Record<StatKeyNum, string> = {

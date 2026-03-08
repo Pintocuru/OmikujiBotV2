@@ -30,9 +30,9 @@ export function useAppInitializer() {
             // ユーザー記録を除外するか
             if (shouldIgnoreUser(omiken.userName, pattern)) continue
 
-            const { lc, tc } = omiken.meta
+            const { lc, tc, no } = omiken.meta
             const giftPrice = omiken.giftPrice ?? 0
-            appStore.userSession.stats.recordComment(omiken, tc, lc, giftPrice)
+            appStore.userSession.stats.recordComment(omiken, tc, lc, no, giftPrice)
           }
 
           // コメント処理

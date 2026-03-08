@@ -29,7 +29,7 @@
   import { SettingsFlightSeatSchema, useFontFamily, UserStatsRecord } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatGrid from '@main/ui/FlightSeat/parts/SeatGrid.vue'
-  import { calculateTotalSeats } from '@main/ui/FlightSeat/seatLayoutUtils'
+  import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
   import { layoutStringToArray } from './CustomLayoutPresets'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
@@ -86,7 +86,6 @@
     const emptyIndexes = previewSeats.value.map((s, i) => (s === null ? i : -1)).filter((i) => i !== -1)
 
     if (emptyIndexes.length === 0) {
-      if (!flightSeat.value.isRandomReplacement) return
       const occupiedIndexes = previewSeats.value.map((s, i) => (s !== null ? i : -1)).filter((i) => i !== -1)
       const targetIndex = occupiedIndexes[Math.floor(Math.random() * occupiedIndexes.length)]
       previewSeats.value[targetIndex] = makePreviewUser()

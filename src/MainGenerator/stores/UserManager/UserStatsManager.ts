@@ -16,7 +16,7 @@ export class UserStatsManager {
   private syoken = 0
 
   /** コメントを受け取った時に呼び出す */
-  recordComment(user: UserNameType, tc: number, lc: number, giftPrice = 0): UserStatsRecord {
+  recordComment(user: UserNameType, tc: number, lc: number, no: number, giftPrice = 0): UserStatsRecord {
     if (tc === 1) this.syoken++ // 1回目のコメントなら初見さん
     this.liveComments = lc
     this.totalPrice += giftPrice
@@ -27,6 +27,7 @@ export class UserStatsManager {
       ? {
           ...existing,
           tc,
+          no,
           timestamp,
           userName,
           profileImage,
@@ -39,6 +40,7 @@ export class UserStatsManager {
           profileImage,
           timestamp,
           tc,
+          no,
           isSyoken: tc === 1,
           team: null,
           score: 0,
