@@ -26,7 +26,7 @@
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsFlightSeatSchema, useFontFamily, UserStatsRecord } from '@/types/'
+  import { SettingsFlightSchema, useFontFamily, UserStatsRecord } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatGrid from '@main/ui/FlightSeat/parts/SeatGrid.vue'
   import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
@@ -38,7 +38,7 @@
   const { data } = storeToRefs(omikujiStore)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
-  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
+  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
 
   const parsedCustomLayout = computed(() => {
     if (flightSeat.value.layout !== 'custom') return undefined

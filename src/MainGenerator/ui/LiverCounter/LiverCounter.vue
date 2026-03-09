@@ -8,16 +8,14 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsLiverCounterSchema } from '@/types/'
+  import { SettingsLiverSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import LiverCounterManager from './parts/LiverCounterManager.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
 
-  const liverSettings = computed(
-    () => data.value.components.settings.liverCounter ?? SettingsLiverCounterSchema.parse({})
-  )
+  const liverSettings = computed(() => data.value.components.settings.liverCounter ?? SettingsLiverSchema.parse({}))
 
   const counters = ref<Record<string, number>>({
     upVote: 0,

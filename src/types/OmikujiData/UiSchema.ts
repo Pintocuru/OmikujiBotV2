@@ -3,7 +3,15 @@ import { z } from 'zod'
 import { CharacterColorScheme, DisplayOptionSchema } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
 import { fontFamilyMap, uiKindMap, UiSlotMap, uiSpecialSetMap } from '../MetaMaps'
-import { UiSettingsSchema } from './UiSettingsSchema'
+import { SettingsBubbleSchema } from './UiSettings/SettingsBubbleSchema'
+import { SettingsToastSchema } from './UiSettings/SettingsToastSchema'
+import { SettingsBannerSchema } from './UiSettings/SettingsBannerSchema'
+import { SettingsRankingSchema } from './UiSettings/SettingsRankingSchema'
+import { SettingsCounterSchema } from './UiSettings/SettingsCounterSchema'
+import { SettingsWinnerSchema } from './UiSettings/SettingsWinnerSchema'
+import { SettingsFlightSchema } from './UiSettings/SettingsFlightSchema'
+import { SettingsSocialSchema } from './UiSettings/SettingsSocialSchema'
+import { SettingsLiverSchema } from './UiSettings/SettingsLiverSchema'
 
 /**
  * スロット定義
@@ -71,6 +79,23 @@ export const UiCommonStyleSchema = z.object({
   defaultVoice: normalizedObject(DisplayOptionSchema),
 })
 export type UiCommonStyleType = z.infer<typeof UiCommonStyleSchema>
+
+/**
+ * UiSettingsSchema オブジェクトのスキーマ
+ */
+export const UiSettingsSchema = z.object({
+  bubble: SettingsBubbleSchema.optional(),
+  toast: SettingsToastSchema.optional(),
+  ranking: SettingsRankingSchema.optional(),
+  counter: SettingsCounterSchema.optional(),
+  winnerGroup: SettingsWinnerSchema.optional(),
+  flightSeat: SettingsFlightSchema.optional(),
+  socialRoster: SettingsSocialSchema.optional(),
+  flashBanner: SettingsBannerSchema.optional(),
+  liverCounter: SettingsLiverSchema.optional(),
+})
+
+export type UiSettingsType = z.infer<typeof UiSettingsSchema>
 
 /**
  * ComponentsSchema

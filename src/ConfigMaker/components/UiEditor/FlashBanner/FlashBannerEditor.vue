@@ -156,7 +156,7 @@
     defaultPlaceholdersShortLabels,
     flashComponentMap,
     isDev,
-    SettingsFlashBannerSchema,
+    SettingsBannerSchema,
     useFontFamily,
   } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -181,7 +181,7 @@
   const { updateCommonStyleField } = useCommonStyleUpdate()
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
-  const flashBanner = computed(() => data.value.components.settings.flashBanner ?? SettingsFlashBannerSchema.parse({}))
+  const flashBanner = computed(() => data.value.components.settings.flashBanner ?? SettingsBannerSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // Blink Control (コンポーザブル使用)
@@ -205,7 +205,7 @@
   }
 
   const resetField = (field: keyof typeof flashBanner.value) => {
-    const defaults = SettingsFlashBannerSchema.parse({})
+    const defaults = SettingsBannerSchema.parse({})
     updateField(field, defaults[field])
   }
 

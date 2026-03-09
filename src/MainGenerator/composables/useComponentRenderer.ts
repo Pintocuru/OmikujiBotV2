@@ -7,6 +7,7 @@ import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
 import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
 import WinnerGroup from '@main/ui/WinnerGroup/WinnerGroup.vue'
 import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
+import SocialRoster from '@main/ui/SocialRoster/SocialRoster.vue'
 import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
 import { useAppStore } from '../stores/useAppStore'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
@@ -42,6 +43,9 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
     component: WinnerGroup,
   },
   flightSeat: {
+    component: SocialRoster,
+  },
+  socialRoster: {
     component: FlightSeat,
   },
   flashBanner: {

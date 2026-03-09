@@ -42,7 +42,7 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, SettingsFlightSeatSchema } from '@/types'
+  import { isDev, SettingsFlightSchema } from '@/types'
   import SeatGrid from './parts/SeatGrid.vue'
   import { useSeatManager } from './composables/useSeatManager'
   import { calculateTotalSeats } from './composables/seatLayoutUtils'
@@ -51,7 +51,7 @@
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
-  const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
+  const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
 
   const { isComment } = useVisibilityAccess()
 

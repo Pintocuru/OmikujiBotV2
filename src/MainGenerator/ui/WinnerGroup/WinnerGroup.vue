@@ -18,7 +18,7 @@
 <script setup lang="ts">
   import { computed, onMounted, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageExtraType, SettingsWinnerGroupSchema, UserStatsRecord } from '@/types'
+  import { BotMessageExtraType, SettingsWinnerSchema, UserStatsRecord } from '@/types'
   import WinnerGroupRenderer from './parts/WinnerGroupRenderer.vue'
   import HistoryButton from './components/HistoryButton.vue'
   import { useAppStore } from '@main/stores/useAppStore'
@@ -40,9 +40,7 @@
   const isVisible = ref(true)
   const hideTimer = ref<number | null>(null)
 
-  const winnerSetting = computed(
-    () => data.value.components.settings.winnerGroup ?? SettingsWinnerGroupSchema.parse({})
-  )
+  const winnerSetting = computed(() => data.value.components.settings.winnerGroup ?? SettingsWinnerSchema.parse({}))
   const winnerExtras = computed<BotMessageExtraType[]>(() =>
     botMessages.value.filter(
       (msg): msg is BotMessageExtraType => msg.type === 'extra' && msg.scriptKey === 'WinnerGroup'

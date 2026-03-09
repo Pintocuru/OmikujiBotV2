@@ -159,7 +159,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flightSeatLayoutMap, SettingsFlightSeatSchema, StatKeyNum } from '@/types/'
+  import { flightSeatLayoutMap, SettingsFlightSchema, StatKeyNum } from '@/types/'
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -169,7 +169,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSeatSchema.parse({}))
+  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
   const rulesComment = computed(() => data.value.comments)
 
   const { isAdv, isPro } = useSettingMode()
@@ -183,7 +183,7 @@
   }
 
   const resetField = (field: keyof typeof flightSeat.value) => {
-    const defaults = SettingsFlightSeatSchema.parse({})
+    const defaults = SettingsFlightSchema.parse({})
     updateField(field, defaults[field])
   }
 

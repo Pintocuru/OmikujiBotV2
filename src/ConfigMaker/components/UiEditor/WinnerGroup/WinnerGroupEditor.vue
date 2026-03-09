@@ -89,7 +89,7 @@
 <script setup lang="ts">
   import { computed, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsWinnerGroupSchema, useFontFamily, winnerComponentMap } from '@/types/'
+  import { SettingsWinnerSchema, useFontFamily, winnerComponentMap } from '@/types/'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -107,9 +107,7 @@
   const rulesComment = computed(() => data.value.comments)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
-  const winnerSetting = computed(
-    () => data.value.components.settings.winnerGroup ?? SettingsWinnerGroupSchema.parse({})
-  )
+  const winnerSetting = computed(() => data.value.components.settings.winnerGroup ?? SettingsWinnerSchema.parse({}))
   const queryCount = computed(() => {
     const parsed = parseQueryString(winnerSetting.value.queryString)
     const count = Number(parsed?.count)
@@ -126,7 +124,7 @@
   }
 
   const resetField = (field: keyof typeof winnerSetting.value) => {
-    const defaults = SettingsWinnerGroupSchema.parse({})
+    const defaults = SettingsWinnerSchema.parse({})
     updateField(field, defaults[field])
   }
 

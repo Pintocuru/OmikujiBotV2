@@ -2,7 +2,7 @@
 import { computed, ref, onMounted, onUnmounted, watch } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { useDelayedBlink } from '../parts/useDelayedBlink'
-import { SettingsFlashBannerSchema } from '@/types/OmikujiData/'
+import { SettingsBannerSchema } from '@/types/OmikujiData/'
 import { usePlaceholderResolver } from '@main/ui/common/usePlaceholderResolver'
 
 const DEFAULT_MESSAGE_REFRESH_INTERVAL = 30000
@@ -12,7 +12,7 @@ export function useFlashBannerLogic() {
   const { resolveComment } = usePlaceholderResolver()
 
   const settings = computed(() =>
-    SettingsFlashBannerSchema.parse(
+    SettingsBannerSchema.parse(
       appStore.data.components?.settings?.flashBanner ?? {
         label: '速報',
         defaultCharacterKey: null,

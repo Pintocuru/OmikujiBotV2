@@ -89,7 +89,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsLiverCounterSchema, liverComponentMap, liverDefaultMap } from '@/types/'
+  import { SettingsLiverSchema, liverComponentMap, liverDefaultMap } from '@/types/'
   import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
   import LiverCounterPreview from './LiverCounterPreview.vue'
   import ColorCycleEditor from './ColorCycleEditor.vue'
@@ -102,9 +102,7 @@
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro } = useSettingMode()
 
-  const liverCounter = computed(
-    () => data.value.components.settings.liverCounter ?? SettingsLiverCounterSchema.parse({})
-  )
+  const liverCounter = computed(() => data.value.components.settings.liverCounter ?? SettingsLiverSchema.parse({}))
 
   // ---- Field Update ----
   const updateField = (field: keyof SettingsLiverCounterType, value: unknown) => {
@@ -115,7 +113,7 @@
   }
 
   const resetField = (field: keyof SettingsLiverCounterType) => {
-    const defaults = SettingsLiverCounterSchema.parse({})
+    const defaults = SettingsLiverSchema.parse({})
     updateField(field, defaults[field])
   }
 

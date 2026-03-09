@@ -86,6 +86,13 @@ export const uiKindMap = {
     icon: 'Plane',
     description: '座席風レイアウトでコメントしたユーザーを一覧表示します。',
   },
+  socialRoster: {
+    primarySlot: 'extra',
+    slots: ['extra'],
+    label: 'ソーシャルユーザーリスト',
+    icon: 'Users',
+    description: 'コメントしたユーザーをソーシャルゲーム風のグリッドで一覧表示します',
+  },
 } as const
 
 // specialSet
