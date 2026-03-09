@@ -1,4 +1,4 @@
-//
+// src/common/MockUser/MockUserKrMaps.ts
 
 /**
  * 韓国語配信者っぽい名前（名）

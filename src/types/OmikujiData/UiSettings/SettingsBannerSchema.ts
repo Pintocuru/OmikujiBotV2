@@ -1,4 +1,4 @@
-//
+// src/types/OmikujiData/UiSettings/SettingsBannerSchema.ts
 import { z } from 'zod'
 
 /**

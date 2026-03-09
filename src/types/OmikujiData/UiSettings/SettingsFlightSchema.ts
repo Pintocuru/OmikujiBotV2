@@ -1,4 +1,4 @@
-//
+// src/types/OmikujiData/UiSettings/SettingsFlightSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 

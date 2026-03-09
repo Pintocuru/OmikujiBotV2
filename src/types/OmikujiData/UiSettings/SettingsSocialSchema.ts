@@ -1,4 +1,4 @@
-//
+// src/types/OmikujiData/UiSettings/SettingsSocialSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { statKeyNum } from './SettingsFlightSchema'

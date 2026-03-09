@@ -1,4 +1,4 @@
-//
+// src/types/OmikujiData/UiSettings/SettingsBubbleSchema.ts
 import { z } from 'zod'
 import { enterMotionKeys } from '@main/scripts/MotionVariants/MotionVariants'
 import { normalizedObject } from '../ParsedDefault'

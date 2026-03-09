@@ -1,4 +1,4 @@
-//
+// src/types/OmikujiData/UiSettings/SettingsRankingSchema.ts
 import { z } from 'zod'
 import { ScriptGameExtendedKeySchema } from '../ActionSet'
 import { themes } from '@shared/styles/DaisyUiTheme'

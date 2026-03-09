@@ -1,4 +1,4 @@
-//
+// src/common/MockUser/MockUserThMaps.ts
 
 /**
  * タイ語配信者っぽい名前（名）

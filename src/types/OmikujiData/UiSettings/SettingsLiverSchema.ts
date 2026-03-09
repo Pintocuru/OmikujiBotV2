@@ -1,4 +1,4 @@
-//
+// src/types/OmikujiData/UiSettings/SettingsLiverSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'

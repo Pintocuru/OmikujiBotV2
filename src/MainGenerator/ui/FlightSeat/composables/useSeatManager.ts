@@ -1,3 +1,4 @@
+// src/MainGenerator/ui/FlightSeat/composables/useSeatManager.ts
 import { ref, computed, type Ref } from 'vue'
 import { UserNameType } from '@shared/types'
 import { UserStatsRecord } from '@/types'
