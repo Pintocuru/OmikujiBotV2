@@ -5,7 +5,7 @@
       <div class="origin-top" :style="{ transform: `scale(${scale})` }">
         <SeatGrid
           :isPreview="true"
-          :seats="previewSeats"
+          :seats="seats"
           :layout="flightSeat.layout"
           :rows="flightSeat.rows"
           :cols="flightSeat.cols"
@@ -18,21 +18,23 @@
     <div class="absolute bottom-1 right-1 space-x-1">
       <div class="badge badge-sm badge-primary">現在の座席: {{ totalSeats }}</div>
       <button class="btn btn-xs btn-primary" @click="addPreviewUser">👤 乗車</button>
-      <button class="btn btn-xs btn-warning" @click="resetPreviewSeats">🔄 リセット</button>
+      <button class="btn btn-xs btn-warning" @click="resetSeats">🔄 リセット</button>
     </div>
   </HudPreview>
 </template>
 
 <script setup lang="ts">
-  import { ref, computed, watch } from 'vue'
+  import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsFlightSchema, useFontFamily, UserStatsRecord } from '@/types/'
+  import { SettingsFlightSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatGrid from '@main/ui/FlightSeat/parts/SeatGrid.vue'
   import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
   import { layoutStringToArray } from './CustomLayoutPresets'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
+  import { useSeatManager } from '@/MainGenerator/ui/FlightSeat/composables/useSeatManager'
+  import { UserNameSchema } from '@shared/types'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -48,7 +50,6 @@
   const scale = computed(() => {
     const layout = flightSeat.value.layout
 
-    // 実際の行数を求める
     let effectiveRows = 1
 
     if (layout === 'square') {
@@ -56,11 +57,9 @@
     } else if (layout === 'custom') {
       effectiveRows = parsedCustomLayout.value?.length ?? 1
     } else if (layout === 'circle') {
-      // circle は 1 行扱い（円形なので）
       effectiveRows = 1
     }
 
-    // 行数に応じて scale を決定
     if (effectiveRows <= 3) return 0.8
     if (effectiveRows <= 4) return 0.6
     if (effectiveRows <= 5) return 0.5
@@ -74,38 +73,32 @@
     return calculateTotalSeats(layout, rows, cols, parsedCustomLayout.value, circleSeats)
   })
 
-  const previewSeats = ref<(UserStatsRecord | null)[]>([])
-  const previewUserCounter = ref(0)
+  // ダミーユーザーをプレビュー用のキャッシュとして保持する
+  const dummyUserCache = new Map<string, ReturnType<typeof generateDummyUserStats>[0]>()
 
-  function resetPreviewSeats() {
-    previewSeats.value = Array(totalSeats.value).fill(null)
-    previewUserCounter.value = 0
+  // プレビュー用リゾルバー: キャッシュになければダミーを生成して返す
+  function resolveDummyUser(userId: string) {
+    if (!dummyUserCache.has(userId)) {
+      const dummy = generateDummyUserStats(1)[0]
+      // userIdを上書きして一貫性を保つ
+      dummyUserCache.set(userId, { ...dummy, userId })
+    }
+    return dummyUserCache.get(userId)
   }
+
+  const { seats, registerUser, resetSeats: resetSeatManager } = useSeatManager(totalSeats, resolveDummyUser)
+
+  let previewUserCounter = 0
 
   function addPreviewUser() {
-    const emptyIndexes = previewSeats.value.map((s, i) => (s === null ? i : -1)).filter((i) => i !== -1)
-
-    if (emptyIndexes.length === 0) {
-      const occupiedIndexes = previewSeats.value.map((s, i) => (s !== null ? i : -1)).filter((i) => i !== -1)
-      const targetIndex = occupiedIndexes[Math.floor(Math.random() * occupiedIndexes.length)]
-      previewSeats.value[targetIndex] = makePreviewUser()
-      return
-    }
-
-    const targetIndex = emptyIndexes[Math.floor(Math.random() * emptyIndexes.length)]
-    previewSeats.value[targetIndex] = makePreviewUser()
+    previewUserCounter++
+    const userId = `preview-user-${previewUserCounter}`
+    registerUser(UserNameSchema.parse({ userId, userName: `ユーザー${previewUserCounter}` }))
   }
 
-  function makePreviewUser(): UserStatsRecord {
-    previewUserCounter.value++
-    return generateDummyUserStats(1)[0]
+  function resetSeats() {
+    dummyUserCache.clear()
+    previewUserCounter = 0
+    resetSeatManager()
   }
-
-  watch(
-    totalSeats,
-    () => {
-      resetPreviewSeats()
-    },
-    { immediate: true }
-  )
 </script>

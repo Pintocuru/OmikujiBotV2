@@ -21,6 +21,8 @@
 
       <!-- test -->
       <LiverCounter v-if="isDev && 0" />
+
+      <AirComment v-if="isDev && 1" />
     </div>
 
     <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -39,6 +41,7 @@
   import LiverCounter from '@main/ui/LiverCounter/LiverCounter.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
+  import AirComment from '@/common/AirComment/AirComment.vue'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))

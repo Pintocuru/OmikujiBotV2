@@ -2,11 +2,14 @@
 import { ref, computed, type Ref } from 'vue'
 import { UserNameType } from '@shared/types'
 import { UserStatsRecord } from '@/types'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
-export function useSeatManager(totalSeats: Ref<number>) {
-  const appStore = useAppStore()
+/**
+ * ユーザーIDからUserStatsRecordを解決する関数の型。
+ * ジェネレーターではappStoreから、プレビューではダミー生成関数を渡す。
+ */
+export type UserStatsResolver = (userId: string) => UserStatsRecord | null | undefined
 
+export function useSeatManager(totalSeats: Ref<number>, resolveUser: UserStatsResolver) {
   const seats = ref<(UserStatsRecord | null)[]>([])
   const debugLog = ref<string[]>([])
   const activeUserIds = ref<Map<string, number>>(new Map()) // userId -> seatIndex
@@ -27,6 +30,12 @@ export function useSeatManager(totalSeats: Ref<number>) {
     }
   }
 
+  function resetSeats() {
+    seats.value = new Array(totalSeats.value).fill(null)
+    activeUserIds.value.clear()
+    addDebugLog(`座席をリセットしました (${totalSeats.value}席)`)
+  }
+
   function findRandomEmptyIndex(): number {
     const emptyIndexes = seats.value.map((s, i) => (s === null ? i : -1)).filter((i) => i !== -1)
     if (emptyIndexes.length === 0) return -1
@@ -34,7 +43,7 @@ export function useSeatManager(totalSeats: Ref<number>) {
   }
 
   function assignToSeat(user: UserNameType, seatIndex: number): void {
-    const userData = appStore.userSession.stats.get(user.userId)
+    const userData = resolveUser(user.userId)
     if (!userData) return
     seats.value[seatIndex] = userData
     activeUserIds.value.set(user.userId, seatIndex)
@@ -69,7 +78,7 @@ export function useSeatManager(totalSeats: Ref<number>) {
     // 既に着席中なら同じ席のデータを更新
     if (activeUserIds.value.has(user.userId)) {
       const seatIndex = activeUserIds.value.get(user.userId)!
-      const userData = appStore.userSession.stats.get(user.userId)
+      const userData = resolveUser(user.userId)
       if (!userData) return false
       seats.value[seatIndex] = userData
       addDebugLog(`${user.userName} の座席 ${seatIndex + 1} データを更新`)
@@ -83,7 +92,7 @@ export function useSeatManager(totalSeats: Ref<number>) {
       return true
     }
 
-    // 満席の場合は常にランダム置き換え
+    // 満席の場合は最古ユーザーを置き換え
     return handleFullSeats(user)
   }
 
@@ -92,5 +101,6 @@ export function useSeatManager(totalSeats: Ref<number>) {
     occupiedSeats,
     debugLog,
     registerUser,
+    resetSeats,
   }
 }

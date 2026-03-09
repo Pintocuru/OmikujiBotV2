@@ -55,6 +55,15 @@
 
   const { isComment } = useVisibilityAccess()
 
+  const parsedCustomLayout = computed(() => {
+    if (!settings.value.customLayout) return []
+    try {
+      return JSON.parse(settings.value.customLayout) as number[]
+    } catch {
+      return []
+    }
+  })
+
   const totalSeats = computed(() =>
     calculateTotalSeats(
       settings.value.layout,
@@ -65,21 +74,14 @@
     )
   )
 
-  const { seats, occupiedSeats, debugLog, registerUser } = useSeatManager(totalSeats)
-
-  const parsedCustomLayout = computed(() => {
-    if (!settings.value.customLayout) return []
-    try {
-      return JSON.parse(settings.value.customLayout) as number[]
-    } catch {
-      return []
-    }
-  })
+  // ストアからユーザーデータを解決するリゾルバーを渡す
+  const { seats, occupiedSeats, debugLog, registerUser } = useSeatManager(totalSeats, (userId) =>
+    appStore.userSession.stats.get(userId)
+  )
 
   let unsubscribe: (() => void) | null = null
 
   onMounted(() => {
-    // targetEventKey が空なら全体統計、あれば特定イベントのvisitを購読
     if (isComment.value && settings.value.targetEventKey) {
       unsubscribe = appStore.userSession.visits.onVisit(settings.value.targetEventKey, registerUser)
     } else {

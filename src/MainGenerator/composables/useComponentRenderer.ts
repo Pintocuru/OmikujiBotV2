@@ -43,10 +43,10 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
     component: WinnerGroup,
   },
   flightSeat: {
-    component: SocialRoster,
+    component: FlightSeat,
   },
   socialRoster: {
-    component: FlightSeat,
+    component: SocialRoster,
   },
   flashBanner: {
     component: FlashBanner,
