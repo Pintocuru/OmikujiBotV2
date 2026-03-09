@@ -1,6 +1,7 @@
 //
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
+import { statKeyNum } from './SettingsFlightSchema'
 
 /**
  * socialRoster ソーシャルゲーム風ユーザーリスト の表示名マップ
@@ -13,8 +14,8 @@ export const socialComponentMap = {
  * ソーシャルゲーム風ユーザーリスト socialRoster
  */
 export type SocialComponent = keyof typeof socialComponentMap
-export const sortKeyOptions = ['tc', 'no', 'isSyoken', 'lastVisit', 'giftPrice'] as const
-export type SortKey = (typeof sortKeyOptions)[number]
+export const socialSortKeys = ['tc', 'no', 'isSyoken', 'lastVisit', 'giftPrice'] as const
+export type SocialSortKey = (typeof socialSortKeys)[number]
 
 export const SettingsSocialSchema = z.object({
   component: z
@@ -32,10 +33,10 @@ export const SettingsSocialSchema = z.object({
   color: z.enum(themes).default('lofi').catch('lofi'),
 
   // セルに表示する値
-  statKey: z.enum(sortKeyOptions).nullable().default(null).catch(null),
+  statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
 
   // ソート基準・順序
-  sortKey: z.enum(sortKeyOptions).default('lastVisit').catch('lastVisit'),
+  sortKey: z.enum(socialSortKeys).default('lastVisit').catch('lastVisit'),
   sortOrder: z.enum(['desc', 'asc']).default('desc').catch('desc'),
 })
 export type SettingsSocialRosterType = z.infer<typeof SettingsSocialSchema>

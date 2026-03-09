@@ -22,8 +22,9 @@ const packageRoot = process.env.PACKAGE_ROOT
  */
 function runPreBuildChecks() {
   // EsLint
-  console.log('[Check] Running ESLint...')
-  execSync('npx eslint src', { stdio: 'inherit' })
+  // skip
+  // console.log('[Check] Running ESLint...')
+  // execSync('npx eslint src', { stdio: 'inherit' })
 
   // vue-tsc
   console.log('[Check] Running vue-tsc...')

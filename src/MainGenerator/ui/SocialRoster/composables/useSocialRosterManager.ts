@@ -3,10 +3,10 @@ import { ref, computed, type Ref } from 'vue'
 import { UserNameType } from '@shared/types'
 import { UserStatsRecord } from '@/types'
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
-import { SortKey } from '@/types'
+import { SocialSortKey } from '@/types'
 
 interface SocialRosterManagerOptions {
-  sortKey: Ref<SortKey>
+  sortKey: Ref<SocialSortKey>
   sortOrder: Ref<'desc' | 'asc'>
 }
 
@@ -27,7 +27,7 @@ export function useSocialRosterManager(options: SocialRosterManagerOptions) {
     })
   })
 
-  function getSortValue(user: UserStatsRecord, key: SortKey): number {
+  function getSortValue(user: UserStatsRecord, key: SocialSortKey): number {
     if (key === 'isSyoken') return user.isSyoken ? 1 : 0
     return user[key] ?? 0
   }

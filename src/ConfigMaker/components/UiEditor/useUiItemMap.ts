@@ -16,6 +16,7 @@ import CounterPreviewEditor from '@/ConfigMaker/components/UiEditor/CounterPrevi
 import LiverCounterEditor from '@/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterEditor.vue'
 import WinnerGroupEditor from '@/ConfigMaker/components/UiEditor/WinnerGroup/WinnerGroupEditor.vue'
 import FlightSeatEditor from '@/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatEditor.vue'
+import SocialRosterEditor from '@/ConfigMaker/components/UiEditor/SocialRoster/SocialRosterEditor.vue'
 import FlashBannerEditor from '@/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerEditor.vue'
 import FontFamilyEditor from '@/ConfigMaker/components/UiEditor/CommonStyle/FontFamilyEditor.vue'
 import DefaultColorEditor from '@/ConfigMaker/components/UiEditor/CommonStyle/DefaultColorEditor.vue'
@@ -102,6 +103,13 @@ export const useUiItemMap = () => {
       description: '視聴者の座席配置表示',
       component: FlightSeatEditor,
       shouldShow: hasComponentKind('flightSeat'),
+    },
+    socialRoster: {
+      icon: 'Users',
+      title: 'ソーシャルユーザーリスト',
+      description: 'コメントしたユーザーをソーシャルゲーム風のグリッドで一覧表示します',
+      component: SocialRosterEditor,
+      shouldShow: hasComponentKind('socialRoster'),
     },
     defaultColor: {
       icon: 'Palette',
