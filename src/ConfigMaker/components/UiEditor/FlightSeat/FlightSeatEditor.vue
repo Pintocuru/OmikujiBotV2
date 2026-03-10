@@ -3,12 +3,7 @@
   <FlightSeatPreview />
 
   <!-- タイトル -->
-  <SettingItem
-    label="タイトル"
-    description="座席表のタイトルを設定します"
-    :showReset="true"
-    @reset="resetField('label')"
-  >
+  <SettingItem label="タイトル" description="座席表のタイトルを設定します">
     <input
       type="text"
       class="input input-bordered w-full"
@@ -18,7 +13,7 @@
   </SettingItem>
 
   <!-- コンポーネント種別 -->
-  <SettingItem label="レイアウト種別" description="座席の見た目を選択します">
+  <SettingItem v-if="isPro" label="レイアウト種別" description="座席の見た目を選択します" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
         v-for="(label, key) in flightComponentMap"
@@ -133,7 +128,7 @@
   const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
   const rulesComment = computed(() => data.value.comments)
 
-  const { isAdv } = useSettingMode()
+  const { isAdv, isPro } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
   /** defaultが string = カスタム可能 */

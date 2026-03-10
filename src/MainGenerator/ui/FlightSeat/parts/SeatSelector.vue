@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/FlightSeat/parts/SeatSelector.vue -->
 <template>
   <div class="flex justify-center">
-    <div class="card bg-base-200 p-4 space-y-2" :data-theme="color">
+    <div class="card bg-base-200 p-4 rounded-xl shadow-xl space-y-2" :data-theme="color">
       <h2 v-if="label" class="text-xl font-bold text-center">
         {{ label }}
       </h2>
@@ -29,20 +29,15 @@
     statKey: StatKeyNum | null
   }>()
 
+  const COMPONENT_MAP = {
+    nineViewers: SeatLayoutNineViewers,
+    bingo: SeatLayoutBingo,
+    flightSeat: SeatLayoutFlightSeat,
+    graduation: SeatLayoutGraduation,
+    ferrisWheel: SeatLayoutFerrisWheel,
+  } as const
+
   const layoutComponent = computed(() => {
-    switch (props.kind) {
-      case 'nineViewers':
-        return SeatLayoutNineViewers
-      case 'bingo':
-        return SeatLayoutBingo
-      case 'flightSeat':
-        return SeatLayoutFlightSeat
-      case 'graduation':
-        return SeatLayoutGraduation
-      case 'ferrisWheel':
-        return SeatLayoutFerrisWheel
-      default:
-        return SeatLayoutNineViewers
-    }
+    return COMPONENT_MAP[props.kind] ?? SeatLayoutNineViewers
   })
 </script>

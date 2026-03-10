@@ -34,9 +34,6 @@
         />
       </template>
     </div>
-
-    <!-- フッター装飾 -->
-    <div class="flex gap-1 text-xs text-base-content/40 font-mono tracking-widest">★ BINGO ★</div>
   </div>
 </template>
 
