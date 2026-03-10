@@ -1,16 +1,14 @@
 <!-- src/MainGenerator/ui/FlightSeat/parts/layouts/SeatLayoutFerrisWheel.vue -->
 <template>
   <div class="flex flex-col items-center gap-0">
-    <!-- 観覧車本体 -->
     <div class="relative" :style="{ width: diameter + 'px', height: diameter + 'px' }">
-      <!-- スポーク（SVG で描画、外輪と同期して回転） -->
+      <!-- スポーク SVG -->
       <svg
         class="absolute inset-0 pointer-events-none"
         :width="diameter"
         :height="diameter"
         :viewBox="`0 0 ${diameter} ${diameter}`"
       >
-        <!-- 外輪リム -->
         <circle
           :cx="radius"
           :cy="radius"
@@ -20,10 +18,9 @@
           stroke-width="3"
           class="text-base-content/20"
         />
-        <!-- スポーク -->
-        <g :class="'ferris-rotate-svg'" :style="{ transformOrigin: `${radius}px ${radius}px` }">
+        <g class="ferris-rotate-svg" :style="{ transformOrigin: `${radius}px ${radius}px` }">
           <line
-            v-for="i in circleSeats"
+            v-for="i in seatsCount"
             :key="i"
             :x1="radius"
             :y1="radius"
@@ -34,52 +31,54 @@
             class="text-base-content/15"
           />
         </g>
-        <!-- 中央ハブ -->
         <circle :cx="radius" :cy="radius" r="12" class="fill-base-content/30" />
         <circle :cx="radius" :cy="radius" r="5" class="fill-base-content/60" />
       </svg>
 
-      <!-- SeatGridCircle（rotating モード） -->
-      <SeatGridCircle :seats="seats" :circleSeats="circleSeats" :statKey="statKey" :rotating="true" />
-    </div>
+      <!-- 円周の座席（回転） -->
+      <div class="absolute inset-0 ferris-rotate">
+        <div
+          v-for="(seat, i) in circleSeats"
+          :key="seat ? seat.lastVisit : `rim-${i}`"
+          class="absolute ferris-counter-rotate"
+          :style="getSeatStyle(i)"
+        >
+          <SeatCell
+            :key="seat?.lastVisit ?? `empty-${i}`"
+            :seat="seat"
+            :index="i"
+            :statKey="statKey"
+            :colorFrom="i % 2 === 0 ? 'warning' : 'info'"
+          />
+        </div>
+      </div>
 
-    <!-- 支柱 -->
-    <div class="flex items-end justify-center gap-0" :style="{ width: diameter + 'px' }">
-      <!-- 左脚 -->
+      <!-- 中央：大きなSeatCell -->
       <div
-        class="bg-base-content/30 rounded-sm"
+        class="absolute"
         :style="{
-          width: '6px',
-          height: '60px',
-          transform: 'rotate(15deg)',
-          transformOrigin: 'bottom center',
-          marginRight: '-3px',
+          left: radius - centerSize / 2 + 'px',
+          top: radius - centerSize / 2 + 'px',
         }"
-      />
-      <!-- 台座 -->
-      <div class="bg-base-content/40 rounded-sm" style="width: 40px; height: 10px; margin-bottom: 0" />
-      <!-- 右脚 -->
-      <div
-        class="bg-base-content/30 rounded-sm"
-        :style="{
-          width: '6px',
-          height: '60px',
-          transform: 'rotate(-15deg)',
-          transformOrigin: 'bottom center',
-          marginLeft: '-3px',
-        }"
-      />
+      >
+        <SeatCell
+          :key="centerSeat?.lastVisit ?? 'center'"
+          :seat="centerSeat"
+          :index="seatsCount"
+          :statKey="statKey"
+          :size="centerSize"
+          colorFrom="warning"
+          colorTo="info"
+        />
+      </div>
     </div>
-
-    <!-- 地面ライン -->
-    <div class="w-full border-t-2 border-base-content/20 mt-1" :style="{ maxWidth: diameter + 'px' }" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
-  import SeatGridCircle from './SeatGridCircle.vue'
+  import SeatCell from './SeatCell.vue'
 
   const props = defineProps<{
     seats: (UserStatsRecord | null)[]
@@ -87,20 +86,31 @@
     circleSeats?: number
   }>()
 
-  const circleSeats = computed(() => props.circleSeats ?? 12)
+  const seatsCount = computed(() => props.circleSeats ?? 12)
   const diameter = 400
   const radius = diameter / 2
   const seatSize = 80
+  const centerSize = 120
 
-  // スポークの先端座標（座席の中心に向かって伸ばす）
+  // 円周の座席リスト（seatsCount分）
+  const circleSeats = computed(() => Array.from({ length: seatsCount.value }, (_, i) => props.seats[i] ?? null))
+
+  // 中央に表示するユーザー（円周の次）
+  const centerSeat = computed(() => props.seats[seatsCount.value] ?? null)
+
+  const getSeatStyle = (index: number) => {
+    const angle = (index * 360) / seatsCount.value - 90
+    const rad = (angle * Math.PI) / 180
+    const x = radius + radius * Math.cos(rad) - seatSize / 2
+    const y = radius + radius * Math.sin(rad) - seatSize / 2
+    return { left: x + 'px', top: y + 'px', width: seatSize + 'px' }
+  }
+
   const spokeEnd = (i: number) => {
-    const angle = ((i - 1) * 360) / circleSeats.value - 90
+    const angle = ((i - 1) * 360) / seatsCount.value - 90
     const rad = (angle * Math.PI) / 180
     const r = radius - seatSize / 2
-    return {
-      x: radius + r * Math.cos(rad),
-      y: radius + r * Math.sin(rad),
-    }
+    return { x: radius + r * Math.cos(rad), y: radius + r * Math.sin(rad) }
   }
 </script>
 
@@ -112,6 +122,22 @@
     to {
       transform: rotate(360deg);
     }
+  }
+  @keyframes ferris-spin-reverse {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+  .ferris-rotate {
+    animation: ferris-spin 20s linear infinite;
+    transform-origin: center center;
+  }
+  .ferris-counter-rotate {
+    animation: ferris-spin-reverse 20s linear infinite;
+    transform-origin: center center;
   }
   .ferris-rotate-svg {
     animation: ferris-spin 20s linear infinite;

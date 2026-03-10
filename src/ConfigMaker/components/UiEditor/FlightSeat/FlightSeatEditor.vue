@@ -1,6 +1,5 @@
 <!-- src/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatEditor.vue -->
 <template>
-  <!-- プレビュー -->
   <FlightSeatPreview />
 
   <!-- タイトル -->
@@ -25,12 +24,30 @@
         v-for="(label, key) in flightComponentMap"
         :key="key"
         class="badge badge-lg cursor-pointer"
-        :class="component.kind === key ? 'badge-primary' : 'badge-outline'"
-        @click="selectKind(key)"
+        :class="flightSeat.component === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('component', key)"
       >
         {{ label }}
       </div>
     </div>
+  </SettingItem>
+
+  <!-- カスタムレイアウト（defaultが string のときのみ表示） -->
+  <SettingItem
+    v-if="isCustomizable"
+    label="カスタムレイアウト"
+    description="各行の座席数をJSON配列で指定します（例: [12, 13, 12]）"
+    :showReset="true"
+    @reset="resetField('customLayout')"
+  >
+    <textarea
+      class="textarea textarea-bordered w-full font-mono text-sm"
+      rows="2"
+      :value="flightSeat.customLayout ?? (flightComponentDefaults[flightSeat.component] as string)"
+      :class="isValidLayout ? '' : 'textarea-error'"
+      @input="(e) => updateField('customLayout', (e.target as HTMLTextAreaElement).value)"
+    />
+    <div v-if="!isValidLayout" class="text-error text-xs mt-1">JSONの形式が正しくありません</div>
   </SettingItem>
 
   <!-- 右下のステータス -->
@@ -62,9 +79,7 @@
       :value="flightSeat.color"
       @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
     >
-      <option v-for="theme in themes" :key="theme" :value="theme">
-        {{ theme }}
-      </option>
+      <option v-for="theme in themes" :key="theme" :value="theme">{{ theme }}</option>
     </select>
   </SettingItem>
 
@@ -102,8 +117,6 @@
   import { storeToRefs } from 'pinia'
   import {
     flightComponentMap,
-    FlightComponentKind,
-    FlightSeatComponentSchema,
     flightComponentDefaults,
     SettingsFlightSchema,
     SettingsFlightSeatType,
@@ -118,13 +131,26 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
-  const component = computed(() => flightSeat.value.component)
   const rulesComment = computed(() => data.value.comments)
 
   const { isAdv } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
-  /** トップレベルフィールドの更新 */
+  /** defaultが string = カスタム可能 */
+  const isCustomizable = computed(() => typeof flightComponentDefaults[flightSeat.value.component] === 'string')
+
+  /** customLayout のバリデーション */
+  const isValidLayout = computed(() => {
+    const val = flightSeat.value.customLayout
+    if (!val) return true
+    try {
+      const parsed = JSON.parse(val)
+      return Array.isArray(parsed) && parsed.every((n) => typeof n === 'number')
+    } catch {
+      return false
+    }
+  })
+
   const updateField = (field: keyof SettingsFlightSeatType, value: any) => {
     omikujiStore.updateComponentSettings('flightSeat', {
       ...flightSeat.value,
@@ -134,16 +160,6 @@
 
   const resetField = (field: keyof SettingsFlightSeatType) => {
     updateField(field, SettingsFlightSchema.parse({})[field])
-  }
-
-  /** kind 変更時: kind に応じたデフォルト値を component にマージして適用 */
-  const selectKind = (kind: FlightComponentKind) => {
-    const base = FlightSeatComponentSchema.parse({})
-    const defaults = flightComponentDefaults[kind]
-    omikujiStore.updateComponentSettings('flightSeat', {
-      ...flightSeat.value,
-      component: { ...base, ...defaults, kind },
-    })
   }
 
   const statKeyLabelMap: Record<StatKeyNum, string> = {

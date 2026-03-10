@@ -1,46 +1,34 @@
 // src/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils.ts
-import { SeatLayout } from '@/types'
 
 /**
- * 総座席数を計算
+ * flightComponentDefaults の値から総座席数を計算
+ * - number: そのまま返す
+ * - string: JSON配列をパースして合計する
  */
-export function calculateTotalSeats(
-  layout: SeatLayout,
-  rows: number,
-  cols: number,
-  customLayout?: number[],
-  circleSeats?: number
-): number {
-  switch (layout) {
-    case 'square':
-      return rows * cols
-
-    case 'circle':
-      return circleSeats ?? 12
-
-    case 'custom':
-      return customLayout ? customLayout.reduce((sum, n) => sum + n, 0) : 0
-
-    default:
-      return 0
+export function calculateTotalSeats(defaultValue: number | string, customLayout?: string): number {
+  // customLayout が指定されていれば優先してパース
+  const target = customLayout ?? defaultValue
+  if (typeof defaultValue === 'number') return defaultValue
+  if (typeof target === 'number') return target
+  try {
+    const parsed = JSON.parse(target) as number[]
+    return parsed.reduce((sum, n) => sum + n, 0)
+  } catch {
+    return 0
   }
 }
 
 /**
- * 各行の座席数配列を計算
+ * string型（カスタムレイアウト）の場合に行配列を返す
  */
-export function calculateSeatLayout(layout: SeatLayout, rows: number, cols: number, customLayout?: number[]): number[] {
-  switch (layout) {
-    case 'square':
-      return Array(rows).fill(cols)
-
-    case 'custom':
-      return customLayout ?? [1, 2, 3, 4, 5]
-
-    case 'circle':
-      return [] // circleは配列不要
-
-    default:
+export function parseCustomLayout(defaultValue: number | string, customLayout?: string): number[] {
+  const target = customLayout ?? defaultValue
+  if (typeof target === 'string') {
+    try {
+      return JSON.parse(target) as number[]
+    } catch {
       return []
+    }
   }
+  return []
 }

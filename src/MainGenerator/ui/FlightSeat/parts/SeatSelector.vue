@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { StatKeyNum, UserStatsRecord, FlightSeatComponentConfig } from '@/types'
+  import { StatKeyNum, UserStatsRecord, FlightComponentKind } from '@/types'
   import SeatLayoutNineViewers from '../layouts/SeatNineViewers.vue'
   import SeatLayoutBingo from '../layouts/SeatBingo.vue'
   import SeatLayoutFlightSeat from '../layouts/SeatFlightSeat.vue'
@@ -24,12 +24,13 @@
     color: ThemeType
     label: string
     seats: (UserStatsRecord | null)[]
-    componentConfig: FlightSeatComponentConfig
+    kind: FlightComponentKind
+    customLayout?: number[]
     statKey: StatKeyNum | null
   }>()
 
   const layoutComponent = computed(() => {
-    switch (props.componentConfig.kind) {
+    switch (props.kind) {
       case 'nineViewers':
         return SeatLayoutNineViewers
       case 'bingo':

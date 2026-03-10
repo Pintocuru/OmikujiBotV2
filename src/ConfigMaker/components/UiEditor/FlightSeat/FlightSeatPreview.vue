@@ -2,12 +2,13 @@
 <template>
   <HudPreview>
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="flightSeat.color">
-      <div class="origin-top" :style="{ transform: `scale(${scale})` }">
+      <div class="origin-top" :style="{ transform: `scale(0.5)` }">
         <SeatSelector
           :color="flightSeat.color"
           :label="flightSeat.label"
           :seats="seats"
-          :componentConfig="flightSeat.component"
+          :kind="flightSeat.component"
+          :customLayout="parsedCustomLayout"
           :statKey="flightSeat.statKey"
         />
       </div>
@@ -26,7 +27,7 @@
   import { SettingsFlightSchema, flightComponentDefaults, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatSelector from '@main/ui/FlightSeat/parts/SeatSelector.vue'
-  import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
+  import { calculateTotalSeats, parseCustomLayout } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
   import { useSeatManager } from '@/MainGenerator/ui/FlightSeat/composables/useSeatManager'
@@ -35,42 +36,16 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
-
   const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
-  const component = computed(() => flightSeat.value.component)
 
-  // kind のデフォルト値をベースに、component の値で上書き
-  const resolvedConfig = computed(() => ({
-    ...flightComponentDefaults[component.value.kind],
-    ...component.value,
-  }))
+  // 現在選択中のkindに対応するdefault値
+  const defaultValue = computed(() => flightComponentDefaults[flightSeat.value.component])
 
-  const parsedCustomLayout = computed(() => {
-    if (resolvedConfig.value.layout !== 'custom') return undefined
-    try {
-      return JSON.parse(resolvedConfig.value.customLayout ?? '[1,2,3,4,5]') as number[]
-    } catch {
-      return undefined
-    }
-  })
+  // customLayoutはstringのdefaultを持つkindのときのみ意味を持つ
+  const parsedCustomLayout = computed(() => parseCustomLayout(defaultValue.value, flightSeat.value.customLayout))
 
-  const scale = computed(() => {
-    const { layout, rows } = resolvedConfig.value
-    const effectiveRows =
-      layout === 'square' ? (rows ?? 1) : layout === 'custom' ? (parsedCustomLayout.value?.length ?? 1) : 1 // circle
-
-    if (effectiveRows <= 3) return 0.8
-    if (effectiveRows <= 4) return 0.6
-    if (effectiveRows <= 5) return 0.5
-    if (effectiveRows <= 7) return 0.4
-    if (effectiveRows <= 9) return 0.3
-    return 0.2
-  })
-
-  const totalSeats = computed(() => {
-    const { layout, rows, cols, circleSeats } = resolvedConfig.value
-    return calculateTotalSeats(layout!, rows!, cols!, parsedCustomLayout.value, circleSeats)
-  })
+  // totalSeats: defaultValueがnumberならそのまま、stringならパースして合計
+  const totalSeats = computed(() => calculateTotalSeats(defaultValue.value, flightSeat.value.customLayout))
 
   const dummyUserCache = new Map<string, ReturnType<typeof generateDummyUserStats>[0]>()
 

@@ -30,13 +30,20 @@
       {{ seat[statKey] }}
     </div>
   </div>
-  <div v-else class="rounded-lg flex items-center justify-center transition-all duration-300" :class="getSeatClass">
-    <!-- 空席の場合（サイズは固定） -->
+
+  <!-- 空席の場合 -->
+  <div
+    v-else
+    class="rounded-lg flex items-center justify-center transition-all duration-300"
+    :class="seatColorClass"
+    :style="seatGradientStyle"
+  >
     <div
       class="relative flex items-center justify-center text-3xl font-bold"
       :style="{ width: cellSize + 'px', height: cellSize + 'px' }"
     >
-      {{ index + 1 }}
+      <!-- 表示番号: 呼び出し元から seatNumber を受け取る。未指定時は index + 1 -->
+      {{ seatNumber ?? index + 1 }}
     </div>
   </div>
 </template>
@@ -44,21 +51,55 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
     seat: UserStatsRecord | null
     index: number
     statKey: StatKeyNum | null
     size?: number
+    colorReverse?: boolean
+    colorFrom?: DaisyUIColorType // 空席セルのベースカラー
+    colorTo?: DaisyUIColorType // 指定するとグラデーションになる
+    /**
+     * 表示する座席番号。
+     * 省略時は index + 1 を使う（従来互換）。
+     * bingo の FREE スキップなど、index と表示番号がズレる場合に使う。
+     */
+    seatNumber?: number
   }>()
 
   const cellSize = computed(() => props.size ?? 80)
 
-  const getSeatClass = computed(() => {
-    if (props.seat) return `bg-success text-success-content border-success`
-    if (props.index % 2 === 0) return `bg-info text-info-content `
-    return `bg-warning text-warning-content`
+  // ---- カラー計算 -------------------------------------------------------
+
+  /** グラデーションなし（単色）のとき使う Tailwind クラス */
+  const seatColorClass = computed(() => {
+    if (props.colorTo) {
+      // グラデーション時はインラインスタイルで塗るのでクラスは不要
+      return 'text-base-content'
+    }
+    const c = props.colorFrom ?? 'info'
+    return props.colorReverse ? `bg-${c}-content text-${c}` : `bg-${c} text-${c}-content`
   })
+
+  /**
+   * グラデーション用インラインスタイル。
+   * colorTo がある場合のみ CSS カスタムプロパティを参照して linear-gradient を生成する。
+   *
+   * DaisyUI の色は CSS 変数 --color-{name} (oklch) で定義されている。
+   * 例: var(--color-primary) / var(--color-secondary)
+   */
+  const seatGradientStyle = computed(() => {
+    if (!props.colorTo) return {}
+    const from = props.colorFrom ?? 'info'
+    const to = props.colorTo
+    return {
+      background: `linear-gradient(135deg, oklch(var(--${from})), oklch(var(--${to})))`,
+    }
+  })
+
+  // ---- stat 表示 --------------------------------------------------------
 
   const statClassMap: Record<StatKeyNum, string> = {
     userName: 'text-xs',
@@ -70,7 +111,6 @@
 <style scoped>
   .seat-text-stroke {
     color: white;
-    /* 黒い縁取り */
     text-shadow:
       -1px -1px 0 #000,
       1px -1px 0 #000,
@@ -78,7 +118,6 @@
       1px 1px 0 #000;
   }
 
-  /* ボヨン */
   @keyframes seat-pop {
     0% {
       transform: scale(0.5);

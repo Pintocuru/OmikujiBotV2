@@ -11,7 +11,14 @@
       >
         <!-- 座席自体は常に正立（外輪の回転を打ち消す） -->
         <div :class="rotating ? 'ferris-counter-rotate' : ''">
-          <SeatCell :key="seat?.lastVisit" :seat="seat" :index="i" :statKey="statKey" />
+          <SeatCell
+            :key="seat?.lastVisit"
+            :seat="seat"
+            :index="i"
+            :statKey="statKey"
+            :colorFrom="colorFrom"
+            :colorTo="colorTo"
+          />
         </div>
       </div>
     </div>
@@ -25,12 +32,15 @@
   import { computed } from 'vue'
   import SeatCell from './SeatCell.vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
     seats: (UserStatsRecord | null)[]
     circleSeats: number
     statKey: StatKeyNum | null
     rotating?: boolean
+    colorFrom?: DaisyUIColorType
+    colorTo?: DaisyUIColorType
   }>()
 
   const diameter = 400

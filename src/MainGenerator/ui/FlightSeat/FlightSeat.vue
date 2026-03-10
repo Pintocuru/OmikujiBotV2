@@ -5,10 +5,10 @@
       :color="settings.color"
       :label="settings.label"
       :seats="seats"
-      :componentConfig="settings.component"
+      :kind="settings.component"
+      :customLayout="parsedCustomLayout"
       :statKey="settings.statKey"
     />
-
     <FlightSeatDebug :occupiedSeats="occupiedSeats" :totalSeats="totalSeats" :debugLog="debugLog" />
   </div>
 </template>
@@ -20,40 +20,22 @@
   import SeatSelector from './parts/SeatSelector.vue'
   import FlightSeatDebug from './FlightSeatDebug.vue'
   import { useSeatManager } from './composables/useSeatManager'
-  import { calculateTotalSeats } from './composables/seatLayoutUtils'
+  import { calculateTotalSeats, parseCustomLayout } from './composables/seatLayoutUtils'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
   const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
-  const component = computed(() => settings.value.component)
 
   const { isComment } = useVisibilityAccess()
 
-  const resolvedConfig = computed(() => ({
-    ...flightComponentDefaults[component.value.kind],
-    ...component.value,
-  }))
+  // defaults が唯一の座席数の定義元、customLayout があれば上書き
+  const defaultValue = computed(() => flightComponentDefaults[settings.value.component])
+  const totalSeats = computed(() => calculateTotalSeats(defaultValue.value, settings.value.customLayout))
 
-  const parsedCustomLayout = computed(() => {
-    if (!resolvedConfig.value.customLayout) return []
-    try {
-      return JSON.parse(resolvedConfig.value.customLayout) as number[]
-    } catch {
-      return []
-    }
-  })
-
-  const totalSeats = computed(() =>
-    calculateTotalSeats(
-      resolvedConfig.value.layout!,
-      resolvedConfig.value.rows!,
-      resolvedConfig.value.cols!,
-      parsedCustomLayout.value,
-      resolvedConfig.value.circleSeats
-    )
-  )
+  // string型のdefaultまたはcustomLayoutを行配列に変換してSeatSelectorへ渡す
+  const parsedCustomLayout = computed(() => parseCustomLayout(defaultValue.value, settings.value.customLayout))
 
   const { seats, occupiedSeats, debugLog, registerUser } = useSeatManager(totalSeats, (userId) =>
     appStore.userSession.stats.get(userId)
