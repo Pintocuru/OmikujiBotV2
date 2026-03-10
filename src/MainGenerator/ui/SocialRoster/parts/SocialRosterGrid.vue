@@ -8,7 +8,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
-  import SeatCell from '@/MainGenerator/ui/FlightSeat/parts/SeatCell.vue'
+  import SeatCell from '@/MainGenerator/ui/FlightSeat/layouts/SeatCell.vue'
 
   const props = defineProps<{
     users: UserStatsRecord[]

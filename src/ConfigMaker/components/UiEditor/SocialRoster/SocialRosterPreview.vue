@@ -26,7 +26,7 @@
   import { storeToRefs } from 'pinia'
   import { SettingsSocialSchema, UserStatsRecord, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import SeatCell from '@main/ui/FlightSeat/parts/SeatCell.vue'
+  import SeatCell from '@main/ui/FlightSeat/layouts/SeatCell.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
 

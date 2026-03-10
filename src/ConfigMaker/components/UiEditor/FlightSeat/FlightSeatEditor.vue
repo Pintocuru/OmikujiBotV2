@@ -18,6 +18,21 @@
     />
   </SettingItem>
 
+  <!-- コンポーネント種別 -->
+  <SettingItem label="レイアウト種別" description="座席の見た目を選択します">
+    <div class="flex flex-wrap gap-2">
+      <div
+        v-for="(label, key) in flightComponentMap"
+        :key="key"
+        class="badge badge-lg cursor-pointer"
+        :class="component.kind === key ? 'badge-primary' : 'badge-outline'"
+        @click="selectKind(key)"
+      >
+        {{ label }}
+      </div>
+    </div>
+  </SettingItem>
+
   <!-- 右下のステータス -->
   <SettingItem label="右下のステータス" description="アイコンの右下に表示する内容">
     <div class="flex flex-wrap gap-2">
@@ -53,83 +68,6 @@
     </select>
   </SettingItem>
 
-  <!-- 座席配置パターン (component内) -->
-  <SettingItem v-if="isPro" label="座席配置" description="座席の並び方を選択します" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(label, key) in flightSeatLayoutMap"
-        :key="key"
-        class="badge badge-lg cursor-pointer"
-        :class="component.layout === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateComponent('layout', key)"
-      >
-        {{ label }}
-      </div>
-    </div>
-  </SettingItem>
-
-  <!-- square の場合: 縦×横 -->
-  <div v-if="component.layout === 'square' && isAdv" class="grid grid-cols-1 sm:grid-cols-2 gap-2">
-    <SettingItem
-      label="縦（行数）"
-      description="縦方向の座席数"
-      :showReset="true"
-      @reset="resetComponent('rows')"
-      forceMode="adv"
-    >
-      <input
-        type="number"
-        min="1"
-        max="30"
-        class="input input-bordered w-24"
-        :value="component.rows"
-        @input="(e) => updateComponent('rows', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-
-    <SettingItem
-      label="横（列数）"
-      description="横方向の座席数"
-      :showReset="true"
-      @reset="resetComponent('cols')"
-      forceMode="adv"
-    >
-      <input
-        type="number"
-        min="1"
-        max="40"
-        class="input input-bordered w-24"
-        :value="component.cols"
-        @input="(e) => updateComponent('cols', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-  </div>
-
-  <!-- circle の場合: 外周の座席数 -->
-  <SettingItem
-    v-else-if="component.layout === 'circle'"
-    label="外周の座席数"
-    description="円周上に配置する座席数"
-    :showReset="true"
-    @reset="resetComponent('circleSeats')"
-  >
-    <input
-      type="number"
-      min="5"
-      max="30"
-      class="input input-bordered w-24"
-      :value="component.circleSeats"
-      @input="(e) => updateComponent('circleSeats', Number((e.target as HTMLInputElement).value))"
-    />
-  </SettingItem>
-
-  <!-- custom の場合: プリセット選択 & カスタム配列入力 -->
-  <CustomLayoutEditor
-    v-else-if="component.layout === 'custom'"
-    :customLayoutString="component.customLayout ?? '[1,2,3,4,5]'"
-    @update="(value) => updateComponent('customLayout', value)"
-  />
-
   <!-- 対象イベントキー -->
   <SettingItem
     v-if="isComment"
@@ -163,9 +101,10 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import {
-    flightSeatLayoutMap,
-    FlightSeatComponentConfig,
+    flightComponentMap,
+    FlightComponentKind,
     FlightSeatComponentSchema,
+    flightComponentDefaults,
     SettingsFlightSchema,
     SettingsFlightSeatType,
     StatKeyNum,
@@ -173,7 +112,6 @@
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import CustomLayoutEditor from './CustomLayoutEditor.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
@@ -183,7 +121,7 @@
   const component = computed(() => flightSeat.value.component)
   const rulesComment = computed(() => data.value.comments)
 
-  const { isAdv, isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
   /** トップレベルフィールドの更新 */
@@ -194,20 +132,18 @@
     })
   }
 
-  /** component ネスト内フィールドの更新 */
-  const updateComponent = (field: keyof FlightSeatComponentConfig, value: any) => {
-    omikujiStore.updateComponentSettings('flightSeat', {
-      ...flightSeat.value,
-      component: { ...component.value, [field]: value },
-    })
-  }
-
   const resetField = (field: keyof SettingsFlightSeatType) => {
     updateField(field, SettingsFlightSchema.parse({})[field])
   }
 
-  const resetComponent = (field: keyof FlightSeatComponentConfig) => {
-    updateComponent(field, FlightSeatComponentSchema.parse({})[field])
+  /** kind 変更時: kind に応じたデフォルト値を component にマージして適用 */
+  const selectKind = (kind: FlightComponentKind) => {
+    const base = FlightSeatComponentSchema.parse({})
+    const defaults = flightComponentDefaults[kind]
+    omikujiStore.updateComponentSettings('flightSeat', {
+      ...flightSeat.value,
+      component: { ...base, ...defaults, kind },
+    })
   }
 
   const statKeyLabelMap: Record<StatKeyNum, string> = {

@@ -9,7 +9,7 @@
     >
       <SeatCell
         v-for="(seat, i) in displaySeats"
-        :key="seat ? seat.userId + '-' + i : i"
+        :key="seat ? seat.lastVisit : i"
         :seat="seat"
         :index="i"
         :statKey="statKey"

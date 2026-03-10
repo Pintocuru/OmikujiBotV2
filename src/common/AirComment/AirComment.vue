@@ -92,15 +92,18 @@
     const comment = COMMENTS[Math.floor(Math.random() * COMMENTS.length)]
 
     try {
-      await postComment({
-        service: { id: 'OmikenReimu' },
-        comment: CommentPickSchema.parse({
-          userId: username,
-          name: username,
-          comment,
-          profileImage: getAvatarUrl(username),
-        }),
-      })
+      await postComment(
+        {
+          service: { id: 'OmikenReimu' },
+          comment: CommentPickSchema.parse({
+            userId: username,
+            name: username,
+            comment,
+            profileImage: getAvatarUrl(username),
+          }),
+        },
+        -5
+      )
 
       count.value++
       lastComment.value = `${username}: ${comment}`

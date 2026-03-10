@@ -9,7 +9,7 @@
     >
       <SeatCell
         v-for="i in count"
-        :key="displaySeats[rowOffsets[row] + i - 1]?.userId + '-' + displaySeats[rowOffsets[row] + i - 1]?.tc"
+        :key="displaySeats[rowOffsets[row] + i - 1]?.lastVisit + '-' + displaySeats[rowOffsets[row] + i - 1]?.tc"
         :seat="displaySeats[rowOffsets[row] + i - 1]"
         :index="rowOffsets[row] + i - 1"
         :statKey="statKey"

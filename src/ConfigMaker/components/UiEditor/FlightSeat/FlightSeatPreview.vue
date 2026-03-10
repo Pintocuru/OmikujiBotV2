@@ -4,7 +4,8 @@
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="flightSeat.color">
       <div class="origin-top" :style="{ transform: `scale(${scale})` }">
         <SeatSelector
-          :isPreview="true"
+          :color="flightSeat.color"
+          :label="flightSeat.label"
           :seats="seats"
           :componentConfig="flightSeat.component"
           :statKey="flightSeat.statKey"
@@ -22,11 +23,10 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsFlightSchema, useFontFamily } from '@/types/'
+  import { SettingsFlightSchema, flightComponentDefaults, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatSelector from '@main/ui/FlightSeat/parts/SeatSelector.vue'
   import { calculateTotalSeats } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
-  import { layoutStringToArray } from './CustomLayoutPresets'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
   import { useSeatManager } from '@/MainGenerator/ui/FlightSeat/composables/useSeatManager'
@@ -39,14 +39,25 @@
   const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
   const component = computed(() => flightSeat.value.component)
 
+  // kind のデフォルト値をベースに、component の値で上書き
+  const resolvedConfig = computed(() => ({
+    ...flightComponentDefaults[component.value.kind],
+    ...component.value,
+  }))
+
   const parsedCustomLayout = computed(() => {
-    if (component.value.layout !== 'custom') return undefined
-    return layoutStringToArray(component.value.customLayout ?? '[1,2,3,4,5]')
+    if (resolvedConfig.value.layout !== 'custom') return undefined
+    try {
+      return JSON.parse(resolvedConfig.value.customLayout ?? '[1,2,3,4,5]') as number[]
+    } catch {
+      return undefined
+    }
   })
 
   const scale = computed(() => {
-    const { layout, rows } = component.value
-    const effectiveRows = layout === 'square' ? rows : layout === 'custom' ? (parsedCustomLayout.value?.length ?? 1) : 1 // circle
+    const { layout, rows } = resolvedConfig.value
+    const effectiveRows =
+      layout === 'square' ? (rows ?? 1) : layout === 'custom' ? (parsedCustomLayout.value?.length ?? 1) : 1 // circle
 
     if (effectiveRows <= 3) return 0.8
     if (effectiveRows <= 4) return 0.6
@@ -57,8 +68,8 @@
   })
 
   const totalSeats = computed(() => {
-    const { layout, rows, cols, circleSeats } = component.value
-    return calculateTotalSeats(layout, rows, cols, parsedCustomLayout.value, circleSeats)
+    const { layout, rows, cols, circleSeats } = resolvedConfig.value
+    return calculateTotalSeats(layout!, rows!, cols!, parsedCustomLayout.value, circleSeats)
   })
 
   const dummyUserCache = new Map<string, ReturnType<typeof generateDummyUserStats>[0]>()

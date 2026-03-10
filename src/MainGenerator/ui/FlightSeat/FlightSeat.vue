@@ -1,22 +1,22 @@
 <!-- src/MainGenerator/ui/FlightSeat/FlightSeat.vue -->
 <template>
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
-    <div class="card w-full bg-base-200 mx-auto p-4 space-y-2" :data-theme="settings.color">
-      <h2 v-if="settings.label" class="text-xl font-bold text-center">
-        {{ settings.label }}
-      </h2>
+    <SeatSelector
+      :color="settings.color"
+      :label="settings.label"
+      :seats="seats"
+      :componentConfig="settings.component"
+      :statKey="settings.statKey"
+    />
 
-      <SeatSelector :seats="seats" :componentConfig="settings.component" :statKey="settings.statKey" />
-
-      <FlightSeatDebug :occupiedSeats="occupiedSeats" :totalSeats="totalSeats" :debugLog="debugLog" />
-    </div>
+    <FlightSeatDebug :occupiedSeats="occupiedSeats" :totalSeats="totalSeats" :debugLog="debugLog" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsFlightSchema } from '@/types'
+  import { SettingsFlightSchema, flightComponentDefaults } from '@/types'
   import SeatSelector from './parts/SeatSelector.vue'
   import FlightSeatDebug from './FlightSeatDebug.vue'
   import { useSeatManager } from './composables/useSeatManager'
@@ -27,13 +27,19 @@
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
   const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
+  const component = computed(() => settings.value.component)
 
   const { isComment } = useVisibilityAccess()
 
+  const resolvedConfig = computed(() => ({
+    ...flightComponentDefaults[component.value.kind],
+    ...component.value,
+  }))
+
   const parsedCustomLayout = computed(() => {
-    if (!settings.value.component.customLayout) return []
+    if (!resolvedConfig.value.customLayout) return []
     try {
-      return JSON.parse(settings.value.component.customLayout) as number[]
+      return JSON.parse(resolvedConfig.value.customLayout) as number[]
     } catch {
       return []
     }
@@ -41,11 +47,11 @@
 
   const totalSeats = computed(() =>
     calculateTotalSeats(
-      settings.value.component.layout,
-      settings.value.component.rows,
-      settings.value.component.cols,
+      resolvedConfig.value.layout!,
+      resolvedConfig.value.rows!,
+      resolvedConfig.value.cols!,
       parsedCustomLayout.value,
-      settings.value.component.circleSeats
+      resolvedConfig.value.circleSeats
     )
   )
 
