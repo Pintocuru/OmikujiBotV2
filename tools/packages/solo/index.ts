@@ -13,6 +13,7 @@ import ValentineCoupling from './ValentineCoupling'
 import MaidenOmikujiNormalProject from './MaidenOmikujiNormal'
 import FlowerFortuneProject from './FlowerFortune'
 import MyNineViewersProject from './MyNineViewers'
+import GraduationIconsProject from './GraduationIcons'
 
 function projects(packageRoot: string): ProjectConfig[] {
   return [
@@ -29,6 +30,7 @@ function projects(packageRoot: string): ProjectConfig[] {
     MaidenOmikujiNormalProject(packageRoot),
     FlowerFortuneProject(packageRoot),
     ...MyNineViewersProject.getProjects(packageRoot),
+    ...GraduationIconsProject.getProjects(packageRoot),
   ]
 }
 
@@ -55,8 +57,9 @@ const targets: PackageBuildTarget[] = [
   { project: 'MaidenOmikujiNormal', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
      ...MyNineViewersProject.buildTargets,
+  ...GraduationIconsProject.buildTargets,
    */
-  ...MyNineViewersProject.buildTargets,
+  ...GraduationIconsProject.buildTargets,
 ]
 
 export default {
