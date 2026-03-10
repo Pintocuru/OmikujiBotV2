@@ -13,7 +13,7 @@ export type StatKeyNum = (typeof statKeyNum)[number]
  * コンポーネント種別マップ
  */
 export const flightComponentMap = {
-  nineViewers: '9人のユーザー',
+  nineViewers: '9人のユーザー。',
   bingo: 'ビンゴカード風',
   flightSeat: '8時間フライト',
   graduation: '卒業写真',
