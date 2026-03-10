@@ -14,8 +14,7 @@ export function generateUsername(): string {
   return name + suffix
 }
 
-/* --- DiceBear --- */
-
+// DiceBear
 const AVATAR_STYLES = ['pixel-art', 'bottts', 'adventurer', 'thumbs', 'lorelei']
 
 function hash(str: string): number {
