@@ -12,10 +12,10 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
   run(queryString: string, characterKey: string | null, omiken?: OmikenCommentType): ScriptResult {
     const rawParams = parseQueryString(queryString)
     const { count, label, useRule } = GameParamsSchema.parse(rawParams)
-    const ruleKey = useRule ? omiken?.meta.ruleKey : null
+    const eventKey = useRule ? omiken?.omikuji?.eventKey : null
     const user = prepareUserInfo(omiken)
 
-    const winners = getWinnersFromVisitManager(count, ruleKey, this.userSession)
+    const winners = getWinnersFromVisitManager(count, eventKey, this.userSession)
     const names = winners.map((w) => w.userName)
     const winnerText = names.length === 1 ? names[0] : names.join(' さん、') + ' さん'
 

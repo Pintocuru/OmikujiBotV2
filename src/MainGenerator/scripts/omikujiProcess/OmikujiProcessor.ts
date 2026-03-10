@@ -71,7 +71,7 @@ export class OmikujiProcessor {
       price: omiken.giftPrice,
       lc: omiken.meta.lc,
       tc: omiken.meta.tc,
-      draws: omiken.meta.draws,
+      draws: omiken.omikuji?.draws,
     })
   }
 
@@ -89,9 +89,10 @@ export class OmikujiProcessor {
    */
   private getBasePlaceholders(): Record<ServiceMetaCondition, string | number> {
     const meta = this.metaStateService.getCurrent()
-    const { userSession } = this.store
+    const { userSession, streamStats } = this.store
 
-    const { liveComments, uniqueCount, syoken } = userSession.stats.getStats()
+    const uniqueCount = userSession.stats.getUniqueCount()
+    const { liveComments, syoken } = streamStats.getStats()
     const { winners } = userSession.stats.drawWinners(1)
     const firstWinner = winners[0]
 

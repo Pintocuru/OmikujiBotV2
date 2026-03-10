@@ -67,7 +67,7 @@ function makeRule(overrides: Partial<MetaRuleType> = {}): MetaRuleType {
 }
 
 function makeEvent(overrides: Partial<MetaUpdateEvent> = {}): MetaUpdateEvent {
-  const current: NormalizedMeta = { upVote: 100, viewer: 50, follower: 10, startTime: null }
+  const current: NormalizedMeta = { isLive: false, upVote: 100, viewer: 50, follower: 10, startTime: null }
   return {
     current,
     previous: { upVote: 80, viewer: 40, follower: 10, startTime: null },

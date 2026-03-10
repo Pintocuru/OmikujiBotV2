@@ -1,6 +1,6 @@
 // src/MainGenerator/stores/UserManager/UserStatsManager.ts
 import { UserStatsRecord } from '@/types'
-import { UserNameType } from '@shared/types'
+import { OmikenCommentType } from '@shared/types'
 
 type StatsEventListener = (record: UserStatsRecord) => void
 
@@ -10,19 +10,16 @@ type StatsEventListener = (record: UserStatsRecord) => void
  */
 export class UserStatsManager {
   private readonly stats = new Map<string, UserStatsRecord>()
-  private liveComments = 0
-  private totalPrice = 0
   private readonly listeners = new Set<StatsEventListener>()
-  private syoken = 0
 
-  /** コメントを受け取った時に呼び出す */
-  recordComment(user: UserNameType, tc: number, lc: number, no: number, giftPrice = 0): UserStatsRecord {
-    if (tc === 1) this.syoken++ // 1回目のコメントなら初見さん
-    this.liveComments = lc
-    this.totalPrice += giftPrice
-    const { userId, userName, profileImage, timestamp } = user
+  // コメントを受け取った時に呼び出す */
+  recordComment(omiken: OmikenCommentType): UserStatsRecord {
+    const { userId, userName, profileImage, timestamp } = omiken
+    const { tc, no } = omiken.meta
+    const giftPrice = omiken.giftPrice ?? 0
 
     const existing = this.stats.get(userId)
+
     const record: UserStatsRecord = existing
       ? {
           ...existing,
@@ -52,6 +49,7 @@ export class UserStatsManager {
 
     this.stats.set(userId, record)
     this.notifyListeners(record)
+
     return record
   }
 
@@ -79,14 +77,9 @@ export class UserStatsManager {
     return Array.from(this.stats.values())
   }
 
-  // 各ステータス取得
-  getStats(): { liveComments: number; uniqueCount: number; syoken: number; totalPrice: number } {
-    return {
-      liveComments: this.liveComments, // 配信の累計コメント数
-      uniqueCount: this.stats.size, // ユニークユーザー数（コメントしたことがある人）
-      syoken: this.syoken, // 初見さんを返す
-      totalPrice: this.totalPrice, // 配信の累計ギフト金額
-    }
+  // ユーザー数取得
+  getUniqueCount(): number {
+    return this.stats.size
   }
 
   // 最新コメントユーザーを取得 */
@@ -106,7 +99,6 @@ export class UserStatsManager {
   // セッションリセット */
   reset(): void {
     this.stats.clear()
-    this.liveComments = 0
   }
 
   // イベントリスナーを登録（解除用関数を返す） */

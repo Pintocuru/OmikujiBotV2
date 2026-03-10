@@ -159,10 +159,12 @@ export class EventCommentProcessor {
   /**
    * omiken.meta.draws と ruleKey を設定する (抽選前に呼ぶ)
    */
-  private setDrawsMeta(omiken: OmikenCommentType, rule: CommentRuleType): void {
+  private setDrawsMeta(omiken: OmikenCommentType, event: CommentRuleType): void {
     const { userSession } = this.store
-    omiken.meta.draws = userSession.visits.getCount(omiken.userId, rule.key) + 1
-    omiken.meta.ruleKey = rule.key
+    omiken.omikuji = {
+      draws: userSession.visits.getCount(omiken.userId, event.key) + 1,
+      eventKey: event.key,
+    }
   }
 
   /**

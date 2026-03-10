@@ -31,27 +31,27 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
   // 特殊ケース: おみくじのitem更新
   const updateOmikujiByIndex = (
     category: RulesCategoryType,
-    ruleKey: string,
+    eventKey: string,
     omikujiIndex: number,
     updater: (item: OmikujiItemType) => OmikujiItemType
   ) => {
-    const record = data.value[category]?.[ruleKey] as RuleType
+    const record = data.value[category]?.[eventKey] as RuleType
     if (!record?.omikuji?.[omikujiIndex]) return
 
     const updated = [...record.omikuji]
     updated[omikujiIndex] = updater(updated[omikujiIndex])
 
-    updateRecordProperty(category, ruleKey, 'omikuji', updated)
+    updateRecordProperty(category, eventKey, 'omikuji', updated)
   }
 
   // 特殊ケース: おみくじのpostActions更新
   const updateOmikujiPostActions = (
     category: RulesCategoryType,
-    ruleKey: string,
+    eventKey: string,
     omikujiIndex: number,
     postActions: PostFlowType[]
   ) => {
-    const record = data.value[category]?.[ruleKey] as RuleType
+    const record = data.value[category]?.[eventKey] as RuleType
     if (!record?.omikuji?.[omikujiIndex]) {
       console.error('指定されたおみくじが見つかりません')
       return
@@ -64,7 +64,7 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
       postActions: postActions.sort((a, b) => a.delaySeconds - b.delaySeconds),
     }
 
-    updateRecordProperty(category, ruleKey, 'omikuji', updatedOmikuji)
+    updateRecordProperty(category, eventKey, 'omikuji', updatedOmikuji)
   }
 
   // 特殊ケース: プレースホルダー値の更新

@@ -25,14 +25,14 @@ export function useAppInitializer() {
       const isInit = await GetOmikenComments((omikens) => {
         try {
           const pattern = data.value.settings.ignoreUserPattern
-          // ユーザー記録
           for (const omiken of omikens) {
             // ユーザー記録を除外するか
             if (shouldIgnoreUser(omiken.userName, pattern)) continue
+            const status = appStore.metaState.getCurrent()
 
-            const { lc, tc, no } = omiken.meta
-            const giftPrice = omiken.giftPrice ?? 0
-            appStore.userSession.stats.recordComment(omiken, tc, lc, no, giftPrice)
+            // ライブ・ユーザーデータの記録
+            appStore.streamStats.record(omiken, status)
+            appStore.userSession.stats.recordComment(omiken)
           }
 
           // コメント処理

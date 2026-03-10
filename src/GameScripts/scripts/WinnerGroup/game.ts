@@ -5,14 +5,14 @@ import { UserNameSchema, UserNameType } from '@shared/types'
 
 export function getWinnersFromVisitManager(
   count: number,
-  ruleKey?: string | null,
+  eventKey?: string | null,
   userSession?: UserManager
 ): UserNameType[] {
   if (!userSession) return generateDummyWinnerUsers(count)
 
   try {
-    const rawWinners = ruleKey
-      ? userSession.visits.drawWinners(ruleKey, count).winners // ruleKey あり → visits
+    const rawWinners = eventKey
+      ? userSession.visits.drawWinners(eventKey, count).winners // ruleKey あり → visits
       : userSession.stats.drawWinners(count).winners // ruleKey なし → stats 全体
 
     const winners = rawWinners.map((r) => UserNameSchema.parse(r))

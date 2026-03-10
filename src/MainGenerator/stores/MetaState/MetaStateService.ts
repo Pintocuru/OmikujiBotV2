@@ -66,6 +66,7 @@ export class MetaStateService implements MetaStateServiceType {
 
   private normalize(meta: ServiceMeta | null): NormalizedMeta {
     return {
+      isLive: meta?.isLive ?? false,
       upVote: this.toNumber(meta?.upVote),
       viewer: this.toNumber(meta?.viewer),
       follower: this.toNumber(meta?.subscriberCount ?? meta?.follower),
@@ -166,6 +167,7 @@ export class MetaStateService implements MetaStateServiceType {
 export type MetaServiceStatus = 'idle' | 'loading' | 'ready' | 'error'
 
 export interface NormalizedMeta {
+  isLive: boolean
   upVote: number
   viewer: number
   follower: number

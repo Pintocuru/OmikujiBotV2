@@ -59,6 +59,7 @@
 -------------------------- */
   function pushTestMeta(patch: Partial<NormalizedMeta>) {
     const current = metaState.getCurrent() ?? {
+      isLive: false,
       upVote: 0,
       viewer: 0,
       follower: 0,
