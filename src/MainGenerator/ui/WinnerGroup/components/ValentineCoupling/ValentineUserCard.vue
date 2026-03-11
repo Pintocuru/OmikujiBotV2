@@ -15,16 +15,11 @@
       <figure class="px-4 pt-4 relative">
         <div class="avatar relative z-10 flex justify-center">
           <div :class="avatarRingClass">
-            <img v-if="user.profileImage" :src="user.profileImage" :alt="user.userName" class="object-cover" />
-            <div
-              v-else
-              :class="[
-                'w-full h-full flex items-center justify-center font-bold',
-                position === 'left' ? 'bg-primary text-primary-content' : 'bg-secondary text-secondary-content',
-              ]"
-            >
-              {{ user.userName.charAt(0) }}
-            </div>
+            <img
+              :src="user.profileImage || getAvatarUrl(user.userName || 'Anonymous')"
+              :alt="user.userName"
+              class="object-cover w-full h-full"
+            />
           </div>
         </div>
       </figure>
@@ -42,6 +37,7 @@
   import { computed } from 'vue'
   import { UserVisitRecord } from '@/types/MainGenerator/'
   import { Heart } from 'lucide-vue-next'
+  import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
 
   const props = defineProps<{
     user: UserVisitRecord

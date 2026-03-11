@@ -8,23 +8,12 @@
     </div>
 
     <ul class="flex flex-wrap gap-2 justify-center">
-      <li
+      <UserNameBadge
         v-for="(value, index) in displayedUsers"
         :key="value.userId + '-' + index"
-        class="badge badge-warning text-sm"
-      >
-        <div v-if="value.profileImage !== ''" class="avatar">
-          <div class="w-5 rounded-full">
-            <img :src="value.profileImage" alt="" />
-          </div>
-        </div>
-        <div v-else class="avatar placeholder">
-          <div class="bg-neutral text-neutral-content w-5 rounded-full flex items-center justify-center">
-            {{ (value.userName || 'A').charAt(0) }}
-          </div>
-        </div>
-        {{ value.userName }}
-      </li>
+        :profileImage="value.profileImage"
+        :userName="value.userName"
+      />
     </ul>
   </CounterCardBase>
 </template>
@@ -34,6 +23,7 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useCounterDisplay } from '../base/useCounterDisplay'
   import CounterCardBase from '../base/CounterCardBase.vue'
+  import UserNameBadge from './UserNameBadge.vue'
 
   const props = defineProps<{
     counterSetting: SettingsCounterType

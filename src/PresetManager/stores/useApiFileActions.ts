@@ -2,7 +2,7 @@
 import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
 import { DevConfigStateType } from '@/PresetManager/devTypes'
 import { configApi } from '@/PresetManager/services/configApi'
-import { toFileItem } from '../services/apiServiceUtils'
+import { ensureJsonExtension, toFileItem } from '../services/apiServiceUtils'
 
 export function useFileActions(
   state: DevConfigStateType,
@@ -65,6 +65,13 @@ export function useFileActions(
 
   // ファイル名変更
   const renameFile = async (oldFileName: string, newFileName: string) => {
+    // moveが使えないので
+    const oldBase = oldFileName.toLowerCase()
+    const newBase = ensureJsonExtension(newFileName).toLowerCase()
+    if (oldBase === newBase) {
+      throw new Error('大文字小文字だけの変更はサポートされていません')
+    }
+
     return await handleAsyncAction(async () => {
       // フォルダを保持
       const folder = oldFileName.includes('/') ? oldFileName.split('/')[0] : null

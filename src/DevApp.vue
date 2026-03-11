@@ -2,8 +2,11 @@
 <template>
   <ConfigMaker v-if="!showMain" />
 
-  <HudPreview v-else :maxHeightClass="''">
+  <HudPreview v-else maxHeightClass="h-full">
     <MainGenerator />
+    <template #hud>
+      <AirComment />
+    </template>
   </HudPreview>
 
   <!-- 表示トグルボタン -->
@@ -23,6 +26,7 @@
   import MainGenerator from './MainGenerator/App.vue'
   import ConfigMaker from './ConfigMaker/App.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
+  import AirComment from '@/common/AirComment/AirComment.vue'
   import { Settings, Cpu } from 'lucide-vue-next'
 
   const showMain = ref(false)

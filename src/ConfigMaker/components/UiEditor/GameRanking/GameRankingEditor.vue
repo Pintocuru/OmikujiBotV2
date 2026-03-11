@@ -2,7 +2,7 @@
 <template>
   <!-- ランキングプレビュー -->
   <HudPreview v-if="ranking.targetScriptKeys.length > 0" :isAdminOnly="true">
-    <div class="max-h-56 overflow-y-hidden" :class="[fontFamily]">
+    <div :class="[fontFamily]">
       <GameRankingManager :botMessageExtras="[]" :settings="ranking" />
     </div>
   </HudPreview>

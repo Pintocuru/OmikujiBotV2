@@ -12,19 +12,14 @@
         :style="{ width: cellSize + 'px', height: cellSize + 'px' }"
       >
         <img v-if="seat.profileImage" :src="seat.profileImage" :alt="seat.userName" />
-        <div
-          v-else
-          class="w-full h-full bg-primary flex items-center justify-center text-primary-content font-bold text-2xl"
-        >
-          {{ seat.userName.charAt(0) }}
-        </div>
+        <img v-else :src="getAvatarUrl(seat.userName)" :alt="seat.userName" class="w-full h-full object-cover" />
       </div>
     </div>
 
     <!-- tc (個人コメント数) -->
     <div
       v-if="statKey && statClassMap[statKey] && seat[statKey]"
-      class="absolute bottom-0 right-0 text-white font-bold seat-text-stroke"
+      class="absolute bottom-0 right-0 text-white font-bold truncate max-w-20 seat-text-stroke"
       :class="statClassMap[statKey]"
     >
       {{ seat[statKey] }}
@@ -52,6 +47,7 @@
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
+  import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
 
   const props = defineProps<{
     seat: UserStatsRecord | null
@@ -61,11 +57,6 @@
     colorReverse?: boolean
     colorFrom?: DaisyUIColorType // 空席セルのベースカラー
     colorTo?: DaisyUIColorType // 指定するとグラデーションになる
-    /**
-     * 表示する座席番号。
-     * 省略時は index + 1 を使う（従来互換）。
-     * bingo の FREE スキップなど、index と表示番号がズレる場合に使う。
-     */
     seatNumber?: number
   }>()
 
@@ -103,8 +94,8 @@
 
   const statClassMap: Record<StatKeyNum, string> = {
     userName: 'text-xs',
-    tc: 'text-xl',
-    giftPrice: 'text-xl',
+    tc: 'text-2xl',
+    giftPrice: 'text-2xl',
   }
 </script>
 

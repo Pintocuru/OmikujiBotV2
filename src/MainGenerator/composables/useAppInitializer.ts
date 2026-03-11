@@ -28,18 +28,15 @@ export function useAppInitializer() {
           const newOmikens = filterNewOmikens(omikens)
 
           // 投稿から10秒以内のものだけ、下記の処理を行う
-          const newNewOmikens = newOmikens.filter((omiken) => {
-            if (Date.now() - omiken.timestamp > TIME_THRESHOLD) return false
-            return true
-          })
+          const recentOmikens = newOmikens.filter((omiken) => Date.now() - omiken.timestamp < TIME_THRESHOLD)
 
           // 新規コメントからユーザーデータを記録
-          recordStats(newNewOmikens)
+          recordStats(recentOmikens)
 
           // コメントイベント
           const { isComment } = useVisibilityAccess()
           if (!isComment.value) return
-          commentProcessor.respondToComments(newNewOmikens)
+          commentProcessor.respondToComments(recentOmikens)
         } catch (error) {
           console.error('[useAppInitializer] コメント処理エラー:', error)
           postSystemMessage(`コメント処理エラー: ${error}`, { speech: false, throttle: true })

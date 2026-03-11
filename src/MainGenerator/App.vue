@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div class="bg-base-100 transparent-bg">
+  <div class="bg-base-100 transparent-bg overflow-y-hidden">
     <!-- 接続状態インジケーター（全状態で常時マウント） -->
     <ConnectionStatusIndicator :status="appStore.status" />
 
@@ -18,11 +18,6 @@
 
       <!-- meta -->
       <MetaDebugPanel v-if="isDev && 0" />
-
-      <!-- test -->
-      <LiverCounter v-if="isDev && 0" />
-
-      <AirComment v-if="isDev && 1" />
     </div>
 
     <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -38,10 +33,8 @@
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
-  import LiverCounter from '@main/ui/LiverCounter/LiverCounter.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
-  import AirComment from '@/common/AirComment/AirComment.vue'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))

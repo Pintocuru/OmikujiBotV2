@@ -48,17 +48,10 @@
         <div class="avatar relative z-10">
           <div class="w-18 rounded-full ring-4 ring-warning ring-offset-base-100 ring-offset-4 shadow-xl">
             <img
-              v-if="users[0].profileImage"
-              :src="users[0].profileImage"
+              :src="users[0].profileImage || getAvatarUrl(users[0].userName || 'Anonymous')"
               :alt="users[0].userName"
-              class="object-cover"
+              class="object-cover w-full h-full"
             />
-            <div
-              v-else
-              class="w-full h-full bg-warning flex items-center justify-center text-warning-content font-bold text-2xl"
-            >
-              {{ users[0].userName.charAt(0) }}
-            </div>
           </div>
         </div>
 
@@ -125,14 +118,11 @@
             class="w-14 rounded-full ring-3 ring-offset-base-100 ring-offset-2 shadow-lg"
             :class="getRankRingClass(index + 2)"
           >
-            <img v-if="user.profileImage" :src="user.profileImage" :alt="user.userName" class="object-cover" />
-            <div
-              v-else
-              :class="getRankAvatarBgClass(index + 2)"
-              class="w-full h-full flex items-center justify-center font-bold text-lg"
-            >
-              {{ user.userName.charAt(0) }}
-            </div>
+            <img
+              :src="user.profileImage || getAvatarUrl(user.userName || 'Anonymous')"
+              :alt="user.userName"
+              class="object-cover w-full h-full"
+            />
           </div>
         </div>
 
@@ -153,6 +143,7 @@
 </template>
 
 <script setup lang="ts">
+  import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
   import { UserVisitRecord } from '@/types/MainGenerator/'
   import { Star, Crown, Trophy, Medal, Sparkles } from 'lucide-vue-next'
 
@@ -201,13 +192,6 @@
 
   // ランクに応じたバッジのクラス
   const getRankBadgeClass = (rank: number) => {
-    if (rank === 2) return 'bg-base-content/60 text-base-100'
-    if (rank === 3) return 'bg-accent text-accent-content'
-    return 'bg-info text-info-content'
-  }
-
-  // ランクに応じたアバター背景のクラス
-  const getRankAvatarBgClass = (rank: number) => {
     if (rank === 2) return 'bg-base-content/60 text-base-100'
     if (rank === 3) return 'bg-accent text-accent-content'
     return 'bg-info text-info-content'

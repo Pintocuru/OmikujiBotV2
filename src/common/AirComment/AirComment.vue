@@ -1,66 +1,55 @@
 <template>
-  <div class="fixed bottom-4 right-4 z-50 w-64">
-    <div class="card bg-base-200 border border-base-300 shadow-2xl">
-      <div class="card-body gap-2 p-4">
-        <!-- Header -->
-        <div class="flex items-center justify-between border-b border-base-300">
-          <h1 class="text-sm flex items-center gap-2">
-            <span class="w-2 h-2 bg-primary rounded-full" :class="{ 'animate-pulse': isRunning }" />
-            エアコメメーカー
-          </h1>
+  <div class="card bg-base-200 border border-base-300 shadow-2xl">
+    <div class="card-body gap-2 p-2">
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b border-base-300">
+        <h1 class="text-sm flex items-center gap-2">
+          <span class="w-2 h-2 bg-primary rounded-full" :class="{ 'animate-pulse': isRunning }" />
+          エアコメメーカー
+        </h1>
 
-          <span class="badge badge-primary badge-xs">
-            {{ count }}
-          </span>
-        </div>
-
-        <!-- Interval -->
-        <div class="form-control">
-          <label class="label">
-            <span class="label-text text-xs opacity-60"> INTERVAL (SEC) </span>
-          </label>
-
-          <input
-            type="number"
-            step="0.1"
-            min="0.1"
-            v-model.number="intervalSec"
-            class="input input-bordered input-xs"
-          />
-        </div>
-
-        <!-- Buttons -->
-        <div class="join w-full">
-          <button @click="sendComment" class="btn btn-xs btn-outline join-item flex-1">1回送信</button>
-
-          <button
-            @click="toggleRunning"
-            class="btn btn-xs join-item flex-1"
-            :class="isRunning ? 'btn-error' : 'btn-primary'"
-          >
-            {{ isRunning ? 'STOP' : 'AUTO START' }}
-          </button>
-        </div>
-
-        <!-- Log -->
-        <div v-if="lastComment" class="text-xs opacity-60 bg-base-100 p-2 rounded border border-base-300 truncate">
-          "{{ lastComment }}"
-        </div>
+        <span class="badge badge-primary badge-xs">
+          {{ count }}
+        </span>
       </div>
+
+      <!-- Interval -->
+      <label class="label">
+        <span class="label-text text-xs opacity-60"> INTERVAL (SEC) </span>
+      </label>
+
+      <input type="number" step="0.1" min="0.1" v-model.number="intervalSec" class="input input-bordered input-xs" />
+
+      <!-- Buttons -->
+      <div class="join w-full">
+        <button @click="sendComment" class="btn btn-xs btn-outline join-item flex-1">1回送信</button>
+
+        <button
+          @click="toggleRunning"
+          class="btn btn-xs join-item flex-1"
+          :class="isRunning ? 'btn-error' : 'btn-primary'"
+        >
+          {{ isRunning ? 'STOP' : 'AUTO' }}
+        </button>
+      </div>
+
+      <!-- Log -->
+      <div class="text-xs opacity-60 bg-base-100 p-2 rounded border border-base-300 truncate">{{ lastComment }}</div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { ref, onUnmounted } from 'vue'
-  import { COMMENTS, generateUsername, getAvatarUrl } from './constants'
+  import { COMMENTS, generateUsername } from './constants'
   import { postComment } from '@shared/sdk/postMessage/PostOneComme'
   import { CommentPickSchema } from '@shared/types'
+  import { getAvatarUrl } from '../DiceBear/getAvatarUrl'
 
   const isRunning = ref(false)
   const intervalSec = ref(2)
   const count = ref(0)
-  const lastComment = ref('')
+  const lastComment = ref('(テストコメントが入ります)')
 
   let timer: ReturnType<typeof setTimeout> | null = null
 

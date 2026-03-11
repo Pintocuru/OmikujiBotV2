@@ -23,15 +23,13 @@
           <!-- 名前 -->
           <div class="flex-grow min-w-0 items-center flex flex-nowrap">
             <!-- アイコン -->
-            <div v-if="msg.user?.profileImage" class="avatar mr-1">
+            <div class="avatar mr-1">
               <div class="w-7 rounded-full">
-                <img :src="msg.user?.profileImage" alt="" />
-              </div>
-            </div>
-            <!-- アイコン(ないとき) -->
-            <div v-else class="avatar placeholder mr-1">
-              <div class="bg-neutral text-neutral-content w-7 rounded-full flex items-center justify-center">
-                {{ (msg.lists?.listName || msg.user?.userName || 'A').charAt(0) }}
+                <img
+                  :src="msg.user?.profileImage || getAvatarUrl(msg.user?.userName ?? 'Anonymous')"
+                  class="w-full h-full object-cover"
+                  alt=""
+                />
               </div>
             </div>
 
@@ -63,6 +61,7 @@
   import { generateDummyMessages } from '@/common/MockUser/MockGenerators'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
   import { SettingsRankingType } from '@/types/OmikujiData'
+  import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
 
   const props = defineProps<{
     listMessages: BotMessageExtraType[]

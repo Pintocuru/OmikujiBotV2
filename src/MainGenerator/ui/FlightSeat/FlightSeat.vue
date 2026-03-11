@@ -7,15 +7,21 @@
       :seats="seats"
       :kind="settings.component"
       :customLayout="parsedCustomLayout"
-      :statKey="settings.statKey"
+      :statKey="localStatKey"
+      @click="toggleStatKey"
     />
-    <FlightSeatDebug :occupiedSeats="occupiedSeats" :totalSeats="totalSeats" :debugLog="debugLog" />
+
+    <!-- デバッグログ -->
+    <template v-if="isDev && 0">
+      <FlightSeatDebug :occupiedSeats="occupiedSeats" :totalSeats="totalSeats" :debugLog="debugLog" />
+    </template>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
+  import { isDev, statKeyNum, StatKeyNum } from '@/types'
   import { SettingsFlightSchema, flightComponentDefaults } from '@/types'
   import SeatSelector from './parts/SeatSelector.vue'
   import FlightSeatDebug from './FlightSeatDebug.vue'
@@ -29,6 +35,7 @@
   const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
 
   const { isComment } = useVisibilityAccess()
+  const localStatKey = ref<StatKeyNum | null>(settings.value.statKey)
 
   // defaults が唯一の座席数の定義元、customLayout があれば上書き
   const defaultValue = computed(() => flightComponentDefaults[settings.value.component])
@@ -39,6 +46,17 @@
 
   const { seats, occupiedSeats, debugLog, registerUser } = useSeatManager(totalSeats, (userId) =>
     appStore.userSession.stats.get(userId)
+  )
+
+  const toggleStatKey = () => {
+    const order = [null, ...statKeyNum] as const
+    const current = localStatKey.value
+    const next = order[(order.indexOf(current) + 1) % order.length]
+    localStatKey.value = next
+  }
+  watch(
+    () => settings.value.statKey,
+    (v) => (localStatKey.value = v)
   )
 
   let unsubscribe: (() => void) | null = null
