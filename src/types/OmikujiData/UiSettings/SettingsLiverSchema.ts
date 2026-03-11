@@ -15,24 +15,31 @@ export const liverComponentMap = {
   starBurst: '星',
   hexGrid: 'ヘキサゴン',
 } as const
+const liverComponentValues = Object.keys(liverComponentMap) as LiverComponent[]
+export type LiverComponent = keyof typeof liverComponentMap
+
+export const labelStyleMap = {
+  lucide: 'アイコン',
+  emoji: '絵文字',
+  text: 'テキスト',
+} as const
+const labelStyleValues = Object.keys(labelStyleMap) as LiverLabelStyle[]
+export type LiverLabelStyle = keyof typeof labelStyleMap
 
 export const liverDefaultMap = {
-  upVote: '高評価数',
-  viewer: '視聴者数',
-  syoken: '初見さん数',
-  commenter: 'コメントしたユーザー数',
+  syoken: '初コメ',
+  commenter: 'コメントをしたユーザー数',
   lc: '配信コメント数',
-  totalPrice: '合計金額',
+  upVote: '高評価数',
+  viewer: '同時接続数',
+  totalPrice: 'ギフト金額',
 } as const
+const liverDefaultKeyLabels = Object.keys(liverDefaultMap) as LiverDefaultKey[]
+export type LiverDefaultKey = keyof typeof liverDefaultMap
 
 /**
  * ライバーカウンターv2 LiverCounter
  */
-const liverComponentValues = Object.keys(liverComponentMap) as LiverComponent[]
-export type LiverComponent = keyof typeof liverComponentMap
-
-const liverDefaultKeyLabels = Object.keys(liverDefaultMap) as LiverDefaultKey[]
-export type LiverDefaultKey = keyof typeof liverDefaultMap
 
 export const SettingsLiverSchema = z.object({
   component: z.enum(liverComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
@@ -41,6 +48,7 @@ export const SettingsLiverSchema = z.object({
     .array(z.enum(BaseVariantLabels))
     .default(['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'])
     .catch([]), // 任意color
+  labelStyle: z.enum(labelStyleValues).default('lucide').catch('lucide'), // ラベルスタイル
   defaultCounters: z.array(z.enum(liverDefaultKeyLabels)).default(['lc']).catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
 })

@@ -9,9 +9,7 @@
       class="absolute rounded-full w-24 h-24 shadow-inner bg-base-content text-base-200 flex flex-col items-center justify-center"
     >
       <!-- アイコン -->
-      <component :is="label" v-if="isComponent" class="w-8 h-8" />
-      <!-- ラベル -->
-      <div v-else class="text-xl font-bold truncate">{{ label }}</div>
+      <LabelText :label="label" />
 
       <!-- カウント表示 -->
       <div class="flex items-baseline justify-center whitespace-nowrap">
@@ -36,14 +34,13 @@
 <script setup lang="ts">
   import { type Component, computed } from 'vue'
   import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import LabelText from './LabelText.vue'
 
   const props = defineProps<{
     label: string | Component
     value: string
     colorPattern: BaseVariant | null
   }>()
-
-  const isComponent = computed(() => typeof props.label !== 'string')
 
   // 外側リング
   const gradientClass = computed(() => {

@@ -1,12 +1,27 @@
 // src/MainGenerator/ui/LiverCounter/composables/useLiverLabelResolver.ts
-import type { Component } from 'vue'
-import { DEFAULT_LABELS } from './DefaultLabels'
-import type { LiverDefaultKey } from '@/types'
+import type { Component, Ref } from 'vue'
+import { LIVER_EMOJI_LABELS, LIVER_LUCIDE_LABELS, LIVER_TEXT_LABELS } from './DefaultLabels'
+import { LiverDefaultKey, LiverLabelStyle } from '@/types'
 
-export function useLiverLabelResolver(eventLabels: Record<string, string>) {
+export function useLiverLabelResolver(eventLabels: Ref<Record<string, string>>, labelStyle: Ref<LiverLabelStyle>) {
   const getLabel = (key: string): string | Component => {
-    if (key in DEFAULT_LABELS) return DEFAULT_LABELS[key as LiverDefaultKey]
-    return eventLabels[key] ?? key
+    // デフォルトキーかどうか
+    const isDefault = key in LIVER_LUCIDE_LABELS
+    if (isDefault) {
+      const k = key as LiverDefaultKey
+
+      switch (labelStyle.value) {
+        case 'lucide':
+          return LIVER_LUCIDE_LABELS[k]
+        case 'emoji':
+          return LIVER_EMOJI_LABELS[k]
+        case 'text':
+          return LIVER_TEXT_LABELS[k]
+      }
+    }
+
+    // デフォルトキーでない → 従来どおり text
+    return eventLabels.value[key] ?? key
   }
 
   const isComponent = (label: string | Component): label is Component => typeof label !== 'string'

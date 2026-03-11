@@ -1,10 +1,16 @@
 <!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterPreview.vue -->
 <template>
   <HudPreview>
-    <LiverCounterManager :settings="liverCounter" :counters="previewCounters" :event-labels="previewEventLabels" />
-    <button class="btn btn-xs btn-ghost absolute bottom-1 right-1 opacity-60 hover:opacity-100" @click="incrementAll">
-      🎲 +1
-    </button>
+    <LiverCounterManager
+      :key="liverCounter.labelStyle"
+      :settings="liverCounter"
+      :counters="previewCounters"
+      :event-labels="previewEventLabels"
+    />
+
+    <template #hud>
+      <button class="btn btn-xs btn-ghost" @click="incrementAll">🎲 +1</button>
+    </template>
   </HudPreview>
 </template>
 

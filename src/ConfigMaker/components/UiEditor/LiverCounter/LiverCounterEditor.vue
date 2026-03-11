@@ -1,9 +1,7 @@
 <!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <div class="max-h-56 overflow-y-hidden">
-    <LiverCounterPreview :liver-counter="liverCounter" :event-labels="previewEventLabels" />
-  </div>
+  <LiverCounterPreview :liver-counter="liverCounter" :event-labels="previewEventLabels" />
 
   <!-- コンポーネント選択 -->
   <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
@@ -32,6 +30,21 @@
         {{ theme }}
       </option>
     </select>
+  </SettingItem>
+
+  <!-- ラベルスタイル -->
+  <SettingItem label="ラベルスタイル" description="カウンターのラベル表示方法を選択">
+    <div class="flex flex-wrap gap-2">
+      <div
+        v-for="(label, key) in labelStyleMap"
+        :key="key"
+        class="badge cursor-pointer"
+        :class="liverCounter.labelStyle === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('labelStyle', key)"
+      >
+        {{ label }}
+      </div>
+    </div>
   </SettingItem>
 
   <!-- カラーサイクル設定（分離コンポーネント） -->
@@ -89,7 +102,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsLiverSchema, liverComponentMap, liverDefaultMap } from '@/types/'
+  import { SettingsLiverSchema, labelStyleMap, liverComponentMap, liverDefaultMap } from '@/types/'
   import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
   import LiverCounterPreview from './LiverCounterPreview.vue'
   import ColorCycleEditor from './ColorCycleEditor.vue'
@@ -120,6 +133,7 @@
   const resetMap = {
     defaultCounters: () => resetField('defaultCounters'),
     eventCounters: () => resetField('eventCounters'),
+    labelStyle: () => resetField('labelStyle'),
   }
 
   // ---- defaultCounters トグル ----

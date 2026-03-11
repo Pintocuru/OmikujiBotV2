@@ -19,13 +19,13 @@
   import { computed, toRef, type Component } from 'vue'
   import type { SettingsLiverCounterType, LiverComponent } from '@/types/'
 
-  import BasicCirclePlainItem from './BasicCirclePlain.vue'
-  import BasicCircleItem from './BasicCircle.vue'
-  import PixelBadgePlainItem from './PixelBadgePlain.vue'
-  import PixelBadgeItem from './PixelBadge.vue'
-  import MagicalStoneItem from './MagicalStone.vue'
-  import StarBurstItem from './StarBurst.vue'
-  import HexGridItem from './HexGrid.vue'
+  import BasicCirclePlainItem from '../layouts/BasicCirclePlain.vue'
+  import BasicCircleItem from '../layouts/BasicCircle.vue'
+  import PixelBadgePlainItem from '../layouts/PixelBadgePlain.vue'
+  import PixelBadgeItem from '../layouts/PixelBadge.vue'
+  import MagicalStoneItem from '../layouts/MagicalStone.vue'
+  import StarBurstItem from '../layouts/StarBurst.vue'
+  import HexGridItem from '../layouts/HexGrid.vue'
 
   import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
   import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
@@ -36,7 +36,7 @@
     eventLabels: Record<string, string>
   }>()
 
-  const { getLabel } = useLiverLabelResolver(props.eventLabels)
+  const { getLabel } = useLiverLabelResolver(toRef(props, 'eventLabels'), toRef(props.settings, 'labelStyle'))
   const { allKeys, getPattern, formatValue } = useLiverCounterDisplay(toRef(props, 'settings'))
 
   const itemMap: Record<LiverComponent, Component> = {
