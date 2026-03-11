@@ -19,7 +19,7 @@ import { OmikenCommentSchema } from '@shared/types/OmikenComment/OmikenCommentSc
 import { useNavigationStore } from '../stores/useNavigationStore'
 import { useGetRecordData } from '../stores/useGetRecordData'
 import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
-import { PlaceholderVariable } from '@/MainGenerator/stores/PlaceholderVariable/PlaceholderVariable'
+import { PlaceholderVariable } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 
 const MOCK_COMMENT = OmikenCommentSchema.parse({

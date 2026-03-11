@@ -2,7 +2,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { MetaStateServiceType, MetaUpdateEvent, NormalizedMeta } from '@main/stores/MetaState/MetaStateService'
 import { MetaRuleSchema, MetaRuleType, MetaTriggerSchema } from '@/types/OmikujiData/'
-import { MetaRuleProcessor } from '@/MainGenerator/scripts/RuleProcess/MetaRuleProcessor'
+import { MetaRuleProcessor } from '@main/scripts/RuleProcess/MetaRuleProcessor'
 
 // ─── トップレベルで関数参照を固定 ────────────────────────────────────────────
 const { mockExecuteOmikuji, mockEvaluate } = vi.hoisted(() => ({

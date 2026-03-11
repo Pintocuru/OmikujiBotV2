@@ -58,6 +58,7 @@ export class EventMetaProcessor {
         ? {
             ...event,
             previous: {
+              isLive: event.current.isLive,
               upVote: this.lastUpVote ?? event.current.upVote,
               viewer: this.lastViewer ?? event.current.viewer,
               follower: event.current.follower,

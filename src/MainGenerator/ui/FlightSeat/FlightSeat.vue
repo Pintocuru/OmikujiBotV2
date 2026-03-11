@@ -22,7 +22,7 @@
   import { useSeatManager } from './composables/useSeatManager'
   import { calculateTotalSeats, parseCustomLayout } from './composables/seatLayoutUtils'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)

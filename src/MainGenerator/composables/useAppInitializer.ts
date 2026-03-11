@@ -1,89 +1,61 @@
 // src/MainGenerator/composables/useAppInitializer.ts
+import { EventCommentProcessor } from '@main/scripts/EventProcess/CommentProcessor'
+import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 import { useAppStore } from '@main/stores/useAppStore'
-import { EventCommentProcessor } from '@/MainGenerator/scripts/EventProcess/CommentProcessor'
 import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
-import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
-import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
-import { storeToRefs } from 'pinia'
-import { POST_SETTINGS } from '@shared/sdk/PostSettings'
+import { OmikenCommentType } from '@shared/types'
+
+const TIME_THRESHOLD = 10000
 
 export function useAppInitializer() {
   const initialize = async () => {
-    const appStore = useAppStore()
-    const { data } = storeToRefs(appStore)
-    const navigationStore = useNavigationStore()
-    const { isComment } = useVisibilityAccess()
-
-    // 初期化開始を明示（status: 'initializing' はストア初期値のため呼び出し不要だが、
-    // 再初期化ケースに備えて明示的に設定する）
-    appStore.setStatus('initializing')
+    const { setStatus, setError } = useAppStore()
+    const commentProcessor = new EventCommentProcessor()
+    setStatus('initializing')
 
     try {
-      // コメント購読
       const isInit = await GetOmikenComments((omikens, isReset) => {
         try {
           // リセット検出
           if (isReset) {
-            appStore.clearOmikens()
-            appStore.streamStats.reset()
-            appStore.userSession.resetSession()
+            resetAppState()
             return
           }
 
-          const pattern = data.value.settings.ignoreUserPattern
+          // 新規コメントを記録
+          const newOmikens = filterNewOmikens(omikens)
 
-          // ① 重複排除: 新規コメントのみ取得（責務はここに集約）
-          const newOmikens = appStore.addOmikens(omikens)
+          // 投稿から10秒以内のものだけ、下記の処理を行う
+          const newNewOmikens = newOmikens.filter((omiken) => {
+            if (Date.now() - omiken.timestamp > TIME_THRESHOLD) return false
+            return true
+          })
 
-          for (const omiken of newOmikens) {
-            // 除外判定
-            if (isBotComment(omiken.userId)) continue
-            if (shouldIgnoreUser(omiken.userName, pattern)) continue
+          // 新規コメントからユーザーデータを記録
+          recordStats(newNewOmikens)
 
-            const status = appStore.metaState.getCurrent()
-            appStore.streamStats.record(omiken, status)
-            appStore.userSession.stats.recordComment(omiken)
-          }
-
-          // コメントイベント処理
+          // コメントイベント
+          const { isComment } = useVisibilityAccess()
           if (!isComment.value) return
-          const commentProcessor = new EventCommentProcessor()
-          const botMessages = commentProcessor.respondToComments(newOmikens)
-          appStore.scheduleBotMessages(botMessages)
+          commentProcessor.respondToComments(newNewOmikens)
         } catch (error) {
           console.error('[useAppInitializer] コメント処理エラー:', error)
           postSystemMessage(`コメント処理エラー: ${error}`, { speech: false, throttle: true })
         }
       })
 
-      // PingOneSDK のリトライが全て失敗した場合のみ error に遷移
       if (!isInit) {
-        appStore.setStatus('error')
-        return
+        setStatus('error')
+      } else {
+        // エディタープラグインからデータを読み込む
+        await syncWithServer()
+        setStatus('ready')
       }
-
-      // サーバ同期(オプション)
-      const isHealth = await generatorApi.getHealth()
-      if (isHealth) {
-        const serverData = await generatorApi.loadGeneratorConfig()
-        if (serverData) {
-          appStore.loadData(serverData)
-          navigationStore.selectCategory(appStore.data.settings.initialCategory)
-          const name = appStore.data.meta.name
-          postSystemMessage(`エディタープラグイン から ${name} のデータを読み込みました`, {
-            username: '__INFO__',
-            speech: false,
-          })
-        }
-      }
-
-      // ready へ
-      appStore.setStatus('ready')
     } catch (error) {
       console.error('❌ 初期化エラー:', error)
-      appStore.setError(error instanceof Error ? error.message : String(error))
+      setError(error instanceof Error ? error.message : String(error))
       postSystemMessage(`❌ 初期化エラー: ${error}`)
     }
   }
@@ -91,21 +63,68 @@ export function useAppInitializer() {
   return { initialize }
 }
 
-/**
- * ユーザー記録を除外するかどうかを判定する
- */
-const shouldIgnoreUser = (userName: string, pattern: string): boolean => {
-  if (!pattern || !userName) return false
+// リセット検出
+function resetAppState() {
+  const appStore = useAppStore()
+  appStore.clearOmikens()
+  appStore.streamStats.reset()
+  appStore.userSession.resetSession()
+}
 
+// コメントを追加
+function filterNewOmikens(omikens: OmikenCommentType[]): OmikenCommentType[] {
+  const appStore = useAppStore()
+  const ignorePattern = appStore.data.settings.ignoreUserPattern
+  const currentMeta = appStore.metaState.getCurrent()
+
+  return appStore.addOmikens(omikens).filter((omiken) => {
+    if (ignoreExternalOnLive(omiken.meta.isExternal, currentMeta?.isLive)) return false
+    if (ignoreNamePattern(omiken.userName, ignorePattern)) return false
+    return true
+  })
+}
+
+// 新規コメントからユーザーデータを記録
+function recordStats(omikens: OmikenCommentType[]) {
+  const appStore = useAppStore()
+  for (const omiken of omikens) {
+    appStore.streamStats.record(omiken)
+    appStore.userSession.stats.recordComment(omiken)
+  }
+}
+
+// エディタープラグインからデータを読み込む
+async function syncWithServer() {
+  const appStore = useAppStore()
   try {
-    const regex = new RegExp(pattern, 'i')
-    return regex.test(userName)
+    const serverData = await generatorApi.loadGeneratorConfig()
+    if (!serverData) return
+
+    appStore.loadData(serverData)
+    postSystemMessage(`エディタープラグイン から ${appStore.data.meta.name} のデータを読み込みました`, {
+      username: '__INFO__',
+      speech: false,
+    })
+  } catch (err) {
+    const msg = `エディタープラグインからデータ読み込みに失敗しました: ${err}`
+    console.error(msg)
+    postSystemMessage(msg)
+  }
+}
+
+// 配信中は外部コメントをシャットアウトする
+const ignoreExternalOnLive = (isExternalComment: boolean, isLive?: boolean): boolean => {
+  if (isLive === undefined) return false // undefinedなら配信中ではないと思う
+  return isExternalComment && isLive
+}
+
+// 配信者などの名前があるなら実行させない
+const ignoreNamePattern = (userName: string, pattern: string): boolean => {
+  if (!pattern || !userName) return false
+  try {
+    return new RegExp(pattern, 'i').test(userName)
   } catch (e) {
     console.warn('ignoreUserPattern の正規表現が不正です:', e)
     return false
   }
-}
-
-const isBotComment = (userId: string): boolean => {
-  return userId === POST_SETTINGS.botUserId
 }

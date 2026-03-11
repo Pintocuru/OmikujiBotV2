@@ -22,7 +22,7 @@
   import { SettingsSocialSchema } from '@/types'
   import { useSocialRosterManager } from './composables/useSocialRosterManager'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import SocialRosterSelector from './parts/SocialRosterSelector.vue'
 
   const appStore = useAppStore()

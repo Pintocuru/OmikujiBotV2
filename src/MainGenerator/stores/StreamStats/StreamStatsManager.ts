@@ -1,5 +1,4 @@
 // src/MainGenerator/stores/StreamStats/StreamStatsManager.ts
-import { NormalizedMeta } from '../MetaState/MetaStateService'
 import { OmikenCommentType } from '@shared/types'
 
 export interface StreamStats {
@@ -16,12 +15,9 @@ export class StreamStatsManager {
   private totalPrice = 0
   private syoken = 0
 
-  record(omiken: OmikenCommentType, metaStatus: NormalizedMeta | null): void {
-    const { tc, lc, isExternal } = omiken.meta
+  record(omiken: OmikenCommentType): void {
+    const { tc, lc } = omiken.meta
     const giftPrice = omiken.giftPrice ?? 0
-    const isLive = metaStatus?.isLive ?? false
-
-    if (isLive && isExternal) return
 
     if (tc === 1) this.syoken++
     this.liveComments = lc

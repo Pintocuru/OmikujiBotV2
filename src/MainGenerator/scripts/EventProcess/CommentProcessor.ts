@@ -11,8 +11,6 @@ import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ActionSetType } from '@/types/OmikujiData/'
 
-const TIME_THRESHOLD = 10000
-
 interface ProcessResult {
   isCommentTriggered: boolean
   botMessages: BotMessageType[]
@@ -26,26 +24,10 @@ export class EventCommentProcessor {
   /**
    * メイン処理: コメントを処理して拡張コメントを作成
    */
-  respondToComments(omikens: OmikenCommentType[]): BotMessageType[] {
-    if (!omikens.length) return []
-
-    const botMessages: BotMessageType[] = []
-    const limitedComments = omikens.slice().reverse().slice(0, 5)
-
-    for (const omiken of limitedComments) {
-      // 古いコメントなら処理を中断
-      const { timestamp } = omiken
-      if (Date.now() - timestamp > TIME_THRESHOLD) return botMessages
-
-      // おみくじチェック
-      const processedMessages = this.processUserComment(omiken)
-
-      if (processedMessages.length > 0) {
-        botMessages.push(...processedMessages)
-      }
-    }
-
-    return botMessages
+  respondToComments(omikens: OmikenCommentType[]): void {
+    if (omikens.length === 0) return
+    const botMessages = omikens.flatMap((omiken) => this.processUserComment(omiken))
+    if (botMessages.length > 0) this.store.scheduleBotMessages(botMessages)
   }
 
   /**

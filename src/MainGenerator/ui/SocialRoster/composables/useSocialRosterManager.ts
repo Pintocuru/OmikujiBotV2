@@ -2,7 +2,7 @@
 import { ref, computed, type Ref } from 'vue'
 import { UserNameType } from '@shared/types'
 import { UserStatsRecord } from '@/types'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 import { SocialSortKey } from '@/types'
 
 interface SocialRosterManagerOptions {

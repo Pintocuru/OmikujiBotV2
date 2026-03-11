@@ -46,7 +46,9 @@
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
 
+  // コンポーネント設定
   const { activeComponents } = useComponentRenderer()
+  // 初期化処理
   const { initialize } = useAppInitializer()
 
   onMounted(initialize)

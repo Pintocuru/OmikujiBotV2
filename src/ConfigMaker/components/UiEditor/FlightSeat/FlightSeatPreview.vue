@@ -28,10 +28,10 @@
   import { SettingsFlightSchema, flightComponentDefaults, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatSelector from '@main/ui/FlightSeat/parts/SeatSelector.vue'
-  import { calculateTotalSeats, parseCustomLayout } from '@/MainGenerator/ui/FlightSeat/composables/seatLayoutUtils'
+  import { calculateTotalSeats, parseCustomLayout } from '@main/ui/FlightSeat/composables/seatLayoutUtils'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
-  import { useSeatManager } from '@/MainGenerator/ui/FlightSeat/composables/useSeatManager'
+  import { useSeatManager } from '@main/ui/FlightSeat/composables/useSeatManager'
   import { UserNameSchema } from '@shared/types'
 
   const omikujiStore = useOmikujiStore()
