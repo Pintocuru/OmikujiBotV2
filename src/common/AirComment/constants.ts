@@ -1,4 +1,4 @@
-//
+// src/common/AirComment/constants.ts
 
 export const COMMENTS = ['こんにちはー！', 'お疲れさまです！', 'わかる〜', 'そうなんですね', '草', 'それな']
 

@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/LiverCounter/parts/BasicCircle.vue -->
+<!-- src/MainGenerator/ui/LiverCounter/layouts/BasicCircle.vue -->
 <template>
   <div class="relative w-32 h-32 flex items-center justify-center transition duration-150 pixel-badge">
     <!-- 外側リング -->

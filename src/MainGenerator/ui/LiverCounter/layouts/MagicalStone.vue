@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/LiverCounter/parts/MagicalStone.vue -->
+<!-- src/MainGenerator/ui/LiverCounter/layouts/MagicalStone.vue -->
 <template>
   <div class="magic-burst relative w-30 h-30" :class="getNthClass(index)">
     <div class="w-full h-full flex petal-inner" :class="`text-${activeColor}`">

@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/parts/SeatCell.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatCell.vue -->
 <template>
   <!-- ユーザーが座っている場合 -->
   <div v-if="seat" class="relative flex items-center justify-center seat-pop">

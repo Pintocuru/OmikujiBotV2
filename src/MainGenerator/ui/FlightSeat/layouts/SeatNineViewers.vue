@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/parts/layouts/SeatLayoutNineViewers.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatNineViewers.vue -->
 <template>
   <div class="flex flex-col items-center">
     <div class="flex justify-center">

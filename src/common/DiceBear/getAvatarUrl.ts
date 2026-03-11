@@ -1,4 +1,4 @@
-//
+// src/common/DiceBear/getAvatarUrl.ts
 
 export const getAvatarUrl = (name: string) => {
   const seed = encodeURIComponent(name)

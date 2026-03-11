@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/parts/FlightSeatDebug.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/FlightSeatDebug.vue -->
 <template>
   <div class="stats shadow w-full">
     <div class="stat">

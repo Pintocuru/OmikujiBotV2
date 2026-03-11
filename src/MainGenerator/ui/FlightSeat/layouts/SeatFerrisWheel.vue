@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/parts/layouts/SeatLayoutFerrisWheel.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatFerrisWheel.vue -->
 <template>
   <div class="flex flex-col items-center gap-0">
     <div class="relative" :style="{ width: diameter + 'px', height: diameter + 'px' }">

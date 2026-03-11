@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/parts/SeatGridSquare.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatGridSquare.vue -->
 <template>
   <div class="flex justify-center">
     <div
