@@ -6,6 +6,7 @@ import { useAppStatus } from './useAppStatus'
 import { useBotMessageActions } from './useBotMessageActions'
 import { createAppServices } from './createAppServices'
 import { normalizeData } from '@/common/migrations'
+import { useOmikensActions } from './useOmikensActions'
 
 // グローバルデータの初期化
 const { omikujiData: rawOmikujiData } = window
@@ -24,6 +25,9 @@ export const useAppStore = defineStore('app', () => {
   // アプリ状態
   const appStatus = useAppStatus()
 
+  // omiken
+  const omikensActions = useOmikensActions()
+
   // botMessage
   const botMessageActions = useBotMessageActions()
 
@@ -35,6 +39,7 @@ export const useAppStore = defineStore('app', () => {
     loadData,
 
     ...appStatus,
+    ...omikensActions,
     ...botMessageActions,
     ...services,
   }

@@ -16,6 +16,16 @@ export function createAppServices() {
 
   scriptManager.setVisitManager(userSession)
 
+  // 配信開始時に各種データリセット
+  metaState.subscribe((event) => {
+    const prev = event.previous?.isLive ?? false
+    const curr = event.current.isLive
+    if (!prev && curr) {
+      streamStats.reset()
+      userSession.resetSession()
+    }
+  })
+
   return {
     userSession,
     cooldownManager,

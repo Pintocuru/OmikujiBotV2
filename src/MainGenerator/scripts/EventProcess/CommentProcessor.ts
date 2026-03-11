@@ -8,10 +8,8 @@ import { SpecialActionProcessor } from '../OmikujiProcess/SpecialActionProcessor
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
-import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ActionSetType } from '@/types/OmikujiData/'
-import { shouldIgnoreUser } from '@/common/filters/shouldIgnoreUser'
 
 const TIME_THRESHOLD = 10000
 
@@ -21,7 +19,6 @@ interface ProcessResult {
 }
 
 export class EventCommentProcessor {
-  private appliedCommentIds = new Set<string>()
   private readonly store = useAppStore()
   private readonly omikujiProcessor = new OmikujiProcessor()
   private readonly specialActionProcessor = new SpecialActionProcessor()
@@ -31,28 +28,16 @@ export class EventCommentProcessor {
    */
   respondToComments(omikens: OmikenCommentType[]): BotMessageType[] {
     if (!omikens.length) return []
-    const pattern = this.store.data.settings.ignoreUserPattern
 
     const botMessages: BotMessageType[] = []
     const limitedComments = omikens.slice().reverse().slice(0, 5)
 
     for (const omiken of limitedComments) {
-      const { id, userId, timestamp } = omiken
-
-      // BOTのコメントがあった時点で処理終了(既に処理されたものなので)
-      if (this.isBotComment(userId)) return botMessages
-
-      // 既に処理済みのコメントは処理終了
-      if (this.appliedCommentIds.has(id)) return botMessages
-
-      // 除外条件をチェック
-      if (this.isOldComment(timestamp)) return botMessages
-
-      // グローバル除外（管理者・BOT・特定ユーザー）
-      if (shouldIgnoreUser(omiken.userName, pattern)) continue
+      // 古いコメントなら処理を中断
+      const { timestamp } = omiken
+      if (Date.now() - timestamp > TIME_THRESHOLD) return botMessages
 
       // おみくじチェック
-      this.appliedCommentIds.add(id)
       const processedMessages = this.processUserComment(omiken)
 
       if (processedMessages.length > 0) {
@@ -179,13 +164,5 @@ export class EventCommentProcessor {
     return Object.values(this.store.data.comments)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
-  }
-
-  private isBotComment(userId: string): boolean {
-    return userId === POST_SETTINGS.botUserId
-  }
-
-  private isOldComment(timestamp: number): boolean {
-    return Date.now() - timestamp > TIME_THRESHOLD
   }
 }
