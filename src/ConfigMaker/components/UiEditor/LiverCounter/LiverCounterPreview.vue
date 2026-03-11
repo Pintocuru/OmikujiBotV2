@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterPreview.vue -->
 <template>
-  <HudPreview>
+  <HudPreview maxHeightClass="h-42">
     <LiverCounterManager
       :key="liverCounter.labelStyle"
       :settings="liverCounter"

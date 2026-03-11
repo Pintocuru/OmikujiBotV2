@@ -16,7 +16,7 @@ export const LIVER_EMOJI_LABELS: Record<LiverDefaultKey, string> = {
   upVote: '👍',
   viewer: '👀',
   syoken: '🌱',
-  commenter: '🧑‍🤝‍🧑',
+  commenter: '👥',
   lc: '💬',
   totalPrice: '💰',
 }

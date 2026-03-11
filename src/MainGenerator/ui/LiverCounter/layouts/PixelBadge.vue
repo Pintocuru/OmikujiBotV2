@@ -14,12 +14,7 @@
     <!-- content -->
     <div class="relative flex flex-col items-center justify-center pt-2">
       <!-- アイコン -->
-      <component :is="label" v-if="isComponent" class="w-10 h-10 drop-shadow" />
-
-      <!-- ラベル -->
-      <span v-else class="text-2xl font-bold truncate">
-        {{ label }}
-      </span>
+      <LabelText :label="label" />
 
       <!-- 数値 -->
       <div class="flex items-baseline justify-center whitespace-nowrap">
@@ -42,17 +37,16 @@
 </template>
 
 <script setup lang="ts">
-  import { type Component, computed } from 'vue'
+  import { type Component } from 'vue'
   import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import LabelText from './LabelText.vue'
 
-  const props = defineProps<{
+  defineProps<{
     index: number
     label: string | Component
     value: string
     colorPattern: BaseVariant
   }>()
-
-  const isComponent = computed(() => typeof props.label !== 'string')
 </script>
 
 <style scoped>

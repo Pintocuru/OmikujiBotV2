@@ -9,12 +9,7 @@
     <!-- 固定コンテンツ -->
     <div class="relative z-10 flex flex-col items-center justify-center pt-2" :class="`text-${colorPattern}-content`">
       <!-- アイコン -->
-      <component :is="label" v-if="isComponent" class="w-10 h-10" />
-
-      <!-- ラベル -->
-      <span v-else class="text-xl font-bold truncate">
-        {{ label }}
-      </span>
+      <LabelText :label="label" />
 
       <!-- 数値 -->
       <div class="flex items-baseline justify-center whitespace-nowrap">
@@ -45,8 +40,9 @@
 </template>
 
 <script setup lang="ts">
-  import { type Component, computed, ref, watch } from 'vue'
+  import { type Component, ref, watch } from 'vue'
   import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import LabelText from './LabelText.vue'
   import { Star } from 'lucide-vue-next'
 
   const props = defineProps<{
@@ -56,15 +52,14 @@
     colorPattern: BaseVariant
   }>()
 
-  const isComponent = computed(() => typeof props.label !== 'string')
-
   const isIncreasing = ref(false)
-  let prev = Number(props.value)
+  const toNum = (v: string) => Number(v.replace(/,/g, ''))
+  let prev = toNum(props.value)
 
   watch(
     () => props.value,
     (v) => {
-      const next = Number(v)
+      const next = toNum(v)
       if (next > prev) {
         isIncreasing.value = true
         setTimeout(() => (isIncreasing.value = false), 600)

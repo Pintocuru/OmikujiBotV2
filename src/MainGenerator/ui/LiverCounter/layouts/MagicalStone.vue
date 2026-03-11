@@ -5,12 +5,7 @@
       <!-- 中身 -->
       <div class="w-full h-full flex flex-col items-center justify-center gap-2" :class="`text-${activeColor}-content`">
         <!-- アイコン -->
-        <component :is="label" v-if="isComponent" class="icon-svg scale-150" />
-
-        <!-- ラベル -->
-        <span v-else class="icon-text text-2xl font-bold truncate">
-          {{ label }}
-        </span>
+        <LabelText :label="label" />
 
         <!-- 数値 -->
         <div class="flex items-baseline justify-center whitespace-nowrap">
@@ -39,8 +34,9 @@
 </template>
 
 <script setup lang="ts">
-  import { type Component, computed, ref, watch } from 'vue'
+  import { type Component, ref, watch } from 'vue'
   import { BaseVariantLabels, type BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import LabelText from './LabelText.vue'
 
   const props = defineProps<{
     index: number
@@ -48,8 +44,6 @@
     value: string
     colorPattern: BaseVariant
   }>()
-
-  const isComponent = computed(() => typeof props.label !== 'string')
 
   // nth-child による border-radius 変化を index で代替
   const getNthClass = (i: number): string => {

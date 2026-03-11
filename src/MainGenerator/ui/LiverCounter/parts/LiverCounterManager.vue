@@ -2,7 +2,11 @@
 <template>
   <div class="w-full bg-base-100 transparent-bg" :data-theme="settings.color">
     <div class="flex flex-wrap justify-center gap-2 py-2">
-      <div v-for="(key, index) in allKeys" :key="key">
+      <!-- allKeys が空のときのツッコミ -->
+      <div v-if="allKeys.length === 0" class="badge badge-error font-bold py-4">表示するカウンターはありません</div>
+
+      <!-- 通常表示 -->
+      <div v-else v-for="(key, index) in allKeys" :key="key">
         <component
           :is="currentItem"
           :index="index"
