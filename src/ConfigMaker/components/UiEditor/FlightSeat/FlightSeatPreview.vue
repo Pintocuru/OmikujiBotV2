@@ -2,22 +2,23 @@
 <template>
   <HudPreview>
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="flightSeat.color">
-      <div class="origin-top" :style="{ transform: `scale(0.5)` }">
-        <SeatSelector
-          :color="flightSeat.color"
-          :label="flightSeat.label"
-          :seats="seats"
-          :kind="flightSeat.component"
-          :customLayout="parsedCustomLayout"
-          :statKey="flightSeat.statKey"
-        />
+      <SeatSelector
+        :color="flightSeat.color"
+        :label="flightSeat.label"
+        :seats="seats"
+        :kind="flightSeat.component"
+        :customLayout="parsedCustomLayout"
+        :statKey="flightSeat.statKey"
+      />
+    </div>
+    <!-- 右下に表示するHUD（スケーリングされない） -->
+    <template #hud>
+      <div class="space-x-2">
+        <div class="badge badge-sm badge-primary">現在の座席: {{ totalSeats }}</div>
+        <button class="btn btn-xs btn-primary" @click="addPreviewUser">👤 乗車</button>
+        <button class="btn btn-xs btn-warning" @click="resetSeats">🔄 リセット</button>
       </div>
-    </div>
-    <div class="absolute bottom-1 right-1 space-x-1">
-      <div class="badge badge-sm badge-primary">現在の座席: {{ totalSeats }}</div>
-      <button class="btn btn-xs btn-primary" @click="addPreviewUser">👤 乗車</button>
-      <button class="btn btn-xs btn-warning" @click="resetSeats">🔄 リセット</button>
-    </div>
+    </template>
   </HudPreview>
 </template>
 

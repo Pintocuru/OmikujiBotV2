@@ -13,11 +13,13 @@
         />
       </div>
     </div>
-    <div class="absolute bottom-1 right-1 space-x-1">
-      <div class="badge badge-sm badge-primary">表示中: {{ previewUsers.length }}人</div>
-      <button class="btn btn-xs btn-primary" @click="addPreviewUser">👤 追加</button>
-      <button class="btn btn-xs btn-warning" @click="resetPreviewUsers">🔄 リセット</button>
-    </div>
+    <template #hud>
+      <div class="space-x-2">
+        <div class="badge badge-sm badge-primary">表示中: {{ previewUsers.length }}人</div>
+        <button class="btn btn-xs btn-primary" @click="addPreviewUser">👤 追加</button>
+        <button class="btn btn-xs btn-warning" @click="resetPreviewUsers">🔄 リセット</button>
+      </div>
+    </template>
   </HudPreview>
 </template>
 
