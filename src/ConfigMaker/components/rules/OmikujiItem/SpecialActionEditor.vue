@@ -14,18 +14,35 @@
       </select>
     </SettingItem>
 
-    <!-- isCountEvent -->
-    <SettingItem label="イベントとしてカウント" description="ONでおみくじ回数としてカウントされます">
-      <label class="label cursor-pointer gap-3">
+    <template v-if="!isLogResetType">
+      <!-- isCountEvent -->
+      <SettingItem label="イベントとしてカウント" description="ONでおみくじ回数としてカウントされます">
+        <label class="label cursor-pointer gap-3">
+          <input
+            type="checkbox"
+            class="toggle toggle-primary"
+            :checked="behavior.isCountEvent"
+            @change="updateBehavior('isCountEvent', ($event.target as HTMLInputElement).checked)"
+          />
+          <span class="label-text">カウント{{ behavior.isCountEvent ? 'する' : 'しない' }}</span>
+        </label>
+      </SettingItem>
+
+      <!-- 加算・減産する数値 -->
+      <SettingItem
+        v-if="behavior.isCountEvent"
+        label="加算・減算する数値"
+        description="カウンターで増減させる数値を指定します"
+      >
         <input
-          type="checkbox"
-          class="toggle toggle-primary"
-          :checked="behavior.isCountEvent"
-          @change="updateBehavior('isCountEvent', ($event.target as HTMLInputElement).checked)"
+          type="number"
+          step="1"
+          class="input input-bordered input-sm w-full"
+          :value="behavior.countEvent"
+          @input="onCountEventInput"
         />
-        <span class="label-text">カウント{{ behavior.isCountEvent ? 'する' : 'しない' }}</span>
-      </label>
-    </SettingItem>
+      </SettingItem>
+    </template>
 
     <!-- log系処理 -->
     <template v-if="isLogType">
@@ -106,6 +123,7 @@
   const behavior = computed<ActionBehaviorType>(() => omikujiItem.value?.behavior)
 
   /** type が log系かどうか */
+  const isLogResetType = computed(() => behavior.value.type.includes('log') || behavior.value.type.includes('reset'))
   const isLogType = computed(() => behavior.value.type.includes('log'))
 
   /** behavior 直下のフィールドを更新 */
@@ -127,5 +145,19 @@
         log: { ...item.behavior.log, [key]: value },
       },
     }))
+  }
+
+  const onCountEventInput = (e: Event) => {
+    const value = (e.target as HTMLInputElement).value
+
+    // 空欄 → 0
+    if (value === '') {
+      updateBehavior('countEvent', 0)
+      return
+    }
+
+    // 整数に変換
+    const parsed = parseInt(value, 10)
+    updateBehavior('countEvent', parsed)
   }
 </script>

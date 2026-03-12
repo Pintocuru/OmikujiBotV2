@@ -53,7 +53,7 @@
     const eventKeys = liverSettings.value?.eventCounters ?? []
     for (const ruleId of eventKeys) {
       const records = grouped[ruleId] ?? []
-      counters.value[ruleId] = records.reduce((sum, r) => sum + (r.visitCount ?? 0), 0)
+      counters.value[ruleId] = records.reduce((sum, r) => sum + (r.visitValue ?? 0), 0)
     }
   }
 

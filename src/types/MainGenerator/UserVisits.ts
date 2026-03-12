@@ -8,8 +8,10 @@ import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
  */
 export const UserVisitRecordSchema = z.object({
   ...UserNameSchema.shape,
-  ruleId: z.string(),
-  visitCount: z.number(),
+  eventKey: z.string(),
+  visits: z.number(),
+  visitValue: z.number(),
+  lastVisit: z.number().default(() => Date.now()),
 })
 export type UserVisitRecord = z.infer<typeof UserVisitRecordSchema>
 

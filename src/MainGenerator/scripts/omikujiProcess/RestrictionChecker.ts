@@ -16,17 +16,17 @@ export interface RestrictionCheckResult {
 /**
  * 制限チェック（重複チェック、クールダウンチェック）
  */
-export function checkRestrictions(omiken: OmikenCommentType, rule: CommentRuleType): RestrictionCheckResult {
-  const isCommentBased = rule.trigger.conditions.includes('comment')
+export function checkRestrictions(omiken: OmikenCommentType, event: CommentRuleType): RestrictionCheckResult {
+  const isCommentBased = event.trigger.conditions.includes('comment')
   const userName = omiken.userName
 
   // 1. クールダウンチェック
-  if (isCooldownBlocked(rule.limits.cooldownSeconds)) {
+  if (isCooldownBlocked(event.limits.cooldownSeconds)) {
     return {
       isBlocked: true,
       restrictionType: 'cooldown',
       metadata: {
-        ruleName: rule.name,
+        ruleName: event.name,
       },
     }
   }
@@ -36,13 +36,13 @@ export function checkRestrictions(omiken: OmikenCommentType, rule: CommentRuleTy
   }
 
   // 2. 連投制限チェック（コメントベースのイベントのみ）
-  if (isRepeatBlocked(omiken.userId, rule.key, rule.limits.isRepeatAllowed)) {
+  if (isRepeatBlocked(omiken.userId, event.key, event.limits.isRepeatAllowed)) {
     return {
       isBlocked: true,
       restrictionType: 'repeat',
       metadata: {
         userName,
-        ruleName: rule.name,
+        ruleName: event.name,
       },
     }
   }

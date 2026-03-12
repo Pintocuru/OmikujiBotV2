@@ -1,13 +1,14 @@
 // src/MainGenerator/scripts/OmikujiProcess/SpecialActionProcessor.ts
-import { ActionSetType, CommentRuleType } from '@/types/OmikujiData/'
+import { ActionSetType } from '@/types/OmikujiData/'
 import { useAppStore } from '@main/stores/useAppStore'
-import { OmikenCommentType, UserNameSchema, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { GameStateType } from '@/types'
 
 export interface SpecialActionResult {
   handled: boolean // trueのとき呼び出し元でイベント処理を終了する
   isCountEvent: boolean // カウントを行うか
+  countEvent?: number // カウントする回数
 }
 
 /**
@@ -16,37 +17,43 @@ export interface SpecialActionResult {
 export class SpecialActionProcessor {
   private readonly store = useAppStore()
 
-  process(actionItem: ActionSetType, omiken: OmikenCommentType, rule: CommentRuleType): SpecialActionResult | null {
+  process(actionItem: ActionSetType): SpecialActionResult | null {
     if (actionItem.type !== 'special') return null
 
-    const { type, isCountEvent, log } = actionItem.behavior
+    const { type, isCountEvent, countEvent, log } = actionItem.behavior
     const { targetKey, logFormat, logLimit } = log
-
-    if (isCountEvent) this.recordDraw(omiken, rule)
 
     switch (type) {
       // 処理を終了する
       case 'return':
-        return { handled: true, isCountEvent }
+        return { handled: true, isCountEvent, countEvent }
 
       // 次のイベントへ進む
       case 'continue':
-        return { handled: false, isCountEvent }
+        return { handled: false, isCountEvent, countEvent }
 
+      /**
+       * reset
+       * isCountEvent はfalseとする
+       */
       // おみくじ回数をリセットする
       case 'resetOmikuji': {
         this.store.userSession.visits.resetRule(actionItem.key)
         postSystemMessage(`${actionItem.name}のおみくじ回数をリセットしました`, { username: '__INFO__' })
-        return { handled: true, isCountEvent }
+        return { handled: true, isCountEvent: false }
       }
 
+      /**
+       * log ログ出力系
+       * isCountEvent はfalseとする
+       */
       case 'logUserState': {
         const logs = this.store.scriptManager.getGameState(targetKey)?.logs
         if (!logs) return { handled: true, isCountEvent }
 
         const message = this.formatLogs(logs, logFormat, logLimit)
         postSystemMessage(message, { username: '__INFO__', speech: false })
-        return { handled: true, isCountEvent }
+        return { handled: true, isCountEvent: false }
       }
 
       case 'logOmikuji': {
@@ -55,19 +62,16 @@ export class SpecialActionProcessor {
         )
         const message = `${actionItem.name}/ 実行総数:${totalVisits}回 ユーザー数:${uniqueUsers}人 1人あたり平均:${averageVisitsPerUser}回`
         postSystemMessage(message, { username: '__INFO__', speech: false })
-        return { handled: true, isCountEvent }
+        return { handled: true, isCountEvent: false }
       }
 
-      /**
-       * ログ出力系
-       */
       case 'logGame': {
         const logs = this.store.scriptManager.getGameState(targetKey)?.logs
         if (!logs) return { handled: true, isCountEvent: false }
 
         const message = this.formatLogs(logs, logFormat, logLimit)
         postSystemMessage(message, { username: '__INFO__', speech: false })
-        return { handled: true, isCountEvent }
+        return { handled: true, isCountEvent: false }
       }
 
       case 'logVariable': {
@@ -80,11 +84,11 @@ export class SpecialActionProcessor {
                 .map(([key, value]) => `${key}: ${value}`)
                 .join('\n')
         postSystemMessage(message, { username: '__INFO__', speech: false })
-        return { handled: true, isCountEvent }
+        return { handled: true, isCountEvent: false }
       }
 
       default:
-        return { handled: false, isCountEvent }
+        return { handled: false, isCountEvent, countEvent }
     }
   }
 
@@ -106,10 +110,6 @@ export class SpecialActionProcessor {
       .filter(Boolean)
       .slice(0, logLimit)
       .join('\n')
-  }
-
-  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType): void {
-    this.store.userSession.visits.record(rule.key, UserNameSchema.parse(omiken))
   }
 
   private resolveUserName(userId: string): UserNameType | null {

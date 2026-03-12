@@ -6,7 +6,7 @@ import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionCheck
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { SpecialActionProcessor } from '../OmikujiProcess/SpecialActionProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ActionSetType } from '@/types/OmikujiData/'
@@ -59,19 +59,19 @@ export class EventCommentProcessor {
   /**
    * 単一イベントの処理
    */
-  private processRule(omiken: OmikenCommentType, rule: CommentRuleType): ProcessResult {
+  private processRule(omiken: OmikenCommentType, event: CommentRuleType): ProcessResult {
     const { data } = this.store
 
     // 1. コメントイベントの条件チェック
-    if (!checkAllTriggers(omiken, rule.trigger)) {
+    if (!checkAllTriggers(omiken, event.trigger)) {
       return { isCommentTriggered: false, botMessages: [] }
     }
 
     // 2. 制限チェック
-    const restrictionResult = checkRestrictions(omiken, rule)
+    const restrictionResult = checkRestrictions(omiken, event)
     if (restrictionResult.isBlocked) {
       const enableSecondary = data.components.enableSecondary
-      const toastMessages = buildRestrictionMessages(restrictionResult, rule)
+      const toastMessages = buildRestrictionMessages(restrictionResult, event)
       return {
         isCommentTriggered: false,
         botMessages: enableSecondary ? toastMessages : [],
@@ -79,17 +79,17 @@ export class EventCommentProcessor {
     }
 
     // 3. drawsカウンタを omiken.meta に反映
-    this.setDrawsMeta(omiken, rule)
+    this.setDrawsMeta(omiken, event)
 
     // 4. criteria フィルタ適用後に抽選
-    const actionItem = this.lotteryWithCriteria(rule.omikuji, omiken)
+    const actionItem = this.lotteryWithCriteria(event.omikuji, omiken)
     if (!actionItem) return { isCommentTriggered: false, botMessages: [] }
 
-    // 5. special 処理を委譲
-    const specialResult = this.specialActionProcessor.process(actionItem, omiken, rule)
+    // 5. special 処理
+    const specialResult = this.specialActionProcessor.process(actionItem)
     if (specialResult) {
-      const { handled, isCountEvent } = specialResult
-      if (isCountEvent) this.recordDraw(omiken, rule)
+      const { handled, isCountEvent, countEvent } = specialResult
+      if (isCountEvent) this.recordDraw(omiken, event, countEvent)
       return {
         isCommentTriggered: handled,
         botMessages: handled ? [BotMessageEmptySchema.parse({})] : [],
@@ -97,9 +97,9 @@ export class EventCommentProcessor {
     }
 
     // 6. 通常アクション: カウントしてから実行
-    this.recordDraw(omiken, rule)
+    this.recordDraw(omiken, event)
     const botMessages = this.omikujiProcessor.executeActionItem(actionItem, omiken)
-    const isCommentTriggered = rule.trigger.conditions.includes('comment')
+    const isCommentTriggered = event.trigger.conditions.includes('comment')
 
     return { isCommentTriggered, botMessages }
   }
@@ -124,7 +124,7 @@ export class EventCommentProcessor {
   }
 
   /**
-   * omiken.meta.draws と ruleKey を設定する (抽選前に呼ぶ)
+   * omiken.meta.draws と eventKey を設定する (抽選前に呼ぶ)
    */
   private setDrawsMeta(omiken: OmikenCommentType, event: CommentRuleType): void {
     const { userSession } = this.store
@@ -137,9 +137,9 @@ export class EventCommentProcessor {
   /**
    * ドロー記録
    */
-  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType): void {
+  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType, count = 1): void {
     const { userSession } = this.store
-    userSession.visits.record(rule.key, UserNameSchema.parse(omiken))
+    userSession.visits.record(rule.key, omiken, count)
   }
 
   private getSortedEnabledRules(): CommentRuleType[] {

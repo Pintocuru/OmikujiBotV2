@@ -3,10 +3,10 @@ import { UserManager } from '@main/stores/UserManager/UserManager'
 
 // store のマネージャ呼び出し
 export abstract class GameScriptBase {
-  protected userSession?: UserManager
+  protected userManager?: UserManager
 
   // 初期化メソッド(GameScriptManagerから呼ばれる)
   initialize(userSession?: UserManager) {
-    this.userSession = userSession
+    this.userManager = userSession
   }
 }

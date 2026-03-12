@@ -164,9 +164,9 @@ const ActionBehaviorLogSchema = z.object({
 export const ActionBehaviorSchema = z.object({
   type: z.enum(actionSpecial).default('return'), // 特殊アクションの種別
   isCountEvent: z.boolean().default(true), // このアクションをおみくじカウントとして記録するか
+  countEvent: z.number().int().default(1).catch(1), // カウントする場合の数値
   log: normalizedObject(ActionBehaviorLogSchema), // ログ出力系アクションの設定
 })
-
 export type ActionBehaviorType = z.infer<typeof ActionBehaviorSchema>
 export type ActionBehaviorLogType = z.infer<typeof ActionBehaviorLogSchema>
 

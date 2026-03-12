@@ -8,7 +8,7 @@ import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 export class GameScriptManager {
   private scriptInstances: Record<string, ScriptClass> = {}
   private static instance: GameScriptManager | null = null
-  private userSession?: UserManager
+  private userManager?: UserManager
 
   static getInstance() {
     if (!this.instance) this.instance = new GameScriptManager()
@@ -31,8 +31,8 @@ export class GameScriptManager {
         this.scriptInstances[scriptId] = scriptInstance
 
         // ★ visitManagerが既に設定されていれば注入
-        if (this.userSession && 'initialize' in scriptInstance && typeof scriptInstance.initialize === 'function') {
-          scriptInstance.initialize(this.userSession)
+        if (this.userManager && 'initialize' in scriptInstance && typeof scriptInstance.initialize === 'function') {
+          scriptInstance.initialize(this.userManager)
         }
       }
     } catch (error) {
@@ -92,7 +92,7 @@ export class GameScriptManager {
    * VisitManager をセット
    */
   setVisitManager(userSession: UserManager) {
-    this.userSession = userSession
+    this.userManager = userSession
     // 既存のスクリプトインスタンスに注入
     Object.values(this.scriptInstances).forEach((instance) => {
       if ('initialize' in instance && typeof instance.initialize === 'function') {

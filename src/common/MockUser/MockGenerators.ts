@@ -92,8 +92,9 @@ export const generateDummyVisitRecords = (count: number, locale: LocaleType = 'j
     return UserVisitRecordSchema.parse({
       userName,
       userId: userName,
-      ruleId: 'dummy',
-      visitCount: randInt(0, 100),
+      eventKey: 'dummy',
+      visits: randInt(0, 100),
+      visitValue: randInt(0, 100),
     })
   })
 }
@@ -169,8 +170,9 @@ export const generateDummyWinnerUsers = (count: number = 2, locale: LocaleType =
     return UserVisitRecordSchema.parse({
       userName: name,
       userId: `dummy-${i}-${Date.now()}`,
-      ruleId: 'winner-preview',
-      visitCount: randInt(1, 50),
+      eventKey: 'winner-preview',
+      visits: randInt(1, 50),
+      visitValue: randInt(1, 50),
     })
   })
 }

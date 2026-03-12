@@ -15,7 +15,7 @@ export class ExecuteScript extends GameScriptBase implements ScriptClass {
     const eventKey = useRule ? omiken?.omikuji?.eventKey : null
     const user = prepareUserInfo(omiken)
 
-    const winners = getWinnersFromVisitManager(count, eventKey, this.userSession)
+    const winners = getWinnersFromVisitManager(count, eventKey, this.userManager)
     const names = winners.map((w) => w.userName)
     const winnerText = names.length === 1 ? names[0] : names.join(' さん、') + ' さん'
 
