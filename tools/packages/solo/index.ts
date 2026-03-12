@@ -14,6 +14,8 @@ import MaidenOmikujiNormalProject from './MaidenOmikujiNormal'
 import FlowerFortuneProject from './FlowerFortune'
 import MyNineViewersProject from './MyNineViewers'
 import GraduationIconsProject from './GraduationIcons'
+import StreamCounterCircleProject from './StreamCounterCircle'
+import StreamCounterPixelProject from './StreamCounterPixel'
 
 function projects(packageRoot: string): ProjectConfig[] {
   return [
@@ -31,6 +33,8 @@ function projects(packageRoot: string): ProjectConfig[] {
     FlowerFortuneProject(packageRoot),
     ...MyNineViewersProject.getProjects(packageRoot),
     ...GraduationIconsProject.getProjects(packageRoot),
+    ...StreamCounterCircleProject.getProjects(packageRoot),
+    ...StreamCounterPixelProject.getProjects(packageRoot),
   ]
 }
 
@@ -58,8 +62,11 @@ const targets: PackageBuildTarget[] = [
   { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
      ...MyNineViewersProject.buildTargets,
   ...GraduationIconsProject.buildTargets,
+  ...StreamCounterCircleProject.buildTargets,
+  ...StreamCounterPixelProject.buildTargets,
    */
-  ...GraduationIconsProject.buildTargets,
+  ...StreamCounterCircleProject.buildTargets,
+  ...StreamCounterPixelProject.buildTargets,
 ]
 
 export default {
