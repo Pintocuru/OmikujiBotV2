@@ -27,7 +27,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { AccessLevelLabels } from '@shared/types'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   const { licenseVisible, jsonMergeSettings, itemSlotEnabled } = useFlagsSettings()
 
@@ -37,7 +37,7 @@
     { key: 'itemSlotEnabled', label: 'アイテム表示設定の表示', model: itemSlotEnabled },
   ]
 
-  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant | null> = {
+  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], DaisyUIColorType | null> = {
     none: 'neutral',
     basic: null,
     adv: 'info',

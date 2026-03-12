@@ -30,11 +30,11 @@
   </svg>
 </template>
 <script setup lang="ts">
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   defineProps<{
     hexColors1: string
     hexColors2: string
-    colorPattern: BaseVariant
+    colorPattern: DaisyUIColorType
   }>()
 </script>

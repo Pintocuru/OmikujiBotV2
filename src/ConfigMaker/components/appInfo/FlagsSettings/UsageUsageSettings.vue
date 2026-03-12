@@ -33,11 +33,11 @@
   import { AccessLevelLabels } from '@shared/types'
   import { useFlagsSettings } from './useFlagsSettings'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   const { categoryVisibility } = useFlagsSettings()
 
-  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], BaseVariant | null> = {
+  const levelVariantMap: Record<(typeof AccessLevelLabels)[number], DaisyUIColorType | null> = {
     none: 'neutral',
     basic: null,
     adv: 'info',
@@ -45,7 +45,7 @@
     godMode: 'warning',
   }
 
-  const getVariant = (category: RecordCategoryType): BaseVariant | null => {
+  const getVariant = (category: RecordCategoryType): DaisyUIColorType | null => {
     const level = categoryVisibility(category).value
     return levelVariantMap[level]
   }

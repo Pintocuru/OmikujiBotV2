@@ -38,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
   import HexGridSvg from './HexGridSvg.vue'
   import { type Component, computed } from 'vue'
   import LabelText from './LabelText.vue'
@@ -47,7 +47,7 @@
     index: number
     label: string | Component
     value: string
-    colorPattern: BaseVariant
+    colorPattern: DaisyUIColorType
   }>()
 
   const hexColorMap: Record<string, [string, string]> = {

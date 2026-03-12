@@ -6,13 +6,13 @@
     :style="{ animationDelay: `${index * 0.08}s` }"
   >
     <!-- corner -->
-    <span class="absolute -top-px -left-px w-6 h-6 border-t-4 border-l-4 border-current" />
-    <span class="absolute -top-px -right-px w-6 h-6 border-t-4 border-r-4 border-current" />
-    <span class="absolute -bottom-px -left-px w-6 h-6 border-b-4 border-l-4 border-current" />
-    <span class="absolute -bottom-px -right-px w-6 h-6 border-b-4 border-r-4 border-current" />
+    <span class="absolute -top-px -left-px w-8 h-8 border-t-6 border-l-6 border-current" />
+    <span class="absolute -top-px -right-px w-8 h-8 border-t-6 border-r-6 border-current" />
+    <span class="absolute -bottom-px -left-px w-8 h-8 border-b-6 border-l-6 border-current" />
+    <span class="absolute -bottom-px -right-px w-8 h-8 border-b-6 border-r-6 border-current" />
 
     <!-- content -->
-    <div class="relative flex flex-col items-center justify-center pt-2">
+    <div class="relative flex flex-col items-center justify-center">
       <!-- アイコン -->
       <LabelText :label="label" />
 
@@ -38,14 +38,14 @@
 
 <script setup lang="ts">
   import { type Component } from 'vue'
-  import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
   import LabelText from './LabelText.vue'
 
   defineProps<{
     index: number
     label: string | Component
     value: string
-    colorPattern: BaseVariant
+    colorPattern: DaisyUIColorType
   }>()
 </script>
 

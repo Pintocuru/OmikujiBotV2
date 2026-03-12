@@ -4,7 +4,7 @@
   <SettingItem label="単色・奇数カラー" description="基本となるカラーを選択します">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="variant in BaseVariantLabels"
+        v-for="variant in daisyUIColor"
         :key="variant"
         class="badge cursor-pointer"
         :class="colorCycle[0] === variant ? 'badge-primary' : 'badge-outline'"
@@ -27,7 +27,7 @@
         設定しない
       </div>
       <div
-        v-for="variant in BaseVariantLabels"
+        v-for="variant in daisyUIColor"
         :key="variant"
         class="badge cursor-pointer"
         :class="colorCycle.length >= 2 && colorCycle[1] === variant ? 'badge-secondary' : 'badge-outline'"
@@ -63,20 +63,20 @@
 
 <script setup lang="ts">
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { BaseVariant, BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType, daisyUIColor } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
-    colorCycle: BaseVariant[]
+    colorCycle: DaisyUIColorType[]
   }>()
 
   const emit = defineEmits<{
-    (e: 'update:colorCycle', value: BaseVariant[]): void
+    (e: 'update:colorCycle', value: DaisyUIColorType[]): void
   }>()
 
-  const update = (value: BaseVariant[]) => emit('update:colorCycle', value)
+  const update = (value: DaisyUIColorType[]) => emit('update:colorCycle', value)
 
   // ---- 単色・奇数カラー ----
-  const setOddColor = (variant: BaseVariant) => {
+  const setOddColor = (variant: DaisyUIColorType) => {
     // 2色目が設定されていれば維持、なければ単色に
     if (props.colorCycle.length >= 2) {
       update([variant, props.colorCycle[1]])
@@ -88,21 +88,21 @@
   // ---- 偶数カラー ----
   const clearEvenColor = () => update([props.colorCycle[0]])
 
-  const setEvenColor = (variant: BaseVariant) => update([props.colorCycle[0], variant])
+  const setEvenColor = (variant: DaisyUIColorType) => update([props.colorCycle[0], variant])
 
   // ---- プリセット ----
-  const presets: BaseVariant[][] = [
-    ['error', 'warning', 'success', 'accent', 'info', 'primary', 'secondary', 'neutral'],
+  const presets: DaisyUIColorType[][] = [
     ['info', 'success', 'warning', 'error'],
+    ['error', 'warning', 'success', 'accent', 'info', 'primary', 'secondary', 'neutral'],
     ['primary', 'secondary', 'accent', 'warning'],
     ['primary', 'info', 'secondary', 'accent'],
     ['warning', 'error', 'accent', 'success'],
   ]
 
-  const isPresetActive = (preset: BaseVariant[]) =>
+  const isPresetActive = (preset: DaisyUIColorType[]) =>
     preset.length === props.colorCycle.length && preset.every((v, i) => v === props.colorCycle[i])
 
-  const applyPreset = (colors: BaseVariant[]) => update(colors)
+  const applyPreset = (colors: DaisyUIColorType[]) => update(colors)
 
   // ---- 手動入力 ----
   const onManualInput = (e: Event) => {
@@ -110,10 +110,10 @@
     const arr = raw
       .split(',')
       .map((s) => s.trim())
-      .filter((s): s is BaseVariant => (BaseVariantLabels as readonly string[]).includes(s))
+      .filter((s): s is DaisyUIColorType => (daisyUIColor as readonly string[]).includes(s))
     if (arr.length > 0) update(arr)
   }
 
   // ---- リセット ----
-  const onReset = () => update(['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'])
+  const onReset = () => update(presets[1])
 </script>

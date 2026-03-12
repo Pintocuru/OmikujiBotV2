@@ -38,12 +38,14 @@
   })
 
   const fetchStats = () => {
-    const uniqueCount = appStore.userSession.stats.getUniqueCount()
     const { liveComments, syoken, totalPrice } = appStore.streamStats.getStats()
-    counters.value.lc = liveComments
-    counters.value.commenter = uniqueCount
-    counters.value.syoken = syoken
-    counters.value.totalPrice = totalPrice
+    counters.value = {
+      ...counters.value,
+      lc: liveComments,
+      commenter: appStore.userSession.stats.getUniqueCount(),
+      syoken,
+      totalPrice,
+    }
   }
 
   const fetchEventCounters = () => {

@@ -29,13 +29,13 @@
   import { isDev } from '@/types/'
   import LicenseBadge from '@config/components/parts/LicenseBadge.vue'
   import SettingItem from '@shared/components/parts/SettingItem.vue'
-  import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   withDefaults(
     defineProps<{
       label: string
       description?: string
-      variant?: BaseVariant | null
+      variant?: DaisyUIColorType | null
       showReset?: boolean
       showWarning?: boolean
       devMemo?: string

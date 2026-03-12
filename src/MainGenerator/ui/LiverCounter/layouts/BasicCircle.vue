@@ -34,13 +34,13 @@
 
 <script setup lang="ts">
   import { type Component, computed } from 'vue'
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
   import LabelText from './LabelText.vue'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
     label: string | Component
     value: string
-    colorPattern: BaseVariant | null
+    colorPattern: DaisyUIColorType | null
   }>()
 
   const colorToken = computed(() => props.colorPattern || 'primary')

@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
   import { type Component, ref, watch } from 'vue'
-  import type { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
   import LabelText from './LabelText.vue'
   import { Star } from 'lucide-vue-next'
 
@@ -49,7 +49,7 @@
     index: number
     label: string | Component
     value: string
-    colorPattern: BaseVariant
+    colorPattern: DaisyUIColorType
   }>()
 
   const isIncreasing = ref(false)

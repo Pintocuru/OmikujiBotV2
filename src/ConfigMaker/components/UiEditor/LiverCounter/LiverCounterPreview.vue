@@ -1,12 +1,14 @@
 <!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterPreview.vue -->
 <template>
   <HudPreview maxHeightClass="h-42">
-    <LiverCounterManager
-      :key="liverCounter.labelStyle"
-      :settings="liverCounter"
-      :counters="previewCounters"
-      :event-labels="previewEventLabels"
-    />
+    <div :class="[fontFamily]">
+      <LiverCounterManager
+        :key="liverCounter.labelStyle"
+        :settings="liverCounter"
+        :counters="previewCounters"
+        :event-labels="previewEventLabels"
+      />
+    </div>
 
     <template #hud>
       <button class="btn btn-xs btn-ghost" @click="incrementAll">🎲 +1</button>
@@ -16,9 +18,10 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import type { SettingsLiverCounterType } from '@/types/'
+  import { useFontFamily, type SettingsLiverCounterType } from '@/types/'
   import LiverCounterManager from '@main/ui/LiverCounter/parts/LiverCounterManager.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
     liverCounter: SettingsLiverCounterType
@@ -33,6 +36,9 @@
     lc: 7890,
     totalPrice: 5000,
   }
+
+  const omikujiStore = useOmikujiStore()
+  const fontFamily = computed(() => useFontFamily(omikujiStore.data.components.commonStyle.fontFamily ?? 'default'))
 
   const counters = ref<Record<string, number>>({ ...baseCounters })
 

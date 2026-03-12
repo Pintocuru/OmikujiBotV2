@@ -59,7 +59,7 @@
   import { computed } from 'vue'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import { generateDummyMessages } from '@/common/MockUser/MockGenerators'
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
   import { SettingsRankingType } from '@/types/OmikujiData'
   import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
 
@@ -117,7 +117,7 @@
   }
 
   // スコアのカラー
-  const scoreBadgeClass = (variant?: BaseVariant): string => {
+  const scoreBadgeClass = (variant?: DaisyUIColorType): string => {
     return variant ? `badge-${variant}` : 'badge-primary'
   }
 </script>

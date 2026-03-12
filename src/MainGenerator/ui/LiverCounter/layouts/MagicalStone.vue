@@ -35,14 +35,14 @@
 
 <script setup lang="ts">
   import { type Component, ref, watch } from 'vue'
-  import { BaseVariantLabels, type BaseVariant } from '@shared/components/parts/ItemVariantTypes'
   import LabelText from './LabelText.vue'
+  import { DaisyUIColorType, daisyUIColor } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
     index: number
     label: string | Component
     value: string
-    colorPattern: BaseVariant
+    colorPattern: DaisyUIColorType
   }>()
 
   // nth-child による border-radius 変化を index で代替
@@ -52,16 +52,17 @@
     return ''
   }
 
-  const activeColor = ref<BaseVariant>(props.colorPattern)
+  const activeColor = ref<DaisyUIColorType>(props.colorPattern)
 
-  let prev = Number(props.value)
+  const toNum = (v: string) => Number(v.replace(/,/g, ''))
+  let prev = toNum(props.value)
 
   watch(
     () => props.value,
     (v) => {
-      const next = Number(v)
+      const next = toNum(v)
       if (next > prev) {
-        const random = BaseVariantLabels[Math.floor(Math.random() * BaseVariantLabels.length)]
+        const random = daisyUIColor[Math.floor(Math.random() * daisyUIColor.length)]
         activeColor.value = random
       }
       prev = next

@@ -49,7 +49,10 @@ export const SettingsLiverSchema = z.object({
     .default(['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'])
     .catch([]), // 任意color
   labelStyle: z.enum(labelStyleValues).default('lucide').catch('lucide'), // ラベルスタイル
-  defaultCounters: z.array(z.enum(liverDefaultKeyLabels)).default(['lc']).catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
+  defaultCounters: z
+    .array(z.enum(liverDefaultKeyLabels))
+    .default(['syoken', 'commenter', 'upVote', 'viewer'])
+    .catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
 })
 export type SettingsLiverCounterType = z.infer<typeof SettingsLiverSchema>

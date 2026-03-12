@@ -33,13 +33,13 @@
 
 <script setup lang="ts">
   import { type Component, computed } from 'vue'
-  import { BaseVariant } from '@shared/components/parts/ItemVariantTypes'
+  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
   import LabelText from './LabelText.vue'
 
   const props = defineProps<{
     label: string | Component
     value: string
-    colorPattern: BaseVariant | null
+    colorPattern: DaisyUIColorType | null
   }>()
 
   // 外側リング
