@@ -12,7 +12,17 @@
     :showReset="true"
     @reset="cooldownSeconds = 3"
   >
-    <input type="number" v-model.number="cooldownSeconds" min="0" max="300" class="input input-bordered w-full" />
+    <div class="flex gap-2">
+      <div
+        v-for="sec in [0, 3, 5, 10]"
+        :key="sec"
+        class="badge badge-lg cursor-pointer"
+        :class="cooldownSeconds === sec ? 'badge-primary' : 'badge-outline'"
+        @click="cooldownSeconds = sec"
+      >
+        {{ sec ? `${sec}秒` : '0秒(無効)' }}
+      </div>
+    </div>
   </SettingItem>
 
   <SettingItem
@@ -49,7 +59,17 @@
     :showReset="true"
     @reset="isRepeatAllowed = 1"
   >
-    <input type="number" v-model.number="isRepeatAllowed" min="0" class="input input-bordered w-full" />
+    <div class="flex gap-2">
+      <div
+        v-for="n in [0, 1, 2, 3]"
+        :key="n"
+        class="badge badge-lg cursor-pointer"
+        :class="isRepeatAllowed === n ? 'badge-primary' : 'badge-outline'"
+        @click="isRepeatAllowed = n"
+      >
+        {{ n ? `${n}回` : '0回(無効)' }}
+      </div>
+    </div>
   </SettingItem>
 
   <SettingItem

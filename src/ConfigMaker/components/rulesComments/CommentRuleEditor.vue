@@ -40,7 +40,7 @@
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
         :title="`おみくじ制限設定`"
-        :subTitle="`(cool:${selectedItem.limits.cooldownSeconds}s, 連投:${selectedItem.limits.isRepeatAllowed === 0 ? '可' : `${selectedItem.limits.isRepeatAllowed}回まで可`})`"
+        :subTitle="limitsSubTitle"
         description="重複時や回数超過時におみくじを無効にします"
       >
         <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedItemKey="selectedItemKey" />
@@ -123,5 +123,24 @@
     if (!icons.length) return '[すべてのコメント]'
 
     return icons.join('')
+  })
+
+  const limitsSubTitle = computed(() => {
+    const limits = selectedItem.value?.limits
+    if (!limits) return ''
+
+    const isCooldownDisabled = limits.cooldownSeconds === 0
+    const isRepeatDisabled = limits.isRepeatAllowed === 0
+
+    // どちらも無効なら「無効」と表示
+    if (isCooldownDisabled && isRepeatDisabled) {
+      return '（制限: 無効）'
+    }
+
+    // どちらか有効なら詳細表示
+    const cool = `cool:${limits.cooldownSeconds}s`
+    const repeat = limits.isRepeatAllowed === 0 ? '連投:無制限' : `連投:${limits.isRepeatAllowed}回まで可`
+
+    return `(${cool}, ${repeat})`
   })
 </script>
