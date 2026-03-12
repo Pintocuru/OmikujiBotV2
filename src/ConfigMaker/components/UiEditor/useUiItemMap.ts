@@ -13,7 +13,7 @@ import BubbleCharacterEditor from '@/ConfigMaker/components/UiEditor/CommentBubb
 import ToastComponentEditor from '@/ConfigMaker/components/UiEditor/ToastWidgets/ToastWidgetsEditor.vue'
 import GameRankingEditor from '@/ConfigMaker/components/UiEditor/GameRanking/GameRankingEditor.vue'
 import CounterPreviewEditor from '@/ConfigMaker/components/UiEditor/CounterPreview/CounterPreviewEditor.vue'
-import LiverCounterEditor from '@/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterEditor.vue'
+import StreamCounterEditor from '@/ConfigMaker/components/UiEditor/StreamCounter/StreamCounterEditor.vue'
 import WinnerGroupEditor from '@/ConfigMaker/components/UiEditor/WinnerGroup/WinnerGroupEditor.vue'
 import FlightSeatEditor from '@/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatEditor.vue'
 import SocialRosterEditor from '@/ConfigMaker/components/UiEditor/SocialRoster/SocialRosterEditor.vue'
@@ -83,12 +83,12 @@ export const useUiItemMap = () => {
       component: CounterPreviewEditor,
       shouldShow: hasComponentKind('counter') && isComment.value,
     },
-    liverCounter: {
+    streamCounter: {
       icon: 'Hash',
       title: 'ライバーカウンターアイテム',
       description: '複数カウンターの表示',
-      component: LiverCounterEditor,
-      shouldShow: hasComponentKind('liverCounter'),
+      component: StreamCounterEditor,
+      shouldShow: hasComponentKind('streamCounter'),
     },
     winnerGroup: {
       icon: 'Crown',

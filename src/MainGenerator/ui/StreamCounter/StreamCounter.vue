@@ -1,21 +1,21 @@
-<!-- src/MainGenerator/ui/LiverCounter/LiverCounter.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/StreamCounter.vue -->
 <template>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
-    <LiverCounterManager :settings="liverSettings" :counters="counters" :event-labels="eventLabels" />
+    <StreamCounterManager :settings="liverSettings" :counters="counters" :event-labels="eventLabels" />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsLiverSchema } from '@/types/'
+  import { SettingsStreamSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
-  import LiverCounterManager from './parts/LiverCounterManager.vue'
+  import StreamCounterManager from './parts/StreamCounterManager.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
 
-  const liverSettings = computed(() => data.value.components.settings.liverCounter ?? SettingsLiverSchema.parse({}))
+  const liverSettings = computed(() => data.value.components.settings.streamCounter ?? SettingsStreamSchema.parse({}))
 
   const counters = ref<Record<string, number>>({
     upVote: 0,

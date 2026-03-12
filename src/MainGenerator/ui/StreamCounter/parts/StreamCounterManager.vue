@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/LiverCounter/parts/LiverCounterManager.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/parts/StreamCounterManager.vue -->
 <template>
   <div class="w-full bg-base-100 transparent-bg" :data-theme="settings.color">
     <div class="flex flex-wrap justify-center gap-2 py-2">
@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import { computed, toRef, type Component } from 'vue'
-  import type { SettingsLiverCounterType, LiverComponent } from '@/types/'
+  import type { SettingsStreamCounterType, LiverComponent } from '@/types/'
 
   import BasicCirclePlainItem from '../layouts/BasicCirclePlain.vue'
   import BasicCircleItem from '../layouts/BasicCircle.vue'
@@ -35,7 +35,7 @@
   import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
 
   const props = defineProps<{
-    settings: SettingsLiverCounterType
+    settings: SettingsStreamCounterType
     counters: Record<string, number>
     eventLabels: Record<string, string>
   }>()

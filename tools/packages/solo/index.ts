@@ -65,8 +65,8 @@ const targets: PackageBuildTarget[] = [
   ...StreamCounterCircleProject.buildTargets,
   ...StreamCounterPixelProject.buildTargets,
    */
-  ...StreamCounterCircleProject.buildTargets,
-  ...StreamCounterPixelProject.buildTargets,
+  // ...StreamCounterCircleProject.buildTargets,
+  // ...StreamCounterPixelProject.buildTargets,
 ]
 
 export default {

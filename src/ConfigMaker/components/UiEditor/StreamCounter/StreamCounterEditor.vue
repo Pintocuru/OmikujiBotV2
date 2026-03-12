@@ -1,16 +1,16 @@
-<!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterEditor.vue -->
+<!-- src/ConfigMaker/components/UiEditor/StreamCounter/StreamCounterEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <LiverCounterPreview :liver-counter="liverCounter" :event-labels="previewEventLabels" />
+  <LiverCounterPreview :liver-counter="streamCounter" :event-labels="previewEventLabels" />
 
   <!-- コンポーネント選択 -->
   <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(style, key) in liverComponentMap"
+        v-for="(style, key) in streamComponentMap"
         :key="key"
         class="badge cursor-pointer"
-        :class="liverCounter.component === key ? 'badge-primary' : 'badge-outline'"
+        :class="streamCounter.component === key ? 'badge-primary' : 'badge-outline'"
         @click="updateField('component', key)"
       >
         {{ style }}
@@ -22,7 +22,7 @@
   <SettingItem v-if="isAdv" label="テーマ" description="カラーテーマを選択します" forceMode="adv">
     <select
       class="select select-bordered"
-      :value="liverCounter.color"
+      :value="streamCounter.color"
       :disabled="!isAdv"
       @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
     >
@@ -39,7 +39,7 @@
         v-for="(label, key) in labelStyleMap"
         :key="key"
         class="badge cursor-pointer"
-        :class="liverCounter.labelStyle === key ? 'badge-primary' : 'badge-outline'"
+        :class="streamCounter.labelStyle === key ? 'badge-primary' : 'badge-outline'"
         @click="updateField('labelStyle', key)"
       >
         {{ label }}
@@ -48,7 +48,7 @@
   </SettingItem>
 
   <!-- カラーサイクル設定（分離コンポーネント） -->
-  <ColorCycleEditor :colorCycle="liverCounter.colorCycle" @update:colorCycle="(v) => updateField('colorCycle', v)" />
+  <ColorCycleEditor :colorCycle="streamCounter.colorCycle" @update:colorCycle="(v) => updateField('colorCycle', v)" />
 
   <!-- デフォルトカウンター選択 -->
   <SettingItem
@@ -59,10 +59,10 @@
   >
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(label, key) in liverDefaultMap"
+        v-for="(label, key) in streamDefaultMap"
         :key="key"
         class="badge cursor-pointer"
-        :class="liverCounter.defaultCounters.includes(key) ? 'badge-primary' : 'badge-outline'"
+        :class="streamCounter.defaultCounters.includes(key) ? 'badge-primary' : 'badge-outline'"
         @click="toggleDefaultCounter(key)"
       >
         {{ label }}
@@ -84,7 +84,7 @@
         :key="rule.key"
         class="badge cursor-pointer"
         :class="[
-          liverCounter.eventCounters.includes(rule.key) ? 'badge-secondary' : 'badge-outline',
+          streamCounter.eventCounters.includes(rule.key) ? 'badge-secondary' : 'badge-outline',
           isEventCounterDisabled(rule.key) ? 'opacity-40 cursor-not-allowed' : '',
         ]"
         @click="toggleEventCounter(rule.key)"
@@ -102,9 +102,9 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsLiverSchema, labelStyleMap, liverComponentMap, liverDefaultMap } from '@/types/'
-  import type { LiverDefaultKey, SettingsLiverCounterType } from '@/types/'
-  import LiverCounterPreview from './LiverCounterPreview.vue'
+  import { SettingsStreamSchema, labelStyleMap, streamComponentMap, streamDefaultMap } from '@/types/'
+  import type { StreamDefaultKey, SettingsStreamCounterType } from '@/types/'
+  import LiverCounterPreview from './StreamCounterPreview.vue'
   import ColorCycleEditor from './ColorCycleEditor.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -115,18 +115,18 @@
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro } = useSettingMode()
 
-  const liverCounter = computed(() => data.value.components.settings.liverCounter ?? SettingsLiverSchema.parse({}))
+  const streamCounter = computed(() => data.value.components.settings.streamCounter ?? SettingsStreamSchema.parse({}))
 
   // ---- Field Update ----
-  const updateField = (field: keyof SettingsLiverCounterType, value: unknown) => {
-    omikujiStore.updateComponentSettings('liverCounter', {
-      ...liverCounter.value,
+  const updateField = (field: keyof SettingsStreamCounterType, value: unknown) => {
+    omikujiStore.updateComponentSettings('streamCounter', {
+      ...streamCounter.value,
       [field]: value,
     })
   }
 
-  const resetField = (field: keyof SettingsLiverCounterType) => {
-    const defaults = SettingsLiverSchema.parse({})
+  const resetField = (field: keyof SettingsStreamCounterType) => {
+    const defaults = SettingsStreamSchema.parse({})
     updateField(field, defaults[field])
   }
 
@@ -137,8 +137,8 @@
   }
 
   // ---- defaultCounters トグル ----
-  const toggleDefaultCounter = (key: LiverDefaultKey) => {
-    const current = liverCounter.value.defaultCounters
+  const toggleDefaultCounter = (key: StreamDefaultKey) => {
+    const current = streamCounter.value.defaultCounters
     const isSelected = current.includes(key)
     if (isSelected) {
       updateField(
@@ -160,15 +160,15 @@
   })
 
   const totalCounterCount = computed(
-    () => liverCounter.value.defaultCounters.length + liverCounter.value.eventCounters.length
+    () => streamCounter.value.defaultCounters.length + streamCounter.value.eventCounters.length
   )
 
   const isEventCounterDisabled = (key: string) => {
-    return !liverCounter.value.eventCounters.includes(key) && totalCounterCount.value >= 8
+    return !streamCounter.value.eventCounters.includes(key) && totalCounterCount.value >= 8
   }
 
   const toggleEventCounter = (key: string) => {
-    const current = liverCounter.value.eventCounters
+    const current = streamCounter.value.eventCounters
     const isSelected = current.includes(key)
     if (isSelected) {
       updateField(

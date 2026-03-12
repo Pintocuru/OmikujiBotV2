@@ -1,9 +1,9 @@
-// src/MainGenerator/ui/LiverCounter/composables/DefaultLabels.ts
+// src/MainGenerator/ui/StreamCounter/composables/DefaultLabels.ts
 import type { Component } from 'vue'
-import { LiverDefaultKey } from '@/types'
+import { StreamDefaultKey } from '@/types'
 import { ThumbsUp, Eye, Sprout, MessageCircle, Users, BadgeDollarSign } from 'lucide-vue-next'
 
-export const LIVER_LUCIDE_LABELS: Record<LiverDefaultKey, string | Component> = {
+export const LIVER_LUCIDE_LABELS: Record<StreamDefaultKey, string | Component> = {
   upVote: ThumbsUp,
   viewer: Eye,
   syoken: Sprout,
@@ -12,7 +12,7 @@ export const LIVER_LUCIDE_LABELS: Record<LiverDefaultKey, string | Component> = 
   totalPrice: BadgeDollarSign,
 }
 
-export const LIVER_EMOJI_LABELS: Record<LiverDefaultKey, string> = {
+export const LIVER_EMOJI_LABELS: Record<StreamDefaultKey, string> = {
   upVote: '👍',
   viewer: '👀',
   syoken: '🌱',
@@ -21,7 +21,7 @@ export const LIVER_EMOJI_LABELS: Record<LiverDefaultKey, string> = {
   totalPrice: '💰',
 }
 
-export const LIVER_TEXT_LABELS: Record<LiverDefaultKey, string> = {
+export const LIVER_TEXT_LABELS: Record<StreamDefaultKey, string> = {
   upVote: '高評価',
   viewer: '同接数',
   syoken: '初コメ',

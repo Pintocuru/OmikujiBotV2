@@ -1,18 +1,19 @@
-<!-- src/MainGenerator/ui/LiverCounter/layouts/PixelBadge.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/layouts/PixelBadgePlain.vue -->
 <template>
   <div
-    class="relative w-32 h-28 flex items-center justify-center overflow-hidden border-4 border-current shadow-xl transition duration-150 pixel-badge"
-    :class="`bg-${colorPattern}-content text-${colorPattern}`"
+    class="relative w-32 h-28 flex items-center justify-center overflow-hidden border-6 shadow-xl transition duration-150 pixel-badge bg-base-content"
+    :class="`border-${colorPattern}`"
     :style="{ animationDelay: `${index * 0.08}s` }"
   >
     <!-- corner -->
-    <span class="absolute -top-px -left-px w-8 h-8 border-t-6 border-l-6 border-current" />
-    <span class="absolute -top-px -right-px w-8 h-8 border-t-6 border-r-6 border-current" />
-    <span class="absolute -bottom-px -left-px w-8 h-8 border-b-6 border-l-6 border-current" />
-    <span class="absolute -bottom-px -right-px w-8 h-8 border-b-6 border-r-6 border-current" />
-
+    <span :class="` text-${colorPattern}`">
+      <span class="absolute -top-px -left-px w-8 h-8 border-t-6 border-l-6 border-current" />
+      <span class="absolute -top-px -right-px w-8 h-8 border-t-6 border-r-6 border-current" />
+      <span class="absolute -bottom-px -left-px w-8 h-8 border-b-6 border-l-6 border-current" />
+      <span class="absolute -bottom-px -right-px w-8 h-8 border-b-6 border-r-6 border-current" />
+    </span>
     <!-- content -->
-    <div class="relative flex flex-col items-center justify-center">
+    <div class="relative flex flex-col items-center justify-center text-base-200">
       <!-- アイコン -->
       <LabelText :label="label" />
 

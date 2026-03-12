@@ -1,13 +1,13 @@
-// src/MainGenerator/ui/LiverCounter/composables/useLiverCounterDisplay.ts
+// src/MainGenerator/ui/StreamCounter/composables/useLiverCounterDisplay.ts
 import { computed, type Ref } from 'vue'
-import type { SettingsLiverCounterType } from '@/types/'
+import type { SettingsStreamCounterType } from '@/types/'
 import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
 /**
- * LiverCounter 系コンポーネント共通のキー列挙・カラーパターン取得ロジック
+ * StreamCounter 系コンポーネント共通のキー列挙・カラーパターン取得ロジック
  * BasicCircle など複数のスタイルコンポーネントで再利用できるよう切り出し
  */
-export function useLiverCounterDisplay(settings: Ref<SettingsLiverCounterType>) {
+export function useLiverCounterDisplay(settings: Ref<SettingsStreamCounterType>) {
   /**
    * 表示するカウンターキーの一覧（デフォルト + イベント、最大8件）
    */

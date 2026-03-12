@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/LiverCounter/LiverCounterPreview.vue -->
+<!-- src/ConfigMaker/components/UiEditor/StreamCounter/StreamCounterPreview.vue -->
 <template>
   <HudPreview maxHeightClass="h-42">
     <div :class="[fontFamily]">
@@ -18,13 +18,13 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { useFontFamily, type SettingsLiverCounterType } from '@/types/'
-  import LiverCounterManager from '@main/ui/LiverCounter/parts/LiverCounterManager.vue'
+  import { useFontFamily, type SettingsStreamCounterType } from '@/types/'
+  import LiverCounterManager from '@main/ui/StreamCounter/parts/StreamCounterManager.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
-    liverCounter: SettingsLiverCounterType
+    liverCounter: SettingsStreamCounterType
     eventLabels: Record<string, string>
   }>()
 

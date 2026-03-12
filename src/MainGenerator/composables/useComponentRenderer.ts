@@ -11,7 +11,7 @@ import SocialRoster from '@main/ui/SocialRoster/SocialRoster.vue'
 import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
 import { useAppStore } from '../stores/useAppStore'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
-import LiverCounter from '../ui/LiverCounter/LiverCounter.vue'
+import StreamCounter from '../ui/StreamCounter/StreamCounter.vue'
 
 /**
  * 各UiKindに対応するVueコンポーネントと、レンダリング可否の条件を管理するマップ
@@ -36,8 +36,8 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
     component: CounterPreview,
     shouldRender: ({ isComment }) => isComment,
   },
-  liverCounter: {
-    component: LiverCounter,
+  streamCounter: {
+    component: StreamCounter,
   },
   winnerGroup: {
     component: WinnerGroup,

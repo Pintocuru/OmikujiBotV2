@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/LiverCounter/layouts/HexGridSvg.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/layouts/HexGridSvg.vue -->
 <template>
   <svg class="absolute w-full h-full" viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg">
     <!-- 背景六角形 -->

@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/LiverCounter/layouts/HexGrid.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/layouts/HexGrid.vue -->
 <template>
   <div class="relative w-32 h-32 hex-wrap" :class="index % 2 === 1 && 'mt-5'" :style="hexStyle">
     <!-- 背景六角形（絶対配置） -->

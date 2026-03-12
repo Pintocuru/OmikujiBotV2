@@ -11,7 +11,7 @@ import { SettingsCounterSchema } from './UiSettings/SettingsCounterSchema'
 import { SettingsWinnerSchema } from './UiSettings/SettingsWinnerSchema'
 import { SettingsFlightSchema } from './UiSettings/SettingsFlightSchema'
 import { SettingsSocialSchema } from './UiSettings/SettingsSocialSchema'
-import { SettingsLiverSchema } from './UiSettings/SettingsLiverSchema'
+import { SettingsStreamSchema as SettingsStreamSchema } from './UiSettings/SettingsLiverSchema'
 
 /**
  * スロット定義
@@ -92,7 +92,7 @@ export const UiSettingsSchema = z.object({
   flightSeat: SettingsFlightSchema.optional(),
   socialRoster: SettingsSocialSchema.optional(),
   flashBanner: SettingsBannerSchema.optional(),
-  liverCounter: SettingsLiverSchema.optional(),
+  streamCounter: SettingsStreamSchema.optional(),
 })
 
 export type UiSettingsType = z.infer<typeof UiSettingsSchema>

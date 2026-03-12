@@ -1,12 +1,11 @@
 // src/types/OmikujiData/UiSettings/SettingsLiverSchema.ts
 import { z } from 'zod'
-import { themes } from '@shared/styles/DaisyUiTheme'
-import { BaseVariantLabels } from '@shared/components/parts/ItemVariantTypes'
+import { daisyUIColor, themes } from '@shared/styles/DaisyUiTheme'
 
 /**
  * ライバーカウンターコンポーネントの表示名マップ
  */
-export const liverComponentMap = {
+export const streamComponentMap = {
   basicCirclePlain: '丸型シンプル',
   basicCircle: '丸型カラー',
   pixelBadgePlain: 'ピクセルバッジ',
@@ -15,8 +14,8 @@ export const liverComponentMap = {
   starBurst: '星',
   hexGrid: 'ヘキサゴン',
 } as const
-const liverComponentValues = Object.keys(liverComponentMap) as LiverComponent[]
-export type LiverComponent = keyof typeof liverComponentMap
+const streamComponentValues = Object.keys(streamComponentMap) as LiverComponent[]
+export type LiverComponent = keyof typeof streamComponentMap
 
 export const labelStyleMap = {
   lucide: 'アイコン',
@@ -26,7 +25,7 @@ export const labelStyleMap = {
 const labelStyleValues = Object.keys(labelStyleMap) as LiverLabelStyle[]
 export type LiverLabelStyle = keyof typeof labelStyleMap
 
-export const liverDefaultMap = {
+export const streamDefaultMap = {
   syoken: '初コメ',
   commenter: 'コメントをしたユーザー数',
   lc: '配信コメント数',
@@ -34,25 +33,25 @@ export const liverDefaultMap = {
   viewer: '同時接続数',
   totalPrice: 'ギフト金額',
 } as const
-const liverDefaultKeyLabels = Object.keys(liverDefaultMap) as LiverDefaultKey[]
-export type LiverDefaultKey = keyof typeof liverDefaultMap
+const streamDefaultKeyLabels = Object.keys(streamDefaultMap) as StreamDefaultKey[]
+export type StreamDefaultKey = keyof typeof streamDefaultMap
 
 /**
- * ライバーカウンターv2 LiverCounter
+ * ライバーカウンターv2 StreamCounter
  */
 
-export const SettingsLiverSchema = z.object({
-  component: z.enum(liverComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
+export const SettingsStreamSchema = z.object({
+  component: z.enum(streamComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUiテーマ
   colorCycle: z
-    .array(z.enum(BaseVariantLabels))
+    .array(z.enum(daisyUIColor))
     .default(['primary', 'secondary', 'accent', 'neutral', 'info', 'success', 'warning', 'error'])
     .catch([]), // 任意color
   labelStyle: z.enum(labelStyleValues).default('lucide').catch('lucide'), // ラベルスタイル
   defaultCounters: z
-    .array(z.enum(liverDefaultKeyLabels))
+    .array(z.enum(streamDefaultKeyLabels))
     .default(['syoken', 'commenter', 'upVote', 'viewer'])
     .catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
 })
-export type SettingsLiverCounterType = z.infer<typeof SettingsLiverSchema>
+export type SettingsStreamCounterType = z.infer<typeof SettingsStreamSchema>

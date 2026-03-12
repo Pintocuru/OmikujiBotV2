@@ -65,7 +65,7 @@ export const uiKindMap = {
     icon: 'Hash',
     description: '数値の増減やユーザーリストを表示します。',
   },
-  liverCounter: {
+  streamCounter: {
     primarySlot: 'extra',
     slots: ['extra'],
     icon: 'Hash',
