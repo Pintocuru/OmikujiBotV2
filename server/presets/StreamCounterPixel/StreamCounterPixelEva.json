@@ -1,15 +1,30 @@
 {
   "meta": {
-    "id": "1754884254510-shoywq",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.1",
+    "id": "StreamCounterPixelEva-ver2026.03.13-2.8.1",
+    "name": "おみくじ BOT おみくじ BOT ライバーカウンター ピクセル わんコメv9対応版Eva OmikujiBot StreamCounterPixelEva-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.03.13-2.8.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.8.1-alpha1",
-    "dataVersion": 2.20080011001,
-    "author": "Pintocuru",
-    "tags": [],
-    "license": "CC-BY 4.0"
+    "generatorVersion": "2.8.1",
+    "dataVersion": 2.20080013001,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "ユーザーリスト",
+      "ライバーカウンター",
+      "おみくじ",
+      "BOT",
+      "カウンター",
+      "高評価",
+      "同時接続数",
+      "ゲーム配信",
+      "雑談配信",
+      "朝活配信",
+      "わんコメ",
+      "初見歓迎"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/8078267"
   },
   "jsonMerge": [],
   "comments": {},
@@ -17,232 +32,14 @@
   "metas": {},
   "actionSets": {},
   "placeholders": {},
-  "characters": {
-    "chocolate": {
-      "id": "chocolate",
-      "key": "chocolate",
-      "name": "ストロベリーショコラ",
-      "description": "おみくじBOTのキャラクターです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-12-22T14:03:07.627Z",
-      "order": 1,
-      "isEnabled": true,
-      "daisyColor": "primary",
-      "editorColor": "#F44336",
-      "tags": ["おみくじBOT", "シンプル"],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "https://pintocuru.booth.pm/",
-      "displayName": "ショコラ",
-      "image": {
-        "default": ["chocolate/default.webp", "chocolate/face.webp"],
-        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
-        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
-        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
-        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
-        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
-        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
-        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
-        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
-        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
-        "singing": ["chocolate/singing.webp"],
-        "sleepy": ["chocolate/sleepy.webp"]
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "valentine",
-        "backFrom": "error",
-        "backTo": "error",
-        "nameColor": "#eed84f",
-        "textColor": "#FFEBEE",
-        "backgroundColor": "#D32F2F",
-        "customClasses": "px-4 py-4 border border-white rounded-xl"
-      },
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "data:image/png;base64,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",
-        "frameId": "StrawberryChocolat",
-        "rpgVoice": "rpg_voice_a5"
-      }
-    },
-    "cafelatte": {
-      "id": "cafelatte",
-      "key": "cafelatte",
-      "name": "カペラテ",
-      "description": "おみくじBOTのキャラクターです",
-      "createdAt": "2025-10-07T06:53:31.101Z",
-      "updatedAt": "2026-02-18T12:43:53.901Z",
-      "order": 2,
-      "isEnabled": true,
-      "daisyColor": "primary",
-      "editorColor": "#E65100",
-      "tags": [],
-      "accessLevel": "basic",
-      "version": "0.0.0",
-      "author": "Pintocuru",
-      "displayName": "カペラテ",
-      "image": {
-        "default": ["cafelatte/default.webp"],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "coffee",
-        "backFrom": "primary",
-        "backTo": "secondary",
-        "nameColor": "#FFB74D",
-        "textColor": "#FFF3E0",
-        "backgroundColor": "#F57C00"
-      },
-      "displayOption": {
-        "mode": "comment",
-        "imageBase64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAEm0lEQVR4AZSVW2xURRjHf+eyl7O77W4vUNldWlpsuFhablpurSCJqFSMXH2QADEqBqMPPhgjJugbxoQQSHggJsSEByWoNGoUolRLW0hMKkhTWgpt09Ze6AXa7nZv54yztPWB7jY4ObNzZub7/r+Z830zq4YOI5K1+aMF4pOta8QXOyrF59srxMdbVojPqmT/tUpx6a2AGDpsiGun3hfd1WdF5MrPovOH06Lvypfi7w8LHvonNVJVlamSr3VwoLiRjt4BEqbA43ZhWnEQKhc7snAygdV7lfHxQWKRMA5VQSgwGolOKaRu/gMkp/M8UfaW3qN/eBRVCicVxsbC+NzZjNmDlFrX6O5q4sGDYdDtWKaFmTCTrmmr+uhMSe4QB1fcZiyUICyd2zvbUe0JTtRl0BZ4h1xjiPM/nUPR5Q4w5W7/JyAJzM+cYM+y2xTluTF0g3jYxO3LY1A1yFxcye69u+RO2tARuB06s5UZO5g2LjIG2ZbfRFFRAaHxEOs2PENZyVK8Xg92J+Qv9KMqFtmZsjPtlKJNC0jadvdHMU0Tn89L261mLE3GXFjJKTSbjiZJdRMlD/vpfmYF/Ni3AofhxGbXqNpZhZZMG2TqSDVTmWw3vfgCjeFiOZL6SQv4vm8VWR6V4ZEh4pbA6bBx7usLHP30OD2dvRJjyQjI2Mh0DpZvS60uR9MCBgZidPXcIxyaIBKNkVAiLF9VRlXVFu4PjNHadFcCJt1Ddh/9EbeUm/lMWswcJyvDSeCJAIFAEK98N02VwoIgxUsWsqA4SMA/DxkgCbFk4LNkluWkUIG0ACEg5vTwz3BUnokoqmqjof4vXIWVVDf0cH/UhRgbRZEn2TBkqq56k7hj7gxISkDM1PHGwO/K5OCRI7jsNpR4gnXrl/PtmROUL5pPRu8tFPmpGI+imAp48mgalrt6BJESMB5xoZkusgY7+OPoEZ7dsH4yLbHYVl7MAmuQDJcdRZMrV1SEiFFzsYGgV14hjwNQtQlGlAQPUIkaGrV19dRcvordIcG+bDT/XBR/LuR4UTPd3GltodxRT26i6xF5pMKMIfA54+xaWsfN0X4S8mCtrVjLk0uWElEMmvvuYfMHUOdkY0nx787X8FT7SeZEWlIopQFMWx4qa2dlfpzffq2l8Woj2QWLeHp9BTbdTjSWQLt5lipX9bR5ylZNOTo1mGNEWWlc40BJO91NDdz4vYbaC7/IQJ/lbnMrzs7LeNTQlHXqZlbAtItP9NKreDh97CS3b1yntm2Yk+f/5HRP5bRJ2vaxAKDQMuLgejSTr+rbaekb5wl5dWzdsYsOx3JmK48FOH7rOZmKOqvnutm35yWIx1i7rghfro2civ2cubMmLWNWwKnOzZxo2Yhhs9iSr7NpYyn79u/m0Bvb2fyyvF1VFc1wsfPd12ldfJgu3/OEhRPk2WCqzAoY6OmXtgKhCHRNZdmGjWhOB6/ufgXPHL/83zblx7PknM78hUG6jVKOjrzNpbJvqF9dzTH5nhYwogbkhZaHXQqriiIhYOk6yH5ycbrDjalqIFcrZEVVsBsO5i0rwSPPia+wkD3vfcC/AAAA//+01SleAAAABklEQVQDACgFrc/FXTPRAAAAAElFTkSuQmCC",
-        "frameId": "cafelatte",
-        "rpgVoice": "rpg_voice_a5"
-      }
-    },
-    "honjoFox": {
-      "id": "honjoFox",
-      "key": "honjoFox",
-      "name": "中仙道の村きつね",
-      "description": "",
-      "createdAt": "2025-11-18T05:28:00.617Z",
-      "updatedAt": "2026-02-18T12:44:04.400Z",
-      "order": 3,
-      "isEnabled": true,
-      "daisyColor": "primary",
-      "editorColor": "#FF9800",
-      "tags": [],
-      "accessLevel": "basic",
-      "version": "0.0.0",
-      "author": "Pintocuru",
-      "displayName": "きつね",
-      "image": {
-        "default": ["honjoFox/head-1.gif", "honjoFox/body.gif", "honjoFox/tail-1.gif"],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
-      },
-      "color": {
-        "isTheme": false,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "primary",
-        "nameColor": "#F48FB1",
-        "textColor": "#FFFFFF",
-        "backgroundColor": "#AD1457",
-        "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
-      },
-      "displayOption": { "mode": "rpgVoice", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
-    },
-    "omiken": {
-      "id": "omiken",
-      "key": "omiken",
-      "name": "おみくじBOT",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-08-11T03:50:57.710Z",
-      "updatedAt": "2025-09-29T09:59:34.333Z",
-      "order": 4,
-      "isEnabled": true,
-      "daisyColor": "primary",
-      "editorColor": "#F44336",
-      "tags": ["おみくじBOT", "シンプル"],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "image": {
-        "default": [],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "primary",
-        "nameColor": "#90A4AE",
-        "textColor": "#ECEFF1",
-        "backgroundColor": "#455A64",
-        "customClasses": "px-6 py-6 border border-white rounded-md"
-      },
-      "displayOption": { "mode": "comment", "imageBase64": "", "frameId": "OmikujiBot", "rpgVoice": "rpg_voice_a5" }
-    },
-    "omiken_2": {
-      "id": "omiken_2",
-      "key": "omiken_2",
-      "name": "おみくじBOT2",
-      "description": "シンプルなフキダシです",
-      "createdAt": "2025-10-10T07:35:41.827Z",
-      "updatedAt": "2025-12-05T03:20:41.857Z",
-      "order": 5,
-      "isEnabled": true,
-      "daisyColor": "primary",
-      "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
-      "accessLevel": "basic",
-      "version": "0.0.1",
-      "author": "Pintocuru",
-      "url": "",
-      "displayName": "おみくじBOT",
-      "image": {
-        "default": [],
-        "happy": [],
-        "excited": [],
-        "laughing": [],
-        "blushing": [],
-        "surprised": [],
-        "sad": [],
-        "angry": [],
-        "thinking": [],
-        "wink": [],
-        "singing": [],
-        "sleepy": []
-      },
-      "color": {
-        "isTheme": true,
-        "daisyUiTheme": "dark",
-        "backFrom": "primary",
-        "backTo": "primary",
-        "nameColor": "#FFB74D",
-        "textColor": "#FFF3E0",
-        "backgroundColor": "#F57C00",
-        "customClasses": "px-4 py-4 rounded-xl"
-      },
-      "displayOption": { "mode": "comment", "imageBase64": "", "frameId": "OmikujiBot", "rpgVoice": "rpg_voice_a5" }
-    }
-  },
+  "characters": {},
   "components": {
-    "conditions": [{ "slot": "extra", "kind": "streamCounter" }],
+    "conditions": [
+      {
+        "slot": "extra",
+        "kind": "streamCounter"
+      }
+    ],
     "enableSecondary": false,
     "specialSet": null,
     "commonStyle": {
@@ -256,12 +53,23 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": ["chocolate", "cafelatte", "honjoFox", "omiken", "omiken_2"],
+          "center": [
+            "chocolate",
+            "cafelatte",
+            "honjoFox",
+            "omiken",
+            "omiken_2"
+          ],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -272,9 +80,15 @@
         "bubbleTextAnimate": false,
         "bubbleTextSpeed": 50
       },
-      "toast": { "showToastsOnRight": true, "showToastsCharacter": true, "showThumbnail": [] },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": true,
+        "showThumbnail": []
+      },
       "ranking": {
-        "targetScriptKeys": ["basicList"],
+        "targetScriptKeys": [
+          "basicList"
+        ],
         "title": "🍉スイカランキング🍉",
         "color": "lofi",
         "limit": 5,
@@ -286,7 +100,11 @@
         "targetEventKey": "",
         "target": "draw",
         "label": "Counter",
-        "color": { "daisyUiTheme": "dark", "backFrom": "primary", "backTo": "secondary" }
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       },
       "winnerGroup": {
         "component": "valentineCoupling",
@@ -315,9 +133,25 @@
       "streamCounter": {
         "component": "pixelBadgePlain",
         "color": "light",
-        "colorCycle": ["error", "warning", "success", "accent", "info", "primary", "secondary", "neutral"],
+        "colorCycle": [
+          "error",
+          "warning",
+          "success",
+          "accent",
+          "info",
+          "primary",
+          "secondary",
+          "neutral"
+        ],
         "labelStyle": "text",
-        "defaultCounters": ["syoken", "commenter", "lc", "upVote", "viewer", "totalPrice"],
+        "defaultCounters": [
+          "syoken",
+          "commenter",
+          "lc",
+          "upVote",
+          "viewer",
+          "totalPrice"
+        ],
         "eventCounters": []
       }
     }
@@ -325,15 +159,21 @@
   "featureUsage": {
     "usage": {
       "comments": "basic",
-      "timers": "none",
-      "metas": "none",
-      "actionSets": "none",
-      "placeholders": "none",
-      "characters": "none"
+      "timers": "basic",
+      "metas": "basic",
+      "actionSets": "basic",
+      "placeholders": "basic",
+      "characters": "basic"
     },
-    "components": ["streamCounter"],
+    "components": [
+      "streamCounter"
+    ],
     "gameScripts": [],
-    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "none", "itemSlotEnabled": "pro" }
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none",
+      "itemSlotEnabled": "pro"
+    }
   },
   "settings": {
     "locale": "ja",
