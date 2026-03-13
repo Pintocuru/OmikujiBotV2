@@ -60,14 +60,13 @@ const targets: PackageBuildTarget[] = [
   { project: 'RunicOracle', type: 'JSON', accessLevel: 'adv' },
   { project: 'MaidenOmikujiNormal', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
-     ...MyNineViewersProject.buildTargets,
+  ...MyNineViewersProject.buildTargets,
   ...GraduationIconsProject.buildTargets,
   ...StreamCounterCircleProject.buildTargets,
   ...StreamCounterPixelProject.buildTargets,
    */
-  // ...StreamCounterCircleProject.buildTargets,
-  // ...StreamCounterPixelProject.buildTargets,
   ...StreamCounterCircleProject.buildTargets,
+  ...StreamCounterPixelProject.buildTargets,
 ]
 
 export default {

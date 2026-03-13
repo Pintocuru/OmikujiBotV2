@@ -4,7 +4,7 @@ import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/Bu
 
 const PROJECT_KEY = 'StreamCounterCircle'
 const PROJECT_TITLE = 'おみくじ BOT ライバーカウンター サークル'
-const boothURLNumber = '8069882'
+const boothURLNumber = '8078258'
 
 // バリエーション定義  '' の場合はデフォルト（無印）扱い
 const COLOR_VARIANTS = ['', 'UpVote', 'Black', 'Color'] as const
