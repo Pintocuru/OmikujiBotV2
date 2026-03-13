@@ -1,15 +1,30 @@
 {
   "meta": {
-    "id": "1754884254510-shoywq",
-    "name": "unknown",
-    "description": "",
-    "version": "0.0.1",
+    "id": "StreamCounterCircleBlack-ver2026.03.13-2.8.1-alpha3",
+    "name": "おみくじ BOT おみくじ BOT ライバーカウンター サークルBlack OmikujiBot StreamCounterCircleBlack-ADV",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.03.13-2.8.1-alpha3",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.8.1-alpha1",
-    "dataVersion": 2.20080011001,
-    "author": "Pintocuru",
-    "tags": [],
-    "license": "CC-BY 4.0"
+    "generatorVersion": "2.8.1-alpha3",
+    "dataVersion": 2.20080011003,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "ユーザーリスト",
+      "ライバーカウンター",
+      "おみくじ",
+      "BOT",
+      "カウンター",
+      "高評価",
+      "同時接続数",
+      "ゲーム配信",
+      "雑談配信",
+      "朝活配信",
+      "わんコメ",
+      "初見歓迎"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/8069882"
   },
   "jsonMerge": [],
   "comments": {},
@@ -29,25 +44,62 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#F44336",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "https://pintocuru.booth.pm/",
       "displayName": "ショコラ",
       "image": {
-        "default": ["chocolate/default.webp", "chocolate/face.webp"],
-        "happy": ["chocolate/happy.webp", "chocolate/face.webp"],
-        "excited": ["chocolate/excited.webp", "chocolate/face.webp"],
-        "laughing": ["chocolate/laughing.webp", "chocolate/face.webp"],
-        "blushing": ["chocolate/blushing.webp", "chocolate/face.webp"],
-        "surprised": ["chocolate/surprised.webp", "chocolate/face.webp"],
-        "sad": ["chocolate/sad.webp", "chocolate/face.webp"],
-        "angry": ["chocolate/angry.webp", "chocolate/face.webp"],
-        "thinking": ["chocolate/thinking.webp", "chocolate/face.webp"],
-        "wink": ["chocolate/wink.webp", "chocolate/face.webp"],
-        "singing": ["chocolate/singing.webp"],
-        "sleepy": ["chocolate/sleepy.webp"]
+        "default": [
+          "chocolate/default.webp",
+          "chocolate/face.webp"
+        ],
+        "happy": [
+          "chocolate/happy.webp",
+          "chocolate/face.webp"
+        ],
+        "excited": [
+          "chocolate/excited.webp",
+          "chocolate/face.webp"
+        ],
+        "laughing": [
+          "chocolate/laughing.webp",
+          "chocolate/face.webp"
+        ],
+        "blushing": [
+          "chocolate/blushing.webp",
+          "chocolate/face.webp"
+        ],
+        "surprised": [
+          "chocolate/surprised.webp",
+          "chocolate/face.webp"
+        ],
+        "sad": [
+          "chocolate/sad.webp",
+          "chocolate/face.webp"
+        ],
+        "angry": [
+          "chocolate/angry.webp",
+          "chocolate/face.webp"
+        ],
+        "thinking": [
+          "chocolate/thinking.webp",
+          "chocolate/face.webp"
+        ],
+        "wink": [
+          "chocolate/wink.webp",
+          "chocolate/face.webp"
+        ],
+        "singing": [
+          "chocolate/singing.webp"
+        ],
+        "sleepy": [
+          "chocolate/sleepy.webp"
+        ]
       },
       "color": {
         "isTheme": true,
@@ -83,7 +135,9 @@
       "author": "Pintocuru",
       "displayName": "カペラテ",
       "image": {
-        "default": ["cafelatte/default.webp"],
+        "default": [
+          "cafelatte/default.webp"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -129,7 +183,11 @@
       "author": "Pintocuru",
       "displayName": "きつね",
       "image": {
-        "default": ["honjoFox/head-1.gif", "honjoFox/body.gif", "honjoFox/tail-1.gif"],
+        "default": [
+          "honjoFox/head-1.gif",
+          "honjoFox/body.gif",
+          "honjoFox/tail-1.gif"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -152,7 +210,12 @@
         "backgroundColor": "#AD1457",
         "customClasses": "px-4 py-4 border-4 border-white rounded-xl"
       },
-      "displayOption": { "mode": "rpgVoice", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+      "displayOption": {
+        "mode": "rpgVoice",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
     "omiken": {
       "id": "omiken",
@@ -165,7 +228,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#F44336",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -195,7 +261,12 @@
         "backgroundColor": "#455A64",
         "customClasses": "px-6 py-6 border border-white rounded-md"
       },
-      "displayOption": { "mode": "comment", "imageBase64": "", "frameId": "OmikujiBot", "rpgVoice": "rpg_voice_a5" }
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
     "omiken_2": {
       "id": "omiken_2",
@@ -208,7 +279,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -238,11 +312,21 @@
         "backgroundColor": "#F57C00",
         "customClasses": "px-4 py-4 rounded-xl"
       },
-      "displayOption": { "mode": "comment", "imageBase64": "", "frameId": "OmikujiBot", "rpgVoice": "rpg_voice_a5" }
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
+      }
     }
   },
   "components": {
-    "conditions": [{ "slot": "extra", "kind": "streamCounter" }],
+    "conditions": [
+      {
+        "slot": "extra",
+        "kind": "streamCounter"
+      }
+    ],
     "enableSecondary": false,
     "specialSet": null,
     "commonStyle": {
@@ -256,12 +340,23 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": ["chocolate", "cafelatte", "honjoFox", "omiken", "omiken_2"],
+          "center": [
+            "chocolate",
+            "cafelatte",
+            "honjoFox",
+            "omiken",
+            "omiken_2"
+          ],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -272,9 +367,15 @@
         "bubbleTextAnimate": false,
         "bubbleTextSpeed": 50
       },
-      "toast": { "showToastsOnRight": true, "showToastsCharacter": true, "showThumbnail": [] },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": true,
+        "showThumbnail": []
+      },
       "ranking": {
-        "targetScriptKeys": ["basicList"],
+        "targetScriptKeys": [
+          "basicList"
+        ],
         "title": "🍉スイカランキング🍉",
         "color": "lofi",
         "limit": 5,
@@ -286,7 +387,11 @@
         "targetEventKey": "",
         "target": "draw",
         "label": "Counter",
-        "color": { "daisyUiTheme": "dark", "backFrom": "primary", "backTo": "secondary" }
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       },
       "winnerGroup": {
         "component": "valentineCoupling",
@@ -315,9 +420,19 @@
       "streamCounter": {
         "component": "basicCirclePlain",
         "color": "light",
-        "colorCycle": ["info", "success", "warning", "error"],
+        "colorCycle": [
+          "info",
+          "success",
+          "warning",
+          "error"
+        ],
         "labelStyle": "lucide",
-        "defaultCounters": ["syoken", "commenter", "upVote", "viewer"],
+        "defaultCounters": [
+          "syoken",
+          "commenter",
+          "upVote",
+          "viewer"
+        ],
         "eventCounters": []
       }
     }
@@ -331,9 +446,15 @@
       "placeholders": "none",
       "characters": "none"
     },
-    "components": ["streamCounter"],
+    "components": [
+      "streamCounter"
+    ],
     "gameScripts": [],
-    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "none", "itemSlotEnabled": "pro" }
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none",
+      "itemSlotEnabled": "pro"
+    }
   },
   "settings": {
     "locale": "ja",
