@@ -72,7 +72,7 @@ function resetAppState() {
 function filterNewOmikens(omikens: OmikenCommentType[]): OmikenCommentType[] {
   const appStore = useAppStore()
   const ignorePattern = appStore.data.settings.ignoreUserPattern
-  const currentMeta = appStore.metaState.getCurrent()
+  const currentMeta = appStore.serviceMetaStore.getCurrent()
 
   return appStore.addOmikens(omikens).filter((omiken) => {
     if (ignoreExternalOnLive(omiken.meta.isExternal, currentMeta?.isLive)) return false

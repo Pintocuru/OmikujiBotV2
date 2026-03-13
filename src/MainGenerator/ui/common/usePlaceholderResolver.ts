@@ -10,7 +10,7 @@ export function usePlaceholderResolver() {
   const appStore = useAppStore()
 
   const resolveComment = (raw: string): string => {
-    const meta = appStore.metaState.getCurrent()
+    const meta = appStore.serviceMetaStore.getCurrent()
     const uniqueCount = appStore.userSession.stats.getUniqueCount()
     const { liveComments, syoken } = appStore.streamStats.getStats()
     const draw = appStore.userSession.stats.drawWinners()

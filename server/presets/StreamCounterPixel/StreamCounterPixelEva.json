@@ -1,1 +1,187 @@
-{"meta":{"id":"StreamCounterPixelEva-ver2026.03.13-2.8.1","name":"おみくじ BOT おみくじ BOT ライバーカウンター ピクセル わんコメv9対応版Eva OmikujiBot StreamCounterPixelEva-PRO","description":"配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT","version":"ver2026.03.13-2.8.1","generatorName":"omikuji-bot","generatorVersion":"2.8.1","dataVersion":2.20080013001,"author":"Pintocuru(せすじピンとしてます)","tags":["おみくじBOT","ユーザーリスト","ライバーカウンター","おみくじ","BOT","カウンター","高評価","同時接続数","ゲーム配信","雑談配信","朝活配信","わんコメ","初見歓迎"],"license":"利用規約に従う","url":"https://pintocuru.booth.pm/items/8078267"},"jsonMerge":[],"comments":{},"timers":{},"metas":{},"actionSets":{},"placeholders":{},"characters":{},"components":{"conditions":[{"slot":"extra","kind":"streamCounter"}],"enableSecondary":false,"specialSet":null,"commonStyle":{"fontFamily":"shipporiMincho","defaultColor":{"isTheme":true,"daisyUiTheme":"bumblebee","backFrom":"info","backTo":"info","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"defaultVoice":{"mode":"comment","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}},"settings":{"bubble":{"showCharacters":{"center":["chocolate","cafelatte","honjoFox","omiken","omiken_2"],"slot1":[],"slot2":[],"slot3":[],"slot4":[]},"characterSize":48,"bubbleMotionEnter":"slideUp","bubbleTextAnimate":false,"bubbleTextSpeed":50},"toast":{"showToastsOnRight":true,"showToastsCharacter":true,"showThumbnail":[]},"ranking":{"targetScriptKeys":["basicList"],"title":"🍉スイカランキング🍉","color":"lofi","limit":5,"sortOrder":"new","component":"rankStandard"},"counter":{"component":"counterUser","targetEventKey":"","target":"draw","label":"Counter","color":{"daisyUiTheme":"dark","backFrom":"primary","backTo":"secondary"}},"winnerGroup":{"component":"valentineCoupling","targetEventKey":"","label":"ラッキーメンバーズ","color":"lofi","queryString":"count=2&label=今日のラッキーさん"},"flightSeat":{"component":"flightSeat","customLayout":"[1,2,3,4,5]","targetEventKey":"","label":"🛫 8時間フライト、どの席に座る？","color":"synthwave","statKey":null},"flashBanner":{"component":"standard","label":"速報","iconSize":12,"displaySeconds":null,"showItemOnRight":false,"defaultCharacterKey":null,"defaultMessage":"<<\n'チャンネル登録・高評価、お願いします。',\n'現在の視聴数 <<viewer>> / 高評価 <<upVote>>',\n'知っていたか'\n>>"},"streamCounter":{"component":"pixelBadgePlain","color":"light","colorCycle":["error","warning","success","accent","info","primary","secondary","neutral"],"labelStyle":"text","defaultCounters":["syoken","commenter","lc","upVote","viewer","totalPrice"],"eventCounters":[]}}},"featureUsage":{"usage":{"comments":"basic","timers":"none","metas":"none","actionSets":"none","placeholders":"none","characters":"none"},"components":["streamCounter"],"gameScripts":[],"developer":{"licenseVisible":"basic","jsonMergeSettings":"none","itemSlotEnabled":"pro"}},"settings":{"locale":"ja","commentType":"OneComme","licenseKeyHash":"2c26b46b68ffc68ff99b453c1d304134","daisyUiTheme":"synthwave","initialCategory":"components","soundEnabled":true,"ignoreUserPattern":"__INFO__|__ERROR__"}}
+{
+  "meta": {
+    "id": "StreamCounterPixelEva-ver2026.03.13-2.8.1",
+    "name": "おみくじ BOT おみくじ BOT ライバーカウンター ピクセル わんコメv9対応版Eva OmikujiBot StreamCounterPixelEva-PRO",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.03.13-2.8.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.8.1",
+    "dataVersion": 2.20080013002,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": [
+      "おみくじBOT",
+      "ユーザーリスト",
+      "ライバーカウンター",
+      "おみくじ",
+      "BOT",
+      "カウンター",
+      "高評価",
+      "同時接続数",
+      "ゲーム配信",
+      "雑談配信",
+      "朝活配信",
+      "わんコメ",
+      "初見歓迎"
+    ],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/8078267"
+  },
+  "jsonMerge": [],
+  "comments": {},
+  "timers": {},
+  "metas": {},
+  "actionSets": {},
+  "placeholders": {},
+  "characters": {},
+  "components": {
+    "conditions": [
+      {
+        "slot": "extra",
+        "kind": "streamCounter"
+      }
+    ],
+    "enableSecondary": false,
+    "specialSet": null,
+    "commonStyle": {
+      "fontFamily": "shipporiMincho",
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "bumblebee",
+        "backFrom": "info",
+        "backTo": "info",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
+    },
+    "settings": {
+      "bubble": {
+        "showCharacters": {
+          "center": [
+            "chocolate",
+            "cafelatte",
+            "honjoFox",
+            "omiken",
+            "omiken_2"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
+        "characterSize": 48,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": true,
+        "showThumbnail": []
+      },
+      "ranking": {
+        "targetScriptKeys": [
+          "basicList"
+        ],
+        "title": "🍉スイカランキング🍉",
+        "color": "lofi",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "counter": {
+        "component": "counterUser",
+        "targetEventKey": "",
+        "target": "draw",
+        "label": "Counter",
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
+      },
+      "winnerGroup": {
+        "component": "valentineCoupling",
+        "targetEventKey": "",
+        "label": "ラッキーメンバーズ",
+        "color": "lofi",
+        "queryString": "count=2&label=今日のラッキーさん"
+      },
+      "flightSeat": {
+        "component": "flightSeat",
+        "customLayout": "[1,2,3,4,5]",
+        "targetEventKey": "",
+        "label": "🛫 8時間フライト、どの席に座る？",
+        "color": "synthwave",
+        "statKey": null
+      },
+      "flashBanner": {
+        "component": "standard",
+        "label": "速報",
+        "iconSize": 12,
+        "displaySeconds": null,
+        "showItemOnRight": false,
+        "defaultCharacterKey": null,
+        "defaultMessage": "<<\n'チャンネル登録・高評価、お願いします。',\n'現在の視聴数 <<viewer>> / 高評価 <<upVote>>',\n'知っていたか'\n>>"
+      },
+      "streamCounter": {
+        "component": "pixelBadgePlain",
+        "color": "light",
+        "colorCycle": [
+          "error",
+          "warning",
+          "success",
+          "accent",
+          "info",
+          "primary",
+          "secondary",
+          "neutral"
+        ],
+        "labelStyle": "text",
+        "defaultCounters": [
+          "syoken",
+          "commenter",
+          "lc",
+          "upVote",
+          "viewer",
+          "totalPrice"
+        ],
+        "eventCounters": []
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "none",
+      "metas": "none",
+      "actionSets": "none",
+      "placeholders": "none",
+      "characters": "none"
+    },
+    "components": [
+      "streamCounter"
+    ],
+    "gameScripts": [],
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none",
+      "itemSlotEnabled": "pro"
+    }
+  },
+  "settings": {
+    "locale": "ja",
+    "commentType": "OneComme",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "daisyUiTheme": "synthwave",
+    "initialCategory": "components",
+    "soundEnabled": true,
+    "ignoreUserPattern": "__INFO__|__ERROR__"
+  }
+}

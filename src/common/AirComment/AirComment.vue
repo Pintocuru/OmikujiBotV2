@@ -1,41 +1,44 @@
-<!-- src/common/AirComment/AirComment.vue -->
 <template>
   <div class="card bg-base-200 border border-base-300 shadow-2xl">
     <div class="card-body gap-2 p-2">
       <!-- Header -->
-      <div class="flex items-center justify-between border-b border-base-300">
-        <h1 class="text-sm flex items-center gap-2">
-          <span class="w-2 h-2 bg-primary rounded-full" :class="{ 'animate-pulse': isRunning }" />
-          エアコメメーカー
-        </h1>
+      <div
+        class="flex items-center justify-between border-b border-base-300 cursor-pointer"
+        @click="collapsed = !collapsed"
+      >
+        <h1 class="text-sm flex items-center gap-2">エアコメメーカー</h1>
 
-        <span class="badge badge-primary badge-xs">
-          {{ count }}
-        </span>
+        <div class="flex items-center gap-1">
+          <span class="text-xs opacity-60">
+            {{ collapsed ? '▶' : '▼' }}
+          </span>
+        </div>
       </div>
 
-      <!-- Interval -->
-      <label class="label">
-        <span class="label-text text-xs opacity-60"> INTERVAL (SEC) </span>
-      </label>
+      <!-- Accordion Body -->
+      <template v-if="!collapsed">
+        <!-- Interval -->
+        <label class="label">
+          <span class="label-text text-xs opacity-60"> INTERVAL (SEC) </span>
+        </label>
 
-      <input type="number" step="0.1" min="0.1" v-model.number="intervalSec" class="input input-bordered input-xs" />
+        <input type="number" step="0.1" min="0.1" v-model.number="intervalSec" class="input input-bordered input-xs" />
 
-      <!-- Buttons -->
-      <div class="join w-full">
-        <button @click="sendComment" class="btn btn-xs btn-outline join-item flex-1">1回送信</button>
+        <!-- Buttons -->
+        <div class="join w-full">
+          <button @click="sendComment" class="btn btn-xs btn-outline join-item flex-1">送信</button>
 
-        <button
-          @click="toggleRunning"
-          class="btn btn-xs join-item flex-1"
-          :class="isRunning ? 'btn-error' : 'btn-primary'"
-        >
-          {{ isRunning ? 'STOP' : 'AUTO' }}
-        </button>
-      </div>
+          <button
+            @click="toggleRunning"
+            class="btn btn-xs join-item flex-1"
+            :class="isRunning ? 'btn-error' : 'btn-primary'"
+          >
+            {{ isRunning ? 'STOP' : 'AUTO' }}
+          </button>
 
-      <!-- Log -->
-      <div class="text-xs opacity-60 bg-base-100 p-2 rounded border border-base-300 truncate">{{ lastComment }}</div>
+          <button @click="burstSend" class="btn btn-xs btn-warning join-item flex-1">TEST100</button>
+        </div>
+      </template>
     </div>
   </div>
 </template>
@@ -51,6 +54,7 @@
   const intervalSec = ref(2)
   const count = ref(0)
   const lastComment = ref('(テストコメントが入ります)')
+  const collapsed = ref(false)
 
   let timer: ReturnType<typeof setTimeout> | null = null
 
@@ -99,6 +103,12 @@
       lastComment.value = `${username}: ${comment}`
     } catch (e) {
       console.error(e)
+    }
+  }
+
+  async function burstSend() {
+    for (let i = 0; i < 100; i++) {
+      setTimeout(sendComment, i * 30)
     }
   }
 

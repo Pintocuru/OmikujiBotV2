@@ -1,28 +1,40 @@
 // src/MainGenerator/stores/MetaState/MetaStateService.ts
-import { GetMetas } from '@shared/sdk/subscribe/GetMetas'
+import { ServiceMetaWatcher } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { isDev } from '@/types'
 
-export interface MetaStateServiceType {
+export interface ServiceMetaStoreType {
   subscribe(fn: (meta: MetaUpdateEvent) => void): () => void
   subscribeError(fn: (error: unknown) => void): () => void
   getStatus(): MetaServiceStatus
   getLastError(): unknown
   getCurrent(): NormalizedMeta | null
   getPeak(): { upVote: number; viewer: number }
+  // Dev only
+  _devSetMeta?(meta: Partial<NormalizedMeta>): void
 }
 
-export class MetaStateService implements MetaStateServiceType {
+const DEV_DEFAULT_META: NormalizedMeta = {
+  isLive: false,
+  upVote: 0,
+  viewer: 0,
+  follower: 0,
+  startTime: Date.now(),
+}
+
+export class ServiceMetaStore implements ServiceMetaStoreType {
+  private static instance: ServiceMetaStore | null = null
   private current: NormalizedMeta | null = null
   private previous: NormalizedMeta | null = null
   private peak = { upVote: 0, viewer: 0 }
   private subscribers: Array<(meta: MetaUpdateEvent) => void> = []
-  private static instance: MetaStateService | null = null
   private lastError: unknown | null = null
   private status: 'idle' | 'loading' | 'ready' | 'error' = 'idle'
+  private errorSubscribers: Array<(error: unknown) => void> = []
 
   static getInstance() {
-    if (!this.instance) this.instance = new MetaStateService()
+    if (!this.instance) this.instance = new ServiceMetaStore()
     return this.instance
   }
 
@@ -33,11 +45,17 @@ export class MetaStateService implements MetaStateServiceType {
   private async initialize() {
     this.setStatus('loading')
 
-    const metas = GetMetas.getInstance()
+    if (isDev) {
+      // 開発モード: ダミーデータで即座に ready にする
+      this.handleMeta(DEV_DEFAULT_META)
+      this.setStatus('ready')
+      return
+    }
+
+    const metas = ServiceMetaWatcher.getInstance()
     const result = await metas.fetchMeta((raw) => {
       try {
         this.handleMeta(raw)
-        // 初回データ受信時に ready へ
         if (this.status === 'loading') this.setStatus('ready')
       } catch (e) {
         this.notifyError(e)
@@ -54,7 +72,7 @@ export class MetaStateService implements MetaStateServiceType {
     this.status = next
   }
 
-  private handleMeta(rawServiceMeta: ServiceMeta | null) {
+  private handleMeta(rawServiceMeta: ServiceMeta | NormalizedMeta | null) {
     const normalized = this.normalize(rawServiceMeta)
 
     this.previous = this.current
@@ -64,35 +82,33 @@ export class MetaStateService implements MetaStateServiceType {
     this.notifySubscribers(peakChanged)
   }
 
-  private normalize(meta: ServiceMeta | null): NormalizedMeta {
+  private normalize(meta: ServiceMeta | NormalizedMeta | null): NormalizedMeta {
+    if (meta && 'isLive' in meta && 'follower' in meta) {
+      // すでに NormalizedMeta の形の場合（開発時の直接セットなど）
+      return meta as NormalizedMeta
+    }
+    const raw = meta as ServiceMeta | null
     return {
-      isLive: meta?.isLive ?? false,
-      upVote: this.toNumber(meta?.upVote),
-      viewer: this.toNumber(meta?.viewer),
-      follower: this.toNumber(meta?.subscriberCount ?? meta?.follower),
-      startTime: meta?.startTime ?? null,
+      isLive: raw?.isLive ?? false,
+      upVote: this.toNumber(raw?.upVote),
+      viewer: this.toNumber(raw?.viewer),
+      follower: this.toNumber(raw?.subscriberCount ?? raw?.follower),
+      startTime: raw?.startTime ?? null,
     }
   }
 
-  /**
-   * peak を更新し、peakChanged フラグを返す
-   */
   private updatePeak(meta: NormalizedMeta) {
     const peakChanged = {
       upVote: meta.upVote > this.peak.upVote,
       viewer: meta.viewer > this.peak.viewer,
     }
 
-    // peak を更新
     if (peakChanged.upVote) this.peak.upVote = meta.upVote
     if (peakChanged.viewer) this.peak.viewer = meta.viewer
 
     return peakChanged
   }
 
-  /**
-   * peakChanged を受け取る
-   */
   private notifySubscribers(peakChanged: { upVote: boolean; viewer: boolean }) {
     if (!this.current) return
 
@@ -114,7 +130,6 @@ export class MetaStateService implements MetaStateServiceType {
 
   subscribe(fn: (meta: MetaUpdateEvent) => void): () => void {
     this.subscribers.push(fn)
-
     return () => {
       this.subscribers = this.subscribers.filter((f) => f !== fn)
     }
@@ -125,12 +140,9 @@ export class MetaStateService implements MetaStateServiceType {
     return Number.isFinite(n) ? n : 0
   }
 
-  private errorSubscribers: Array<(error: unknown) => void> = []
-
   private notifyError(error: unknown) {
     this.lastError = error
     this.setStatus('error')
-
     console.error('[MetaStateService]', error)
 
     for (const fn of this.errorSubscribers) {
@@ -161,6 +173,15 @@ export class MetaStateService implements MetaStateServiceType {
 
   getPeak() {
     return { ...this.peak }
+  }
+
+  /**
+   * 開発モード専用: NormalizedMeta を部分的に上書きして subscriber に通知する
+   */
+  _devSetMeta(partial: Partial<NormalizedMeta>) {
+    if (!isDev) return
+    const base = this.current ?? DEV_DEFAULT_META
+    this.handleMeta({ ...base, ...partial })
   }
 }
 

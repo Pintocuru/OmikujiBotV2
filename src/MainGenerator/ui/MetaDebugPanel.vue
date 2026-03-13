@@ -38,7 +38,7 @@
   import type { MetaUpdateEvent, NormalizedMeta } from '@main/stores/MetaState/MetaStateService'
   import { useAppStore } from '@main/stores/useAppStore'
 
-  const { metaState } = useAppStore()
+  const { serviceMetaStore: metaState } = useAppStore()
 
   const MAX = 20
   const history = ref<MetaUpdateEvent[]>([])

@@ -70,7 +70,7 @@
 
   onMounted(() => {
     // getCurrent() で初期値を即時反映
-    const initial = appStore.metaState.getCurrent()
+    const initial = appStore.serviceMetaStore.getCurrent()
     counters.value = {
       ...counters.value,
       upVote: initial?.upVote ?? 0,
@@ -79,7 +79,7 @@
     }
 
     // 以降は subscribe でリアルタイム更新
-    unsubscribeMeta = appStore.metaState.subscribe((event) => {
+    unsubscribeMeta = appStore.serviceMetaStore.subscribe((event) => {
       counters.value = {
         ...counters.value,
         upVote: event.current.upVote,

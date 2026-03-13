@@ -23,12 +23,12 @@ export class EventMetaProcessor {
     const appStore = useAppStore()
 
     // 購読開始時点の値をスナップショットとして保存
-    const snapshot = appStore.metaState.getCurrent()
+    const snapshot = appStore.serviceMetaStore.getCurrent()
     this.lastUpVote = snapshot?.upVote ?? null
     this.lastViewer = snapshot?.viewer ?? null
 
     // 購読の開始
-    this.unsubscribe = appStore.metaState.subscribe((event) => {
+    this.unsubscribe = appStore.serviceMetaStore.subscribe((event) => {
       this.processMetaRules(event)
     })
   }

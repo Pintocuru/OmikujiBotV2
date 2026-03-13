@@ -6,6 +6,7 @@
     <MainGenerator />
     <template #hud>
       <AirComment />
+      <DevMetaController />
     </template>
   </HudPreview>
 
@@ -27,6 +28,7 @@
   import ConfigMaker from './ConfigMaker/App.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import AirComment from '@/common/AirComment/AirComment.vue'
+  import DevMetaController from '@/common/DevMetaController/DevMetaController.vue'
   import { Settings, Cpu } from 'lucide-vue-next'
 
   const showMain = ref(false)

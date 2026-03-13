@@ -8,14 +8,12 @@ import {
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
 import { OmikenCommentType, ServiceMetaCondition } from '@shared/types'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 export class OmikujiProcessor {
   private readonly store = useAppStore()
-  private readonly metaStateService = MetaStateService.getInstance()
   private readonly omikujiResult: OmikujiResultProcessor
 
   constructor() {
@@ -88,7 +86,7 @@ export class OmikujiProcessor {
    * デフォルトのプレースホルダー情報を設定
    */
   private getBasePlaceholders(): Record<ServiceMetaCondition, string | number> {
-    const meta = this.metaStateService.getCurrent()
+    const meta = this.store.serviceMetaStore.getCurrent()
     const { userSession, streamStats } = this.store
 
     const uniqueCount = userSession.stats.getUniqueCount()

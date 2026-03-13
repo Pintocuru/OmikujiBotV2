@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/PostOmikuji/PostOmikujiService.ts
 import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types/'
 import { BOT_ICON } from './BotIcon'
-import { MetaStateService } from '@main/stores/MetaState/MetaStateService'
+import { ServiceMetaStore } from '@main/stores/MetaState/MetaStateService'
 import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'
 import { postComment, postSpeech, postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { SendCommentType, SendCommentSchema } from '@shared/types/'
@@ -17,7 +17,7 @@ const MAX_REPEAT_COUNT = 30
  */
 export class PostOmikujiService {
   private readonly serviceAPI = ServiceAPI.getInstance()
-  private readonly metaStateService = MetaStateService.getInstance()
+  private readonly serviceMetaStore = ServiceMetaStore.getInstance()
   private readonly characterManager: CharacterManager
   private readonly enableSecondary: boolean
   private services: Service[] = []
@@ -134,7 +134,7 @@ export class PostOmikujiService {
     if (!repeat) return 1
     if (typeof repeat === 'number') return Math.min(repeat, MAX_REPEAT_COUNT)
 
-    const meta = this.metaStateService.getCurrent()
+    const meta = this.serviceMetaStore.getCurrent()
     if (!meta) {
       console.warn('メタデータが取得できないため、repeat を 1 に設定します')
       return 1
