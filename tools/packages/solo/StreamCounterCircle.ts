@@ -3,7 +3,7 @@ import { createCommonBuildConfig, createCommonBuildConfigJson } from '../../buil
 import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT_KEY = 'StreamCounterCircle'
-const PROJECT_TITLE = 'おみくじ BOT ライバーカウンター サークル わんコメv9対応版'
+const PROJECT_TITLE = 'おみくじ BOT ライバーカウンター サークル'
 const boothURLNumber = '8069882'
 
 // バリエーション定義  '' の場合はデフォルト（無印）扱い
@@ -51,13 +51,13 @@ function createProject(packageRoot: string, color: ColorVariant): ProjectConfig 
 
     accessLevels: {
       basic: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [{ from: `assets/exported/thumb/StreamCounter/${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
       adv: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [{ from: `assets/exported/thumb/StreamCounter/${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
       pro: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [{ from: `assets/exported/thumb/StreamCounter/${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
     },
   }
