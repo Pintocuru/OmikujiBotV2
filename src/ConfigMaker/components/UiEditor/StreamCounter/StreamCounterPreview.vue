@@ -2,9 +2,9 @@
 <template>
   <HudPreview maxHeightClass="h-42">
     <div :class="[fontFamily]">
-      <LiverCounterManager
-        :key="liverCounter.labelStyle"
-        :settings="liverCounter"
+      <StreamCounterManager
+        :key="streamCounter.labelStyle"
+        :settings="streamCounter"
         :counters="previewCounters"
         :event-labels="previewEventLabels"
       />
@@ -19,12 +19,12 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { useFontFamily, type SettingsStreamCounterType } from '@/types/'
-  import LiverCounterManager from '@main/ui/StreamCounter/parts/StreamCounterManager.vue'
+  import StreamCounterManager from '@main/ui/StreamCounter/parts/StreamCounterManager.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
-    liverCounter: SettingsStreamCounterType
+    streamCounter: SettingsStreamCounterType
     eventLabels: Record<string, string>
   }>()
 
@@ -35,6 +35,7 @@
     commenter: 456,
     lc: 7890,
     totalPrice: 5000,
+    follower: 78900,
   }
 
   const omikujiStore = useOmikujiStore()
@@ -49,7 +50,7 @@
       result[key] = counters.value[key] ?? baseCounters[key]
     }
 
-    for (const key of props.liverCounter.eventCounters) {
+    for (const key of props.streamCounter.eventCounters) {
       result[key] = counters.value[key] ?? 7
     }
 
@@ -59,7 +60,7 @@
   const previewEventLabels = computed(() => props.eventLabels)
 
   const incrementAll = () => {
-    const keys = [...Object.keys(baseCounters), ...props.liverCounter.eventCounters]
+    const keys = [...Object.keys(baseCounters), ...props.streamCounter.eventCounters]
     const updated: Record<string, number> = { ...counters.value }
     for (const key of keys) updated[key] = (updated[key] ?? 0) + 1
     counters.value = updated

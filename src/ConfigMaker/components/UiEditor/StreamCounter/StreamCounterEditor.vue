@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/UiEditor/StreamCounter/StreamCounterEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <LiverCounterPreview :liver-counter="streamCounter" :event-labels="previewEventLabels" />
+  <StreamCounterPreview :streamCounter="streamCounter" :event-labels="previewEventLabels" />
 
   <!-- コンポーネント選択 -->
   <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
@@ -104,7 +104,7 @@
   import { storeToRefs } from 'pinia'
   import { SettingsStreamSchema, labelStyleMap, streamComponentMap, streamDefaultMap } from '@/types/'
   import type { StreamDefaultKey, SettingsStreamCounterType } from '@/types/'
-  import LiverCounterPreview from './StreamCounterPreview.vue'
+  import StreamCounterPreview from './StreamCounterPreview.vue'
   import ColorCycleEditor from './ColorCycleEditor.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

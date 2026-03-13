@@ -1,7 +1,7 @@
 // src/MainGenerator/ui/StreamCounter/composables/DefaultLabels.ts
 import type { Component } from 'vue'
 import { StreamDefaultKey } from '@/types'
-import { ThumbsUp, Eye, Sprout, MessageCircle, Users, BadgeDollarSign } from 'lucide-vue-next'
+import { ThumbsUp, Eye, Sprout, MessageCircle, Users, BadgeDollarSign, UserPlus } from 'lucide-vue-next'
 
 export const LIVER_LUCIDE_LABELS: Record<StreamDefaultKey, string | Component> = {
   upVote: ThumbsUp,
@@ -10,6 +10,7 @@ export const LIVER_LUCIDE_LABELS: Record<StreamDefaultKey, string | Component> =
   commenter: Users,
   lc: MessageCircle,
   totalPrice: BadgeDollarSign,
+  follower: UserPlus,
 }
 
 export const LIVER_EMOJI_LABELS: Record<StreamDefaultKey, string> = {
@@ -19,6 +20,7 @@ export const LIVER_EMOJI_LABELS: Record<StreamDefaultKey, string> = {
   commenter: '👥',
   lc: '💬',
   totalPrice: '💰',
+  follower: '🤝',
 }
 
 export const LIVER_TEXT_LABELS: Record<StreamDefaultKey, string> = {
@@ -28,4 +30,5 @@ export const LIVER_TEXT_LABELS: Record<StreamDefaultKey, string> = {
   commenter: 'リスナー',
   lc: 'コメント',
   totalPrice: 'ギフト',
+  follower: '登録者数',
 }

@@ -31,7 +31,7 @@
   import StarBurstItem from '../layouts/StarBurst.vue'
   import HexGridItem from '../layouts/HexGrid.vue'
 
-  import { useLiverCounterDisplay } from '../composables/useLiverCounterDisplay'
+  import { useStreamCounterDisplay } from '../composables/useStreamCounterDisplay'
   import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
 
   const props = defineProps<{
@@ -41,7 +41,7 @@
   }>()
 
   const { getLabel } = useLiverLabelResolver(toRef(props, 'eventLabels'), toRef(props.settings, 'labelStyle'))
-  const { allKeys, getPattern, formatValue } = useLiverCounterDisplay(toRef(props, 'settings'))
+  const { allKeys, getPattern, formatValue } = useStreamCounterDisplay(toRef(props, 'settings'))
 
   const itemMap: Record<LiverComponent, Component> = {
     basicCirclePlain: BasicCirclePlainItem,

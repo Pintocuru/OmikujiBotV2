@@ -20,6 +20,7 @@
   const counters = ref<Record<string, number>>({
     upVote: 0,
     viewer: 0,
+    follower: 0,
     syoken: 0,
     commenter: 0,
     lc: 0,
@@ -70,13 +71,21 @@
   onMounted(() => {
     // getCurrent() で初期値を即時反映
     const initial = appStore.metaState.getCurrent()
-    counters.value.upVote = initial?.upVote ?? 0
-    counters.value.viewer = initial?.viewer ?? 0
+    counters.value = {
+      ...counters.value,
+      upVote: initial?.upVote ?? 0,
+      viewer: initial?.viewer ?? 0,
+      follower: initial?.follower ?? 0,
+    }
 
     // 以降は subscribe でリアルタイム更新
     unsubscribeMeta = appStore.metaState.subscribe((event) => {
-      counters.value.upVote = event.current.upVote
-      counters.value.viewer = event.current.viewer
+      counters.value = {
+        ...counters.value,
+        upVote: event.current.upVote,
+        viewer: event.current.viewer,
+        follower: event.current.follower,
+      }
     })
   })
 

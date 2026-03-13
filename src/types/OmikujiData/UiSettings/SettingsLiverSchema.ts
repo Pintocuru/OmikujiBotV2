@@ -32,6 +32,7 @@ export const streamDefaultMap = {
   upVote: '高評価数',
   viewer: '同時接続数',
   totalPrice: 'ギフト金額',
+  follower: '登録者数',
 } as const
 const streamDefaultKeyLabels = Object.keys(streamDefaultMap) as StreamDefaultKey[]
 export type StreamDefaultKey = keyof typeof streamDefaultMap
