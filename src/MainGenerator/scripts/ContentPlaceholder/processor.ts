@@ -1,7 +1,6 @@
 // src/MainGenerator/scripts/ContentPlaceholder/processor.ts
 import { PostFlowType, PlaceholderType, handelNormalizedValues, WeightValuesArrayType, WeightValueType } from '@/types/'
 import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
-import { sanitizeText } from './context'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 /**
@@ -67,10 +66,6 @@ export class ContentPlaceholder {
    */
   processText(text?: string): string {
     if (!text) return ''
-
-    // <<http://*/>> の無害化
-    const sanitized = sanitizeText(text)
-    if (sanitized === '') return ''
 
     let result = text
 

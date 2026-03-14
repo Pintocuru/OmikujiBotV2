@@ -18,7 +18,6 @@ interface ProcessResult {
 
 export class EventCommentProcessor {
   private readonly store = useAppStore()
-  private readonly omikujiProcessor = new OmikujiProcessor()
   private readonly specialActionProcessor = new SpecialActionProcessor()
 
   /**
@@ -98,7 +97,8 @@ export class EventCommentProcessor {
 
     // 6. 通常アクション: カウントしてから実行
     this.recordDraw(omiken, event)
-    const botMessages = this.omikujiProcessor.executeActionItem(actionItem, omiken)
+    const omikujiProcessor = new OmikujiProcessor()
+    const botMessages = omikujiProcessor.executeActionItem(actionItem, omiken)
     const isCommentTriggered = event.trigger.conditions.includes('comment')
 
     return { isCommentTriggered, botMessages }

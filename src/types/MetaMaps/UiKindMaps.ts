@@ -98,6 +98,7 @@ export const uiKindMap = {
     slots: ['extra'],
     label: '15分で初コメが来ないと',
     icon: 'Bomb',
+    description: 'test',
   },
 } as const
 

@@ -1,7 +1,5 @@
 // src/MainGenerator/scripts/ContentPlaceholder/parser.ts
 
-import { sanitizeText } from './context'
-
 /**
  * ネストを考慮して、対応する閉じ括弧 >> の位置を返す
  */
@@ -32,20 +30,16 @@ export function isInlineRandomSyntax(input: string): boolean {
  * 'value1','value2','value3' -> ['value1', 'value2', 'value3']
  */
 export function parseInlineValues(input: string): string[] {
-  // <<http://*/>> の無害化
-  const sanitized = sanitizeText(input)
-  if (sanitized === '') return []
-
   const values: string[] = []
   let current = ''
   let inQuote = false
   let quoteChar = ''
 
-  for (let i = 0; i < sanitized.length; i++) {
-    const char = sanitized[i]
+  for (let i = 0; i < input.length; i++) {
+    const char = input[i]
 
     // クォートの判定
-    if ((char === "'" || char === '"') && (i === 0 || sanitized[i - 1] !== '\\')) {
+    if ((char === "'" || char === '"') && (i === 0 || input[i - 1] !== '\\')) {
       if (!inQuote) {
         inQuote = true
         quoteChar = char
