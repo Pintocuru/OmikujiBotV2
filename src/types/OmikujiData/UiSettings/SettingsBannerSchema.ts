@@ -2,18 +2,22 @@
 import { z } from 'zod'
 
 /**
- * ニュースフラッシュ コンポーネントの選択肢
+ * ニュースフラッシュ FlashBanner
  */
 export const flashComponentMap = {
   standard: 'シンプル',
   ticker: 'ティッカー',
   glass: 'ガラス',
   arcade: 'アーケード',
+  scroll: 'スクロール',
 } as const
 
-/**
- * ニュースフラッシュ FlashBanner
- */
+// scrollReturnMode の表示ラベル
+export const scrollReturnModeMap = {
+  loop: { title: 'ループ', description: '端で即座に先頭へ戻る' },
+  fade: { title: 'フェード', description: 'フェードアウトして先頭へ戻る' },
+} as const
+
 const flashComponentsEnum = Object.keys(flashComponentMap) as FlashComponent[]
 export type FlashComponent = keyof typeof flashComponentMap
 
@@ -32,10 +36,12 @@ const defaultMessage = `<<
 export const SettingsBannerSchema = z.object({
   component: z.enum(flashComponentsEnum).default('standard').catch('standard'),
   label: z.string().default('速報').catch(''),
-  iconSize: z.number().int().min(0).max(24).default(12).catch(12), // アイコンの表示サイズ (px)
-  displaySeconds: z.number().int().min(0).max(60).nullable().default(null).catch(null), // 表示時間
-  showItemOnRight: z.boolean().default(false).catch(false), // キャラクターを右側に表示するか(falseで左側)
-  defaultCharacterKey: z.string().nullable().default(null).catch(null), // デフォルトキャラクター
-  defaultMessage: z.string().default(defaultMessage).catch(defaultMessage), // デフォルトメッセージ(通常プレースホルダーのみ使用可)
+  iconSize: z.number().int().min(0).max(24).default(12).catch(12),
+  displaySeconds: z.number().int().min(0).max(60).nullable().default(null).catch(null),
+  showItemOnRight: z.boolean().default(false).catch(false),
+  defaultCharacterKey: z.string().nullable().default(null).catch(null),
+  defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),
+  scrollSpeed: z.number().min(0).max(100).default(50).catch(50), // テキストスクロール速度 (px/sec)
+  scrollReturnMode: z.enum(['loop', 'fade']).default('loop').catch('loop'), // 長文スクロール終了後の戻り方
 })
 export type SettingsFlashBannerType = z.infer<typeof SettingsBannerSchema>

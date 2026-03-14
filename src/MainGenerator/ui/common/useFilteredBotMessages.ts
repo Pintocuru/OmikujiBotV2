@@ -22,10 +22,11 @@ export function useFilteredBotMessages(kind: UiKind, displaySeconds?: number | n
       iconSize
     )
 
-    const bubble: BotMessageBubbleType['bubble'] = {
+    const bubble = {
       ...bot.bubble!,
       message,
-      ...(displaySeconds != null && applyDisplaySeconds(bot.bubble, displaySeconds)),
+      displaySeconds:
+        displaySeconds != null ? (displaySeconds === 0 ? null : displaySeconds) : bot.bubble!.displaySeconds,
     }
 
     return { ...bot, bubble }
@@ -57,14 +58,4 @@ export function resolveIconPlaceholders(
     const url = getProfileImage(userId)
     return url ? `<img class="inline-block w-${iconSize} h-${iconSize} rounded-full" src="${url}" />` : ''
   })
-}
-
-function applyDisplaySeconds(
-  bubble: BotMessageBubbleType['bubble'],
-  displaySeconds: number
-): BotMessageBubbleType['bubble'] {
-  return {
-    ...bubble!,
-    displaySeconds: displaySeconds === 0 ? null : displaySeconds,
-  }
 }

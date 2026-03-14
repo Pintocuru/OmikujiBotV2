@@ -21,12 +21,13 @@
     </div>
 
     <!-- メッセージ -->
-    <div ref="textContainerRef" class="flex-1 overflow-hidden min-w-0">
+    <div ref="containerRef" class="flex-1 overflow-hidden min-w-0">
       <div ref="wrapperRef">
         <span
           ref="textRef"
           class="inline-block text-white whitespace-nowrap font-black text-5xl arcade-text"
-          :class="[{ 'animate-scroll': shouldScroll }]"
+          :class="scrollClass"
+          :style="scrollStyle"
           v-html="displayMessage"
         />
       </div>
@@ -35,13 +36,13 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
+  import { computed } from 'vue'
   import type { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
   import { useMessageTransition } from './useMessageTransition'
+  import { useFlashScroll } from './useFlashScroll'
 
-  // Props
   const props = defineProps<{
     settings: SettingsFlashBannerType
     message: string
@@ -52,7 +53,6 @@
 
   const uiMap = computed(() => createUiMap({ color: props.color }))
 
-  // ピクセル風の枠線をインラインで追加（テーマカラーに依存しない装飾）
   const arcadeContainer = {
     borderTop: '3px solid rgba(255,255,255,0.4)',
     borderBottom: '3px solid rgba(0,0,0,0.5)',
@@ -60,37 +60,14 @@
 
   const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
 
-  // Scroll Detection
-  const textRef = ref<HTMLElement | null>(null)
-  const textContainerRef = ref<HTMLElement | null>(null)
-  const shouldScroll = ref(false)
-
-  const checkScrollNeeded = async () => {
-    await nextTick()
-    await new Promise((resolve) => setTimeout(resolve, 50))
-    if (!textRef.value || !textContainerRef.value) {
-      shouldScroll.value = false
-      return
-    }
-    shouldScroll.value = textRef.value.scrollWidth > textContainerRef.value.clientWidth + 20
-  }
-
   const { displayMessage, wrapperRef } = useMessageTransition(() => props.message, 'slideInRight')
 
-  watch(() => displayMessage.value, checkScrollNeeded, { immediate: true })
+  const { textRef, containerRef, scrollClass, scrollDuration } = useFlashScroll({
+    getMessage: () => props.message,
+    getSettings: () => props.settings,
+  })
 
-  let resizeObserver: ResizeObserver | null = null
-  onMounted(() => {
-    checkScrollNeeded()
-    if (textContainerRef.value) {
-      resizeObserver = new ResizeObserver(checkScrollNeeded)
-      resizeObserver.observe(textContainerRef.value)
-    }
-  })
-  onUnmounted(() => {
-    resizeObserver?.disconnect()
-    resizeObserver = null
-  })
+  const scrollStyle = computed(() => ({ '--scroll-duration': `${scrollDuration.value}s` }))
 </script>
 
 <style scoped>
@@ -103,10 +80,12 @@
       1px 1px 0 rgba(0, 0, 0, 0.8),
       0 0 12px currentColor;
   }
+
   /* ラベルのカーソル点滅 */
   .arcade-label {
     animation: cursor-blink 4s step-end infinite;
   }
+
   @keyframes cursor-blink {
     0%,
     100% {
@@ -116,9 +95,15 @@
       opacity: 0.5;
     }
   }
-  .animate-scroll {
-    animation: ticker-scroll 14s linear infinite;
+
+  .animate-scroll-loop {
+    animation: ticker-scroll var(--scroll-duration, 14s) linear infinite;
   }
+
+  .animate-scroll-fade {
+    animation: ticker-scroll-fade var(--scroll-duration, 14s) linear infinite;
+  }
+
   @keyframes ticker-scroll {
     0%,
     10% {
@@ -132,9 +117,36 @@
       transform: translateX(0);
     }
   }
+
+  @keyframes ticker-scroll-fade {
+    0%,
+    5% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    70% {
+      opacity: 1;
+      transform: translateX(-60%);
+    }
+    80% {
+      opacity: 0;
+      transform: translateX(-60%);
+    }
+    85% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    95%,
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   .blink-animation {
     animation: blink 0.25s ease-in-out 3;
   }
+
   @keyframes blink {
     0%,
     100% {

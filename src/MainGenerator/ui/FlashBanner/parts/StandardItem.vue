@@ -16,13 +16,13 @@
     </div>
 
     <!-- スクロールテロップ -->
-    <div ref="textContainerRef" class="flex-1 overflow-hidden px-4 min-w-0 bg-base-200 text-base-content rounded-lg">
+    <div ref="containerRef" class="flex-1 overflow-hidden px-4 min-w-0 bg-base-200 text-base-content rounded-lg">
       <div :class="['message-wrapper', isAnimating ? 'message-exit' : 'message-enter']">
         <span
           ref="textRef"
           class="inline-block whitespace-nowrap font-bold text-5xl"
-          :class="[uiMap.text.class, { 'animate-scroll': shouldScroll }]"
-          :style="uiMap.text.style"
+          :class="[uiMap.text.class, scrollClass]"
+          :style="[uiMap.text.style, scrollStyle]"
           v-html="displayMessage"
         />
       </div>
@@ -31,13 +31,13 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch, nextTick, onMounted, onUnmounted } from 'vue'
+  import { computed, ref, watch } from 'vue'
   import { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
   import { useMessageTransition } from './useMessageTransition'
+  import { useFlashScroll } from './useFlashScroll'
 
-  // Props
   const props = defineProps<{
     settings: SettingsFlashBannerType
     message: string
@@ -46,50 +46,18 @@
     labelClass?: string
   }>()
 
-  // UI Styling
   const uiMap = computed(() => createUiMap({ color: props.color }))
   const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
 
-  // Scroll Detection
-  const textRef = ref<HTMLElement | null>(null)
-  const textContainerRef = ref<HTMLElement | null>(null)
-  const shouldScroll = ref(false)
-
-  const SCROLL_THRESHOLD = 20
-  const DOM_RENDER_DELAY = 50
-
-  /** テキストがコンテナに収まるか判定 */
-  const checkScrollNeeded = async () => {
-    await nextTick()
-    await new Promise((resolve) => setTimeout(resolve, DOM_RENDER_DELAY))
-
-    if (!textRef.value || !textContainerRef.value) {
-      shouldScroll.value = false
-      return
-    }
-
-    const textWidth = textRef.value.scrollWidth
-    const containerWidth = textContainerRef.value.clientWidth
-
-    shouldScroll.value = textWidth > containerWidth + SCROLL_THRESHOLD
-  }
-
-  // メッセージ変更時にスクロール判定
   const { displayMessage } = useMessageTransition(() => props.message)
 
-  watch(() => displayMessage.value, checkScrollNeeded, { immediate: true })
-
-  // Resize Observer
-  let resizeObserver: ResizeObserver | null = null
-
-  onMounted(() => {
-    checkScrollNeeded()
-
-    if (textContainerRef.value) {
-      resizeObserver = new ResizeObserver(checkScrollNeeded)
-      resizeObserver.observe(textContainerRef.value)
-    }
+  const { textRef, containerRef, scrollClass, scrollDuration, checkScrollNeeded } = useFlashScroll({
+    getMessage: () => props.message,
+    getSettings: () => props.settings,
   })
+
+  // duration を CSS カスタムプロパティで渡す
+  const scrollStyle = computed(() => ({ '--scroll-duration': `${scrollDuration.value}s` }))
 
   // Message Change Animation
   const isAnimating = ref(false)
@@ -99,32 +67,26 @@
     async (newVal) => {
       if (newVal === displayMessage.value) return
 
-      // フェードアウト
       isAnimating.value = true
       await new Promise((resolve) => setTimeout(resolve, 200))
 
-      // メッセージ差し替え＆スクロール判定リセット
       displayMessage.value = newVal
-      shouldScroll.value = false
       await checkScrollNeeded()
 
-      // フェードイン
       isAnimating.value = false
     }
   )
-
-  onUnmounted(() => {
-    if (resizeObserver) {
-      resizeObserver.disconnect()
-      resizeObserver = null
-    }
-  })
 </script>
 
 <style scoped>
-  /* テロップスクロール */
-  .animate-scroll {
-    animation: ticker-scroll 14s linear infinite;
+  /* loop モード */
+  .animate-scroll-loop {
+    animation: ticker-scroll var(--scroll-duration, 14s) linear infinite;
+  }
+
+  /* fade モード */
+  .animate-scroll-fade {
+    animation: ticker-scroll-fade var(--scroll-duration, 14s) linear infinite;
   }
 
   @keyframes ticker-scroll {
@@ -141,7 +103,31 @@
     }
   }
 
-  /* ラベルブリンク（親から適用される） */
+  @keyframes ticker-scroll-fade {
+    0%,
+    5% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    70% {
+      opacity: 1;
+      transform: translateX(-60%);
+    }
+    80% {
+      opacity: 0;
+      transform: translateX(-60%);
+    }
+    85% {
+      opacity: 0;
+      transform: translateX(0);
+    }
+    95%,
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   .blink-animation {
     animation: blink 0.25s ease-in-out 3;
   }

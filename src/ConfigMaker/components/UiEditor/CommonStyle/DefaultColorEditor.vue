@@ -8,7 +8,7 @@
 
   <!-- プレビュー -->
   <div class="max-h-56 overflow-y-hidden" :class="[fontFamilyClass]">
-    <FlashBannerRenderer
+    <FlashBannerSelector
       :settings="flashBannerSample"
       :message="flashBannerSample.defaultMessage"
       :layers="[]"
@@ -37,7 +37,7 @@
   import { SettingsBannerSchema, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
-  import FlashBannerRenderer from '@main/ui/FlashBanner/parts/FlashBannerRenderer.vue'
+  import FlashBannerSelector from '@main/ui/FlashBanner/parts/FlashBannerSelector.vue'
   import { useCommonStyleUpdate } from './useCommonStyleUpdate'
   import CommentVoiceSettings from '@config/components/characters/service/CommentVoiceSettings.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'

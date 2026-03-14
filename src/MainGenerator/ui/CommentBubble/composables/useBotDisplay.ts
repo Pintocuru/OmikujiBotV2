@@ -46,12 +46,16 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
   // 表示制御ロジック
   const useEnhancedDisplayControl = () => {
     let lastTime = 0
-    const processedMessageIds = new Set<string>()
+    const processedMessages = new Map<string, string>()
 
     const processNewComments = (now: number) => {
       if (now - lastTime <= DISPLAY_CONFIG.INTERVAL) return
 
-      const newComments = comments.value.filter((comment) => !processedMessageIds.has(comment.id))
+      const newComments = comments.value.filter((comment) => {
+        const key = buildMessageKey(comment)
+        const prev = processedMessages.get(comment.id)
+        return prev !== key
+      })
       if (newComments.length === 0) return
 
       lastTime = now
@@ -94,7 +98,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
         }
 
         displayedComments.value.unshift(displayMessage)
-        processedMessageIds.add(nextComment.id)
+        processedMessages.set(nextComment.id, buildMessageKey(nextComment))
       })
     }
 
@@ -105,7 +109,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
     }
 
     const start = () => {
-      processedMessageIds.clear()
+      processedMessages.clear()
       // 既存のタイムアウトをすべてクリア
       displayedComments.value.forEach((comment) => {
         if (comment.display?.hideTimeout) {
@@ -126,7 +130,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
           clearTimeout(comment.display?.hideTimeout)
         }
       })
-      processedMessageIds.clear()
+      processedMessages.clear()
       displayedComments.value = []
     }
 
@@ -142,4 +146,7 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
     start: displayControl.start,
     stop: displayControl.stop,
   }
+}
+const buildMessageKey = (msg: BotMessageBubbleType) => {
+  return [msg.bubble?.message ?? '', msg.bubble?.displaySeconds ?? 'auto'].join('|')
 }

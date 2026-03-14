@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/parts/FlashBannerRenderer.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/parts/FlashBannerSelector.vue -->
 <template>
   <div v-if="message" class="w-full bg-base-100 transparent-bg" :data-theme="color?.daisyUiTheme">
     <component
@@ -20,6 +20,7 @@
   import TickerItem from './TickerItem.vue'
   import GlassItem from './GlassItem.vue'
   import ArcadeItem from './ArcadeItem.vue'
+  import ScrollItem from './ScrollItem.vue'
 
   const props = withDefaults(
     defineProps<{
@@ -39,6 +40,7 @@
     ticker: TickerItem,
     glass: GlassItem,
     arcade: ArcadeItem,
+    scroll: ScrollItem,
   }
   const currentComponent = computed(() => componentMap[props.settings.component] ?? StandardItem)
 </script>

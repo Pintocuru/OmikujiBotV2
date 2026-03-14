@@ -46,7 +46,6 @@
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
   import { useMessageTransition } from './useMessageTransition'
 
-  // Props
   const props = defineProps<{
     settings: SettingsFlashBannerType
     message: string
@@ -57,8 +56,10 @@
 
   const { displayMessage, wrapperRef } = useMessageTransition(() => props.message)
 
+  const uiMap = computed(() => createUiMap({ color: props.color }))
+  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
+
   // テキスト間の空白 (px)
-  // 短いテキストでも密になりすぎないよう、文字数に応じて調整
   const GAP_PX = computed(() => {
     const len = props.message.replace(/<[^>]*>/g, '').length
     if (len < 20) return 120
@@ -67,8 +68,6 @@
   })
 
   // テキストを何回繰り返すか
-  // 短いテキストは多めに繰り返して、コンテナ幅に対して常に画面を埋める
-  // （最低4回＝左右フェードで隠れる分も含めて余裕を持たせる）
   const repeat = computed(() => {
     const len = props.message.replace(/<[^>]*>/g, '').length
     if (len < 15) return 8
@@ -76,28 +75,31 @@
     return 4
   })
 
-  const uiMap = computed(() => createUiMap({ color: props.color }))
-  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
-
-  // 1文字あたりの移動時間（秒）
+  /**
+   * scrollSpeed (px/sec) ベースでアニメーション duration を計算する。
+   *
+   * TickerItem は「1セグメント分 (1/repeat) だけ左にずらす」ループ設計のため、
+   * 移動距離の見積もりには文字数 × 平均文字幅 (約40px) を使用する。
+   * scrollSpeed が 0 以下の場合はデフォルト値 80px/sec を使用する。
+   */
   const duration = computed(() => {
     const len = props.message.replace(/<[^>]*>/g, '').length
-    const perChar = 1
-    return len * perChar
+    const speed = props.settings.scrollSpeed > 0 ? props.settings.scrollSpeed : 80
+    // 1セグメントの概算幅 = 文字数 × 40px + GAP
+    const segmentWidth = len * 40 + GAP_PX.value
+    return Math.max(3, segmentWidth / speed)
   })
 
-  // アニメーション：repeat 個並んだうちの 1セグメント分（1/repeat）だけ左にずらす
   const tickerStyle = computed(() => ({
     willChange: 'transform',
     '--ticker-shift': `calc(-100% / ${repeat.value})`,
-    '--ticker-duration': `${duration.value}s`, // ← 追加
+    '--ticker-duration': `${duration.value}s`,
   }))
 
   const glowStyle = computed(() => ({
     textShadow: `0 0 8px currentColor, 0 0 2px currentColor`,
   }))
 
-  // 各スパンのスタイル（最初以外は左paddingでGAPを設ける）
   const spanStyle = (i: number) => ({
     ...uiMap.value.text.style,
     ...glowStyle.value,
@@ -106,10 +108,6 @@
 </script>
 
 <style scoped>
-  /*
-    repeat 個並べた全体を 1/repeat だけ左にずらすとシームレスにループする。
-    CSS変数 --ticker-shift を使うことで、repeat 数が変わっても対応できる。
-  */
   .animate-ticker {
     animation: ticker-loop var(--ticker-duration) linear infinite;
   }

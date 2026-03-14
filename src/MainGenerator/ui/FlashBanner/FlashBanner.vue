@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/FlashBanner/FlashBanner.vue -->
 <template>
   <div class="fixed top-0 w-full flex justify-center">
-    <FlashBannerRenderer
+    <FlashBannerSelector
       :key="currentMessage?.id ?? 'default'"
       :settings="settings"
       :message="currentMessage?.bubble?.message ?? ''"
@@ -13,9 +13,9 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, toRef, watch, onMounted, onUnmounted } from 'vue'
+  import { computed, ref, watch, onMounted, onUnmounted } from 'vue'
   import { BotMessageBubbleSchema } from '@/types'
-  import FlashBannerRenderer from './parts/FlashBannerRenderer.vue'
+  import FlashBannerSelector from './parts/FlashBannerSelector.vue'
   import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { useFlashBannerLogic } from './composables/useFlashBannerLogic'
@@ -27,7 +27,7 @@
     useFlashBannerLogic()
 
   const { messages } = useFilteredBotMessages('flashBanner', settings.value.displaySeconds, 12)
-  const { displayedComments, start, stop } = useBotDisplay(toRef(() => messages.value))
+  const { displayedComments, start, stop } = useBotDisplay(messages)
 
   // 現在デフォルト表示中かを返すヘルパー
   const isShowingDefault = () => !displayedComments.value.find((m) => m.display?.visible)
@@ -43,6 +43,7 @@
       bubble: {
         message: defaultComment.value,
         characterKey: settings.value.defaultCharacterKey,
+        displaySeconds: settings.value.displaySeconds,
       },
     })
   )
