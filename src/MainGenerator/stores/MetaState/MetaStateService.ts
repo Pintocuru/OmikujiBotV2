@@ -17,9 +17,9 @@ export interface ServiceMetaStoreType {
 
 const DEV_DEFAULT_META: NormalizedMeta = {
   isLive: false,
-  upVote: 0,
-  viewer: 0,
-  follower: 0,
+  upVote: 34,
+  viewer: 52,
+  follower: 4567,
   startTime: Date.now(),
 }
 

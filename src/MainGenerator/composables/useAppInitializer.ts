@@ -6,6 +6,7 @@ import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
 import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
 import { OmikenCommentType } from '@shared/types'
+import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 
 const TIME_THRESHOLD = 10000
 
@@ -75,6 +76,7 @@ function filterNewOmikens(omikens: OmikenCommentType[]): OmikenCommentType[] {
   const currentMeta = appStore.serviceMetaStore.getCurrent()
 
   return appStore.addOmikens(omikens).filter((omiken) => {
+    if (ignoreOmikujiBot(omiken.userId)) return false
     if (ignoreExternalOnLive(omiken.meta.isExternal, currentMeta?.isLive)) return false
     if (ignoreNamePattern(omiken.userName, ignorePattern)) return false
     return true
@@ -107,6 +109,11 @@ async function syncWithServer() {
     console.error(msg)
     postSystemMessage(msg)
   }
+}
+
+// OmikujiBotのコメントなら必ず弾く
+const ignoreOmikujiBot = (userId: string): boolean => {
+  return userId === POST_SETTINGS.botUserId
 }
 
 // 配信中は外部コメントをシャットアウトする
