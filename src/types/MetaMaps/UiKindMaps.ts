@@ -93,6 +93,12 @@ export const uiKindMap = {
     icon: 'Users',
     description: 'コメントしたユーザーをソーシャルゲーム風のグリッドで一覧表示します',
   },
+  deadAir: {
+    primarySlot: 'extra',
+    slots: ['extra'],
+    label: '15分で初コメが来ないと',
+    icon: 'Bomb',
+  },
 } as const
 
 // specialSet

@@ -6,90 +6,19 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue'
+  import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { SettingsStreamSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
+  import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import StreamCounterManager from './parts/StreamCounterManager.vue'
 
   const appStore = useAppStore()
-  const { data, botMessages } = storeToRefs(appStore)
+  const { data } = storeToRefs(appStore)
 
   const liverSettings = computed(() => data.value.components.settings.streamCounter ?? SettingsStreamSchema.parse({}))
 
-  const counters = ref<Record<string, number>>({
-    upVote: 0,
-    viewer: 0,
-    follower: 0,
-    syoken: 0,
-    commenter: 0,
-    lc: 0,
-    totalPrice: 0,
-  })
+  const eventKeys = computed(() => liverSettings.value?.eventCounters ?? [])
 
-  // eventCounters の key → name マッピング
-  // comments は Record<string, BaseRecordType> で、BaseRecordType.key が eventCounters の値と対応
-  const eventLabels = computed<Record<string, string>>(() => {
-    const comments = data.value.comments
-    const result: Record<string, string> = {}
-    for (const record of Object.values(comments)) {
-      if (record.key) result[record.key] = record.name
-    }
-    return result
-  })
-
-  const fetchStats = () => {
-    const { liveComments, syoken, totalPrice } = appStore.streamStats.getStats()
-    counters.value = {
-      ...counters.value,
-      lc: liveComments,
-      commenter: appStore.userSession.stats.getUniqueCount(),
-      syoken,
-      totalPrice,
-    }
-  }
-
-  const fetchEventCounters = () => {
-    const grouped = appStore.userSession.visits.getGroupedByRule() ?? {}
-    const eventKeys = liverSettings.value?.eventCounters ?? []
-    for (const ruleId of eventKeys) {
-      const records = grouped[ruleId] ?? []
-      counters.value[ruleId] = records.reduce((sum, r) => sum + (r.visitValue ?? 0), 0)
-    }
-  }
-
-  const previewTick = computed(() => botMessages.value.length)
-
-  watchEffect(() => {
-    const _ = previewTick.value
-    fetchStats()
-    fetchEventCounters()
-  })
-
-  let unsubscribeMeta: (() => void) | null = null
-
-  onMounted(() => {
-    // getCurrent() で初期値を即時反映
-    const initial = appStore.serviceMetaStore.getCurrent()
-    counters.value = {
-      ...counters.value,
-      upVote: initial?.upVote ?? 0,
-      viewer: initial?.viewer ?? 0,
-      follower: initial?.follower ?? 0,
-    }
-
-    // 以降は subscribe でリアルタイム更新
-    unsubscribeMeta = appStore.serviceMetaStore.subscribe((event) => {
-      counters.value = {
-        ...counters.value,
-        upVote: event.current.upVote,
-        viewer: event.current.viewer,
-        follower: event.current.follower,
-      }
-    })
-  })
-
-  onUnmounted(() => {
-    unsubscribeMeta?.()
-  })
+  const { counters, eventLabels } = useStreamCounters(eventKeys)
 </script>

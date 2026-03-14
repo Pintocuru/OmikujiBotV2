@@ -20,6 +20,7 @@ import SocialRosterEditor from '@/ConfigMaker/components/UiEditor/SocialRoster/S
 import FlashBannerEditor from '@/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerEditor.vue'
 import FontFamilyEditor from '@/ConfigMaker/components/UiEditor/CommonStyle/FontFamilyEditor.vue'
 import DefaultColorEditor from '@/ConfigMaker/components/UiEditor/CommonStyle/DefaultColorEditor.vue'
+import DeadAirEditor from './DeadAir/DeadAirEditor.vue'
 
 type UiItem = {
   icon: LucideIconName
@@ -110,6 +111,13 @@ export const useUiItemMap = () => {
       description: 'コメントしたユーザーをソーシャルゲーム風のグリッドで一覧表示します',
       component: SocialRosterEditor,
       shouldShow: hasComponentKind('socialRoster'),
+    },
+    deadAir: {
+      icon: 'Bomb',
+      title: '15分で初コメが来ないと',
+      description: 'チャレンジ系',
+      component: DeadAirEditor,
+      shouldShow: hasComponentKind('deadAir'),
     },
     defaultColor: {
       icon: 'Palette',

@@ -9,6 +9,7 @@ import WinnerGroup from '@main/ui/WinnerGroup/WinnerGroup.vue'
 import FlightSeat from '@main/ui/FlightSeat/FlightSeat.vue'
 import SocialRoster from '@main/ui/SocialRoster/SocialRoster.vue'
 import FlashBanner from '@main/ui/FlashBanner/FlashBanner.vue'
+import DeadAir from '@main/ui/DeadAir/DeadAir.vue'
 import { useAppStore } from '../stores/useAppStore'
 import { useVisibilityAccess } from '../scripts/FeatureAccess/useAccessCheckerMain'
 import StreamCounter from '../ui/StreamCounter/StreamCounter.vue'
@@ -50,6 +51,9 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
   },
   flashBanner: {
     component: FlashBanner,
+  },
+  deadAir: {
+    component: DeadAir,
   },
 } as const
 
