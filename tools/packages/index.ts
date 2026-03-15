@@ -12,7 +12,7 @@ import PetitProjects from './petit'
  */
 export const coreTargets: CoreBuildTarget[] = [
   { project: 'OmikujiBot' }, // MainGenerator + ConfigMaker
-  { project: 'OmikujiBotMain' }, // MainGenerator のみ
+  // { project: 'OmikujiBotMain' }, // MainGenerator のみ
 ]
 
 export function getAllProjects(packageRoot: string): ProjectConfig[] {

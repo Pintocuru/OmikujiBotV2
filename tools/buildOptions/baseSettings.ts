@@ -28,9 +28,12 @@ export function createCommonBuildConfig(packageRoot: string) {
 
     // HTML設定
     addHtmlTemplate: `
-      <!-- おみくじデータ -->
-      <script src="./omikujiData.js" defer></script>
-    `,
+  <!-- OneSDK (外部読み込み) -->
+  <script src="http://localhost:11180/templates/preset/__origin/js/onesdk.js" defer></script>
+
+  <!-- おみくじデータ -->
+  <script src="./omikujiData.js" defer></script>
+`,
 
     // JSON設定（おみくじデータ）
     json: {
