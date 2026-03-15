@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/parts/TickerItem.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/parts/ScrollItem.vue -->
 <template>
   <div class="flex items-center overflow-hidden" :class="[settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']">
     <!-- ラベルブロック：強調カラー帯 -->

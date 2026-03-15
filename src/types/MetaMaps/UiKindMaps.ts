@@ -43,6 +43,13 @@ export const uiKindMap = {
     icon: 'Megaphone',
     description: 'ニュース風のテロップを表示します。',
   },
+  liveClock: {
+    primarySlot: 'primary',
+    slots: ['primary'],
+    label: 'クロック',
+    icon: 'Clock',
+    description: 'メッセージを表示する時計です。',
+  },
   toast: {
     primarySlot: 'secondary',
     slots: ['primary', 'secondary'], // primary でも選択可能

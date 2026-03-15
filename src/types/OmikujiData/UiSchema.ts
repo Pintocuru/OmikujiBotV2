@@ -13,6 +13,7 @@ import { SettingsFlightSchema } from './UiSettings/SettingsFlightSchema'
 import { SettingsSocialSchema } from './UiSettings/SettingsSocialSchema'
 import { SettingsStreamSchema as SettingsStreamSchema } from './UiSettings/SettingsLiverSchema'
 import { SettingsDeadSchema } from './UiSettings/SettingsDeadSchema'
+import { SettingsClockSchema } from './UiSettings/SettingsClockSchema'
 
 /**
  * スロット定義
@@ -87,6 +88,7 @@ export type UiCommonStyleType = z.infer<typeof UiCommonStyleSchema>
 export const UiSettingsSchema = z.object({
   bubble: SettingsBubbleSchema.optional(),
   toast: SettingsToastSchema.optional(),
+  liveClock: SettingsClockSchema.optional(),
   ranking: SettingsRankingSchema.optional(),
   counter: SettingsCounterSchema.optional(),
   winnerGroup: SettingsWinnerSchema.optional(),

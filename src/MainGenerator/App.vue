@@ -16,6 +16,8 @@
         <component v-if="item" :is="item.component" />
       </template>
 
+      <LiveClock v-if="isDev && 1" />
+
       <!-- meta -->
       <MetaDebugPanel v-if="isDev && 0" />
     </div>
@@ -35,6 +37,7 @@
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
+  import LiveClock from '@main/ui/LiveClock/LiveClock.vue'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))

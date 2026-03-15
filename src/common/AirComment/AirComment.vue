@@ -1,3 +1,4 @@
+<!-- src/common/AirComment/AirComment.vue -->
 <template>
   <div class="card bg-base-200 border border-base-300 shadow-2xl">
     <div class="card-body gap-2 p-2">

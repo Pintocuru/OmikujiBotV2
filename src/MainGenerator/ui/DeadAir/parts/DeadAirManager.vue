@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/DeadAir/DeadAirManager.vue -->
+<!-- src/MainGenerator/ui/DeadAir/parts/DeadAirManager.vue -->
 <template>
   <div class="dead-root" :class="[`bg-${settings.bgColor}`, { 'is-game-over': phase === 'gameOver' }]">
     <!-- 爆弾ウィジェット（右下固定） -->

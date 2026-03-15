@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsLiverSchema.ts
+// src/types/OmikujiData/UiSettings/SettingsDeadSchema.ts
 import { z } from 'zod'
 
 /**

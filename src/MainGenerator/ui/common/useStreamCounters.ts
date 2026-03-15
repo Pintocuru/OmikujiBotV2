@@ -1,4 +1,4 @@
-// src/MainGenerator/ui/common/composables/useStreamCounters.ts
+// src/MainGenerator/ui/common/useStreamCounters.ts
 import { ref, computed, watchEffect, onMounted, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@main/stores/useAppStore'

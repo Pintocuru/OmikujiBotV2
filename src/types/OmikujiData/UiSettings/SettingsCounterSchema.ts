@@ -1,6 +1,7 @@
 // src/types/OmikujiData/UiSettings/SettingsCounterSchema.ts
 import { z } from 'zod'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
+import { normalizedObject } from '../ParsedDefault'
 
 /**
  * カウンターコンポーネントの表示名マップ
@@ -23,6 +24,6 @@ export const SettingsCounterSchema = z.object({
   targetEventKey: z.string().default('').catch(''), // どのruleを対象にするか
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
-  color: DaisyUiThemeFieldsSchema.catch(DaisyUiThemeFieldsSchema.parse({})), // DaisyUIテーマカラー
+  color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
 })
 export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
