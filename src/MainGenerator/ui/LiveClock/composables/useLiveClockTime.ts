@@ -3,6 +3,7 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const hours = ref('--')
 const minutes = ref('--')
+const seconds = ref('--')
 const colonVisible = ref(true)
 
 let tickTimer: ReturnType<typeof setInterval>
@@ -12,6 +13,7 @@ function updateTime() {
   const now = new Date()
   hours.value = String(now.getHours()).padStart(2, '0')
   minutes.value = String(now.getMinutes()).padStart(2, '0')
+  seconds.value = String(now.getSeconds()).padStart(2, '0')
 }
 
 export function useLiveClockTime() {
@@ -33,6 +35,7 @@ export function useLiveClockTime() {
   return {
     hours,
     minutes,
+    seconds,
     colonVisible,
   }
 }

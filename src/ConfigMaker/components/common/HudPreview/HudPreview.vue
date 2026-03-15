@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/common/HudPreview/HudPreview.vue -->
 <template>
-  <div :class="[maxHeightClass, 'overflow-y-hidden relative']">
+  <div :class="[heightClass, 'overflow-hidden relative']">
     <div :style="bgStyle" class="w-full h-full">
       <!-- スケーリング可能なコンテンツ（メインスロット） -->
       <div :style="contentStyle" class="origin-top-left">
@@ -24,22 +24,28 @@
         />
 
         <!-- Lucide Icons -->
-        <div class="absolute top-2 right-2 flex gap-1">
+        <div
+          class="absolute top-2 right-2 flex gap-1 transition-opacity duration-300"
+          :class="showTools ? 'opacity-100' : 'opacity-0'"
+          @mouseenter="showTemporarily"
+          @mousemove="showTemporarily"
+          @mouseleave="showTemporarily"
+        >
           <component
             :is="Sun"
-            :size="16"
+            :size="24"
             class="cursor-pointer hover:text-gray-300 transition-colors"
             @click="lightness = Math.min(lightness + 10, 100)"
           />
           <component
             :is="Moon"
-            :size="16"
+            :size="24"
             class="cursor-pointer hover:text-gray-300 transition-colors"
             @click="lightness = Math.max(lightness - 10, 0)"
           />
           <component
             :is="Palette"
-            :size="16"
+            :size="24"
             class="cursor-pointer hover:text-gray-300 transition-colors"
             @click="hue = (hue + 40) % 360"
           />
@@ -61,11 +67,13 @@
 
   const props = withDefaults(
     defineProps<{
+      isHeight?: boolean
       maxHeightClass?: string
       isAdminOnly?: boolean
       defaultScale?: number
     }>(),
     {
+      isHeight: true,
       maxHeightClass: 'h-64',
       isAdminOnly: false,
       defaultScale: 1,
@@ -75,6 +83,20 @@
   const hue = ref(200)
   const lightness = ref(50)
   const scale = ref(props.defaultScale ?? 1)
+  const showTools = ref(false)
+  let hideTimer: number | null = null
+
+  const showTemporarily = () => {
+    showTools.value = true
+    if (hideTimer) clearTimeout(hideTimer)
+    hideTimer = window.setTimeout(() => {
+      showTools.value = false
+    }, 2000) // 2秒後にフェードアウト
+  }
+
+  const heightClass = computed(() => {
+    return props.isHeight ? props.maxHeightClass : 'h-auto'
+  })
 
   const bgStyle = computed(() => ({
     backgroundColor: `hsl(${hue.value} 60% ${lightness.value}%)`,

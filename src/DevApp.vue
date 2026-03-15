@@ -2,7 +2,7 @@
 <template>
   <ConfigMaker v-if="!showMain" />
 
-  <HudPreview v-else maxHeightClass="h-192">
+  <HudPreview v-else :isHeight="false">
     <MainGenerator />
     <template #hud>
       <AirComment />

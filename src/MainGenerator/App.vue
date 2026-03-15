@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/App.vue -->
 <template>
-  <div class="bg-base-100 transparent-bg overflow-y-hidden">
+  <div class="bg-base-100 transparent-bg overflow-hidden">
     <!-- 接続状態インジケーター（全状態で常時マウント） -->
     <ConnectionStatusIndicator :status="appStore.status" />
 
@@ -15,8 +15,6 @@
       <template v-for="item in activeComponents" :key="item?.slot">
         <component v-if="item" :is="item.component" />
       </template>
-
-      <LiveClock v-if="isDev && 1" />
 
       <!-- meta -->
       <MetaDebugPanel v-if="isDev && 0" />
@@ -37,7 +35,6 @@
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
-  import LiveClock from '@main/ui/LiveClock/LiveClock.vue'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))

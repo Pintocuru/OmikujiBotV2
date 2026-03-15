@@ -1,6 +1,9 @@
 <!-- src/MainGenerator/ui/LiveClock/parts/LiveClockSelector.vue -->
 <template>
-  <div class="w-full bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color?.daisyUiTheme">
+  <div
+    class="flex justify-center bg-base-100 transparent-bg overflow-hidden"
+    :data-theme="settings.color?.daisyUiTheme"
+  >
     <component
       :is="currentComponent"
       :settings="settings"
@@ -14,23 +17,19 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import type { SettingsClockType } from '@/types/OmikujiData/'
-  import type { ClockComponent } from '@/types/'
-  import Standard from './Standard.vue'
-  import Cyber from './Cyber.vue'
-  import Disco from './Disco.vue'
-  import Pastel from './Pastel.vue'
+  import { ClockComponent, SettingsClockType } from '@/types/'
+  import Standard from '../layouts/Standard.vue'
+  import Cyber from '../layouts/Cyber.vue'
+  import Disco from '../layouts/Disco.vue'
+  import Pastel from '../layouts/Pastel.vue'
 
-  const props = withDefaults(
-    defineProps<{
-      settings: SettingsClockType
-      defaultMessage: string
-      isMounted: boolean
-      isFlipped: boolean
-      currentMsg: string
-    }>(),
-    {}
-  )
+  const props = defineProps<{
+    settings: SettingsClockType
+    defaultMessage: string
+    isMounted: boolean
+    isFlipped: boolean
+    currentMsg: string
+  }>()
 
   const componentMap: Record<ClockComponent, Component> = {
     standard: Standard,
