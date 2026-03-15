@@ -1,13 +1,16 @@
 // src/types/OmikujiData/UiSettings/SettingsClockSchema.ts
 import { z } from 'zod'
 import { normalizedObject } from '../ParsedDefault'
-import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
+import { CharacterColorScheme } from '../CharacterSchema'
 
 /**
  * ニュースフラッシュ FlashBanner
  */
 export const clockComponentMap = {
   standard: 'シンプル',
+  cyber: 'サイバー',
+  disco: 'ディスコ',
+  pastel: 'パステル',
 } as const
 
 const clockComponentsEnum = Object.keys(clockComponentMap) as ClockComponent[]
@@ -27,7 +30,7 @@ const defaultMessage = `<<
 
 export const SettingsClockSchema = z.object({
   component: z.enum(clockComponentsEnum).default('standard').catch('standard'),
-  color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
+  color: normalizedObject(CharacterColorScheme), // DaisyUIテーマカラー
 
   defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),
 })

@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { UiKind, UiSlotType } from '@/types'
 import CommentBubble from '@main/ui/CommentBubble/CommentBubble.vue'
 import ToastWidgets from '@main/ui/ToastWidgets/ToastWidgets.vue'
+import LiveClock from '@main/ui/LiveClock/LiveClock.vue'
 import GameRankingViewer from '@main/ui/GameRanking/GameRanking.vue'
 import CounterPreview from '@main/ui/CounterPreview/CounterPreview.vue'
 import WinnerGroup from '@main/ui/WinnerGroup/WinnerGroup.vue'
@@ -29,6 +30,9 @@ const COMPONENT_MAP: Record<UiKind, ComponentMapEntry> = {
   },
   toast: {
     component: ToastWidgets,
+  },
+  liveClock: {
+    component: LiveClock,
   },
   ranking: {
     component: GameRankingViewer,

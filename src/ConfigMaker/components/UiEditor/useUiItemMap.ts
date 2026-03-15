@@ -8,19 +8,20 @@ import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 import { UiKind } from '@/types/'
 import type { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
 
-import CommentBubbleEditor from '@/ConfigMaker/components/UiEditor/CommentBubble/CommentBubbleEditor.vue'
-import BubbleCharacterEditor from '@/ConfigMaker/components/UiEditor/CommentBubble/BubbleCharacterEditor.vue'
-import ToastComponentEditor from '@/ConfigMaker/components/UiEditor/ToastWidgets/ToastWidgetsEditor.vue'
-import GameRankingEditor from '@/ConfigMaker/components/UiEditor/GameRanking/GameRankingEditor.vue'
-import CounterPreviewEditor from '@/ConfigMaker/components/UiEditor/CounterPreview/CounterPreviewEditor.vue'
-import StreamCounterEditor from '@/ConfigMaker/components/UiEditor/StreamCounter/StreamCounterEditor.vue'
-import WinnerGroupEditor from '@/ConfigMaker/components/UiEditor/WinnerGroup/WinnerGroupEditor.vue'
-import FlightSeatEditor from '@/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatEditor.vue'
-import SocialRosterEditor from '@/ConfigMaker/components/UiEditor/SocialRoster/SocialRosterEditor.vue'
-import FlashBannerEditor from '@/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerEditor.vue'
-import FontFamilyEditor from '@/ConfigMaker/components/UiEditor/CommonStyle/FontFamilyEditor.vue'
-import DefaultColorEditor from '@/ConfigMaker/components/UiEditor/CommonStyle/DefaultColorEditor.vue'
+import CommentBubbleEditor from './CommentBubble/CommentBubbleEditor.vue'
+import BubbleCharacterEditor from './CommentBubble/BubbleCharacterEditor.vue'
+import ToastComponentEditor from './ToastWidgets/ToastWidgetsEditor.vue'
+import GameRankingEditor from './GameRanking/GameRankingEditor.vue'
+import CounterPreviewEditor from './CounterPreview/CounterPreviewEditor.vue'
+import StreamCounterEditor from './StreamCounter/StreamCounterEditor.vue'
+import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
+import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
+import SocialRosterEditor from './SocialRoster/SocialRosterEditor.vue'
+import FlashBannerEditor from './FlashBanner/FlashBannerEditor.vue'
+import FontFamilyEditor from './CommonStyle/FontFamilyEditor.vue'
+import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
 import DeadAirEditor from './DeadAir/DeadAirEditor.vue'
+import LiveClockEditor from './LiveClock/LiveClockEditor.vue'
 
 type UiItem = {
   icon: LucideIconName
@@ -55,6 +56,13 @@ export const useUiItemMap = () => {
       description: 'キャラクターの表示位置設定',
       component: BubbleCharacterEditor,
       shouldShow: hasComponentKind('bubble') && isCharacter.value,
+    },
+    liveClock: {
+      icon: 'Clock',
+      title: 'ライブクロックアイテム',
+      description: '',
+      component: LiveClockEditor,
+      shouldShow: hasComponentKind('liveClock'),
     },
     flashBanner: {
       icon: 'Megaphone',

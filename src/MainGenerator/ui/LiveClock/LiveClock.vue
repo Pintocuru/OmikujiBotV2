@@ -1,12 +1,14 @@
 <!-- src/MainGenerator/ui/LiveClock/LiveClock.vue -->
 <template>
-  <LiveClockSelector
-    :settings="settings"
-    :default-message="defaultMessage"
-    :is-mounted="isMounted"
-    :is-flipped="isFlipped"
-    :current-msg="currentMsg"
-  />
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+    <LiveClockSelector
+      :settings="settings"
+      :default-message="defaultMessage"
+      :is-mounted="isMounted"
+      :is-flipped="isFlipped"
+      :current-msg="currentMsg"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -22,7 +24,7 @@
 
   const settings = computed(() => SettingsClockSchema.parse(appStore.data.components?.settings?.liveClock ?? {}))
 
-  const { messages } = useFilteredBotMessages('flashBanner')
+  const { messages } = useFilteredBotMessages('bubble')
   const { displayedComments, start, stop } = useBotDisplay(messages)
 
   const {
@@ -30,6 +32,10 @@
     commitIfPending,
     registerIntervalHook,
   } = usePlaceholderInterval(() => settings.value.defaultMessage ?? '')
+
+  registerIntervalHook(() => {
+    commitIfPending(!isFlipped.value)
+  })
 
   /* ───────── 時計 ───────── */
 
