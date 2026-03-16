@@ -52,10 +52,10 @@ function createProject(packageRoot: string, color: ColorVariant): ProjectConfig 
 
     accessLevels: {
       adv: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [{ from: `assets/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
       pro: {
-        filesToCopy: [{ from: `assets/exported/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
+        filesToCopy: [{ from: `assets/thumb/thumb_${PROJECT_ID}.gif`, to: 'thumb.gif' }],
       },
     },
   }

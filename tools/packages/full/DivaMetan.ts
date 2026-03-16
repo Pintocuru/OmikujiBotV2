@@ -45,8 +45,8 @@ function project(packageRoot: string): ProjectConfig {
     accessLevels: {
       basic: {
         filesToCopy: [
-          { from: 'assets/exported/thumb/thumb_DivaMetan.gif', to: 'thumb.gif' },
-          { from: 'assets/exported/Characters/metan/', to: 'Characters/metan/' },
+          { from: 'assets/thumb/thumb_DivaMetan.gif', to: 'thumb.gif' },
+          { from: 'assets/Characters/metan/', to: 'Characters/metan/' },
         ],
       },
       pro: {

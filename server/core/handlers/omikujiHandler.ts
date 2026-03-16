@@ -12,10 +12,10 @@ export async function saveOmikujiData(configData: string, isExpress?: boolean): 
     }
 
     await fileSystem.saveOmikujiData(configData, isExpress)
-    console.info('🎋 Saved omikuji data to assets/omikujiData.js')
+    console.info('🎋 Saved omikuji data to server/omikujiData.js')
     return {
       code: 200,
-      data: { message: 'Omikuji data saved successfully', filePath: 'assets/omikujiData.js' },
+      data: { message: 'Omikuji data saved successfully', filePath: 'server/omikujiData.js' },
     }
   } catch (error) {
     console.error('Save omikuji error:', error)

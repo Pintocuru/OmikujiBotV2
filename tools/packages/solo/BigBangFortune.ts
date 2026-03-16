@@ -43,7 +43,7 @@ function project(packageRoot: string): ProjectConfig {
     // アクセスレベル別設定
     accessLevels: {
       basic: {
-        filesToCopy: [{ from: 'assets/exported/thumb/thumb_BigBangFortune.gif', to: 'thumb.gif' }],
+        filesToCopy: [{ from: 'assets/thumb/thumb_BigBangFortune.gif', to: 'thumb.gif' }],
       },
     },
   }

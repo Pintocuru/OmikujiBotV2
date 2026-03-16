@@ -32,9 +32,9 @@ function project(packageRoot: string): ProjectConfig {
     accessLevels: {
       basic: {
         filesToCopy: [
-          { from: 'assets/exported/thumb/thumb_ReimuMarisa.gif', to: 'thumb.gif' },
-          { from: 'assets/exported/Characters/reimu/', to: 'Characters/reimu/' },
-          { from: 'assets/exported/Characters/marisa/', to: 'Characters/marisa/' },
+          { from: 'assets/thumb/thumb_ReimuMarisa.gif', to: 'thumb.gif' },
+          { from: 'assets/Characters/reimu/', to: 'Characters/reimu/' },
+          { from: 'assets/Characters/marisa/', to: 'Characters/marisa/' },
         ],
       },
       pro: {

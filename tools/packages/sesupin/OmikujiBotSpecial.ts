@@ -1,5 +1,5 @@
 // tools/packages/sesupin/OmikujiBotSpecial.ts
-import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { createCommonBuildConfig, defaultFilesToCopy } from '../../buildOptions/baseSettings'
 import { APP_VERSION, BUILD_DATE } from '@/version'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 
@@ -39,9 +39,10 @@ function project(packageRoot: string): ProjectConfig {
     accessLevels: {
       basic: {
         filesToCopy: [
-          { from: 'assets/exported/thumb/thumb_StrawberryChocolate.gif', to: 'thumb.gif' },
-          { from: 'assets/exported/Characters/chocolate/', to: 'Characters/chocolate/' },
-          { from: 'assets/exported/Characters/cafelatte/', to: 'Characters/cafelatte/' },
+          ...defaultFilesToCopy,
+          { from: 'assets/thumb/full/StrawberryChocolate.gif', to: 'thumb.gif' },
+          { from: 'assets/Characters/chocolate/', to: 'Characters/chocolate/' },
+          { from: 'assets/Characters/cafelatte/', to: 'Characters/cafelatte/' },
         ],
       },
       pro: {

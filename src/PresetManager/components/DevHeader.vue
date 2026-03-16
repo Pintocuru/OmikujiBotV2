@@ -46,7 +46,7 @@
           @click="devStore.overwriteOmikujiData"
           :disabled="devStore.isSaving"
           class="btn btn-primary btn-sm tooltip tooltip-top"
-          data-tip="assets/omikujiData.js を上書き保存"
+          data-tip="server/omikujiData.js を上書き保存"
         >
           <span v-if="devStore.isSaving" class="loading loading-spinner loading-xs mr-2"></span>
           <Save class="w-4 h-4 mr-2" />

@@ -46,6 +46,16 @@ export function createCommonBuildConfig(packageRoot: string) {
 }
 
 /**
+ * filesToCopy のデフォルト
+ */
+export const defaultFilesToCopy = [
+  // index / ConfigMakerのセット
+  { from: 'assets/TemplateEntry/index.html', to: 'index.html' },
+  { from: 'assets/TemplateEntry/ConfigMaker.html', to: 'ConfigMaker.html' },
+  { from: 'assets/TemplateEntry/script.js', to: 'script.js' },
+]
+
+/**
  * JSON設定（おみくじデータ）
  */
 export function createCommonBuildConfigJson(packageRoot: string, templateName: string) {

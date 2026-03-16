@@ -32,7 +32,7 @@ function project(packageRoot: string): ProjectConfig {
     },
     accessLevels: {
       adv: {
-        filesToCopy: [{ from: 'assets/exported/thumb/thumb_RunicOracle.gif', to: 'thumb.gif' }],
+        filesToCopy: [{ from: 'assets/thumb/thumb_RunicOracle.gif', to: 'thumb.gif' }],
       },
     },
   }

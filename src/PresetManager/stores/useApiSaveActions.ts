@@ -114,7 +114,7 @@ export function useSaveActions(
     }, 'isSaving')
   }
 
-  // assets/omikujiData.js に保存（確認ダイアログ）
+  // server/omikujiData.js に保存（確認ダイアログ）
   const overwriteOmikujiData = async () => {
     const result = await swalModal.confirmDelete({
       title: '上書き確認',
