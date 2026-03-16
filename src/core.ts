@@ -1,17 +1,14 @@
-// src/core.ts
+// src/core.ts - 修正後
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'
-import OneSDK from '@onecomme.com/onesdk'
 import '../assets/styles/font.css'
 import '../assets/styles/DaisyUiAllObs.css'
 
-// 共通の Vue アプリ生成ロジック
 function createBaseApp(AppComponent: any) {
   const pinia = createPinia()
   const app = createApp(AppComponent)
 
-  // 共通エラーハンドラ
   app.config.errorHandler = (err, instance) => {
     console.error('エラー:', err)
     if (instance) {
@@ -27,10 +24,11 @@ function createBaseApp(AppComponent: any) {
   return app
 }
 
-// MainGenerator 用
-export function createAppOneSDK(AppComponent: any) {
+// MainGenerator用：OneSDKを動的importで読む（静的importを排除）
+export async function createAppOneSDK(AppComponent: any) {
   const app = createBaseApp(AppComponent)
 
+  const OneSDK = (await import('@onecomme.com/onesdk')).default
   if (!OneSDK) {
     console.error('OneSDK が読み込まれていません')
     return
@@ -38,7 +36,7 @@ export function createAppOneSDK(AppComponent: any) {
   OneSDK.ready().then(() => app.mount('#App'))
 }
 
-// ConfigMaker 用
+// ConfigMaker用：OneSDKへの依存ゼロ
 export function createAppNotOneSDK(AppComponent: any) {
   const app = createBaseApp(AppComponent)
   app.mount('#App')

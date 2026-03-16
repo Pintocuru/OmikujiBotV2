@@ -2,4 +2,8 @@
 import App from './App.vue'
 import { createAppNotOneSDK } from '../core'
 
-createAppNotOneSDK(App)
+window.OmikujiBot = window.OmikujiBot ?? {}
+
+window.OmikujiBot.mountConfigMaker = () => {
+  createAppNotOneSDK(App)
+}

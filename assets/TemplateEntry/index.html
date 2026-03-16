@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer" />
+
+    <!-- Vue（テンプレート側で持つべき依存） -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js" defer></script>
+
+    <!-- わんコメ SDK（テンプレート側で持つべき依存） -->
+    <script
+      src="http://localhost:11180/templates/preset/__origin/js/onesdk.js"
+      defer
+      onload="window.__onesdkLoaded = true"
+      onerror="window.__onesdkLoaded = false"
+    ></script>
+
+    <!-- おみくじデータ（テンプレート固有） -->
+    <script src="./omikujiData.js" defer></script>
+
+    <!-- 共通ローダー -->
+    <script src="./script.js"></script>
+  </head>
+
+  <body>
+    <div id="App"></div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        OmikujiLoader.run({
+          cssFiles: ['common.css', 'MainGenerator.css'],
+          jsFiles: ['common.js', 'vendors.js', 'MainGenerator.js'],
+          requireWankome: true,
+          mountFn() {
+            if (window.OmikujiBot?.mountMainGenerator) {
+              window.OmikujiBot.mountMainGenerator()
+            } else {
+              console.error('mountMainGenerator が見つかりません')
+            }
+          },
+        })
+      })
+    </script>
+  </body>
+</html>

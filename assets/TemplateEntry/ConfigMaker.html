@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer" />
+
+    <!-- Vue（テンプレート側で持つべき依存） -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js" defer></script>
+
+    <!-- おみくじデータ（テンプレート固有） -->
+    <script src="./omikujiData.js" defer></script>
+
+    <!-- 共通ローダー -->
+    <script src="./script.js"></script>
+  </head>
+
+  <body>
+    <div id="App"></div>
+
+    <script>
+      ;(async () => {
+        await OmikujiLoader.run({
+          cssFiles: ['common.css', 'ConfigMaker.css'],
+          jsFiles: ['common.js', 'vendors.js', 'ConfigMaker.js'],
+          requireWankome: false,
+          mountFn() {
+            if (window.OmikujiBot?.mountConfigMaker) {
+              window.OmikujiBot.mountConfigMaker()
+            } else {
+              console.error('mountConfigMaker が見つかりません')
+            }
+          },
+        })
+      })()
+    </script>
+  </body>
+</html>

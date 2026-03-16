@@ -2,4 +2,8 @@
 import App from './App.vue'
 import { createAppOneSDK } from '../core'
 
-createAppOneSDK(App)
+window.OmikujiBot = window.OmikujiBot ?? {}
+
+window.OmikujiBot.mountMainGenerator = () => {
+  createAppOneSDK(App)
+}

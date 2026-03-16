@@ -5,5 +5,9 @@ import type { OmikujiDataType } from './OmikujiData/OmikujiDataSchema'
 declare global {
   interface Window {
     omikujiData?: OmikujiDataType
+    OmikujiBot?: {
+      mountMainGenerator?: () => void
+      mountConfigMaker?: () => void
+    }
   }
 }
