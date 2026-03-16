@@ -24,7 +24,7 @@
 
   const settings = computed(() => SettingsClockSchema.parse(appStore.data.components?.settings?.liveClock ?? {}))
 
-  const { messages } = useFilteredBotMessages('bubble')
+  const { messages } = useFilteredBotMessages('liveClock')
   const { displayedComments, start, stop } = useBotDisplay(messages)
 
   const {

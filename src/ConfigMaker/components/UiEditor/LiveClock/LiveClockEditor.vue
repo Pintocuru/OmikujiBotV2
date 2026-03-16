@@ -19,10 +19,18 @@
   </SettingItem>
 
   <!-- テーマカラー -->
-  <DaisyUiThemeEditor
-    :model-value="liveClock.color"
-    @update:model-value="(newValue) => updateField('color', newValue)"
-  />
+  <SettingItem v-if="isAdv" label="カラー" description="ランキングのテーマカラーを選択します" forceMode="adv">
+    <select
+      class="select select-bordered"
+      :value="liveClock.color"
+      :disabled="!isAdv"
+      @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
+    >
+      <option v-for="theme in themes" :key="theme" :value="theme">
+        {{ theme }}
+      </option>
+    </select>
+  </SettingItem>
 
   <!-- デフォルトで表示させるメッセージ -->
   <SettingItem
@@ -33,22 +41,35 @@
   >
     <MessageTextDialog v-model="messageText" />
   </SettingItem>
+
+  <!-- 秒数を表示するか -->
+  <SettingItem label="秒数表示" description="時計に秒数を表示するか">
+    <label class="flex items-center cursor-pointer">
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        v-model="liveClock.isSecond"
+        @change="(e) => updateField('isSecond', (e.target as HTMLInputElement).checked)"
+      />
+      <span class="ml-2"> 秒数を表示{{ liveClock.isSecond ? 'する' : 'しない' }} </span>
+    </label>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { clockComponentMap, SettingsClockSchema } from '@/types/'
+  import LiveClockPreview from './LiveClockPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import MessageTextDialog from '@config/components/postAction/Message/MessageTextDialog.vue'
-  import LiveClockPreview from './LiveClockPreview.vue'
+  import { themes } from '@shared/styles/DaisyUiTheme'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro } = useSettingMode()
+  const { isAdv, isPro } = useSettingMode()
 
   const liveClock = computed(() => data.value?.components?.settings?.liveClock ?? SettingsClockSchema.parse({}))
 

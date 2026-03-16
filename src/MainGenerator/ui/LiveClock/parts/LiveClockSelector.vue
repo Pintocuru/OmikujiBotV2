@@ -1,9 +1,6 @@
 <!-- src/MainGenerator/ui/LiveClock/parts/LiveClockSelector.vue -->
 <template>
-  <div
-    class="flex justify-center bg-base-100 transparent-bg overflow-hidden"
-    :data-theme="settings.color?.daisyUiTheme"
-  >
+  <div class="flex justify-center bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color">
     <component
       :is="currentComponent"
       :settings="settings"
@@ -18,8 +15,8 @@
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
   import { ClockComponent, SettingsClockType } from '@/types/'
-  import Standard from '../layouts/Standard.vue'
-  import Cyber from '../layouts/Cyber.vue'
+  import Clear from '../layouts/Clear.vue'
+  import SoundPlayer from '../layouts/Cyber.vue'
   import Disco from '../layouts/Disco.vue'
   import Pastel from '../layouts/Pastel.vue'
 
@@ -32,10 +29,10 @@
   }>()
 
   const componentMap: Record<ClockComponent, Component> = {
-    standard: Standard,
-    cyber: Cyber,
-    disco: Disco,
     pastel: Pastel,
+    soundPlayer: SoundPlayer,
+    disco: Disco,
+    clear: Clear,
   }
-  const currentComponent = computed(() => componentMap[props.settings.component] ?? Standard)
+  const currentComponent = computed(() => componentMap[props.settings.component] ?? Pastel)
 </script>

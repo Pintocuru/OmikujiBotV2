@@ -1,16 +1,15 @@
 // src/types/OmikujiData/UiSettings/SettingsClockSchema.ts
 import { z } from 'zod'
-import { normalizedObject } from '../ParsedDefault'
-import { CharacterColorScheme } from '../CharacterSchema'
+import { themes } from '@shared/styles/DaisyUiTheme'
 
 /**
  * ニュースフラッシュ FlashBanner
  */
 export const clockComponentMap = {
-  standard: 'シンプル',
-  cyber: 'サイバー',
-  disco: 'ディスコ',
   pastel: 'パステル',
+  soundPlayer: 'サウンドプレイヤー',
+  clear: 'クリア',
+  disco: 'ディスコ',
 } as const
 
 const clockComponentsEnum = Object.keys(clockComponentMap) as ClockComponent[]
@@ -29,9 +28,9 @@ const defaultMessage = `<<
 >>`
 
 export const SettingsClockSchema = z.object({
-  component: z.enum(clockComponentsEnum).default('standard').catch('standard'),
-  color: normalizedObject(CharacterColorScheme), // DaisyUIテーマカラー
-
+  component: z.enum(clockComponentsEnum).default('pastel').catch('pastel'),
+  color: z.enum(themes).default('garden').catch('garden'),
+  isSecond: z.boolean().default(false).catch(false), //
   defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),
 })
 export type SettingsClockType = z.infer<typeof SettingsClockSchema>

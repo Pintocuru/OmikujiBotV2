@@ -33,6 +33,7 @@
                 >:</span
               >
               <span>{{ minutes }}</span>
+              <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
             </div>
             <div class="flex items-center justify-center gap-1">
               <span class="text-sm text-yellow-400 animate-bounce">★</span>
@@ -69,7 +70,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, colonVisible } = useLiveClockTime()
+  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
 </script>
 
 <style scoped>

@@ -17,7 +17,7 @@
           <!-- 時計 -->
           <div v-if="!isFlipped" key="clock" class="-mt-4 flex flex-col items-center">
             <div
-              class="flex items-center justify-center font-['Quicksand'] font-bold text-7xl tracking-tighter text-primary-content"
+              class="flex items-center justify-center font-['Quicksand'] font-bold text-7xl tracking-tighter text-primary"
             >
               <span>{{ hours }}</span>
 
@@ -29,14 +29,14 @@
               </span>
 
               <span>{{ minutes }}</span>
+
+              <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
             </div>
 
             <!-- 下部メッセージ -->
             <div class="px-3 rounded-full border border-accent/70 bg-base-200 shadow-sm">
-              <div class="text-sm font-black flex items-center gap-1 text-base-content" :class="uiMap.text.class">
-                <span class="text-xs">✨</span>
+              <div class="text-sm font-black flex items-center gap-1 text-base-content/70">
                 <span class="line-clamp-1" v-html="defaultMessage"></span>
-                <span class="text-xs">✨</span>
               </div>
             </div>
           </div>
@@ -44,7 +44,7 @@
           <!-- メッセージ -->
           <div v-else key="msg" class="w-full px-6 flex flex-col items-center">
             <p
-              class="text-xl font-bold leading-tight text-center line-clamp-3 drop-shadow-sm text-base-content"
+              class="text-xl font-bold leading-tight text-center line-clamp-3 drop-shadow-sm text-base-content/70"
               v-html="currentMsg"
             ></p>
 
@@ -71,10 +71,8 @@
 <script setup lang="ts">
   import type { SettingsClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
-  import { createUiMap } from '../../CommentBubble/composables/UiBubbleMap'
-  import { computed } from 'vue'
 
-  const props = defineProps<{
+  defineProps<{
     settings: SettingsClockType
     defaultMessage: string
     isMounted: boolean
@@ -82,8 +80,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, colonVisible } = useLiveClockTime()
-  const uiMap = computed(() => createUiMap({ color: props.settings.color }))
+  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
 </script>
 
 <style scoped>

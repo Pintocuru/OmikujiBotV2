@@ -7,7 +7,7 @@
         :is-mounted="isMounted"
         :is-flipped="isFlipped"
         :current-msg="currentMsg"
-        @click="handleFlip"
+        @click="isFlipped = !isFlipped"
       />
     </div>
   </HudPreview>
@@ -36,25 +36,10 @@
 
   const { message: defaultMessage } = usePlaceholderInterval(() => settings.value.defaultMessage ?? '')
 
-  const currentMsg = ref('テストメッセージです！')
+  const currentMsg = ref('テストメッセージです！テストメッセージです！')
 
   const isMounted = ref(false) // 表示アニメーションON
   const isFlipped = ref(false) // コメント表示状態
-
-  let flipTimer: ReturnType<typeof setTimeout> | null = null
-
-  function handleFlip() {
-    if (flipTimer) {
-      clearTimeout(flipTimer)
-    }
-
-    isFlipped.value = true
-
-    flipTimer = setTimeout(() => {
-      isFlipped.value = false
-      flipTimer = null
-    }, 5000)
-  }
 
   onMounted(() => {
     requestAnimationFrame(() => {

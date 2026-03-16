@@ -4,32 +4,31 @@
     <div class="flipper-inner" :class="{ 'is-flipped': isFlipped }">
       <!-- 表面 -->
       <div
-        class="flip-card card shadow-xl border border-y-4 border-current/25"
-        :class="uiMap.bubble.class"
-        :style="uiMap.bubble.style"
+        class="flip-card card shadow-xl border border-y-4 border-current/25 bg-gradient-to-br from-primary/30 via-primary/20 to-base-200"
       >
         <div class="card-body items-center justify-center gap-0.5 p-2">
-          <div class="flex text-7xl font-black tracking-wide -mt-3" :class="uiMap.text.class" :style="uiMap.text.style">
+          <div class="flex text-7xl font-black tracking-wide -mt-3 text-primary-content">
             <span>{{ hours }}</span>
             <span class="mx-0.5 transition-opacity duration-75" :class="{ 'opacity-0': !colonVisible }">:</span>
             <span>{{ minutes }}</span>
+
+            <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
           </div>
 
-          <div class="text-lg font-bold tracking-wide opacity-80 mt-1 line-clamp-1" v-html="defaultMessage" />
+          <div
+            class="text-lg font-bold tracking-wide opacity-80 mt-1 line-clamp-1 text-primary-content/80"
+            v-html="defaultMessage"
+          />
         </div>
       </div>
 
       <!-- 裏面 -->
       <div
-        class="flip-card face-back card shadow-xl border border-y-4 border-current/25"
-        :class="uiMap.bubble.class"
-        :style="uiMap.bubble.style"
+        class="flip-card face-back card shadow-xl border border-y-4 border-current/25 bg-gradient-to-br from-secondary/30 via-secondary/20 to-base-200"
       >
         <div class="card-body items-center justify-center p-2 gap-1">
           <p
-            class="text-2xl font-bold text-center break-words line-clamp-2"
-            :class="uiMap.text.class"
-            :style="uiMap.text.style"
+            class="text-2xl font-bold text-center break-words line-clamp-2 text-secondary-content"
             v-html="currentMsg"
           ></p>
         </div>
@@ -41,10 +40,8 @@
 <script setup lang="ts">
   import type { SettingsClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
-  import { createUiMap } from '../../CommentBubble/composables/UiBubbleMap'
-  import { computed } from 'vue'
 
-  const props = defineProps<{
+  defineProps<{
     settings: SettingsClockType
     defaultMessage: string
     isMounted: boolean
@@ -52,8 +49,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, colonVisible } = useLiveClockTime()
-  const uiMap = computed(() => createUiMap({ color: props.settings.color }))
+  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
 </script>
 
 <style scoped>
