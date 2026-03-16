@@ -31,7 +31,7 @@ window.OmikujiLoader = {
   },
 
   // わんコメ未起動エラー表示
-  showWankomeError() {
+  showOneCommeError() {
     document.body.innerHTML = `
       <div style="padding:40px;font-family:sans-serif;text-align:center">
         <p style="font-size:48px;margin:0 0 16px">🐕</p>
@@ -53,17 +53,20 @@ window.OmikujiLoader = {
   },
 
   // BASES を順に試してマウントする共通ロジック
-  async run({ cssFiles, jsFiles, mountFn, requireWankome = false }) {
+  async run({ cssFiles, jsFiles, mountFn, requireOneComme = false }) {
     const BASES = ['http://localhost:11180/templates/custom/OmikujiBot/scripts/', './scripts/']
 
-    if (requireWankome && window.__onesdkLoaded === false) {
-      this.showWankomeError()
+    if (requireOneComme && window.__onesdkLoaded === false) {
+      this.showOneCommeError()
       return
     }
 
     for (const base of BASES) {
       try {
         await this.loadFrom(base, cssFiles, jsFiles)
+        // assetBase への書き込み
+        window.OmikujiBot = window.OmikujiBot || {}
+        window.OmikujiBot.assetBase = base.replace(/scripts\/$/, '')
         console.log('✔ 読み込み成功:', base)
         mountFn()
         return

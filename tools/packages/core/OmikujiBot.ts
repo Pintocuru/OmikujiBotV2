@@ -1,6 +1,6 @@
 // tools/packages/core/OmikujiBot.ts
 import path from 'path'
-import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
+import { createCommonBuildConfig, defaultFilesToCopy } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import { APP_VERSION } from '@/version'
 
@@ -30,7 +30,7 @@ function project(packageRoot: string): ProjectConfig {
 
     accessLevels: {
       basic: {
-        filesToCopy: [],
+        filesToCopy: [...defaultFilesToCopy, { from: 'assets/sounds/', to: 'assets/sounds/' }],
       },
     },
   }
