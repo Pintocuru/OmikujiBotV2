@@ -56,6 +56,13 @@ window.OmikujiLoader = {
   async run({ cssFiles, jsFiles, mountFn, requireOneComme = false }) {
     const BASES = ['http://localhost:11180/templates/custom/OmikujiBot/scripts/', './scripts/']
 
+    // Vue と onesdk が揃うまで最大5秒待つ
+    await this._waitFor(() => {
+      const vueReady = typeof window.Vue !== 'undefined'
+      const sdkReady = !requireOneComme || window.__onesdkLoaded !== undefined
+      return vueReady && sdkReady
+    }, 5000)
+
     if (requireOneComme && window.__onesdkLoaded === false) {
       this.showOneCommeError()
       return
@@ -76,5 +83,23 @@ window.OmikujiLoader = {
     }
 
     this.showLoadError()
+  },
+
+  _waitFor(conditionFn, timeout = 3000) {
+    return new Promise((resolve, reject) => {
+      if (conditionFn()) return resolve()
+      const interval = 50
+      let elapsed = 0
+      const timer = setInterval(() => {
+        elapsed += interval
+        if (conditionFn()) {
+          clearInterval(timer)
+          resolve()
+        } else if (elapsed >= timeout) {
+          clearInterval(timer)
+          reject(new Error('タイムアウト: Vue または onesdk の読み込みを待機中'))
+        }
+      }, interval)
+    })
   },
 }
