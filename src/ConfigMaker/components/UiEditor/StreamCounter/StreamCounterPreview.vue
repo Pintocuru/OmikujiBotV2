@@ -2,7 +2,7 @@
 <template>
   <HudPreview maxHeightClass="h-42">
     <div :class="[fontFamily]">
-      <StreamCounterManager
+      <StreamCounterSelector
         :key="streamCounter.labelStyle"
         :settings="streamCounter"
         :counters="previewCounters"
@@ -19,7 +19,7 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { useFontFamily, type SettingsStreamCounterType } from '@/types/'
-  import StreamCounterManager from '@main/ui/StreamCounter/parts/StreamCounterManager.vue'
+  import StreamCounterSelector from '@main/ui/StreamCounter/parts/StreamCounterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 

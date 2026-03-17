@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/StreamCounter/StreamCounter.vue -->
 <template>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
-    <StreamCounterManager :settings="liverSettings" :counters="counters" :event-labels="eventLabels" />
+    <StreamCounterSelector :settings="liverSettings" :counters="counters" :event-labels="eventLabels" />
   </div>
 </template>
 
@@ -11,7 +11,7 @@
   import { SettingsStreamSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
-  import StreamCounterManager from './parts/StreamCounterManager.vue'
+  import StreamCounterSelector from './parts/StreamCounterSelector.vue'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)

@@ -1,4 +1,4 @@
-// src/MainGenerator/ui/DeadAir/composables/useDeadAirManager.ts
+// src/MainGenerator/ui/DeadAir/composables/useDeadAirSelector.ts
 import { ref, computed, watch, onUnmounted } from 'vue'
 import type { SettingsDeadType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
 
@@ -12,22 +12,19 @@ export type DeadAirPhase = 'running' | 'gameOver'
 // composable
 // ---------------------------------------------------------------------------
 
-export function useDeadAirManager(
-  settings: SettingsDeadType,
-  counters: Readonly<{ value: Record<string, number> }>,
-) {
+export function useDeadAirSelector(settings: SettingsDeadType, counters: Readonly<{ value: Record<string, number> }>) {
   // --- 状態 -----------------------------------------------------------------
 
-  /** 残り秒数 */
+  // 残り秒数 */
   const remainSeconds = ref(settings.initialMinutes * 60)
 
-  /** 現在ライフ */
+  // 現在ライフ */
   const currentLives = ref(settings.initialLives)
 
-  /** ボーナス蓄積秒数（initialMinutes * 60 を超えた分を積み上げる） */
+  // ボーナス蓄積秒数（initialMinutes * 60 を超えた分を積み上げる） */
   const bonusAccumSeconds = ref(0)
 
-  /** フェーズ */
+  // フェーズ */
   const phase = ref<DeadAirPhase>('running')
 
   // 前回の counters スナップショット（threshold 判定に使用）
@@ -37,19 +34,15 @@ export function useDeadAirManager(
 
   const maxSeconds = computed(() => settings.initialMinutes * 60)
 
-  /** ライフ割合（0〜1）。画面明度制御に使用 */
-  const lifeFraction = computed(() =>
-    settings.initialLives > 0 ? currentLives.value / settings.initialLives : 0,
-  )
+  // ライフ割合（0〜1）。画面明度制御に使用 */
+  const lifeFraction = computed(() => (settings.initialLives > 0 ? currentLives.value / settings.initialLives : 0))
 
-  /** ボーナスメーター割合（0〜1） */
+  // ボーナスメーター割合（0〜1） */
   const bonusFraction = computed(() =>
-    settings.bonusEnabled && maxSeconds.value > 0
-      ? Math.min(bonusAccumSeconds.value / maxSeconds.value, 1)
-      : 0,
+    settings.bonusEnabled && maxSeconds.value > 0 ? Math.min(bonusAccumSeconds.value / maxSeconds.value, 1) : 0
   )
 
-  /** オプション表示値 */
+  // オプション表示値 */
   const optionalValue = computed(() => {
     const key = settings.optionalCounterKey
     return key ? (counters.value[key] ?? 0) : null
@@ -153,10 +146,7 @@ export function useDeadAirManager(
   }
 
   const addLife = (amount: number) => {
-    currentLives.value = Math.min(
-      currentLives.value + amount,
-      settings.initialLives,
-    )
+    currentLives.value = Math.min(currentLives.value + amount, settings.initialLives)
   }
 
   const checkBonus = () => {
@@ -174,7 +164,7 @@ export function useDeadAirManager(
       evaluateRules(current, prev ?? {})
       prevCounters.value = { ...current }
     },
-    { deep: false },
+    { deep: false }
   )
 
   // --- ライフサイクル -------------------------------------------------------

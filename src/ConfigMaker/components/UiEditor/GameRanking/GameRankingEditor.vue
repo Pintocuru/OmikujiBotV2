@@ -3,7 +3,7 @@
   <!-- ランキングプレビュー -->
   <HudPreview v-if="ranking.targetScriptKeys.length > 0" :isAdminOnly="true">
     <div :class="[fontFamily]">
-      <GameRankingManager :botMessageExtras="[]" :settings="ranking" />
+      <GameRankingSelector :botMessageExtras="[]" :settings="ranking" />
     </div>
   </HudPreview>
   <NoParamsCard v-else :message="'対象スクリプトIDを設定してください'" />
@@ -131,7 +131,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import GameRankingManager from '@main/ui/GameRanking/parts/GameRankingManager.vue'
+  import GameRankingSelector from '@main/ui/GameRanking/parts/GameRankingSelector.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'

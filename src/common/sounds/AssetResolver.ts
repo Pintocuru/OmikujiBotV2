@@ -1,3 +1,4 @@
+// src/common/sounds/AssetResolver.ts
 const CORE_BASE = 'http://localhost:11180/templates/custom/OmikujiBot/'
 const TEMPLATE_BASE = './'
 

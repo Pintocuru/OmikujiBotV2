@@ -1,4 +1,4 @@
-// src/core.ts - 修正後
+// src/core.ts
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import { MotionPlugin } from '@vueuse/motion'

@@ -1,3 +1,4 @@
+// src/ConfigMaker/components/UiEditor/conditions/useUiVisibility.ts
 import { computed, ComputedRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'

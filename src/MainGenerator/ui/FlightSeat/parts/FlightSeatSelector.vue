@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/parts/SeatSelector.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/parts/FlightSeatSelector.vue -->
 <template>
   <div class="flex justify-center">
     <div class="card bg-base-200 p-4 rounded-xl shadow-xl space-y-2" :data-theme="color">

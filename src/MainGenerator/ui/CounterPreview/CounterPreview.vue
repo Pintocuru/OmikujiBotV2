@@ -2,7 +2,7 @@
 <template>
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
     <div class="overflow-hidden">
-      <CounterPreviewManager
+      <CounterPreviewSelector
         :counter-setting="counterSetting"
         :count="count"
         :users="hasPreviewData ? userList : generateDummyVisitRecords(500)"
@@ -16,7 +16,7 @@
   import { storeToRefs } from 'pinia'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useAppStore } from '@main/stores/useAppStore'
-  import CounterPreviewManager from './parts/CounterPreviewManager.vue'
+  import CounterPreviewSelector from './parts/CounterPreviewSelector.vue'
   import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
   import { SettingsCounterSchema } from '@/types'
 

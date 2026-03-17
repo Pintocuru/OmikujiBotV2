@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/WinnerGroup/parts/WinnerGroupRenderer.vue -->
+<!-- src/MainGenerator/ui/WinnerGroup/parts/WinnerGroupSelector.vue -->
 <template>
   <div class="w-full mx-auto" :data-theme="winnerSetting.color" @click="handleClick">
     <component :is="currentComponent" :users="users" :label="winnerSetting.label" :is-visible="isVisible" />

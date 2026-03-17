@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/LiveClock/layouts/SoundPlayer.vue -->
 <template>
   <div class="w-full max-w-md transition-all duration-500 ease-out">
     <div class="cyber-frame relative bg-base-200 border border-primary px-4 overflow-hidden">

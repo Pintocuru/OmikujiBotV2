@@ -1,6 +1,6 @@
-<!-- src/MainGenerator/ui/GameRanking/parts/GameRankingManager.vue -->
+<!-- src/MainGenerator/ui/GameRanking/parts/GameRankingSelector.vue -->
 <template>
-  <component :is="currentComponent" :botMessageExtra="targetRankingMessages" :settings="settings" />
+  <component :is="currentComponent" :botMessageExtra="botMessageExtras" :settings="settings" />
 </template>
 
 <script setup lang="ts">
@@ -9,27 +9,21 @@
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 
   // 各コンポーネントのインポート
-  import RankStandard from './variants/RankStandard.vue'
+  import rankStandard from '../layouts/RankStandard.vue'
 
   const props = defineProps<{
     botMessageExtras: BotMessageExtraType[]
     settings: SettingsRankingType
   }>()
 
-  const targetRankingMessages = computed<BotMessageExtraType[]>(() => {
-    const keys = props.settings.targetScriptKeys
-    if (!keys?.length) return []
-    return props.botMessageExtras.filter((m) => keys.includes(m.scriptKey))
-  })
-
   // コンポーネントマッピング
   const componentMap: Record<RankingComponent, any> = {
-    rankStandard: RankStandard,
+    rankStandard,
   }
 
   // 現在のコンポーネントを取得
   const currentComponent = computed(() => {
     const component = props.settings.component || 'rankStandard'
-    return componentMap[component] || RankStandard
+    return componentMap[component] || rankStandard
   })
 </script>

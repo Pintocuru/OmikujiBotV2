@@ -11,8 +11,8 @@
       Ranking Preview
     </div>
 
-    <!-- CounterPreviewManagerで表示を管理 -->
-    <CounterPreviewManager :botMessageExtras="rankingMessages" :settings="rankingSettings" />
+    <!-- GameRankingSelector で表示を管理 -->
+    <GameRankingSelector :botMessageExtras="targetRankingMessages" :settings="rankingSettings" />
   </div>
 </template>
 
@@ -21,7 +21,7 @@
   import { storeToRefs } from 'pinia'
   import { BotMessageExtraSchema, BotMessageExtraType, isDev, SettingsRankingSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
-  import CounterPreviewManager from './parts/GameRankingManager.vue'
+  import GameRankingSelector from './parts/GameRankingSelector.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
@@ -48,6 +48,7 @@
   const rankingSettings = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
 
   // ランキング対象のメッセージをフィルタリング
+  // TODO:効率化を上げて欲しい
   const rankingMessages: ComputedRef<BotMessageExtraType[]> = computed(() => {
     const keys = rankingSettings.value?.targetScriptKeys
     if (!keys) return []
@@ -57,6 +58,12 @@
       return rankingSettings.value.targetScriptKeys.includes(msg.scriptKey)
     })
     return isDev ? [...base, ...devScoreMessages.value] : base
+  })
+
+  const targetRankingMessages = computed<BotMessageExtraType[]>(() => {
+    const keys = rankingSettings.value?.targetScriptKeys
+    if (!keys?.length) return []
+    return rankingMessages.value.filter((m) => keys.includes(m.scriptKey))
   })
 
   onMounted(() => {

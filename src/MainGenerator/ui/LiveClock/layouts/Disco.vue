@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/LiveClock/layouts/Disco.vue -->
 <template>
   <div
     class="w-full max-w-[340px] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"

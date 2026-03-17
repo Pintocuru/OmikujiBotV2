@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/UiEditor/LiveClock/LiveClockPreview.vue -->
 <template>
   <HudPreview :maxHeightClass="isDev ? 'min-h-32' : ''" :isAdminOnly="true">
     <div :class="[fontFamily]">

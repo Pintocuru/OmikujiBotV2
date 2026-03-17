@@ -3,7 +3,7 @@
   <!-- プレビュー -->
   <HudPreview maxHeightClass="max-h-96" :isAdminOnly="true">
     <div :class="[fontFamily]">
-      <WinnerGroupRenderer
+      <WinnerGroupSelector
         :key="previewKey"
         :winnerSetting="winnerSetting"
         :users="previewUsers"
@@ -94,7 +94,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import WinnerGroupRenderer from '@main/ui/WinnerGroup/parts/WinnerGroupRenderer.vue'
+  import WinnerGroupSelector from '@main/ui/WinnerGroup/parts/WinnerGroupSelector.vue'
   import { generateDummyWinnerUsers } from '@/common/MockUser/MockGenerators'
   import { parseQueryString } from '@/GameScripts/parseQueryString'
   import { themes } from '@shared/styles/DaisyUiTheme'

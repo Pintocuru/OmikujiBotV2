@@ -1,31 +1,27 @@
 // src/types/OmikujiData/UiSettings/SettingsDeadSchema.ts
 import { z } from 'zod'
 
-/**
- * ライバーカウンターコンポーネントの表示名マップ
- */
 export const deadComponentMap = {
   bomb: '爆弾',
 } as const
 const deadComponentValues = Object.keys(deadComponentMap) as DeadComponent[]
 export type DeadComponent = keyof typeof deadComponentMap
 
-// イベントルール：どのカウンターキーが、何の効果を、いくつ持つか
 const DeadEventRuleSchema = z.object({
-  counterKey: z.string().default('').catch(''), // counters のキー
+  counterKey: z.string().default('').catch(''),
   effect: z.enum(['timer', 'life']).default('timer').catch('timer'),
-  value: z.number().min(1).max(10).default(1).catch(1), // 増加量（timer は分単位）
-  threshold: z.number().min(1).default(1).catch(1), // 発動しきい値
+  value: z.number().min(1).max(10).default(1).catch(1),
+  threshold: z.number().min(1).default(1).catch(1),
 })
 export type DeadEventRuleType = z.infer<typeof DeadEventRuleSchema>
 
 /**
- * 15分後に初コメが来ないと DeadAir
+ * obstacle: 背景色を決める「妨害するもの」。
+ * 将来的に 'black' | 'white' | (characterKey) を受け入れる想定。
  */
-
 export const SettingsDeadSchema = z.object({
   component: z.enum(deadComponentValues).default('bomb').catch('bomb'),
-  bgColor: z.enum(['black', 'white']).default('black').catch('black'),
+  obstacle: z.enum(['black', 'white']).default('black').catch('black'),
 
   initialMinutes: z.number().min(1).max(60).default(5).catch(5),
   initialLives: z.number().min(3).max(10).default(3).catch(3),

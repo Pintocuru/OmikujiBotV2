@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/CounterPreview/parts/CounterPreviewManager.vue -->
+<!-- src/MainGenerator/ui/CounterPreview/parts/CounterPreviewSelector.vue -->
 <template>
   <component :is="currentComponent" :counter-setting="counterSetting" :count="count" :users="users" />
 </template>

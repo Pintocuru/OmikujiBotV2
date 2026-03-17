@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/LiveClock/parts/Standard.vue -->
+<!-- src/MainGenerator/ui/LiveClock/layouts/ClearGlass.vue -->
 <template>
   <div class="flipper-wrap w-full max-w-md" :class="{ 'is-mounted': isMounted }">
     <div class="flipper-inner" :class="{ 'is-flipped': isFlipped }">

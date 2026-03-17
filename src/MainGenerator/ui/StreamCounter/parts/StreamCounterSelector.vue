@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/StreamCounter/parts/StreamCounterManager.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/parts/StreamCounterSelector.vue -->
 <template>
   <div class="w-full bg-base-100 transparent-bg" :data-theme="settings.color">
     <div class="flex flex-wrap justify-center gap-2 py-2">

@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/GameRanking/parts/variants/RankStandard.vue -->
+<!-- src/MainGenerator/ui/GameRanking/layouts/RankStandard.vue -->
 <template>
   <!-- スコア表示（バブル） -->
   <div class="flex justify-center">

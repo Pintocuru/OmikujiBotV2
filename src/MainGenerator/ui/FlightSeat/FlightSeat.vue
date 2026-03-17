@@ -23,7 +23,7 @@
   import { storeToRefs } from 'pinia'
   import { isDev, statKeyNum, StatKeyNum } from '@/types'
   import { SettingsFlightSchema, flightComponentDefaults } from '@/types'
-  import SeatSelector from './parts/SeatSelector.vue'
+  import SeatSelector from './parts/FlightSeatSelector.vue'
   import FlightSeatDebug from './FlightSeatDebug.vue'
   import { useSeatManager } from './composables/useSeatManager'
   import { calculateTotalSeats, parseCustomLayout } from './composables/seatLayoutUtils'

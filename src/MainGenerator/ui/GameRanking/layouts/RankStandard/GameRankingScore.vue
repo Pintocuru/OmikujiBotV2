@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/GameRanking/parts/variants/RankStandard/GameRankingScore.vue -->
+<!-- src/MainGenerator/ui/GameRanking/layouts/RankStandard/GameRankingScore.vue -->
 <template>
   <Transition name="bubble-fade" @after-leave="$emit('hidden')">
     <div v-if="isVisible && latestMessage" ref="bubbleRef" class="inline-block relative z-10">

@@ -3,7 +3,7 @@
   <!-- プレビュー -->
   <HudPreview :isAdminOnly="true">
     <div :class="[fontFamily]">
-      <CounterPreviewManager :counterSetting="counter" :count="0" :users="generateDummyVisitRecords(100)" />
+      <CounterPreviewSelector :counterSetting="counter" :count="0" :users="generateDummyVisitRecords(100)" />
     </div>
   </HudPreview>
 
@@ -89,7 +89,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterPreviewManager from '@main/ui/CounterPreview/parts/CounterPreviewManager.vue'
+  import CounterPreviewSelector from '@main/ui/CounterPreview/parts/CounterPreviewSelector.vue'
   import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'

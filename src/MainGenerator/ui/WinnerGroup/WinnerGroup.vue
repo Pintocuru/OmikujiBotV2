@@ -5,7 +5,7 @@
     <HistoryButton :history-items="historyItems" :color="winnerSetting.color" @clear="clearHistory" />
 
     <!-- メイン表示 -->
-    <WinnerGroupRenderer
+    <WinnerGroupSelector
       :key="previewKey"
       :winner-setting="winnerSetting"
       :users="selectedUsers"
@@ -19,7 +19,7 @@
   import { computed, onMounted, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import { BotMessageExtraType, SettingsWinnerSchema, UserStatsRecord } from '@/types'
-  import WinnerGroupRenderer from './parts/WinnerGroupRenderer.vue'
+  import WinnerGroupSelector from './parts/WinnerGroupSelector.vue'
   import HistoryButton from './components/HistoryButton.vue'
   import { useAppStore } from '@main/stores/useAppStore'
   import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
