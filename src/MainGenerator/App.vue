@@ -28,22 +28,30 @@
 <script setup lang="ts">
   import { computed, onMounted } from 'vue'
   import { isDev, useFontFamily } from '@/types/'
-  import { useComponentRenderer } from '@main/composables/useComponentRenderer'
   import { useAppInitializer } from '@main/composables/useAppInitializer'
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
   import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
+  import { COMPONENT_MAP } from './ui/ComponentMaps'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
 
   // コンポーネント設定
-  const { activeComponents } = useComponentRenderer()
+  const SLOT_PRIORITY = { primary: 2, secondary: 2, extra: 1 } as const
+  const activeComponents = computed(() => {
+    return appStore.data.components.conditions
+      .map((condition) => ({
+        slot: condition.slot,
+        component: COMPONENT_MAP[condition.kind],
+      }))
+      .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
+  })
+
   // 初期化処理
   const { initialize } = useAppInitializer()
-
   onMounted(initialize)
   useRuleProcessor()
 </script>

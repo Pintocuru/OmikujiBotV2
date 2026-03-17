@@ -1,13 +1,13 @@
 // src/MainGenerator/ui/CounterPreview/parts/base/useCounterDisplay.ts
 import { ref, watch, computed } from 'vue'
 import { SettingsCounterType } from '@/types/'
-import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
+import { UserNameType } from '@shared/types'
 
 export function useCounterDisplay(
   props: {
     counterSetting: SettingsCounterType
     count: number | null
-    users: UserVisitRecord[]
+    users: UserNameType[]
   },
   config: {
     showCounter: boolean
@@ -33,7 +33,7 @@ export function useCounterDisplay(
 
     if (target === 'user') {
       const seen = new Set<string>()
-      const unique: UserVisitRecord[] = []
+      const unique: UserNameType[] = []
 
       for (const user of reversed) {
         if (seen.has(user.userId)) continue

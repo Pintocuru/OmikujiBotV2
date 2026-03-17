@@ -6,16 +6,16 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CounterComponent, SettingsCounterType } from '@/types/'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import UserList from './variants/UserList.vue'
-  import UserCardScroller from './variants/UserCardScroller.vue'
-  import CounterUser from './variants/CounterUser.vue'
-  import CounterTimer from './variants/CounterTimer.vue'
+  import UserList from '../layouts/UserList.vue'
+  import UserCardScroller from '../layouts/UserCardScroller.vue'
+  import CounterUser from '../layouts/CounterUser.vue'
+  import CounterTimer from '../layouts/CounterTimer.vue'
+  import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
     counterSetting: SettingsCounterType
     count: number | null
-    users: UserVisitRecord[]
+    users: UserNameType[]
   }>()
 
   const componentMap: Record<CounterComponent, any> = {

@@ -37,14 +37,14 @@
 
 <script setup lang="ts">
   import { SettingsCounterType } from '@/types'
-  import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
-  import { useCounterDisplay } from '../base/useCounterDisplay'
-  import CounterCardBase from '../base/CounterCardBase.vue'
+  import { useCounterDisplay } from './base/useCounterDisplay'
+  import CounterCardBase from './base/CounterCardBase.vue'
+  import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
     counterSetting: SettingsCounterType
     count: number | null
-    users: UserVisitRecord[]
+    users: UserNameType[]
   }>()
 
   const { displayedUsers } = useCounterDisplay(props, {

@@ -1,11 +1,7 @@
 <!-- src/ConfigMaker/components/UiEditor/CounterPreview/CounterPreviewEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <HudPreview :isAdminOnly="true">
-    <div :class="[fontFamily]">
-      <CounterPreviewSelector :counterSetting="counter" :count="0" :users="generateDummyVisitRecords(100)" />
-    </div>
-  </HudPreview>
+  <CounterPreviewPreview />
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor :model-value="counter.color" @update:model-value="(newValue) => updateField('color', newValue)" />
@@ -26,7 +22,7 @@
   </SettingItem>
 
   <!-- 設定項目 -->
-  <SettingItem label="対象イベントキー" description="どのイベントを対象にするか">
+  <SettingItem v-if="isComment" label="対象イベントキー" description="どのイベントを対象にするか">
     <div class="flex flex-wrap gap-2">
       <!-- すべて -->
       <div
@@ -85,19 +81,18 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { counterComponentMap, SettingsCounterSchema, useFontFamily } from '@/types/'
+  import { counterComponentMap, SettingsCounterSchema } from '@/types/'
+  import CounterPreviewPreview from './CounterPreviewPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterPreviewSelector from '@main/ui/CounterPreview/parts/CounterPreviewSelector.vue'
-  import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
-  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
+  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isPro } = useSettingMode()
-  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
+
+  const { isComment } = useVisibilityAccess()
 
   const rulesComment = computed(() => data.value.comments)
 

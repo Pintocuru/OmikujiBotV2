@@ -96,7 +96,7 @@ export const uiItemMap: Record<string, UiItem> = {
     description: 'コメントごとに増えるカウンター表示',
     component: CounterPreviewEditor,
     targetKey: 'counter',
-    visibility: ['comment'],
+    visibility: [],
   },
 
   streamCounter: {
