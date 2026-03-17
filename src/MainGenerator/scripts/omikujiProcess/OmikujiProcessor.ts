@@ -93,6 +93,9 @@ export class OmikujiProcessor {
     const { liveComments, syoken } = streamStats.getStats()
     const { winners } = userSession.stats.drawWinners(1)
     const firstWinner = winners[0]
+    const now = new Date()
+    const h = String(now.getHours()).padStart(2, '0')
+    const m = String(now.getMinutes()).padStart(2, '0')
 
     return DefaultPlaceholdersMetaSchema.parse({
       viewer: meta?.viewer ?? 0,
@@ -102,6 +105,7 @@ export class OmikujiProcessor {
       commenter: uniqueCount,
       syoken,
       winner: firstWinner ? `{{icon ${firstWinner.userId}}}${firstWinner.userName}` : 'Null',
+      clock: `${h}時${m}分`,
     })
   }
 }

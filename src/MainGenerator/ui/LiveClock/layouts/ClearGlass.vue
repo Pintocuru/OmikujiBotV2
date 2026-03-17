@@ -16,6 +16,7 @@
           </div>
 
           <div
+            v-if="defaultMessage"
             class="text-lg font-bold tracking-wide opacity-80 mt-1 line-clamp-1 text-primary-content/80"
             v-html="defaultMessage"
           />

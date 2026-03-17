@@ -15,10 +15,11 @@
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
   import { ClockComponent, SettingsClockType } from '@/types/'
-  import Clear from '../layouts/Clear.vue'
-  import SoundPlayer from '../layouts/Cyber.vue'
-  import Disco from '../layouts/Disco.vue'
-  import Pastel from '../layouts/Pastel.vue'
+  import morning from '../layouts/Morning.vue'
+  import soundPlayer from '../layouts/SoundPlayer.vue'
+  import clearGlass from '../layouts/ClearGlass.vue'
+  import steampunk from '../layouts/Steampunk.vue'
+  import disco from '../layouts/Disco.vue'
 
   const props = defineProps<{
     settings: SettingsClockType
@@ -29,10 +30,11 @@
   }>()
 
   const componentMap: Record<ClockComponent, Component> = {
-    pastel: Pastel,
-    soundPlayer: SoundPlayer,
-    disco: Disco,
-    clear: Clear,
+    morning,
+    soundPlayer,
+    clearGlass,
+    steampunk,
+    disco,
   }
-  const currentComponent = computed(() => componentMap[props.settings.component] ?? Pastel)
+  const currentComponent = computed(() => componentMap[props.settings.component] ?? morning)
 </script>

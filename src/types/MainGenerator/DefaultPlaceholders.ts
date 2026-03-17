@@ -11,6 +11,7 @@ export const DefaultPlaceholdersMetaSchema = z.object({
   commenter: z.coerce.number().default(0).catch(0),
   syoken: z.coerce.number().default(0).catch(0),
   winner: z.string().default('テストユーザー').catch('テストユーザー'),
+  clock: z.string().default('テスト時刻').catch('テスト時刻'),
 })
 
 export const DefaultPlaceholdersCommentSchema = z.object({

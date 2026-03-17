@@ -34,7 +34,14 @@
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
   const settings = computed(() => props.settings)
 
-  const { message: defaultMessage } = usePlaceholderInterval(() => settings.value.defaultMessage ?? '')
+  const {
+    message: defaultMessage,
+    registerIntervalHook,
+    commitIfPending,
+  } = usePlaceholderInterval(() => settings.value.defaultMessage ?? '', 5000)
+  registerIntervalHook(() => {
+    commitIfPending(!isFlipped.value)
+  })
 
   const currentMsg = ref('テストメッセージです！テストメッセージです！')
 

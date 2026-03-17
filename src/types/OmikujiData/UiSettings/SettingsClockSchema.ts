@@ -3,12 +3,13 @@ import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 
 /**
- * ニュースフラッシュ FlashBanner
+ * ライブクロック LiveClock
  */
 export const clockComponentMap = {
-  pastel: 'パステル',
+  morning: 'モーニング',
   soundPlayer: 'サウンドプレイヤー',
-  clear: 'クリア',
+  clearGlass: 'クリアガラス',
+  steampunk: 'スチーム',
   disco: 'ディスコ',
 } as const
 
@@ -28,7 +29,7 @@ const defaultMessage = `<<
 >>`
 
 export const SettingsClockSchema = z.object({
-  component: z.enum(clockComponentsEnum).default('pastel').catch('pastel'),
+  component: z.enum(clockComponentsEnum).default('morning').catch('morning'),
   color: z.enum(themes).default('garden').catch('garden'),
   isSecond: z.boolean().default(false).catch(false), //
   defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),

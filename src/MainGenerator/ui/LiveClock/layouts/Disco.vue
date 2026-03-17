@@ -35,7 +35,7 @@
               <span>{{ minutes }}</span>
               <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
             </div>
-            <div class="flex items-center justify-center gap-1">
+            <div v-if="defaultMessage" class="flex items-center justify-center gap-1">
               <span class="text-sm text-yellow-400 animate-bounce">★</span>
               <div
                 class="text-base font-bold text-yellow-400 uppercase tracking-widest drop-shadow-sm line-clamp-1"

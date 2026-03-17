@@ -34,7 +34,7 @@
             </div>
 
             <!-- 下部メッセージ -->
-            <div class="px-3 rounded-full border border-accent/70 bg-base-200 shadow-sm">
+            <div v-if="defaultMessage" class="px-3 rounded-full border border-accent/70 bg-base-200 shadow-sm">
               <div class="text-sm font-black flex items-center gap-1 text-base-content/70">
                 <span class="line-clamp-1" v-html="defaultMessage"></span>
               </div>
