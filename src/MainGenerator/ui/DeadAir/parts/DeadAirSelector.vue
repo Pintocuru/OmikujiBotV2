@@ -17,7 +17,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import type { SettingsDeadType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
-  import type { DeadAirPhase } from '../DeadAir.vue'
+  import { DeadAirPhase } from '../composables/useDeadAirLogic'
   import DeadAirBomb from '../layouts/DeadAirBomb.vue'
 
   const props = defineProps<{

@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { DeadAirPhase } from '../DeadAir.vue'
+  import { DeadAirPhase } from '../composables/useDeadAirLogic'
 
   const props = defineProps<{
     phase: DeadAirPhase
