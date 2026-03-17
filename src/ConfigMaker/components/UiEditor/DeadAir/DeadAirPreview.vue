@@ -1,19 +1,31 @@
 <!-- src/ConfigMaker/components/UiEditor/DeadAir/DeadAirPreview.vue -->
 <template>
   <HudPreview maxHeightClass="h-[440px]">
-    <DeadAirManager :settings="deadAir" :counters="previewCounters" />
+    <DeadAirSelector
+      :settings="deadAir"
+      :phase="phase"
+      :formatted-time="formattedTime"
+      :is-warning="isWarning"
+      :is-critical="isCritical"
+      :current-lives="currentLives"
+      :bonus-fraction="bonusFraction"
+      :life-fraction="lifeFraction"
+      :optional-value="optionalValue"
+    />
 
     <template #hud>
       <button class="btn btn-xs btn-ghost" @click="incrementAll">🎲 +1</button>
       <button class="btn btn-xs btn-ghost" @click="resetCounters">↩ reset</button>
+      <button class="btn btn-xs btn-ghost" @click="tick">⏱ -10s</button>
     </template>
   </HudPreview>
 </template>
 
 <script setup lang="ts">
-  import { ref, computed } from 'vue'
+  import { ref, computed, toRef } from 'vue'
   import type { SettingsDeadType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
-  import DeadAirManager from '@main/ui/DeadAir/parts/DeadAirManager.vue'
+  import { useDeadAirLogic } from '@main/ui/DeadAir/composables/useDeadAirLogic'
+  import DeadAirSelector from '@main/ui/DeadAir/parts/DeadAirSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const props = defineProps<{
@@ -21,7 +33,7 @@
   }>()
 
   // ---------------------------------------------------------------------------
-  // ベースカウンター（プレビュー初期値）
+  // カウンター
   // ---------------------------------------------------------------------------
 
   const baseCounters: Record<string, number> = {
@@ -36,25 +48,36 @@
 
   const counters = ref<Record<string, number>>({ ...baseCounters })
 
-  // ---------------------------------------------------------------------------
-  // eventRules に含まれるカスタムキーも合算して返す
-  // ---------------------------------------------------------------------------
-
-  const previewCounters = computed<Record<string, number>>(() => {
+  const allCounters = computed<Record<string, number>>(() => {
     const result: Record<string, number> = { ...baseCounters }
-
     for (const key of Object.keys(baseCounters)) {
       result[key] = counters.value[key] ?? baseCounters[key]
     }
-
     for (const rule of props.deadAir.eventRules) {
       const key = rule.counterKey
       if (!key || key in baseCounters) continue
       result[key] = counters.value[key] ?? 0
     }
-
     return result
   })
+
+  // ---------------------------------------------------------------------------
+  // ロジック
+  // ---------------------------------------------------------------------------
+
+  const settingsRef = toRef(props, 'deadAir')
+
+  const {
+    phase,
+    formattedTime,
+    isWarning,
+    isCritical,
+    currentLives,
+    bonusFraction,
+    lifeFraction,
+    optionalValue,
+    tick,
+  } = useDeadAirLogic(settingsRef, allCounters)
 
   // ---------------------------------------------------------------------------
   // HUD 操作

@@ -22,11 +22,11 @@
   <SettingItem label="背景色" description="ウィジェット背景を選択">
     <div class="flex gap-2">
       <div
-        v-for="color in bgColorOptions"
+        v-for="color in obstacleOptions"
         :key="color.value"
         class="badge cursor-pointer"
-        :class="deadAir.bgColor === color.value ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('bgColor', color.value)"
+        :class="deadAir.obstacle === color.value ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('obstacle', color.value)"
       >
         {{ color.label }}
       </div>
@@ -221,7 +221,7 @@
   // 選択肢
   // ---------------------------------------------------------------------------
 
-  const bgColorOptions = [
+  const obstacleOptions = [
     { value: 'black', label: '黒' },
     { value: 'white', label: '白' },
   ] as const
