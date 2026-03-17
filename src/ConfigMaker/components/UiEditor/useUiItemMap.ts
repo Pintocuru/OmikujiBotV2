@@ -1,13 +1,4 @@
 // src/ConfigMaker/components/UiEditor/useUiItemMap.ts
-import { computed } from 'vue'
-import { storeToRefs } from 'pinia'
-import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-
-import { UiKind } from '@/types/'
-import type { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
-
 import CommentBubbleEditor from './CommentBubble/CommentBubbleEditor.vue'
 import BubbleCharacterEditor from './CommentBubble/BubbleCharacterEditor.vue'
 import ToastComponentEditor from './ToastWidgets/ToastWidgetsEditor.vue'
@@ -22,126 +13,152 @@ import FontFamilyEditor from './CommonStyle/FontFamilyEditor.vue'
 import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
 import DeadAirEditor from './DeadAir/DeadAirEditor.vue'
 import LiveClockEditor from './LiveClock/LiveClockEditor.vue'
+import type { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
+import { UiKind } from '@/types'
+
+export type VisibilityKey =
+  | 'comment'
+  | 'character'
+  | 'primarySlot'
+  | 'secondarySlot'
+  | 'allSlot'
+  | 'adv'
+  | 'pro'
+  | 'god'
 
 type UiItem = {
   icon: LucideIconName
   title: string
   description: string
   component: any
-  shouldShow: boolean
+  targetKey: UiKind | null
+  visibility: VisibilityKey[]
 }
 
-export const useUiItemMap = () => {
-  const omikujiStore = useOmikujiStore()
-  const { data } = storeToRefs(omikujiStore)
+export const uiItemMap: Record<string, UiItem> = {
+  bubble: {
+    icon: 'MessageSquare',
+    title: 'フキダシアイテム',
+    description: 'BOTが喋るフキダシの設定',
+    component: CommentBubbleEditor,
+    targetKey: 'bubble',
+    visibility: [],
+  },
 
-  const { isComment, isCharacter, isPrimarySlot, isSecondarySlot } = useVisibilityAccess()
-  const { isPro } = useSettingMode()
+  bubbleCharacter: {
+    icon: 'UserSquare',
+    title: 'フキダシアイテム(キャラクター)',
+    description: 'キャラクターの表示位置設定',
+    component: BubbleCharacterEditor,
+    targetKey: 'bubble',
+    visibility: ['character'],
+  },
 
-  const conditions = computed(() => data.value.components.conditions)
+  liveClock: {
+    icon: 'Clock',
+    title: 'ライブクロックアイテム',
+    description: '',
+    component: LiveClockEditor,
+    targetKey: 'liveClock',
+    visibility: [],
+  },
 
-  const hasComponentKind = (kind: UiKind) => conditions.value.some((c) => c.kind === kind)
+  flashBanner: {
+    icon: 'Megaphone',
+    title: 'ニュースアイテム',
+    description: 'ニュースバナー風のフキダシ設定',
+    component: FlashBannerEditor,
+    targetKey: 'flashBanner',
+    visibility: [],
+  },
 
-  const uiItemMap = computed<Record<string, UiItem>>(() => ({
-    bubble: {
-      icon: 'MessageSquare',
-      title: 'フキダシアイテム',
-      description: 'BOTが喋るフキダシの設定',
-      component: CommentBubbleEditor,
-      shouldShow: hasComponentKind('bubble'),
-    },
-    bubbleCharacter: {
-      icon: 'UserSquare',
-      title: 'フキダシアイテム(キャラクター)',
-      description: 'キャラクターの表示位置設定',
-      component: BubbleCharacterEditor,
-      shouldShow: hasComponentKind('bubble') && isCharacter.value,
-    },
-    liveClock: {
-      icon: 'Clock',
-      title: 'ライブクロックアイテム',
-      description: '',
-      component: LiveClockEditor,
-      shouldShow: hasComponentKind('liveClock'),
-    },
-    flashBanner: {
-      icon: 'Megaphone',
-      title: 'ニュースアイテム',
-      description: 'ニュースバナー風のフキダシ設定',
-      component: FlashBannerEditor,
-      shouldShow: hasComponentKind('flashBanner'),
-    },
-    toast: {
-      icon: 'Bell',
-      title: 'トースト・サムネイルアイテム',
-      description: 'お知らせとして表示されるチャット表示',
-      component: ToastComponentEditor,
-      shouldShow: hasComponentKind('toast'),
-    },
-    ranking: {
-      icon: 'Trophy',
-      title: 'ランキングアイテム',
-      description: 'ゲームスクリプトで使うランキング表示',
-      component: GameRankingEditor,
-      shouldShow: hasComponentKind('ranking'),
-    },
-    counter: {
-      icon: 'Hash',
-      title: 'カウンターアイテム',
-      description: 'コメントごとに増えるカウンター表示',
-      component: CounterPreviewEditor,
-      shouldShow: hasComponentKind('counter') && isComment.value,
-    },
-    streamCounter: {
-      icon: 'Hash',
-      title: 'ライバーカウンターアイテム',
-      description: '複数カウンターの表示',
-      component: StreamCounterEditor,
-      shouldShow: hasComponentKind('streamCounter'),
-    },
-    winnerGroup: {
-      icon: 'Crown',
-      title: 'ラッキーメンバーズアイテム',
-      description: 'ランダム選出ユーザー表示',
-      component: WinnerGroupEditor,
-      shouldShow: hasComponentKind('winnerGroup'),
-    },
-    flightSeat: {
-      icon: 'Plane',
-      title: 'フライトシートアイテム',
-      description: '視聴者の座席配置表示',
-      component: FlightSeatEditor,
-      shouldShow: hasComponentKind('flightSeat'),
-    },
-    socialRoster: {
-      icon: 'Users',
-      title: 'ソーシャルユーザーリスト',
-      description: 'コメントしたユーザーをソーシャルゲーム風のグリッドで一覧表示します',
-      component: SocialRosterEditor,
-      shouldShow: hasComponentKind('socialRoster'),
-    },
-    deadAir: {
-      icon: 'Bomb',
-      title: '15分で初コメが来ないと',
-      description: 'チャレンジ系',
-      component: DeadAirEditor,
-      shouldShow: hasComponentKind('deadAir'),
-    },
-    defaultColor: {
-      icon: 'Palette',
-      title: 'デフォルトカラー',
-      description: 'キャラクター未設定時のカラー設定',
-      component: DefaultColorEditor,
-      shouldShow: !isCharacter.value && (isPrimarySlot.value || isSecondarySlot.value),
-    },
-    fontFamily: {
-      icon: 'Type',
-      title: 'フォント',
-      description: '各種アイテムのフォント設定',
-      component: FontFamilyEditor,
-      shouldShow: isPro.value,
-    },
-  }))
+  toast: {
+    icon: 'Bell',
+    title: 'トースト・サムネイルアイテム',
+    description: 'お知らせとして表示されるチャット表示',
+    component: ToastComponentEditor,
+    targetKey: 'toast',
+    visibility: [],
+  },
 
-  return { uiItemMap }
+  ranking: {
+    icon: 'Trophy',
+    title: 'ランキングアイテム',
+    description: 'ゲームスクリプトで使うランキング表示',
+    component: GameRankingEditor,
+    targetKey: 'ranking',
+    visibility: [],
+  },
+
+  counter: {
+    icon: 'Hash',
+    title: 'カウンターアイテム',
+    description: 'コメントごとに増えるカウンター表示',
+    component: CounterPreviewEditor,
+    targetKey: 'counter',
+    visibility: ['comment'],
+  },
+
+  streamCounter: {
+    icon: 'Hash',
+    title: 'ライバーカウンターアイテム',
+    description: '複数カウンターの表示',
+    component: StreamCounterEditor,
+    targetKey: 'streamCounter',
+    visibility: [],
+  },
+
+  winnerGroup: {
+    icon: 'Crown',
+    title: 'ラッキーメンバーズアイテム',
+    description: 'ランダム選出ユーザー表示',
+    component: WinnerGroupEditor,
+    targetKey: 'winnerGroup',
+    visibility: [],
+  },
+
+  flightSeat: {
+    icon: 'Plane',
+    title: 'フライトシートアイテム',
+    description: '視聴者の座席配置表示',
+    component: FlightSeatEditor,
+    targetKey: 'flightSeat',
+    visibility: [],
+  },
+
+  socialRoster: {
+    icon: 'Users',
+    title: 'ソーシャルユーザーリスト',
+    description: 'コメントしたユーザーをグリッド表示',
+    component: SocialRosterEditor,
+    targetKey: 'socialRoster',
+    visibility: [],
+  },
+
+  deadAir: {
+    icon: 'Bomb',
+    title: '15分で初コメが来ないと',
+    description: 'チャレンジ系',
+    component: DeadAirEditor,
+    targetKey: 'deadAir',
+    visibility: [],
+  },
+
+  defaultColor: {
+    icon: 'Palette',
+    title: 'デフォルトカラー',
+    description: 'キャラクター未設定時のカラー設定',
+    component: DefaultColorEditor,
+    targetKey: null,
+    visibility: ['character', 'allSlot'],
+  },
+
+  fontFamily: {
+    icon: 'Type',
+    title: 'フォント',
+    description: '各種アイテムのフォント設定',
+    component: FontFamilyEditor,
+    targetKey: null,
+    visibility: ['pro'],
+  },
 }

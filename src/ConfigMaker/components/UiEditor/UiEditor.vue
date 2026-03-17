@@ -12,9 +12,8 @@
   </SectionCard>
 
   <!-- 各アイテム設定 -->
-  <template v-for="(item, type) in uiItemMap" :key="type">
+  <template v-for="[type, item] in visibleItems" :key="type">
     <SectionCard
-      v-if="item.shouldShow"
       :icon="item.icon"
       :isOpen="activeSection === type"
       @toggle="toggleSection(type)"
@@ -27,19 +26,29 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { computed, ref, watch } from 'vue'
+  import { uiItemMap } from './useUiItemMap'
   import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
-
   import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
   import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
-  import { useUiItemMap } from './useUiItemMap'
+  import { useUiVisibility } from './conditions/useUiVisibility'
 
-  const { uiItemMap } = useUiItemMap()
   const { itemSlotEnabled } = useFlagsSettings()
   const { hasAccess } = useAccessChecker()
-
   const activeSection = ref<string | null>(null)
+
+  const { visibilityMap, hasComponentKind } = useUiVisibility()
+
+  const visibleItems = computed(() =>
+    Object.entries(uiItemMap).filter(([_kind, item]) => {
+      // slot選択条件
+      if (item.targetKey && !hasComponentKind(item.targetKey)) return false
+      // visibility条件（すべて満たす必要あり）
+      if (!item.visibility.every((v) => visibilityMap.value[v])) return false
+      return true
+    })
+  )
 
   const toggleSection = (section: string) => {
     activeSection.value = activeSection.value === section ? null : section
@@ -47,15 +56,12 @@
 
   // 開いた時に最初のアイテムを表示
   watch(
-    uiItemMap,
-    (map) => {
+    visibleItems,
+    (items) => {
       if (activeSection.value !== null) return
 
-      const firstKey = Object.entries(map).find(([, item]) => item.shouldShow)?.[0]
-
-      if (firstKey) {
-        activeSection.value = firstKey
-      }
+      const first = items[0]?.[0]
+      if (first) activeSection.value = first
     },
     { immediate: true }
   )

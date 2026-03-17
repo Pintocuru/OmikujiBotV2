@@ -71,14 +71,14 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { useUiVisibility } from './useUiVisibility'
+  import { uiItemMap } from '../useUiItemMap'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isComment } = useVisibilityAccess()
+  const { conditions, visibilityMap } = useUiVisibility()
 
-  const conditions = computed(() => data.value.components.conditions)
   const enableSecondary = computed(() => data.value.components.enableSecondary)
 
   // スロットごとの表示設定（enableSecondary が false のとき secondary を非表示）
@@ -106,13 +106,25 @@
   // スロットで利用可能なコンポーネント一覧を取得
   const getAvailableComponents = (slot: UiSlotType) => {
     const { components } = data.value.featureUsage
+
     return getKindsForSlot(slot)
       .filter((kind) => components.includes(kind))
+      .filter((kind) => {
+        const item = uiItemMap[kind]
+
+        // visibility条件を満たさない場合は非表示
+        if (item.visibility && !item.visibility.every((v) => visibilityMap.value[v])) {
+          return false
+        }
+
+        return true
+      })
       .map((kind) => {
         const config = uiKindMap[kind]
-        // requiresComment フラグで機能制限を汎用的に判定
-        const isFeatureDisabled = 'requiresComment' in config && !!config.requiresComment && !isComment.value
+        const isFeatureDisabled =
+          'requiresComment' in config && !!config.requiresComment && !visibilityMap.value.comment
         const isUsedInOther = isKindUsedInOtherSlot(kind, slot)
+
         return {
           kind,
           label: config.label,

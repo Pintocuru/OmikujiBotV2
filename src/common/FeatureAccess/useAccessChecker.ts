@@ -60,6 +60,7 @@ export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
   const isPrimarySlot = computed(() => hasSlot('primary'))
   const isSecondarySlot = computed(() => hasSlot('secondary'))
   const isExtraSlot = computed(() => hasSlot('extra'))
+  const isAllSlot = computed(() => isPrimarySlot.value || isSecondarySlot.value || isExtraSlot.value)
 
   return {
     canShowUsage,
@@ -76,5 +77,6 @@ export function useVisibilityAccessCore(data: Ref<OmikujiDataType>) {
     isPrimarySlot,
     isSecondarySlot,
     isExtraSlot,
+    isAllSlot,
   }
 }

@@ -3,7 +3,7 @@ import { defineConfig, mergeConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import tsconfig from '../../tsconfig.json'
-import { baseViteConfig,  } from '../../../../shared/utils/ViteConfig/viteConfigBase'
+import { baseViteConfig, } from '../../../../shared/utils/ViteConfig/viteConfigBase'
 import { createAliases } from '../../../../shared/utils/webpackBuild/utils/CreateAliases'
 import { APP_VERSION } from '../../src/version'
 
@@ -15,7 +15,7 @@ const base = baseViteConfig(projectRoot)
 
 // tsconfig.json からエイリアスを生成
 const tsAliases = createAliases(projectRoot, tsconfig)
-export const alias = {  ...tsAliases }
+export const alias = { ...tsAliases }
 
 export default defineConfig(() => {
   return mergeConfig(base, {
@@ -76,20 +76,18 @@ export default defineConfig(() => {
         },
       },
 
-      // ソースマップ生成
-      sourcemap: false,
+   
+      sourcemap: false,   // ソースマップ生成
 
-      // チャンクサイズ警告の無効化
-      chunkSizeWarningLimit: 1000,
+  
+      chunkSizeWarningLimit: 1000,    // チャンクサイズ警告の無効化
     },
 
     // 解決設定
     resolve: { alias: alias },
     test: {
-      // コンソールメッセージを有効にする
-      silent: false,
-      // その他の設定
-      globals: true,
+      silent: false,   // コンソールメッセージを有効にする
+      globals: true,    // その他の設定
     },
   })
 })
