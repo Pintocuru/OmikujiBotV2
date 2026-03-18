@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'LenormandOracle',
   title: 'ルノルマンカード',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '36 枚のシンボルからメッセージを受け取る、気軽に占えるルノルマンカードジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', '占い', 'Fortune', 'ルノルマンカード', 'Lenormand'],
+  tags: ['占い', 'ルノルマンカード'],
   boothId: '7915987',
   category: 'solo',
   licenseLabel: '利用規約に従う', // adv指定だが、指示通り単一化

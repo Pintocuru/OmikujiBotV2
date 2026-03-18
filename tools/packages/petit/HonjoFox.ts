@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'HonjoFox',
   title: '中仙道の村きつね',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '古いきつねがぼやきます',
   banner: '',
-  tags: ['おみくじBOT', 'BOT', '中仙道の村きつね', 'コメントチェック', '初見判定ちゃん'],
+  tags: ['中仙道の村きつね', '初見判定', 'ギフト', 'コメント数表示', 'コメントチェック', '閲覧数チェック'],
   boothId: '7982286',
   category: 'petit',
   licenseLabel: 'CC-BY 4.0',

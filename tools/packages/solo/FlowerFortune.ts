@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'FlowerFortune',
   title: 'フラワー占い',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '花の色(+キノコ)で占う、真面目な占いジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'BOT', 'フラワー占い', 'おみくじ'],
+  tags: ['占い', 'フラワー占い'],
   boothId: '7982286',
   category: 'petit', // readmeURL に合わせる
   licenseLabel: 'CC-BY 4.0',

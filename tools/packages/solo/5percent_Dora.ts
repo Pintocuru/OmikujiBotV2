@@ -5,15 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: '5percent_Dora',
   title: 'どこでもドラちゃんBot',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '「ドラちゃん」を名乗るキャラクターが「ひみつ道具」をランダムに出してくれるジェネレーター',
   banner: '',
-  tags: [
-    'おみくじBOT',
-    'ドラちゃん',
-    '#よくやった青狸',
-    '#話が違うぞ青狸',
-    'https://www.tv-asahi.co.jp/doraemon/tool/',
-  ],
+  tags: ['ドラちゃん', '#よくやった青狸', '#話が違うぞ青狸', 'https://www.tv-asahi.co.jp/doraemon/tool/'],
   boothId: '7291931',
   category: 'solo',
   licenseLabel: '個人利用のみ',

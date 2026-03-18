@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'HondaJanken',
   title: 'じゃんけん',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '「じゃんけん」ミニゲームが楽しめるジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'じゃんけん'],
+  tags: ['じゃんけん'],
   boothId: '7383088',
   category: 'solo',
   licenseLabel: '利用規約に従う',

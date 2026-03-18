@@ -5,11 +5,25 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'DivaMetan',
   title: '高飛車な四国めたん',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '四国めたんがリスナーを歓迎してくれるジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'VOICEVOX', '四国めたん', '（ず・ω・きょ）'],
+  tags: [
+    '四国めたん',
+    'VOICEVOX',
+    '（ず・ω・きょ）',
+    '初見判定',
+    '初見詐欺',
+    'ギフト',
+    'コメント数表示',
+    'コメントチェック',
+    '閲覧数チェック',
+    '漆黒のおみくじ',
+    'じゃんけん',
+    '閲覧数チェック',
+    '告知',
+  ],
   boothId: '6058829',
-  category: 'full',
+  category: '2025-Q4',
   licenseLabel: '利用規約に従う', // basic優先
   extraFiles: [{ from: 'assets/Characters/metan/', to: 'Characters/metan/' }],
 } satisfies ProjectParams

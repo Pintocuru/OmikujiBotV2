@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'MaidenOmikujiNormal',
   title: '巫女さんのおみくじ',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '巫女さん手製の、真面目なおみくじジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'BOT', '巫女さんのおみくじ', 'おみくじ'],
+  tags: ['おみくじ', '巫女さんのおみくじ'],
   boothId: '7982286',
   category: 'petit',
   licenseLabel: 'CC-BY 4.0',

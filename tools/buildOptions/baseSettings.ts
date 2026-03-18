@@ -91,7 +91,7 @@ export function createProject(packageRoot: string, color: string, params: Projec
     filesToCopy: [
       ...(params.extraFiles ?? []),
       ...DEFAULT_FILES_TO_COPY,
-      { from: `assets/thumb/${params.key}/${id}.gif`, to: 'thumb.gif' },
+      { from: `assets/thumb/${params.category}/${id}.gif`, to: 'thumb.gif' },
     ],
   }
 }

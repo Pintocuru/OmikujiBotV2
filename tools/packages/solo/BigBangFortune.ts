@@ -5,10 +5,10 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'BigBangFortune',
   title: '超おみくじ',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '「桁違い」の数値で占う、クソデカおみくじジェネレーター',
   banner:
     'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/BigBangFortune/thumb_BigBangFortune.gif',
-  tags: ['おみくじBOT', '超', 'おみくじ'],
+  tags: ['超おみくじ'],
   boothId: '7440428',
   category: 'solo',
   licenseLabel: 'CC-BY 4.0',

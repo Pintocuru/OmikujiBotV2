@@ -17,6 +17,7 @@ export const useCategoryUtils = () => {
    * ナビゲーションのアイテム数バッジ表示
    */
   const getCategoryItemCount = (category: CategoryType): number => {
+    if (category === 'dataPacks') return 0 // TODO:いつか「パッケージ数」を取得できるようにする
     if (category === 'appInfo' || category === 'components') return 0
     if (category === 'jsonMerge') return data.value.jsonMerge.length
     return getCategoryArray(category).length

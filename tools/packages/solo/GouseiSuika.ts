@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'GouseiSuika',
   title: 'スイカジェネレーター +カボチャ&クジラ',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: 'コメントでスイカゲーム風のおみくじを楽しめる',
   banner: '',
-  tags: ['おみくじBOT', 'ゲーム', 'スイカゲーム', 'カボチャゲーム', 'クジラゲームオンライン'],
+  tags: ['ゲームスクリプト', 'スイカジェネレーター', 'カボチャジェネレーター', 'クジラジェネレーター'],
   boothId: '5813323',
   category: 'solo',
   licenseLabel: '利用規約に従う',

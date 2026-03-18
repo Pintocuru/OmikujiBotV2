@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'ValentineCoupling',
   title: 'バレンタイン・カップリング',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: 'test',
   banner: '',
-  tags: ['おみくじBOT', 'リスト表示', 'winner', 'カップル', 'カップリング'],
+  tags: ['バレンタイン・カップリング', 'ラッキーメンバーズ'],
   boothId: '7432682',
   category: 'solo',
   licenseLabel: 'CC-BY 4.0',

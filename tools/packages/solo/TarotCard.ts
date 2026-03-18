@@ -5,10 +5,10 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'TarotCard',
   title: 'タロットカード',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '大アルカナの 22 枚を使う、気軽に占えるタロットカードジェネレーター',
   banner:
     'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/TarotCard/thumb_TarotCard.gif',
-  tags: ['おみくじBOT', '占い', 'Fortune', 'タロット', 'tarot'],
+  tags: ['占い', 'タロットカード'],
   boothId: '7432682',
   category: 'solo',
   licenseLabel: 'CC-BY 4.0',

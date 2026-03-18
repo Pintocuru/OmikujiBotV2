@@ -4,12 +4,24 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 
 const PROJECT = {
   key: 'TsumugiHimari',
-  title: 'ズッ友!つむぎ&ひまり ネットミームマシマシ ver',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  title: 'ズッ友!つむぎ&ひまり ネットミームマシマシver',
+  description: 'つむぎとひまりがノリノリでリスナーを歓迎してくれるジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'VOICEVOX', '春日部つむぎ', '冥鳴ひまり'],
+  tags: [
+    'VOICEVOX',
+    '春日部つむぎ',
+    '冥鳴ひまり',
+    '初見判定',
+    '初見詐欺',
+    'ギフト',
+    'コメント数表示',
+    'コメントチェック',
+    '閲覧数チェック',
+    '閲覧数チェック',
+    '告知',
+  ],
   boothId: '7530206',
-  category: 'full',
+  category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0', // basic優先
   extraFiles: [
     { from: 'assets/Characters/tsumugi/', to: 'Characters/tsumugi/' },

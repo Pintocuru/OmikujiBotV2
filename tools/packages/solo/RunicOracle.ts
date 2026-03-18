@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'RunicOracle',
   title: 'ルーン占い',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '24 個のルーンストーンで占う、気軽に使えるルーン占いジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', '占い', 'Fortune', 'ルーン', 'rune', 'runic'],
+  tags: ['占い', 'ルーン占い'],
   boothId: '7919298',
   category: 'solo',
   licenseLabel: '利用規約に従う',

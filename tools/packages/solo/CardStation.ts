@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'CardStation',
   title: 'カード駅',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '全国各地 (海外・地球外含む) でカード集めが楽しめるジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'じゃんけん'],
+  tags: ['カード駅'],
   boothId: '7412886',
   category: 'solo',
   licenseLabel: '利用規約に従う',

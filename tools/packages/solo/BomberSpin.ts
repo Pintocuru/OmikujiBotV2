@@ -5,9 +5,9 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'BomberSpin',
   title: 'ボンバースロット',
-  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  description: '数値の大きさで楽しむ、ミニゲーム系のジェネレーター',
   banner: '',
-  tags: ['おみくじBOT', 'ゲーム', 'スロット', 'ボンバースロット', 'うさぎスロット', '桜吹雪スロット'],
+  tags: ['ゲームスクリプト', 'ボンバースロット', 'うさぎスロット', '桜吹雪スロット'],
   boothId: '7730686',
   category: 'solo',
   licenseLabel: 'CC-BY 4.0',

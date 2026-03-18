@@ -1,12 +1,12 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.03.17-2.9.0-beta3",
-    "name": "おみくじBOT ストロベリーショコラOmikujiBot StrawberryChocolate",
+    "id": "StrawberryChocolate-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじ BOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.03.17-2.9.0-beta3",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.9.0-beta3",
-    "dataVersion": 2.20090002003,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
       "おみくじBOT",
@@ -24,7 +24,8 @@
       "初見歓迎"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/7733810"
+    "url": "https://pintocuru.booth.pm/items/7733810",
+    "banner": ""
   },
   "jsonMerge": [
     {
