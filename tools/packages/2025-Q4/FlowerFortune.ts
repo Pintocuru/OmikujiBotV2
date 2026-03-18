@@ -20,6 +20,7 @@ const COLOR_VARIANTS = [''] as const
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
   { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'FlowerFortune', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

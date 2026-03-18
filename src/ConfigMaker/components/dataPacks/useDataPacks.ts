@@ -17,7 +17,7 @@ export interface DataPackEntry {
 // -------------------------------------------------------------------
 // GitHub Raw URL ユーティリティ
 // -------------------------------------------------------------------
-const REPO_BASE = 'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/main/data-packs'
+const REPO_BASE = 'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/main/'
 
 export function buildRawUrl(path: string): string {
   return `${REPO_BASE}/${path}`
@@ -28,9 +28,14 @@ export function buildRawUrl(path: string): string {
 // data-packs 以下のエントリを追加していく
 // -------------------------------------------------------------------
 const templateList: string[] = [
-  'common/StrawberryChocolate.json',
-  'common/TarotCard.json',
-  // 追加時はここへ
+  'common/StrawberryChocolate/StrawberryChocolate.json',
+
+  '2025-Q4/BigBangFortune/BigBangFortune.json',
+  '2025-Q4/BomberSpin/BomberSpin.json',
+  '2025-Q4/CardStation/CardStation.json',
+  '2025-Q4/GouseiSuika/GouseiSuika.json',
+  '2025-Q4/HondaJanken/HondaJanken.json',
+  '2025-Q4/TarotCard/TarotCard.json',
 ]
 
 // -------------------------------------------------------------------

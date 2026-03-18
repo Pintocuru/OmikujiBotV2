@@ -21,6 +21,7 @@ const COLOR_VARIANTS = [''] as const
 // ビルドターゲット（必要なら追加）
 const buildTargets: PackageBuildTarget[] = [
   { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

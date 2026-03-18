@@ -20,6 +20,7 @@ const COLOR_VARIANTS = [''] as const
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
   { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'HonjoFox', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

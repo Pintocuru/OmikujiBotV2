@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "RunicOracle-ver2026.03.18-2.9.0-beta4",
-    "name": "おみくじBOT ルーン占い OmikujiBot RunicOracle-ADV",
+    "name": "おみくじBOT ルーン占い OmikujiBot RunicOracle",
     "description": "24 個のルーンストーンで占う、気軽に使えるルーン占いジェネレーター",
     "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",

@@ -20,6 +20,7 @@ const COLOR_VARIANTS = [''] as const
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
   { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

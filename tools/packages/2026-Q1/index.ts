@@ -10,9 +10,11 @@ import StreamCounterCircle from './StreamCounterCircle'
 import StreamCounterPixel from './StreamCounterPixel'
 
 export default [
+  /* 完成されてないもの */
+  // ValentineCoupling,
+  /* BOOTHで発売されてるもの */
   // LenormandOracle,
   // RunicOracle,
-  // ValentineCoupling,
   // HonjoFoxProject,
   // BreakingSyoken,
   // MyNineViewers,

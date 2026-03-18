@@ -24,6 +24,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
   { project: 'GraduationIcons', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
+  { project: 'GraduationIcons', type: 'JSON', accessLevel: 'basic' },
   { project: 'GraduationIcons', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 

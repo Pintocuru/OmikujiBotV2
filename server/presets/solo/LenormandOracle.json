@@ -1,7 +1,7 @@
 {
   "meta": {
     "id": "LenormandOracle-ver2026.03.18-2.9.0-beta4",
-    "name": "おみくじBOT ルノルマンカード OmikujiBot LenormandOracle-ADV",
+    "name": "おみくじBOT ルノルマンカード OmikujiBot LenormandOracle",
     "description": "36 枚のシンボルからメッセージを受け取る、気軽に占えるルノルマンカードジェネレーター",
     "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",

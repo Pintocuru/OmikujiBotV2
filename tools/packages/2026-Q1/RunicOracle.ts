@@ -20,6 +20,7 @@ const COLOR_VARIANTS = [''] as const
 // ビルドターゲット（adv を反映）
 const buildTargets: PackageBuildTarget[] = [
   { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'RunicOracle', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

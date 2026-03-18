@@ -25,8 +25,8 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 const buildTargets: PackageBuildTarget[] = [
   { project: 'MyNineViewers', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBotMain' },
   { project: 'MyNineViewers', type: 'JSON', accessLevel: 'basic' },
-  { project: 'MyNineViewersAdv', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'MyNineViewersPro', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  // { project: 'MyNineViewersAdv', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  // { project: 'MyNineViewersPro', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
