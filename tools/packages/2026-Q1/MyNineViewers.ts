@@ -9,7 +9,7 @@ const PROJECT = {
   banner: '',
   tags: ['私を構成する9人のユーザー。', 'フライトシート'],
   boothId: '8060471',
-  category: 'solo',
+  category: '2026-Q1',
   licenseLabel: '利用規約に従う',
 } satisfies ProjectParams
 

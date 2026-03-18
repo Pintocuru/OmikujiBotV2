@@ -9,12 +9,9 @@ const PROJECT = {
   banner: '',
   tags: ['中仙道の村きつね', '初見判定', 'ギフト', 'コメント数表示', 'コメントチェック', '閲覧数チェック'],
   boothId: '7982286',
-  category: 'petit',
+  category: '2026-Q1',
   licenseLabel: 'CC-BY 4.0',
-  extraFiles: [
-    { from: 'assets/thumb/thumb_HonjoFox.gif', to: 'thumb.gif' },
-    { from: 'assets/Characters/HonjoFox/', to: 'Characters/HonjoFox/' },
-  ],
+  extraFiles: [{ from: 'assets/Characters/HonjoFox/', to: 'Characters/HonjoFox/' }],
 } satisfies ProjectParams
 
 // バリエーション定義

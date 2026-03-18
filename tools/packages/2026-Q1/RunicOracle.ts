@@ -1,15 +1,15 @@
-// tools/packages/solo/HondaJanken.ts
+// tools/packages/solo/RunicOracle.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'HondaJanken',
-  title: 'じゃんけん',
-  description: '「じゃんけん」ミニゲームが楽しめるジェネレーター',
+  key: 'RunicOracle',
+  title: 'ルーン占い',
+  description: '24 個のルーンストーンで占う、気軽に使えるルーン占いジェネレーター',
   banner: '',
-  tags: ['じゃんけん'],
-  boothId: '7383088',
-  category: 'solo',
+  tags: ['占い', 'ルーン占い'],
+  boothId: '7919298',
+  category: '2026-Q1',
   licenseLabel: '利用規約に従う',
   extraFiles: [],
 } satisfies ProjectParams
@@ -17,9 +17,9 @@ const PROJECT = {
 // バリエーション定義
 const COLOR_VARIANTS = [''] as const
 
-// ビルドターゲット（推定）
+// ビルドターゲット（adv を反映）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'HondaJanken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧

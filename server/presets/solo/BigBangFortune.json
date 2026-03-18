@@ -1,16 +1,19 @@
 {
   "meta": {
-    "id": "BigBangFortune-ver2026.01.26-2.0.4",
-    "name": "おみくじ BOT 超おみくじ OmikujiBot BigBangFortune",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.26-2.0.4",
+    "id": "BigBangFortune-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT 超おみくじ OmikujiBot BigBangFortune",
+    "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.4.1-alpha1",
-    "dataVersion": 2.20040011001,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "超", "おみくじ"],
+    "tags": [
+      "超おみくじ"
+    ],
     "license": "CC-BY 4.0",
-    "url": "https://pintocuru.booth.pm/items/7440428"
+    "url": "https://pintocuru.booth.pm/items/7440428",
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/BigBangFortune/thumb_BigBangFortune.gif"
   },
   "jsonMerge": [],
   "comments": {
@@ -24,7 +27,9 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ"],
+      "tags": [
+        "超おみくじ"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -34,7 +39,9 @@
           "createdAt": "2025-09-13T09:35:21.625Z",
           "updatedAt": "2025-09-13T09:35:21.625Z",
           "order": 0,
-          "tags": ["超おみくじ"],
+          "tags": [
+            "超おみくじ"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
@@ -73,11 +80,19 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["超", "爆発", "BigBang", "BigFortune", "BigOracle"]
+        "comment": [
+          "超",
+          "爆発",
+          "BigBang",
+          "BigFortune",
+          "BigOracle"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -99,7 +114,10 @@
       "updatedAt": "2026-01-13T06:20:18.752Z",
       "order": 1,
       "isEnabled": true,
-      "tags": ["超おみくじ", "イントロ"],
+      "tags": [
+        "超おみくじ",
+        "イントロ"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -133,7 +151,11 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "装飾", "吉"],
+      "tags": [
+        "超おみくじ",
+        "装飾",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         "光彩",
@@ -228,7 +250,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "装飾"],
+      "tags": [
+        "超おみくじ",
+        "装飾"
+      ],
       "accessLevel": "basic",
       "values": [
         "魑魅",
@@ -322,7 +347,10 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "占い結果"],
+      "tags": [
+        "超おみくじ",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -392,7 +420,10 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -422,7 +453,10 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -452,7 +486,10 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -482,7 +519,10 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "凶"],
+      "tags": [
+        "超おみくじ",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -516,7 +556,11 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉", "凶"],
+      "tags": [
+        "超おみくじ",
+        "吉",
+        "凶"
+      ],
       "accessLevel": "basic",
       "values": [
         "{{text='大吉'; r = rand(8,9)}}{{r}}.{{rb1}}{{rb2}}",
@@ -537,7 +581,10 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -571,7 +618,10 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -605,7 +655,10 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -643,7 +696,10 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -693,7 +749,10 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -755,7 +814,10 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -817,7 +879,10 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -879,7 +944,10 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         {
@@ -941,7 +1009,10 @@
       "order": 17,
       "isEnabled": true,
       "editorColor": "#E0E0E0",
-      "tags": ["超おみくじ", "吉"],
+      "tags": [
+        "超おみくじ",
+        "吉"
+      ],
       "accessLevel": "basic",
       "values": [
         "完全究極神聖幻滅霊装宝輪魔哭祝厄冥界崩律禁忌煌命断罪輪廻",
@@ -970,7 +1041,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1017,7 +1091,10 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1092,7 +1169,9 @@
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": ["omiken"],
+          "center": [
+            "omiken"
+          ],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -1109,7 +1188,9 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": ["basicList"],
+        "targetScriptKeys": [
+          "basicList"
+        ],
         "title": "☄️超おみくじ履歴🌍️",
         "color": "luxury",
         "limit": 5,
@@ -1138,7 +1219,11 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

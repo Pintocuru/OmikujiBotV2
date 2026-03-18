@@ -1,30 +1,19 @@
 {
   "meta": {
-    "id": "StreamCounterCircleBlack-ver2026.03.13-2.8.1",
-    "name": "おみくじ BOT おみくじ BOT ライバーカウンター サークルBlack OmikujiBot StreamCounterCircleBlack-ADV",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.03.13-2.8.1",
+    "id": "StreamCounterCircleBlack-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT ライバーカウンター サークル Black OmikujiBot StreamCounterCircleBlack-ADV",
+    "description": "高評価も！コメント数も！いろいろカウントできる多機能カウンターテンプレート",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.8.1",
-    "dataVersion": 2.20080013002,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
-      "おみくじBOT",
-      "ユーザーリスト",
-      "ライバーカウンター",
-      "おみくじ",
-      "BOT",
-      "カウンター",
-      "高評価",
-      "同時接続数",
-      "ゲーム配信",
-      "雑談配信",
-      "朝活配信",
-      "わんコメ",
-      "初見歓迎"
+      "ライバーカウンター"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/8078258"
+    "url": "https://pintocuru.booth.pm/items/8078258",
+    "banner": ""
   },
   "jsonMerge": [],
   "comments": {},

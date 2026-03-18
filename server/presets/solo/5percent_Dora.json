@@ -1,22 +1,22 @@
 {
   "meta": {
-    "id": "5percent_Dora-ver2026.01.26-2.0.4",
-    "name": "どこでもドラちゃんBot",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.26-2.0.4",
+    "id": "5percent_Dora-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT どこでもドラちゃんBot OmikujiBot 5percent_Dora",
+    "description": "「ドラちゃん」を名乗るキャラクターが「ひみつ道具」をランダムに出してくれるジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.0.4",
-    "dataVersion": 2.04,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
-      "おみくじBOT",
       "ドラちゃん",
       "#よくやった青狸",
       "#話が違うぞ青狸",
       "https://www.tv-asahi.co.jp/doraemon/tool/"
     ],
     "license": "個人利用のみ",
-    "url": "https://pintocuru.booth.pm/items/7291931"
+    "url": "https://pintocuru.booth.pm/items/7291931",
+    "banner": ""
   },
   "jsonMerge": [],
   "comments": {
@@ -49,7 +49,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora"]
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": {
@@ -103,11 +105,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ドラちゃん", "^どらちゃん", "^dorachan", "^5percent_dora"]
+        "comment": [
+          "^ドラちゃん",
+          "^どらちゃん",
+          "^dorachan",
+          "^5percent_dora"
+        ]
       },
       "limits": {
         "cooldownSeconds": 5,
@@ -146,7 +155,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["5percent_dora"]
+              "actionSetKeys": [
+                "5percent_dora"
+              ]
             }
           ],
           "gameScripts": {
@@ -252,7 +263,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["5percent_dora_hand"]
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -290,7 +303,9 @@
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["5percent_dora_hand"]
+          "actionSetKeys": [
+            "5percent_dora_hand"
+          ]
         },
         {
           "delaySeconds": 1.5,
@@ -1766,14 +1781,19 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#3B82F6",
-      "tags": ["ドラちゃん", "5percent_Dora"],
+      "tags": [
+        "ドラちゃん",
+        "5percent_Dora"
+      ],
       "accessLevel": "basic",
       "version": "0.0.0",
       "author": "@5percent_Dora",
       "url": "https://x.com/5percent_Dora",
       "displayName": "ドラちゃん",
       "image": {
-        "default": ["5percent_Dora/default.webp"],
+        "default": [
+          "5percent_Dora/default.webp"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -1804,10 +1824,16 @@
     }
   },
   "components": {
-    "conditions": ["bubble", "toast", "ranking"],
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
     "bubble": {
       "showCharacters": {
-        "center": ["5percent_Dora"],
+        "center": [
+          "5percent_Dora"
+        ],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -1834,7 +1860,9 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": ["basicList"],
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "ひみつ道具履歴",
       "color": "cmyk",
       "limit": 5,
@@ -1861,7 +1889,11 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "none",

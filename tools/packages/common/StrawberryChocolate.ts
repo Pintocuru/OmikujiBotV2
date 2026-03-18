@@ -23,7 +23,7 @@ const PROJECT = {
   ],
   boothId: '7733810',
   category: 'common',
-  licenseLabel: '利用規約に従う',
+  licenseLabel: 'CC-BY 4.0',
   extraFiles: [{ from: 'assets/Characters/chocolate/', to: 'Characters/chocolate/' }],
 } satisfies ProjectParams
 

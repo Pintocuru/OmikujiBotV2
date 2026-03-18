@@ -9,7 +9,7 @@ const PROJECT = {
   banner: '',
   tags: ['ライバーカウンター', 'おはようカウンター', 'ワロタカウンター', 'ナイスカウンター'],
   boothId: '8078267',
-  category: 'solo',
+  category: '2026-Q1',
   licenseLabel: '利用規約に従う',
 } satisfies ProjectParams
 

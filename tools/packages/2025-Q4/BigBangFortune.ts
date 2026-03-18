@@ -10,7 +10,7 @@ const PROJECT = {
     'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/BigBangFortune/thumb_BigBangFortune.gif',
   tags: ['超おみくじ'],
   boothId: '7440428',
-  category: 'solo',
+  category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0',
   extraFiles: [],
 } satisfies ProjectParams

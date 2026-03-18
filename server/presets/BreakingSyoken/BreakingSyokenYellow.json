@@ -1,28 +1,26 @@
 {
   "meta": {
-    "id": "BreakingSyokenYellow-ver2026.03.06-2.7.0-alpha1",
-    "name": "おみくじ BOT 速報！初見さんいらっしゃい！ Yellow OmikujiBot BreakingSyokenYellow-ADV",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.03.06-2.7.0-alpha1",
+    "id": "BreakingSyokenYellow-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT 速報！初見さんいらっしゃい！ Yellow OmikujiBot BreakingSyokenYellow-ADV",
+    "description": "コメントしたリスナーに挨拶してくれる 速報風 BOT テンプレート",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.7.0-alpha1",
-    "dataVersion": 2.20070001001,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
-      "おみくじBOT",
-      "おみくじ",
-      "BOT",
-      "ブラウザゲーム",
-      "ゲーム配信",
-      "雑談配信",
-      "朝活配信",
-      "わんコメ",
-      "初見歓迎",
+      "速報初見さん",
+      "初見判定",
+      "初見詐欺",
+      "ギフト",
+      "コメント数表示",
       "コメントチェック",
-      "初見判定ちゃん"
+      "閲覧数チェック",
+      "告知"
     ],
-    "license": "個人利用のみ",
-    "url": "https://pintocuru.booth.pm/items/8025815"
+    "license": "CC-BY 4.0",
+    "url": "https://pintocuru.booth.pm/items/8025815",
+    "banner": ""
   },
   "jsonMerge": [
     {

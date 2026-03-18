@@ -1,16 +1,20 @@
 {
   "meta": {
-    "id": "RunicOracle-ver2026.02.05-2.1.0-alpha1",
-    "name": "おみくじ BOT ルーン占い OmikujiBot RunicOracle-ADV",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.05-2.1.0-alpha1",
+    "id": "RunicOracle-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT ルーン占い OmikujiBot RunicOracle-ADV",
+    "description": "24 個のルーンストーンで占う、気軽に使えるルーン占いジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.1.0-alpha1",
-    "dataVersion": 2.03001,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "占い", "Fortune", "ルーン", "rune", "runic"],
+    "tags": [
+      "占い",
+      "ルーン占い"
+    ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/7919298"
+    "url": "https://pintocuru.booth.pm/items/7919298",
+    "banner": ""
   },
   "jsonMerge": [],
   "comments": {
@@ -41,7 +45,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["RunicOracleFirst"]
+              "actionSetKeys": [
+                "RunicOracleFirst"
+              ]
             },
             {
               "delaySeconds": 3.5,
@@ -97,7 +103,9 @@
           "weight": 1,
           "isPriority": true,
           "criteria": {
-            "conditions": ["count"],
+            "conditions": [
+              "count"
+            ],
             "userName": [],
             "access": [],
             "gift": [],
@@ -113,11 +121,24 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^ルーン", "^るーん", "^rune", "^runic", "^stone", "^うらな", "^占", "^石", "^オラクル", "^oracle"]
+        "comment": [
+          "^ルーン",
+          "^るーん",
+          "^rune",
+          "^runic",
+          "^stone",
+          "^うらな",
+          "^占",
+          "^石",
+          "^オラクル",
+          "^oracle"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -998,7 +1019,10 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#F44336",
-      "tags": ["Yukkuri", "Reimu"],
+      "tags": [
+        "Yukkuri",
+        "Reimu"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1037,10 +1061,16 @@
     }
   },
   "components": {
-    "conditions": ["bubble", "toast", "ranking"],
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
     "bubble": {
       "showCharacters": {
-        "center": ["omiken"],
+        "center": [
+          "omiken"
+        ],
         "slot1": [],
         "slot2": [],
         "slot3": [],
@@ -1067,7 +1097,9 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": ["basicList"],
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "🌙ルーン占い 履歴🔯",
       "color": "lemonade",
       "limit": 5,
@@ -1094,7 +1126,11 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

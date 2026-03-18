@@ -1,15 +1,15 @@
-// tools/packages/solo/FlowerFortune.ts
+// tools/packages/solo/MaidenOmikujiNormal.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'FlowerFortune',
-  title: 'フラワー占い',
-  description: '花の色(+キノコ)で占う、真面目な占いジェネレーター',
+  key: 'MaidenOmikujiNormal',
+  title: '巫女さんのおみくじ',
+  description: '巫女さん手製の、真面目なおみくじジェネレーター',
   banner: '',
-  tags: ['占い', 'フラワー占い'],
+  tags: ['おみくじ', '巫女さんのおみくじ'],
   boothId: '7982286',
-  category: 'petit', // readmeURL に合わせる
+  category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0',
   extraFiles: [],
 } satisfies ProjectParams
@@ -19,7 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'MaidenOmikujiNormal', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧

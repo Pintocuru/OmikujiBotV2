@@ -1,15 +1,15 @@
-// tools/packages/solo/BomberSpin.ts
+// tools/packages/solo/FlowerFortune.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'BomberSpin',
-  title: 'ボンバースロット',
-  description: '数値の大きさで楽しむ、ミニゲーム系のジェネレーター',
+  key: 'FlowerFortune',
+  title: 'フラワー占い',
+  description: '花の色(+キノコ)で占う、真面目な占いジェネレーター',
   banner: '',
-  tags: ['ゲームスクリプト', 'ボンバースロット', 'うさぎスロット', '桜吹雪スロット'],
-  boothId: '7730686',
-  category: 'solo',
+  tags: ['占い', 'フラワー占い'],
+  boothId: '7982286',
+  category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0',
   extraFiles: [],
 } satisfies ProjectParams
@@ -19,7 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'BomberSpin', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧

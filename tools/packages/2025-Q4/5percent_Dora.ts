@@ -9,12 +9,9 @@ const PROJECT = {
   banner: '',
   tags: ['ドラちゃん', '#よくやった青狸', '#話が違うぞ青狸', 'https://www.tv-asahi.co.jp/doraemon/tool/'],
   boothId: '7291931',
-  category: 'solo',
+  category: '2025-Q4',
   licenseLabel: '個人利用のみ',
-  extraFiles: [
-    { from: 'assets/thumb/thumb_5percent_Dora.gif', to: 'thumb.gif' },
-    { from: 'assets/Characters/5percent_Dora/', to: 'Characters/5percent_Dora/' },
-  ],
+  extraFiles: [{ from: 'assets/Characters/5percent_Dora/', to: 'Characters/5percent_Dora/' }],
 } satisfies ProjectParams
 
 // バリエーション定義

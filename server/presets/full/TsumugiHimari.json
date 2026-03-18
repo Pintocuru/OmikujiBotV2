@@ -1,21 +1,29 @@
 {
   "meta": {
-    "id": "1755337374735-01vj6j",
-    "name": "おみくじ BOT ズッ友!つむぎ&ひまり ネットミームマシマシ ver OmikujiBot Tsumugi Himari",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2025.10.27-v1.4.0-beta4",
+    "id": "TsumugiHimari-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT ズッ友!つむぎ&ひまり ネットミームマシマシver OmikujiBot TsumugiHimari-PRO",
+    "description": "つむぎとひまりがノリノリでリスナーを歓迎してくれるジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "v1.4.3",
-    "dataVersion": 1.43,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
-      "おみくじBOT",
       "VOICEVOX",
       "春日部つむぎ",
-      "冥鳴ひまり"
+      "冥鳴ひまり",
+      "初見判定",
+      "初見詐欺",
+      "ギフト",
+      "コメント数表示",
+      "コメントチェック",
+      "閲覧数チェック",
+      "閲覧数チェック",
+      "告知"
     ],
     "license": "CC-BY 4.0",
-    "url": "https://pintocuru.booth.pm/items/7530206"
+    "url": "https://pintocuru.booth.pm/items/7530206",
+    "banner": ""
   },
   "jsonMerge": [
     {

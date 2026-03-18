@@ -1,22 +1,22 @@
 {
   "meta": {
-    "id": "GouseiSuika-ver2026.02.25-2.3.4",
-    "name": "おみくじ BOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.02.25-2.3.4",
+    "id": "GouseiSuika-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika",
+    "description": "コメントでスイカゲーム風のおみくじを楽しめる",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.3.4",
-    "dataVersion": 2.20030044002,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
     "tags": [
-      "おみくじBOT",
-      "ゲーム",
-      "スイカゲーム",
-      "カボチャゲーム",
-      "クジラゲームオンライン"
+      "ゲームスクリプト",
+      "スイカジェネレーター",
+      "カボチャジェネレーター",
+      "クジラジェネレーター"
     ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/5813323"
+    "url": "https://pintocuru.booth.pm/items/5813323",
+    "banner": ""
   },
   "jsonMerge": [],
   "comments": {

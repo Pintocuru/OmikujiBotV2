@@ -18,7 +18,7 @@ const PROJECT = {
     '告知',
   ],
   boothId: '8025815',
-  category: 'petit',
+  category: '2026-Q1',
   licenseLabel: 'CC-BY 4.0',
 } satisfies ProjectParams
 

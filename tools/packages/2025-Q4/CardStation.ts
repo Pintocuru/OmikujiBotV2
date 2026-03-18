@@ -9,7 +9,7 @@ const PROJECT = {
   banner: '',
   tags: ['カード駅'],
   boothId: '7412886',
-  category: 'solo',
+  category: '2025-Q4',
   licenseLabel: '利用規約に従う',
   extraFiles: [],
 } satisfies ProjectParams

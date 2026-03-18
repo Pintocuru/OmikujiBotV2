@@ -1,16 +1,19 @@
 {
   "meta": {
-    "id": "CardStation-ver2026.01.26-2.0.4",
+    "id": "CardStation-ver2026.03.18-2.9.0-beta4",
     "name": "おみくじBOT カード駅 OmikujiBot CardStation",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.26-2.0.4",
+    "description": "全国各地 (海外・地球外含む) でカード集めが楽しめるジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.0.4",
-    "dataVersion": 2.04,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "じゃんけん"],
+    "tags": [
+      "カード駅"
+    ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/7412886"
+    "url": "https://pintocuru.booth.pm/items/7412886",
+    "banner": ""
   },
   "jsonMerge": [],
   "comments": {
@@ -24,7 +27,9 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#00BCD4",
-      "tags": ["カード駅"],
+      "tags": [
+        "カード駅"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -41,7 +46,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -84,7 +91,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -127,7 +136,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -170,7 +181,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -213,7 +226,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -256,7 +271,9 @@
             {
               "delaySeconds": 0,
               "actionType": "actionSet",
-              "actionSetKeys": ["StationCardFirst"]
+              "actionSetKeys": [
+                "StationCardFirst"
+              ]
             },
             {
               "delaySeconds": 1.5,
@@ -288,11 +305,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^カード", "^かーど", "^card", "^station"]
+        "comment": [
+          "^カード",
+          "^かーど",
+          "^card",
+          "^station"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -1005,7 +1029,10 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["【<<CardTypeNice>>!】", "<<null>>"]
+      "values": [
+        "【<<CardTypeNice>>!】",
+        "<<null>>"
+      ]
     },
     "CardTypeSpecial": {
       "id": "CardTypeSpecial",
@@ -1494,7 +1521,12 @@
       "editorColor": "#00BCD4",
       "tags": [],
       "accessLevel": "basic",
-      "values": ["<<CardStationDomestic>>", "<<CardStationEast>>", "<<CardStationWest>>", "<<CardStationAbroad>>"]
+      "values": [
+        "<<CardStationDomestic>>",
+        "<<CardStationEast>>",
+        "<<CardStationWest>>",
+        "<<CardStationAbroad>>"
+      ]
     },
     "CardStationDomestic": {
       "id": "CardStationDomestic",
@@ -3258,14 +3290,19 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#FF9800",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": ["CardStation/CardStation_1.webp"],
+        "default": [
+          "CardStation/CardStation_1.webp"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3305,14 +3342,19 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#4CAF50",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": ["CardStation/CardStation_2.webp"],
+        "default": [
+          "CardStation/CardStation_2.webp"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3352,14 +3394,19 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#9C27B0",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": ["CardStation/CardStation_3.webp"],
+        "default": [
+          "CardStation/CardStation_3.webp"
+        ],
         "happy": [],
         "excited": [],
         "laughing": [],
@@ -3391,11 +3438,19 @@
     }
   },
   "components": {
-    "conditions": ["bubble", "toast", "ranking"],
+    "conditions": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
     "bubble": {
       "showCharacters": {
         "center": [],
-        "slot1": ["card01", "card02", "card03"],
+        "slot1": [
+          "card01",
+          "card02",
+          "card03"
+        ],
         "slot2": [],
         "slot3": [],
         "slot4": []
@@ -3421,7 +3476,9 @@
       "showThumbnail": []
     },
     "ranking": {
-      "targetScriptKeys": ["basicList"],
+      "targetScriptKeys": [
+        "basicList"
+      ],
       "title": "🚄カード履歴🎴",
       "color": "garden",
       "limit": 5,
@@ -3448,7 +3505,11 @@
       "placeholders": "basic",
       "characters": "basic"
     },
-    "components": ["bubble", "toast", "ranking"],
+    "components": [
+      "bubble",
+      "toast",
+      "ranking"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

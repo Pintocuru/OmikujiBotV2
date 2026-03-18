@@ -10,7 +10,7 @@ const PROJECT = {
     'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/TarotCard/thumb_TarotCard.gif',
   tags: ['占い', 'タロットカード'],
   boothId: '7432682',
-  category: 'solo',
+  category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0',
   extraFiles: [],
 } satisfies ProjectParams

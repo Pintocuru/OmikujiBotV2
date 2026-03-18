@@ -9,7 +9,7 @@ const PROJECT = {
   banner: '',
   tags: ['卒業写真メーカー', 'フライトシート'],
   boothId: '8069882',
-  category: 'solo',
+  category: '2026-Q1',
   licenseLabel: '利用規約に従う',
 } satisfies ProjectParams
 

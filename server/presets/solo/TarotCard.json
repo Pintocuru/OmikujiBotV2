@@ -1,14 +1,17 @@
 {
   "meta": {
-    "id": "TarotCard-ver2026.01.26-2.0.4",
-    "name": "おみくじ BOT タロットカード OmikujiBot TarotCard",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.26-2.0.4",
+    "id": "TarotCard-ver2026.03.18-2.9.0-beta4",
+    "name": "おみくじBOT タロットカード OmikujiBot TarotCard",
+    "description": "大アルカナの 22 枚を使う、気軽に占えるタロットカードジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.9.0-beta3",
-    "dataVersion": 2.20090002003,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "タロット", "tarot", "Fortune"],
+    "tags": [
+      "占い",
+      "タロットカード"
+    ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682",
     "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/TarotCard/thumb_TarotCard.gif"
@@ -26,7 +29,9 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット"],
+      "tags": [
+        "タロット"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -39,27 +44,48 @@
           "order": 0,
           "isEnabled": true,
           "daisyColor": "primary",
-          "tags": ["タロット", "逆位置"],
+          "tags": [
+            "タロット",
+            "逆位置"
+          ],
           "accessLevel": "basic",
           "type": "postActions",
           "postActions": [
-            { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["TarotCardIntro"] },
+            {
+              "delaySeconds": 0,
+              "actionType": "actionSet",
+              "actionSetKeys": [
+                "TarotCardIntro"
+              ]
+            },
             {
               "delaySeconds": 3.5,
               "actionType": "message",
               "characterKey": null,
               "iconKey": "default",
               "sound": "collect",
-              "message": { "bubble": "<<user>>さんは<<TarotCard>>", "isToast": false }
+              "message": {
+                "bubble": "<<user>>さんは<<TarotCard>>",
+                "isToast": false
+              }
             }
           ],
-          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "gameScripts": {
+            "delaySeconds": 0,
+            "scriptId": null,
+            "queryString": "",
+            "characterKey": ""
+          },
           "special": "return",
           "behavior": {
             "type": "return",
             "isCountEvent": true,
             "countEvent": 1,
-            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+            "log": {
+              "targetKey": "",
+              "logFormat": "<<user>> <<score>> <<createdAt>>",
+              "logLimit": 5
+            }
           },
           "weight": 1,
           "isPriority": false,
@@ -68,13 +94,27 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["タロット", "^たろっと", "^tarot", "^うらな[いう]", "^占[いう]", "^fortune"]
+        "comment": [
+          "タロット",
+          "^たろっと",
+          "^tarot",
+          "^うらな[いう]",
+          "^占[いう]",
+          "^fortune"
+        ]
       },
-      "limits": { "cooldownSeconds": 3, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+      "limits": {
+        "cooldownSeconds": 3,
+        "cooldownMessage": null,
+        "isRepeatAllowed": 0,
+        "repeatMessage": null
+      }
     }
   },
   "timers": {},
@@ -91,21 +131,49 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "イントロ"],
+      "tags": [
+        "タロット",
+        "イントロ"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
-        { "delaySeconds": 0, "actionType": "wordParty", "wordParty": "TarotCard_back" },
-        { "delaySeconds": 1, "actionType": "wordParty", "wordParty": "TarotCard_01" },
-        { "delaySeconds": 1.5, "actionType": "wordParty", "wordParty": "TarotCard_02" },
-        { "delaySeconds": 2, "actionType": "wordParty", "wordParty": "TarotCard_03" }
+        {
+          "delaySeconds": 0,
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_back"
+        },
+        {
+          "delaySeconds": 1,
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_01"
+        },
+        {
+          "delaySeconds": 1.5,
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_02"
+        },
+        {
+          "delaySeconds": 2,
+          "actionType": "wordParty",
+          "wordParty": "TarotCard_03"
+        }
       ],
-      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+      "gameScripts": {
+        "delaySeconds": 0,
+        "scriptId": null,
+        "queryString": "",
+        "characterKey": ""
+      },
       "behavior": {
         "type": "return",
         "isCountEvent": true,
         "countEvent": 1,
-        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+        "log": {
+          "targetKey": "",
+          "logFormat": "<<user>> <<score>> <<createdAt>>",
+          "logLimit": 5
+        }
       }
     }
   },
@@ -121,7 +189,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "占い結果"],
+      "tags": [
+        "タロット",
+        "占い結果"
+      ],
       "accessLevel": "basic",
       "values": [
         "{{text='愚者(正位置)'}}【[[text]]】 <<TarotCardFool_U>>",
@@ -181,7 +252,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "新しい一歩が幸運を呼ぶ兆し。失敗を恐れず挑めば、思わぬ縁やチャンスが広がります。",
@@ -202,7 +276,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "軽率な行動が運を逃す兆し。勢い任せより、一度立ち止まる冷静さが必要です。",
@@ -223,7 +300,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "才能が輝き始めるとき。積極的に動けば、思い描いた未来を自ら形にできます。",
@@ -244,7 +324,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信過剰が失敗を招きやすいとき。力を誇示せず、謙虚さを大切にしましょう。",
@@ -265,7 +348,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "静かな知恵が幸運を導くとき。直感を信じ、冷静な判断が良い結果を呼びます。",
@@ -286,7 +372,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "感情に流されやすく判断が鈍るとき。落ち着きを取り戻すことが大切です。",
@@ -307,7 +396,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "豊かさと愛情に恵まれるとき。人との絆が深まり、喜びが自然と広がります。",
@@ -328,7 +420,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "甘えや怠けが運を停滞させるとき。自律を意識すれば流れはすぐ整います。",
@@ -349,7 +444,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "努力が実を結ぶ時期。責任を果たすことで信頼が集まり、大きな成果を得られます。",
@@ -370,7 +468,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "頑固さが運を停滞させやすいとき。柔軟な姿勢を意識することで道が開けます。",
@@ -391,7 +492,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "信頼できる人の助言が吉。素直に受け入れることで道が安定し、安心が広がります。",
@@ -412,7 +516,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "固い考えが停滞を招く兆し。柔軟な視点を持てば、新しい道が見えてきます。",
@@ -433,7 +540,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "心が通じ合う時期。人との絆が深まり、愛情や友情が温かく育ちます。",
@@ -454,7 +564,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "優柔不断が混乱を招くとき。自分の気持ちに正直になれば迷いは晴れます。",
@@ -475,7 +588,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "勢いが幸運を呼ぶとき。全力で進めば障害を乗り越え、大きな成果を得られます。",
@@ -496,7 +612,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "焦りや暴走が運を乱す兆し。冷静さを保つことが大切です。",
@@ -517,7 +636,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "穏やかな心が力となるとき。優しさが人を動かし、信頼を得られます。",
@@ -538,7 +660,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信を失いやすいとき。小さな成功を積み重ねて流れを戻しましょう。",
@@ -559,7 +684,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "静かな時間が幸運を育てます。自分を見つめ直せば新しい気づきが得られます。",
@@ -580,7 +708,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "孤独感にとらわれやすいとき。心を開けば助けが得られます。",
@@ -601,7 +732,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "幸運の流れが訪れる兆し。思い切った行動が大きな成果につながります。",
@@ -622,7 +756,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "運の波が乱れやすいとき。焦らず流れを待つことが大切です。",
@@ -643,7 +780,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "公平な判断が幸運を呼ぶとき。誠実に向き合えば信頼を得られます。",
@@ -664,7 +804,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "不公平な扱いを受けやすいとき。冷静に対処すれば被害は小さくできます。",
@@ -685,7 +828,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "忍耐が報われるとき。今の努力はやがて大きな成果に変わります。",
@@ -706,7 +852,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "我慢が限界に近づくとき。無理をせず助けを求めることが大切です。",
@@ -727,7 +876,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "終わりが新たな始まりを告げます。古いものを手放せば未来が開けます。",
@@ -748,7 +900,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "執着が変化を妨げる兆し。思い切って手放せば流れが戻ります。",
@@ -769,7 +924,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "調和とバランスが幸運を呼ぶとき。無理なく進めば自然と成果に繋がります。",
@@ -790,7 +948,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "バランスを崩しやすい時期。無理な行動は運を乱します。",
@@ -811,7 +972,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "欲望に従いやすいとき。楽しみも大切ですが節度を守れば幸運は続きます。",
@@ -832,7 +996,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "束縛から解放される兆し。執着を手放せば自由が訪れます。",
@@ -853,7 +1020,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "急な変化が訪れる兆し。驚きの出来事も新たな成長のきっかけになります。",
@@ -874,7 +1044,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "大きな崩壊は避けられる兆し。ただし小さな綻びに注意しましょう。",
@@ -895,7 +1068,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "希望の光が差し込むとき。理想を描けば現実が少しずつ追いついてきます。",
@@ -916,7 +1092,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "期待が大きすぎて失望を招きやすいとき。現実を見つめ直すことが吉です。",
@@ -937,7 +1116,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "直感が冴えるとき。夢やひらめきに幸運のヒントがあります。",
@@ -958,7 +1140,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "不安や幻想に振り回されやすいとき。事実を確かめる姿勢が大切です。",
@@ -979,7 +1164,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "喜びと成功に満ちる時期。自信を持って行動すれば成果を掴めます。",
@@ -1000,7 +1188,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "喜びが一時的に陰る兆し。小さな不和も素直に解決すれば回復します。",
@@ -1021,7 +1212,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "過去の努力が報われるとき。新しい扉が開きます。",
@@ -1042,7 +1236,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "過去に囚われ前に進みにくいとき。手放す勇気が未来を呼びます。",
@@ -1063,7 +1260,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "正位置"],
+      "tags": [
+        "タロット",
+        "正位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "成就と完成のとき。努力が実り、充実した達成感に包まれます。",
@@ -1084,7 +1284,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#9C27B0",
-      "tags": ["タロット", "逆位置"],
+      "tags": [
+        "タロット",
+        "逆位置"
+      ],
       "accessLevel": "basic",
       "values": [
         "達成が目前で停滞する兆し。焦らず最後まで丁寧に進めましょう。",
@@ -1107,7 +1310,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1137,7 +1343,12 @@
         "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
-      "displayOption": { "mode": "comment", "imageBase64": "", "frameId": "OmikujiBot", "rpgVoice": "rpg_voice_a5" }
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
     "omiken_2": {
       "id": "omiken_2",
@@ -1150,7 +1361,10 @@
       "isEnabled": true,
       "daisyColor": "primary",
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
@@ -1180,14 +1394,28 @@
         "backgroundColor": "#1565C0",
         "customClasses": "px-4 py-4 rounded-xl"
       },
-      "displayOption": { "mode": "comment", "imageBase64": "", "frameId": "OmikujiBot", "rpgVoice": "rpg_voice_a5" }
+      "displayOption": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "OmikujiBot",
+        "rpgVoice": "rpg_voice_a5"
+      }
     }
   },
   "components": {
     "conditions": [
-      { "slot": "primary", "kind": "bubble" },
-      { "slot": "secondary", "kind": "toast" },
-      { "slot": "extra", "kind": "ranking" }
+      {
+        "slot": "primary",
+        "kind": "bubble"
+      },
+      {
+        "slot": "secondary",
+        "kind": "toast"
+      },
+      {
+        "slot": "extra",
+        "kind": "ranking"
+      }
     ],
     "enableSecondary": true,
     "specialSet": null,
@@ -1202,19 +1430,38 @@
         "textColor": "#212121",
         "backgroundColor": "#FAFAFA"
       },
-      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+      "defaultVoice": {
+        "mode": "comment",
+        "imageBase64": "",
+        "frameId": "",
+        "rpgVoice": "rpg_voice_a5"
+      }
     },
     "settings": {
       "bubble": {
-        "showCharacters": { "center": ["omiken"], "slot1": [], "slot2": [], "slot3": [], "slot4": [] },
+        "showCharacters": {
+          "center": [
+            "omiken"
+          ],
+          "slot1": [],
+          "slot2": [],
+          "slot3": [],
+          "slot4": []
+        },
         "characterSize": 48,
         "bubbleMotionEnter": "flipX",
         "bubbleTextAnimate": false,
         "bubbleTextSpeed": 50
       },
-      "toast": { "showToastsOnRight": true, "showToastsCharacter": false, "showThumbnail": [] },
+      "toast": {
+        "showToastsOnRight": true,
+        "showToastsCharacter": false,
+        "showThumbnail": []
+      },
       "ranking": {
-        "targetScriptKeys": ["basicList"],
+        "targetScriptKeys": [
+          "basicList"
+        ],
         "title": "🔯タロット占い履歴🔮",
         "color": "aqua",
         "limit": 5,
@@ -1226,7 +1473,11 @@
         "targetEventKey": "",
         "target": "draw",
         "label": "Counter",
-        "color": { "daisyUiTheme": "dark", "backFrom": "primary", "backTo": "secondary" }
+        "color": {
+          "daisyUiTheme": "dark",
+          "backFrom": "primary",
+          "backTo": "secondary"
+        }
       }
     }
   },
@@ -1239,9 +1490,17 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
-    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "none", "itemSlotEnabled": "basic" }
+    "developer": {
+      "licenseVisible": "basic",
+      "jsonMergeSettings": "none",
+      "itemSlotEnabled": "basic"
+    }
   },
   "settings": {
     "locale": "ja",

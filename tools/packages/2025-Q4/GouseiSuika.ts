@@ -1,16 +1,16 @@
-// tools/packages/solo/ValentineCoupling.ts
+// tools/packages/solo/GouseiSuika.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'ValentineCoupling',
-  title: 'バレンタイン・カップリング',
-  description: 'test',
+  key: 'GouseiSuika',
+  title: 'スイカジェネレーター +カボチャ&クジラ',
+  description: 'コメントでスイカゲーム風のおみくじを楽しめる',
   banner: '',
-  tags: ['バレンタイン・カップリング', 'ラッキーメンバーズ'],
-  boothId: '7432682',
-  category: 'solo',
-  licenseLabel: 'CC-BY 4.0',
+  tags: ['ゲームスクリプト', 'スイカジェネレーター', 'カボチャジェネレーター', 'クジラジェネレーター'],
+  boothId: '5813323',
+  category: '2025-Q4',
+  licenseLabel: '利用規約に従う',
   extraFiles: [],
 } satisfies ProjectParams
 
@@ -19,7 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'ValentineCoupling', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧

@@ -9,7 +9,7 @@ const PROJECT = {
   banner: '',
   tags: ['おみくじBOT'],
   boothId: '5471598',
-  category: 'full',
+  category: 'common',
   licenseLabel: '個人利用のみ', // basic / pro 共通なのでそのまま
   extraFiles: [
     { from: 'assets/Characters/chocolate/', to: 'Characters/chocolate/' },

@@ -1,16 +1,19 @@
 {
   "meta": {
-    "id": "HondaJanken-ver2026.01.26-2.0.4",
+    "id": "HondaJanken-ver2026.03.18-2.9.0-beta4",
     "name": "おみくじBOT じゃんけん OmikujiBot HondaJanken",
-    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
-    "version": "ver2026.01.26-2.0.4",
+    "description": "「じゃんけん」ミニゲームが楽しめるジェネレーター",
+    "version": "ver2026.03.18-2.9.0-beta4",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.3.4",
-    "dataVersion": 2.20030044002,
+    "generatorVersion": "2.9.0-beta4",
+    "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": ["おみくじBOT", "じゃんけん"],
+    "tags": [
+      "じゃんけん"
+    ],
     "license": "利用規約に従う",
-    "url": "https://pintocuru.booth.pm/items/7383088"
+    "url": "https://pintocuru.booth.pm/items/7383088",
+    "banner": ""
   },
   "jsonMerge": [],
   "comments": {
@@ -24,7 +27,9 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -200,11 +205,17 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^じゃんけん", "^ジャンケン", "^janken"]
+        "comment": [
+          "^じゃんけん",
+          "^ジャンケン",
+          "^janken"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -223,7 +234,9 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -313,11 +326,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^グー", "^ぐー", "✊️", "👊"]
+        "comment": [
+          "^グー",
+          "^ぐー",
+          "✊️",
+          "👊"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -336,7 +356,9 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -426,11 +448,17 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^チョキ", "^ちょき", "✌️"]
+        "comment": [
+          "^チョキ",
+          "^ちょき",
+          "✌️"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -449,7 +477,9 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -539,11 +569,18 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": ["comment"],
+        "conditions": [
+          "comment"
+        ],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": ["^パー", "^ぱー", "✋️", "🖐️"]
+        "comment": [
+          "^パー",
+          "^ぱー",
+          "✋️",
+          "🖐️"
+        ]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -566,7 +603,9 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -599,7 +638,9 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
@@ -632,14 +673,18 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -680,14 +725,18 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -728,14 +777,18 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -776,14 +829,18 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -824,14 +881,18 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -872,14 +933,18 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -920,14 +985,18 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -968,14 +1037,18 @@
       "order": 10,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1016,14 +1089,18 @@
       "order": 11,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1064,14 +1141,18 @@
       "order": 12,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1112,14 +1193,18 @@
       "order": 13,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1160,14 +1245,18 @@
       "order": 14,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1208,14 +1297,18 @@
       "order": 15,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyA"]
+          "actionSetKeys": [
+            "HondaJankenReadyA"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1256,14 +1349,18 @@
       "order": 16,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "type": "postActions",
       "postActions": [
         {
           "delaySeconds": 0,
           "actionType": "actionSet",
-          "actionSetKeys": ["HondaJankenReadyB"]
+          "actionSetKeys": [
+            "HondaJankenReadyB"
+          ]
         },
         {
           "delaySeconds": 0.4,
@@ -1306,9 +1403,13 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
-      "values": ["ケイスケ ホンダ"]
+      "values": [
+        "ケイスケ ホンダ"
+      ]
     },
     "HondaJankenOre": {
       "id": "HondaJankenOre",
@@ -1320,9 +1421,13 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
-      "values": ["俺"]
+      "values": [
+        "俺"
+      ]
     },
     "HondaJankenA1": {
       "id": "HondaJankenA1",
@@ -1334,7 +1439,9 @@
       "order": 3,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "負けは次につながるチャンスです!ネバーギブアップ!",
@@ -1353,7 +1460,9 @@
       "order": 4,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "<<HondaJankenName>> の心なんて読めるわけがない、そう思ってないですか。あきらめへん人だけに見える景色があるはずです。",
@@ -1371,7 +1480,9 @@
       "order": 5,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "たかがじゃんけん、そう思ってないですか？それやったら明日も、<<HondaJankenOre>>が勝ちますよ。",
@@ -1390,7 +1501,9 @@
       "order": 6,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "自信を持って勝負にしっかりと向き合える、そう思えるまで、準備してください。",
@@ -1408,7 +1521,9 @@
       "order": 7,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "なんで負けたか、明日まで考えといてください。そしたら何かが見えてくるはずです。",
@@ -1427,7 +1542,9 @@
       "order": 8,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "複雑に考えてないですか?答えはシンプルです。<<HondaJankenName>>の心を読む、それだけです。",
@@ -1445,7 +1562,9 @@
       "order": 9,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["じゃんけん"],
+      "tags": [
+        "じゃんけん"
+      ],
       "accessLevel": "basic",
       "values": [
         "やるやん。明日は<<HondaJankenOre>>にリベンジさせて。",
@@ -1466,20 +1585,31 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": ["HondaJanken/default.webp"],
-        "happy": ["HondaJanken/cora.webp", "HondaJanken/default.webp"],
+        "default": [
+          "HondaJanken/default.webp"
+        ],
+        "happy": [
+          "HondaJanken/cora.webp",
+          "HondaJanken/default.webp"
+        ],
         "excited": [],
         "laughing": [],
         "blushing": [],
         "surprised": [],
-        "sad": ["HondaJanken/coraWin.webp", "HondaJanken/default.webp"],
+        "sad": [
+          "HondaJanken/coraWin.webp",
+          "HondaJanken/default.webp"
+        ],
         "angry": [],
         "thinking": [],
         "wink": [],
@@ -1513,20 +1643,31 @@
       "order": 2,
       "isEnabled": true,
       "editorColor": "#2196F3",
-      "tags": ["おみくじBOT", "シンプル"],
+      "tags": [
+        "おみくじBOT",
+        "シンプル"
+      ],
       "accessLevel": "basic",
       "version": "0.0.1",
       "author": "Pintocuru",
       "url": "",
       "displayName": "",
       "image": {
-        "default": ["HondaJanken/default.webp"],
-        "happy": ["HondaJanken/cora.webp", "HondaJanken/default.webp"],
+        "default": [
+          "HondaJanken/default.webp"
+        ],
+        "happy": [
+          "HondaJanken/cora.webp",
+          "HondaJanken/default.webp"
+        ],
         "excited": [],
         "laughing": [],
         "blushing": [],
         "surprised": [],
-        "sad": ["HondaJanken/coraWin.webp", "HondaJanken/default.webp"],
+        "sad": [
+          "HondaJanken/coraWin.webp",
+          "HondaJanken/default.webp"
+        ],
         "angry": [],
         "thinking": [],
         "wink": [],
@@ -1589,7 +1730,10 @@
       "bubble": {
         "showCharacters": {
           "center": [],
-          "slot1": ["omiken", "omiken_2"],
+          "slot1": [
+            "omiken",
+            "omiken_2"
+          ],
           "slot2": [],
           "slot3": [],
           "slot4": []
@@ -1605,7 +1749,9 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": ["basicList"],
+        "targetScriptKeys": [
+          "basicList"
+        ],
         "title": "👊 じゃんけん 🖐️",
         "color": "garden",
         "limit": 5,
@@ -1634,7 +1780,11 @@
       "placeholders": "basic",
       "characters": "none"
     },
-    "components": ["toast", "ranking", "bubble"],
+    "components": [
+      "toast",
+      "ranking",
+      "bubble"
+    ],
     "gameScripts": [],
     "developer": {
       "licenseVisible": "basic",

@@ -1,25 +1,25 @@
-// tools/packages/solo/MaidenOmikujiNormal.ts
+// tools/packages/solo/LenormandOracle.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'MaidenOmikujiNormal',
-  title: '巫女さんのおみくじ',
-  description: '巫女さん手製の、真面目なおみくじジェネレーター',
+  key: 'LenormandOracle',
+  title: 'ルノルマンカード',
+  description: '36 枚のシンボルからメッセージを受け取る、気軽に占えるルノルマンカードジェネレーター',
   banner: '',
-  tags: ['おみくじ', '巫女さんのおみくじ'],
-  boothId: '7982286',
-  category: 'petit',
-  licenseLabel: 'CC-BY 4.0',
+  tags: ['占い', 'ルノルマンカード'],
+  boothId: '7915987',
+  category: '2026-Q1',
+  licenseLabel: '利用規約に従う', // adv指定だが、指示通り単一化
   extraFiles: [],
 } satisfies ProjectParams
 
 // バリエーション定義
 const COLOR_VARIANTS = [''] as const
 
-// ビルドターゲット（推定）
+// ビルドターゲット（adv を反映）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'MaidenOmikujiNormal', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'LenormandOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
