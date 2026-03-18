@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "MyNineViewers-ver2026.03.18-2.9.0-beta4",
+    "id": "MyNineViewers-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT 私を構成する 9 人のユーザー。 OmikujiBot MyNineViewers",
     "description": "コメントしたユーザーをランダムに枠に入れるジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -14,7 +14,7 @@
     ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/8060471",
-    "banner": ""
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2026-Q1/MyNineViewers/MyNineViewers.gif"
   },
   "jsonMerge": [],
   "comments": {},

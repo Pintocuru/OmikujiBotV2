@@ -36,6 +36,13 @@ const templateList: string[] = [
   '2025-Q4/GouseiSuika/GouseiSuika.json',
   '2025-Q4/HondaJanken/HondaJanken.json',
   '2025-Q4/TarotCard/TarotCard.json',
+
+  '2026-Q1/BreakingSyoken/BreakingSyoken.json',
+  '2026-Q1/GraduationIcons/GraduationIcons.json',
+  '2026-Q1/HonjoFox/HonjoFox.json',
+  '2026-Q1/MyNineViewers/MyNineViewers.json',
+  '2026-Q1/StreamCounter/StreamCounterCircle.json',
+  '2026-Q1/StreamCounter/StreamCounterPixelOhayou.json',
 ]
 
 // -------------------------------------------------------------------
