@@ -81,6 +81,7 @@ export function createProject(packageRoot: string, color: string, params: Projec
 
     template: {
       name: `おみくじBOT ${params.title} ${colorLabel}OmikujiBot ${id}`,
+      label: `${params.title} ${colorLabel} ${id}`,
       boothURL: `https://pintocuru.booth.pm/items/${params.boothId}`,
       readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/${params.category}/${params.key}`,
       description: params.description,

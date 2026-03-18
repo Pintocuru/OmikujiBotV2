@@ -44,7 +44,7 @@ export const SettingsFlightSchema = z.object({
     .catch('flightSeat'),
   customLayout: z.string().optional(),
   targetEventKey: z.string().default('').catch(''),
-  label: z.string().default('🛫 8時間フライト、どの席に座る？').catch('🛫 8時間フライト、どの席に座る？'),
+  label: z.string().default('ユーザーリスト').catch('ユーザーリスト'), // 🛫 8時間フライト、どの席に座る？
   color: z.enum(themes).default('lofi').catch('lofi'),
   statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
 })

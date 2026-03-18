@@ -2,7 +2,7 @@
 <template>
   <div class="card card-compact bg-base-200 border border-base-300 transition-colors">
     <!-- バナー画像 -->
-    <figure class="h-28 overflow-hidden bg-base-300">
+    <figure class="h-36 overflow-hidden bg-base-300">
       <img
         v-if="pack.bannerUrl && !bannerError"
         :src="pack.bannerUrl"
@@ -17,30 +17,31 @@
 
     <div class="card-body gap-1">
       <!-- パック名 -->
-      <h3 class="card-title text-sm font-semibold truncate">{{ pack.meta.name }}</h3>
+      <h3 class="card-title font-semibold truncate">
+        {{ pack.meta.name }}
+        <span class="badge badge-accent badge-xs">{{ pack.meta.version }}</span>
+      </h3>
 
       <!-- 説明 -->
-      <p v-if="pack.meta.description" class="text-xs text-base-content/60 line-clamp-2">
+      <p v-if="pack.meta.description" class="text-sm text-base-content/60 line-clamp-2">
         {{ pack.meta.description }}
       </p>
 
-      <!-- メタ情報 -->
+      <!-- タグ（クリックで絞り込み） -->
       <div class="flex flex-wrap gap-1 mt-1">
-        <span v-if="pack.meta.author" class="badge badge-ghost badge-xs">
-          {{ pack.meta.author }}
-        </span>
-        <span class="badge badge-ghost badge-xs">v{{ pack.meta.version }}</span>
-        <span v-for="tag in pack.meta.tags.slice(0, 3)" :key="tag" class="badge badge-outline badge-xs">
+        <button
+          v-for="tag in pack.meta.tags"
+          :key="tag"
+          class="badge badge-xs cursor-pointer transition-colors"
+          :class="selectedTags.includes(tag) ? 'badge-primary' : 'badge-outline'"
+          @click.stop="emit('tag-click', tag)"
+        >
           {{ tag }}
-        </span>
+        </button>
       </div>
-
-      <!-- ライセンス -->
-      <p class="text-xs text-base-content/40 mt-1">{{ pack.meta.license }}</p>
 
       <!-- アクションボタン -->
       <div class="card-actions justify-end mt-2 gap-1">
-        <!-- 部分読み込み -->
         <button
           class="btn btn-xs btn-secondary tooltip tooltip-bottom"
           data-tip="この設定を部分的に読み込み/マージ"
@@ -50,8 +51,6 @@
           <FileText class="w-3 h-3" />
           マージ
         </button>
-
-        <!-- 置き換え -->
         <button
           class="btn btn-xs btn-primary tooltip tooltip-bottom"
           data-tip="現在のデータをこの設定で置き換える"
@@ -74,11 +73,13 @@
   defineProps<{
     pack: DataPackEntry
     disabled?: boolean
+    selectedTags: string[]
   }>()
 
   const emit = defineEmits<{
     replace: []
     'partial-load': []
+    'tag-click': [tag: string]
   }>()
 
   const bannerError = ref(false)

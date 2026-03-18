@@ -2,52 +2,65 @@
 import { ref, computed } from 'vue'
 import axios from 'axios'
 import type { MetaDataType } from '@shared/types/core/MetaDataSchema'
+import type { AccessLevelType } from '@shared/types/core/AccessLevelSchema'
+import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
-// -------------------------------------------------------------------
 // 型定義
-// -------------------------------------------------------------------
 export interface DataPackEntry {
-  path: string // GitHub上のパス（data-packs/...）
-  rawUrl: string // Raw URL
+  path: string
+  rawUrl: string
   bannerUrl: string | null
   meta: MetaDataType
-  json: Record<string, unknown> // 生のJSONデータ（import処理用）
+  json: Record<string, unknown>
 }
 
-// -------------------------------------------------------------------
 // GitHub Raw URL ユーティリティ
-// -------------------------------------------------------------------
 const REPO_BASE = 'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/main/'
 
 export function buildRawUrl(path: string): string {
   return `${REPO_BASE}/${path}`
 }
 
-// -------------------------------------------------------------------
-// テンプレートリスト（静的定義）
-// data-packs 以下のエントリを追加していく
-// -------------------------------------------------------------------
-const templateList: string[] = [
-  'common/StrawberryChocolate/StrawberryChocolate.json',
+// テンプレートリスト（アクセスレベル別）
+// 'adv' は使用しない
+const templateList: Record<AccessLevelType, string[]> = {
+  basic: [
+    'common/StrawberryChocolate/StrawberryChocolate.json',
 
-  '2025-Q4/BigBangFortune/BigBangFortune.json',
-  '2025-Q4/BomberSpin/BomberSpin.json',
-  '2025-Q4/CardStation/CardStation.json',
-  '2025-Q4/GouseiSuika/GouseiSuika.json',
-  '2025-Q4/HondaJanken/HondaJanken.json',
-  '2025-Q4/TarotCard/TarotCard.json',
+    '2025-Q4/BigBangFortune/BigBangFortune.json',
+    '2025-Q4/CardStation/CardStation.json',
+    '2025-Q4/HondaJanken/HondaJanken.json',
+    '2025-Q4/TarotCard/TarotCard.json',
 
-  '2026-Q1/BreakingSyoken/BreakingSyoken.json',
-  '2026-Q1/GraduationIcons/GraduationIcons.json',
-  '2026-Q1/HonjoFox/HonjoFox.json',
-  '2026-Q1/MyNineViewers/MyNineViewers.json',
-  '2026-Q1/StreamCounter/StreamCounterCircle.json',
-  '2026-Q1/StreamCounter/StreamCounterPixelOhayou.json',
-]
+    '2026-Q1/BreakingSyoken/BreakingSyoken.json',
+    '2026-Q1/GraduationIcons/GraduationIcons.json',
+    '2026-Q1/HonjoFox/HonjoFox.json',
+    '2026-Q1/MyNineViewers/MyNineViewers.json',
+    '2026-Q1/StreamCounter/StreamCounterCircle.json',
+    '2026-Q1/StreamCounter/StreamCounterPixelOhayou.json',
+  ],
+  pro: [
+    '2025-Q4/BomberSpin/BomberSpin.json',
+    '2025-Q4/GouseiSuika/GouseiSuika.json',
+    '2026-Q1/LenormandOracle/LenormandOracle.json',
+    '2026-Q1/RunicOracle/RunicOracle.json',
+  ],
+  godMode: [
+    // 内部用パック
+  ],
+  none: [],
+  adv: [],
+}
 
-// -------------------------------------------------------------------
+// アクセスレベルに応じたテンプレートパスを収集
+function resolveTemplatePaths(isPro: boolean, isGod: boolean): string[] {
+  const paths: string[] = [...templateList.basic]
+  if (isPro || isGod) paths.push(...templateList.pro)
+  if (isGod) paths.push(...templateList.godMode)
+  return paths
+}
+
 // JSON ローダー
-// -------------------------------------------------------------------
 async function loadTemplateJson(rawUrl: string): Promise<Record<string, unknown>> {
   const response = await axios.get<Record<string, unknown>>(rawUrl, {
     responseType: 'json',
@@ -56,13 +69,39 @@ async function loadTemplateJson(rawUrl: string): Promise<Record<string, unknown>
   return response.data
 }
 
-// -------------------------------------------------------------------
 // composable
-// -------------------------------------------------------------------
 export function useDataPacks() {
   const packs = ref<DataPackEntry[]>([])
   const loading = ref(false)
   const error = ref<string | null>(null)
+  const selectedTags = ref<string[]>([])
+
+  const { isPro, isGod } = useSettingMode()
+
+  // 全パックから重複なくタグを収集
+  const allTags = computed<string[]>(() => {
+    const tagSet = new Set<string>()
+    for (const pack of packs.value) {
+      for (const tag of pack.meta.tags ?? []) tagSet.add(tag)
+    }
+    return [...tagSet].sort()
+  })
+
+  // 選択タグで絞り込み（未選択時は全件）
+  const filteredPacks = computed<DataPackEntry[]>(() => {
+    if (selectedTags.value.length === 0) return packs.value
+    return packs.value.filter((pack) => selectedTags.value.every((tag) => pack.meta.tags?.includes(tag)))
+  })
+
+  function toggleTag(tag: string) {
+    const idx = selectedTags.value.indexOf(tag)
+    if (idx === -1) selectedTags.value = [...selectedTags.value, tag]
+    else selectedTags.value = selectedTags.value.filter((t) => t !== tag)
+  }
+
+  function clearTags() {
+    selectedTags.value = []
+  }
 
   async function fetchAll() {
     loading.value = true
@@ -70,8 +109,9 @@ export function useDataPacks() {
     packs.value = []
 
     const results: DataPackEntry[] = []
+    const paths = resolveTemplatePaths(isPro.value, isGod.value)
 
-    for (const path of templateList) {
+    for (const path of paths) {
       const rawUrl = buildRawUrl(path)
       try {
         const json = await loadTemplateJson(rawUrl)
@@ -96,5 +136,15 @@ export function useDataPacks() {
 
   const isEmpty = computed(() => !loading.value && packs.value.length === 0)
 
-  return { packs, loading, error, isEmpty, fetchAll }
+  return {
+    packs: filteredPacks,
+    loading,
+    error,
+    isEmpty,
+    fetchAll,
+    allTags,
+    selectedTags,
+    toggleTag,
+    clearTags,
+  }
 }

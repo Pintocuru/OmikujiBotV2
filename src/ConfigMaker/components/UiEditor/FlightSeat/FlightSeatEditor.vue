@@ -3,7 +3,12 @@
   <FlightSeatPreview />
 
   <!-- タイトル -->
-  <SettingItem label="タイトル" description="座席表のタイトルを設定します">
+  <SettingItem
+    label="タイトル"
+    description="座席表のタイトルを設定します"
+    :showReset="true"
+    @reset="resetField('label')"
+  >
     <input
       type="text"
       class="input input-bordered w-full"
@@ -125,16 +130,16 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
+  const flightSeat = computed(() => SettingsFlightSchema.parse(data.value.components.settings.flightSeat ?? {}))
   const rulesComment = computed(() => data.value.comments)
 
   const { isAdv, isPro } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
-  /** defaultが string = カスタム可能 */
+  // defaultが string = カスタム可能
   const isCustomizable = computed(() => typeof flightComponentDefaults[flightSeat.value.component] === 'string')
 
-  /** customLayout のバリデーション */
+  // customLayout のバリデーション
   const isValidLayout = computed(() => {
     const val = flightSeat.value.customLayout
     if (!val) return true
