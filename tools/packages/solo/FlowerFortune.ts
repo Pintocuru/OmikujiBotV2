@@ -1,44 +1,30 @@
 // tools/packages/solo/FlowerFortune.ts
-import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
-import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
+import { createProject } from '../../buildOptions/baseSettings'
+import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
-const PROJECT_KEY = 'FlowerFortune'
-const PROJECT_TITLE = 'フラワー占い'
-const boothURLNumber = '7982286'
+const PROJECT = {
+  key: 'FlowerFortune',
+  title: 'フラワー占い',
+  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  banner: '',
+  tags: ['おみくじBOT', 'BOT', 'フラワー占い', 'おみくじ'],
+  boothId: '7982286',
+  category: 'petit', // readmeURL に合わせる
+  licenseLabel: 'CC-BY 4.0',
+  extraFiles: [],
+} satisfies ProjectParams
 
-function project(packageRoot: string): ProjectConfig {
-  const base = createCommonBuildConfig(packageRoot)
+// バリエーション定義
+const COLOR_VARIANTS = [''] as const
 
-  return {
-    ...base,
+// ビルドターゲット（推定）
+const buildTargets: PackageBuildTarget[] = [
+  { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+]
 
-    name: PROJECT_KEY,
-    tags: ['おみくじBOT', 'BOT', 'フラワー占い', 'おみくじ'],
-
-    license: {
-      basic: 'CC-BY 4.0',
-    },
-
-    template: {
-      name: `おみくじ BOT ${PROJECT_TITLE} OmikujiBot ${PROJECT_KEY}`,
-      boothURL: `https://pintocuru.booth.pm/items/${boothURLNumber}`,
-      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/petit/${PROJECT_KEY}`,
-      description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
-    },
-
-    json: {
-      ...base.json,
-      jsonPath: `${PROJECT_KEY}.json`,
-    },
-
-    accessLevels: {
-      basic: {
-        filesToCopy: [
-          // { from: `assets/thumb/thumb_${PROJECT_KEY}.gif`, to: 'thumb.gif' },
-        ],
-      },
-    },
-  }
+// プロジェクト一覧
+function getProjects(packageRoot: string): ProjectConfig[] {
+  return COLOR_VARIANTS.map((color) => createProject(packageRoot, color, PROJECT))
 }
 
-export default project
+export default { getProjects, buildTargets }

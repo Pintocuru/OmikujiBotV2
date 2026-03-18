@@ -1,45 +1,33 @@
 // tools/packages/petit/HonjoFox.ts
-import { createCommonBuildConfig } from '../../buildOptions/baseSettings'
-import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
+import { createProject } from '../../buildOptions/baseSettings'
+import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
-const PROJECT_KEY = 'HonjoFox'
-const PROJECT_TITLE = '中仙道の村きつね'
-const boothURLNumber = '7982286'
+const PROJECT = {
+  key: 'HonjoFox',
+  title: '中仙道の村きつね',
+  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  banner: '',
+  tags: ['おみくじBOT', 'BOT', '中仙道の村きつね', 'コメントチェック', '初見判定ちゃん'],
+  boothId: '7982286',
+  category: 'petit',
+  licenseLabel: 'CC-BY 4.0',
+  extraFiles: [
+    { from: 'assets/thumb/thumb_HonjoFox.gif', to: 'thumb.gif' },
+    { from: 'assets/Characters/HonjoFox/', to: 'Characters/HonjoFox/' },
+  ],
+} satisfies ProjectParams
 
-function project(packageRoot: string): ProjectConfig {
-  const base = createCommonBuildConfig(packageRoot)
+// バリエーション定義
+const COLOR_VARIANTS = [''] as const
 
-  return {
-    ...base,
+// ビルドターゲット（推定）
+const buildTargets: PackageBuildTarget[] = [
+  { project: 'HonjoFox', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+]
 
-    name: PROJECT_KEY,
-    tags: ['おみくじBOT', 'BOT', PROJECT_TITLE, 'コメントチェック', '初見判定ちゃん'],
-
-    license: {
-      basic: 'CC-BY 4.0',
-    },
-
-    template: {
-      name: `おみくじ BOT ${PROJECT_TITLE} OmikujiBot ${PROJECT_KEY}`,
-      boothURL: `https://pintocuru.booth.pm/items/${boothURLNumber}`,
-      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/petit/${PROJECT_KEY}`,
-      description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
-    },
-
-    json: {
-      ...base.json,
-      jsonPath: `${PROJECT_KEY}.json`,
-    },
-
-    accessLevels: {
-      basic: {
-        filesToCopy: [
-          { from: `assets/thumb/thumb_${PROJECT_KEY}.gif`, to: 'thumb.gif' },
-          { from: `assets/Characters/${PROJECT_KEY}/`, to: `Characters/${PROJECT_KEY}/` },
-        ],
-      },
-    },
-  }
+// プロジェクト一覧
+function getProjects(packageRoot: string): ProjectConfig[] {
+  return COLOR_VARIANTS.map((color) => createProject(packageRoot, color, PROJECT))
 }
 
-export default project
+export default { getProjects, buildTargets }

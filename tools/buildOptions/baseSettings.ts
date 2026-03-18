@@ -6,18 +6,62 @@ import { generateJsContent } from '@config/components/presetsExport/generateCont
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'
 import { APP_VERSION, BUILD_DATE } from '@/version'
+import { ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
-/**
- * 共通のビルド設定を生成
- * @param packageRoot パッケージのルートディレクトリ
- */
-export function createCommonBuildConfig(packageRoot: string) {
+// ----- 定数 -----
+
+/** index.html / ConfigMaker のセットは全プロジェクト共通 */
+export const DEFAULT_FILES_TO_COPY = [
+  { from: 'assets/TemplateEntry/index.html', to: 'index.html' },
+  { from: 'assets/TemplateEntry/ConfigMaker.html', to: 'ConfigMaker.html' },
+  { from: 'assets/TemplateEntry/script.js', to: 'script.js' },
+]
+
+/** OneSDK と おみくじデータ の外部スクリプト読み込みタグ */
+const HTML_SCRIPT_TAGS = `
+  <!-- OneSDK (外部読み込み) -->
+  <script src="http://localhost:11180/templates/preset/__origin/js/onesdk.js" defer></script>
+
+  <!-- おみくじデータ -->
+  <script src="./omikujiData.js" defer></script>
+`
+
+// ----- ファクトリ -----
+
+/** コアプロジェクト向けの共通ベース設定 */
+export function createCoreBuildConfig(packageRoot: string) {
   return {
     version: `${BUILD_DATE}-${APP_VERSION}`,
     packageRoot,
     entryPoints: null,
+    addHtmlTemplate: HTML_SCRIPT_TAGS,
+    licenseKey: {
+      none: '',
+      basic: '',
+      adv: getKey('adv'),
+      pro: getKey('pro'),
+      godMode: getKey('godMode'),
+    },
+  }
+}
 
-    // ライセンスキー
+/**
+ * プロジェクト設定を生成する。
+ *
+ * @param packageRoot パッケージのルートディレクトリ
+ * @param color       カラーバリアント識別子（空文字の場合はデフォルト扱い）
+ * @param params      プロジェクト固有パラメータ
+ */
+export function createProject(packageRoot: string, color: string, params: ProjectParams): ProjectConfig {
+  const id = `${params.key}${color}`
+  const colorLabel = color ? `${color} ` : ''
+
+  return {
+    // --- 共通フィールド ---
+    version: `${BUILD_DATE}-${APP_VERSION}`,
+    packageRoot,
+    entryPoints: null,
+
     licenseKey: {
       none: '',
       basic: '',
@@ -26,45 +70,41 @@ export function createCommonBuildConfig(packageRoot: string) {
       godMode: getKey('godMode'),
     },
 
-    // HTML設定
-    addHtmlTemplate: `
-  <!-- OneSDK (外部読み込み) -->
-  <script src="http://localhost:11180/templates/preset/__origin/js/onesdk.js" defer></script>
+    addHtmlTemplate: HTML_SCRIPT_TAGS,
 
-  <!-- おみくじデータ -->
-  <script src="./omikujiData.js" defer></script>
-`,
+    // --- プロジェクト固有フィールド ---
+    key: id,
+    name: params.title,
+    tags: params.tags,
+    banner: params.banner,
+    licenseLabel: params.licenseLabel,
 
-    // JSON設定（おみくじデータ）
-    json: {
-      jsonPathRoot: path.resolve(packageRoot, 'server/presets/'),
-      generateAccessLevelData,
-      generateJsContent,
-      assembleJsonData: processMerge,
+    template: {
+      name: `おみくじ BOT ${params.title} ${colorLabel}OmikujiBot ${id}`,
+      boothURL: `https://pintocuru.booth.pm/items/${params.boothId}`,
+      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/${params.category}/${params.key}`,
+      description: params.description,
     },
+
+    json: buildJsonConfig(packageRoot, `${id}.json`),
+
+    filesToCopy: [
+      ...(params.extraFiles ?? []),
+      ...DEFAULT_FILES_TO_COPY,
+      { from: `assets/thumb/${params.key}/${id}.gif`, to: 'thumb.gif' },
+    ],
   }
 }
 
-/**
- * filesToCopy のデフォルト
- */
-export const defaultFilesToCopy = [
-  // index / ConfigMakerのセット
-  { from: 'assets/TemplateEntry/index.html', to: 'index.html' },
-  { from: 'assets/TemplateEntry/ConfigMaker.html', to: 'ConfigMaker.html' },
-  { from: 'assets/TemplateEntry/script.js', to: 'script.js' },
-]
+// ----- 内部ヘルパー -----
 
-/**
- * JSON設定（おみくじデータ）
- */
-export function createCommonBuildConfigJson(packageRoot: string, templateName: string) {
-  const presetsRoot = path.resolve(packageRoot, 'server/presets/')
-  const jsonPath = findJsonPath(presetsRoot, templateName)
+/** JSON設定オブジェクトを生成する */
+function buildJsonConfig(packageRoot: string, templateName: string) {
+  const jsonPathRoot = path.resolve(packageRoot, 'server/presets/')
 
   return {
-    jsonPathRoot: presetsRoot,
-    jsonPath,
+    jsonPathRoot,
+    jsonPath: findJsonPath(jsonPathRoot, templateName),
     generateAccessLevelData,
     generateJsContent,
     assembleJsonData: processMerge,

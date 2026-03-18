@@ -1,89 +1,44 @@
 // tools/packages/sesupin/StrawberryChocolate.ts
-import {
-  createCommonBuildConfig,
-  createCommonBuildConfigJson,
-  defaultFilesToCopy,
-} from '../../buildOptions/baseSettings'
-import { PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
+import { createProject } from '../../buildOptions/baseSettings'
+import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
-const PROJECT_KEY = 'StrawberryChocolate'
-const PROJECT_TITLE = 'ストロベリーショコラ' // 「おみくじBOT」は入れないこと
-const boothURLNumber = '7733810'
+const PROJECT = {
+  key: 'StrawberryChocolate',
+  title: 'ストロベリーショコラ',
+  description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
+  banner: '',
+  tags: [
+    'おみくじBOT',
+    'ユーザーリスト',
+    'ライバーカウンター',
+    'おみくじ',
+    'BOT',
+    'カウンター',
+    '高評価',
+    '同時接続数',
+    'ゲーム配信',
+    '雑談配信',
+    '朝活配信',
+    'わんコメ',
+    '初見歓迎',
+  ],
+  boothId: '7733810',
+  category: 'solo',
+  licenseLabel: '利用規約に従う',
+  extraFiles: [{ from: 'assets/Characters/chocolate/', to: 'Characters/chocolate/' }],
+} satisfies ProjectParams
 
-// バリエーション定義  '' の場合はデフォルト（無印）扱い
-const COLOR_VARIANTS = [
-  '',
-  // 'Pro'
-] as const
-type ColorVariant = (typeof COLOR_VARIANTS)[number]
+// バリエーション定義
+const COLOR_VARIANTS = [''] as const
 
-function createProject(packageRoot: string, color: ColorVariant): ProjectConfig {
-  const base = createCommonBuildConfig(packageRoot)
-  const PROJECT_ID = `${PROJECT_KEY}${color}`
-
-  return {
-    ...base,
-
-    name: PROJECT_ID,
-    tags: [
-      'おみくじBOT',
-      'ユーザーリスト',
-      'ライバーカウンター',
-      'おみくじ',
-      'BOT',
-      'カウンター',
-      '高評価',
-      '同時接続数',
-      'ゲーム配信',
-      '雑談配信',
-      '朝活配信',
-      'わんコメ',
-      '初見歓迎',
-    ],
-
-    license: {
-      basic: '利用規約に従う',
-      adv: '利用規約に従う',
-      pro: '利用規約に従う',
-    },
-
-    template: {
-      name: `おみくじBOT ${PROJECT_TITLE}${color ? color + ' ' : ''}OmikujiBot ${PROJECT_ID}`,
-      boothURL: `https://pintocuru.booth.pm/items/${boothURLNumber}`,
-      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/solo/${PROJECT_KEY}`,
-      description: '配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT',
-    },
-
-    json: createCommonBuildConfigJson(packageRoot, `${PROJECT_ID}.json`),
-
-    accessLevels: {
-      basic: {
-        filesToCopy: [
-          ...defaultFilesToCopy,
-          { from: 'assets/thumb/full/StrawberryChocolate.gif', to: 'thumb.gif' },
-          { from: 'assets/Characters/chocolate/', to: 'Characters/chocolate/' },
-        ],
-      },
-      pro: {
-        filesToCopy: [
-          ...defaultFilesToCopy,
-          { from: 'assets/thumb/full/StrawberryChocolate.gif', to: 'thumb.gif' },
-          { from: 'assets/Characters/chocolate/', to: 'Characters/chocolate/' },
-        ],
-      },
-    },
-  }
-}
+// ビルドターゲット（pro はコメントアウトされていたため basic のみ採用）
+const buildTargets: PackageBuildTarget[] = [
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+]
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
-  return COLOR_VARIANTS.map((color) => createProject(packageRoot, color))
+  return COLOR_VARIANTS.map((color) => createProject(packageRoot, color, PROJECT))
 }
-
-// ビルドターゲット定義
-const buildTargets: PackageBuildTarget[] = [
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  //  { project: 'StrawberryChocolatePro', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
-]
 
 export default { getProjects, buildTargets }

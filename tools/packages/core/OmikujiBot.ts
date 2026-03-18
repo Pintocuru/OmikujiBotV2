@@ -1,6 +1,6 @@
 // tools/packages/core/OmikujiBot.ts
 import path from 'path'
-import { createCommonBuildConfig, defaultFilesToCopy } from '../../buildOptions/baseSettings'
+import { createCoreBuildConfig, DEFAULT_FILES_TO_COPY } from '../../buildOptions/baseSettings'
 import { ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
 import { APP_VERSION } from '@/version'
 
@@ -9,15 +9,13 @@ import { APP_VERSION } from '@/version'
  */
 function project(packageRoot: string): ProjectConfig {
   return {
-    ...createCommonBuildConfig(packageRoot),
+    ...createCoreBuildConfig(packageRoot),
 
-    name: 'OmikujiBot',
+    key: 'OmikujiBot',
+    name: 'おみくじBOT',
     version: APP_VERSION,
     tags: ['おみくじBOT'],
-
-    license: {
-      basic: 'CC-BY 4.0',
-    },
+    licenseLabel: 'にゃーん',
 
     // MainGenerator + ConfigMaker の両方をビルド
     entryPoints: {
@@ -28,11 +26,7 @@ function project(packageRoot: string): ProjectConfig {
     template: null,
     json: undefined,
 
-    accessLevels: {
-      basic: {
-        filesToCopy: [...defaultFilesToCopy, { from: 'assets/sounds/', to: 'assets/sounds/' }],
-      },
-    },
+    filesToCopy: [...DEFAULT_FILES_TO_COPY, { from: 'assets/sounds/', to: 'assets/sounds/' }],
   }
 }
 

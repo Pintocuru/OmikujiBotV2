@@ -17,7 +17,7 @@ function createProject(packageRoot: string, color: ColorVariant): ProjectConfig 
   return {
     ...base,
 
-    name: PROJECT_ID,
+    key: PROJECT_ID,
     tags: [
       'おみくじBOT',
       'ユーザーリスト',

@@ -1,10 +1,10 @@
 // tools/packages/index.ts
 import { CoreBuildTarget, PackageBuildTarget, ProjectConfig } from '@shared/utils/webpackBuild/BuildTypes'
-import { getCoreProjects } from './core'
-import SesupinProjects from './sesupin'
-import FullProjects from './full'
-import SoloProjects from './solo'
-import PetitProjects from './petit'
+import OmikujiBot from './core'
+import Sesupin from './sesupin'
+import Full from './full'
+import Solo from './solo'
+import Petit from './petit'
 
 /**
  * コアビルド設定リスト
@@ -12,22 +12,13 @@ import PetitProjects from './petit'
  */
 export const coreTargets: CoreBuildTarget[] = [
   { project: 'OmikujiBot' }, // MainGenerator + ConfigMaker
-  // { project: 'OmikujiBotMain' }, // MainGenerator のみ
 ]
+
+const packageGroups = [Sesupin, Full, Solo, Petit]
+const packages = packageGroups.flat()
 
 export function getAllProjects(packageRoot: string): ProjectConfig[] {
-  return [
-    ...getCoreProjects(packageRoot),
-    ...SesupinProjects.projects(packageRoot),
-    ...FullProjects.projects(packageRoot),
-    ...SoloProjects.projects(packageRoot),
-    ...PetitProjects.projects(packageRoot),
-  ]
+  return [...OmikujiBot.flatMap((p) => p(packageRoot)), ...packages.flatMap((p) => p.getProjects(packageRoot))]
 }
 
-export const packageTargets: PackageBuildTarget[] = [
-  ...SesupinProjects.targets,
-  ...FullProjects.targets,
-  ...SoloProjects.targets,
-  ...PetitProjects.targets,
-]
+export const packageTargets: PackageBuildTarget[] = packages.flatMap((p) => p.buildTargets)

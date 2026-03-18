@@ -65,17 +65,10 @@ export function useDataPacks() {
         const json = await loadTemplateJson(rawUrl)
         const meta = (json.meta ?? {}) as MetaDataType
 
-        // banner: MetaDataSchemaにoptionalで追加した場合はそちらを優先、
-        // なければthumb.gifを自動推定
-        const dir = path.substring(0, path.lastIndexOf('/') + 1)
-        const bannerPath = (meta as MetaDataType & { banner?: string }).banner
-          ? `${dir}${(meta as MetaDataType & { banner?: string }).banner}`
-          : `${dir}thumb.gif`
-
         results.push({
           path,
           rawUrl,
-          bannerUrl: buildRawUrl(bannerPath),
+          bannerUrl: meta.banner ? meta.banner : null,
           meta,
           json,
         })
