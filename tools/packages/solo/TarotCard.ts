@@ -13,6 +13,8 @@ function project(packageRoot: string): ProjectConfig {
     name: 'TarotCard',
     version: `${BUILD_DATE}-${APP_VERSION}`,
     tags: ['おみくじBOT', '占い', 'Fortune', 'タロット', 'tarot'],
+    banner:
+      'https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/TarotCard/thumb_TarotCard.gif',
 
     license: {
       basic: 'CC-BY 4.0',

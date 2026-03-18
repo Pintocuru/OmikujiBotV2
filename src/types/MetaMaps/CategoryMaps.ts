@@ -44,6 +44,11 @@ export const categoryMap = {
     description: 'ジェネレーターで表示できる、アイテムの設定を行います',
     icon: 'LayoutGrid',
   },
+  dataPacks: {
+    label: 'データパック',
+    description: 'テンプレートデータを外部サーバから読み込みます',
+    icon: 'Package',
+  },
   appInfo: {
     label: 'アプリ情報',
     description: 'ライセンスや使用できる機能を確認できます',

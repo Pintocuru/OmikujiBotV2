@@ -27,6 +27,7 @@
   import PlaceholderEditor from '@config/components/placeholders/PlaceholderEditor.vue'
   import CharacterEditor from '@config/components/characters/CharacterEditor.vue'
   import UiEditor from '@config/components/UiEditor/UiEditor.vue'
+  import DataPacks from '@/ConfigMaker/components/dataPacks/DataPacks.vue'
   import AppInfoEditor from '@config/components/appInfo/AppInfoEditor.vue'
   import JsonMergeEditor from '@config/components/JsonMerge/JsonMergeEditor.vue'
   import { resolveLucideIcon } from '@shared/utils/LucideIcon/useLucideIcon'
@@ -47,6 +48,7 @@
     placeholders: PlaceholderEditor,
     characters: CharacterEditor,
     components: UiEditor,
+    dataPacks: DataPacks,
     appInfo: AppInfoEditor,
   } as const
   const currentEditor = computed(() => editorMap[selectedCategory.value])
