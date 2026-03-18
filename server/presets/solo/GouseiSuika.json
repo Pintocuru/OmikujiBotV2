@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "GouseiSuika-ver2026.03.18-2.9.0-beta4",
+    "id": "GouseiSuika-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT スイカジェネレーター +カボチャ&クジラ OmikujiBot GouseiSuika",
     "description": "コメントでスイカゲーム風のおみくじを楽しめる",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -16,7 +16,7 @@
     ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/5813323",
-    "banner": ""
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2025-Q4/GouseiSuika/GouseiSuika.gif"
   },
   "jsonMerge": [],
   "comments": {

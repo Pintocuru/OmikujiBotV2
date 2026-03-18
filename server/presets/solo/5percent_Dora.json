@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "5percent_Dora-ver2026.03.18-2.9.0-beta4",
+    "id": "5percent_Dora-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT どこでもドラちゃんBot OmikujiBot 5percent_Dora",
     "description": "「ドラちゃん」を名乗るキャラクターが「ひみつ道具」をランダムに出してくれるジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -16,7 +16,7 @@
     ],
     "license": "個人利用のみ",
     "url": "https://pintocuru.booth.pm/items/7291931",
-    "banner": ""
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2025-Q4/5percent_Dora/5percent_Dora.gif"
   },
   "jsonMerge": [],
   "comments": {

@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "TsumugiHimari-ver2026.03.18-2.9.0-beta4",
+    "id": "TsumugiHimari-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT ズッ友!つむぎ&ひまり ネットミームマシマシver OmikujiBot TsumugiHimari-PRO",
     "description": "つむぎとひまりがノリノリでリスナーを歓迎してくれるジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -23,7 +23,7 @@
     ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7530206",
-    "banner": ""
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2025-Q4/TsumugiHimari/TsumugiHimari.gif"
   },
   "jsonMerge": [
     {

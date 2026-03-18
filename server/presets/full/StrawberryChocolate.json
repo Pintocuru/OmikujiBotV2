@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "StrawberryChocolate-ver2026.03.18-2.9.0-beta4",
+    "id": "StrawberryChocolate-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT ストロベリーショコラ OmikujiBot StrawberryChocolate",
     "description": "世話好きでお姉さんらしいオリキャラ「ストロベリーショコラ」が挨拶してくれるジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -24,7 +24,7 @@
     ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7733810",
-    "banner": ""
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/common/StrawberryChocolate/StrawberryChocolate.gif"
   },
   "jsonMerge": [
     {

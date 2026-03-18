@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "BigBangFortune-ver2026.03.18-2.9.0-beta4",
+    "id": "BigBangFortune-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT 超おみくじ OmikujiBot BigBangFortune",
     "description": "「桁違い」の数値で占う、クソデカおみくじジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -13,7 +13,7 @@
     ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7440428",
-    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/BigBangFortune/thumb_BigBangFortune.gif"
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2025-Q4/BigBangFortune/BigBangFortune.gif"
   },
   "jsonMerge": [],
   "comments": {

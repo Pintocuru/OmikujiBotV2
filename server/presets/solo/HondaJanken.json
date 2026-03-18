@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "HondaJanken-ver2026.03.18-2.9.0-beta4",
+    "id": "HondaJanken-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT じゃんけん OmikujiBot HondaJanken",
     "description": "「じゃんけん」ミニゲームが楽しめるジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -13,7 +13,7 @@
     ],
     "license": "利用規約に従う",
     "url": "https://pintocuru.booth.pm/items/7383088",
-    "banner": ""
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2025-Q4/HondaJanken/HondaJanken.gif"
   },
   "jsonMerge": [],
   "comments": {

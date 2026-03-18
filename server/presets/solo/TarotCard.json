@@ -1,9 +1,9 @@
 {
   "meta": {
-    "id": "TarotCard-ver2026.03.18-2.9.0-beta4",
+    "id": "TarotCard-ver2026.03.19-2.9.0-beta4",
     "name": "おみくじBOT タロットカード OmikujiBot TarotCard",
     "description": "大アルカナの 22 枚を使う、気軽に占えるタロットカードジェネレーター",
-    "version": "ver2026.03.18-2.9.0-beta4",
+    "version": "ver2026.03.19-2.9.0-beta4",
     "generatorName": "omikuji-bot",
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
@@ -14,7 +14,7 @@
     ],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682",
-    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/solo/TarotCard/thumb_TarotCard.gif"
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2025-Q4/TarotCard/TarotCard.gif"
   },
   "jsonMerge": [],
   "comments": {
