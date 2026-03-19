@@ -68,6 +68,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
+  import { OmikujiDataType } from '@/types'
 
   const { packs, loading, error, isEmpty, fetchAll, allTags, selectedTags, toggleTag, clearTags } = useDataPacks()
   const importManager = useImportManager()
@@ -95,12 +96,36 @@
         })
         return
       }
-      omikujiStore.loadData(res.data)
+
+      // 現在値を退避
+      const current = omikujiStore.data
+      const settings = current.settings
+      const id = current.meta.id
+
+      // 読み込みデータに上書き
+      const data = res.data as OmikujiDataType
+      const merged: OmikujiDataType = {
+        ...data,
+        meta: {
+          ...data.meta,
+          id,
+        },
+        settings,
+      }
+
+      omikujiStore.loadData(merged)
       omikujiStore.resetChangeState()
-      await swalModal.success({ title: '読み込みました', text: `「${pack.meta.name}」を読み込みました。` })
+
+      await swalModal.success({
+        title: '読み込みました',
+        text: `「${pack.meta.name}」を読み込みました。`,
+      })
     } catch (err) {
       console.error('[DataPacks] replace error:', err)
-      await swalModal.error({ title: '置き換えに失敗しました', text: 'コンソールログをご確認ください' })
+      await swalModal.error({
+        title: '置き換えに失敗しました',
+        text: 'コンソールログをご確認ください',
+      })
     }
   }
 
