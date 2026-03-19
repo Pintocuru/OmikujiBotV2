@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
-  import { uiItemMap } from './useUiItemMap'
+  import { uiItemMap, VisibilityKey } from './useUiItemMap'
   import ItemConditionsEditor from './conditions/ItemConditionsEditor.vue'
   import ItemsSettings from './conditions/ItemsSettings.vue'
   import { useAccessChecker, useSettingMode } from '@config/scripts/useAccessCheckerConfig'
@@ -55,11 +55,19 @@
 
   const visibleItems = computed(() =>
     Object.entries(uiItemMap).filter(([_kind, item]) => {
-      // slot選択条件
+      // 1. slot選択条件
       if (item.targetKey && !hasComponentKind(item.targetKey)) return false
-      // visibility条件（すべて満たす必要あり）
-      if (!item.visibility.every((v) => visibilityMap.value[v])) return false
-      return true
+
+      // 2. visibility条件（すべて満たす必要あり）
+      return item.visibility.every((v) => {
+        // "!" で始まる場合は否定として評価
+        if (v.startsWith('!')) {
+          const key = v.slice(1) as VisibilityKey
+          return !visibilityMap.value[key]
+        }
+        // 通常の評価
+        return visibilityMap.value[v]
+      })
     })
   )
 

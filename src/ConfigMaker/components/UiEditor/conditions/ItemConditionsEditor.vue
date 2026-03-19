@@ -7,39 +7,36 @@
     description="ジェネレーターに表示するアイテムを選択します"
   />
 
-  <SettingItem
-    v-for="{ slot, label } in slotConfigs"
-    :key="slot"
-    :label="label"
-    :description="UiSlotMap[slot].description"
-  >
-    <div class="flex flex-wrap items-center gap-2">
-      <!-- 未使用バッジ -->
-      <span
-        class="badge badge-outline cursor-pointer select-none"
-        :class="{ 'badge-ghost opacity-40': getSlotKind(slot) !== '' }"
-        @click="updateSlotKind(slot, '')"
-      >
-        未使用
-      </span>
+  <template v-for="{ slot, label } in slotConfigs" :key="slot">
+    <SettingItem :label="label" :description="UiSlotMap[slot].description">
+      <div class="flex flex-wrap items-center gap-2">
+        <!-- 未使用バッジ -->
+        <span
+          class="badge badge-outline cursor-pointer select-none"
+          :class="{ 'badge-ghost opacity-40': getSlotKind(slot) !== '' }"
+          @click="updateSlotKind(slot, '')"
+        >
+          未使用
+        </span>
 
-      <!-- コンポーネント選択バッジ -->
-      <span
-        v-for="comp in getAvailableComponents(slot)"
-        :key="comp.kind"
-        class="badge cursor-pointer select-none"
-        :class="[
-          slotConfigs.find((s) => s.slot === slot)?.badgeClass,
-          getSlotKind(slot) === comp.kind ? 'opacity-100' : 'badge-outline opacity-40',
-          comp.disabled ? 'cursor-not-allowed' : '',
-        ]"
-        :title="comp.disabledReason || comp.label"
-        @click="!comp.disabled && updateSlotKind(slot, comp.kind)"
-      >
-        {{ comp.label }}
-      </span>
-    </div>
-  </SettingItem>
+        <!-- コンポーネント選択バッジ -->
+        <span
+          v-for="comp in getAvailableComponents(slot)"
+          :key="comp.kind"
+          class="badge cursor-pointer select-none"
+          :class="[
+            slotConfigs.find((s) => s.slot === slot)?.badgeClass,
+            getSlotKind(slot) === comp.kind ? 'opacity-100' : 'badge-outline opacity-40',
+            comp.disabled ? 'cursor-not-allowed' : '',
+          ]"
+          :title="comp.disabledReason || comp.label"
+          @click="!comp.disabled && updateSlotKind(slot, comp.kind)"
+        >
+          {{ comp.label }}
+        </span>
+      </div>
+    </SettingItem>
+  </template>
 
   <!-- ?? -->
   <SubSectionHeader icon="ToggleRight" title="サブアイテムの使用設定" description="" />
@@ -92,7 +89,15 @@
       },
       { slot: 'extra', label: UiSlotMap.extra.label, badgeClass: 'badge-accent', selectClass: 'select-accent' },
     ]
-    return enableSecondary.value ? all : all.filter((s) => s.slot !== 'secondary')
+
+    return all.filter((s) => {
+      // 1. secondary の有効化チェック
+      if (s.slot === 'secondary' && !enableSecondary.value) return false
+
+      // 2. そのスロットに割り当て可能なコンポーネントが1つでもあるかチェック
+      // getAvailableComponents(s.slot) が 0 件なら表示しない
+      return getAvailableComponents(s.slot).length > 0
+    })
   })
 
   // 指定スロットに設定されているkindを取得

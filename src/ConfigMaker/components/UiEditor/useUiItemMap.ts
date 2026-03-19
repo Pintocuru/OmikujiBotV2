@@ -19,6 +19,7 @@ import { UiKind } from '@/types'
 export type VisibilityKey =
   | 'comment'
   | 'character'
+  | '!character'
   | 'primarySlot'
   | 'secondarySlot'
   | 'allSlot'
@@ -150,7 +151,7 @@ export const uiItemMap: Record<string, UiItem> = {
     description: 'キャラクター未設定時のカラー設定',
     component: DefaultColorEditor,
     targetKey: null,
-    visibility: ['character', 'allSlot'],
+    visibility: ['!character', 'allSlot'],
   },
 
   fontFamily: {

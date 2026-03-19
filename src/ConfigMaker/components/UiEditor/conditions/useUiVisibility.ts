@@ -24,6 +24,7 @@ export const useUiVisibility = () => {
   const visibilityMap: ComputedRef<Record<VisibilityKey, boolean>> = computed(() => ({
     comment: visibility.isComment.value,
     character: visibility.isCharacter.value,
+    '!character': !visibility.isCharacter.value,
     primarySlot: visibility.isPrimarySlot.value,
     secondarySlot: visibility.isSecondarySlot.value,
     allSlot: visibility.isAllSlot.value,
