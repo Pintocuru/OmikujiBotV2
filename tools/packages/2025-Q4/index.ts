@@ -11,24 +11,24 @@ import GouseiSuika from './GouseiSuika'
 import HondaJanken from './HondaJanken'
 import TarotCard from './TarotCard'
 import FlowerFortune from './FlowerFortune'
+import MaidenOmikuji from './MaidenOmikuji'
 import TossedKotaro from './TossedKotaro'
-import MaidenOmikujiNormal from './MaidenOmikujiNormal'
 
 export default [
   /* 完成されてないもの */
   // TossedKotaro,
-  // MaidenOmikujiNormal,
-  // FlowerFortune,
   /* BOOTHで発売されてるもの */
-  //  ReimuMarisa,
-  //  EveryoneZunda,
-  //  DivaMetan,
-  //  TsumugiHimari,
-  //  BomberSpin,
-  //  GouseiSuika,
-  //  percent_Dora,
-  //  HondaJanken,
-  //  CardStation,
-  //  TarotCard,
-  //  BigBangFortune,
+  // ReimuMarisa,
+  // MaidenOmikuji,
+  // FlowerFortune,
+  // EveryoneZunda,
+  // DivaMetan,
+  // TsumugiHimari,
+  // BomberSpin,
+  // GouseiSuika,
+  // percent_Dora,
+  // HondaJanken,
+  // CardStation,
+  // TarotCard,
+  // BigBangFortune,
 ]

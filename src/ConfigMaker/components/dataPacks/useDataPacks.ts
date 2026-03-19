@@ -27,6 +27,8 @@ const templateList: Record<AccessLevelType, string[]> = {
   basic: [
     'common/StrawberryChocolate/StrawberryChocolate.json',
 
+    '2025-Q4/MaidenOmikuji/MaidenOmikujiNormal.json',
+    '2025-Q4/FlowerFortune/FlowerFortune.json',
     '2025-Q4/BigBangFortune/BigBangFortune.json',
     '2025-Q4/CardStation/CardStation.json',
     '2025-Q4/HondaJanken/HondaJanken.json',
