@@ -27,6 +27,7 @@ export const useUiVisibility = () => {
     '!character': !visibility.isCharacter.value,
     primarySlot: visibility.isPrimarySlot.value,
     secondarySlot: visibility.isSecondarySlot.value,
+    botSlot: visibility.isPrimarySlot.value || visibility.isSecondarySlot.value,
     allSlot: visibility.isAllSlot.value,
     adv: isAdv.value,
     pro: isPro.value,

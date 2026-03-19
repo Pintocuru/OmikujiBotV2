@@ -2,7 +2,7 @@
 <template>
   <!-- GOD: アイテム有効/無効トグル -->
   <SectionCard
-    v-if="isGod"
+    v-if="isGod || isDev"
     variant="warning"
     icon="LayoutGrid"
     title="アイテム有効・無効切り替え"
@@ -45,6 +45,7 @@
   import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useUiVisibility } from './conditions/useUiVisibility'
+  import { isDev } from '@/types'
 
   const { itemSlotEnabled } = useFlagsSettings()
   const { hasAccess } = useAccessChecker()

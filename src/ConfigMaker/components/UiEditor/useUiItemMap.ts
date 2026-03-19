@@ -22,6 +22,7 @@ export type VisibilityKey =
   | '!character'
   | 'primarySlot'
   | 'secondarySlot'
+  | 'botSlot'
   | 'allSlot'
   | 'adv'
   | 'pro'
@@ -151,7 +152,7 @@ export const uiItemMap: Record<string, UiItem> = {
     description: 'キャラクター未設定時のカラー設定',
     component: DefaultColorEditor,
     targetKey: null,
-    visibility: ['!character', 'allSlot'],
+    visibility: ['!character', 'botSlot'],
   },
 
   fontFamily: {

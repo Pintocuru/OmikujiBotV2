@@ -55,6 +55,7 @@ export function createCoreBuildConfig(packageRoot: string) {
 export function createProject(packageRoot: string, color: string, params: ProjectParams): ProjectConfig {
   const id = `${params.key}${color}`
   const colorLabel = color ? `${color} ` : ''
+  const series = params.series ? params.series : params.key
 
   return {
     // --- 共通フィールド ---
@@ -76,7 +77,7 @@ export function createProject(packageRoot: string, color: string, params: Projec
     key: id,
     name: params.title,
     tags: params.tags,
-    banner: `https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/${params.category}/${params.key}/${id}.gif`,
+    banner: `https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/${params.category}/${series}/${id}.gif`,
     licenseLabel: params.licenseLabel,
 
     template: {

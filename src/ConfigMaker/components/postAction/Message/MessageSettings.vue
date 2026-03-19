@@ -1,36 +1,43 @@
-<!-- src/ConfigMaker/components/postAction/Message/MessageSettings.vue -->
 <template>
-  <!-- キャラクター選択 -->
-  <div v-if="isCharacter" class="space-y-2">
-    <SettingItem label="👤キャラクター・カラー" description="フキダシの色や読み上げのキャラクターを選択">
+  <template v-if="showCharacterSettings">
+    <SettingItem
+      :variant="isDev && !isCharacter ? 'warning' : undefined"
+      label="👤キャラクター・カラー"
+      description="フキダシの色や読み上げのキャラクターを選択"
+    >
       <select v-model="characterKey" class="select select-bordered select-sm w-full max-w-xs">
-        <option v-for="(value, key) in characterMap" :key="key" :value="key">
-          {{ value.name }}
+        <option v-for="(name, key) in availableCharacters" :key="key" :value="key">
+          {{ name }}
         </option>
       </select>
     </SettingItem>
 
-    <!-- アイコン選択 -->
-    <SettingItem v-if="characterKey && characterKey !== ''" label="🎨 アイコン" description="表示する画像を選択">
+    <SettingItem
+      v-if="hasCharacterSelected"
+      :variant="isDev && !isCharacter ? 'warning' : undefined"
+      label="🎨 アイコン"
+      description="表示する画像を選択"
+    >
       <IconSelector :character-key="characterKey" :icon-key="action.iconKey" @update:icon-key="updateIconKey" />
     </SettingItem>
-  </div>
+  </template>
 
-  <!-- 読み上げ対象 -->
   <SettingItem v-if="enableSecondary" label="読み上げ対象" description="わんコメで読み上げするか">
     <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="toggle toggle-primary" :checked="!isToast" @change="handleTypeChangeSwitch" />
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        :checked="!isToast"
+        @change="isToast = !($event.target as HTMLInputElement).checked"
+      />
       <span>読み上げ対象 {{ !isToast ? 'ON' : 'OFF' }}</span>
     </label>
   </SettingItem>
 
-  <!-- 単一の入力欄：isToast に応じてラベル／説明／プレースホルダを切替 -->
   <SettingItem label="💬 メッセージ内容" description="プレースホルダーが使えます">
     <MessageTextDialog v-model="bubbleText" :isCommentMode="true" />
-    <!-- <MessageTextEditor v-model="bubbleText" /> -->
   </SettingItem>
 
-  <!-- サウンド -->
   <SettingItem v-if="soundEnabled" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
     <select v-model="sound" class="select select-bordered select-sm w-full">
       <option value="">（なし）</option>
@@ -41,12 +48,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterEmotionType, PostFlowMessageType, soundMetaMap } from '@/types/'
+  import { CharacterEmotionType, isDev, PostFlowMessageType, soundMetaMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
-  // import MessageTextEditor from './MessageTextEditor.vue'
   import MessageTextDialog from './MessageTextDialog.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
@@ -58,53 +64,59 @@
     'update:action': [action: PostFlowMessageType]
   }>()
 
-  // キャラクターオプションの取得
+  // --- Data Fetching ---
   const { data } = useOmikujiStore()
   const { isCharacter } = useVisibilityAccess()
   const { characterMap } = useCharacterManager()
+
   const enableSecondary = computed(() => data.components.enableSecondary)
   const soundEnabled = computed(() => data.settings.soundEnabled)
 
+  const SYSTEM_BOT_MAP = {
+    omiken: 'おみくじBOT(その1)',
+    omiken2: 'おみくじBOT(その2)',
+  } as const
+
+  // --- Computed Properties ---
+
+  // 表示すべきキャラクターリストを判定
+  const availableCharacters = computed(() => {
+    if (isCharacter.value) {
+      // 既存の characterMap から名前だけを抽出したオブジェクトを返す
+      return Object.fromEntries(Object.entries(characterMap.value).map(([k, v]) => [k, v.name]))
+    }
+    return SYSTEM_BOT_MAP
+  })
+
+  const showCharacterSettings = computed(() => isCharacter.value || isDev)
+  const hasCharacterSelected = computed(() => !!props.action.characterKey)
+
+  // --- Helper Functions ---
   const updateAction = (updates: Partial<PostFlowMessageType>) => {
     emit('update:action', { ...props.action, ...updates })
   }
 
+  // --- V-Models ---
   const characterKey = computed({
-    get: () => props.action.characterKey,
+    get: () => props.action.characterKey ?? '',
     set: (value) => updateAction({ characterKey: value }),
   })
 
-  // isToast フラグの computed
   const isToast = computed<boolean>({
     get: () => props.action.message.isToast,
-    set: (value) => {
+    set: (value) =>
       updateAction({
-        message: {
-          ...props.action.message,
-          isToast: value,
-        },
-      })
-    },
+        message: { ...props.action.message, isToast: value },
+      }),
   })
 
-  // bubble フィールドの computed（メッセージ内容）
   const bubbleText = computed<string>({
     get: () => props.action.message.bubble ?? '',
-    set: (value) => {
+    set: (value) =>
       updateAction({
-        message: {
-          ...props.action.message,
-          bubble: value,
-        },
-      })
-    },
+        message: { ...props.action.message, bubble: value },
+      }),
   })
-
-  // ラジオ切替：isToast を更新
-  function handleTypeChangeSwitch(e: Event) {
-    const checked = (e.target as HTMLInputElement).checked
-    isToast.value = !checked
-  }
 
   const sound = computed({
     get: () => props.action.sound || '',

@@ -4,6 +4,7 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 
 const PROJECT = {
   key: 'MaidenOmikujiNormal',
+  series: 'MaidenOmikuji',
   title: '巫女さんのおみくじ',
   description: '巫女さん手製の、真面目なおみくじジェネレーター',
   banner: '',

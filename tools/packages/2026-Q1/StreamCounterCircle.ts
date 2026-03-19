@@ -4,6 +4,7 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 
 const PROJECT = {
   key: 'StreamCounterCircle',
+  series: 'StreamCounter',
   title: 'ライバーカウンター サークル',
   description: '高評価も！コメント数も！いろいろカウントできる多機能カウンターテンプレート',
   banner: '',

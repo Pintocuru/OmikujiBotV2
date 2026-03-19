@@ -27,27 +27,7 @@
     <!-- アイテム -->
     <div class="card bg-base-100 shadow-lg" v-if="hasEnabledComponents || isPro">
       <div class="card-body">
-        <SubSectionHeader icon="Box" title="アイテム" description="ジェネレーターで表示できるアイテム">
-          <!-- PRO スイッチ群 -->
-          <!-- TODO:廃止 -->
-          <template v-if="isPro">
-            <div class="flex flex-wrap gap-2 mt-2">
-              <label
-                v-for="key in PRO_COMPONENTS"
-                :key="key"
-                class="flex items-center gap-1 cursor-pointer select-none"
-              >
-                <input
-                  type="checkbox"
-                  class="toggle toggle-sm toggle-success"
-                  :checked="components.includes(key)"
-                  @change="toggleComponent(key)"
-                />
-                <span class="text-sm">{{ uiKindMap[key]?.label || key }}</span>
-              </label>
-            </div>
-          </template>
-        </SubSectionHeader>
+        <SubSectionHeader icon="Box" title="アイテム" description="ジェネレーターで表示できるアイテム" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           <FeatureCard
             v-for="key in components"
@@ -68,22 +48,7 @@
     <!-- ゲームスクリプト -->
     <div class="card bg-base-100 shadow-lg" v-if="hasEnabledGames || isPro">
       <div class="card-body">
-        <SubSectionHeader icon="Gamepad2" title="ゲームスクリプト" description="複雑なコードを実行できます">
-          <!-- TODO:廃止 -->
-          <template v-if="isPro">
-            <div class="flex flex-wrap gap-2 mt-2">
-              <label v-for="key in PRO_SCRIPTS" :key="key" class="flex items-center gap-1 cursor-pointer select-none">
-                <input
-                  type="checkbox"
-                  class="toggle toggle-sm toggle-success"
-                  :checked="gameScripts.includes(key)"
-                  @change="toggleScript(key)"
-                />
-                <span class="text-sm">{{ gameMetaMap[key]?.name || key }}</span>
-              </label>
-            </div>
-          </template>
-        </SubSectionHeader>
+        <SubSectionHeader icon="Gamepad2" title="ゲームスクリプト" description="複雑なコードを実行できます" />
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
           <FeatureCard
             v-for="key in gameScripts"
@@ -106,9 +71,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { categoryMap, uiKindMap, gameMetaMap, UiKind, ScriptGameKey } from '@/types/'
+  import { categoryMap, uiKindMap, gameMetaMap, UiKind } from '@/types/'
   import FeatureCard from './FeatureCard.vue'
-  import { PRO_SCRIPTS, PRO_COMPONENTS } from './proAddFeature'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import type { AccessLevelType } from '@shared/types'
@@ -140,27 +104,5 @@
   const handleFeatureToggle = (key: string, newLevel: AccessLevelType) => {
     if (!isPro.value) return
     omikujiStore.updateFlagsNested('usage', { [key]: newLevel })
-  }
-
-  const toggleComponent = (key: UiKind) => {
-    const current = [...components.value]
-    const idx = current.indexOf(key)
-    if (idx >= 0) {
-      current.splice(idx, 1)
-    } else {
-      current.push(key)
-    }
-    omikujiStore.updateFlagsArray('components', current)
-  }
-
-  const toggleScript = (key: ScriptGameKey) => {
-    const current = [...gameScripts.value]
-    const idx = current.indexOf(key)
-    if (idx >= 0) {
-      current.splice(idx, 1)
-    } else {
-      current.push(key)
-    }
-    omikujiStore.updateFlagsArray('gameScripts', current)
   }
 </script>
