@@ -129,12 +129,14 @@ export const useImportManager = () => {
 
   /**
    * コンポーネント設定を更新
+   * キーが存在しない場合は新規作成（読み込み側のみのキー対応）
    */
   const updateComponentConfig = (component: UiKind, config: Partial<ComponentImportConfig>) => {
-    if (!previewData.value?.componentConfigs[component]) return
+    if (!previewData.value) return
 
+    const current = previewData.value.componentConfigs[component]
     previewData.value.componentConfigs[component] = {
-      ...previewData.value.componentConfigs[component],
+      ...(current ?? { enabled: true, useImported: true }),
       ...config,
     }
   }

@@ -1,6 +1,10 @@
 // src/ConfigMaker/stores/composables/useDataMergeHelpers.ts
 import { RecordCategoryDataMap, RecordCategoryType } from '@/types/OmikujiData/'
 import { ImportMode } from '@config/components/presetsImport/ImportTypes'
+import { AccessLevelType } from '@shared/types'
+
+// basic > adv > pro > godMode > none の順（インデックスが小さいほど優先度が高い）
+const ACCESS_LEVEL_PRIORITY: AccessLevelType[] = ['basic', 'adv', 'pro', 'godMode', 'none']
 
 /**
  * データマージ処理のヘルパー関数を提供
@@ -81,10 +85,28 @@ export function useDataMergeHelpers() {
     }
   }
 
+  /**
+   * AccessLevel を優先順位に基づいてマージする
+   * basic > adv > pro > godMode > none の順で優先度が高い
+   * 例：元が none でマージ先が basic → basic
+   *     元が basic でマージ先が none → basic（変わらない）
+   */
+  const mergeAccessLevel = (current: AccessLevelType, incoming: AccessLevelType): AccessLevelType => {
+    const currentPriority = ACCESS_LEVEL_PRIORITY.indexOf(current)
+    const incomingPriority = ACCESS_LEVEL_PRIORITY.indexOf(incoming)
+
+    // インデックスが小さい（優先度が高い）方を採用
+    // indexOf が -1（未知の値）の場合は相手を優先
+    if (currentPriority === -1) return incoming
+    if (incomingPriority === -1) return current
+    return currentPriority <= incomingPriority ? current : incoming
+  }
+
   return {
     hasOrderProperty,
     getMaxOrder,
     adjustOrderValues,
     mergeCategoryData,
+    mergeAccessLevel,
   }
 }

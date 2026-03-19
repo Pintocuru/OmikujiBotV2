@@ -2,16 +2,20 @@
 import { Ref } from 'vue'
 import { RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
+import { FlagsDeveloperSchema, FlagsUsageType } from '@/types/OmikujiData/FeatureUsageSchema'
+import { UiSettingsType } from '@/types/OmikujiData/UiSchema'
 import { useDataMergeHelpers } from './useDataMergeHelpers'
 import { ImportPreview } from '@config/components/presetsImport/ImportTypes'
 import { normalizeData } from '@/common/migrations'
 import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
+import { AccessLevelType } from '@shared/types'
 
 /**
  * データマージ機能
  */
 export function useDataMerge(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean>) {
   const helpers = useDataMergeHelpers()
+
   /**
    * インポートされたデータを既存データにマージ
    * インポートデータにもマイグレーションを適用
@@ -68,8 +72,82 @@ export function useDataMerge(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean
       result[category] = mergedItems as OmikujiDataType[typeof category]
     })
 
-    // TODO:アイテムと制限の設定をする
+    // featureUsage のマージ
+    result.featureUsage = mergeFeatureUsage(result.featureUsage, importedData.featureUsage)
+
+    // components（UiSchema）の settings のみマージ
+    result.components = mergeComponents(result.components, importedData.components, preview)
+
     return result
+  }
+
+  /**
+   * featureUsage のマージ
+   * - usage: AccessLevel の優先順位に基づいてフィールドごとにマージ
+   * - components: 変更しない（廃止予定）
+   * - gameScripts: Set で重複除去してマージ
+   * - developer: すべて basic に固定（マージ制限を排除するため）
+   */
+  const mergeFeatureUsage = (
+    current: OmikujiDataType['featureUsage'],
+    incoming: OmikujiDataType['featureUsage']
+  ): OmikujiDataType['featureUsage'] => {
+    // usage: フィールドごとに AccessLevel の優先順位でマージ
+    const mergedUsage = (Object.keys(current.usage) as (keyof FlagsUsageType)[]).reduce((acc, key) => {
+      acc[key] = helpers.mergeAccessLevel(current.usage[key] as AccessLevelType, incoming.usage[key] as AccessLevelType)
+      return acc
+    }, {} as FlagsUsageType)
+
+    // gameScripts: 重複除去マージ
+    const mergedGameScripts = [...new Set([...current.gameScripts, ...incoming.gameScripts])]
+
+    // developer: すべて basic に固定
+    const developerBasic = FlagsDeveloperSchema.parse({})
+
+    return {
+      ...current,
+      usage: mergedUsage,
+      // components は変更しない
+      gameScripts: mergedGameScripts,
+      developer: developerBasic,
+    }
+  }
+
+  /**
+   * components（UiSchema）のマージ
+   * - conditions / enableSecondary / specialSet / commonStyle は変更しない
+   * - settings: preview.componentConfigs を参照し、
+   *   enabled && useImported のキーのみ incoming で上書き（shallow merge）
+   *   それ以外（設定なし・enabled=false・useImported=false）は current を維持
+   */
+  const mergeComponents = (
+    current: OmikujiDataType['components'],
+    incoming: OmikujiDataType['components'],
+    preview: ImportPreview
+  ): OmikujiDataType['components'] => {
+    const mergedSettings = (Object.keys(incoming.settings ?? {}) as (keyof UiSettingsType)[]).reduce(
+      (acc, key) => {
+        const config = preview.componentConfigs[key as keyof typeof preview.componentConfigs]
+        // enabled && useImported のときのみ incoming で上書き、それ以外は current を維持
+        if (config?.enabled && config.useImported) {
+          const incomingValue = incoming.settings?.[key]
+          if (incomingValue !== undefined) {
+            acc[key] = { ...(current.settings?.[key] ?? {}), ...incomingValue } as any
+          }
+        }
+        return acc
+      },
+      { ...(current.settings ?? {}) } as UiSettingsType
+    )
+
+    return {
+      // conditions / enableSecondary / specialSet / commonStyle は current のまま
+      conditions: current.conditions,
+      enableSecondary: current.enableSecondary,
+      specialSet: current.specialSet,
+      commonStyle: current.commonStyle,
+      settings: mergedSettings,
+    }
   }
 
   return {
