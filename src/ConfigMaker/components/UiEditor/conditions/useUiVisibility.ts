@@ -17,7 +17,9 @@ export const useUiVisibility = () => {
 
   const hasComponentKind = (kind: UiKind) => conditions.value.some((c) => c.kind === kind)
 
-  const featureComponents = computed(() => data.value.featureUsage.components)
+  const settings = computed(() => data.value.components.settings)
+  const isComponentEnabled = (kind: UiKind): boolean =>
+    settings.value[kind as keyof typeof settings.value] !== undefined
 
   const visibilityMap: ComputedRef<Record<VisibilityKey, boolean>> = computed(() => ({
     comment: visibility.isComment.value,
@@ -33,7 +35,7 @@ export const useUiVisibility = () => {
   return {
     conditions,
     hasComponentKind,
-    featureComponents,
+    isComponentEnabled,
     visibilityMap,
   }
 }

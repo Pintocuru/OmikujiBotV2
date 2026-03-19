@@ -24,7 +24,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   const dataIO = useDataIO(data)
   const dataMerge = useDataMerge(data, hasChanged)
 
-  // レコード操作（基本版・ナビゲーション連携なし）
+  // レコード操作
   const recordCRUD = useRecordCRUD(data, hasChanged)
   const recordProperties = useRecordProperties(data, recordCRUD)
   const recordSort = useRecordSort(data, hasChanged)

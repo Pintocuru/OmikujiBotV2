@@ -130,11 +130,20 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     return true
   }
 
+  /**
+   * カテゴリーの全削除
+   */
+  const clearCategory = (category: RecordCategoryType) => {
+    data.value[category] = {} as any
+    hasChanged.value = true
+  }
+
   return {
     addItem,
     updateItem,
     removeItem,
     duplicateItem,
     updateItemKey,
+    clearCategory,
   }
 }

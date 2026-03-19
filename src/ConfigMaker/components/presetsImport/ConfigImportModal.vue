@@ -62,11 +62,9 @@
     importManager: ReturnType<typeof useImportManager>
   }>()
 
-  const importManager = props.importManager
-
   const handleImportConfirm = () => {
     try {
-      importManager.executeImport()
+      props.importManager.executeImport()
     } catch (error) {
       console.error('Import error:', error)
     }

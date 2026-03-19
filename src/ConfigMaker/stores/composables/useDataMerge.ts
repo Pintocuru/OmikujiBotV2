@@ -68,6 +68,7 @@ export function useDataMerge(data: Ref<OmikujiDataType>, hasChanged: Ref<boolean
       result[category] = mergedItems as OmikujiDataType[typeof category]
     })
 
+    // TODO:アイテムと制限の設定をする
     return result
   }
 

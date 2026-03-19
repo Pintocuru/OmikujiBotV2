@@ -46,18 +46,18 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     hasChanged.value = true
   }
 
-  /**
-   * v2.1: components.settings のネスト更新
-   * 特定のコンポーネント設定を更新
-   */
-  const updateComponentSettings = <T extends keyof UiType['settings']>(
-    key: T,
-    updates: Partial<UiType['settings'][T]>
-  ) => {
+  // アイテム設定を更新
+  const updateItemSettings = <T extends keyof UiType['settings']>(key: T, updates: Partial<UiType['settings'][T]>) => {
     data.value.components.settings[key] = {
       ...data.value.components.settings[key],
       ...updates,
     } as UiType['settings'][T]
+    hasChanged.value = true
+  }
+
+  // アイテム設定を削除
+  const removeItemSetting = (key: keyof UiType['settings']) => {
+    data.value.components.settings[key] = undefined
     hasChanged.value = true
   }
 
@@ -92,7 +92,8 @@ export function useSettingsOperations(data: Ref<OmikujiDataType>, hasChanged: Re
     updateJsonMerge,
     updateComponentsConditions,
     updateComponentsCommonStyle,
-    updateComponentSettings,
+    updateComponentSettings: updateItemSettings,
+    removeComponentSetting: removeItemSetting,
     updateComponents,
     updateFlags,
     updateFlagsNested,

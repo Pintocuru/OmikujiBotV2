@@ -10,8 +10,7 @@
     <!-- 基本アイテムの可視性 -->
     <FlagsUsage />
 
-    <!-- アイテム・ゲームスクリプト設定 -->
-    <FlagsComponents />
+    <!-- ゲームスクリプト設定 -->
     <FlagsGames />
 
     <!-- Dev用設定 -->
@@ -20,13 +19,12 @@
 </template>
 
 <script setup lang="ts">
-  import FlagsUsage from './UsageUsageSettings.vue'
-  import FlagsComponents from './UsageComponentsSettings.vue'
-  import FlagsGames from './UsageGamesSettings.vue'
-  import FlagsDeveloper from './UsageDeveloperSettings.vue'
+  import { FlagsType, isDev } from '@/types/'
+  import FlagsUsage from './FlagsUsageSettings.vue'
+  import FlagsGames from './FlagsGamesSettings.vue'
+  import FlagsDeveloper from './FlagsDeveloperSettings.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { FlagsType, isDev } from '@/types/'
 
   const { updateFlags } = useOmikujiStore()
   const { isGod } = useSettingMode()

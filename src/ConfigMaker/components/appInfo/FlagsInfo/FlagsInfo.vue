@@ -29,6 +29,7 @@
       <div class="card-body">
         <SubSectionHeader icon="Box" title="アイテム" description="ジェネレーターで表示できるアイテム">
           <!-- PRO スイッチ群 -->
+          <!-- TODO:廃止 -->
           <template v-if="isPro">
             <div class="flex flex-wrap gap-2 mt-2">
               <label
@@ -68,6 +69,7 @@
     <div class="card bg-base-100 shadow-lg" v-if="hasEnabledGames || isPro">
       <div class="card-body">
         <SubSectionHeader icon="Gamepad2" title="ゲームスクリプト" description="複雑なコードを実行できます">
+          <!-- TODO:廃止 -->
           <template v-if="isPro">
             <div class="flex flex-wrap gap-2 mt-2">
               <label v-for="key in PRO_SCRIPTS" :key="key" class="flex items-center gap-1 cursor-pointer select-none">
@@ -116,7 +118,12 @@
   const { data } = storeToRefs(omikujiStore)
 
   const usage = computed(() => data.value.featureUsage.usage)
-  const components = computed(() => data.value.featureUsage.components)
+  const settings = computed(() => data.value.components.settings)
+  const components = computed(() =>
+    (Object.keys(settings.value) as UiKind[]).filter(
+      (key) => settings.value[key as keyof typeof settings.value] !== undefined
+    )
+  )
   const gameScripts = computed(() => data.value.featureUsage.gameScripts)
 
   const { isPro } = useSettingMode()

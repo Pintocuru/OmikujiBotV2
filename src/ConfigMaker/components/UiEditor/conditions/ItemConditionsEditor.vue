@@ -73,11 +73,10 @@
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { useUiVisibility } from './useUiVisibility'
-  import { uiItemMap } from '../useUiItemMap'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { conditions, visibilityMap } = useUiVisibility()
+  const { conditions, visibilityMap, isComponentEnabled } = useUiVisibility()
 
   const enableSecondary = computed(() => data.value.components.enableSecondary)
 
@@ -105,20 +104,8 @@
 
   // スロットで利用可能なコンポーネント一覧を取得
   const getAvailableComponents = (slot: UiSlotType) => {
-    const { components } = data.value.featureUsage
-
     return getKindsForSlot(slot)
-      .filter((kind) => components.includes(kind))
-      .filter((kind) => {
-        const item = uiItemMap[kind]
-
-        // visibility条件を満たさない場合は非表示
-        if (item.visibility && !item.visibility.every((v) => visibilityMap.value[v])) {
-          return false
-        }
-
-        return true
-      })
+      .filter((kind) => isComponentEnabled(kind))
       .map((kind) => {
         const config = uiKindMap[kind]
         const isFeatureDisabled =

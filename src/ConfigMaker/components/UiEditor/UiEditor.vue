@@ -1,5 +1,16 @@
 <!-- src/ConfigMaker/components/UiEditor/UiEditor.vue -->
 <template>
+  <!-- GOD: アイテム有効/無効トグル -->
+  <SectionCard
+    v-if="isGod"
+    variant="warning"
+    icon="LayoutGrid"
+    title="アイテム有効・無効切り替え"
+    description="消し忘れがないかチェックしたか？"
+  >
+    <ItemsSettings />
+  </SectionCard>
+
   <!-- アイテム表示設定 -->
   <SectionCard
     v-if="hasAccess(itemSlotEnabled)"
@@ -8,7 +19,7 @@
     title="アイテム表示設定"
     description="ジェネレーターで表示するアイテムの設定"
   >
-    <ComponentConditionsEditor />
+    <ItemConditionsEditor />
   </SectionCard>
 
   <!-- 各アイテム設定 -->
@@ -28,14 +39,16 @@
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
   import { uiItemMap } from './useUiItemMap'
-  import ComponentConditionsEditor from './conditions/ComponentConditionsEditor.vue'
-  import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
+  import ItemConditionsEditor from './conditions/ItemConditionsEditor.vue'
+  import ItemsSettings from './conditions/ItemsSettings.vue'
+  import { useAccessChecker, useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useUiVisibility } from './conditions/useUiVisibility'
 
   const { itemSlotEnabled } = useFlagsSettings()
   const { hasAccess } = useAccessChecker()
+  const { isGod } = useSettingMode()
   const activeSection = ref<string | null>(null)
 
   const { visibilityMap, hasComponentKind } = useUiVisibility()

@@ -50,7 +50,7 @@ export const categoryMap = {
     icon: 'Info',
   },
   dataPacks: {
-    label: 'データパック',
+    label: 'データパック(Beta)',
     description: 'テンプレートデータを外部サーバから読み込みます',
     icon: 'Package',
   },

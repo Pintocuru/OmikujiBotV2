@@ -34,6 +34,7 @@ export type FlagsDeveloperType = z.infer<typeof FlagsDeveloperSchema>
  */
 export const FlagsSchema = z.object({
   usage: normalizedObject(FlagsUsageSchema),
+  // TODO:components の廃止
   components: z
     .array(z.enum(Object.keys(uiKindMap) as [UiKind, ...UiKind[]]))
     .transform((list) => list.filter((x): x is UiKind => x in uiKindMap))
