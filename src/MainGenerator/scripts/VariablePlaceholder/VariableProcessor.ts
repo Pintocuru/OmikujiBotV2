@@ -51,6 +51,8 @@ export class VariablePlaceholderProcessor {
       string
     >
 
+    processed = this.processReservedPlaceholders(processed, evaluator)
+
     const extra = this.buildExtraData(allVars)
     for (const key of RESERVED_KEYS) evaluator.remove(key)
 
@@ -160,5 +162,14 @@ export class VariablePlaceholderProcessor {
       console.warn('Extra data construction failed:', error)
       return {}
     }
+  }
+
+  private processReservedPlaceholders(text: string, evaluator: ExpressionEngine): string {
+    return text.replace(/\[\[\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*\]\]/g, (match, key) => {
+      if (RESERVED_KEYS.includes(key) && evaluator.has(key)) {
+        return String(evaluator.get(key))
+      }
+      return match
+    })
   }
 }
