@@ -122,7 +122,7 @@ export function useDataPacks() {
         results.push({
           path,
           rawUrl,
-          bannerUrl: meta.banner ? meta.banner : null,
+          bannerUrl: rawUrl.replace(/\.json$/, '.webp'),
           meta,
           json,
         })

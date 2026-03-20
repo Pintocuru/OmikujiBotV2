@@ -2,7 +2,7 @@
 <template>
   <div class="card card-compact bg-base-200 border border-base-300 transition-colors">
     <!-- バナー画像 -->
-    <figure class="h-36 overflow-hidden bg-base-300">
+    <figure class="h-50 overflow-hidden bg-base-300">
       <img
         v-if="pack.bannerUrl && !bannerError"
         :src="pack.bannerUrl"
