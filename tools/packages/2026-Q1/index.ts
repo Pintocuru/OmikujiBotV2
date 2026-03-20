@@ -13,12 +13,12 @@ export default [
   /* 完成されてないもの */
   // ValentineCoupling,
   /* BOOTHで発売されてるもの */
-  LenormandOracle,
-  RunicOracle,
-  HonjoFoxProject,
-  BreakingSyoken,
-  MyNineViewers,
-  GraduationIcons,
-  StreamCounterCircle,
-  StreamCounterPixel,
+  // LenormandOracle,
+  // RunicOracle,
+  // HonjoFoxProject,
+  // BreakingSyoken,
+  // MyNineViewers,
+  // GraduationIcons,
+  // StreamCounterCircle,
+  // StreamCounterPixel,
 ]
