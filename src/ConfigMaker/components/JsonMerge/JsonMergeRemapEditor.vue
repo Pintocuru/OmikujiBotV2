@@ -11,7 +11,7 @@
       <SettingItem label="元キャラキー">
         <select v-model="localRemap.fromCharacterKey" class="select select-sm select-bordered w-full">
           <option value="omiken">omiken</option>
-          <option value="omiken_2">omiken_2</option>
+          <option value="omiken2">omiken2</option>
         </select>
       </SettingItem>
 
