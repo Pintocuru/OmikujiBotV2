@@ -77,7 +77,7 @@ export function createProject(packageRoot: string, color: string, params: Projec
     key: id,
     name: params.title,
     tags: params.tags,
-    banner: `https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/${params.category}/${series}/${id}.gif`,
+    banner: `https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/${params.category}/${series}/${id}.webp`,
     licenseLabel: params.licenseLabel,
 
     template: {
