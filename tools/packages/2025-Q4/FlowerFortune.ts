@@ -8,7 +8,7 @@ const PROJECT = {
   description: '花の色(+キノコ)で占う、真面目な占いジェネレーター',
   banner: '',
   tags: ['占い', 'フラワー占い'],
-  boothId: '7982286',
+  boothId: '8109149',
   category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0',
   extraFiles: [],

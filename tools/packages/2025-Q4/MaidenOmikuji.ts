@@ -9,7 +9,7 @@ const PROJECT = {
   description: '巫女さん手製の、真面目なおみくじジェネレーター',
   banner: '',
   tags: ['おみくじ', '巫女さんのおみくじ'],
-  boothId: '7982286',
+  boothId: '8109123',
   category: '2025-Q4',
   licenseLabel: 'CC-BY 4.0',
   extraFiles: [],

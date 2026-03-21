@@ -117,12 +117,19 @@ function buildJsonConfig(packageRoot: string, templateName: string) {
  * presets/<templateName>.json を自動探索
  */
 export function findJsonPath(presetsRoot: string, templateName: string): string {
-  const fullPath = findJsonPathRecursive(presetsRoot, templateName)
+  // 1. まず「相対パスとして」そのまま試す
+  const directPath = path.join(presetsRoot, templateName)
+  if (fs.existsSync(directPath)) {
+    return path.relative(presetsRoot, directPath).replace(/\\/g, '/')
+  }
+
+  // 2. ダメなら「ファイル名だけ」に落として再帰探索
+  const fileName = path.basename(templateName)
+  const fullPath = findJsonPathRecursive(presetsRoot, fileName)
   if (!fullPath) {
     throw new Error(`JSON not found for template: ${templateName}`)
   }
 
-  // presetsRoot からの相対パスに変換
   return path.relative(presetsRoot, fullPath).replace(/\\/g, '/')
 }
 
