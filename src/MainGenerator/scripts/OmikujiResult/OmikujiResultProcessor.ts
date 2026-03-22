@@ -31,6 +31,7 @@ export class OmikujiResultProcessor {
   private readonly characterManager?: CharacterManager
   private readonly actionSets: Record<string, ActionSetType>
   private readonly soundEnabled: boolean
+  private readonly enableSecondary: boolean
 
   constructor(
     omikujiData: OmikujiDataType,
@@ -46,6 +47,7 @@ export class OmikujiResultProcessor {
     // isCharacterMode の影響を受けるコード
     const isCharacterMode = checkIsCharacterMode(omikujiData)
     this.characterManager = isCharacterMode ? new CharacterManager(omikujiData) : undefined
+    this.enableSecondary = omikujiData.components.enableSecondary
     this.postMessage = new PostOmikujiService(omikujiData)
   }
 
@@ -138,18 +140,28 @@ export class OmikujiResultProcessor {
       const { action, extra } = item
       const delaySeconds = action.delaySeconds + POST_SETTINGS.basicDelaySeconds
 
-      switch (action.actionType) {
-        case 'message':
-          messages.push(...createBotMessagesFromAction(action, extra, delaySeconds, this.characterManager, omiken))
-          if (action.sound && this.soundEnabled) playSoundDelay(action.sound, delaySeconds)
-          break
+      if (action.actionType === 'message') {
+        // ここで判定：設定が無効なら、action のコピーを作って isToast を false に書き換える
+        const effectiveAction =
+          !this.enableSecondary && action.message.isToast
+            ? { ...action, message: { ...action.message, isToast: false } }
+            : action
 
-        case 'sound':
-          if (action.sound && this.soundEnabled) playSoundDelay(action.sound, delaySeconds)
-          break
+        messages.push(
+          ...createBotMessagesFromAction(
+            effectiveAction, // 書き換え後のアクションを渡す
+            extra,
+            delaySeconds,
+            this.characterManager,
+            omiken
+          )
+        )
+
+        if (action.sound && this.soundEnabled) playSoundDelay(action.sound, delaySeconds)
+      } else if (action.actionType === 'sound') {
+        if (action.sound && this.soundEnabled) playSoundDelay(action.sound, delaySeconds)
       }
     }
-
     return messages
   }
 

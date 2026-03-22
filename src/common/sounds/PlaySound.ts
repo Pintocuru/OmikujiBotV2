@@ -6,7 +6,6 @@ import { rpgVoiceMap, soundMap } from './soundMap'
 const RPG_VOICE_MS_PER_CHARACTER = 50
 
 function resolveAsset(path: string) {
-  console.log(window.OmikujiBot?.assetBase)
   const base = window.OmikujiBot?.assetBase ?? './'
   return base + path
 }

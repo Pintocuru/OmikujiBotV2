@@ -40,8 +40,9 @@ export class PostOmikujiService {
 
   private async processPost(post: PostFlowType): Promise<void> {
     // enableSecondary が false なら全部投稿
-    // enableSecondary が true なら primary（isToast=false）のみ投稿
-    if (post.actionType === 'message' && (!this.enableSecondary || !post.message.isToast)) {
+    if (post.actionType === 'message') {
+      // Secondary なのに無効設定なら、何もしない（スキップ）
+      if (post.message.isToast && !this.enableSecondary) return
       await this.processMessagePost(post)
     }
 
