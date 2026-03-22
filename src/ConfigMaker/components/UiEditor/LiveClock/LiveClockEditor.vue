@@ -20,6 +20,7 @@
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor
+    v-if="isAdv"
     :model-value="liveClock.color"
     @update:model-value="(newValue) => updateField('color', newValue)"
   />
@@ -61,7 +62,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro } = useSettingMode()
+  const { isAdv, isPro } = useSettingMode()
 
   const liveClock = computed(() => data.value?.components?.settings?.liveClock ?? SettingsClockSchema.parse({}))
 

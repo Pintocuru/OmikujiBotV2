@@ -8,6 +8,7 @@ import MyNineViewers from './MyNineViewers'
 import GraduationIcons from './GraduationIcons'
 import StreamCounterCircle from './StreamCounterCircle'
 import StreamCounterPixel from './StreamCounterPixel'
+import LiveClockMorning from './LiveClockMorning'
 
 export default [
   /* 完成されてないもの */
@@ -21,4 +22,5 @@ export default [
   // GraduationIcons,
   // StreamCounterCircle,
   // StreamCounterPixel,
+  LiveClockMorning,
 ]
