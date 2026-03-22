@@ -5,8 +5,8 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 const PROJECT = {
   key: 'LiveClockMorning',
   series: 'LiveClock',
-  title: '速報！初見さんいらっしゃい！',
-  description: 'コメントしたリスナーに挨拶してくれる 速報風 BOT テンプレート',
+  title: '挨拶する時計 モーニング',
+  description: 'コメントしたリスナーに挨拶してくれる 時計型BOTテンプレート',
   banner: '',
   tags: [
     'あいさつする時計',

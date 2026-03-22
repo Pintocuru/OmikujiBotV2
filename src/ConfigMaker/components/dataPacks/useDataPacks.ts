@@ -36,6 +36,7 @@ const templateList: Record<AccessLevelType, string[]> = {
 
     '2026-Q1/StreamCounter/StreamCounterCircle.json',
     '2026-Q1/StreamCounter/StreamCounterPixelOhayou.json',
+    '2026-Q1/LiveClock/LiveClockMorning.json',
     '2026-Q1/BreakingSyoken/BreakingSyoken.json',
     '2026-Q1/MyNineViewers/MyNineViewers.json',
     '2026-Q1/GraduationIcons/GraduationIcons.json',
