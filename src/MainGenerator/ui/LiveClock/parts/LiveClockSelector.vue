@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/LiveClock/parts/LiveClockSelector.vue -->
 <template>
-  <div class="flex justify-center bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color">
+  <div class="flex justify-center bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color.daisyUiTheme">
     <component
       :is="currentComponent"
       :settings="settings"

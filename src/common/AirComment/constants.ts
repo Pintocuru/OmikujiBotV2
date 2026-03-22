@@ -1,9 +1,6 @@
 // src/common/AirComment/constants.ts
 
 export const COMMENTS = [
-  '占い',
-
-  /**
   'こんにちはー！',
   'お疲れさまです！',
   'わかる〜',
@@ -16,6 +13,7 @@ export const COMMENTS = [
   '草',
   'ｗｗｗ',
   '大草原',
+  /**
    */
 ]
 

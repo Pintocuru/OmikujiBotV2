@@ -21,7 +21,7 @@
     </SettingItem>
 
     <!-- 背景(From) -->
-    <SettingItem v-if="isAdv" label="背景(From)" description="背景グラデーションの左端の色" forceMode="adv">
+    <SettingItem v-if="isAdv" label="第1カラー" description="メインカラー" forceMode="adv">
       <select
         class="select select-bordered"
         :value="modelValue.backFrom"
@@ -34,7 +34,7 @@
     </SettingItem>
 
     <!-- 背景(To) -->
-    <SettingItem v-if="isAdv" label="背景(To)" description="背景グラデーションの右端の色" forceMode="adv">
+    <SettingItem v-if="isAdv" label="第2カラー" description="サブカラー" forceMode="adv">
       <select
         class="select select-bordered"
         :value="modelValue.backTo"

@@ -6,19 +6,22 @@
   >
     <!-- メインフレーム -->
     <div
-      class="relative backdrop-blur-sm border-2 border-primary border-base-300 rounded-[2.5rem] overflow-hidden h-[120px] bg-base-200"
+      class="relative backdrop-blur-sm border-2 border-base-300 rounded-[2.5rem] overflow-hidden h-[120px] bg-base-200"
+      :class="`border-${backFrom}`"
     >
-      <!-- グラデーションオーブ -->
-      <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full blur-3xl opacity-60 bg-primary"></div>
+      <!-- グラデーションオーブ（第一カラー） -->
+      <div class="absolute -top-10 -left-10 w-32 h-32 rounded-full blur-3xl opacity-60" :class="`bg-${backFrom}`"></div>
 
-      <div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-60 bg-secondary"></div>
+      <!-- グラデーションオーブ（第二カラー） -->
+      <div class="absolute -bottom-10 -right-10 w-32 h-32 rounded-full blur-3xl opacity-60 bg-Secondary"></div>
 
       <div class="relative h-full flex flex-col items-center justify-center pt-2">
         <transition name="magical-pop" mode="out-in">
           <!-- 時計 -->
           <div v-if="!isFlipped" key="clock" class="-mt-4 flex flex-col items-center">
             <div
-              class="flex items-center justify-center font-['Quicksand'] font-bold text-7xl tracking-tighter text-primary"
+              class="flex items-center justify-center font-['Quicksand'] font-bold text-7xl tracking-tighter"
+              :class="`text-${backFrom}`"
             >
               <span>{{ hours }}</span>
 
@@ -35,7 +38,11 @@
             </div>
 
             <!-- 下部メッセージ -->
-            <div v-if="defaultMessage" class="px-3 rounded-full border border-accent/70 bg-base-200 shadow-sm">
+            <div
+              v-if="defaultMessage"
+              class="px-3 rounded-full border bg-base-200 shadow-sm"
+              :class="`border-${backTo}`"
+            >
               <div class="text-sm font-black flex items-center gap-1 text-base-content/70">
                 <span class="line-clamp-1" v-html="defaultMessage"></span>
               </div>
@@ -49,12 +56,13 @@
               v-html="currentMsg"
             ></p>
 
-            <!-- タイピングドット -->
+            <!-- タイピングドット（第二カラー） -->
             <div class="mt-2 flex gap-1">
               <div
                 v-for="i in 3"
                 :key="i"
-                class="w-1.5 h-1.5 rounded-full bg-accent animate-bounce"
+                class="w-1.5 h-1.5 rounded-full animate-bounce"
+                :class="`bg-${backTo}`"
                 :style="{ animationDelay: `${i * 0.2}s` }"
               ></div>
             </div>
@@ -62,9 +70,15 @@
         </transition>
       </div>
 
-      <!-- サイドリボン -->
-      <div class="absolute top-1/2 -left-1 -translate-y-1/2 w-4 h-10 bg-primary/70 rounded-r-full shadow-inner"></div>
-      <div class="absolute top-1/2 -right-1 -translate-y-1/2 w-4 h-10 bg-primary/70 rounded-l-full shadow-inner"></div>
+      <!-- サイドリボン（第一カラー） -->
+      <div
+        class="absolute top-1/2 -left-1 -translate-y-1/2 w-4 h-10 rounded-r-full shadow-inner"
+        :class="ribbonClass"
+      ></div>
+      <div
+        class="absolute top-1/2 -right-1 -translate-y-1/2 w-4 h-10 rounded-l-full shadow-inner"
+        :class="ribbonClass"
+      ></div>
     </div>
   </div>
 </template>
@@ -72,8 +86,9 @@
 <script setup lang="ts">
   import type { SettingsClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
+  import { computed } from 'vue'
 
-  defineProps<{
+  const props = defineProps<{
     settings: SettingsClockType
     defaultMessage: string
     isMounted: boolean
@@ -82,6 +97,23 @@
   }>()
 
   const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+
+  // DaisyUI カラーキー（primary / secondary / accent / ...）
+  const backFrom = computed(() => props.settings.color.backFrom)
+  const backTo = computed(() => props.settings.color.backTo)
+
+  // サイドリボンカラー
+  const ribbonBgClassMap: Record<string, string> = {
+    primary: 'bg-primary/70',
+    secondary: 'bg-secondary/70',
+    accent: 'bg-accent/70',
+    neutral: 'bg-neutral/70',
+    info: 'bg-info/70',
+    success: 'bg-success/70',
+    warning: 'bg-warning/70',
+    error: 'bg-error/70',
+  }
+  const ribbonClass = computed(() => ribbonBgClassMap[backFrom.value] ?? 'bg-primary/70')
 </script>
 
 <style scoped>

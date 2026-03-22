@@ -19,8 +19,8 @@ export default [
   // TossedKotaro,
   /* BOOTHで発売されてるもの */
   // ReimuMarisa,
-  MaidenOmikuji,
-  FlowerFortune,
+  // MaidenOmikuji,
+  // FlowerFortune,
   // EveryoneZunda,
   // DivaMetan,
   // TsumugiHimari,

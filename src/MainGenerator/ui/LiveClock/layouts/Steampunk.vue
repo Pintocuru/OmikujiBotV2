@@ -6,7 +6,8 @@
   >
     <!-- メインフレーム -->
     <div
-      class="relative border-4 rounded-[1.5rem] overflow-hidden h-[130px] border-primary bg-base-300"
+      class="relative border-4 rounded-[1.5rem] overflow-hidden h-[130px] bg-base-300"
+      :class="borderColorClass"
       style="
         box-shadow:
           inset 0 2px 8px rgba(0, 0, 0, 0.5),
@@ -15,27 +16,26 @@
     >
       <!-- リベット（四隅） -->
       <div
-        class="absolute top-2 left-2 w-3 h-3 rounded-full border-2 border-primary bg-base-200 shadow-inner z-10"
-      ></div>
-      <div
-        class="absolute top-2 right-2 w-3 h-3 rounded-full border-2 border-primary bg-base-200 shadow-inner z-10"
-      ></div>
-      <div
-        class="absolute bottom-2 left-2 w-3 h-3 rounded-full border-2 border-primary bg-base-200 shadow-inner z-10"
-      ></div>
-      <div
-        class="absolute bottom-2 right-2 w-3 h-3 rounded-full border-2 border-primary bg-base-200 shadow-inner z-10"
+        v-for="position in rivetPositions"
+        :key="position"
+        class="absolute w-3 h-3 rounded-full border-2 bg-base-200 shadow-inner z-10"
+        :class="[borderColorClass, position]"
       ></div>
 
       <!-- 背景の歯車 (装飾) -->
-      <Cog class="absolute -right-4 -top-4 w-24 h-24 opacity-30 text-accent animate-spin-slow" :stroke-width="2" />
       <Cog
-        class="absolute -left-6 -bottom-6 w-24 h-24 opacity-30 text-neutral animate-spin-reverse"
+        class="absolute -right-4 -top-4 w-24 h-24 opacity-30 animate-spin-slow"
+        :class="textColorClass"
+        :stroke-width="2"
+      />
+      <Cog
+        class="absolute -left-6 -bottom-6 w-24 h-24 opacity-30 animate-spin-reverse"
+        :class="textColorClass"
         :stroke-width="2"
       />
 
       <!-- 蒸気パイプ（上部） -->
-      <div class="absolute top-0 left-10 right-10 h-1.5 bg-primary opacity-60 rounded-b-full"></div>
+      <div class="absolute top-0 left-10 right-10 h-1.5 opacity-50 rounded-b-full" :class="`bg-${backFrom}`"></div>
 
       <div class="relative h-full flex flex-col items-center justify-center">
         <transition :name="transitionName" mode="out-in">
@@ -45,48 +45,52 @@
             <div class="flex items-center gap-1">
               <!-- 時間ブロック -->
               <div class="flex items-baseline gap-0.5">
-                <div class="clock-digit bg-base-200 border-2 border-primary/60 rounded-md px-1.5 py-0.5 shadow-inner">
-                  <span class="font-mono font-black text-5xl leading-none text-primary tracking-tight">{{
-                    hours
-                  }}</span>
+                <div
+                  class="clock-digit bg-base-200 border-2 rounded-md px-1.5 py-0.5 shadow-inner"
+                  :class="borderColorClass"
+                >
+                  <span class="font-mono font-black text-5xl text-base-content leading-none tracking-tight">
+                    {{ hours }}
+                  </span>
                 </div>
               </div>
 
               <!-- コロン（ネジ風） -->
               <div class="flex flex-col gap-1.5 px-0.5 pb-1">
                 <div
-                  class="w-2 h-2 rounded-full border-2 border-primary transition-all duration-300"
-                  :class="colonVisible ? 'bg-primary shadow-[0_0_6px_currentColor]' : 'bg-transparent'"
-                ></div>
-                <div
-                  class="w-2 h-2 rounded-full border-2 border-primary transition-all duration-300"
-                  :class="colonVisible ? 'bg-primary shadow-[0_0_6px_currentColor]' : 'bg-transparent'"
+                  v-for="i in 2"
+                  :key="i"
+                  class="w-2 h-2 rounded-full border-2 transition-all duration-300"
+                  :class="[borderColorClass, colonVisible ? borderColorClass : 'bg-transparent']"
                 ></div>
               </div>
 
               <!-- 分ブロック -->
               <div class="flex items-baseline gap-0.5">
-                <div class="clock-digit bg-base-200 border-2 border-primary/60 rounded-md px-1.5 py-0.5 shadow-inner">
-                  <span class="font-mono font-black text-5xl leading-none text-primary tracking-tight">{{
-                    minutes
-                  }}</span>
+                <div
+                  class="clock-digit bg-base-200 border-2 rounded-md px-1.5 py-0.5 shadow-inner"
+                  :class="borderColorClass"
+                >
+                  <span class="font-mono font-black text-5xl text-base-content leading-none tracking-tight">
+                    {{ minutes }}
+                  </span>
                 </div>
               </div>
 
               <!-- 秒（オプション） -->
               <div v-if="settings.isSecond" class="flex items-end pb-0.5 pl-1">
-                <div class="bg-base-200 border border-primary/40 rounded px-1 py-0.5 shadow-inner">
-                  <span class="font-mono font-bold text-3xl leading-none text-secondary">{{ seconds }}</span>
+                <div class="bg-base-200 border rounded px-1 py-0.5 shadow-inner" :class="textColorClass">
+                  <span class="font-mono font-bold text-3xl text-base-content leading-none">{{ seconds }}</span>
                 </div>
               </div>
             </div>
 
             <!-- ゲージバー風メッセージ -->
             <div v-if="defaultMessage" class="mt-2 w-full">
-              <div class="relative border border-primary/50 rounded bg-base-100 px-3 py-0.5 overflow-hidden">
+              <div class="relative rounded bg-base-100 px-3 py-0.5 overflow-hidden" :class="borderColorClass">
                 <!-- 装飾ライン -->
-                <div class="absolute left-0 top-0 bottom-0 w-1 bg-primary opacity-70"></div>
-                <div class="absolute right-0 top-0 bottom-0 w-1 bg-primary opacity-70"></div>
+                <div class="absolute left-0 top-0 bottom-0 w-1 opacity-70" :class="`bg-${backFrom}`"></div>
+                <div class="absolute right-0 top-0 bottom-0 w-1 opacity-70" :class="`bg-${backFrom}`"></div>
                 <div
                   class="text-base font-bold text-center line-clamp-1 text-base-content/70 pl-1"
                   v-html="defaultMessage"
@@ -98,9 +102,7 @@
           <!-- メッセージ表示 -->
           <div v-else key="msg" class="w-full px-6 flex flex-col items-center gap-2">
             <!-- スチームパンク風テキストフレーム -->
-            <div class="relative border border-primary/50 rounded-lg bg-base-100 p-1 w-full">
-              <div class="absolute top-0 left-4 right-4 h-px bg-primary opacity-40"></div>
-              <div class="absolute bottom-0 left-4 right-4 h-px bg-primary opacity-40"></div>
+            <div class="relative border rounded-lg bg-base-200/70 p-1 w-full" :class="borderColorClass">
               <p
                 class="text-xl font-bold leading-tight text-center line-clamp-3 text-base-content/80"
                 v-html="currentMsg"
@@ -108,40 +110,40 @@
             </div>
             <!-- 圧力インジケーター風ドット -->
             <div class="flex gap-2 items-center">
-              <div class="w-1 h-1 rounded-full bg-primary/40"></div>
+              <div class="w-1 h-1 rounded-full" :class="`bg-${backFrom}`"></div>
               <div
                 v-for="i in 3"
                 :key="i"
-                class="w-2 h-2 rounded-full border border-primary animate-bounce"
-                :class="i === 2 ? 'bg-primary' : 'bg-primary/40'"
+                class="w-2 h-2 rounded-full border animate-bounce"
+                :class="borderColorClass"
                 :style="{ animationDelay: `${i * 0.25}s` }"
               ></div>
-              <div class="w-1 h-1 rounded-full bg-primary/40"></div>
+              <div class="w-1 h-1 rounded-full" :class="`bg-${backFrom}`"></div>
             </div>
           </div>
         </transition>
       </div>
 
       <!-- 蒸気パイプ（下部） -->
-      <div class="absolute bottom-0 left-16 right-16 h-1.5 bg-secondary opacity-50 rounded-t-full"></div>
+      <div class="absolute bottom-0 left-16 right-16 h-1.5 opacity-50 rounded-t-full" :class="`bg-${backFrom}`"></div>
 
-      <!-- サイドバルブ -->
-      <div class="absolute top-1/2 -left-2 -translate-y-1/2 flex flex-col items-center gap-0.5">
-        <div class="w-4 h-2 bg-primary/80 rounded-r-sm"></div>
-        <div class="w-5 h-3 bg-primary rounded-r-md shadow"></div>
-        <div class="w-4 h-2 bg-primary/80 rounded-r-sm"></div>
-      </div>
-      <div class="absolute top-1/2 -right-2 -translate-y-1/2 flex flex-col items-center gap-0.5">
-        <div class="w-4 h-2 bg-secondary/80 rounded-l-sm"></div>
-        <div class="w-5 h-3 bg-secondary rounded-l-md shadow"></div>
-        <div class="w-4 h-2 bg-secondary/80 rounded-l-sm"></div>
+      <!-- サイドバルブ（左右共通） -->
+      <div
+        v-for="side in sidePositions"
+        :key="side.side"
+        class="absolute top-1/2 -translate-y-1/2 flex flex-col items-center gap-0.5"
+        :class="side.class"
+      >
+        <div class="w-4 h-2 rounded-r-sm opacity-70" :class="`bg-${backFrom}`"></div>
+        <div class="w-5 h-3 rounded-r-md shadow opacity-70" :class="`bg-${backFrom}`"></div>
+        <div class="w-4 h-2 rounded-r-sm opacity-70" :class="`bg-${backFrom}`"></div>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { ref, watch } from 'vue'
+  import { ref, watch, computed } from 'vue'
   import { Cog } from 'lucide-vue-next'
   import type { SettingsClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
@@ -156,19 +158,23 @@
 
   const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
 
-  /**
-   * isFlipped の変化方向によってトランジション名を切り替える。
-   *
-   * false → true（時計 → メッセージ）: "steam-up"
-   *   退場: 上へ飛び出す（蒸気が抜けるイメージ）
-   *   登場: 下から押し上がる（ピストンが上がるイメージ）
-   *
-   * true → false（メッセージ → 時計）: "piston-down"
-   *   退場: 下に沈む（ピストンが下がるイメージ）
-   *   登場: 上から降りてくる（歯車が噛み合うイメージ）
-   */
-  const transitionName = ref('steam-up')
+  const backFrom = computed(() => props.settings.color.backFrom)
 
+  // 動的クラスの一元管理
+  const borderColorClass = computed(() => `border-${props.settings.color.backFrom}`)
+  const textColorClass = computed(() => `text-${props.settings.color.backTo}`)
+
+  // リベットの位置クラス
+  const rivetPositions = ['top-2 left-2', 'top-2 right-2', 'bottom-2 left-2', 'bottom-2 right-2']
+
+  // サイドバルブの位置設定
+  const sidePositions = [
+    { side: 'left', class: '-left-2' },
+    { side: 'right', class: '-right-2' },
+  ]
+
+  // トランジション名
+  const transitionName = ref('steam-up')
   watch(
     () => props.isFlipped,
     (next) => {

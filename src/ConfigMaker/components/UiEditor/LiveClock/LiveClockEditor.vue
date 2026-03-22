@@ -19,18 +19,10 @@
   </SettingItem>
 
   <!-- テーマカラー -->
-  <SettingItem v-if="isAdv" label="カラー" description="ランキングのテーマカラーを選択します" forceMode="adv">
-    <select
-      class="select select-bordered"
-      :value="liveClock.color"
-      :disabled="!isAdv"
-      @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
-    >
-      <option v-for="theme in themes" :key="theme" :value="theme">
-        {{ theme }}
-      </option>
-    </select>
-  </SettingItem>
+  <DaisyUiThemeEditor
+    :model-value="liveClock.color"
+    @update:model-value="(newValue) => updateField('color', newValue)"
+  />
 
   <!-- デフォルトで表示させるメッセージ -->
   <SettingItem
@@ -65,11 +57,11 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import MessageTextDialog from '@config/components/postAction/Message/MessageTextDialog.vue'
-  import { themes } from '@shared/styles/DaisyUiTheme'
+  import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isPro } = useSettingMode()
+  const { isPro } = useSettingMode()
 
   const liveClock = computed(() => data.value?.components?.settings?.liveClock ?? SettingsClockSchema.parse({}))
 

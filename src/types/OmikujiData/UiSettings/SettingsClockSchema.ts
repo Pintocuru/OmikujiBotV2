@@ -1,6 +1,7 @@
 // src/types/OmikujiData/UiSettings/SettingsClockSchema.ts
 import { z } from 'zod'
-import { themes } from '@shared/styles/DaisyUiTheme'
+import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
+import { normalizedObject } from '../ParsedDefault'
 
 /**
  * ライブクロック LiveClock
@@ -30,7 +31,7 @@ const defaultMessage = `<<
 
 export const SettingsClockSchema = z.object({
   component: z.enum(clockComponentsEnum).default('morning').catch('morning'),
-  color: z.enum(themes).default('garden').catch('garden'),
+  color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
   isSecond: z.boolean().default(false).catch(false), //
   defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),
 })

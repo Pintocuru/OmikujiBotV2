@@ -85,6 +85,20 @@ export type UiCommonStyleType = z.infer<typeof UiCommonStyleSchema>
 /**
  * UiSettingsSchema オブジェクトのスキーマ
  */
+export const settingsSchemaMap = {
+  bubble: SettingsBubbleSchema,
+  toast: SettingsToastSchema,
+  liveClock: SettingsClockSchema,
+  ranking: SettingsRankingSchema,
+  counter: SettingsCounterSchema,
+  winnerGroup: SettingsWinnerSchema,
+  flightSeat: SettingsFlightSchema,
+  socialRoster: SettingsSocialSchema,
+  flashBanner: SettingsBannerSchema,
+  streamCounter: SettingsStreamSchema,
+  deadAir: SettingsDeadSchema,
+} as const
+
 export const UiSettingsSchema = z.object({
   bubble: SettingsBubbleSchema.optional(),
   toast: SettingsToastSchema.optional(),

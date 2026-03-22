@@ -1,13 +1,14 @@
 <!-- src/MainGenerator/ui/LiveClock/layouts/SoundPlayer.vue -->
 <template>
   <div class="w-full max-w-md transition-all duration-500 ease-out">
-    <div class="cyber-frame relative bg-base-200 border border-primary px-4 overflow-hidden">
+    <div class="cyber-frame relative bg-base-200 border px-4 overflow-hidden" :class="`border-${backFrom}`">
       <div class="relative h-24 flex items-center">
         <transition name="cyber-slide" mode="out-in">
           <!-- 時計表示 -->
           <div v-if="!isFlipped" key="clock" class="w-full">
             <div
-              class="flex items-baseline font-mono text-6xl font-black leading-none tracking-tighter text-primary drop-shadow-[0_0_8px_var(--fallback-p,theme(colors.primary))]"
+              class="flex items-baseline font-mono text-6xl font-black leading-none tracking-tighter"
+              :class="`text-${backFrom}`"
             >
               <span>{{ hours }}</span>
               <span class="mx-1 transition-opacity duration-100" :class="{ 'opacity-20': !colonVisible }">:</span>
@@ -17,30 +18,43 @@
             </div>
 
             <div class="flex items-center gap-2">
-              <div class="bg-accent text-accent-content px-1 text-sm rounded-sm font-bold tracking-wider">ON_AIR</div>
-              <div class="text-lg text-accent truncate font-medium line-clamp-1" v-html="defaultMessage"></div>
+              <!-- ON_AIR バッジ（第一カラー） -->
+              <div
+                class="px-1 text-sm rounded-sm font-bold tracking-wider"
+                :class="[`bg-${backTo}`, `text-${backTo}-content`]"
+              >
+                ON_AIR
+              </div>
+
+              <!-- 下部メッセージ（第一カラー） -->
+              <div
+                class="text-lg truncate font-bold line-clamp-1"
+                :class="`text-${backTo}`"
+                v-html="defaultMessage"
+              ></div>
             </div>
           </div>
 
           <!-- メッセージ表示 -->
-          <div v-else key="msg" class="w-full text-secondary">
-            <div class="flex items-center gap-2 text-sm tracking-[0.2em]">
+          <div v-else key="msg" class="w-full" :class="`text-${backTo}`">
+            <div class="flex items-center gap-2 text-sm tracking-[0.2em]" :class="`text-${backFrom}`">
               <span class="animate-pulse">▶▶</span>
               <span>SIGNAL_RECEIVED</span>
             </div>
 
             <p class="text-2xl font-bold leading-tight h-14 line-clamp-2 italic" v-html="currentMsg"></p>
 
-            <div class="mt-2 w-full bg-secondary/30 relative overflow-hidden">
-              <div class="absolute inset-0 bg-secondary w-1/3 cyber-progress-anim"></div>
+            <!-- プログレスバー（第二カラー） -->
+            <div class="mt-2 w-full relative overflow-hidden" :class="`bg-${backTo}`">
+              <div class="absolute inset-0 w-1/3 cyber-progress-anim" :class="`bg-${backTo}`"></div>
             </div>
           </div>
         </transition>
       </div>
 
-      <!-- 角パーツ -->
-      <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary"></div>
-      <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary"></div>
+      <!-- 角パーツ（第一カラー） -->
+      <div class="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2" :class="`border-${backFrom}`"></div>
+      <div class="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2" :class="`border-${backFrom}`"></div>
     </div>
   </div>
 </template>
@@ -48,8 +62,9 @@
 <script setup lang="ts">
   import type { SettingsClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
+  import { computed } from 'vue'
 
-  defineProps<{
+  const props = defineProps<{
     settings: SettingsClockType
     defaultMessage: string
     isMounted: boolean
@@ -58,6 +73,10 @@
   }>()
 
   const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+
+  // DaisyUI カラーキー（primary / secondary / accent / ...）
+  const backFrom = computed(() => props.settings.color.backFrom)
+  const backTo = computed(() => props.settings.color.backTo)
 </script>
 
 <style scoped>

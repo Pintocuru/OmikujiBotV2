@@ -27,7 +27,7 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { uiKindMap } from '@/types/'
+  import { settingsSchemaMap, uiKindMap } from '@/types/'
   import type { UiKind } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
@@ -53,9 +53,10 @@
     const checkbox = event.target as HTMLInputElement
     const turningOn = checkbox.checked
 
+    // ON: デフォルト値でsettingsを初期化
     if (turningOn) {
-      // ON: デフォルト値でsettingsを初期化
-      omikujiStore.updateComponentSettings(key as keyof typeof settings.value, {} as any)
+      const defaultValue = createDefaultSettings(key)
+      omikujiStore.updateComponentSettings(key as keyof typeof settings.value, defaultValue)
       return
     }
 
@@ -69,5 +70,12 @@
     if (result.isConfirmed) {
       omikujiStore.removeComponentSetting(key as keyof typeof settings.value)
     }
+  }
+
+  const createDefaultSettings = (key: UiKind) => {
+    const schema = settingsSchemaMap[key]
+    if (!schema) return undefined
+
+    return schema.parse({})
   }
 </script>
