@@ -6,7 +6,7 @@ import { CommentEventSchema, ReactionEventSchema, ServiceEventSchema, TimerEvent
 import { PackageJsonSchema } from '@shared/types'
 import { JsonMergeSchema } from './JsonMergeType'
 import { UiSchema } from './UiSchema'
-import { FlagsSchema } from './FeatureUsageSchema'
+import { FlagsSchema } from './FlagsSchema'
 import { SettingsSchema } from './SettingsSchema'
 import { ActionSetSchema } from './ActionSet'
 import { normalizedRecord, normalizedObject } from './ParsedDefault'

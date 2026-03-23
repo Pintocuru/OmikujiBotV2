@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { RecordCategoryType, recordCategoryLabel } from '@/types/OmikujiData/'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
-import { FlagsDeveloperSchema, FlagsUsageType } from '@/types/OmikujiData/FeatureUsageSchema'
+import { FlagsDeveloperSchema, FlagsUsageType } from '@/types/OmikujiData/FlagsSchema'
 import { UiSettingsType } from '@/types/OmikujiData/UiSchema'
 import { useDataMergeHelpers } from './useDataMergeHelpers'
 import { ImportPreview } from '@config/components/presetsImport/ImportTypes'

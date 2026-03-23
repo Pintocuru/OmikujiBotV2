@@ -123,6 +123,7 @@ export const useNavigationStore = defineStore('navigation', () => {
     selectedItem,
 
     // 操作
+    isRecordCategory,
     selectCategory,
     selectItem,
     clearSelection,
