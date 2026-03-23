@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/EventProcess/MetaProcessor.ts
+// EventReactionProcessor.ts
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { GetReactions } from '@shared/sdk/subscribe/GetReactions'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
@@ -7,39 +7,30 @@ import { evaluateReactionTrigger } from '@/MainGenerator/stores/ReactionManager/
 export class EventReactionProcessor {
   private store = useAppStore()
   private readonly omikujiProcessor = new OmikujiProcessor()
-  private unsubscribe: (() => void) | null = null
 
-  /**
-   * イベント監視を開始
-   */
   startReactions(): void {
     this.stopReactions()
 
-    GetReactions((payload) => {
-      this.store.reactionStats.record(payload)
-      this.evaluateReactionRules()
+    GetReactions((aggregated, firedLabels) => {
+      this.store.reactionStats.record(aggregated)
+      this.evaluateReactionRules(firedLabels)
     }).then((ok) => {
       if (!ok) console.error('Reaction購読失敗')
     })
   }
 
-  /**
-   * イベント監視を停止
-   */
   stopReactions(): void {
-    this.unsubscribe?.()
-    this.unsubscribe = null
     this.store.reactionStats.reset()
   }
 
-  private evaluateReactionRules() {
-    const enabledRules = Object.values(this.store.data.reactions)
+  private evaluateReactionRules(firedLabels: Set<string>) {
+    const enabledEvents = Object.values(this.store.data.reactions)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 
-    for (const rule of enabledRules) {
-      if (evaluateReactionTrigger(rule.trigger, this.store.reactionStats)) {
-        const messages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
+    for (const event of enabledEvents) {
+      if (evaluateReactionTrigger(event.trigger, this.store.reactionStats, firedLabels)) {
+        const messages = this.omikujiProcessor.executeOmikuji(event.omikuji)
         this.store.scheduleBotMessages(messages)
       }
     }

@@ -1,45 +1,79 @@
-// src/MainGenerator/stores/ReactionState/ReactionTriggerEvaluator.ts
-import type { ReactionTriggerType } from '@/types/OmikujiData'
-import { ReactionStatsManagerType } from './ReactionStatsManager'
+// ReactionTriggerEvaluator.ts
 
-/**
- * リアクショントリガーの評価
- */
+import type { ReactionTriggerType } from '@/types/OmikujiData'
+import type { ReactionStatsManagerType } from './ReactionStatsManager'
+
+type ReactionType = 'heart' | 'smile' | 'celebrate' | 'surprise' | 'praise'
+
 export function evaluateReactionTrigger(
   trigger: ReactionTriggerType,
-  reactionStats: ReactionStatsManagerType
+  stats: ReactionStatsManagerType,
+  firedLabels: Set<string>
 ): boolean {
   const { reactions, comparison, value } = trigger
 
-  // リアクション指定なし → 常に false（発動しない）
   if (!reactions || reactions.length === 0) return false
 
-  switch (comparison) {
-    case 'burst':
-      return evaluateBurstCondition(reactions, value, reactionStats)
+  const targetTypes = reactions as ReactionType[]
 
-    // 将来、他の条件を追加するならここに書く
+  switch (comparison) {
+    case 'increased':
+      // 今回のペイロードに指定ラベルが含まれているか
+      return targetTypes.some((t) => firedLabels.has(t))
+
+    case 'burst':
+      return evaluateBurst(targetTypes, value, stats)
+    case 'lowerBound':
+      return evaluateLowerBound(targetTypes, value, stats)
+    case 'upperBound':
+      return evaluateUpperBound(targetTypes, value, stats)
+    case 'equal':
+      return evaluateEqual(targetTypes, value, stats)
+    case 'loop':
+      return evaluateLoop(targetTypes, value, stats)
     default:
       return false
   }
 }
 
-/**
- * burst 条件の評価
- * 30秒以内に指定値以上のリアクションがあれば true
- */
-function evaluateBurstCondition(
-  reactionTypes: string[],
-  threshold: number | undefined,
-  reactionStats: ReactionStatsManagerType
-): boolean {
+function sumInLast30s(types: ReactionType[], stats: ReactionStatsManagerType): number {
+  return types.reduce((acc, t) => acc + stats.countInLast30Seconds(t), 0)
+}
+
+function sumTotal(types: ReactionType[], stats: ReactionStatsManagerType): number {
+  return stats.getTotal(types)
+}
+
+function evaluateBurst(types: ReactionType[], threshold: number | undefined, stats: ReactionStatsManagerType): boolean {
   if (!threshold || threshold <= 0) return false
+  return sumInLast30s(types, stats) >= threshold
+}
 
-  // 指定された複数リアクションの合計をチェック
-  let total = 0
-  for (const type of reactionTypes) {
-    total += reactionStats.countInLast30Seconds(type)
-  }
+function evaluateLowerBound(
+  types: ReactionType[],
+  threshold: number | undefined,
+  stats: ReactionStatsManagerType
+): boolean {
+  if (!threshold) return false
+  return sumTotal(types, stats) >= threshold
+}
 
-  return total >= threshold
+function evaluateUpperBound(
+  types: ReactionType[],
+  threshold: number | undefined,
+  stats: ReactionStatsManagerType
+): boolean {
+  if (threshold === undefined) return false
+  return sumTotal(types, stats) <= threshold
+}
+
+function evaluateEqual(types: ReactionType[], threshold: number | undefined, stats: ReactionStatsManagerType): boolean {
+  if (threshold === undefined) return false
+  return sumTotal(types, stats) === threshold
+}
+
+function evaluateLoop(types: ReactionType[], threshold: number | undefined, stats: ReactionStatsManagerType): boolean {
+  if (!threshold || threshold <= 0) return false
+  const total = sumTotal(types, stats)
+  return total > 0 && total % threshold === 0
 }

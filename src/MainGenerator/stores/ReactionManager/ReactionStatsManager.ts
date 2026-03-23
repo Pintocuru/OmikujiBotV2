@@ -1,8 +1,10 @@
 export interface ReactionStatsManagerType {
   record(reactions: Record<string, number>): void
   countInLast30Seconds(type: string): number
-  getTotal(type: string): number
+  getTotal(type: string[]): number
+  getGrandTotal(): number
   reset(): void
+  getHistory(): { timestamp: number; type: string }[]
 }
 
 export class ReactionStatsManager implements ReactionStatsManagerType {
@@ -54,10 +56,25 @@ export class ReactionStatsManager implements ReactionStatsManagerType {
   }
 
   /**
-   * 累計回数
+   * 指定リアクションの累計（複数対応）
    */
-  getTotal(type: string): number {
-    return this.total[type] ?? 0
+  getTotal(types: string[]): number {
+    let total = 0
+    for (const t of types) {
+      total += this.total[t] ?? 0
+    }
+    return total
+  }
+
+  /**
+   * 全リアクションの累計合計
+   */
+  getGrandTotal(): number {
+    let sum = 0
+    for (const key in this.total) {
+      sum += this.total[key]
+    }
+    return sum
   }
 
   /**

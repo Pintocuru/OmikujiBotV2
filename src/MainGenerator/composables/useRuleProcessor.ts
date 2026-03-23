@@ -21,6 +21,7 @@ export function useRuleProcessor() {
       if (processor) {
         processor.timer.stop()
         processor.service.stop()
+        processor.reaction.stop()
       }
       console.log('🔄 RuleProcessor起動')
 

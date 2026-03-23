@@ -50,13 +50,15 @@
     praise: reactionStats.countInLast30Seconds('praise'),
   }))
 
-  const total = computed(() => ({
-    heart: reactionStats.getTotal('heart'),
-    smile: reactionStats.getTotal('smile'),
-    celebrate: reactionStats.getTotal('celebrate'),
-    surprise: reactionStats.getTotal('surprise'),
-    praise: reactionStats.getTotal('praise'),
-  }))
+  const keys = ['heart', 'smile', 'celebrate', 'surprise', 'praise'] as const
+
+  const total = computed(() => {
+    const result: Record<string, number> = {}
+    for (const k of keys) {
+      result[k] = reactionStats.getTotal([k])
+    }
+    return result
+  })
 
   onMounted(() => {
     setInterval(() => {
