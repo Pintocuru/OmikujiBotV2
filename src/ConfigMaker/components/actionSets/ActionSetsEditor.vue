@@ -43,7 +43,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
-  import CharacterChanger from '@config/components/rules/CharacterChanger/CharacterChanger.vue'
+  import CharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'

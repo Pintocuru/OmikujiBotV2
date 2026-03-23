@@ -59,9 +59,9 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { TimerEventType } from '@/types/OmikujiData/'
-  import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
+  import GlobalCharacterChanger from '../events/CharacterChanger/CharacterChanger.vue'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
-  import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
+  import OmikujiSetEditor from '@config/components/events/OmikujiSetEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'

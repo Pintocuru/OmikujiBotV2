@@ -2,7 +2,7 @@
 <template>
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">
-    <GlobalCharacterChanger category="metas" />
+    <GlobalCharacterChanger category="reactions" />
   </div>
 
   <!-- タブ部分 -->
@@ -10,6 +10,11 @@
 
   <!-- イベント編集エリア -->
   <template v-if="selectedItem">
+    <!-- 無効のときのメッセージ -->
+    <InformationCard variant="info" class="mt-4 p-4">
+      「リアクションイベント」は、Youtube の リアクションのみ対応しています。<br />
+    </InformationCard>
+
     <!-- 基本設定セクション -->
     <SectionCard
       icon="SlidersHorizontal"
@@ -19,7 +24,7 @@
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       :description="selectedItem.description"
     >
-      <BaseSettingsEditor v-model="selectedItem" category="metas" />
+      <BaseSettingsEditor v-model="selectedItem" category="reactions" />
     </SectionCard>
 
     <template v-if="selectedItem.isEnabled !== false">
@@ -29,10 +34,9 @@
         :isOpen="activeSection === 'trigger'"
         @toggle="toggleSection('trigger')"
         title="発動条件設定"
-        :subTitle="`発動条件: ${thresholdSubTitle}`"
         description="「おみくじを引く」発動条件の設定"
       >
-        <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
+        <ReactionTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
       </SectionCard>
 
       <!-- おみくじ設定セクション -->
@@ -44,7 +48,7 @@
         :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
         description="おみくじの抽選設定や、おみくじの内容です"
       >
-        <OmikujiSetEditor category="metas" :selectedItemKey="selectedItemKey" />
+        <OmikujiSetEditor category="reactions" :selectedItemKey="selectedItemKey" />
       </SectionCard>
     </template>
 
@@ -58,11 +62,10 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { serviceTriggerConditionMap } from '@/types/'
-  import { ServiceEventType } from '@/types/OmikujiData/'
-  import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
-  import CommentTriggerEditor from './MetaTriggerEditor.vue'
-  import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
+  import { ReactionEventType } from '@/types/OmikujiData/'
+  import GlobalCharacterChanger from '../events/CharacterChanger/CharacterChanger.vue'
+  import ReactionTriggerEditor from './ReactionTriggerEditor.vue'
+  import OmikujiSetEditor from '@config/components/events/OmikujiSetEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
@@ -90,17 +93,10 @@
   const selectedItem = computed({
     get: () => {
       if (!selectedItemKey.value) return null
-      return getItem('metas', selectedItemKey.value)
+      return getItem('reactions', selectedItemKey.value)
     },
-    set: (value: ServiceEventType) => {
-      updateItem('metas', value.key, value)
+    set: (value: ReactionEventType) => {
+      updateItem('reactions', value.key, value)
     },
-  })
-
-  // 発動条件セクションのサブタイトル
-  const thresholdSubTitle = computed(() => {
-    if (!selectedItem.value) return ''
-    const condition = selectedItem.value.trigger.condition
-    return `[${serviceTriggerConditionMap[condition]}]`
   })
 </script>

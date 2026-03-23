@@ -12,6 +12,8 @@ import {
   EventType,
   TimerEventSchema,
   TimerEventType,
+  ReactionEventType,
+  ReactionEventSchema,
 } from './EventSchema'
 import { categoryMap } from '../MetaMaps'
 
@@ -25,6 +27,7 @@ export type RecordCategoryDataMap = {
   comments: Record<string, CommentEventType>
   timers: Record<string, TimerEventType>
   metas: Record<string, ServiceEventType>
+  reactions: Record<string, ReactionEventType>
   actionSets: Record<string, ActionSetType>
   placeholders: Record<string, PlaceholderType>
   characters: Record<string, CharacterType>
@@ -33,6 +36,7 @@ export type RecordCategoryItemTypeMap = {
   comments: CommentEventType
   timers: TimerEventType
   metas: ServiceEventType
+  reactions: ReactionEventType
   actionSets: ActionSetType
   placeholders: PlaceholderType
   characters: CharacterType
@@ -43,6 +47,7 @@ export const RecordCategorySchemaMap = {
   comments: CommentEventSchema,
   timers: TimerEventSchema,
   metas: ServiceEventSchema,
+  reactions: ReactionEventSchema,
   actionSets: ActionSetSchema,
   placeholders: PlaceholderSchema,
   characters: CharacterSchema,

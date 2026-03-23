@@ -24,6 +24,11 @@ export const categoryMap = {
     description: '配信の視聴数・高評価の変動でおみくじを発動します',
     icon: 'Activity',
   },
+  reactions: {
+    label: 'リアクションイベント',
+    description: '視聴者のリアクション（❤ 😄 🎉 😳 💯）でおみくじを発動します',
+    icon: 'Sparkles',
+  },
   actionSets: {
     label: 'アクションセット',
     description: 'BOTのコメント・WordPartyの指定のプリセットを作成します',

@@ -20,9 +20,10 @@
   import { storeToRefs } from 'pinia'
   import { categoryMap, CategoryType } from '@/types/'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
-  import CommentRuleEditor from '@config/components/rulesComments/CommentRuleEditor.vue'
-  import TimerRuleEditor from '@config/components/rulesTimers/TimerRuleEditor.vue'
-  import MetaRuleEditor from '@config/components/rulesMetas/MetaRuleEditor.vue'
+  import CommentEventEditor from '@/ConfigMaker/components/eventsComment/CommentEditor.vue'
+  import TimerEventEditor from '@config/components/eventsTimer/TimerEditor.vue'
+  import MetaEventEditor from '@config/components/eventsService/MetaEditor.vue'
+  import ReactionEventEditor from '@config/components/eventsReaction/ReactionEditor.vue'
   import ActionSetsEditor from '@config/components/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@config/components/placeholders/PlaceholderEditor.vue'
   import CharacterEditor from '@config/components/characters/CharacterEditor.vue'
@@ -41,9 +42,10 @@
   // エディターマップ
   const editorMap: Record<CategoryType, any> = {
     jsonMerge: JsonMergeEditor,
-    comments: CommentRuleEditor,
-    timers: TimerRuleEditor,
-    metas: MetaRuleEditor,
+    comments: CommentEventEditor,
+    timers: TimerEventEditor,
+    metas: MetaEventEditor,
+    reactions: ReactionEventEditor,
     actionSets: ActionSetsEditor,
     placeholders: PlaceholderEditor,
     characters: CharacterEditor,
