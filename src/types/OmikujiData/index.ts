@@ -12,7 +12,7 @@ export * from './PlaceholderSchema'
 export * from './EventSchema'
 export * from './SettingsSchema'
 export * from './SoundKey'
-export * from './MetaTriggerSchema'
+export * from './ServiceTriggerSchema'
 export * from './CommentTriggerSchema'
 export * from './CriteriaThresholdSchema'
 

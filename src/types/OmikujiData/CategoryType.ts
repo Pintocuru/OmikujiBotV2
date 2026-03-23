@@ -3,15 +3,15 @@ import { ActionSetSchema, ActionSetType } from './ActionSet'
 import { PlaceholderSchema, PlaceholderType } from './PlaceholderSchema'
 import { CharacterSchema, CharacterType } from './CharacterSchema'
 import {
-  CommentRuleSchema,
-  CommentRuleType,
-  MetaRuleSchema,
-  MetaRuleType,
+  CommentEventSchema,
+  CommentEventType,
+  ServiceEventSchema,
+  ServiceEventType,
   rulesCategoryLabel,
   RulesCategoryType,
-  RuleType,
-  TimerRuleSchema,
-  TimerRuleType,
+  EventType,
+  TimerEventSchema,
+  TimerEventType,
 } from './EventSchema'
 import { categoryMap } from '../MetaMaps'
 
@@ -20,19 +20,19 @@ import { categoryMap } from '../MetaMaps'
  */
 export const recordCategoryLabel = [...rulesCategoryLabel, 'actionSets', 'placeholders', 'characters'] as const
 export type RecordCategoryType = (typeof recordCategoryLabel)[number]
-export type RecordCategoryUnion = RuleType | PlaceholderType | CharacterType
+export type RecordCategoryUnion = EventType | PlaceholderType | CharacterType
 export type RecordCategoryDataMap = {
-  comments: Record<string, CommentRuleType>
-  timers: Record<string, TimerRuleType>
-  metas: Record<string, MetaRuleType>
+  comments: Record<string, CommentEventType>
+  timers: Record<string, TimerEventType>
+  metas: Record<string, ServiceEventType>
   actionSets: Record<string, ActionSetType>
   placeholders: Record<string, PlaceholderType>
   characters: Record<string, CharacterType>
 }
 export type RecordCategoryItemTypeMap = {
-  comments: CommentRuleType
-  timers: TimerRuleType
-  metas: MetaRuleType
+  comments: CommentEventType
+  timers: TimerEventType
+  metas: ServiceEventType
   actionSets: ActionSetType
   placeholders: PlaceholderType
   characters: CharacterType
@@ -40,9 +40,9 @@ export type RecordCategoryItemTypeMap = {
 
 // カテゴリ更新用のスキーママップ
 export const RecordCategorySchemaMap = {
-  comments: CommentRuleSchema,
-  timers: TimerRuleSchema,
-  metas: MetaRuleSchema,
+  comments: CommentEventSchema,
+  timers: TimerEventSchema,
+  metas: ServiceEventSchema,
   actionSets: ActionSetSchema,
   placeholders: PlaceholderSchema,
   characters: CharacterSchema,

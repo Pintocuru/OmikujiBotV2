@@ -3,7 +3,7 @@
   <!-- 条件タイプ選択（単一選択） -->
   <SettingItem label="適用する発動条件" description="監視するメタデータを選択">
     <div class="flex flex-wrap gap-2">
-      <label v-for="(value, key) in metaTriggerConditionMap" :key="key" class="cursor-pointer">
+      <label v-for="(value, key) in serviceTriggerConditionMap" :key="key" class="cursor-pointer">
         <input type="radio" class="hidden" :checked="selectedCondition === key" @change="setCondition(key)" />
         <span class="badge badge-lg select-none" :class="selectedCondition === key ? 'badge-primary' : 'badge-ghost'">
           {{ value }}
@@ -60,7 +60,7 @@
   <InformationCard v-if="selectedCondition === 'follower' || selectedCondition === 'elapsedMinutes'" variant="warning">
     <p class="leading-relaxed">
       ・この
-      <code class="label bg-accent text-accent-content">{{ metaTriggerConditionMap[selectedCondition] }}</code>
+      <code class="label bg-accent text-accent-content">{{ serviceTriggerConditionMap[selectedCondition] }}</code>
       は現在テスト中の機能です。<br />
       ・今後のバージョンで仕様が変わったり、設定がリセットされる可能性があります。
     </p>
@@ -73,10 +73,10 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import TriggerMetaCondition from './TriggerMetaCondition.vue'
-  import { metaTriggerConditionMap, MetaTriggerCondition, MetaTriggerType } from '@/types/'
+  import { serviceTriggerConditionMap, ServiceTriggerCondition, ServiceTriggerType } from '@/types/'
 
   const props = defineProps<{
-    modelValue: MetaTriggerType
+    modelValue: ServiceTriggerType
     selectedItemKey: string | null
   }>()
 
@@ -84,7 +84,7 @@
   const { updateRecordProperty } = useOmikujiStore()
 
   // 共通 computed
-  const createComputed = <T extends keyof MetaTriggerType>(key: T) =>
+  const createComputed = <T extends keyof ServiceTriggerType>(key: T) =>
     computed({
       get: () => props.modelValue[key],
       set: (value) => {
@@ -103,7 +103,7 @@
   const elapsedMinutes = createComputed('elapsedMinutes')
 
   // 単一選択
-  const setCondition = (condition: MetaTriggerCondition) => {
+  const setCondition = (condition: ServiceTriggerCondition) => {
     selectedCondition.value = condition
   }
 </script>

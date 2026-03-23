@@ -58,8 +58,8 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { metaTriggerConditionMap } from '@/types/'
-  import { MetaRuleType } from '@/types/OmikujiData/'
+  import { serviceTriggerConditionMap } from '@/types/'
+  import { ServiceEventType } from '@/types/OmikujiData/'
   import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
   import CommentTriggerEditor from './MetaTriggerEditor.vue'
   import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
@@ -92,7 +92,7 @@
       if (!selectedItemKey.value) return null
       return getItem('metas', selectedItemKey.value)
     },
-    set: (value: MetaRuleType) => {
+    set: (value: ServiceEventType) => {
       updateItem('metas', value.key, value)
     },
   })
@@ -101,6 +101,6 @@
   const thresholdSubTitle = computed(() => {
     if (!selectedItem.value) return ''
     const condition = selectedItem.value.trigger.condition
-    return `[${metaTriggerConditionMap[condition]}]`
+    return `[${serviceTriggerConditionMap[condition]}]`
   })
 </script>

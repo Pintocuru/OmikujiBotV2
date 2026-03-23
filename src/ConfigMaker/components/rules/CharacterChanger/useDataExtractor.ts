@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/rules/CharacterChanger/useDataExtractor.ts
 import { computed, ComputedRef } from 'vue'
-import { RulesCategoryType, RuleType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
+import { RulesCategoryType, EventType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
 import { categoryMap } from '@/types/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
@@ -45,9 +45,9 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
     } else {
       if (selectedId) {
         const item = getItem(category, selectedId)
-        return item ? [item as RuleType] : []
+        return item ? [item as EventType] : []
       }
-      return getCategoryArray(category) as RuleType[]
+      return getCategoryArray(category) as EventType[]
     }
   })
 
@@ -59,7 +59,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
       const items = allItems.value as ActionSetType[]
       return items.flatMap((item) => item.postActions)
     } else {
-      const rules = allItems.value as RuleType[]
+      const rules = allItems.value as EventType[]
       return rules.flatMap((rule) => rule.omikuji.flatMap((omikuji: OmikujiItemType) => omikuji.postActions))
     }
   })
@@ -71,7 +71,7 @@ export function useDataExtractor(category: TargetCategoryType, selectedId?: stri
     if (category === 'actionSets') {
       return allItems.value as ActionSetType[]
     } else {
-      const rules = allItems.value as RuleType[]
+      const rules = allItems.value as EventType[]
       return rules.flatMap((rule) => rule.omikuji) as ActionSetType[]
     }
   })

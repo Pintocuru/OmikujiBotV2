@@ -1,11 +1,11 @@
 // src/MainGenerator/stores/MetaState/MetaTriggerEvaluator.ts
-import { MetaConditionType, MetaTriggerType } from '@/types/OmikujiData/'
+import { ServiceConditionType, ServiceTriggerType } from '@/types/OmikujiData/'
 import type { MetaUpdateEvent } from './MetaStateService'
 
 /**
  * トリガー条件の評価
  */
-export function evaluateMetaTrigger(trigger: MetaTriggerType, event: MetaUpdateEvent): boolean {
+export function evaluateMetaTrigger(trigger: ServiceTriggerType, event: MetaUpdateEvent): boolean {
   const { condition } = trigger
   if (!condition) return true
 
@@ -42,7 +42,7 @@ export function evaluateMetaTrigger(trigger: MetaTriggerType, event: MetaUpdateE
  * 🔧 FIX: peak 値ではなく peakChanged フラグを受け取る
  */
 export function evaluateCondition(
-  condition: MetaConditionType,
+  condition: ServiceConditionType,
   current: number,
   previous: number,
   isPeakChanged: boolean

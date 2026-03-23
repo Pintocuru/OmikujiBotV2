@@ -58,7 +58,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { TimerRuleType } from '@/types/OmikujiData/'
+  import { TimerEventType } from '@/types/OmikujiData/'
   import GlobalCharacterChanger from '../rules/CharacterChanger/CharacterChanger.vue'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@config/components/rules/OmikujiSetEditor.vue'
@@ -91,7 +91,7 @@
       if (!selectedItemKey.value) return null
       return getItem('timers', selectedItemKey.value)
     },
-    set: (value: TimerRuleType) => {
+    set: (value: TimerEventType) => {
       updateItem('timers', value.key, value)
     },
   })

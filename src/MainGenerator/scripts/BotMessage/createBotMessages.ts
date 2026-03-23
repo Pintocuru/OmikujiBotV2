@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/BotMessage/createBotMessages.ts
-import { BotMessageBubbleSchema, BotMessageBubbleType, CommentRuleType } from '@/types/'
+import { BotMessageBubbleSchema, BotMessageBubbleType, CommentEventType } from '@/types/'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 
@@ -29,7 +29,7 @@ export function createFirstBotMessages(message: string, isToast: boolean = false
  */
 export function buildRestrictionMessages(
   result: RestrictionCheckResult,
-  rule: CommentRuleType
+  rule: CommentEventType
 ): BotMessageBubbleType[] {
   if (!result.isBlocked) return []
 
@@ -42,7 +42,7 @@ export function buildRestrictionMessages(
 /**
  * 制限タイプに応じたメッセージを作成
  */
-function createMessage(result: RestrictionCheckResult, rule: CommentRuleType): string | null {
+function createMessage(result: RestrictionCheckResult, rule: CommentEventType): string | null {
   const { restrictionType, metadata } = result
 
   switch (restrictionType) {

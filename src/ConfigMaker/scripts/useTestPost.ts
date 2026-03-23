@@ -4,7 +4,7 @@ import {
   PostFlowType,
   BotMessageType,
   OmikujiItemType,
-  RuleType,
+  EventType,
   GameScriptsType,
   isRulesCategory,
   ActionSetType,
@@ -39,7 +39,7 @@ export function useTestPost() {
   const placeholderVariable = new PlaceholderVariable()
 
   // 選択されているイベントを取得（型安全性を確保）
-  const selectedRule = computed((): RuleType | null => {
+  const selectedRule = computed((): EventType | null => {
     const key = selectedItemKey.value
     if (!key || !isRulesCategory(selectedCategory.value)) return null
     return getItem(selectedCategory.value, key) ?? null

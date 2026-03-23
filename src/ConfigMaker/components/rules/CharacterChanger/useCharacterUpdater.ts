@@ -1,7 +1,7 @@
 // src/ConfigMaker/components/rules/CharacterChanger/useCharacterUpdater.ts
 import { ComputedRef } from 'vue'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { RuleType } from '@/types/OmikujiData/'
+import { EventType } from '@/types/OmikujiData/'
 import { ActionSetType, OmikujiItemType } from '@/types/OmikujiData/'
 import { TargetCategoryType } from './useDataExtractor'
 import { usePostActionCharacters } from './usePostActionCharacters'
@@ -9,7 +9,10 @@ import { usePostActionCharacters } from './usePostActionCharacters'
 /**
  * キャラクターの一括更新処理を提供
  */
-export function useCharacterUpdater(category: TargetCategoryType, allItems: ComputedRef<(RuleType | ActionSetType)[]>) {
+export function useCharacterUpdater(
+  category: TargetCategoryType,
+  allItems: ComputedRef<(EventType | ActionSetType)[]>
+) {
   const omikujiStore = useOmikujiStore()
   const { applyCharacterMappings } = usePostActionCharacters()
 
@@ -24,7 +27,7 @@ export function useCharacterUpdater(category: TargetCategoryType, allItems: Comp
         omikujiStore.updateItem('actionSets', item.key, updatedActionSet)
       })
     } else {
-      const rules = allItems.value as RuleType[]
+      const rules = allItems.value as EventType[]
       rules.forEach((rule) => {
         const newOmikujiSets = rule.omikuji.map((omikuji: OmikujiItemType) => {
           // OmikujiItemTypeのプロパティを保持しつつ、characterKeyを更新

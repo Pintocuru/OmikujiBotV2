@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/EventProcess/CommentProcessor.ts
-import { BotMessageEmptySchema, BotMessageType, CommentRuleType } from '@/types/'
+import { BotMessageEmptySchema, BotMessageType, CommentEventType } from '@/types/'
 import { OmikujiSetType } from '@/types/OmikujiData/'
 import { buildRestrictionMessages } from '../BotMessage/createBotMessages'
 import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'
@@ -58,7 +58,7 @@ export class EventCommentProcessor {
   /**
    * 単一イベントの処理
    */
-  private processRule(omiken: OmikenCommentType, event: CommentRuleType): ProcessResult {
+  private processRule(omiken: OmikenCommentType, event: CommentEventType): ProcessResult {
     const { data } = this.store
 
     // 1. コメントイベントの条件チェック
@@ -126,7 +126,7 @@ export class EventCommentProcessor {
   /**
    * omiken.meta.draws と eventKey を設定する (抽選前に呼ぶ)
    */
-  private setDrawsMeta(omiken: OmikenCommentType, event: CommentRuleType): void {
+  private setDrawsMeta(omiken: OmikenCommentType, event: CommentEventType): void {
     const { userSession } = this.store
     omiken.omikuji = {
       draws: userSession.visits.getCount(omiken.userId, event.key) + 1,
@@ -137,12 +137,12 @@ export class EventCommentProcessor {
   /**
    * ドロー記録
    */
-  private recordDraw(omiken: OmikenCommentType, rule: CommentRuleType, count = 1): void {
+  private recordDraw(omiken: OmikenCommentType, rule: CommentEventType, count = 1): void {
     const { userSession } = this.store
     userSession.visits.record(rule.key, omiken, count)
   }
 
-  private getSortedEnabledRules(): CommentRuleType[] {
+  private getSortedEnabledRules(): CommentEventType[] {
     return Object.values(this.store.data.comments)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)

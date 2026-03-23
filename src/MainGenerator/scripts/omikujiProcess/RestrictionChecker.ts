@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionChecker.ts
-import { CommentRuleType } from '@/types/'
+import { CommentEventType } from '@/types/'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
@@ -16,7 +16,7 @@ export interface RestrictionCheckResult {
 /**
  * 制限チェック（重複チェック、クールダウンチェック）
  */
-export function checkRestrictions(omiken: OmikenCommentType, event: CommentRuleType): RestrictionCheckResult {
+export function checkRestrictions(omiken: OmikenCommentType, event: CommentEventType): RestrictionCheckResult {
   const isCommentBased = event.trigger.conditions.includes('comment')
   const userName = omiken.userName
 

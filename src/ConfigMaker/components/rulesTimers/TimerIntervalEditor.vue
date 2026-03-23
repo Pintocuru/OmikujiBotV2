@@ -46,11 +46,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { TimerRuleType } from '@/types'
+  import { TimerEventType } from '@/types'
 
   const props = defineProps<{
     modelValue: {
-      mode: TimerRuleType['mode']
+      mode: TimerEventType['mode']
       intervalSeconds: number
       isBaseZero: boolean
     }

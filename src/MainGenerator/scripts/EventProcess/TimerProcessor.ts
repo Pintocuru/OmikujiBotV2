@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/EventProcess/TimerProcessor.ts
-import { TimerRuleType } from '@/types/OmikujiData/'
+import { TimerEventType } from '@/types/OmikujiData/'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 
@@ -45,7 +45,7 @@ export class EventTimerProcessor {
   /**
    * onStart モード: 起動時に一度だけ scheduleBotMessages を直接呼び出す
    */
-  private executeOnStart(rule: TimerRuleType): void {
+  private executeOnStart(rule: TimerEventType): void {
     try {
       const appStore = useAppStore()
       const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
@@ -58,7 +58,7 @@ export class EventTimerProcessor {
   /**
    * interval モード: 定期実行
    */
-  private startIntervalTimer(rule: TimerRuleType): void {
+  private startIntervalTimer(rule: TimerEventType): void {
     const intervalMs = rule.intervalSeconds * 1000
     let initialDelay = intervalMs
 
@@ -98,7 +98,7 @@ export class EventTimerProcessor {
   /**
    * タイマー実行時の処理
    */
-  private executeTimer(rule: TimerRuleType): void {
+  private executeTimer(rule: TimerEventType): void {
     try {
       const appStore = useAppStore()
       const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)

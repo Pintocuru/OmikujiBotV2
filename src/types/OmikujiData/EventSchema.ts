@@ -2,9 +2,10 @@
 import { z } from 'zod'
 import { OmikujiSetSchema } from './OmikujiSchema'
 import { CommentTriggerSchema } from './CommentTriggerSchema'
-import { MetaTriggerSchema } from './MetaTriggerSchema'
+import { ServiceTriggerSchema as ServiceTriggerSchema } from './ServiceTriggerSchema'
 import { normalizedObject } from './ParsedDefault'
 import { BaseRecordSchema } from '@shared/types/'
+import { ReactionTriggerSchema } from './ReactionTriggerSchema'
 
 /**
  * おみくじ制限設定のスキーマ
@@ -29,7 +30,7 @@ export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
 /**
  * Rules 共通部分のスキーマ
  */
-export const BaseRuleSchema = z.object({
+export const BaseEventSchema = z.object({
   ...BaseRecordSchema.shape,
   omikuji: OmikujiSetSchema,
 })
@@ -37,20 +38,20 @@ export const BaseRuleSchema = z.object({
 /**
  * comments スキーマ
  */
-export const CommentRuleSchema = z.object({
-  ...BaseRuleSchema.shape,
+export const CommentEventSchema = z.object({
+  ...BaseEventSchema.shape,
   // TODO(v3) : ruleType -> kind
   ruleType: z.literal('comments').default('comments'),
   trigger: normalizedObject(CommentTriggerSchema),
   limits: normalizedObject(OmikujiLimitsSchema),
 })
-export type CommentRuleType = z.infer<typeof CommentRuleSchema>
+export type CommentEventType = z.infer<typeof CommentEventSchema>
 
 /**
  * timers スキーマ
  */
-export const TimerRuleSchema = z.object({
-  ...BaseRuleSchema.shape,
+export const TimerEventSchema = z.object({
+  ...BaseEventSchema.shape,
   // TODO(v3) : ruleType -> kind
   ruleType: z.literal('timers').default('timers'), // イベントタイプ（タイマー）
   mode: z.enum(['interval', 'onStart']).default('interval'), // モード
@@ -64,20 +65,29 @@ export const TimerRuleSchema = z.object({
     .catch(60 * 5),
   isBaseZero: z.boolean().default(false).catch(false), // 0時0分を基準にするか
 })
-export type TimerRuleType = z.infer<typeof TimerRuleSchema>
+export type TimerEventType = z.infer<typeof TimerEventSchema>
 
 /**
- * metas スキーマ
+ * Services(metas) スキーマ
  */
-export const MetaRuleSchema = z.object({
-  ...BaseRuleSchema.shape,
+export const ServiceEventSchema = z.object({
+  ...BaseEventSchema.shape,
   // TODO(v3) : ruleType -> kind
   ruleType: z.literal('metas').default('metas'),
-  trigger: normalizedObject(MetaTriggerSchema),
+  trigger: normalizedObject(ServiceTriggerSchema),
 })
-export type MetaRuleType = z.infer<typeof MetaRuleSchema>
+export type ServiceEventType = z.infer<typeof ServiceEventSchema>
+
+/**
+ * reaction スキーマ
+ */
+export const ReactionEventSchema = z.object({
+  ...BaseEventSchema.shape,
+  ruleType: z.literal('reaction').default('reaction'),
+  trigger: normalizedObject(ReactionTriggerSchema),
+})
 
 /**
  * 型
  */
-export type RuleType = CommentRuleType | TimerRuleType | MetaRuleType
+export type EventType = CommentEventType | TimerEventType | ServiceEventType

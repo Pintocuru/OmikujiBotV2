@@ -1,7 +1,7 @@
 // src/ConfigMaker/stores/composables/useRecordProperties.ts
 import { Ref } from 'vue'
 import { WeightValuesArraySchema, WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
-import { RulesCategoryType, RuleType } from '@/types/OmikujiData/'
+import { RulesCategoryType, EventType } from '@/types/OmikujiData/'
 import type { useRecordCRUD } from './useRecordCRUD'
 import {
   OmikujiDataType,
@@ -35,7 +35,7 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
     omikujiIndex: number,
     updater: (item: OmikujiItemType) => OmikujiItemType
   ) => {
-    const record = data.value[category]?.[eventKey] as RuleType
+    const record = data.value[category]?.[eventKey] as EventType
     if (!record?.omikuji?.[omikujiIndex]) return
 
     const updated = [...record.omikuji]
@@ -51,7 +51,7 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
     omikujiIndex: number,
     postActions: PostFlowType[]
   ) => {
-    const record = data.value[category]?.[eventKey] as RuleType
+    const record = data.value[category]?.[eventKey] as EventType
     if (!record?.omikuji?.[omikujiIndex]) {
       console.error('指定されたおみくじが見つかりません')
       return

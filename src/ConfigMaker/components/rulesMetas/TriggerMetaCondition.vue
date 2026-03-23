@@ -36,21 +36,21 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SettingItem from '../parts/SettingItem.vue'
-  import { MetaConditionType, metaComparisonConditionMap, MetaSimpleComparisonConditionMap } from '@/types/'
+  import { ServiceConditionType, serviceConditionMap, serviceSimpleComparisonConditionMap } from '@/types/'
 
   const props = defineProps<{
-    modelValue?: MetaConditionType
+    modelValue?: ServiceConditionType
     label: string
     description: string
     hasPeak: boolean
   }>()
 
   const emit = defineEmits<{
-    (e: 'update:modelValue', value: MetaConditionType): void
+    (e: 'update:modelValue', value: ServiceConditionType): void
   }>()
 
   // ★ 初期値生成
-  const defaultCondition = (): MetaConditionType => ({
+  const defaultCondition = (): ServiceConditionType => ({
     comparison: 'changed',
     value: 0,
   })
@@ -62,7 +62,7 @@
 
   // 以下は既存ロジック
   const comparisonOptions = computed(() => {
-    const map = props.hasPeak ? metaComparisonConditionMap : MetaSimpleComparisonConditionMap
+    const map = props.hasPeak ? serviceConditionMap : serviceSimpleComparisonConditionMap
     return Object.entries(map).map(([value, info]) => ({
       value,
       label: info.label,
@@ -93,7 +93,7 @@
   const comparisonDescription = computed(() => {
     const comparison = props.modelValue?.comparison
     if (!comparison) return ''
-    const map = props.hasPeak ? metaComparisonConditionMap : MetaSimpleComparisonConditionMap
+    const map = props.hasPeak ? serviceConditionMap : serviceSimpleComparisonConditionMap
     return map[comparison as keyof typeof map]?.description || ''
   })
 
@@ -101,7 +101,7 @@
     const updated = { ...(props.modelValue ?? defaultCondition()) }
 
     if (field === 'comparison') {
-      updated.comparison = value as MetaConditionType['comparison']
+      updated.comparison = value as ServiceConditionType['comparison']
 
       // comparison に応じて value を削除
       if (!['lowerBound', 'upperBound', 'equal', 'loop'].includes(updated.comparison)) {

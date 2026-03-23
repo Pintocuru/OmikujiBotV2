@@ -3,7 +3,7 @@
 /**
  * 比較条件のUI表示情報（label + description）
  */
-export const metaComparisonConditionMap = {
+export const serviceConditionMap = {
   changed: {
     label: '変化した',
     description: '前回の値と異なる場合に条件を満たします',
@@ -41,20 +41,20 @@ export const metaComparisonConditionMap = {
 /**
  * MetaSimpleComparisonCondition の部分マップ（greaterThanPeakを除く）
  */
-export const MetaSimpleComparisonConditionMap = {
-  changed: metaComparisonConditionMap.changed,
-  increased: metaComparisonConditionMap.increased,
-  decreased: metaComparisonConditionMap.decreased,
-  lowerBound: metaComparisonConditionMap.lowerBound,
-  upperBound: metaComparisonConditionMap.upperBound,
-  equal: metaComparisonConditionMap.equal,
-  loop: metaComparisonConditionMap.loop,
+export const serviceSimpleComparisonConditionMap = {
+  changed: serviceConditionMap.changed,
+  increased: serviceConditionMap.increased,
+  decreased: serviceConditionMap.decreased,
+  lowerBound: serviceConditionMap.lowerBound,
+  upperBound: serviceConditionMap.upperBound,
+  equal: serviceConditionMap.equal,
+  loop: serviceConditionMap.loop,
 } as const
 
 /**
  * トリガー条件の表示名マップ（絵文字付き）
  */
-export const metaTriggerConditionMap = {
+export const serviceTriggerConditionMap = {
   upVote: '👍 高評価',
   viewer: '👀 視聴者数',
   follower: '⭐ 登録者数',
