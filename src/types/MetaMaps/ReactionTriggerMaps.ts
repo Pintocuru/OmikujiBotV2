@@ -35,11 +35,11 @@ export const reactionConditionMap = {
  */
 export const reactionMap = {
   youtube: {
-    heart: '❤',
-    smile: '😄',
-    celebrate: '🎉',
-    surprise: '😳',
-    praise: '💯',
+    '❤': 'heart',
+    '😄': 'smile',
+    '🎉': 'celebrate',
+    '😳': 'surprise',
+    '💯': 'praise',
   },
   // tiktok: { ... },
 } as const

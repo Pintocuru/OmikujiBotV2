@@ -3,16 +3,16 @@ import { ServiceConditionType, ServiceTriggerType } from '@/types/OmikujiData/'
 import type { MetaUpdateEvent } from './MetaStateService'
 
 /**
- * トリガー条件の評価
+ * トリガー条件の評価 ReactionTriggerEvaluator
  */
-export function evaluateMetaTrigger(trigger: ServiceTriggerType, event: MetaUpdateEvent): boolean {
+export function evaluateServiceTrigger(trigger: ServiceTriggerType, event: MetaUpdateEvent): boolean {
   const { condition } = trigger
   if (!condition) return true
 
   switch (condition) {
     case 'upVote':
       if (!trigger.upVote) return true
-      return evaluateCondition(
+      return evaluateServiceCondition(
         trigger.upVote,
         event.current.upVote,
         event.previous?.upVote ?? 0,
@@ -21,7 +21,7 @@ export function evaluateMetaTrigger(trigger: ServiceTriggerType, event: MetaUpda
 
     case 'viewer':
       if (!trigger.viewer) return true
-      return evaluateCondition(
+      return evaluateServiceCondition(
         trigger.viewer,
         event.current.viewer,
         event.previous?.viewer ?? 0,
@@ -41,7 +41,7 @@ export function evaluateMetaTrigger(trigger: ServiceTriggerType, event: MetaUpda
  * 単一条件の評価
  * 🔧 FIX: peak 値ではなく peakChanged フラグを受け取る
  */
-export function evaluateCondition(
+export function evaluateServiceCondition(
   condition: ServiceConditionType,
   current: number,
   previous: number,

@@ -2,8 +2,9 @@
 import { watch, onUnmounted } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { EventTimerProcessor } from '@main/scripts/EventProcess/TimerProcessor'
-import { EventMetaProcessor } from '@main/scripts/EventProcess/MetaProcessor'
+import { EventServiceProcessor } from '@/MainGenerator/scripts/EventProcess/ServiceProcessor'
 import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
+import { EventReactionProcessor } from '../scripts/EventProcess/ReactionProcessor'
 
 export function useRuleProcessor() {
   const appStore = useAppStore()
@@ -19,7 +20,7 @@ export function useRuleProcessor() {
       // Vite の HMR で残っているなら稼働前にストップ
       if (processor) {
         processor.timer.stop()
-        processor.meta.stop()
+        processor.service.stop()
       }
       console.log('🔄 RuleProcessor起動')
 
@@ -30,8 +31,10 @@ export function useRuleProcessor() {
         processor.timer.start()
       }
 
-      console.log('▶️ メタイベント起動')
-      processor.meta.start()
+      console.log('▶️ サービスメタイベント起動')
+      processor.service.start()
+      console.log('▶️ リアクションイベント起動')
+      processor.reaction.start()
     },
     { immediate: true }
   )
@@ -40,7 +43,8 @@ export function useRuleProcessor() {
     if (!processor) return
     console.log('🛑 RuleProcessor停止 (unmount)')
     processor.timer.stop()
-    processor.meta.stop()
+    processor.service.stop()
+    processor.reaction.stop()
   })
 }
 
@@ -49,16 +53,21 @@ export function useRuleProcessor() {
  */
 function createRuleProcessor() {
   const timer = new EventTimerProcessor()
-  const meta = new EventMetaProcessor()
+  const service = new EventServiceProcessor()
+  const reaction = new EventReactionProcessor()
 
   return {
     timer: {
       start: timer.startTimers.bind(timer),
       stop: timer.stopTimers.bind(timer),
     },
-    meta: {
-      start: meta.startMetaRules.bind(meta),
-      stop: meta.stopMetaRules.bind(meta),
+    service: {
+      start: service.startServices.bind(service),
+      stop: service.stopServices.bind(service),
+    },
+    reaction: {
+      start: reaction.startReactions.bind(reaction),
+      stop: reaction.stopReactions.bind(reaction),
     },
   }
 }

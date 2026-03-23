@@ -13,6 +13,7 @@ export * from './EventSchema'
 export * from './SettingsSchema'
 export * from './SoundKey'
 export * from './ServiceTriggerSchema'
+export * from './ReactionTriggerSchema'
 export * from './CommentTriggerSchema'
 export * from './CriteriaThresholdSchema'
 

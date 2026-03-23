@@ -5,6 +5,7 @@ import { GameScriptManager } from './GameScript/GameScriptManager'
 import { ServiceMetaStore } from './MetaState/MetaStateService'
 import { PlaceholderVariable } from './PlaceholderVariable/PlaceholderVariable'
 import { StreamStatsManager } from './StreamStats/StreamStatsManager'
+import { ReactionStatsManager } from './ReactionManager/ReactionStatsManager'
 
 export function createAppServices() {
   const cooldownManager = CooldownManager.getInstance()
@@ -13,6 +14,7 @@ export function createAppServices() {
   const serviceMetaStore = ServiceMetaStore.getInstance()
   const streamStats = new StreamStatsManager()
   const placeholderVariable = new PlaceholderVariable()
+  const reactionStats = new ReactionStatsManager()
 
   scriptManager.setVisitManager(userSession)
 
@@ -33,5 +35,6 @@ export function createAppServices() {
     serviceMetaStore,
     streamStats,
     placeholderVariable,
+    reactionStats,
   }
 }

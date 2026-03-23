@@ -1,176 +1,176 @@
 // src/MainGenerator/stores/MetaState/MetaTriggerEvaluator.test.ts
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { evaluateMetaTrigger, evaluateCondition, evaluateElapsedTime } from './MetaTriggerEvaluator'
+import { evaluateMetaTrigger, evaluateServiceCondition, evaluateElapsedTime } from './MetaTriggerEvaluator'
 import type { MetaUpdateEvent } from './MetaStateService'
 import { MetaConditionType, MetaTriggerType } from '@/types'
 
 describe('MetaTriggerEvaluator', () => {
-  describe('evaluateCondition', () => {
+  describe('evaluateServiceCondition', () => {
     describe('changed', () => {
       it('値が変化した場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'changed' }
-        expect(evaluateCondition(condition, 100, 50, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 100, 50, true)).toBe(true)
       })
 
       it('値が変化していない場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'changed' }
-        expect(evaluateCondition(condition, 100, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 100, false)).toBe(false)
       })
     })
 
     describe('increased', () => {
       it('値が増加した場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'increased' }
-        expect(evaluateCondition(condition, 100, 50, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 100, 50, true)).toBe(true)
       })
 
       it('値が減少した場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'increased' }
-        expect(evaluateCondition(condition, 50, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 50, 100, false)).toBe(false)
       })
 
       it('値が変化していない場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'increased' }
-        expect(evaluateCondition(condition, 100, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 100, false)).toBe(false)
       })
     })
 
     describe('decreased', () => {
       it('値が減少した場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'decreased' }
-        expect(evaluateCondition(condition, 50, 100, false)).toBe(true)
+        expect(evaluateServiceCondition(condition, 50, 100, false)).toBe(true)
       })
 
       it('値が増加した場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'decreased' }
-        expect(evaluateCondition(condition, 100, 50, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 50, true)).toBe(false)
       })
 
       it('値が変化していない場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'decreased' }
-        expect(evaluateCondition(condition, 100, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 100, false)).toBe(false)
       })
     })
 
     describe('greaterThanPeak', () => {
       it('ピーク値を超えた場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'greaterThanPeak' }
-        expect(evaluateCondition(condition, 150, 100, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 150, 100, true)).toBe(true)
       })
 
       it('ピーク値と同じ場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'greaterThanPeak' }
-        expect(evaluateCondition(condition, 150, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 150, 100, false)).toBe(false)
       })
 
       it('ピーク値未満の場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'greaterThanPeak' }
-        expect(evaluateCondition(condition, 140, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 140, 100, false)).toBe(false)
       })
     })
 
     describe('lowerBound', () => {
       it('指定値以上の場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'lowerBound', value: 100 }
-        expect(evaluateCondition(condition, 150, 0, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 150, 0, true)).toBe(true)
       })
 
       it('指定値と同じ場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'lowerBound', value: 100 }
-        expect(evaluateCondition(condition, 100, 0, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 100, 0, true)).toBe(true)
       })
 
       it('指定値未満の場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'lowerBound', value: 100 }
-        expect(evaluateCondition(condition, 50, 0, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 50, 0, true)).toBe(false)
       })
 
       it('valueがundefinedの場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'lowerBound' }
-        expect(evaluateCondition(condition, 150, 0, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 150, 0, true)).toBe(false)
       })
     })
 
     describe('upperBound', () => {
       it('指定値以下の場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'upperBound', value: 100 }
-        expect(evaluateCondition(condition, 50, 0, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 50, 0, true)).toBe(true)
       })
 
       it('指定値と同じ場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'upperBound', value: 100 }
-        expect(evaluateCondition(condition, 100, 0, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 100, 0, true)).toBe(true)
       })
 
       it('指定値を超える場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'upperBound', value: 100 }
-        expect(evaluateCondition(condition, 150, 0, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 150, 0, true)).toBe(false)
       })
 
       it('valueがundefinedの場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'upperBound' }
-        expect(evaluateCondition(condition, 50, 0, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 50, 0, true)).toBe(false)
       })
     })
 
     describe('equal', () => {
       it('指定値と等しい場合はtrue', () => {
         const condition: MetaConditionType = { comparison: 'equal', value: 100 }
-        expect(evaluateCondition(condition, 100, 0, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 100, 0, true)).toBe(true)
       })
 
       it('指定値と異なる場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'equal', value: 100 }
-        expect(evaluateCondition(condition, 99, 0, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 99, 0, true)).toBe(false)
       })
 
       it('valueがundefinedの場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'equal' }
-        expect(evaluateCondition(condition, 100, 0, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 0, true)).toBe(false)
       })
     })
 
     describe('loop', () => {
       it('指定値の倍数で増加した場合はtrue (10増加)', () => {
         const condition: MetaConditionType = { comparison: 'loop', value: 10 }
-        expect(evaluateCondition(condition, 110, 100, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 110, 100, true)).toBe(true)
       })
 
       it('指定値の倍数で増加した場合はtrue (20増加)', () => {
         const condition: MetaConditionType = { comparison: 'loop', value: 10 }
-        expect(evaluateCondition(condition, 120, 100, true)).toBe(true)
+        expect(evaluateServiceCondition(condition, 120, 100, true)).toBe(true)
       })
 
       it('指定値の倍数でない増加の場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'loop', value: 10 }
-        expect(evaluateCondition(condition, 105, 100, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 105, 100, true)).toBe(false)
       })
 
       it('減少した場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'loop', value: 10 }
-        expect(evaluateCondition(condition, 90, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 90, 100, false)).toBe(false)
       })
 
       it('変化がない場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'loop', value: 10 }
-        expect(evaluateCondition(condition, 100, 100, false)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 100, false)).toBe(false)
       })
 
       it('valueがundefinedの場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'loop' }
-        expect(evaluateCondition(condition, 110, 100, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 110, 100, true)).toBe(false)
       })
 
       it('valueが0の場合はfalse', () => {
         const condition: MetaConditionType = { comparison: 'loop', value: 0 }
-        expect(evaluateCondition(condition, 110, 100, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 110, 100, true)).toBe(false)
       })
     })
 
     describe('unknown comparison', () => {
       it('不明な比較方法の場合はfalse', () => {
         const condition = { comparison: 'unknown' } as any
-        expect(evaluateCondition(condition, 100, 50, true)).toBe(false)
+        expect(evaluateServiceCondition(condition, 100, 50, true)).toBe(false)
       })
     })
   })

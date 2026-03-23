@@ -17,7 +17,7 @@
       </template>
 
       <!-- meta -->
-      <MetaDebugPanel v-if="isDev && 0" />
+      <ReactionDebugPanel v-if="isDev && 1" />
     </div>
 
     <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -31,7 +31,7 @@
   import { useAppInitializer } from '@main/composables/useAppInitializer'
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'
-  import MetaDebugPanel from '@main/ui/MetaDebugPanel.vue'
+  import ReactionDebugPanel from '@main/ui/_debug/ReactionDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
   import { COMPONENT_MAP } from './ui/ComponentMaps'
