@@ -1,4 +1,4 @@
-// src/types/OmikujiData/MetaTriggerSchema.ts
+// src/types/OmikujiData/ServiceTriggerSchema.ts
 import { z } from 'zod'
 import { serviceConditionMap, serviceTriggerConditionMap } from '../MetaMaps'
 

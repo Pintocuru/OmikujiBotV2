@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiItem/OmikujiItemCriteria.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiItem/OmikujiItemCriteria.vue -->
 <template>
   <!-- 条件設定の説明 -->
   <InformationCard>

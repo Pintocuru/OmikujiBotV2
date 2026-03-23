@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/CharacterChanger/MappingPreview.vue -->
+<!-- src/ConfigMaker/components/events/CharacterChanger/MappingPreview.vue -->
 <template>
   <div class="alert alert-warning">
     <AlertTriangle class="w-4 h-4" />

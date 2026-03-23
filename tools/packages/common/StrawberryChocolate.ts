@@ -1,4 +1,4 @@
-// tools/packages/sesupin/StrawberryChocolate.ts
+// tools/packages/common/StrawberryChocolate.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

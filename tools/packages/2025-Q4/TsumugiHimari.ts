@@ -1,4 +1,4 @@
-// tools/packages/full/TsumugiHimari.ts
+// tools/packages/2025-Q4/TsumugiHimari.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

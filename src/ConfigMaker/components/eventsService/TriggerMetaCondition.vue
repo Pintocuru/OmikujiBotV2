@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rulesMetas/TriggerMetaCondition.vue -->
+<!-- src/ConfigMaker/components/eventsService/TriggerMetaCondition.vue -->
 <template>
   <SettingItem :label="label" :description="description">
     <!-- 比較方法 -->

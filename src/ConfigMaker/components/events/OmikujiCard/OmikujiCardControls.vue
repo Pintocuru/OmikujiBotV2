@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiCard/OmikujiCardControls.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiCard/OmikujiCardControls.vue -->
 <template>
   <div class="space-y-4">
     <!-- ツールバー 

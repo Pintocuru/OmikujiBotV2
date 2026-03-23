@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/MetaDebugPanel.vue -->
+<!-- src/MainGenerator/ui/_debug/MetaDebugPanel.vue -->
 <template>
   <div class="fixed right-2 bottom-2 w-80 max-h-[60vh] overflow-auto bg-black/75 text-white text-xs p-2 rounded">
     <div class="font-bold mb-1">

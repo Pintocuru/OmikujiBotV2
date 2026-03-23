@@ -1,4 +1,4 @@
-// tools/packages/solo/BomberSpin.ts
+// tools/packages/2025-Q4/BomberSpin.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

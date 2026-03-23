@@ -1,4 +1,4 @@
-// tools/packages/full/TossedKotaro.ts
+// tools/packages/2025-Q4/TossedKotaro.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

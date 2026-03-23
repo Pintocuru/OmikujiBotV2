@@ -1,4 +1,4 @@
-// src/MainGenerator/ui/CounterPreview/parts/base/useCounterDisplay.ts
+// src/MainGenerator/ui/CounterPreview/layouts/base/useCounterDisplay.ts
 import { ref, watch, computed } from 'vue'
 import { SettingsCounterType } from '@/types/'
 import { UserNameType } from '@shared/types'

@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/eventsReaction/ReactionTriggerEditor.vue -->
 <template>
   <!-- リアクション選択 -->
   <SettingItem label="対象リアクション" description="監視するリアクションを選択（複数可）">

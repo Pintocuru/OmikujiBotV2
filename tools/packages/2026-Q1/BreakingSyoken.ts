@@ -1,4 +1,4 @@
-// tools/packages/petit/BreakingSyoken.ts
+// tools/packages/2026-Q1/BreakingSyoken.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

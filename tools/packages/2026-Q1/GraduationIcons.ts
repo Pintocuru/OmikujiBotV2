@@ -1,4 +1,4 @@
-// tools/packages/solo/GraduationIcons.ts
+// tools/packages/2026-Q1/GraduationIcons.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

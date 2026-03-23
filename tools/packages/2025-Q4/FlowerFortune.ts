@@ -1,4 +1,4 @@
-// tools/packages/solo/FlowerFortune.ts
+// tools/packages/2025-Q4/FlowerFortune.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

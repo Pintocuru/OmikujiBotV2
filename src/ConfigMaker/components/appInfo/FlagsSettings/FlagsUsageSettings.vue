@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/appInfo/FlagsSettings/FlagsUsageSettings.vue -->
 <template>
   <SubSectionHeader icon="Palette" title="Recordアイテム表示" description="アイテムの表示・非表示を制御" />
 

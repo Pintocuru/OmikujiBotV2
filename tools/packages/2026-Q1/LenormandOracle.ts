@@ -1,4 +1,4 @@
-// tools/packages/solo/LenormandOracle.ts
+// tools/packages/2026-Q1/LenormandOracle.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

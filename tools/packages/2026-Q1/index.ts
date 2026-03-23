@@ -1,4 +1,4 @@
-// tools/packages/petit/index.ts
+// tools/packages/2026-Q1/index.ts
 import ValentineCoupling from './ValentineCoupling'
 import HonjoFoxProject from './HonjoFox'
 import BreakingSyoken from './BreakingSyoken'

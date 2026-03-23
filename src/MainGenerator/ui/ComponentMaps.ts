@@ -1,4 +1,4 @@
-// src/MainGenerator/composables/useComponentRenderer.ts
+// src/MainGenerator/ui/ComponentMaps.ts
 import { UiKind } from '@/types'
 import CommentBubble from './CommentBubble/CommentBubble.vue'
 import ToastWidgets from './ToastWidgets/ToastWidgets.vue'

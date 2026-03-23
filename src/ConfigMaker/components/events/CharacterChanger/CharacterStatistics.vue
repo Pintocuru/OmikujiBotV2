@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/CharacterChanger/CharacterStatistics.vue -->
+<!-- src/ConfigMaker/components/events/CharacterChanger/CharacterStatistics.vue -->
 <template>
   <div class="stats stats-vertical sm:stats-horizontal shadow w-full">
     <div class="stat">

@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/rules/CharacterChanger/usePostActionCharacters.ts
+// src/ConfigMaker/components/events/CharacterChanger/usePostActionCharacters.ts
 import { PostFlowType, ActionSetType } from '@/types/OmikujiData/'
 
 /**

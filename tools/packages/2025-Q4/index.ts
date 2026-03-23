@@ -1,4 +1,4 @@
-// tools/packages/full/index.ts
+// tools/packages/2025-Q4/index.ts
 import DivaMetan from './DivaMetan'
 import EveryoneZunda from './EveryoneZunda'
 import ReimuMarisa from './ReimuMarisa'

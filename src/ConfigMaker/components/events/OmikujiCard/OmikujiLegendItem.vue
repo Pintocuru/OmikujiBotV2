@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiCard/OmikujiLegendItem.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiCard/OmikujiLegendItem.vue -->
 <template>
   <div
     class="flex items-center gap-2 text-xs bg-base-100 p-2 rounded shadow-sm hover:shadow-md transition-all cursor-pointer"

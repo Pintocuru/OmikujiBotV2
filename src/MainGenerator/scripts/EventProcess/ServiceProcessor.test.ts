@@ -1,4 +1,4 @@
-// src/MainGenerator/scripts/EventProcess/MetaProcessor.test.ts
+// src/MainGenerator/scripts/EventProcess/ServiceProcessor.test.ts
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { MetaStateServiceType, MetaUpdateEvent, NormalizedMeta } from '@main/stores/MetaState/MetaStateService'
 import { MetaRuleSchema, MetaRuleType, MetaTriggerSchema } from '@/types/OmikujiData/'

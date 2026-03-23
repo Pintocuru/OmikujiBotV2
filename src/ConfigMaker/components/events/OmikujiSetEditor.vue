@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiSetEditor.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiSetEditor.vue -->
 <template>
   <div v-if="selectedItemKey" class="space-y-4">
     <!-- ツールバー -->

@@ -1,4 +1,4 @@
-// ReactionTriggerEvaluator.ts
+// src/MainGenerator/stores/ReactionManager/ReactionTriggerEvaluator.ts
 
 import type { ReactionTriggerType } from '@/types/OmikujiData'
 import type { ReactionStatsManagerType } from './ReactionStatsManager'

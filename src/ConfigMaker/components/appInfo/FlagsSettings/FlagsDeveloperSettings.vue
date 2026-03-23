@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appInfo/FlagsSettings/UsageDeveloperSettings.vue -->
+<!-- src/ConfigMaker/components/appInfo/FlagsSettings/FlagsDeveloperSettings.vue -->
 <template>
   <SubSectionHeader icon="Sliders" title="アイテム固有設定" description="特定アイテム内の要素の表示制御" />
 

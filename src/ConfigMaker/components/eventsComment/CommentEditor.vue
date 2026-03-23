@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rulesComments/CommentRuleEditor.vue -->
+<!-- src/ConfigMaker/components/eventsComment/CommentEditor.vue -->
 <template>
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">

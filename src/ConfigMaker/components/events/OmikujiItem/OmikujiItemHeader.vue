@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiItem/OmikujiItemHeader.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiItem/OmikujiItemHeader.vue -->
 <template>
   <div class="flex items-center gap-4">
     <!-- 名前 -->

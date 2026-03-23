@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/CounterPreview/parts/base/CounterCardBase.vue -->
+<!-- src/MainGenerator/ui/CounterPreview/layouts/base/CounterCardBase.vue -->
 <template>
   <div
     class="w-full p-2 rounded-2xl text-center space-y-2 font-semibold transition-transform duration-200"

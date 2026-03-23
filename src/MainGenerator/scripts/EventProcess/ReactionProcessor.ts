@@ -1,4 +1,4 @@
-// EventReactionProcessor.ts
+// src/MainGenerator/scripts/EventProcess/ReactionProcessor.ts
 import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { GetReactions } from '@shared/sdk/subscribe/GetReactions'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'

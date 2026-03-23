@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/conditions/ComponentConditionsEditor.vue -->
+<!-- src/ConfigMaker/components/UiEditor/conditions/ItemConditionsEditor.vue -->
 <template>
   <!-- スロット別コンポーネント設定 -->
   <SubSectionHeader

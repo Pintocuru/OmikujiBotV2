@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiCard/OmikujiControlsToolbar.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiCard/OmikujiControlsToolbar.vue -->
 <!-- !使用しない -->
 <template>
   <div class="card bg-base-100 p-4">

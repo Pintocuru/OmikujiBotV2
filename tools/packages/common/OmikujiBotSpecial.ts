@@ -1,4 +1,4 @@
-// tools/packages/sesupin/OmikujiBotSpecial.ts
+// tools/packages/common/OmikujiBotSpecial.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

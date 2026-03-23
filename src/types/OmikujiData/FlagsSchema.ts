@@ -1,3 +1,4 @@
+// src/types/OmikujiData/FlagsSchema.ts
 import { z } from 'zod'
 import { AccessLevelSchema } from '@shared/types'
 import { normalizedObject } from './ParsedDefault'

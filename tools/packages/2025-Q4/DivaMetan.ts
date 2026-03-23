@@ -1,4 +1,4 @@
-// tools/packages/full/DivaMetan.ts
+// tools/packages/2025-Q4/DivaMetan.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

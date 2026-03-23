@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/rules/OmikujiItem/SpecialActionEditor.vue -->
+<!-- src/ConfigMaker/components/events/OmikujiItem/SpecialActionEditor.vue -->
 <template>
   <div class="space-y-4">
     <!-- type -->

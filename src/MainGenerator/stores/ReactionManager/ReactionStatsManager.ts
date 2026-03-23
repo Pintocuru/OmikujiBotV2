@@ -1,3 +1,4 @@
+// src/MainGenerator/stores/ReactionManager/ReactionStatsManager.ts
 export interface ReactionStatsManagerType {
   record(reactions: Record<string, number>): void
   countInLast30Seconds(type: string): number

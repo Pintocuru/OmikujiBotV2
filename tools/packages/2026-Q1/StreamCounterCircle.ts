@@ -1,4 +1,4 @@
-// tools/packages/solo/StreamCounterCircle.ts
+// tools/packages/2026-Q1/StreamCounterCircle.ts
 import { createProject } from '../../buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
