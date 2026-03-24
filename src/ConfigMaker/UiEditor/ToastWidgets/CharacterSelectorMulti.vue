@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/ToastWidgets/CharacterSelectorMulti.vue -->
+<!-- src/ConfigMaker/UiEditor/ToastWidgets/CharacterSelectorMulti.vue -->
 <template>
   <div class="flex flex-wrap gap-2">
     <div

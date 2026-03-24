@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CounterPreview/CounterPreviewEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/CounterPreview/CounterPreviewEditor.vue -->
 <template>
   <!-- プレビュー -->
   <CounterPreviewPreview />

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CounterPreview/CounterPreviewPreview.vue -->
+<!-- src/ConfigMaker/UiEditor/CounterPreview/CounterPreviewPreview.vue -->
 <template>
   <!-- プレビュー -->
   <HudPreview :isAdminOnly="true">

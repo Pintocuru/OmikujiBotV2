@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CommentBubble/CommentBubbleEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/CommentBubble/CommentBubbleEditor.vue -->
 <template>
   <!-- プレビュー表示 -->
   <HudPreview>

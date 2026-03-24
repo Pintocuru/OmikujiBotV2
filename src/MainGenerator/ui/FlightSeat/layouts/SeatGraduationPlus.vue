@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatGraduation.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatGraduationPlus.vue -->
 <template>
   <div class="flex flex-col items-center gap-3">
     <div

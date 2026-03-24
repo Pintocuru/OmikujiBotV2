@@ -1,21 +1,6 @@
-<!-- src/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/FlightSeat/FlightSeatEditor.vue -->
 <template>
   <FlightSeatPreview />
-
-  <!-- タイトル -->
-  <SettingItem
-    label="タイトル"
-    description="座席表のタイトルを設定します"
-    :showReset="true"
-    @reset="resetField('label')"
-  >
-    <input
-      type="text"
-      class="input input-bordered w-full"
-      :value="flightSeat.label"
-      @input="(e) => updateField('label', (e.target as HTMLInputElement).value)"
-    />
-  </SettingItem>
 
   <!-- コンポーネント種別 -->
   <SettingItem v-if="isPro" label="レイアウト種別" description="座席の見た目を選択します" forceMode="pro">

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CommentBubble/BubbleCharacterEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/CommentBubble/BubbleCharacterEditor.vue -->
 <template>
   <!-- キャラクターサンプル表示 -->
   <CharacterAvatarPreview

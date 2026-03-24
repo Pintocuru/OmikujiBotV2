@@ -3,7 +3,6 @@
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
     <SeatSelector
       :color="settings.color"
-      :label="settings.label"
       :seats="seats"
       :kind="settings.component"
       :customLayout="parsedCustomLayout"

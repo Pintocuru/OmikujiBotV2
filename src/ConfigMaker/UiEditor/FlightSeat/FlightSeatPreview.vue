@@ -1,10 +1,9 @@
-<!-- src/ConfigMaker/components/UiEditor/FlightSeat/FlightSeatPreview.vue -->
+<!-- src/ConfigMaker/UiEditor/FlightSeat/FlightSeatPreview.vue -->
 <template>
   <HudPreview>
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="flightSeat.color">
       <SeatSelector
         :color="flightSeat.color"
-        :label="flightSeat.label"
         :seats="seats"
         :kind="flightSeat.component"
         :customLayout="parsedCustomLayout"

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/SocialRoster/SocialRosterPreview.vue -->
+<!-- src/ConfigMaker/UiEditor/SocialRoster/SocialRosterPreview.vue -->
 <template>
   <HudPreview>
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="socialRoster.color">

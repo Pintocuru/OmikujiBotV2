@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CommentBubble/CommentBubblePreview.vue -->
+<!-- src/ConfigMaker/UiEditor/CommentBubble/CommentBubblePreview.vue -->
 <template>
   <div  class="flex flex-col items-center space-y-2">
     <!-- 横幅調整スライダー -->

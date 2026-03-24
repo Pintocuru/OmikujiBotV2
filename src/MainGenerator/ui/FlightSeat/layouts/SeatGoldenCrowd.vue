@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatGraduation.vue -->
+<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatGoldenCrowd.vue -->
 <template>
   <div
     class="relative inline-flex flex-col items-center p-10 rounded-2xl overflow-hidden isolate bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 border-2 border-amber-600/80 shadow-[0_0_30px_rgba(255,215,0,0.4),inset_0_1px_0_rgba(255,245,200,0.15)]"

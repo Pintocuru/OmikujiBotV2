@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/LiveClock/LiveClockEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/LiveClock/LiveClockEditor.vue -->
 <template>
   <!-- プレビュー -->
   <LiveClockPreview :settings="liveClock" :messageText="messageText" />

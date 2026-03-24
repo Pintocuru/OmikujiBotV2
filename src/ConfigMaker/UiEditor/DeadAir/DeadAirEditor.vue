@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/DeadAir/DeadAirEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/DeadAir/DeadAirEditor.vue -->
 <template>
   <!-- プレビュー -->
   <DeadAirPreview :deadAir="deadAir" />

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/FlightSeat/CustomLayoutEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/FlightSeat/CustomLayoutEditor.vue -->
 <template>
   <div class="space-y-4">
     <!-- プリセット選択 -->

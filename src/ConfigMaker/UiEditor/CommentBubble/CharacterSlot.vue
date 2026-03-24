@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CommentBubble/CharacterSlot.vue -->
+<!-- src/ConfigMaker/UiEditor/CommentBubble/CharacterSlot.vue -->
 <template>
   <div class="card shadow-lg p-2" :class="[cardStyle ? '' : 'shadow-inner', cardStyle || 'bg-base-200']">
     <div class="flex justify-between items-center mb-2">

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/DeadAir/DeadAirPreview.vue -->
+<!-- src/ConfigMaker/UiEditor/DeadAir/DeadAirPreview.vue -->
 <template>
   <HudPreview maxHeightClass="h-[440px]">
     <DeadAirSelector

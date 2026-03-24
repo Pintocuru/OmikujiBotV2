@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CommentBubble/CharacterAvatarPreview.vue -->
+<!-- src/ConfigMaker/UiEditor/CommentBubble/CharacterAvatarPreview.vue -->
 <template>
   <div class="flex flex-col md:flex-row justify-around gap-4 p-4">
     <!-- 中央表示キャラクター（0番地） -->

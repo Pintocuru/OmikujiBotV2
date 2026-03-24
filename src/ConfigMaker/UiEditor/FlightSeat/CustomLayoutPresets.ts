@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/UiEditor/FlightSeat/CustomLayoutPresets.ts
+// src/ConfigMaker/UiEditor/FlightSeat/CustomLayoutPresets.ts
 
 export const customLayoutPresets = {
   flightSeat: { label: 'フライトシート', layout: [4, 6, 6, 6], emoji: '✈' },

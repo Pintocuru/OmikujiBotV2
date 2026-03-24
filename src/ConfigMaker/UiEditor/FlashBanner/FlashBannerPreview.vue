@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerPreview.vue -->
+<!-- src/ConfigMaker/UiEditor/FlashBanner/FlashBannerPreview.vue -->
 <template>
   <HudPreview :maxHeightClass="isDev ? 'min-h-32' : ''" :isAdminOnly="true">
     <div :class="[fontFamily]" @click="handlePreviewClick">

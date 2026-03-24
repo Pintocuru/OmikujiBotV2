@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/ToastWidgets/ToastWidgetsEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/ToastWidgets/ToastWidgetsEditor.vue -->
 <template>
   <!-- サンプル表示 -->
   <HudPreview>

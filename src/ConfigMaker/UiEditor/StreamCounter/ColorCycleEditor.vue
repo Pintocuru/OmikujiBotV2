@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/StreamCounter/ColorCycleEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/StreamCounter/ColorCycleEditor.vue -->
 <template>
   <!-- 単色・奇数カラー -->
   <SettingItem label="単色・奇数カラー" description="基本となるカラーを選択します">

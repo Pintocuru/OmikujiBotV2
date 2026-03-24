@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/FlashBanner/FlashBannerEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/FlashBanner/FlashBannerEditor.vue -->
 <template>
   <!-- プレビュー -->
   <FlashBannerPreview

@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/WinnerGroup/WinnerGroupEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/WinnerGroup/WinnerGroupEditor.vue -->
 <template>
   <!-- プレビュー -->
   <HudPreview maxHeightClass="max-h-96" :isAdminOnly="true">

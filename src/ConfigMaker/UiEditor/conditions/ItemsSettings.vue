@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/conditions/ItemsSettings.vue -->
+<!-- src/ConfigMaker/UiEditor/conditions/ItemsSettings.vue -->
 <template>
   <div class="space-y-4">
     <div v-for="group in groupedUiKinds" :key="group.slot" class="space-y-2">

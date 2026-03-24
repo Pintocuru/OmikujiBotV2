@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/GameRanking/GameRankingEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/GameRanking/GameRankingEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
   <HudPreview :isAdminOnly="true">

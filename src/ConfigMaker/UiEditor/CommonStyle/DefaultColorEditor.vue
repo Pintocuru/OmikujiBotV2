@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/CommonStyle/DefaultColorEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/CommonStyle/DefaultColorEditor.vue -->
 <template>
   <SubSectionHeader
     icon="Palette"

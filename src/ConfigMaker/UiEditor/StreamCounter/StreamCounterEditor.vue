@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/StreamCounter/StreamCounterEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/StreamCounter/StreamCounterEditor.vue -->
 <template>
   <!-- プレビュー -->
   <StreamCounterPreview :streamCounter="streamCounter" :event-labels="previewEventLabels" />

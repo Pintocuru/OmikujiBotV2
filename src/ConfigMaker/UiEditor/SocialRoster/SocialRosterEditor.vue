@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/UiEditor/SocialRoster/SocialRosterEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/SocialRoster/SocialRosterEditor.vue -->
 <template>
   <!-- プレビュー -->
   <SocialRosterPreview />
