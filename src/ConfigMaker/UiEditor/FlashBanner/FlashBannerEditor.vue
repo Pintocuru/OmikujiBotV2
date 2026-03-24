@@ -194,7 +194,7 @@
   import { flashComponentMap, scrollReturnModeMap, SettingsBannerSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import CharacterSelectorSingle from '@config/components/UiEditor/ToastWidgets/CharacterSelectorSingle.vue'
+  import CharacterSelectorSingle from '@config/UiEditor/ToastWidgets/CharacterSelectorSingle.vue'
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'

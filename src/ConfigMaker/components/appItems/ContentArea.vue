@@ -27,7 +27,7 @@
   import ActionSetsEditor from '@config/components/actionSets/ActionSetsEditor.vue'
   import PlaceholderEditor from '@config/components/placeholders/PlaceholderEditor.vue'
   import CharacterEditor from '@config/components/characters/CharacterEditor.vue'
-  import UiEditor from '@config/components/UiEditor/UiEditor.vue'
+  import UiEditor from '@config/UiEditor/UiEditor.vue'
   import DataPacks from '@/ConfigMaker/components/dataPacks/DataPacks.vue'
   import AppInfoEditor from '@config/components/appInfo/AppInfoEditor.vue'
   import JsonMergeEditor from '@config/components/JsonMerge/JsonMergeEditor.vue'
