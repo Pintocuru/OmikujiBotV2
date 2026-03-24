@@ -58,6 +58,7 @@
     colorFrom?: DaisyUIColorType // 空席セルのベースカラー
     colorTo?: DaisyUIColorType // 指定するとグラデーションになる
     seatNumber?: number
+    opacity?: boolean
   }>()
 
   const cellSize = computed(() => props.size ?? 80)
@@ -70,8 +71,9 @@
       // グラデーション時はインラインスタイルで塗るのでクラスは不要
       return 'text-base-content'
     }
+    const hoge = props.opacity ? 'opacity-70 ' : ''
     const c = props.colorFrom ?? 'info'
-    return props.colorReverse ? `bg-${c}-content text-${c}` : `bg-${c} text-${c}-content`
+    return props.colorReverse ? hoge + `bg-${c}-content text-${c}` : hoge + `bg-${c} text-${c}-content`
   })
 
   /**
@@ -86,7 +88,7 @@
     const from = props.colorFrom ?? 'info'
     const to = props.colorTo
     return {
-      background: `linear-gradient(135deg, oklch(var(--${from})), oklch(var(--${to})))`,
+      background: `linear-gradient(135deg, var(--color-${from}), var(--color-${to}))`,
     }
   })
 

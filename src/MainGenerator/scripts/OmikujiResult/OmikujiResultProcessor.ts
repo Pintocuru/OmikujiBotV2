@@ -47,7 +47,7 @@ export class OmikujiResultProcessor {
     // isCharacterMode の影響を受けるコード
     const isCharacterMode = checkIsCharacterMode(omikujiData)
     this.characterManager = isCharacterMode ? new CharacterManager(omikujiData) : undefined
-    this.enableSecondary = omikujiData.components.enableSecondary
+    this.enableSecondary = omikujiData.components?.enableSecondary ?? true
     this.postMessage = new PostOmikujiService(omikujiData)
   }
 

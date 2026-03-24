@@ -24,9 +24,10 @@
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import SeatCell from './SeatCell.vue'
-  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
+  import { DaisyUIColorType, DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
+    color: DaisyUiThemeFieldsType
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
     customLayout?: number[]
@@ -44,5 +45,6 @@
   // 行列 → インデックス変換
   const getIndex = (row: number, col: number) => layout.value.slice(0, row).reduce((sum, n) => sum + n, 0) + col
 
-  const checkerColor = (i: number): DaisyUIColorType => (i % 2 === 0 ? 'info' : 'warning')
+  const checkerColor = (i: number): DaisyUIColorType =>
+    i % 2 === 0 ? (props.color.backFrom ?? 'info') : (props.color.backTo ?? 'warning')
 </script>

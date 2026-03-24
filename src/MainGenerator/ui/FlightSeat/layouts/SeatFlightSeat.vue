@@ -16,7 +16,8 @@
             :seat="seatAt(0, col - 1)"
             :index="getIndex(0, col - 1)"
             :statKey="statKey"
-            colorFrom="neutral"
+            colorFrom="warning"
+            colorTo="neutral"
             :colorReverse="true"
           />
         </div>
@@ -70,9 +71,10 @@
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import SeatCell from './SeatCell.vue'
-  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
+  import { DaisyUIColorType, DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
+    color: DaisyUiThemeFieldsType
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
     customLayout?: number[]
@@ -91,5 +93,6 @@
 
   const seatAt = (row: number, col: number): UserStatsRecord | null => props.seats[getIndex(row, col)] ?? null
 
-  const checkerColorEco = (row: number, col: number): DaisyUIColorType => ((row + col) % 2 === 0 ? 'warning' : 'info')
+  const checkerColorEco = (row: number, col: number): DaisyUIColorType =>
+    (row + col) % 2 === 0 ? (props.color.backFrom ?? 'warning') : (props.color.backTo ?? 'info')
 </script>

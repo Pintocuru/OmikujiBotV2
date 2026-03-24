@@ -13,7 +13,7 @@
         :seat="seatAt(row, col)"
         :index="rowOffset(row) + col - 1"
         :statKey="statKey"
-        :colorFrom="(col - 1) % 2 === 0 ? 'warning' : 'info'"
+        :colorFrom="(col - 1) % 2 === 0 ? (color.backFrom ?? 'warning') : (color.backTo ?? 'info')"
       />
     </div>
 
@@ -29,8 +29,10 @@
 <script setup lang="ts">
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import SeatCell from './SeatCell.vue'
+  import { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
+    color: DaisyUiThemeFieldsType
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
     customLayout?: number[]

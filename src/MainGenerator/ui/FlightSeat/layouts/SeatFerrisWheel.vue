@@ -48,14 +48,14 @@
             :seat="seat"
             :index="i"
             :statKey="statKey"
-            :colorFrom="i % 2 === 0 ? 'warning' : 'info'"
+            :colorFrom="i % 2 === 0 ? (color.backFrom ?? 'warning') : (color.backTo ?? 'info')"
           />
         </div>
       </div>
 
       <!-- 中央：大きなSeatCell -->
       <div
-        class="absolute"
+        class="absolute ferris-rotate"
         :style="{
           left: radius - centerSize / 2 + 'px',
           top: radius - centerSize / 2 + 'px',
@@ -68,7 +68,7 @@
           :statKey="statKey"
           :size="centerSize"
           colorFrom="warning"
-          colorTo="info"
+          colorTo="neutral"
         />
       </div>
     </div>
@@ -79,8 +79,10 @@
   import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import SeatCell from './SeatCell.vue'
+  import { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
+    color: DaisyUiThemeFieldsType
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
     circleSeats?: number
@@ -90,7 +92,7 @@
   const diameter = 400
   const radius = diameter / 2
   const seatSize = 80
-  const centerSize = 120
+  const centerSize = 220
 
   // 円周の座席リスト（seatsCount分）
   const circleSeats = computed(() => Array.from({ length: seatsCount.value }, (_, i) => props.seats[i] ?? null))

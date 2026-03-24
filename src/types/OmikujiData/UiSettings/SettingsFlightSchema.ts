@@ -1,6 +1,7 @@
 // src/types/OmikujiData/UiSettings/SettingsFlightSchema.ts
 import { z } from 'zod'
-import { themes } from '@shared/styles/DaisyUiTheme'
+import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
+import { normalizedObject } from '../ParsedDefault'
 
 export const statKeyNum = [
   'userName', // ユーザーネーム
@@ -18,6 +19,7 @@ export const flightComponentMap = {
   flightSeat: '8時間フライト',
   graduation: '卒業写真',
   ferrisWheel: '観覧車',
+  goldenCrowd: '300ユーザー',
 } as const
 export type FlightComponentKind = keyof typeof flightComponentMap
 
@@ -32,6 +34,7 @@ export const flightComponentDefaults: Record<FlightComponentKind, number | strin
   flightSeat: '[4, 6, 6, 6]',
   graduation: '[12, 13, 12]',
   ferrisWheel: 13,
+  goldenCrowd: '[22, 23, 24, 23, 24, 23, 22, 23, 24, 23, 24, 23, 22]',
 }
 
 type PresetItem = {
@@ -57,14 +60,17 @@ export const presets: Record<FlightComponentKind, Record<string, PresetItem> | n
   },
 
   graduation: {
-    p2: { label: '一般的なクラス', layout: [12, 13, 12] },
-    p1: { label: '小さなクラス', layout: [8, 7, 8] },
-    p3: { label: '学年全員', layout: [16, 17, 16, 17] },
-    p4: { label: '学年全員（大）', layout: [20, 21, 20, 21, 20] },
-    p5: { label: '学校全員(先生・給食のおばちゃん含む)', layout: [24, 23, 24, 23, 24, 23, 24, 23, 24, 23, 24, 23, 24] },
+    p1: { label: '一般的なクラス', layout: [12, 13, 12] },
+    p2: { label: '小さなクラス', layout: [8, 7, 8] },
+    p3: { label: '2クラス合同', layout: [16, 17, 16, 17] },
+    p4: { label: '学年全員', layout: [20, 21, 20, 21, 18] },
   },
 
   ferrisWheel: null,
+  goldenCrowd: {
+    p1: { label: 'ともだち100人できるかな', layout: [12, 13, 12, 13, 12, 13, 12, 13] },
+    p2: { label: '300人埋めてみろよVTuber', layout: [22, 23, 24, 23, 24, 23, 22, 23, 24, 23, 24, 23, 22] },
+  },
 }
 
 /**
@@ -78,7 +84,7 @@ export const SettingsFlightSchema = z.object({
   customLayout: z.string().optional(),
   targetEventKey: z.string().default('').catch(''),
   label: z.string().default('ユーザーリスト').catch('ユーザーリスト'), // 🛫 8時間フライト、どの席に座る？
-  color: z.enum(themes).default('lofi').catch('lofi'),
+  color: normalizedObject(DaisyUiThemeFieldsSchema),
   statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
 })
 export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSchema>

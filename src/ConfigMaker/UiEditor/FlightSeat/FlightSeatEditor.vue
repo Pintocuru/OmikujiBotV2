@@ -34,7 +34,7 @@
 
   <!-- プリセット選択 -->
   <template v-if="isPro && currentPresets">
-    <SettingItem label="プリセット" description="座席レイアウトのプリセットを適用します">
+    <SettingItem label="プリセット" description="座席レイアウトのプリセットを適用します" forceMode="pro">
       <div class="flex flex-wrap gap-2">
         <div
           v-for="(preset, key) in currentPresets"
@@ -55,6 +55,7 @@
       description="各行の座席数をJSON配列で指定します（例: [12, 13, 12]）"
       :showReset="true"
       @reset="resetField('customLayout')"
+      forceMode="pro"
     >
       <input
         type="text"
@@ -90,15 +91,11 @@
   </SettingItem>
 
   <!-- テーマカラー -->
-  <SettingItem v-if="isAdv" label="テーマカラー" description="座席表のテーマカラーを選択" forceMode="adv">
-    <select
-      class="select select-bordered"
-      :value="flightSeat.color"
-      @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
-    >
-      <option v-for="theme in themes" :key="theme" :value="theme">{{ theme }}</option>
-    </select>
-  </SettingItem>
+  <DaisyUiThemeEditor
+    v-if="isAdv"
+    :model-value="flightSeat.color"
+    @update:model-value="(newValue) => updateField('color', newValue)"
+  />
 
   <!-- 対象イベントキー -->
   <SettingItem
@@ -144,8 +141,8 @@
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { themes } from '@shared/styles/DaisyUiTheme'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

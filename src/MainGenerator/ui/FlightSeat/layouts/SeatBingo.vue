@@ -40,9 +40,10 @@
 <script setup lang="ts">
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import SeatCell from './SeatCell.vue'
-  import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
+  import { DaisyUIColorType, DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
+    color: DaisyUiThemeFieldsType
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
   }>()
@@ -57,6 +58,6 @@
   const checkerColor = (i: number): DaisyUIColorType => {
     const row = Math.floor((i - 1) / 5)
     const col = (i - 1) % 5
-    return (row + col) % 2 === 0 ? 'primary' : 'secondary'
+    return (row + col) % 2 === 0 ? (props.color.backFrom ?? 'primary') : (props.color.backTo ?? 'secondary')
   }
 </script>
