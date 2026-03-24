@@ -25,30 +25,47 @@
         :key="key"
         class="badge badge-lg cursor-pointer"
         :class="flightSeat.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
+        @click="updateComponent(key)"
       >
         {{ label }}
       </div>
     </div>
   </SettingItem>
 
-  <!-- カスタムレイアウト（defaultが string のときのみ表示） -->
-  <SettingItem
-    v-if="isCustomizable"
-    label="カスタムレイアウト"
-    description="各行の座席数をJSON配列で指定します（例: [12, 13, 12]）"
-    :showReset="true"
-    @reset="resetField('customLayout')"
-  >
-    <textarea
-      class="textarea textarea-bordered w-full font-mono text-sm"
-      rows="2"
-      :value="flightSeat.customLayout ?? (flightComponentDefaults[flightSeat.component] as string)"
-      :class="isValidLayout ? '' : 'textarea-error'"
-      @input="(e) => updateField('customLayout', (e.target as HTMLTextAreaElement).value)"
-    />
-    <div v-if="!isValidLayout" class="text-error text-xs mt-1">JSONの形式が正しくありません</div>
-  </SettingItem>
+  <!-- プリセット選択 -->
+  <template v-if="isPro && currentPresets">
+    <SettingItem label="プリセット" description="座席レイアウトのプリセットを適用します">
+      <div class="flex flex-wrap gap-2">
+        <div
+          v-for="(preset, key) in currentPresets"
+          :key="key"
+          class="badge badge-lg cursor-pointer"
+          :class="'badge-outline'"
+          @click="updateField('customLayout', JSON.stringify(preset.layout))"
+        >
+          {{ preset.label }}
+        </div>
+      </div>
+    </SettingItem>
+
+    <!-- カスタムレイアウト（defaultが string のときのみ表示） -->
+    <SettingItem
+      v-if="isCustomizable"
+      label="カスタムレイアウト"
+      description="各行の座席数をJSON配列で指定します（例: [12, 13, 12]）"
+      :showReset="true"
+      @reset="resetField('customLayout')"
+    >
+      <input
+        type="text"
+        class="input input-bordered w-full font-mono text-sm"
+        :value="flightSeat.customLayout ?? (flightComponentDefaults[flightSeat.component] as string)"
+        :class="isValidLayout ? '' : 'input-error'"
+        @input="(e) => updateField('customLayout', (e.target as HTMLInputElement).value)"
+      />
+      <div v-if="!isValidLayout" class="text-error text-xs mt-1">JSONの形式が正しくありません</div>
+    </SettingItem>
+  </template>
 
   <!-- 右下のステータス -->
   <SettingItem label="右下のステータス" description="アイコンの右下に表示する内容">
@@ -120,7 +137,9 @@
     flightComponentDefaults,
     SettingsFlightSchema,
     SettingsFlightSeatType,
+    FlightComponentKind,
     StatKeyNum,
+    presets,
   } from '@/types/'
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -158,6 +177,16 @@
     })
   }
 
+  // component 変更時に customLayout を新しいコンポーネントのデフォルト値でリセット
+  const updateComponent = (key: FlightComponentKind) => {
+    const defaultVal = flightComponentDefaults[key]
+    omikujiStore.updateComponentSettings('flightSeat', {
+      ...flightSeat.value,
+      component: key,
+      customLayout: typeof defaultVal === 'string' ? defaultVal : undefined,
+    })
+  }
+
   const resetField = (field: keyof SettingsFlightSeatType) => {
     updateField(field, SettingsFlightSchema.parse({})[field])
   }
@@ -167,4 +196,8 @@
     tc: 'チャット数',
     giftPrice: 'ギフト金額',
   }
+
+  const currentPresets = computed(() => {
+    return presets[flightSeat.value.component] ?? null
+  })
 </script>

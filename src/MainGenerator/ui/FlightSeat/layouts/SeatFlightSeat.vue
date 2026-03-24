@@ -1,85 +1,64 @@
-<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatFlightSeat.vue -->
 <template>
   <div class="flex flex-col items-center gap-1">
-    <!-- ファーストクラス -->
+    <!-- ファースト -->
     <div class="w-full flex flex-col items-center gap-2">
-      <!-- 豪華なヘッダー -->
       <div class="relative flex items-center gap-2 px-4 py-1">
-        <span class="text-yellow-400 text-sm select-none">✦</span>
+        <span class="text-yellow-400 text-sm">✦</span>
         <div class="text-xs font-black tracking-[0.3em] uppercase">👑 First Class 👑</div>
-        <span class="text-yellow-400 text-sm select-none">✦</span>
+        <span class="text-yellow-400 text-sm">✦</span>
       </div>
 
-      <!-- 金色グラデーション背景帯 -->
-      <div
-        class="relative rounded-xl px-4 py-3 w-fit"
-        style="
-          background: linear-gradient(135deg, #1a1200 0%, #3d2b00 40%, #1a1200 100%);
-          border: 1px solid #b8860b;
-          box-shadow:
-            0 0 18px 2px #b8860b55,
-            inset 0 0 12px #b8860b22;
-        "
-      >
-        <!-- キラキラ装飾 -->
-        <div class="absolute top-1 left-2 text-yellow-400/60 text-xs select-none">✦</div>
-        <div class="absolute top-1 right-2 text-yellow-400/60 text-xs select-none">✦</div>
-        <div class="absolute bottom-1 left-4 text-yellow-400/40 text-[10px] select-none">✦</div>
-        <div class="absolute bottom-1 right-4 text-yellow-400/40 text-[10px] select-none">✦</div>
-
-        <div class="grid gap-3" :style="{ gridTemplateColumns: 'repeat(4, 5rem)' }">
+      <div class="relative rounded-xl px-4 py-3 w-fit">
+        <div class="grid gap-3" :style="{ gridTemplateColumns: `repeat(${layout[0]}, 5rem)` }">
           <SeatCell
-            v-for="i in 4"
-            :key="seats[i - 1]?.lastVisit ?? `fc-${i}`"
-            :seat="seats[i - 1] ?? null"
-            :index="i - 1"
+            v-for="col in layout[0]"
+            :key="seatAt(0, col - 1)?.lastVisit ?? `fc-${col}`"
+            :seat="seatAt(0, col - 1)"
+            :index="getIndex(0, col - 1)"
             :statKey="statKey"
-            :colorReverse="true"
             colorFrom="neutral"
+            :colorReverse="true"
           />
         </div>
       </div>
     </div>
 
-    <!-- 通路セパレーター (2重線・豪華) -->
+    <!-- 区切り -->
     <div class="w-full flex items-center gap-2 my-2 px-2">
-      <div class="flex-1 flex flex-col gap-0.5">
-        <div class="border-t border-dashed border-base-content/30" />
-        <div class="border-t border-dashed border-base-content/15" />
-      </div>
-      <span class="text-xs text-base-content/30 font-mono tracking-widest">✦ — ✦ — ✦</span>
-      <div class="flex-1 flex flex-col gap-0.5">
-        <div class="border-t border-dashed border-base-content/30" />
-        <div class="border-t border-dashed border-base-content/15" />
-      </div>
+      <div class="flex-1 border-t border-base-content/20" />
+      <span class="text-xs text-base-content/30">✦ — ✦ — ✦</span>
+      <div class="flex-1 border-t border-base-content/20" />
     </div>
 
     <!-- エコノミー -->
     <div class="w-full flex flex-col items-center gap-2">
-      <div class="text-xs font-bold text-base-content/40 tracking-widest uppercase">Economy</div>
-      <div v-for="(_, row) in [6, 6, 6]" :key="'e-' + row" class="flex gap-1 items-center">
-        <!-- 左3席 -->
-        <div class="grid gap-3" :style="{ gridTemplateColumns: 'repeat(3, 5rem)' }">
+      <div class="text-xs font-bold text-base-content/40">Economy</div>
+
+      <div v-for="(count, rowIndex) in economyRows" :key="rowIndex" class="flex gap-1 items-center">
+        <!-- 左 -->
+        <div class="grid gap-3" :style="{ gridTemplateColumns: `repeat(${Math.ceil(count / 2)}, 5rem)` }">
           <SeatCell
-            v-for="col in 3"
-            :key="seats[4 + row * 6 + (col - 1)]?.lastVisit ?? `el-${row}-${col}`"
-            :seat="seats[4 + row * 6 + (col - 1)] ?? null"
-            :index="4 + row * 6 + (col - 1)"
+            v-for="col in Math.ceil(count / 2)"
+            :key="seatAt(rowIndex + 1, col - 1)?.lastVisit ?? `el-${rowIndex}-${col}`"
+            :seat="seatAt(rowIndex + 1, col - 1)"
+            :index="getIndex(rowIndex + 1, col - 1)"
             :statKey="statKey"
-            :colorFrom="checkerColorEco(row, col - 1)"
+            :colorFrom="checkerColorEco(rowIndex, col - 1)"
           />
         </div>
+
         <!-- 通路 -->
-        <div class="w-5 text-center text-base-content/20 text-xs font-mono select-none">|</div>
-        <!-- 右3席 -->
-        <div class="grid gap-3" :style="{ gridTemplateColumns: 'repeat(3, 5rem)' }">
+        <div class="w-5 text-center text-base-content/20 text-xs">|</div>
+
+        <!-- 右 -->
+        <div class="grid gap-3" :style="{ gridTemplateColumns: `repeat(${Math.floor(count / 2)}, 5rem)` }">
           <SeatCell
-            v-for="col in 3"
-            :key="seats[4 + row * 6 + 3 + (col - 1)]?.lastVisit ?? `er-${row}-${col}`"
-            :seat="seats[4 + row * 6 + 3 + (col - 1)] ?? null"
-            :index="4 + row * 6 + 3 + (col - 1)"
+            v-for="col in Math.floor(count / 2)"
+            :key="seatAt(rowIndex + 1, col + Math.ceil(count / 2) - 1)?.lastVisit ?? `er-${rowIndex}-${col}`"
+            :seat="seatAt(rowIndex + 1, col + Math.ceil(count / 2) - 1)"
+            :index="getIndex(rowIndex + 1, col + Math.ceil(count / 2) - 1)"
             :statKey="statKey"
-            :colorFrom="checkerColorEco(row, col + 2)"
+            :colorFrom="checkerColorEco(rowIndex, col + Math.ceil(count / 2) - 1)"
           />
         </div>
       </div>
@@ -88,15 +67,29 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import { UserStatsRecord, StatKeyNum } from '@/types'
   import SeatCell from './SeatCell.vue'
   import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
-  defineProps<{
+  const props = defineProps<{
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
+    customLayout?: number[]
   }>()
 
-  /** エコノミー: 行・列XORで市松模様 */
+  // 例: [4, 6, 6, 6]
+  const layout = computed(() => props.customLayout ?? [4, 6, 6, 6])
+
+  // エコノミー行
+  const economyRows = computed(() => layout.value.slice(1))
+
+  // index計算
+  const rowOffset = (row: number) => layout.value.slice(0, row).reduce((sum, n) => sum + n, 0)
+
+  const getIndex = (row: number, col: number) => rowOffset(row) + col
+
+  const seatAt = (row: number, col: number): UserStatsRecord | null => props.seats[getIndex(row, col)] ?? null
+
   const checkerColorEco = (row: number, col: number): DaisyUIColorType => ((row + col) % 2 === 0 ? 'warning' : 'info')
 </script>

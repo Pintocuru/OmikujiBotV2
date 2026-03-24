@@ -8,6 +8,7 @@
       :kind="settings.component"
       :customLayout="parsedCustomLayout"
       :statKey="localStatKey"
+      :totalSeats="totalSeats"
       @click="toggleStatKey"
     />
 

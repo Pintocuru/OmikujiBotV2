@@ -5,7 +5,13 @@
       <h2 v-if="label" class="text-xl font-bold text-center">
         {{ label }}
       </h2>
-      <component :is="layoutComponent" :seats="seats" :statKey="statKey" />
+      <component
+        :is="layoutComponent"
+        :key="totalSeats"
+        :seats="seats"
+        :statKey="statKey"
+        :customLayout="customLayout"
+      />
     </div>
   </div>
 </template>
@@ -13,11 +19,11 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { StatKeyNum, UserStatsRecord, FlightComponentKind } from '@/types'
-  import SeatLayoutNineViewers from '../layouts/SeatNineViewers.vue'
-  import SeatLayoutBingo from '../layouts/SeatBingo.vue'
-  import SeatLayoutFlightSeat from '../layouts/SeatFlightSeat.vue'
-  import SeatLayoutGraduation from '../layouts/SeatGraduation.vue'
-  import SeatLayoutFerrisWheel from '../layouts/SeatFerrisWheel.vue'
+  import NineViewers from '../layouts/SeatNineViewers.vue'
+  import Bingo from '../layouts/SeatBingo.vue'
+  import FlightSeat from '../layouts/SeatFlightSeat.vue'
+  import Graduation from '../layouts/SeatGraduation.vue'
+  import FerrisWheel from '../layouts/SeatFerrisWheel.vue'
   import { ThemeType } from '@shared/styles/DaisyUiTheme'
 
   const props = defineProps<{
@@ -27,15 +33,16 @@
     kind: FlightComponentKind
     customLayout?: number[]
     statKey: StatKeyNum | null
+    totalSeats: number
   }>()
 
   const COMPONENT_MAP = {
-    nineViewers: SeatLayoutNineViewers,
-    bingo: SeatLayoutBingo,
-    flightSeat: SeatLayoutFlightSeat,
-    graduation: SeatLayoutGraduation,
-    ferrisWheel: SeatLayoutFerrisWheel,
+    nineViewers: NineViewers,
+    bingo: Bingo,
+    flightSeat: FlightSeat,
+    graduation: Graduation,
+    ferrisWheel: FerrisWheel,
   } as const
 
-  const layoutComponent = computed(() => COMPONENT_MAP[props.kind] ?? SeatLayoutNineViewers)
+  const layoutComponent = computed(() => COMPONENT_MAP[props.kind] ?? NineViewers)
 </script>

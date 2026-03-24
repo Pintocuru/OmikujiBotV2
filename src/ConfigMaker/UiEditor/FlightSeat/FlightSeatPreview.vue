@@ -9,6 +9,7 @@
         :kind="flightSeat.component"
         :customLayout="parsedCustomLayout"
         :statKey="flightSeat.statKey"
+        :totalSeats="totalSeats"
       />
     </div>
     <!-- 右下に表示するHUD（スケーリングされない） -->

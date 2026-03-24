@@ -27,11 +27,44 @@ export type FlightComponentKind = keyof typeof flightComponentMap
  * string: JSON配列文字列（カスタムレイアウト、パースして使用）
  */
 export const flightComponentDefaults: Record<FlightComponentKind, number | string> = {
-  nineViewers: 9,
+  nineViewers: '[3, 3, 3]',
   bingo: 24,
-  flightSeat: 22, // '[4, 6, 6, 6]'
-  graduation: 37, // '[12, 13, 12]'
+  flightSeat: '[4, 6, 6, 6]',
+  graduation: '[12, 13, 12]',
   ferrisWheel: 13,
+}
+
+type PresetItem = {
+  label: string
+  layout: number[]
+}
+
+export const presets: Record<FlightComponentKind, Record<string, PresetItem> | null> = {
+  nineViewers: {
+    p1: { label: '3×3 グリッド', layout: [3, 3, 3] },
+    p2: { label: '横一列', layout: [9] },
+    p3: { label: '縦一列', layout: [1, 1, 1, 1, 1, 1, 1, 1, 1] },
+  },
+
+  bingo: null,
+
+  flightSeat: {
+    p1: { label: 'スタンダードキャビン', layout: [4, 6, 6, 6] },
+    p2: { label: 'リージョナルジェット', layout: [3, 3, 4] },
+    p3: { label: 'ワイドボディ配列', layout: [3, 4, 4, 4, 3] },
+    p4: { label: '満席ロングフライト', layout: [6, 8, 8, 8, 8, 6, 4] },
+    p5: { label: '超大型機キャビン', layout: [4, 6, 6, 6, 6, 6, 6, 6, 6, 6, 4] },
+  },
+
+  graduation: {
+    p2: { label: '一般的なクラス', layout: [12, 13, 12] },
+    p1: { label: '小さなクラス', layout: [8, 7, 8] },
+    p3: { label: '学年全員', layout: [16, 17, 16, 17] },
+    p4: { label: '学年全員（大）', layout: [20, 21, 20, 21, 20] },
+    p5: { label: '学校全員(先生・給食のおばちゃん含む)', layout: [24, 23, 24, 23, 24, 23, 24, 23, 24, 23, 24, 23, 24] },
+  },
+
+  ferrisWheel: null,
 }
 
 /**

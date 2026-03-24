@@ -71,7 +71,7 @@
   import SidebarSubItems from './SidebarSubItems.vue'
 
   const navigationStore = useNavigationStore()
-  const { isRecordCategory } = useNavigationStore()
+  const { isRecordCategory, selectCategory } = useNavigationStore()
   const { selectedCategory, selectedItemKey } = storeToRefs(navigationStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
   const { isPro, isGod } = useSettingMode()
@@ -101,7 +101,7 @@
   const categoryIcon = (icon: LucideIconName) => resolveLucideIcon(icon)
 
   const navigateCategory = (key: CategoryType) => {
-    navigationStore.selectCategory(key)
+    selectCategory(key)
   }
 
   // SidebarSubItems 用の v-model ヘルパー

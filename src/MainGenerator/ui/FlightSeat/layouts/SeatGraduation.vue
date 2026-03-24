@@ -33,10 +33,11 @@
   const props = defineProps<{
     seats: (UserStatsRecord | null)[]
     statKey: StatKeyNum | null
+    customLayout?: number[]
   }>()
 
   // 後列12 / 前列13 / 壇上12
-  const layout = [12, 13, 12] as const
+  const layout = props.customLayout ?? ([12, 13, 12] as const)
 
   const rowOffset = (row: number) => layout.slice(0, row).reduce((sum, n) => sum + n, 0)
 
