@@ -1,6 +1,6 @@
 // src/MainGenerator/stores/MetaState/MetaTriggerEvaluator.ts
 import { ServiceConditionType, ServiceTriggerType } from '@/types/OmikujiData/'
-import type { MetaUpdateEvent } from './MetaStateService'
+import type { MetaUpdateEvent } from '../../stores/MetaState/MetaStateService'
 
 /**
  * トリガー条件の評価 ReactionTriggerEvaluator

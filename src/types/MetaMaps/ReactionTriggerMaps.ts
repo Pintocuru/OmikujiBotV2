@@ -4,34 +4,30 @@
  * 比較条件のUI表示情報（label + description）Reaction
  */
 export const reactionConditionMap = {
-  increased: {
-    label: '増えた',
-    description: '前回の値より増加した場合に条件を満たします',
+  milestone: {
+    label: '増加した',
+    description: '累計がnの倍数に達するたびに発火します（例：100回ごと）',
   },
-  burst: {
-    label: 'バースト',
-    description: '30秒以内に指定値以上のリアクションがあった場合に条件を満たします',
-  },
-  lowerBound: {
-    label: '指定値以上',
-    description: '指定値以上の場合に条件を満たします',
-  },
-  upperBound: {
-    label: '指定値以下',
-    description: '指定値以下の場合に条件を満たします',
+  burstSustain: {
+    label: '増加した(レベル参照)',
+    description: '指定レベル以上の間、n回押されるたびに発火します',
   },
   equal: {
     label: '指定値と等しい',
-    description: '指定値と等しい場合に条件を満たします',
+    description: '累計が指定値にぴったり一致したとき1回だけ発火します',
   },
-  loop: {
-    label: 'ループ',
-    description: '指定値の倍数の時に条件を満たします（例：10増えるごと）',
+  burstReach: {
+    label: 'レベルアップ時',
+    description: '指定レベル以上に到達した瞬間に1回だけ発火します',
+  },
+  burstDrop: {
+    label: 'レベルダウン時',
+    description: '指定レベル以下に下がった瞬間に1回だけ発火します',
   },
 } as const
 
 /**
- * トリガー条件の表示名マップ（絵文字付き）
+ * リアクション絵文字マップ
  */
 export const reactionMap = {
   youtube: {
@@ -41,5 +37,4 @@ export const reactionMap = {
     surprise: '😳',
     praise: '💯',
   },
-  // tiktok: { ... },
 } as const

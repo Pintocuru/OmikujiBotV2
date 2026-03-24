@@ -27,7 +27,7 @@
   </SettingItem>
 
   <!-- 数値指定 -->
-  <SettingItem v-if="requiresValue" label="しきい値" description="条件に使用する値">
+  <SettingItem label="しきい値" description="条件に使用する値">
     <input
       type="number"
       min="0"
@@ -35,6 +35,29 @@
       v-model.number="value"
       placeholder="例：10"
     />
+  </SettingItem>
+
+  <!-- レベルでの発動 -->
+  <SettingItem
+    :variant="variantMap[triggerLevel]"
+    label="レベルでの発動"
+    :description="`リアクションが押される量で発動`"
+  >
+    <div class="w-full space-y-2">
+      <!-- スライダー -->
+      <input type="range" min="0" max="3" step="1" class="range w-full" v-model.number="triggerLevel" />
+
+      <!-- アイコン表示 -->
+      <div class="flex justify-between items-center px-1">
+        <component
+          v-for="(Icon, i) in icons"
+          :key="i"
+          :is="Icon"
+          class="w-4 h-4"
+          :class="i === triggerLevel ? 'opacity-100 scale-110' : 'opacity-20'"
+        />
+      </div>
+    </div>
   </SettingItem>
 </template>
 
@@ -44,6 +67,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { reactionMap, reactionConditionMap } from '@/types/MetaMaps'
   import { ReactionTriggerType, ReactionReaction } from '@/types/OmikujiData/ReactionTriggerSchema'
+  import { VolumeX, Volume2, Dot } from 'lucide-vue-next'
 
   const props = defineProps<{
     modelValue: ReactionTriggerType
@@ -65,6 +89,7 @@
   const reactions = createComputed('reactions')
   const comparison = createComputed('comparison')
   const value = createComputed('value')
+  const triggerLevel = createComputed('triggerLevel')
 
   // toggle
   const toggleReaction = (key: ReactionReaction) => {
@@ -74,6 +99,6 @@
     reactions.value = Array.from(set)
   }
 
-  // ★修正：increasedのみ不要
-  const requiresValue = computed(() => comparison.value !== 'increased')
+  const icons = [VolumeX, Dot, Dot, Volume2]
+  const variantMap = [undefined, 'success', 'warning', 'error'] as const
 </script>

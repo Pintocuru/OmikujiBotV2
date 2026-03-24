@@ -65,8 +65,9 @@
   const handleToggle = () => {
     omikujiStore.updateItem(props.category, props.item.key, {
       ...props.item,
-      isEnabled: props.item.isEnabled !== false,
+      isEnabled: !Boolean(props.item.isEnabled),
     })
+    swalToast.success({ title: '有効・無効をを更新しました' })
     close()
   }
 
