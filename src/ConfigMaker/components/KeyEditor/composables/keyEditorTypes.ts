@@ -1,7 +1,7 @@
 // src/ConfigMaker/components/KeyEditor/composables/keyEditorTypes.ts
-import { RulesCategoryType } from '@/types/OmikujiData/'
+import { EventCategoryType } from '@/types/OmikujiData/'
 
-export type CharacterUsage = { [K in RulesCategoryType]: string[] }
+export type CharacterUsage = { [K in EventCategoryType]: string[] }
 export type UpdateResult = {
   success: boolean
   error?: string

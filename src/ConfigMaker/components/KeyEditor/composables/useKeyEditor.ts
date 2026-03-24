@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/KeyEditor/composables/useKeyEditor.ts
 import { ref, computed, readonly } from 'vue'
-import { categoryMap, RecordCategoryType, rulesCategoryLabel } from '@/types/'
+import { categoryMap, RecordCategoryType, eventCategoryLabel } from '@/types/'
 import { validateKey as validateKeyUtil } from './keyEditorValidation'
 import { updateStrategies } from './keyUpdateStrategies'
 import { CharacterUsage, UpdateResult } from './keyEditorTypes'
@@ -23,10 +23,10 @@ export function useKeyEditor() {
    * キャラクター使用箇所の取得
    */
   function getCharacterUsage(characterKey: string): CharacterUsage {
-    const usage: CharacterUsage = { comments: [], timers: [], metas: [] }
+    const usage: CharacterUsage = { comments: [], timers: [], metas: [], reactions: [] }
     const { getCategoryMap } = useGetRecordData()
 
-    rulesCategoryLabel.forEach((category) => {
+    eventCategoryLabel.forEach((category) => {
       const categoryData = getCategoryMap(category)
 
       Object.entries(categoryData).forEach(([ruleKey, rule]) => {

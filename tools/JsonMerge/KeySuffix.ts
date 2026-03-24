@@ -1,12 +1,12 @@
 // tools/JsonMerge/KeySuffix.ts
-import { OmikujiDataType, rulesCategoryLabel, RulesCategoryType } from '@/types/OmikujiData'
+import { OmikujiDataType, eventCategoryLabel, EventCategoryType } from '@/types/OmikujiData'
 
 export function applyKeySuffix(data: OmikujiDataType, suffix?: string): OmikujiDataType {
   if (!suffix) return data
 
-  const updated = {} as Pick<OmikujiDataType, RulesCategoryType>
+  const updated = {} as Pick<OmikujiDataType, EventCategoryType>
 
-  for (const category of rulesCategoryLabel) {
+  for (const category of eventCategoryLabel) {
     // TypeScript の型システムはユニオンキーによる異構造インデックス代入を
     // 安全に扱えないため、ここでは any を使用。
     // 実行時の安全性は applySuffixToRules のジェネリック制約により保証される。

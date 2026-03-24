@@ -24,8 +24,8 @@ export type OmikujiLimitsType = z.infer<typeof OmikujiLimitsSchema>
 /**
  * Rules のカテゴリ定数セット
  */
-export const rulesCategoryLabel = ['comments', 'timers', 'metas', 'reactions'] as const
-export type RulesCategoryType = (typeof rulesCategoryLabel)[number]
+export const eventCategoryLabel = ['comments', 'timers', 'metas', 'reactions'] as const
+export type EventCategoryType = (typeof eventCategoryLabel)[number]
 
 /**
  * Rules 共通部分のスキーマ

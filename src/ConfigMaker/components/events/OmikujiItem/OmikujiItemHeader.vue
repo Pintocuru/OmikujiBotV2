@@ -32,7 +32,7 @@
 <script setup lang="ts">
   import { OmikujiItemType } from '@/types/OmikujiData/'
   import OmikujiItemPriority from './OmikujiItemPriority.vue'
-  import { RulesCategoryType } from '@/types/OmikujiData/'
+  import { EventCategoryType } from '@/types/OmikujiData/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
@@ -40,7 +40,7 @@
   import { v4 } from 'uuid'
 
   const props = defineProps<{
-    category: RulesCategoryType
+    category: EventCategoryType
     selectedItemKey: string | null
     omikujiItem: OmikujiItemType | null
     index: number

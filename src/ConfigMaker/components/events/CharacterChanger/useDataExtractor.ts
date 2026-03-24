@@ -1,13 +1,13 @@
 // src/ConfigMaker/components/events/CharacterChanger/useDataExtractor.ts
 import { computed, ComputedRef } from 'vue'
-import { RulesCategoryType, EventType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
+import { EventCategoryType, EventType, ActionSetType, PostFlowType, OmikujiItemType } from '@/types/OmikujiData/'
 import { categoryMap } from '@/types/'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 /**
  * カテゴリタイプ（rules系とactionSets）
  */
-export type TargetCategoryType = RulesCategoryType | 'actionSets'
+export type TargetCategoryType = EventCategoryType | 'actionSets'
 
 /**
  * 変更スコープタイプ

@@ -59,7 +59,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
-  import { OmikujiItemSchema, OmikujiItemType, RulesCategoryType } from '@/types/OmikujiData/'
+  import { OmikujiItemSchema, OmikujiItemType, EventCategoryType } from '@/types/OmikujiData/'
   import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
   import CharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
   import OmikujiItemEditor from '@config/components/events/OmikujiItem/OmikujiItemEditor.vue'
@@ -69,7 +69,7 @@
   import { Dices, Plus, X } from 'lucide-vue-next'
 
   const props = defineProps<{
-    category: RulesCategoryType
+    category: EventCategoryType
     selectedItemKey: string | null
   }>()
 

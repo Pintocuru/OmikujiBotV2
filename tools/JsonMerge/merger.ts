@@ -1,5 +1,5 @@
 // tools/JsonMerge/merger.ts
-import { OmikujiDataType, rulesCategoryLabel, RulesCategoryType } from '@/types/OmikujiData/'
+import { OmikujiDataType, eventCategoryLabel, EventCategoryType } from '@/types/OmikujiData/'
 
 /**
  * JsonMerge:複数のOmikujiDataを統合
@@ -9,7 +9,7 @@ export function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataTy
 
   for (const data of dataArray) {
     // Rulesカテゴリを網羅マージ
-    for (const category of rulesCategoryLabel) {
+    for (const category of eventCategoryLabel) {
       mergeRecordCategory(result, data, category)
     }
     // Record型をマージ
@@ -32,7 +32,7 @@ export function mergeOmikujiData(...dataArray: OmikujiDataType[]): OmikujiDataTy
   return result
 }
 
-function mergeRecordCategory<K extends RulesCategoryType>(
+function mergeRecordCategory<K extends EventCategoryType>(
   target: OmikujiDataType,
   source: OmikujiDataType,
   category: K

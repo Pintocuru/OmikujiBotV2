@@ -94,7 +94,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import {
-    RulesCategoryType,
+    EventCategoryType,
     ActionBehaviorType,
     ActionBehaviorLogType,
     actionSpecialMap,
@@ -107,7 +107,7 @@
 
   const props = defineProps<{
     index: number
-    category: RulesCategoryType
+    category: EventCategoryType
     selectedItemKey: string | null
   }>()
 

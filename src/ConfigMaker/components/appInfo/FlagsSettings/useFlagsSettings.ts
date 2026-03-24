@@ -25,15 +25,7 @@ export function useFlagsSettings() {
   const placeholders = createUsageRef('placeholders')
   const characters = createUsageRef('characters')
 
-  const categoryToUsageKey: Record<RecordCategoryType, keyof FlagsUsageType> = {
-    comments: 'comments',
-    timers: 'timers',
-    metas: 'metas',
-    actionSets: 'actionSets',
-    placeholders: 'placeholders',
-    characters: 'characters',
-  }
-  const categoryVisibility = (category: RecordCategoryType) => createUsageRef(categoryToUsageKey[category])
+  const categoryVisibility = (category: RecordCategoryType) => createUsageRef(category as keyof FlagsUsageType)
 
   // string[] 直下プロパティ用（gameScripts / components）
   const createArrayRef = <K extends 'gameScripts' | 'components'>(key: K) =>

@@ -2,7 +2,7 @@
 import type { OmikujiDataType } from '@/types/OmikujiData/'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/'
 import type { ActionSetType, PostFlowType, GameScriptsType } from '@/types/OmikujiData/'
-import { CharacterEmotionType, rulesCategoryLabel } from '@/types/OmikujiData'
+import { CharacterEmotionType, eventCategoryLabel } from '@/types/OmikujiData'
 
 /**
  * PostActionの配列に対してリマップルールを適用
@@ -74,7 +74,7 @@ export function applyRemaps(data: OmikujiDataType, remaps: JsonMergeRemapType[])
   const clonedData: OmikujiDataType = JSON.parse(JSON.stringify(data))
 
   // Rulesカテゴリを網羅的に処理
-  for (const category of rulesCategoryLabel) {
+  for (const category of eventCategoryLabel) {
     remapOmikujiGroup(clonedData[category], remaps)
   }
 

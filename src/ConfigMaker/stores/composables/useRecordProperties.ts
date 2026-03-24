@@ -1,7 +1,7 @@
 // src/ConfigMaker/stores/composables/useRecordProperties.ts
 import { Ref } from 'vue'
 import { WeightValuesArraySchema, WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
-import { RulesCategoryType, EventType } from '@/types/OmikujiData/'
+import { EventCategoryType, EventType } from '@/types/OmikujiData/'
 import type { useRecordCRUD } from './useRecordCRUD'
 import {
   OmikujiDataType,
@@ -30,7 +30,7 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
 
   // 特殊ケース: おみくじのitem更新
   const updateOmikujiByIndex = (
-    category: RulesCategoryType,
+    category: EventCategoryType,
     eventKey: string,
     omikujiIndex: number,
     updater: (item: OmikujiItemType) => OmikujiItemType
@@ -46,7 +46,7 @@ export function useRecordProperties(data: Ref<OmikujiDataType>, recordCRUD: Retu
 
   // 特殊ケース: おみくじのpostActions更新
   const updateOmikujiPostActions = (
-    category: RulesCategoryType,
+    category: EventCategoryType,
     eventKey: string,
     omikujiIndex: number,
     postActions: PostFlowType[]

@@ -7,8 +7,8 @@ import {
   CommentEventType,
   ServiceEventSchema,
   ServiceEventType,
-  rulesCategoryLabel,
-  RulesCategoryType,
+  eventCategoryLabel,
+  EventCategoryType,
   EventType,
   TimerEventSchema,
   TimerEventType,
@@ -20,7 +20,7 @@ import { categoryMap } from '../MetaMaps'
 /**
  * RecordCategory
  */
-export const recordCategoryLabel = [...rulesCategoryLabel, 'actionSets', 'placeholders', 'characters'] as const
+export const recordCategoryLabel = [...eventCategoryLabel, 'actionSets', 'placeholders', 'characters'] as const
 export type RecordCategoryType = (typeof recordCategoryLabel)[number]
 export type RecordCategoryUnion = EventType | PlaceholderType | CharacterType
 export type RecordCategoryDataMap = {
@@ -53,8 +53,8 @@ export const RecordCategorySchemaMap = {
   characters: CharacterSchema,
 } as const
 
-export const isRulesCategory = (category: CategoryType): category is RulesCategoryType => {
-  return rulesCategoryLabel.includes(category as RulesCategoryType)
+export const isRulesCategory = (category: CategoryType): category is EventCategoryType => {
+  return eventCategoryLabel.includes(category as EventCategoryType)
 }
 
 /**

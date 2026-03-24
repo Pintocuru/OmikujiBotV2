@@ -90,7 +90,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RulesCategoryType, ScriptGameKey } from '@/types/OmikujiData/'
+  import { EventCategoryType, ScriptGameKey } from '@/types/OmikujiData/'
   import GameScriptPreview from './GameScriptPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -100,7 +100,7 @@
 
   const props = defineProps<{
     index: number
-    category: RulesCategoryType
+    category: EventCategoryType
     selectedItemKey: string | null
   }>()
 

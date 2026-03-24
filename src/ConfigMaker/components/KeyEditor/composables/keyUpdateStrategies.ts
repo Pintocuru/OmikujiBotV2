@@ -1,5 +1,5 @@
 // src/ConfigMaker/components/KeyEditor/composables/keyUpdateStrategies.ts
-import { RecordCategoryType } from '@/types/OmikujiData/'
+import { RecordCategoryType, eventCategoryLabel, EventCategoryType } from '@/types/OmikujiData/'
 import { KeyUpdateStrategy } from './keyEditorTypes'
 import { updateRecordKey, updateCharacterKey, updatePlaceholderKey } from './keyUpdateCore'
 import {
@@ -12,16 +12,17 @@ import {
  * Key更新戦略マップ
  * すべてのRecordCategoryTypeに対応（BaseRecordSchema準拠）
  */
+const baseStrategies = Object.fromEntries(
+  eventCategoryLabel.map((key) => [
+    key,
+    {
+      updateKey: (oldKey: string, newKey: string) => updateRecordKey(key, oldKey, newKey),
+    },
+  ])
+) as Record<EventCategoryType, KeyUpdateStrategy>
+
 export const updateStrategies: Record<RecordCategoryType, KeyUpdateStrategy> = {
-  comments: {
-    updateKey: (oldKey, newKey) => updateRecordKey('comments', oldKey, newKey),
-  },
-  timers: {
-    updateKey: (oldKey, newKey) => updateRecordKey('timers', oldKey, newKey),
-  },
-  metas: {
-    updateKey: (oldKey, newKey) => updateRecordKey('metas', oldKey, newKey),
-  },
+  ...baseStrategies,
   actionSets: {
     updateKey: (oldKey, newKey) => updateRecordKey('actionSets', oldKey, newKey),
     updateReferences: updateActionSetReferences,

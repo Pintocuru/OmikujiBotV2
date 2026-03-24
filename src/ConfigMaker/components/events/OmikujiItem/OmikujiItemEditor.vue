@@ -60,11 +60,11 @@
   import SpecialActionEditor from './SpecialActionEditor.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { RulesCategoryType } from '@/types/OmikujiData/'
+  import { EventCategoryType } from '@/types/OmikujiData/'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   const props = defineProps<{
-    category: RulesCategoryType
+    category: EventCategoryType
     selectedItemKey: string | null
     index: number
   }>()

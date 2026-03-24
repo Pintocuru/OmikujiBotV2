@@ -38,14 +38,18 @@
   </SettingItem>
 
   <!-- レベルでの発動 -->
-  <SettingItem
-    :variant="variantMap[triggerLevel]"
-    label="レベルでの発動"
-    :description="`リアクションが押される量で発動`"
-  >
+  <SettingItem v-if="comparison !== 'milestone'" label="レベルでの発動" :description="`リアクションが押される量で発動`">
     <div class="w-full space-y-2">
       <!-- スライダー -->
-      <input type="range" min="0" max="3" step="1" class="range w-full" v-model.number="triggerLevel" />
+      <input
+        type="range"
+        min="0"
+        max="3"
+        step="1"
+        class="range w-full"
+        :class="rangeClassMap[triggerLevel]"
+        v-model.number="triggerLevel"
+      />
 
       <!-- アイコン表示 -->
       <div class="flex justify-between items-center px-1">
@@ -100,5 +104,5 @@
   }
 
   const icons = [VolumeX, Dot, Dot, Volume2]
-  const variantMap = [undefined, 'success', 'warning', 'error'] as const
+  const rangeClassMap = ['', 'range-success', 'range-warning', 'range-error'] as const
 </script>
