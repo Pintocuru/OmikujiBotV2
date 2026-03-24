@@ -5,7 +5,7 @@
     <button
       v-if="isPro"
       @click="fileInputRef?.click()"
-      class="btn btn-success tooltip tooltip-top"
+      class="btn btn-success tooltip tooltip-top truncate"
       data-tip="ダウンロード、またはテンプレート出力したjsonファイルを読み込みます"
       :disabled="importManager.isLoading.value"
     >

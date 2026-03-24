@@ -10,7 +10,7 @@
     <div v-if="saveFileName">
       <button
         @click="() => devStore.overwriteConfig(saveFileName)"
-        class="btn btn-warning tooltip tooltip-top"
+        class="btn btn-warning tooltip tooltip-top truncate"
         :class="!hasChanged ? 'btn-soft' : ''"
         data-tip="ファイルを保存"
         :disabled="!hasChanged || !saveFileName"
@@ -25,7 +25,7 @@
       <span v-if="hasChanged" class="indicator-item badge badge-secondary badge-sm"> 変更あり </span>
       <button
         @click="exportFile('config')"
-        class="btn btn-primary tooltip tooltip-top"
+        class="btn btn-primary tooltip tooltip-top truncate"
         :class="!hasChanged ? 'btn-soft' : ''"
         data-tip="設定ファイルを出力します。保存する場合は必ずこのボタンを押してください。"
         :disabled="isExporting"
@@ -39,7 +39,7 @@
     <div v-if="isPro">
       <button
         @click="exportFile('template')"
-        class="btn btn-success tooltip tooltip-top"
+        class="btn btn-success tooltip tooltip-top truncate"
         data-tip="テンプレート(JSONファイル)を出力します"
         :disabled="isExporting"
       >

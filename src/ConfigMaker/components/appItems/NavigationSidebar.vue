@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/appItems/NavigationSidebar.vue -->
 <template>
   <div
-    class="sticky top-0 h-screen flex flex-col border-r overflow-y-auto transition-all duration-200 shrink-0"
+    class="sticky top-0 h-screen flex flex-col border-r overflow-y-auto transition-all duration-200 shrink-0 bg-base-200"
     :class="sidebarClass"
     :style="{ width: isExpanded ? '200px' : '72px' }"
   >
@@ -88,9 +88,9 @@
   })
 
   const sidebarClass = computed(() => {
-    if (isGod.value) return 'border-warning bg-base-200'
-    if (isPro.value) return 'border-success bg-base-200'
-    return 'border-base-300 bg-base-200'
+    if (isGod.value) return 'border-warning'
+    if (isPro.value) return 'border-success'
+    return 'border-base-300'
   })
 
   const categoryButtonClass = (key: CategoryType) => {

@@ -44,6 +44,8 @@ export const OmikujiDataSchema = z.object({
     timers: normalizedRecord(TimerRuleSchema),
     // metas -> services
     services: normalizedRecord(MetaRuleSchema),
+    reactions: normalizedRecord(ReactionEventSchema),
+    queues: normalizedRecord(QueueEventSchema),
   }),
 
   assets: z.object({

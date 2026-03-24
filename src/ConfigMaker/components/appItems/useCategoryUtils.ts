@@ -36,6 +36,9 @@ export const useCategoryUtils = () => {
     if (!hasAccess(usage.comments)) excludeKeys.push('comments')
     if (!hasAccess(usage.timers)) excludeKeys.push('timers')
     if (!hasAccess(usage.metas)) excludeKeys.push('metas')
+    if (!hasAccess(usage.reactions)) excludeKeys.push('reactions')
+    // if (!hasAccess(usage.queues)) excludeKeys.push('queues') // TODO:queues(order、参加型管理)の実装
+
     if (!hasAccess(usage.actionSets)) excludeKeys.push('actionSets')
     if (!hasAccess(usage.placeholders)) excludeKeys.push('placeholders')
     if (!hasAccess(usage.characters)) excludeKeys.push('characters')

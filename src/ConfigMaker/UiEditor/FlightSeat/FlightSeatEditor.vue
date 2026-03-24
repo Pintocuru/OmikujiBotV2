@@ -25,7 +25,7 @@
           v-for="(preset, key) in currentPresets"
           :key="key"
           class="badge badge-lg cursor-pointer"
-          :class="'badge-outline'"
+          :class="isPresetActive(preset.layout) ? 'badge-primary' : 'badge-outline'"
           @click="updateField('customLayout', JSON.stringify(preset.layout))"
         >
           {{ preset.label }}
@@ -182,4 +182,20 @@
   const currentPresets = computed(() => {
     return presets[flightSeat.value.component] ?? null
   })
+
+  const isPresetActive = (layout: number[]) => {
+    const raw = flightSeat.value.customLayout
+    if (!raw) return false
+
+    try {
+      const parsed = JSON.parse(raw)
+      return (
+        Array.isArray(parsed) &&
+        parsed.length === layout.length &&
+        parsed.every((n: number, i: number) => n === layout[i])
+      )
+    } catch {
+      return false
+    }
+  }
 </script>

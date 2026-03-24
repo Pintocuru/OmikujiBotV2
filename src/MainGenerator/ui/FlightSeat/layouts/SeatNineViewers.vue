@@ -11,7 +11,7 @@
     >
       <SeatCell
         v-for="colIndex in row"
-        :key="getIndex(rowIndex, colIndex - 1)"
+        :key="displaySeats[getIndex(rowIndex, colIndex - 1)]?.lastVisit ?? getIndex(rowIndex, colIndex - 1)"
         :seat="displaySeats[getIndex(rowIndex, colIndex - 1)]"
         :index="getIndex(rowIndex, colIndex - 1)"
         :statKey="statKey"

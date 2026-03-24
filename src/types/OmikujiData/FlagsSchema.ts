@@ -13,6 +13,7 @@ export const FlagsUsageSchema = z.object({
   comments: AccessLevelSchema.default('basic').catch('basic'),
   timers: AccessLevelSchema.default('basic').catch('basic'),
   metas: AccessLevelSchema.default('basic').catch('basic'),
+  reactions: AccessLevelSchema.default('basic').catch('basic'),
   actionSets: AccessLevelSchema.default('basic').catch('basic'),
   placeholders: AccessLevelSchema.default('basic').catch('basic'),
   characters: AccessLevelSchema.default('basic').catch('basic'),
