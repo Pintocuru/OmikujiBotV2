@@ -37,7 +37,5 @@
     ferrisWheel: SeatLayoutFerrisWheel,
   } as const
 
-  const layoutComponent = computed(() => {
-    return COMPONENT_MAP[props.kind] ?? SeatLayoutNineViewers
-  })
+  const layoutComponent = computed(() => COMPONENT_MAP[props.kind] ?? SeatLayoutNineViewers)
 </script>
