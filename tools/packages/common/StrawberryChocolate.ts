@@ -32,9 +32,9 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（pro はコメントアウトされていたため basic のみ採用）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  // { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
   { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
-  { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
+  // { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

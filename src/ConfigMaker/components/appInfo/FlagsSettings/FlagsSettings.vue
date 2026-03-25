@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import { FlagsType, isDev } from '@/types/'
+  import { FlagsType, FlagsUsageSchema, isDev } from '@/types/'
   import FlagsUsage from './FlagsUsageSettings.vue'
   import FlagsGames from './FlagsGamesSettings.vue'
   import FlagsDeveloper from './FlagsDeveloperSettings.vue'
@@ -34,21 +34,22 @@
    */
   const setFullVisibility = () => {
     const fullSettings: FlagsType = {
-      usage: {
-        comments: 'basic' as const,
-        timers: 'basic' as const,
-        metas: 'basic' as const,
-        actionSets: 'basic' as const,
-        placeholders: 'basic' as const,
-        characters: 'basic' as const,
-      },
-      components: ['bubble', 'toast'],
+      usage: FlagsUsageSchema.parse({
+        comments: 'basic',
+        timers: 'basic',
+        metas: 'basic',
+        reactions: 'basic',
+        actionSets: 'basic',
+        placeholders: 'basic',
+        characters: 'basic',
+      }),
+      components: [],
       gameScripts: [],
 
       developer: {
-        jsonMergeSettings: 'basic' as const,
-        licenseVisible: 'basic' as const,
-        itemSlotEnabled: 'basic' as const,
+        jsonMergeSettings: 'basic',
+        licenseVisible: 'basic',
+        itemSlotEnabled: 'basic',
       },
     }
 
@@ -60,21 +61,22 @@
    */
   const setSoloVisibility = () => {
     const soloSettings: FlagsType = {
-      usage: {
-        comments: 'basic' as const,
-        timers: 'none' as const,
-        metas: 'none' as const,
-        actionSets: 'basic' as const,
-        placeholders: 'basic' as const,
-        characters: 'none' as const,
-      },
-      components: ['toast', 'ranking'],
+      usage: FlagsUsageSchema.parse({
+        comments: 'basic',
+        timers: 'none',
+        metas: 'none',
+        reactions: 'none',
+        actionSets: 'basic',
+        placeholders: 'basic',
+        characters: 'none',
+      }),
+      components: [],
       gameScripts: [],
 
       developer: {
-        licenseVisible: 'basic' as const,
-        jsonMergeSettings: 'none' as const,
-        itemSlotEnabled: 'basic' as const,
+        licenseVisible: 'basic',
+        jsonMergeSettings: 'none',
+        itemSlotEnabled: 'basic',
       },
     }
 

@@ -1,4 +1,5 @@
 // tools/packages/2026-Q1/index.ts
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import ValentineCoupling from './ValentineCoupling'
 import HonjoFoxProject from './HonjoFox'
 import BreakingSyoken from './BreakingSyoken'
@@ -22,5 +23,5 @@ export default [
   // GraduationIcons,
   // StreamCounterCircle,
   // StreamCounterPixel,
-  LiveClockMorning,
+  // LiveClockMorning,
 ]

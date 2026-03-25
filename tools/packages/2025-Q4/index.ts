@@ -1,4 +1,5 @@
 // tools/packages/2025-Q4/index.ts
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import DivaMetan from './DivaMetan'
 import EveryoneZunda from './EveryoneZunda'
 import ReimuMarisa from './ReimuMarisa'

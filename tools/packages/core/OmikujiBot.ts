@@ -30,4 +30,7 @@ function project(packageRoot: string): ProjectConfig {
   }
 }
 
-export default project
+export default {
+  getProjects: (root: string) => [project(root)],
+  buildTargets: [],
+}
