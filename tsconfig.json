@@ -38,9 +38,8 @@
     "src/**/*.vue",
     "server/**/*.ts",
     "tools/**/*.ts",
-    "eslint.config.ts",
-    "vite.config.ts",
-    "vitest.config.ts"
+    "build/**/*.ts",
+    "*.ts"
   ],
   "exclude": ["node_modules", "archives", "**/*.test.ts"]
 }
