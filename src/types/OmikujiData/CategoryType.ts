@@ -54,6 +54,9 @@ export const RecordCategorySchemaMap = {
 export const isRulesCategory = (category: CategoryType): category is EventCategoryType => {
   return eventCategoryLabel.includes(category as EventCategoryType)
 }
+export const isRecordCategory = (category: CategoryType): category is RecordCategoryType => {
+  return (recordCategoryLabel as readonly string[]).includes(category)
+}
 
 /**
  * settingsCategory

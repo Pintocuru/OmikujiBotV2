@@ -1,9 +1,9 @@
 <!-- src/ConfigMaker/components/appItems/navigation/NavigationSidebar.vue -->
 <template>
   <div
-    class="sticky top-0 h-screen flex flex-col border-r overflow-y-auto transition-all duration-200 shrink-0 relative"
+    class="sticky top-0 h-screen flex flex-col border-r overflow-y-auto transition-all duration-200 shrink-0 relative overflow-x-hidden"
     :class="sidebarBorderClass"
-    :style="{ width: isExpanded ? '200px' : '72px' }"
+    :style="{ width: isExpanded ? '220px' : '72px' }"
   >
     <!-- 折りたたみトグル -->
     <button class="btn btn-ghost btn-sm mx-auto mt-3 mb-1 shrink-0" @click="isExpanded = !isExpanded">
@@ -27,23 +27,7 @@
     <NavigationSidebarCategories :isExpanded="isExpanded" :theme="theme" />
 
     <!-- 開発者向けフッター -->
-    <div v-if="isDev" class="absolute bottom-2 left-0 w-full flex flex-col items-center space-y-2">
-      <template v-if="saveFileName">
-        <button
-          class="btn btn-xs btn-warning truncate"
-          :class="!hasChanged ? 'btn-soft' : ''"
-          data-tip="ファイルを保存"
-          :disabled="!hasChanged || !saveFileName"
-          @click="() => devStore.overwriteConfig(saveFileName)"
-        >
-          <Save class="w-4 h-4" />
-          {{ saveFileName.replace('.json', '') }} の保存
-        </button>
-      </template>
-
-      <LicenseBadge />
-      <LicenseSwitch />
-    </div>
+    <NavigationSidebarFooter />
   </div>
 </template>
 
@@ -53,22 +37,17 @@
   import { isDev } from '@/types'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
-  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import NavigationSidebarCategories from './NavigationSidebarCategories.vue'
-  import LicenseSwitch from '@config/components/appInfo/settings/LicenseSwitch.vue'
-  import LicenseBadge from '@config/components/parts/LicenseBadge.vue'
-  import { PanelLeftClose, PanelLeftOpen, FolderCog, Save } from 'lucide-vue-next'
+  import NavigationSidebarFooter from './NavigationSidebarFooter.vue'
+  import { PanelLeftClose, PanelLeftOpen, FolderCog } from 'lucide-vue-next'
 
   // ── ストア ─────────────────────────────────────────────
   const navigationStore = useNavigationStore()
   const { activeSection } = storeToRefs(navigationStore)
 
-  const omikujiStore = useOmikujiStore()
-  const { hasChanged } = storeToRefs(omikujiStore)
-
   const devStore = useDevStore()
-  const { isServerConnected, saveFileName } = storeToRefs(devStore)
+  const { isServerConnected } = storeToRefs(devStore)
 
   // ── ライセンスモード ──────────────────────────────────
   const { isAdv, isPro, isGod } = useSettingMode()

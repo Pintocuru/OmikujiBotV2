@@ -11,6 +11,7 @@ export type SidebarSectionItem = {
   label: string
   icon: LucideIconName
   description?: string
+  component?: string
 }
 
 // ─────────────────────────────────────────────────────────
@@ -29,6 +30,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: '基本設定',
       icon: 'SlidersHorizontal',
       description: 'コメントイベントの基本設定',
+      component: 'baseSettings',
     },
     { section: 'threshold', label: '発動条件', icon: 'Filter', description: '「おみくじを引く」発動条件の設定' },
     { section: 'limits', label: '制限設定', icon: 'Timer', description: '重複時や回数超過時におみくじを無効にします' },

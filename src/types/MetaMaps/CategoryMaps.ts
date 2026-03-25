@@ -22,12 +22,12 @@ export const categoryMap = {
   metas: {
     label: '配信数値イベント',
     description: '配信の視聴数・高評価の変動でおみくじを発動します',
-    icon: 'Activity',
+    icon: 'ThumbsUp',
   },
   reactions: {
     label: 'リアクションイベント',
     description: '視聴者のリアクション（❤ 😄 🎉 😳 💯）でおみくじを発動します',
-    icon: 'Sparkles',
+    icon: 'Smile',
   },
   actionSets: {
     label: 'アクションセット',

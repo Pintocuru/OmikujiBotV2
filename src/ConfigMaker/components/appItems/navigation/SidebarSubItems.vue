@@ -12,6 +12,7 @@
       <SidebarSubItem
         v-for="item in localItems.filter((i) => i?.key)"
         :key="item.key"
+        :category="category"
         :itemKey="item.key"
         :label="item.label ?? ''"
         :isEnabled="item.isEnabled"
@@ -37,6 +38,7 @@
   <!-- components: 有効コンポーネントをセクションとして表示 -->
   <div v-else-if="category === 'components'">
     <SidebarSectionList
+      :category="category"
       :sections="componentsSections"
       :activeSection="activeSection"
       :theme="theme"
@@ -49,6 +51,7 @@
     <SidebarSubItem
       v-for="item in staticItems"
       :key="item.key"
+      :category="category"
       :itemKey="item.key"
       :label="item.label"
       :isSelected="selectedItemKey === item.key"
@@ -66,14 +69,13 @@
   <!-- appInfo: 静的セクションリスト -->
   <div v-else-if="variant === 'object'">
     <SidebarSectionList
+      :category="category"
       :sections="staticSections"
       :activeSection="activeSection"
       :theme="theme"
       @selectSection="(section) => emit('selectSection', section)"
     />
   </div>
-
-  <div v-if="isEmpty" class="pl-8 py-1 text-xs opacity-40">（なし）</div>
 </template>
 
 <script setup lang="ts">
@@ -110,7 +112,6 @@
     selectedItemKey: string
     activeSection: string | null
     theme: string
-    isDragging: boolean
     isDragDisabled: boolean
   }>()
 
@@ -133,12 +134,6 @@
   )
 
   const componentsSections = useComponentsSections()
-
-  const isEmpty = computed(() => {
-    if (props.category === 'components') return componentsSections.value.length === 0
-    if (props.category === 'appInfo') return staticSections.value.length === 0
-    return props.isRecord ? props.modelValue.length === 0 : props.staticItems.length === 0
-  })
 
   const activeMenuKey = ref<string | null>(null)
 

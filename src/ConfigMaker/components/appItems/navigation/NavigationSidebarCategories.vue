@@ -19,31 +19,37 @@
           {{ getCategoryItemCount(key) }}
         </span>
       </button>
-
-      <SidebarSubItems
-        v-if="isExpanded && selectedCategory === key && shouldShowSubItems(key)"
-        :category="key"
-        :isRecord="isRecordCategory(key)"
-        :variant="subItemsVariant(key)"
-        v-model="getDraggableModel(key).value"
-        :staticItems="getStaticSubItems(key)"
-        :selectedItemKey="selectedItemKey ?? ''"
-        :activeSection="activeSection"
-        :theme="theme"
-        :isDragging="isDragging"
-        :isDragDisabled="isDragDisabled"
-        @selectItem="(itemKey, section) => navigationStore.selectItem(itemKey, section)"
-        @selectSection="onSelectSection"
-        @update:isDragDisabled="(val) => (isDragDisabled = val)"
-        @dragStart="onDragStart"
-        @dragEnd="onDragEnd"
-      />
+      <transition
+        enter-active-class="transition-all duration-200 ease-out"
+        leave-active-class="transition-all duration-150 ease-in"
+        enter-from-class="opacity-0 max-h-0"
+        enter-to-class="opacity-100 max-h-96"
+        leave-from-class="opacity-100 max-h-96"
+        leave-to-class="opacity-0 max-h-0"
+      >
+        <SidebarSubItems
+          v-if="isExpanded && selectedCategory === key && isOpenCategory[key] && shouldShowSubItems(key)"
+          :category="key"
+          :isRecord="isRecordCategory(key)"
+          :variant="subItemsVariant(key)"
+          v-model="getDraggableModel(key).value"
+          :staticItems="getStaticSubItems(key)"
+          :selectedItemKey="selectedItemKey ?? ''"
+          :activeSection="activeSection"
+          :theme="theme"
+          :isDragDisabled="isDragDisabled"
+          @selectItem="(itemKey, section) => navigationStore.selectItem(itemKey, section)"
+          @selectSection="onSelectSection"
+          @update:isDragDisabled="(val) => (isDragDisabled = val)"
+          @dragEnd="onDragEnd"
+        />
+      </transition>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { CategoryType, SettingsCategoryType } from '@/types/OmikujiData/'
   import { useCategoryUtils } from './useCategoryUtils'
@@ -67,11 +73,15 @@
   const { data } = storeToRefs(omikujiStore)
 
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
-  const { draggableItems, onDragEnd, isDragging, onDragStart, isDragDisabled } = useNavigationSidebarDrag(
-    computed(() => props.isExpanded)
-  )
+  const { draggableItems, onDragEnd, isDragDisabled } = useNavigationSidebarDrag(computed(() => props.isExpanded))
 
-  const navigateCategory = (key: CategoryType) => selectCategory(key)
+  const isOpenCategory = ref<Record<string, boolean>>({})
+  const navigateCategory = (key: CategoryType) => {
+    const isOpen = isOpenCategory.value[key]
+    isOpenCategory.value = { [key]: !isOpen }
+    selectCategory(key)
+  }
+
   const onSelectSection = (section: string) => {
     activeSection.value = section
   }

@@ -39,9 +39,6 @@
 
       <!-- コンテンツ -->
       <ContentArea />
-
-      <!-- ナビゲーションボタン/トースト -->
-      <FloatingElements />
     </div>
   </div>
 </template>
@@ -51,10 +48,8 @@
   import { storeToRefs } from 'pinia'
   import { isDev, OmikujiDataType } from '@/types'
   import AppHeader from './components/appItems/AppHeader.vue'
-  import { useScrollBehavior } from './components/appItems/useScrollBehavior'
   import NavigationSidebar from './components/appItems/navigation/NavigationSidebar.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
-  import FloatingElements from './components/appItems/FloatingElements.vue'
   import ConfigImport from './components/presetsImport/ConfigImport.vue'
   import ConfigExport from './components/presetsExport/ConfigExport.vue'
   import ConfigImportModal from './components/presetsImport/ConfigImportModal.vue'
@@ -81,9 +76,6 @@
 
   // スクロール監視
   useScrollToSection()
-
-  // スクロール動作
-  useScrollBehavior()
 
   onMounted(async () => {
     let isHealth = false
