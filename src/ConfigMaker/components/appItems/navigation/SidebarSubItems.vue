@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/appItems/navigation/SidebarSubItems.vue -->
 <template>
   <!-- ── Record カテゴリ（ドラッグ可能） ── -->
-  <template v-if="isRecord">
+  <div v-if="isRecord">
     <VueDraggable
       v-model="localItems"
       :animation="150"
@@ -27,7 +27,7 @@
         </template>
       </SidebarSubItem>
     </VueDraggable>
-  </template>
+  </div>
 
   <!-- ── components（動的セクション / サブアイテムなし） ── -->
   <template v-else-if="category === 'components'">

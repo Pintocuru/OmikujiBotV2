@@ -18,13 +18,15 @@
   </div>
 
   <!-- セクション項目（選択中のアイテムにのみ表示） -->
-  <SidebarSectionList
-    v-if="isSelected && sections.length > 0"
-    :sections="sections"
-    :activeSection="activeSection"
-    :theme="theme"
-    @selectSection="(section) => emit('selectSection', section)"
-  />
+  <div class="border-l-4 ml-4" :class="` border-${theme}`">
+    <SidebarSectionList
+      v-if="isSelected && sections.length > 0"
+      :sections="sections"
+      :activeSection="activeSection"
+      :theme="theme"
+      @selectSection="(section) => emit('selectSection', section)"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">

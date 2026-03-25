@@ -7,12 +7,7 @@
 
   <!-- 各マージ設定 -->
   <template v-for="(item, i) in merge" :key="i">
-    <SectionCard
-      icon="Merge"
-      :title="merge[i].name"
-      description="ビルド時、jsonファイルをマージして出力します"
-      :subTitle="merge[i].accessLevel === 'pro' ? 'pro' : merge[i].accessLevel === 'adv' ? 'adv' : 'basic'"
-    >
+    <SectionCard icon="Merge" :title="merge[i].name" description="ビルド時、jsonファイルをマージして出力します">
       <div class="flex justify-between items-center mb-4">
         <h3 class="font-semibold text-lg"></h3>
         <button @click="removeMerge(i)" class="btn btn-sm btn-error" title="この設定を削除">削除</button>
