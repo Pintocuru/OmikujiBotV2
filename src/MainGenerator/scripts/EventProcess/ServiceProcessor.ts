@@ -5,7 +5,7 @@ import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 
 /**
- * メタイベントの実行を管理
+ * 配信数値イベントの実行を管理
  */
 export class EventServiceProcessor {
   private store = useAppStore()

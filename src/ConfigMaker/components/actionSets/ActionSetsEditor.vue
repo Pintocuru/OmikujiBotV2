@@ -9,6 +9,7 @@
   <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
+      id="section-baseSettings"
       icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
@@ -20,6 +21,7 @@
 
     <!-- おみくじ設定セクション -->
     <SectionCard
+      id="section-omikujiSet"
       icon="ListChecks"
       :isOpen="activeSection === 'omikujiSet'"
       @toggle="toggleSection('omikujiSet')"
@@ -38,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { ActionSetType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
@@ -52,19 +54,17 @@
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('omikujiSet') // 初期状態で基本設定を開く
+  const navigationStore = useNavigationStore()
+  const { activeSection, selectedItemKey } = storeToRefs(navigationStore)
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
-    // 同じセクションをクリックした場合は閉じる、違うセクションの場合は切り替える
     activeSection.value = activeSection.value === section ? null : section
   }
 
   // Pinia store
   const { updateItem } = useOmikujiStore()
   const { getItem } = useGetRecordData()
-  const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({

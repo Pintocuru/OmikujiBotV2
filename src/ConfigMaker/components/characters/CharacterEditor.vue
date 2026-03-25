@@ -7,9 +7,10 @@
   <template v-if="selectedItemKey && selectedItem">
     <!-- 基本情報 -->
     <SectionCard
+      id="section-baseSettings"
       icon="SlidersHorizontal"
-      :isOpen="activeSection === 'basicInfo'"
-      @toggle="toggleSection('basicInfo')"
+      :isOpen="activeSection === 'baseSettings'"
+      @toggle="toggleSection('baseSettings')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       :description="selectedItem.description"
     >
@@ -18,6 +19,7 @@
 
     <!-- フキダシカラー設定 -->
     <SectionCard
+      id="section-colorSettings"
       icon="Palette"
       :isOpen="activeSection === 'colorSettings'"
       @toggle="toggleSection('colorSettings')"
@@ -29,6 +31,7 @@
 
     <!-- BOTコメント表現設定 -->
     <SectionCard
+      id="section-commentVoice"
       icon="MessageSquare"
       :isOpen="activeSection === 'commentVoice'"
       @toggle="toggleSection('commentVoice')"
@@ -45,6 +48,7 @@
 
     <!-- ジェネレーター用画像設定 -->
     <SectionCard
+      id="section-imageSettings"
       icon="Image"
       :isOpen="activeSection === 'imageSettings'"
       @toggle="toggleSection('imageSettings')"
@@ -58,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import CharacterBasicInfo from './basicInfo/CharacterBasicInfo.vue'
   import CharacterColorSettings from './color/CharacterColorSettings.vue'
@@ -71,8 +75,9 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
   // アクティブなセクションの管理
-  type SectionType = 'basicInfo' | 'colorSettings' | 'commentVoice' | 'serviceSettings' | 'imageSettings' | null
-  const activeSection = ref<SectionType>('colorSettings') // 初期状態で基本情報を開く
+  type SectionType = 'baseSettings' | 'colorSettings' | 'commentVoice' | 'serviceSettings' | 'imageSettings' | null
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey, activeSection } = storeToRefs(navigationStore)
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
@@ -81,8 +86,6 @@
 
   // Pinia store
   const { getItem } = useGetRecordData()
-  const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
   const { updateRecordProperty } = useOmikujiStore()
 
   // 選択されたキャラクターを取得（読み取り専用）

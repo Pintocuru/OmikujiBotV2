@@ -12,6 +12,7 @@
   <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
+      id="section-baseSettings"
       icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
@@ -24,6 +25,7 @@
     <template v-if="selectedItem.isEnabled !== false">
       <!-- 条件設定セクション -->
       <SectionCard
+        id="section-threshold"
         icon="Filter"
         :isOpen="activeSection === 'threshold'"
         @toggle="toggleSection('threshold')"
@@ -36,6 +38,7 @@
 
       <!-- おみくじ制限設定セクション -->
       <SectionCard
+        id="section-limits"
         icon="Timer"
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
@@ -48,6 +51,7 @@
 
       <!-- おみくじ設定セクション -->
       <SectionCard
+        id="section-omikujiSet"
         icon="ListChecks"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
@@ -68,7 +72,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { CommentEventType } from '@/types/OmikujiData/'
   import CommentTriggerEditor from './CommentTriggerEditor.vue'
@@ -85,7 +89,8 @@
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'threshold' | 'limits' | 'scriptGame' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('omikujiSet')
+  const navigationStore = useNavigationStore()
+  const { activeSection, selectedItemKey } = storeToRefs(navigationStore)
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
@@ -95,8 +100,6 @@
   // Pinia store
   const { updateItem } = useOmikujiStore()
   const { getItem } = useGetRecordData()
-  const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // v-modelを使用したselectedCharacterの実装
   const selectedItem = computed({

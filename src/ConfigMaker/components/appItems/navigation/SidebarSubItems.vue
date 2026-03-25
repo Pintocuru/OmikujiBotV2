@@ -12,7 +12,7 @@
         :key="item.key"
         class="group flex items-center gap-1 pl-4 pr-1 rounded hover:bg-base-300 cursor-pointer"
         :class="selectedItemKey === item.key ? `bg-${theme} text-${theme}-content` : ''"
-        @click="emit('selectItem', item.key)"
+        @click="emit('selectItem', item.key, 'baseSettings')"
       >
         <GripVertical class="drag-handle w-3 h-3 shrink-0 opacity-0 group-hover:opacity-30 cursor-grab" />
         <EyeOff v-if="item.isEnabled === false" class="w-3 h-3 shrink-0 opacity-40" />
@@ -75,7 +75,7 @@
 
   const emit = defineEmits<{
     'update:modelValue': [items: DraggableSubItem[]]
-    selectItem: [key: string]
+    selectItem: [key: string, section?: 'baseSettings']
     dragEnd: [category: RecordCategoryType]
   }>()
 

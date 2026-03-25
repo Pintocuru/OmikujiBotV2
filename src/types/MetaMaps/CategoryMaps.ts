@@ -20,7 +20,7 @@ export const categoryMap = {
     icon: 'Timer',
   },
   metas: {
-    label: 'メタイベント',
+    label: '配信数値イベント',
     description: '配信の視聴数・高評価の変動でおみくじを発動します',
     icon: 'Activity',
   },

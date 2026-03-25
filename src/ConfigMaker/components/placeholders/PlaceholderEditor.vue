@@ -6,9 +6,10 @@
   <template v-if="selectedItem">
     <!-- 基本設定 -->
     <SectionCard
+      id="section-baseSettings"
       icon="SlidersHorizontal"
-      :isOpen="activeSection === 'basic'"
-      @toggle="toggleSection('basic')"
+      :isOpen="activeSection === 'baseSettings'"
+      @toggle="toggleSection('baseSettings')"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       :description="selectedItem.description"
     >
@@ -17,6 +18,7 @@
 
     <!-- プレースホルダー設定 -->
     <SectionCard
+      id="section-placeholder"
       icon="Brackets"
       :isOpen="activeSection === 'placeholder'"
       @toggle="toggleSection('placeholder')"
@@ -30,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import PlaceholderValuesEditor from './PlaceholderValuesEditor.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
@@ -41,20 +43,18 @@
   import { useGetRecordData } from '@config/stores/useGetRecordData'
 
   // アクティブなセクションの管理
-  type SectionType = 'basic' | 'placeholder' | null
-  const activeSection = ref<SectionType>('placeholder') // 初期状態で基本設定を開く
+  type SectionType = 'baseSettings' | 'placeholder' | null
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey, activeSection } = storeToRefs(navigationStore)
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
-    // 同じセクションをクリックした場合は閉じる、違うセクションの場合は切り替える
     activeSection.value = activeSection.value === section ? null : section
   }
 
   // Pinia store
   const { updateItem } = useOmikujiStore()
   const { getItem } = useGetRecordData()
-  const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
 
   // 選択されたアイテムの取得（読み取り専用）
   const selectedItem = computed({

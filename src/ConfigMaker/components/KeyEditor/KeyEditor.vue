@@ -51,7 +51,7 @@
                       タイマーイベント: <span class="font-bold">{{ characterUsage.timers.length }}箇所</span>
                     </li>
                     <li v-if="characterUsage.metas.length">
-                      メタイベント: <span class="font-bold">{{ characterUsage.metas.length }}箇所</span>
+                      配信数値イベント: <span class="font-bold">{{ characterUsage.metas.length }}箇所</span>
                     </li>
                     <li v-if="characterUsage.comments.length === 0 && characterUsage.timers.length === 0">
                       使用されていません

@@ -12,10 +12,11 @@
   <template v-if="selectedItem">
     <!-- 基本設定セクション -->
     <SectionCard
+      id="section-baseSettings"
       icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
+      :variant="selectedItem.isEnabled ? 'secondary' : 'neutral'"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       :description="selectedItem.description"
     >
@@ -25,6 +26,7 @@
     <template v-if="selectedItem.isEnabled !== false">
       <!-- 条件設定セクション -->
       <SectionCard
+        id="section-trigger"
         icon="Filter"
         :isOpen="activeSection === 'trigger'"
         @toggle="toggleSection('trigger')"
@@ -37,6 +39,7 @@
 
       <!-- おみくじ設定セクション -->
       <SectionCard
+        id="section-omikujiSet"
         icon="ListChecks"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
@@ -57,24 +60,25 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { serviceTriggerConditionMap } from '@/types/'
   import { ServiceEventType } from '@/types/OmikujiData/'
-  import GlobalCharacterChanger from '../events/CharacterChanger/CharacterChanger.vue'
-  import CommentTriggerEditor from './MetaTriggerEditor.vue'
+  import CommentTriggerEditor from './ServiceTrigger.vue'
+  import GlobalCharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
   import OmikujiSetEditor from '@config/components/events/OmikujiSetEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import InformationCard from '@shared/components/parts/InformationCard.vue'
+  import SectionCard from '@shared/components/parts/SectionCard.vue'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('omikujiSet') // 初期状態で基本設定を開く
+  const navigationStore = useNavigationStore()
+  const { selectedItemKey, activeSection } = storeToRefs(navigationStore)
 
   // セクションの切り替え
   const toggleSection = (section: SectionType) => {
@@ -84,8 +88,6 @@
   // Pinia store
   const { updateItem } = useOmikujiStore()
   const { getItem } = useGetRecordData()
-  const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
 
   const selectedItem = computed({
     get: () => {

@@ -64,12 +64,7 @@
         placeholder="****"
       />
       <!-- ライセンススイッチ -->
-      <span v-if="isDev">
-        <button class="btn btn-sm btn-primary mr-2" @click="updateLicenseKeyHash('')">basic</button>
-        <button class="btn btn-sm btn-info mr-2" @click="updateLicenseKeyHash(getKey('adv'))">Adv</button>
-        <button class="btn btn-sm btn-success mr-2" @click="updateLicenseKeyHash(getKey('pro'))">PRO</button>
-        <button class="btn btn-sm btn-warning" @click="updateLicenseKeyHash(getKey('godMode'))">GOD-MODE</button>
-      </span>
+      <LicenseSwitch v-if="isDev" />
     </div>
   </SettingItem>
 
@@ -98,7 +93,8 @@
   import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import { categoryMap, isDev, SettingsSchema, soundMetaMap } from '@/types/'
-  import { getKey, resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
+  import LicenseSwitch from './LicenseSwitch.vue'
+  import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'

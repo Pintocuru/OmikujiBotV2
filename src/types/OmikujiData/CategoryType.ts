@@ -9,7 +9,6 @@ import {
   ServiceEventType,
   eventCategoryLabel,
   EventCategoryType,
-  EventType,
   TimerEventSchema,
   TimerEventType,
   ReactionEventType,
@@ -22,7 +21,6 @@ import { categoryMap } from '../MetaMaps'
  */
 export const recordCategoryLabel = [...eventCategoryLabel, 'actionSets', 'placeholders', 'characters'] as const
 export type RecordCategoryType = (typeof recordCategoryLabel)[number]
-export type RecordCategoryUnion = EventType | PlaceholderType | CharacterType
 export type RecordCategoryDataMap = {
   comments: Record<string, CommentEventType>
   timers: Record<string, TimerEventType>

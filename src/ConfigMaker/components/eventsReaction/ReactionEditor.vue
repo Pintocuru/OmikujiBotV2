@@ -17,10 +17,11 @@
 
     <!-- 基本設定セクション -->
     <SectionCard
+      id="section-baseSettings"
       icon="SlidersHorizontal"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :variant="selectedItem.isEnabled ? 'secondary' : 'outline-secondary'"
+      :variant="selectedItem.isEnabled ? 'secondary' : 'neutral'"
       :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
       :description="selectedItem.description"
     >
@@ -30,6 +31,7 @@
     <template v-if="selectedItem.isEnabled !== false">
       <!-- 条件設定セクション -->
       <SectionCard
+        id="section-trigger"
         icon="Filter"
         :isOpen="activeSection === 'trigger'"
         @toggle="toggleSection('trigger')"
@@ -41,6 +43,7 @@
 
       <!-- おみくじ設定セクション -->
       <SectionCard
+        id="section-omikujiSet"
         icon="ListChecks"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
@@ -61,7 +64,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed } from 'vue'
   import { ReactionEventType } from '@/types/OmikujiData/'
   import GlobalCharacterChanger from '../events/CharacterChanger/CharacterChanger.vue'
   import ReactionTriggerEditor from './ReactionTriggerEditor.vue'
@@ -77,18 +80,17 @@
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null
-  const activeSection = ref<SectionType>('omikujiSet') // 初期状態で基本設定を開く
-
-  // セクションの切り替え
-  const toggleSection = (section: SectionType) => {
-    activeSection.value = activeSection.value === section ? null : section
-  }
 
   // Pinia store
   const { updateItem } = useOmikujiStore()
   const { getItem } = useGetRecordData()
   const navigationStore = useNavigationStore()
-  const { selectedItemKey } = storeToRefs(navigationStore)
+  const { selectedItemKey, activeSection } = storeToRefs(navigationStore)
+
+  // セクションの切り替え
+  const toggleSection = (section: SectionType) => {
+    activeSection.value = activeSection.value === section ? null : section
+  }
 
   const selectedItem = computed({
     get: () => {

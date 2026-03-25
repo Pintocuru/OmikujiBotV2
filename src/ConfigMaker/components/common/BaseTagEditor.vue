@@ -1,15 +1,11 @@
-<!-- src/ConfigMaker/components/common/BaseTagEditor.vue -->
 <template>
   <SettingItem label="タグ" description="このデータに関連するタグを追加できます">
-    <div class="flex flex-wrap gap-2 mb-2">
-      <VueDraggable v-model="internalValue" itemKey="key" group="tags" classes="flex flex-wrap gap-2">
-        <template #item="{ element, index }">
-          <span class="badge badge-sm badge-primary">
-            {{ element }} <span class="cursor-pointer" @click="removeTag(index)">✕</span></span
-          >
-        </template>
-      </VueDraggable>
-    </div>
+    <VueDraggable v-model="localTags" class="flex flex-wrap gap-2 mb-2 min-h-[2rem]">
+      <span v-for="(tag, index) in localTags" :key="tag" class="badge badge-sm badge-primary cursor-grab">
+        {{ tag }}
+        <span class="cursor-pointer ml-1" @click="removeTag(index)">✕</span>
+      </span>
+    </VueDraggable>
 
     <div class="flex gap-2">
       <input
@@ -25,38 +21,41 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { ref, watch } from 'vue'
+  import { VueDraggable } from 'vue-draggable-plus'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  //  import { VueDraggable } from 'vue-VueDraggable-plus'
-  import VueDraggable from '@/DraggableWrapper.vue'
 
-  const props = defineProps<{
-    modelValue?: string[]
-  }>()
-
-  const emit = defineEmits<{
-    'update:modelValue': [value: string[]]
-  }>()
+  const props = defineProps<{ modelValue?: string[] }>()
+  const emit = defineEmits<{ 'update:modelValue': [value: string[]] }>()
 
   const newTag = ref('')
+  const localTags = ref<string[]>([...(props.modelValue ?? [])])
 
-  const internalValue = computed({
-    get: () => props.modelValue ?? [],
-    set: (val) => emit('update:modelValue', val),
+  // 親 → ローカル：内容が変わった時だけ同期
+  watch(
+    () => props.modelValue,
+    (val) => {
+      const incoming = val ?? []
+      if (incoming.length === localTags.value.length && incoming.every((v, i) => v === localTags.value[i])) return
+      localTags.value = [...incoming]
+    }
+  )
+
+  // ローカル → 親：内容が変わった時だけ emit
+  watch(localTags, (val) => {
+    const current = props.modelValue ?? []
+    if (val.length === current.length && val.every((v, i) => v === current[i])) return
+    emit('update:modelValue', [...val])
   })
 
   const addTag = () => {
     const value = newTag.value.trim()
     if (!value) return
-
-    emit('update:modelValue', [...(props.modelValue ?? []), value])
+    localTags.value = [...localTags.value, value]
     newTag.value = ''
   }
 
   const removeTag = (index: number) => {
-    emit(
-      'update:modelValue',
-      (props.modelValue ?? []).filter((_, i) => i !== index)
-    )
+    localTags.value = localTags.value.filter((_, i) => i !== index)
   }
 </script>

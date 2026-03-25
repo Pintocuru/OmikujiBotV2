@@ -7,7 +7,7 @@
     @dblclick="handleDblClick"
   >
     <!-- 複数選択モード時のチェックボックス -->
-    <div v-if="tabsStore.isMultiSelectMode" class="pointer-events-none">
+    <div v-if="tabsStore.isMultiSelectMode" class="pointer-events-none drag-handle">
       <input type="checkbox" :checked="tabsStore.selectedRuleIds.has(rule.key)" class="checkbox checkbox-sm" readonly />
     </div>
 
@@ -43,14 +43,14 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RecordCategoryUnion } from '@/types/'
   import { useRecordTabsStore } from './RecordTabsStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { storeToRefs } from 'pinia'
+  import { BaseRecordType } from '@shared/types'
 
   const props = defineProps<{
-    rule: RecordCategoryUnion
+    rule: BaseRecordType
   }>()
 
   // Store

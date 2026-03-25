@@ -52,7 +52,7 @@
   import { isDev, OmikujiDataType } from '@/types'
   import AppHeader from './components/appItems/AppHeader.vue'
   import { useScrollBehavior } from './components/appItems/useScrollBehavior'
-  import NavigationSidebar from './components/appItems/NavigationSidebar.vue'
+  import NavigationSidebar from './components/appItems/navigation/NavigationSidebar.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
   import FloatingElements from './components/appItems/FloatingElements.vue'
   import ConfigImport from './components/presetsImport/ConfigImport.vue'
@@ -65,6 +65,7 @@
   import { generatorApi } from '../PresetManager/services/generatorApi'
   import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
   import { useNavigationStore } from './stores/useNavigationStore'
+  import { useScrollToSection } from './scripts/useScrollToSection'
 
   // stores
   const omikujiStore = useOmikujiStore()
@@ -77,6 +78,9 @@
   const importManager = useImportManager()
 
   const daisyUiTheme = computed(() => data.value.settings.daisyUiTheme)
+
+  // スクロール監視
+  useScrollToSection()
 
   // スクロール動作
   useScrollBehavior()

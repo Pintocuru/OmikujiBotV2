@@ -69,11 +69,11 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { serviceTriggerConditionMap, ServiceTriggerCondition, ServiceTriggerType } from '@/types/'
+  import TriggerMetaCondition from './ServiceTriggerCondition.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
-  import TriggerMetaCondition from './TriggerMetaCondition.vue'
-  import { serviceTriggerConditionMap, ServiceTriggerCondition, ServiceTriggerType } from '@/types/'
 
   const props = defineProps<{
     modelValue: ServiceTriggerType

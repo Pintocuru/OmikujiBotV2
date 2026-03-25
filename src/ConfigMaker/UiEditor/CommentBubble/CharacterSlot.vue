@@ -1,4 +1,3 @@
-<!-- src/ConfigMaker/UiEditor/CommentBubble/CharacterSlot.vue -->
 <template>
   <div class="card shadow-lg p-2" :class="[cardStyle ? '' : 'shadow-inner', cardStyle || 'bg-base-200']">
     <div class="flex justify-between items-center mb-2">
@@ -7,36 +6,31 @@
     </div>
 
     <VueDraggable
-      tag="div"
-      :model-value="items"
-      item-key="key"
+      v-model="localItems"
       group="characters"
-      :classes="[
+      :class="[
         'flex flex-wrap gap-2 p-2 min-h-[50px] rounded',
         showClear ? 'border border-dotted border-gray-400 bg-white' : 'border border-dashed border-gray-400',
       ]"
-      @update:model-value="$emit('update', $event)"
     >
-      <template #item="{ element: charKey }">
-        <span :class="['badge cursor-grab', badgeStyle]">
-          {{ characters[charKey]?.displayName || characters[charKey]?.name || charKey }}
-        </span>
-      </template>
-      <template #footer>
-        <div v-if="items.length === 0 && showClear" class="text-gray-400 italic text-sm">
-          キャラクターをここにドラッグしてください
-        </div>
-      </template>
+      <span v-for="charKey in localItems" :key="charKey" :class="['badge cursor-grab', badgeStyle]">
+        {{ characters[charKey]?.displayName || characters[charKey]?.name || charKey }}
+      </span>
+
+      <!-- footer 相当：空の時のプレースホルダー -->
+      <div v-if="localItems.length === 0 && showClear" class="text-gray-400 italic text-sm">
+        キャラクターをここにドラッグしてください
+      </div>
     </VueDraggable>
   </div>
 </template>
 
 <script setup lang="ts">
+  import { ref, watch } from 'vue'
+  import { VueDraggable } from 'vue-draggable-plus'
   import { CharacterType } from '@/types'
-  // import { VueDraggable } from 'vue-draggable-plus'
-  import VueDraggable from '@/DraggableWrapper.vue'
 
-  withDefaults(
+  const props = withDefaults(
     defineProps<{
       slotName: string
       title: string
@@ -52,8 +46,26 @@
     }
   )
 
-  defineEmits<{
+  const emit = defineEmits<{
     update: [items: string[]]
     clear: []
   }>()
+
+  // ドラッグ用バッファ（無限ループ対策）
+  const localItems = ref<string[]>([...props.items])
+
+  // props → ローカル
+  watch(
+    () => props.items,
+    (val) => {
+      if (val.length === localItems.value.length && val.every((v, i) => v === localItems.value[i])) return
+      localItems.value = [...val]
+    }
+  )
+
+  // ローカル → 親
+  watch(localItems, (val) => {
+    if (val.length === props.items.length && val.every((v, i) => v === props.items[i])) return
+    emit('update', [...val])
+  })
 </script>

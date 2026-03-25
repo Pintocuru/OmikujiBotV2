@@ -1,4 +1,3 @@
-<!-- src/ConfigMaker/components/events/OmikujiCard/OmikujiWeightProgressBar.vue -->
 <template>
   <div v-if="items.length > 0" class="mt-4">
     <div class="space-y-2">
@@ -23,36 +22,31 @@
 
       <!-- 凡例（ドラッグ可能） -->
       <VueDraggable
-        tag="div"
-        item-key="id"
-        :modelValue="items"
-        @update:modelValue="$emit('update:items', $event)"
+        v-model="localDraggableItems"
         handle=".legend-drag-handle"
         :animation="200"
-        classes="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
+        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
       >
-        <template #item="{ element: item, index }">
-          <OmikujiLegendItem
-            :key="item.id || `legend-${index}`"
-            :item="item"
-            :index="index"
-            :color="getColorForIndex(index)"
-            :percentage="String(localItems[index]?.weightPercent)"
-            :isSelected="selectedIndex === index"
-            @update:weight="$emit('update:weight', { index, weight: $event })"
-            @select="$emit('select', index)"
-          />
-        </template>
+        <OmikujiLegendItem
+          v-for="(item, index) in localDraggableItems"
+          :key="item.id ?? `legend-${index}`"
+          :item="item"
+          :index="index"
+          :color="getColorForIndex(index)"
+          :percentage="String(localItems[index]?.weightPercent)"
+          :isSelected="selectedIndex === index"
+          @update:weight="$emit('update:weight', { index, weight: $event })"
+          @select="$emit('select', index)"
+        />
       </VueDraggable>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref, watch } from 'vue'
+  import { VueDraggable } from 'vue-draggable-plus'
   import { OmikujiItemType } from '@/types/OmikujiData/'
-  //  import { VueDraggable } from 'vue-draggable-plus'
-  import VueDraggable from '@/DraggableWrapper.vue'
   import OmikujiLegendItem from './OmikujiLegendItem.vue'
   import { addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
 
@@ -61,13 +55,31 @@
     selectedIndex: number | null
   }>()
 
-  defineEmits<{
+  const emit = defineEmits<{
     'update:items': [items: OmikujiItemType[]]
     'update:weight': [payload: { index: number; weight: number }]
     select: [index: number]
   }>()
 
   const localItems = computed(() => addWeightPercentages(props.items))
+
+  // ドラッグ用バッファ（前回と同じ無限ループ対策）
+  const localDraggableItems = ref<OmikujiItemType[]>([...props.items])
+
+  watch(
+    () => props.items,
+    (val) => {
+      if (val.length === localDraggableItems.value.length && val.every((v, i) => v === localDraggableItems.value[i]))
+        return
+      localDraggableItems.value = [...val]
+    }
+  )
+
+  watch(localDraggableItems, (val) => {
+    const current = props.items
+    if (val.length === current.length && val.every((v, i) => v === current[i])) return
+    emit('update:items', [...val])
+  })
 
   const getColorForIndex = (index: number): string => {
     const colors = [

@@ -3,6 +3,7 @@
   <div class="space-y-4">
     <!-- アプリ設定 -->
     <SectionCard
+      id="section-Settings"
       icon="Settings"
       :isOpen="true"
       title="アプリ設定"
@@ -12,15 +13,22 @@
     </SectionCard>
 
     <!-- 実績 -->
-    <SectionCard icon="Sparkles" :isOpen="true" title="利用可能な機能" description="PRO版を使うと機能が増えます">
+    <SectionCard
+      id="section-Info"
+      icon="Sparkles"
+      :isOpen="true"
+      title="利用可能な機能"
+      description="PRO版を使うと機能が増えます"
+    >
       <FlagsInfo v-if="!isGod" />
       <FlagsSettings v-else />
     </SectionCard>
 
     <!-- meta:基本情報 -->
     <SectionCard
+      id="section-PackageBasic"
       icon="Info"
-      variant="outline-secondary"
+      variant="neutral"
       :isOpen="true"
       title="基本情報"
       description="このおみくじパッケージに関する情報です"
@@ -31,7 +39,7 @@
     <!-- meta:配布情報 -->
     <SectionCard
       icon="Package"
-      variant="outline-secondary"
+      variant="neutral"
       :isOpen="true"
       title="配布情報"
       description="おみくじパッケージのライセンスや配布先の表示です"
@@ -42,7 +50,7 @@
     <!-- meta:システム情報 -->
     <SectionCard
       icon="Cpu"
-      variant="outline-secondary"
+      variant="neutral"
       :isOpen="true"
       title="システム情報"
       description="このアプリ「おみくじBOT」の情報です"

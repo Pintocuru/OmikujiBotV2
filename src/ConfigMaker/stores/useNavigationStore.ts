@@ -16,6 +16,7 @@ export const useNavigationStore = defineStore('navigation', () => {
    */
   const selectedCategory = ref<CategoryType>('comments')
   const selectedItemKey = ref<string | null>(null)
+  const activeSection = ref<string | null>(null)
 
   /**
    * 計算プロパティ
@@ -55,6 +56,7 @@ export const useNavigationStore = defineStore('navigation', () => {
   const selectCategory = (category?: CategoryType) => {
     const safeCategory = category ?? 'comments'
     selectedCategory.value = safeCategory
+    activeSection.value = 'Top'
 
     if (!isRecordCategory(safeCategory)) {
       selectedItemKey.value = null
@@ -65,8 +67,10 @@ export const useNavigationStore = defineStore('navigation', () => {
   }
 
   // アイテムを選択 */
-  const selectItem = (key: string | null) => {
+  const selectItem = (key: string | null, section?: string) => {
+    console.log(section)
     selectedItemKey.value = key
+    if (section) activeSection.value = section
   }
 
   // 選択をクリア */
@@ -115,6 +119,7 @@ export const useNavigationStore = defineStore('navigation', () => {
     // 状態
     selectedCategory,
     selectedItemKey,
+    activeSection,
 
     // 計算プロパティ
     isCurrentRecordCategory,

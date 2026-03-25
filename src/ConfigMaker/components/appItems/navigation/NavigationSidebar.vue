@@ -1,7 +1,6 @@
-<!-- src/ConfigMaker/components/appItems/NavigationSidebar.vue -->
 <template>
   <div
-    class="sticky top-0 h-screen flex flex-col border-r overflow-y-auto transition-all duration-200 shrink-0 bg-base-200"
+    class="sticky top-0 h-screen flex flex-col border-r overflow-y-auto transition-all duration-200 shrink-0 relative"
     :class="sidebarClass"
     :style="{ width: isExpanded ? '200px' : '72px' }"
   >
@@ -13,7 +12,6 @@
 
     <div class="flex flex-col gap-0.5 p-2 flex-1">
       <template v-for="(tab, key) in filteredCategoryLabels" :key="key">
-        <!-- カテゴリボタン -->
         <div>
           <button
             class="btn btn-ghost w-full relative flex items-center gap-2 min-h-0 h-auto py-2"
@@ -27,7 +25,6 @@
               {{ tab.label }}
             </span>
 
-            <!-- バッジ -->
             <span
               v-if="getCategoryItemCount(key) > 0"
               class="badge badge-xs badge-primary shrink-0"
@@ -38,7 +35,6 @@
           </button>
         </div>
 
-        <!-- サブアイテム（展開時のみ） -->
         <SidebarSubItems
           v-if="isExpanded && selectedItemKey && selectedCategory === key"
           :category="key"
@@ -47,10 +43,15 @@
           :staticItems="getStaticSubItems(key)"
           :selectedItemKey="selectedItemKey"
           :theme="theme"
-          @selectItem="navigationStore.selectItem"
+          @selectItem="(key, section) => navigationStore.selectItem(key, section)"
           @dragEnd="onDragEnd"
         />
       </template>
+    </div>
+
+    <!-- ライセンススイッチ -->
+    <div v-if="isDev" class="absolute bottom-2 left-0 w-full flex justify-center">
+      <LicenseSwitch />
     </div>
   </div>
 </template>
@@ -58,7 +59,9 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { PanelLeftClose, PanelLeftOpen } from 'lucide-vue-next'
+  import { storeToRefs as storeTR } from 'pinia'
+  import { isDev } from '@/types'
+  import { useNavigationSidebarDrag } from './useNavigationSidebarDrag'
   import { CategoryType } from '@/types/OmikujiData/'
   import { uiKindMap } from '@/types/MetaMaps/UiKindMaps'
   import { useCategoryUtils } from './useCategoryUtils'
@@ -66,45 +69,67 @@
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { LucideIconName, resolveLucideIcon } from '@shared/utils/LucideIcon/useLucideIcon'
-  import { storeToRefs as storeTR } from 'pinia'
-  import { useNavigationSidebarDrag } from './useNavigationSidebarDrag'
   import SidebarSubItems from './SidebarSubItems.vue'
+  import LicenseSwitch from '@config/components/appInfo/settings/LicenseSwitch.vue'
+  import { PanelLeftClose, PanelLeftOpen } from 'lucide-vue-next'
 
   const navigationStore = useNavigationStore()
   const { isRecordCategory, selectCategory } = useNavigationStore()
   const { selectedCategory, selectedItemKey } = storeToRefs(navigationStore)
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
-  const { isPro, isGod } = useSettingMode()
+  const { isAdv, isPro, isGod } = useSettingMode()
   const omikujiStore = useOmikujiStore()
   const { data } = storeTR(omikujiStore)
 
-  const isExpanded = ref(false)
+  const isExpanded = ref(true)
   const { draggableItems, onDragEnd } = useNavigationSidebarDrag(isExpanded)
 
-  const theme = computed(() => {
-    if (isGod.value) return 'warning'
-    if (isPro.value) return 'success'
-    return 'primary'
+  // ----------------------
+  // mode → color
+  // ----------------------
+  const modeColorMap = {
+    basic: 'primary',
+    god: 'warning',
+    pro: 'success',
+    adv: 'info',
+  } as const
+
+  const currentMode = computed<'god' | 'pro' | 'adv' | 'basic'>(() => {
+    if (isGod.value) return 'god'
+    if (isPro.value) return 'pro'
+    if (isAdv.value) return 'adv'
+    return 'basic'
   })
 
+  const theme = computed(() => modeColorMap[currentMode.value])
+
+  // ----------------------
+  // sidebar style
+  // ----------------------
   const sidebarClass = computed(() => {
-    if (isGod.value) return 'border-warning'
-    if (isPro.value) return 'border-success'
-    return 'border-base-300'
+    const color = modeColorMap[currentMode.value]
+
+    return `bg-${color} border-${color}`
   })
 
+  // ----------------------
+  // button style
+  // ----------------------
   const categoryButtonClass = (key: CategoryType) => {
-    if (selectedCategory.value !== key) return 'btn-ghost'
-    return `bg-${theme.value} text-${theme.value}-content hover:bg-${theme.value}`
+    const color = theme.value
+    return `bg-${color} text-${color}-content hover:bg-${color}`
   }
 
+  // ----------------------
   const categoryIcon = (icon: LucideIconName) => resolveLucideIcon(icon)
 
   const navigateCategory = (key: CategoryType) => {
     selectCategory(key)
   }
 
-  // SidebarSubItems 用の v-model ヘルパー
+  // ----------------------
+  // draggable
+  // ----------------------
   const getDraggableModel = (key: CategoryType) =>
     computed({
       get: () => draggableItems.value[key] ?? [],
@@ -113,9 +138,9 @@
       },
     })
 
-  // ---------------------------------------------------
-  // 静的サブアイテム（jsonMerge / components）
-  // ---------------------------------------------------
+  // ----------------------
+  // static items
+  // ----------------------
   type StaticSubItem = { key: string; label: string }
 
   const getStaticSubItems = (category: CategoryType): StaticSubItem[] => {
@@ -125,6 +150,7 @@
         label: item.name || '（名前なし）',
       }))
     }
+
     if (category === 'components') {
       return Object.keys(data.value.components.settings)
         .filter((k) => data.value.components.settings[k as keyof typeof data.value.components.settings] !== undefined)
@@ -133,6 +159,7 @@
           label: uiKindMap[k as keyof typeof uiKindMap]?.label ?? k,
         }))
     }
+
     return []
   }
 </script>
