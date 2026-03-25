@@ -68,7 +68,6 @@ export const useNavigationStore = defineStore('navigation', () => {
 
   // アイテムを選択 */
   const selectItem = (key: string | null, section?: string) => {
-    console.log(section)
     selectedItemKey.value = key
     if (section) activeSection.value = section
   }

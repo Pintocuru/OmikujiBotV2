@@ -8,11 +8,11 @@
     <!-- 基本情報 -->
     <SectionCard
       id="section-baseSettings"
-      icon="SlidersHorizontal"
+      :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :description="selectedItem.description"
+      title="基本設定"
+      :description="s('baseSettings')?.description"
     >
       <CharacterBasicInfo :selectedItemKey="selectedItemKey" />
     </SectionCard>
@@ -20,11 +20,11 @@
     <!-- フキダシカラー設定 -->
     <SectionCard
       id="section-colorSettings"
-      icon="Palette"
+      :icon="s('colorSettings')?.icon"
       :isOpen="activeSection === 'colorSettings'"
       @toggle="toggleSection('colorSettings')"
       title="フキダシカラー設定"
-      description="フキダシのカラー編集を行います"
+      :description="s('colorSettings')?.description"
     >
       <CharacterColorSettings :botName="selectedItem.displayName" :modelValue="selectedItem.color" />
     </SectionCard>
@@ -32,12 +32,11 @@
     <!-- BOTコメント表現設定 -->
     <SectionCard
       id="section-commentVoice"
-      icon="MessageSquare"
+      :icon="s('commentVoice')?.icon"
       :isOpen="activeSection === 'commentVoice'"
       @toggle="toggleSection('commentVoice')"
       title="BOTコメント表現設定"
-      :subTitle="``"
-      description="BOTコメントを読み上げる方法を指定します"
+      :description="s('commentVoice')?.description"
     >
       <CommentVoiceSettings
         :modelValue="selectedItem.displayOption"
@@ -49,12 +48,11 @@
     <!-- ジェネレーター用画像設定 -->
     <SectionCard
       id="section-imageSettings"
-      icon="Image"
+      :icon="s('imageSettings')?.icon"
       :isOpen="activeSection === 'imageSettings'"
       @toggle="toggleSection('imageSettings')"
       title="ジェネレーター用画像設定"
-      :subTitle="`画像数 : ${imageCount}`"
-      description="ジェネレーターで表示する画像の設定"
+      :description="s('imageSettings')?.description"
     >
       <CharacterImageSettings :modelValue="selectedItem.image" :selectedItemKey="selectedItemKey" />
     </SectionCard>
@@ -73,6 +71,9 @@
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import { staticSectionMap } from '../appItems/navigation/StaticSectionMap'
+
+  const s = (key: string) => staticSectionMap.characters.find((i) => i.section === key)
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'colorSettings' | 'commentVoice' | 'serviceSettings' | 'imageSettings' | null
@@ -92,14 +93,5 @@
   const selectedItem = computed(() => {
     if (!selectedItemKey.value) return null
     return getItem('characters', selectedItemKey.value)
-  })
-
-  // 画像数カウント
-  const imageCount = computed(() => {
-    if (!selectedItem.value?.image) return 0
-
-    return Object.values(selectedItem.value.image).filter((v) => {
-      return v.some((s) => s.trim() !== '')
-    }).length
   })
 </script>

@@ -13,12 +13,12 @@
     <!-- 基本設定セクション -->
     <SectionCard
       id="section-baseSettings"
-      icon="SlidersHorizontal"
+      :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'neutral'"
-      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :description="selectedItem.description"
+      title="基本設定"
+      :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="metas" />
     </SectionCard>
@@ -27,12 +27,11 @@
       <!-- 条件設定セクション -->
       <SectionCard
         id="section-trigger"
-        icon="Filter"
+        :icon="s('trigger')?.icon"
         :isOpen="activeSection === 'trigger'"
         @toggle="toggleSection('trigger')"
         title="発動条件設定"
-        :subTitle="`発動条件: ${thresholdSubTitle}`"
-        description="「おみくじを引く」発動条件の設定"
+        :description="s('trigger')?.description"
       >
         <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
       </SectionCard>
@@ -40,12 +39,11 @@
       <!-- おみくじ設定セクション -->
       <SectionCard
         id="section-omikujiSet"
-        icon="ListChecks"
+        :icon="s('omikujiSet')?.icon"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"
-        :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
-        description="おみくじの抽選設定や、おみくじの内容です"
+        :description="s('omikujiSet')?.description"
       >
         <OmikujiSetEditor category="metas" :selectedItemKey="selectedItemKey" />
       </SectionCard>
@@ -62,7 +60,6 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { serviceTriggerConditionMap } from '@/types/'
   import { ServiceEventType } from '@/types/OmikujiData/'
   import CommentTriggerEditor from './ServiceTrigger.vue'
   import GlobalCharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
@@ -74,6 +71,9 @@
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import InformationCard from '@shared/components/parts/InformationCard.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import { staticSectionMap } from '../appItems/navigation/StaticSectionMap'
+
+  const s = (key: string) => staticSectionMap.metas.find((i) => i.section === key)
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'trigger' | 'omikujiSet' | null
@@ -97,12 +97,5 @@
     set: (value: ServiceEventType) => {
       updateItem('metas', value.key, value)
     },
-  })
-
-  // 発動条件セクションのサブタイトル
-  const thresholdSubTitle = computed(() => {
-    if (!selectedItem.value) return ''
-    const condition = selectedItem.value.trigger.condition
-    return `[${serviceTriggerConditionMap[condition]}]`
   })
 </script>

@@ -1,82 +1,58 @@
 // src/ConfigMaker/components/appItems/navigation/useSidebarSectionMap.ts
-
+import { ComputedRef, computed } from 'vue'
 import { CategoryType } from '@/types/OmikujiData/'
+import { uiItemMap } from '@/ConfigMaker/UiEditor/useUiItemMap'
+import { useUiVisibility } from '@/ConfigMaker/UiEditor/conditions/useUiVisibility'
+import { SidebarSectionItem, staticSectionMap } from './StaticSectionMap'
+
+// ─────────────────────────────────────────────────────────
+// 動的マップ（components）
+// ─────────────────────────────────────────────────────────
 
 /**
- * サイドバーのサブアイテム下に表示するセクション項目の定義
- * クリックで activeSection.value を変更する
+ * UiEditor の visibleItems と同じ条件でフィルタしたセクション項目を返す
  *
- * NOTE: カテゴリごとに項目は異なる。
- * 各エディタの SectionCard の id と合わせること。
+ * UiEditor.vue の activeSection は uiItemMap のキー（'bubble', 'toast' など）と
+ * 固定エントリ（'itemConditions'）で構成される。
+ * navigationStore.activeSection をそのまま UiEditor の activeSection として共用する。
  */
-export type SidebarSectionItem = {
-  /** activeSection にセットする値 */
-  section: string
-  /** 表示ラベル */
-  label: string
-  /** lucide アイコン名（省略可） */
-  icon?: string
+export function useComponentsSections(): ComputedRef<SidebarSectionItem[]> {
+  const { hasComponentKind, visibilityMap } = useUiVisibility()
+
+  return computed<SidebarSectionItem[]>(() => {
+    // 固定エントリ（アイテム表示設定セクション）
+    const fixed: SidebarSectionItem[] = [{ section: 'itemConditions', label: 'アイテム表示設定', icon: 'LayoutGrid' }]
+
+    // uiItemMap から visibleItems と同じ条件でフィルタ
+    const dynamic: SidebarSectionItem[] = Object.entries(uiItemMap)
+      .filter(([_key, item]) => {
+        if (item.targetKey && !hasComponentKind(item.targetKey)) return false
+        return item.visibility.every((v) => {
+          if (v.startsWith('!')) {
+            const key = v.slice(1) as keyof typeof visibilityMap.value
+            return !visibilityMap.value[key]
+          }
+          return visibilityMap.value[v as keyof typeof visibilityMap.value]
+        })
+      })
+      .map(([key, item]) => ({
+        section: key,
+        label: item.title,
+        icon: item.icon,
+      }))
+
+    return [...fixed, ...dynamic]
+  })
 }
 
-/**
- * カテゴリ別セクション項目マップ
- * TODO: 各カテゴリの実際のセクションが確定次第、随時追記する
- */
-export const sidebarSectionMap: Partial<Record<CategoryType, SidebarSectionItem[]>> = {
-  // ── ルール系 ──────────────────────────────────────────
-  comments: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    { section: 'threshold', label: '発動条件', icon: 'Filter' },
-    { section: 'limits', label: '制限設定', icon: 'Timer' },
-    { section: 'omikujiSet', label: 'おみくじ設定', icon: 'ListChecks' },
-  ],
-
-  timers: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    { section: 'omikujiSet', label: 'おみくじ設定', icon: 'ListChecks' },
-    // TODO: タイマー固有セクション追加
-  ],
-
-  metas: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    { section: 'omikujiSet', label: 'おみくじ設定', icon: 'ListChecks' },
-    // TODO: metas 固有セクション追加
-  ],
-
-  reactions: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    { section: 'omikujiSet', label: 'おみくじ設定', icon: 'ListChecks' },
-    // TODO: reactions 固有セクション追加
-  ],
-
-  // ── リソース系 ────────────────────────────────────────
-  actionSets: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    // TODO: アクションセット固有セクション追加
-  ],
-
-  placeholders: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    // TODO: プレースホルダー固有セクション追加
-  ],
-
-  characters: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal' },
-    // TODO: キャラクター固有セクション追加
-  ],
-
-  // ── 設定系（仮置き） ─────────────────────────────────
-  components: [
-    // TODO: components 固有セクション追加
-  ],
-
-  // jsonMerge / appInfo は items 単位でセクションなし（仮置き）
-}
+// ─────────────────────────────────────────────────────────
+// 公開 API
+// ─────────────────────────────────────────────────────────
 
 /**
- * 指定カテゴリのセクション項目を返す
- * 定義がない場合は空配列
+ * カテゴリのセクション項目を返す
+ * components は useComponentsSections() を使うこと
  */
-export function getSidebarSections(category: CategoryType): SidebarSectionItem[] {
-  return sidebarSectionMap[category] ?? []
+export function getSidebarSections(category: Exclude<CategoryType, 'components'>): SidebarSectionItem[] {
+  return staticSectionMap[category] ?? []
 }

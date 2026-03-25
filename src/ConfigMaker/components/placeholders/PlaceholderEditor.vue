@@ -7,11 +7,11 @@
     <!-- 基本設定 -->
     <SectionCard
       id="section-baseSettings"
-      icon="SlidersHorizontal"
+      :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :description="selectedItem.description"
+      title="基本設定"
+      :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="placeholders" :isIsEnabled="false" :isAccessLevel="false" />
     </SectionCard>
@@ -19,12 +19,11 @@
     <!-- プレースホルダー設定 -->
     <SectionCard
       id="section-placeholder"
-      icon="Brackets"
+      :icon="s('placeholder')?.icon"
       :isOpen="activeSection === 'placeholder'"
       @toggle="toggleSection('placeholder')"
       title="プレースホルダー設定"
-      :subTitle="`(プレースホルダー数:${selectedItem.values.length}, 総重量:${totalWeight})`"
-      description="抽選するプレースホルダーを編集します"
+      :description="s('placeholder')?.description"
     >
       <PlaceholderValuesEditor :key="selectedItem.id" :placeholderKey="selectedItem.key" />
     </SectionCard>
@@ -41,6 +40,9 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { staticSectionMap } from '../appItems/navigation/StaticSectionMap'
+
+  const s = (key: string) => staticSectionMap.placeholders.find((i) => i.section === key)
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'placeholder' | null
@@ -66,14 +68,5 @@
       if (!selectedItemKey.value || !value) return
       updateItem('placeholders', selectedItemKey.value, value)
     },
-  })
-
-  // 総重量を計算するcomputed
-  const totalWeight = computed(() => {
-    if (!selectedItem.value) return 0
-    return selectedItem.value.values.reduce((sum, v) => {
-      if (typeof v === 'string') return sum
-      return sum + (v.weight ?? 0)
-    }, 0)
   })
 </script>

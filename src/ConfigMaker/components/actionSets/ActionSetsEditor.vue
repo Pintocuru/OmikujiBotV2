@@ -10,11 +10,11 @@
     <!-- 基本設定セクション -->
     <SectionCard
       id="section-baseSettings"
-      icon="SlidersHorizontal"
+      :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :description="selectedItem.description"
+      title="基本設定"
+      :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="actionSets" :isIsEnabled="false" :isAccessLevel="false" />
     </SectionCard>
@@ -22,13 +22,12 @@
     <!-- おみくじ設定セクション -->
     <SectionCard
       id="section-omikujiSet"
-      icon="ListChecks"
+      :icon="s('omikujiSet')?.icon"
       :isOpen="activeSection === 'omikujiSet'"
       @toggle="toggleSection('omikujiSet')"
       title="おみくじ設定"
-      description="コメントで実行するおみくじの設定"
+      :description="s('omikujiSet')?.description"
     >
-      <!-- おみくじ設定セクション -->
       <PostActionsEditor
         v-model="postActions"
         :gameScripts="selectedItem.gameScripts"
@@ -51,6 +50,9 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { staticSectionMap } from '../appItems/navigation/StaticSectionMap'
+
+  const s = (key: string) => staticSectionMap.actionSets.find((i) => i.section === key)
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'omikujiSet' | null

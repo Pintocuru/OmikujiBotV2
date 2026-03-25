@@ -24,15 +24,18 @@
         </span>
       </button>
 
-      <!-- サブアイテム（展開時 & 選択中カテゴリのみ） -->
+      <!-- サブアイテム
+        Record カテゴリ: selectedItemKey が必要（アイテム選択後に展開）
+        非 Record カテゴリ（components / appInfo / jsonMerge）: selectedItemKey 不問
+      -->
       <SidebarSubItems
-        v-if="isExpanded && selectedItemKey && selectedCategory === key"
+        v-if="isExpanded && selectedCategory === key && shouldShowSubItems(key)"
         :category="key"
         :isRecord="isRecordCategory(key)"
         :variant="subItemsVariant(key)"
         v-model="getDraggableModel(key).value"
         :staticItems="getStaticSubItems(key)"
-        :selectedItemKey="selectedItemKey"
+        :selectedItemKey="selectedItemKey ?? ''"
         :activeSection="activeSection"
         :theme="theme"
         @selectItem="(itemKey, section) => navigationStore.selectItem(itemKey, section)"
@@ -47,7 +50,6 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { CategoryType, SettingsCategoryType } from '@/types/OmikujiData/'
-  import { uiKindMap } from '@/types/MetaMaps/UiKindMaps'
   import { useCategoryUtils } from './useCategoryUtils'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -89,6 +91,18 @@
 
   const categoryIcon = (icon: LucideIconName) => resolveLucideIcon(icon)
 
+  // ── サブアイテム表示条件 ──────────────────────────────
+  const NON_RECORD_CATEGORIES: SettingsCategoryType[] = ['jsonMerge', 'components', 'appInfo']
+
+  /**
+   * Record カテゴリは selectedItemKey が必要（アイテムが選択されていないとサブ項目がない）
+   * 非 Record カテゴリはカテゴリ選択だけで表示する
+   */
+  const shouldShowSubItems = (key: CategoryType): boolean => {
+    if (NON_RECORD_CATEGORIES.includes(key as SettingsCategoryType)) return true
+    return !!selectedItemKey.value
+  }
+
   // ── サブアイテムバリアント ─────────────────────────────
   const ARRAY_CATEGORIES: SettingsCategoryType[] = ['jsonMerge']
   const OBJECT_CATEGORIES: SettingsCategoryType[] = ['components', 'appInfo']
@@ -103,29 +117,16 @@
   type StaticSubItem = { key: string; label: string }
 
   const getStaticSubItems = (category: CategoryType): StaticSubItem[] => {
-    // jsonMerge: 配列
     if (category === 'jsonMerge') {
       return data.value.jsonMerge.map((item) => ({
         key: item.key,
         label: item.name || '（名前なし）',
       }))
     }
-
-    // components: Object のキー一覧
-    if (category === 'components') {
-      return Object.keys(data.value.components.settings)
-        .filter((k) => data.value.components.settings[k as keyof typeof data.value.components.settings] !== undefined)
-        .map((k) => ({
-          key: k,
-          label: uiKindMap[k as keyof typeof uiKindMap]?.label ?? k,
-        }))
-    }
-
-    // appInfo: 仮置き（TODO: 実際の項目が確定次第更新）
     if (category === 'appInfo') {
       return [{ key: 'general', label: 'アプリ情報' }]
     }
-
+    // components は SidebarSubItems 内で動的生成するため不要
     return []
   }
 

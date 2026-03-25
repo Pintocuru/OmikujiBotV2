@@ -14,8 +14,10 @@
   <!-- アイテム表示設定 -->
   <SectionCard
     v-if="hasAccess(itemSlotEnabled)"
+    id="section-itemConditions"
     icon="LayoutGrid"
-    :isOpen="true"
+    :isOpen="activeSection === 'itemConditions'"
+    @toggle="toggleSection('itemConditions')"
     title="アイテム表示設定"
     description="ジェネレーターで表示するアイテムの設定"
   >
@@ -25,6 +27,7 @@
   <!-- 各アイテム設定 -->
   <template v-for="[type, item] in visibleItems" :key="type">
     <SectionCard
+      :id="`section-${type}`"
       :icon="item.icon"
       :isOpen="activeSection === type"
       @toggle="toggleSection(type)"
@@ -37,7 +40,8 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
+  import { computed, watch } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { uiItemMap, VisibilityKey } from './useUiItemMap'
   import ItemConditionsEditor from './conditions/ItemConditionsEditor.vue'
   import ItemsSettings from './conditions/ItemsSettings.vue'
@@ -45,28 +49,28 @@
   import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useUiVisibility } from './conditions/useUiVisibility'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { isDev } from '@/types'
 
   const { itemSlotEnabled } = useFlagsSettings()
   const { hasAccess } = useAccessChecker()
   const { isGod } = useSettingMode()
-  const activeSection = ref<string | null>(null)
+
+  // navigationStore.activeSection を共用
+  // サイドバーのセクション項目クリックと UiEditor のトグルが同一 ref を参照する
+  const navigationStore = useNavigationStore()
+  const { activeSection } = storeToRefs(navigationStore)
 
   const { visibilityMap, hasComponentKind } = useUiVisibility()
 
   const visibleItems = computed(() =>
     Object.entries(uiItemMap).filter(([_kind, item]) => {
-      // 1. slot選択条件
       if (item.targetKey && !hasComponentKind(item.targetKey)) return false
-
-      // 2. visibility条件（すべて満たす必要あり）
       return item.visibility.every((v) => {
-        // "!" で始まる場合は否定として評価
         if (v.startsWith('!')) {
           const key = v.slice(1) as VisibilityKey
           return !visibilityMap.value[key]
         }
-        // 通常の評価
         return visibilityMap.value[v]
       })
     })
@@ -76,12 +80,11 @@
     activeSection.value = activeSection.value === section ? null : section
   }
 
-  // 開いた時に最初のアイテムを表示
+  // 開いた時に最初のアイテムを表示（activeSection が未設定のときのみ）
   watch(
     visibleItems,
     (items) => {
       if (activeSection.value !== null) return
-
       const first = items[0]?.[0]
       if (first) activeSection.value = first
     },

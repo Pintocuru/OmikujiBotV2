@@ -3,7 +3,7 @@
   <div class="space-y-4">
     <!-- アプリ設定 -->
     <SectionCard
-      id="section-Settings"
+      id="section-appSettings"
       icon="Settings"
       :isOpen="true"
       title="アプリ設定"
@@ -14,7 +14,7 @@
 
     <!-- 実績 -->
     <SectionCard
-      id="section-Info"
+      id="section-appFeatures"
       icon="Sparkles"
       :isOpen="true"
       title="利用可能な機能"
@@ -26,7 +26,7 @@
 
     <!-- meta:基本情報 -->
     <SectionCard
-      id="section-PackageBasic"
+      id="section-packageBasic"
       icon="Info"
       variant="neutral"
       :isOpen="true"
@@ -38,6 +38,7 @@
 
     <!-- meta:配布情報 -->
     <SectionCard
+      id="section-packageDistribution"
       icon="Package"
       variant="neutral"
       :isOpen="true"
@@ -49,6 +50,7 @@
 
     <!-- meta:システム情報 -->
     <SectionCard
+      id="section-packageSystem"
       icon="Cpu"
       variant="neutral"
       :isOpen="true"

@@ -23,7 +23,7 @@
       <span v-if="isExpanded" class="text-sm truncate text-left flex-1">プリセット管理</span>
     </button>
 
-    <!-- 各種カテゴリ（切り出し済み） -->
+    <!-- 各種カテゴリ -->
     <NavigationSidebarCategories :isExpanded="isExpanded" :theme="theme" />
 
     <!-- 開発者向けフッター -->

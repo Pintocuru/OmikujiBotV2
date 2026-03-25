@@ -13,11 +13,11 @@
     <!-- 基本設定セクション -->
     <SectionCard
       id="section-baseSettings"
-      icon="SlidersHorizontal"
+      :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :description="selectedItem.description"
+      title="基本設定"
+      :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="comments" />
     </SectionCard>
@@ -26,12 +26,11 @@
       <!-- 条件設定セクション -->
       <SectionCard
         id="section-threshold"
-        icon="Filter"
+        :icon="s('threshold')?.icon"
         :isOpen="activeSection === 'threshold'"
         @toggle="toggleSection('threshold')"
         title="発動条件設定"
-        :subTitle="`発動条件: ${thresholdSubTitle}`"
-        description="「おみくじを引く」発動条件の設定"
+        :description="s('threshold')?.description"
       >
         <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
       </SectionCard>
@@ -39,12 +38,11 @@
       <!-- おみくじ制限設定セクション -->
       <SectionCard
         id="section-limits"
-        icon="Timer"
+        :icon="s('limits')?.icon"
         :isOpen="activeSection === 'limits'"
         @toggle="toggleSection('limits')"
-        :title="`おみくじ制限設定`"
-        :subTitle="limitsSubTitle"
-        description="重複時や回数超過時におみくじを無効にします"
+        title="制限設定"
+        :description="s('limits')?.description"
       >
         <OmikujiLimitsEditor v-model="selectedItem.limits" :selectedItemKey="selectedItemKey" />
       </SectionCard>
@@ -52,12 +50,11 @@
       <!-- おみくじ設定セクション -->
       <SectionCard
         id="section-omikujiSet"
-        icon="ListChecks"
+        :icon="s('omikujiSet')?.icon"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"
-        :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
-        description="コメントで実行するおみくじの設定"
+        :description="s('omikujiSet')?.description"
       >
         <OmikujiSetEditor category="comments" :selectedItemKey="selectedItemKey" />
       </SectionCard>
@@ -86,6 +83,7 @@
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { staticSectionMap } from '../appItems/navigation/StaticSectionMap'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'threshold' | 'limits' | 'scriptGame' | 'omikujiSet' | null
@@ -96,6 +94,9 @@
   const toggleSection = (section: SectionType) => {
     activeSection.value = activeSection.value === section ? null : section
   }
+
+  // sectionMeta のショートハンド
+  const s = (key: string) => staticSectionMap.comments.find((i) => i.section === key)
 
   // Pinia store
   const { updateItem } = useOmikujiStore()
@@ -110,40 +111,5 @@
     set: (value: CommentEventType) => {
       updateItem('comments', value.key, value)
     },
-  })
-
-  // 発動条件セクションのサブタイトル
-  const thresholdSubTitle = computed(() => {
-    if (!selectedItem.value) return ''
-
-    const conditions = selectedItem.value.trigger.conditions
-    const icons = []
-
-    if (conditions.includes('username')) icons.push('[👱 ユーザー名]')
-    if (conditions.includes('access')) icons.push('[🚶 ユーザーの役職]')
-    if (conditions.includes('comment')) icons.push('[💬 チャットワード]')
-    if (conditions.includes('gift')) icons.push('[🎁 ギフト]')
-    if (!icons.length) return '[すべてのコメント]'
-
-    return icons.join('')
-  })
-
-  const limitsSubTitle = computed(() => {
-    const limits = selectedItem.value?.limits
-    if (!limits) return ''
-
-    const isCooldownDisabled = limits.cooldownSeconds === 0
-    const isRepeatDisabled = limits.isRepeatAllowed === 0
-
-    // どちらも無効なら「無効」と表示
-    if (isCooldownDisabled && isRepeatDisabled) {
-      return '（制限: 無効）'
-    }
-
-    // どちらか有効なら詳細表示
-    const cool = `cool:${limits.cooldownSeconds}s`
-    const repeat = limits.isRepeatAllowed === 0 ? '連投:無制限' : `連投:${limits.isRepeatAllowed}回まで可`
-
-    return `(${cool}, ${repeat})`
   })
 </script>

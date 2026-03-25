@@ -13,12 +13,12 @@
     <!-- 基本設定セクション -->
     <SectionCard
       id="section-baseSettings"
-      icon="SlidersHorizontal"
+      :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'neutral'"
-      :title="selectedItem.name !== '' ? selectedItem.name : '名称未設定'"
-      :description="selectedItem.description"
+      title="基本設定"
+      :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="timers" />
     </SectionCard>
@@ -27,12 +27,11 @@
       <!-- タイマー設定セクション -->
       <SectionCard
         id="section-timerInterval"
-        icon="Clock"
+        :icon="s('timerInterval')?.icon"
         :isOpen="activeSection === 'timerInterval'"
         @toggle="toggleSection('timerInterval')"
         title="タイマー設定"
-        :subTitle="timerSubTitle"
-        description="発動する間隔やタイミングの設定"
+        :description="s('timerInterval')?.description"
       >
         <TimerIntervalEditor v-model="selectedItem" />
       </SectionCard>
@@ -40,12 +39,11 @@
       <!-- おみくじ設定セクション -->
       <SectionCard
         id="section-omikujiSet"
-        icon="ListChecks"
+        :icon="s('omikujiSet')?.icon"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
         title="おみくじ設定"
-        :subTitle="`(おみくじの数 : ${selectedItem.omikuji.length})`"
-        description="おみくじの抽選設定や、おみくじの内容です"
+        :description="s('omikujiSet')?.description"
       >
         <OmikujiSetEditor category="timers" :selectedItemKey="selectedItemKey" />
       </SectionCard>
@@ -73,6 +71,7 @@
   import { storeToRefs } from 'pinia'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { staticSectionMap } from '../appItems/navigation/StaticSectionMap'
 
   // アクティブなセクションの管理
   type SectionType = 'baseSettings' | 'timerInterval' | 'omikujiSet' | null
@@ -83,6 +82,8 @@
   const toggleSection = (section: SectionType) => {
     activeSection.value = activeSection.value === section ? null : section
   }
+
+  const s = (key: string) => staticSectionMap.timers.find((i) => i.section === key)
 
   // Pinia store
   const { updateItem } = useOmikujiStore()
@@ -96,19 +97,5 @@
     set: (value: TimerEventType) => {
       updateItem('timers', value.key, value)
     },
-  })
-
-  const timerSubTitle = computed(() => {
-    if (!selectedItem.value) return ''
-
-    const item = selectedItem.value
-
-    // 起動時のみ
-    if (item.mode === 'onStart') {
-      return '(起動時に一度だけ実行)'
-    }
-
-    // interval モード
-    return `(${item.intervalSeconds}秒毎${item.isBaseZero ? '、基準調整あり' : ''})`
   })
 </script>
