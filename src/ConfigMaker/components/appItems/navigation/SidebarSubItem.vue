@@ -1,12 +1,14 @@
-<!-- src/ConfigMaker/components/appItems/navigation/SidebarSubItem.vue -->
 <template>
-  <!-- アイテム行 -->
   <div
     class="group flex items-center gap-1 pl-4 pr-1 rounded hover:bg-base-300 cursor-pointer"
     :class="isSelected ? `bg-${theme} text-${theme}-content` : ''"
     @click="emit('select')"
+    @dblclick.stop="emit('item-dblclick', itemKey)"
   >
-    <GripVertical v-if="draggable" class="drag-handle w-3 h-3 shrink-0 opacity-0 group-hover:opacity-30 cursor-grab" />
+    <GripVertical
+      v-if="draggable && !isDragDisabled"
+      class="drag-handle w-3 h-3 shrink-0 opacity-0 group-hover:opacity-30 cursor-grab"
+    />
     <EyeOff v-if="isEnabled === false" class="w-3 h-3 shrink-0 opacity-40" />
     <span
       class="text-xs py-1 truncate flex-1 min-w-0"
@@ -17,8 +19,7 @@
     <slot name="menu" />
   </div>
 
-  <!-- セクション項目（選択中のアイテムにのみ表示） -->
-  <div class="border-l-4 ml-4" :class="` border-${theme}`">
+  <div v-if="isDragDisabled" class="border-l-4 ml-4" :class="`border-${theme}`">
     <SidebarSectionList
       v-if="isSelected && sections.length > 0"
       :sections="sections"
@@ -42,11 +43,13 @@
     draggable?: boolean
     theme: string
     sections: SidebarSectionItem[]
+    isDragDisabled: boolean
     activeSection: string | null
   }>()
 
   const emit = defineEmits<{
     select: []
     selectSection: [section: string]
+    'item-dblclick': [itemKey: string]
   }>()
 </script>

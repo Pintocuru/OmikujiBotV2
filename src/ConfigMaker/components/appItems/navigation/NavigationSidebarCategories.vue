@@ -1,8 +1,6 @@
-<!-- src/ConfigMaker/components/appItems/navigation/NavigationSidebarCategories.vue -->
 <template>
   <div class="flex flex-col gap-0.5 p-2 flex-1">
     <template v-for="(tab, key) in filteredCategoryLabels" :key="key">
-      <!-- カテゴリボタン -->
       <button
         class="btn btn-ghost w-full relative flex items-center gap-2 min-h-0 h-auto py-2"
         :class="[categoryButtonClass(key), isExpanded ? 'justify-start px-3' : 'justify-center px-0']"
@@ -10,11 +8,9 @@
         @click="navigateCategory(key)"
       >
         <component :is="categoryIcon(tab.icon)" class="w-5 h-5 shrink-0" />
-
         <span v-if="isExpanded" class="text-sm truncate text-left flex-1">
           {{ tab.label }}
         </span>
-
         <span
           v-if="getCategoryItemCount(key) > 0"
           class="badge badge-xs badge-primary shrink-0"
@@ -24,10 +20,6 @@
         </span>
       </button>
 
-      <!-- サブアイテム
-        Record カテゴリ: selectedItemKey が必要（アイテム選択後に展開）
-        非 Record カテゴリ（components / appInfo / jsonMerge）: selectedItemKey 不問
-      -->
       <SidebarSubItems
         v-if="isExpanded && selectedCategory === key && shouldShowSubItems(key)"
         :category="key"
@@ -38,8 +30,12 @@
         :selectedItemKey="selectedItemKey ?? ''"
         :activeSection="activeSection"
         :theme="theme"
+        :isDragging="isDragging"
+        :isDragDisabled="isDragDisabled"
         @selectItem="(itemKey, section) => navigationStore.selectItem(itemKey, section)"
         @selectSection="onSelectSection"
+        @update:isDragDisabled="(val) => (isDragDisabled = val)"
+        @dragStart="onDragStart"
         @dragEnd="onDragEnd"
       />
     </template>
@@ -63,7 +59,6 @@
     theme: string
   }>()
 
-  // ── ストア ─────────────────────────────────────────────
   const navigationStore = useNavigationStore()
   const { isRecordCategory, selectCategory } = navigationStore
   const { selectedCategory, selectedItemKey, activeSection } = storeToRefs(navigationStore)
@@ -71,39 +66,31 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  // ── カテゴリユーティリティ ────────────────────────────
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
-  const { draggableItems, onDragEnd } = useNavigationSidebarDrag(computed(() => props.isExpanded))
+  const { draggableItems, onDragEnd, isDragging, onDragStart, isDragDisabled } = useNavigationSidebarDrag(
+    computed(() => props.isExpanded)
+  )
 
-  // ── ナビゲーション ────────────────────────────────────
   const navigateCategory = (key: CategoryType) => selectCategory(key)
-
   const onSelectSection = (section: string) => {
     activeSection.value = section
   }
 
-  // ── ボタンスタイル ────────────────────────────────────
   const categoryButtonClass = (key: CategoryType) => {
     if (selectedCategory.value !== key) return 'btn-ghost'
-    const color = props.theme
-    return `bg-${color} text-${color}-content hover:bg-${color}`
+    return `bg-${props.theme} text-${props.theme}-content hover:bg-${props.theme}`
   }
 
   const categoryIcon = (icon: LucideIconName) => resolveLucideIcon(icon)
 
-  // ── サブアイテム表示条件 ──────────────────────────────
   const NON_RECORD_CATEGORIES: SettingsCategoryType[] = ['jsonMerge', 'components', 'appInfo']
 
-  /**
-   * Record カテゴリは selectedItemKey が必要（アイテムが選択されていないとサブ項目がない）
-   * 非 Record カテゴリはカテゴリ選択だけで表示する
-   */
+  // Record カテゴリはアイテム選択後にのみサブ項目を表示する
   const shouldShowSubItems = (key: CategoryType): boolean => {
     if (NON_RECORD_CATEGORIES.includes(key as SettingsCategoryType)) return true
     return !!selectedItemKey.value
   }
 
-  // ── サブアイテムバリアント ─────────────────────────────
   const ARRAY_CATEGORIES: SettingsCategoryType[] = ['jsonMerge']
   const OBJECT_CATEGORIES: SettingsCategoryType[] = ['components', 'appInfo']
 
@@ -113,7 +100,6 @@
     return 'record'
   }
 
-  // ── 静的サブアイテム ──────────────────────────────────
   type StaticSubItem = { key: string; label: string }
 
   const getStaticSubItems = (category: CategoryType): StaticSubItem[] => {
@@ -123,14 +109,10 @@
         label: item.name || '（名前なし）',
       }))
     }
-    if (category === 'appInfo') {
-      return [{ key: 'general', label: 'アプリ情報' }]
-    }
-    // components は SidebarSubItems 内で動的生成するため不要
+    if (category === 'appInfo') return [{ key: 'general', label: 'アプリ情報' }]
     return []
   }
 
-  // ── ドラッグモデル ────────────────────────────────────
   const getDraggableModel = (key: CategoryType) =>
     computed({
       get: () => draggableItems.value[key] ?? [],

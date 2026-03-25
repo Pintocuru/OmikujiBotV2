@@ -70,6 +70,7 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
       updateCategoryData(category, remaining as any)
     }
   }
+
   // カテゴリデータ更新
   const updateCategoryData = (category: RecordCategoryType, newData: Record<string, any>) => {
     if (!recordCategoryLabel.includes(category)) {
@@ -138,6 +139,37 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     hasChanged.value = true
   }
 
+  /**
+   * ドラッグ並び替え専用: order を一括書き込み（Pinia 変更通知を1回に集約）
+   *
+   * updateItem をループで呼ぶと1件ごとに Pinia が変更通知を発火し、
+   * watch が複数回走って draggableItems が意図しないタイミングで再構築される。
+   * このメソッドはカテゴリ全体を1回のオブジェクト代入で更新することで
+   * 通知を1回に抑え、order の書き込み競合を防ぐ。
+   *
+   * @param category 対象カテゴリ
+   * @param orderedKeys ドラッグ後の正しい順序のキー配列
+   */
+  const reorderItems = (category: RecordCategoryType, orderedKeys: string[]): void => {
+    const categoryData = data.value[category] as Record<string, RecordCategoryItemTypeMap[typeof category]>
+    const timestamp = new Date().toISOString()
+
+    const reordered = { ...categoryData }
+
+    for (let i = 0; i < orderedKeys.length; i++) {
+      const key = orderedKeys[i]
+      if (!reordered[key]) continue
+      reordered[key] = {
+        ...reordered[key],
+        order: i,
+        updatedAt: timestamp,
+      }
+    }
+
+    data.value[category] = reordered as any
+    hasChanged.value = true
+  }
+
   return {
     addItem,
     updateItem,
@@ -145,5 +177,6 @@ export function useRecordCRUD(data: Ref<OmikujiDataType>, hasChanged: Ref<boolea
     duplicateItem,
     updateItemKey,
     clearCategory,
+    reorderItems,
   }
 }
