@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/eventsService/MetaEditor.vue -->
+<!-- src/ConfigMaker/components/eventsService/ServiceEditor.vue -->
 <template>
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">

@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/RecordTabs/RecordTabList.vue -->
 <template>
   <div v-if="store.filteredSortedItems.length !== 0">
     <RecordSortActions />

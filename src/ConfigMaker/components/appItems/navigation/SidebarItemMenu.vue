@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appItems/SidebarItemMenu.vue -->
+<!-- src/ConfigMaker/components/appItems/navigation/SidebarItemMenu.vue -->
 <template>
   <div class="dropdown dropdown-end" @click.stop>
     <button tabindex="0" class="btn btn-ghost btn-xs opacity-0 group-hover:opacity-100 transition-opacity">

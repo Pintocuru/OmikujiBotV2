@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/components/parts/LicenseBadge.vue -->
 <template>
-  <div v-if="mode" class="badge tooltip tooltip-bottom" :class="badgeClass" :data-tip="currentTip">
+  <div v-if="mode" class="badge tooltip tooltip-bottom truncate" :class="badgeClass" :data-tip="currentTip">
     {{ label }}
   </div>
 </template>

@@ -7,7 +7,7 @@
     </template>
 
     <!-- Dev jsonファイルの保存(Server利用) -->
-    <div v-if="saveFileName">
+    <template v-if="saveFileName">
       <button
         @click="() => devStore.overwriteConfig(saveFileName)"
         class="btn btn-warning tooltip tooltip-top truncate"
@@ -18,7 +18,7 @@
         <Save class="w-4 h-4" />
         {{ saveFileName.replace('.json', '') }} の保存
       </button>
-    </div>
+    </template>
 
     <!-- 設定を出力(js)-->
     <div class="indicator">
@@ -36,7 +36,7 @@
     </div>
 
     <!-- Pro テンプレートを出力(json) -->
-    <div v-if="isPro">
+    <template v-if="isPro">
       <button
         @click="exportFile('template')"
         class="btn btn-success tooltip tooltip-top truncate"
@@ -46,7 +46,7 @@
         <span v-if="isExporting" class="loading loading-spinner loading-sm mr-2"></span>
         テンプレート出力(json)
       </button>
-    </div>
+    </template>
   </div>
 </template>
 

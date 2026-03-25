@@ -14,4 +14,5 @@
 @source inline("bg-gradient-to-br");
 @source inline("border-t-{primary,secondary,accent,neutral,info,success,warning,error}");
 @source inline("bg-{primary,secondary,accent,neutral,info,success,warning,error}-content");
+@source inline("border-{primary,secondary,accent,neutral,info,success,warning,error}");
 @source inline("border-{primary,secondary,accent,neutral,info,success,warning,error}-content");

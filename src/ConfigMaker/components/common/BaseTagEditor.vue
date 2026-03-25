@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/common/BaseTagEditor.vue -->
 <template>
   <SettingItem label="タグ" description="このデータに関連するタグを追加できます">
     <VueDraggable v-model="localTags" class="flex flex-wrap gap-2 mb-2 min-h-[2rem]">
