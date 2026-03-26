@@ -227,7 +227,9 @@ export class UserVisitManager {
    * 指定イベントの記録を全削除
    */
   resetEvent(eventKey: EventKey): void {
+    console.log('[resetEvent] before', eventKey, this.visits.get(eventKey))
     this.visits.delete(eventKey)
+    console.log('[resetEvent] after', eventKey, this.visits.get(eventKey))
   }
 
   /**

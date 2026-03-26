@@ -25,7 +25,6 @@
 
   const itemMap: Record<CookieComponent, Component> = {
     sakura: Sakura,
-    single: Sakura, // TODO: Single コンポーネント実装後に差し替え
   }
 
   const currentItem = computed(() => itemMap[props.settings.component] ?? Sakura)

@@ -16,12 +16,6 @@ export const cookieComponentMap = {
     maxCounters: 2,
     isColor: false,
   },
-  // 追加例
-  single: {
-    label: 'シングル🍪',
-    maxCounters: 1,
-    isColor: true,
-  },
 } as const
 
 export type CookieComponent = keyof typeof cookieComponentMap

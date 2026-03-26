@@ -134,7 +134,6 @@
   /* 数値・ラベル共通フォント */
   .counter-value,
   .counter-label {
-    font-family: 'Zen Maru Gothic', sans-serif;
     font-weight: 900;
     display: inline-block; /* scale が効くように */
     transition: transform 0.05s linear;
@@ -144,6 +143,7 @@
   }
 
   .counter-value {
+    font-family: 'Zen Maru Gothic', sans-serif;
     color: white;
     line-height: 1;
     /* 影を重ねてさらに目立たせる */

@@ -68,11 +68,11 @@
   </SettingItem>
 
   <!-- 変数カウンター入力 (Variable) -->
-  <SettingItem label="変数カウンター" description="変数プレースホルダー名とラベルを入力します">
+  <SettingItem label="変数カウンター" description="変数プレースホルダー名とラベルを入力">
     <div class="flex flex-col gap-3">
       <div class="flex flex-wrap gap-2 items-end">
         <div class="form-control">
-          <label class="label"><span class="label-text-alt">変数名 (target)</span></label>
+          <label class="label"><span class="label-text-alt">変数名</span></label>
           <input
             v-model="variableInput.target"
             type="text"
@@ -81,7 +81,7 @@
           />
         </div>
         <div class="form-control">
-          <label class="label"><span class="label-text-alt">表示名 (label)</span></label>
+          <label class="label"><span class="label-text-alt">表示名</span></label>
           <input
             v-model="variableInput.label"
             type="text"
