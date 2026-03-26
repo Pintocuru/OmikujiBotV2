@@ -7,7 +7,7 @@ import { useNavigationStore } from '@config/stores/useNavigationStore'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
-type DraggableSubItem = {
+export type DraggableSubItem = {
   key: string
   label: string
   isEnabled?: boolean

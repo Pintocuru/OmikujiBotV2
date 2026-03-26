@@ -1,38 +1,36 @@
 // src/ConfigMaker/components/appItems/preview/staticSectionPreviewMap.ts
 import type { Component } from 'vue'
 
-// Previewコンポーネント
-import BaseRecordPreview from './BaseRecordPreview.vue'
-// import ThresholdPreview from './ThresholdPreview.vue'
-// import LimitsPreview from './LimitsPreview.vue'
-// import OmikujiSetPreview from './OmikujiSetPreview.vue'
-// import TimerIntervalPreview from './TimerIntervalPreview.vue'
-// import TriggerPreview from './TriggerPreview.vue'
+import BaseSettings from './BaseSettings.vue'
+import ThresholdPreview from './ThresholdPreview.vue'
+import LimitsPreview from './LimitsPreview.vue'
+import OmikujiSetPreview from './OmikujiSetPreview.vue'
+import TimerIntervalPreview from './TimerIntervalPreview.vue'
+// import TriggerPreview from './TriggerPreview.vue'       // metas / reactions 用（ServiceTrigger / ReactionTrigger）
 // import PlaceholderPreview from './PlaceholderPreview.vue'
 // import ColorSettingsPreview from './ColorSettingsPreview.vue'
 // import CommentVoicePreview from './CommentVoicePreview.vue'
 // import ImageSettingsPreview from './ImageSettingsPreview.vue'
 
-// fallback用
-// import DefaultPreview from './DefaultPreview.vue'
-
 export const staticSectionPreviewMap: Record<string, Component> = {
-  // 共通
-  baseSettings: BaseRecordPreview,
-  // omikujiSet: OmikujiSetPreview,
-  //
-  // // comments / reactions 系
-  // threshold: ThresholdPreview,
-  // limits: LimitsPreview,
+  // ── 共通 ───────────────────────────────────────────────
+  baseSettings: BaseSettings,
+  omikujiSet: OmikujiSetPreview,
+
+  // ── comments ───────────────────────────────────────────
+  threshold: ThresholdPreview, // data.trigger を参照
+  limits: LimitsPreview, // data.limits を参照
+
+  // ── timers ─────────────────────────────────────────────
+  timerInterval: TimerIntervalPreview,
+
+  // ── metas / reactions（trigger 形状が異なるため別途対応予定）
   // trigger: TriggerPreview,
-  //
-  // // timers
-  // timerInterval: TimerIntervalPreview,
-  //
-  // // placeholders
+
+  // ── placeholders ───────────────────────────────────────
   // placeholder: PlaceholderPreview,
-  //
-  // // characters
+
+  // ── characters ─────────────────────────────────────────
   // colorSettings: ColorSettingsPreview,
   // commentVoice: CommentVoicePreview,
   // imageSettings: ImageSettingsPreview,

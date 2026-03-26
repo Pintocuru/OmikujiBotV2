@@ -1,10 +1,12 @@
 <!-- src/ConfigMaker/components/appItems/preview/HoverPopup.vue -->
 <template>
-  <div v-if="visible" class="fixed z-50 pointer-events-none" :style="style">
-    <div class="bg-base-200 shadow-lg rounded p-2 pointer-events-auto">
-      <slot />
+  <Teleport to="body">
+    <div v-if="visible" class="fixed z-50 pointer-events-none" :style="style">
+      <div class="bg-base-200 shadow-lg rounded p-2 pointer-events-auto">
+        <slot />
+      </div>
     </div>
-  </div>
+  </Teleport>
 </template>
 
 <script setup lang="ts">
@@ -16,7 +18,6 @@
     visible: boolean
   }>()
 
-  // 画面外にはみ出ないよう軽く補正
   const OFFSET = 12
 
   const style = computed(() => ({

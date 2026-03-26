@@ -32,13 +32,26 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       description: 'コメントイベントの基本設定',
       component: 'baseSettings',
     },
-    { section: 'threshold', label: '発動条件', icon: 'Filter', description: '「おみくじを引く」発動条件の設定' },
-    { section: 'limits', label: '制限設定', icon: 'Timer', description: '重複時や回数超過時におみくじを無効にします' },
+    {
+      section: 'threshold',
+      label: '発動条件',
+      icon: 'Filter',
+      description: '「おみくじを引く」発動条件の設定',
+      component: 'threshold',
+    },
+    {
+      section: 'limits',
+      label: '制限設定',
+      icon: 'Timer',
+      description: '重複時や回数超過時におみくじを無効にします',
+      component: 'limits',
+    },
     {
       section: 'omikujiSet',
       label: 'おみくじ設定',
       icon: 'ListChecks',
       description: 'コメントで実行するおみくじの設定',
+      component: 'omikujiSet',
     },
   ],
   timers: [
@@ -47,13 +60,21 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: '基本設定',
       icon: 'SlidersHorizontal',
       description: 'タイマーイベントの基本設定',
+      component: 'baseSettings',
     },
-    { section: 'timerInterval', label: 'タイマー設定', icon: 'Clock', description: '発動する間隔やタイミングの設定' },
+    {
+      section: 'timerInterval',
+      label: 'タイマー設定',
+      icon: 'Clock',
+      description: '発動する間隔やタイミングの設定',
+      component: 'timerInterval',
+    },
     {
       section: 'omikujiSet',
       label: 'おみくじ設定',
       icon: 'ListChecks',
       description: 'おみくじの抽選設定や、おみくじの内容です',
+      component: 'omikujiSet',
     },
   ],
   metas: [
@@ -62,6 +83,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: '基本設定',
       icon: 'SlidersHorizontal',
       description: 'サービスイベントの基本設定',
+      component: 'baseSettings',
     },
     { section: 'trigger', label: '発動条件', icon: 'Filter', description: '「おみくじを引く」発動条件の設定' },
     {
@@ -69,6 +91,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: 'おみくじ設定',
       icon: 'ListChecks',
       description: 'おみくじの抽選設定や、おみくじの内容です',
+      component: 'omikujiSet',
     },
   ],
   reactions: [
@@ -77,6 +100,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: '基本設定',
       icon: 'SlidersHorizontal',
       description: 'リアクションイベントの基本設定',
+      component: 'baseSettings',
     },
     { section: 'trigger', label: '発動条件', icon: 'Filter', description: '「おみくじを引く」発動条件の設定' },
     {
@@ -84,6 +108,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: 'おみくじ設定',
       icon: 'ListChecks',
       description: 'おみくじの抽選設定や、おみくじの内容です',
+      component: 'omikujiSet',
     },
   ],
 
@@ -94,6 +119,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: '基本設定',
       icon: 'SlidersHorizontal',
       description: 'アクションセットの基本設定',
+      component: 'baseSettings',
     },
     {
       section: 'omikujiSet',
@@ -108,6 +134,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: '基本設定',
       icon: 'SlidersHorizontal',
       description: 'プレースホルダーの基本設定',
+      component: 'baseSettings',
     },
     {
       section: 'placeholder',
@@ -117,7 +144,13 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
     },
   ],
   characters: [
-    { section: 'baseSettings', label: '基本設定', icon: 'SlidersHorizontal', description: 'キャラクターの基本設定' },
+    {
+      section: 'baseSettings',
+      label: '基本設定',
+      icon: 'SlidersHorizontal',
+      description: 'キャラクターの基本設定',
+      component: 'baseSettings',
+    },
     {
       section: 'colorSettings',
       label: 'フキダシカラー設定',

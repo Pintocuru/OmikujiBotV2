@@ -14,14 +14,10 @@
       <span class="truncate">{{ sec.label }}</span>
     </button>
 
-    <!-- Hover Popup -->
-    <HoverPopup :x="mouseX" :y="mouseY" :visible="!!hoveredSection">
-      <component
-        v-if="hoveredSection?.component"
-        :is="staticSectionPreviewMap[hoveredSection.component]"
-        :data="hoveredItem"
-      />
-    </HoverPopup>
+    <!-- TODO:実装 Hover Popup
+    <HoverPopup v-if="hoveredSection?.component" :x="mouseX" :y="mouseY" :visible="!!hoveredSection">
+      <component :is="staticSectionPreviewMap[hoveredSection.component]" :data="hoveredItem" />
+    </HoverPopup>  -->
   </div>
 </template>
 
