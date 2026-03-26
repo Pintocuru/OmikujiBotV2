@@ -13,7 +13,7 @@
       :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      title="基本設定"
+      :title="s('baseSettings')?.label"
       :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="actionSets" :isIsEnabled="false" :isAccessLevel="false" />
@@ -25,7 +25,7 @@
       :icon="s('omikujiSet')?.icon"
       :isOpen="activeSection === 'omikujiSet'"
       @toggle="toggleSection('omikujiSet')"
-      title="おみくじ設定"
+      :title="s('omikujiSet')?.label"
       :description="s('omikujiSet')?.description"
     >
       <PostActionsEditor

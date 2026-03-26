@@ -11,7 +11,7 @@
       :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      title="基本設定"
+      :title="s('baseSettings')?.label"
       :description="s('baseSettings')?.description"
     >
       <CharacterBasicInfo :selectedItemKey="selectedItemKey" />
@@ -23,7 +23,7 @@
       :icon="s('colorSettings')?.icon"
       :isOpen="activeSection === 'colorSettings'"
       @toggle="toggleSection('colorSettings')"
-      title="フキダシカラー設定"
+      :title="s('colorSettings')?.label"
       :description="s('colorSettings')?.description"
     >
       <CharacterColorSettings :botName="selectedItem.displayName" :modelValue="selectedItem.color" />
@@ -35,7 +35,7 @@
       :icon="s('commentVoice')?.icon"
       :isOpen="activeSection === 'commentVoice'"
       @toggle="toggleSection('commentVoice')"
-      title="BOTコメント表現設定"
+      :title="s('commentVoice')?.label"
       :description="s('commentVoice')?.description"
     >
       <CommentVoiceSettings
@@ -51,7 +51,7 @@
       :icon="s('imageSettings')?.icon"
       :isOpen="activeSection === 'imageSettings'"
       @toggle="toggleSection('imageSettings')"
-      title="ジェネレーター用画像設定"
+      :title="s('imageSettings')?.label"
       :description="s('imageSettings')?.description"
     >
       <CharacterImageSettings :modelValue="selectedItem.image" :selectedItemKey="selectedItemKey" />

@@ -10,7 +10,7 @@
       :icon="s('baseSettings')?.icon"
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
-      title="基本設定"
+      :title="s('baseSettings')?.label"
       :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="placeholders" :isIsEnabled="false" :isAccessLevel="false" />
@@ -22,7 +22,7 @@
       :icon="s('placeholder')?.icon"
       :isOpen="activeSection === 'placeholder'"
       @toggle="toggleSection('placeholder')"
-      title="プレースホルダー設定"
+      :title="s('placeholder')?.label"
       :description="s('placeholder')?.description"
     >
       <PlaceholderValuesEditor :key="selectedItem.id" :placeholderKey="selectedItem.key" />

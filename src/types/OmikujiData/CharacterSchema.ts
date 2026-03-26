@@ -4,6 +4,7 @@ import { PresetMetadataSchema } from '@shared/types'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { rpgVoiceKeys } from './SoundKey'
 import { characterEmotionMap, displayModeMap } from '../MetaMaps'
+import { normalizedObject } from './ParsedDefault'
 
 /**
  * CharacterEmotion 感情ラベル
@@ -64,9 +65,9 @@ export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>
 export const CharacterSchema = z.object({
   ...PresetMetadataSchema.shape,
   displayName: z.string().default('').catch(''),
-  image: CharacterImageSetSchema.catch(CharacterImageSetSchema.parse({})),
-  color: CharacterColorScheme.catch(CharacterColorScheme.parse({})),
-  displayOption: DisplayOptionSchema.catch(DisplayOptionSchema.parse({})),
+  image: normalizedObject(CharacterImageSetSchema),
+  color: normalizedObject(CharacterColorScheme),
+  displayOption: normalizedObject(DisplayOptionSchema),
 })
 
 export type CharacterType = z.infer<typeof CharacterSchema>

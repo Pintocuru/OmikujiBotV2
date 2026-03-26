@@ -16,8 +16,8 @@
 
     <!-- TODO:実装 Hover Popup
     <HoverPopup v-if="hoveredSection?.component" :x="mouseX" :y="mouseY" :visible="!!hoveredSection">
-      <component :is="staticSectionPreviewMap[hoveredSection.component]" :data="hoveredItem" />
-    </HoverPopup>  -->
+      <component :is="staticSectionPreviewMap[hoveredSection.component]" :data="hoveredItem" :mode="category" />
+    </HoverPopup> -->
   </div>
 </template>
 

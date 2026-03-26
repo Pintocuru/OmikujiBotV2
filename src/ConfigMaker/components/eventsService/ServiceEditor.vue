@@ -17,7 +17,7 @@
       :isOpen="activeSection === 'baseSettings'"
       @toggle="toggleSection('baseSettings')"
       :variant="selectedItem.isEnabled ? 'secondary' : 'neutral'"
-      title="基本設定"
+      :title="s('baseSettings')?.label"
       :description="s('baseSettings')?.description"
     >
       <BaseSettingsEditor v-model="selectedItem" category="metas" />
@@ -30,7 +30,7 @@
         :icon="s('trigger')?.icon"
         :isOpen="activeSection === 'trigger'"
         @toggle="toggleSection('trigger')"
-        title="発動条件設定"
+        :title="s('trigger')?.label"
         :description="s('trigger')?.description"
       >
         <CommentTriggerEditor v-model="selectedItem.trigger" :selectedItemKey="selectedItemKey" />
@@ -42,7 +42,7 @@
         :icon="s('omikujiSet')?.icon"
         :isOpen="activeSection === 'omikujiSet'"
         @toggle="toggleSection('omikujiSet')"
-        title="おみくじ設定"
+        :title="s('omikujiSet')?.label"
         :description="s('omikujiSet')?.description"
       >
         <OmikujiSetEditor category="metas" :selectedItemKey="selectedItemKey" />

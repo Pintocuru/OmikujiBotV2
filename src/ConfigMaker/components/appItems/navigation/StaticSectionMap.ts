@@ -48,7 +48,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
     },
     {
       section: 'omikujiSet',
-      label: 'おみくじ設定',
+      label: 'アクション設定',
       icon: 'ListChecks',
       description: 'コメントで実行するおみくじの設定',
       component: 'omikujiSet',
@@ -71,7 +71,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
     },
     {
       section: 'omikujiSet',
-      label: 'おみくじ設定',
+      label: 'アクション設定',
       icon: 'ListChecks',
       description: 'おみくじの抽選設定や、おみくじの内容です',
       component: 'omikujiSet',
@@ -85,10 +85,16 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       description: 'サービスイベントの基本設定',
       component: 'baseSettings',
     },
-    { section: 'trigger', label: '発動条件', icon: 'Filter', description: '「おみくじを引く」発動条件の設定' },
+    {
+      section: 'trigger',
+      label: '発動条件',
+      icon: 'Filter',
+      description: '「おみくじを引く」発動条件の設定',
+      component: 'trigger',
+    },
     {
       section: 'omikujiSet',
-      label: 'おみくじ設定',
+      label: 'アクション設定',
       icon: 'ListChecks',
       description: 'おみくじの抽選設定や、おみくじの内容です',
       component: 'omikujiSet',
@@ -102,10 +108,16 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       description: 'リアクションイベントの基本設定',
       component: 'baseSettings',
     },
-    { section: 'trigger', label: '発動条件', icon: 'Filter', description: '「おみくじを引く」発動条件の設定' },
+    {
+      section: 'trigger',
+      label: '発動条件',
+      icon: 'Filter',
+      description: '「おみくじを引く」発動条件の設定',
+      component: 'trigger',
+    },
     {
       section: 'omikujiSet',
-      label: 'おみくじ設定',
+      label: 'アクション設定',
       icon: 'ListChecks',
       description: 'おみくじの抽選設定や、おみくじの内容です',
       component: 'omikujiSet',
@@ -123,9 +135,10 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
     },
     {
       section: 'omikujiSet',
-      label: 'おみくじ設定',
+      label: 'アクション設定',
       icon: 'ListChecks',
       description: 'コメントで実行するおみくじの設定',
+      component: 'actionSet',
     },
   ],
   placeholders: [
@@ -141,6 +154,7 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: 'プレースホルダー設定',
       icon: 'Brackets',
       description: '抽選するプレースホルダーを編集します',
+      component: 'placeholder',
     },
   ],
   characters: [
@@ -156,18 +170,21 @@ export const staticSectionMap: Record<CategoryType, SidebarSectionItem[]> = {
       label: 'フキダシカラー設定',
       icon: 'Palette',
       description: 'フキダシのカラー編集を行います',
+      component: 'colorSettings',
     },
     {
       section: 'commentVoice',
       label: 'BOTコメント表現設定',
       icon: 'MessageSquare',
       description: 'BOTコメントを読み上げる方法を指定します',
+      component: 'commentVoice',
     },
     {
       section: 'imageSettings',
       label: 'ジェネレーター用画像設定',
       icon: 'Image',
       description: 'ジェネレーターで表示する画像の設定',
+      component: 'imageSettings',
     },
   ],
 
