@@ -1,29 +1,18 @@
 // src/MainGenerator/ui/common/useStreamCounters.ts
-import { ref, computed, watchEffect, onMounted, onUnmounted } from 'vue'
+import { reactive, computed, watchEffect, onMounted, onUnmounted } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useAppStore } from '@main/stores/useAppStore'
-import type { ComputedRef } from 'vue'
+import type { Ref } from 'vue'
 
 /**
- * 共通ストリームカウンター取得コンポーザブル。
- *
- * StreamCounter / DeadAir など複数のコンポーネントで
- * 同じカウンター値・イベントラベルを利用するために共通化。
- *
- * @param eventKeys - 監視対象の CommentRule.key 一覧。
- *                    呼び出し元の設定から導出した ComputedRef を渡す。
- *                    StreamCounter: liverSettings.value.eventCounters
- *                    DeadAir      : settings.eventRules.map(r => r.counterKey)
+ * カウンター取得コンポーザブル
  */
-export function useStreamCounters(eventKeys: ComputedRef<string[]>) {
+export function useStreamCounters(eventKeys: Ref<string[]>, variableLabelMap: Ref<Record<string, string>>) {
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)
 
-  // ---------------------------------------------------------------------------
   // カウンター state
-  // ---------------------------------------------------------------------------
-
-  const counters = ref<Record<string, number>>({
+  const counters = reactive<Record<string, number>>({
     upVote: 0,
     viewer: 0,
     follower: 0,
@@ -33,10 +22,7 @@ export function useStreamCounters(eventKeys: ComputedRef<string[]>) {
     totalPrice: 0,
   })
 
-  // ---------------------------------------------------------------------------
   // eventLabels（CommentRule.key → name マッピング）
-  // ---------------------------------------------------------------------------
-
   const eventLabels = computed<Record<string, string>>(() => {
     const comments = data.value.comments
     const result: Record<string, string> = {}
@@ -46,64 +32,66 @@ export function useStreamCounters(eventKeys: ComputedRef<string[]>) {
     return result
   })
 
-  // ---------------------------------------------------------------------------
-  // 取得関数
-  // ---------------------------------------------------------------------------
+  // variableLabels（variableLabelMap をそのまま公開）
+  const variableLabels = computed<Record<string, string>>(() => variableLabelMap.value)
 
+  // 取得関数
   const fetchStats = () => {
     const { liveComments, syoken, totalPrice } = appStore.streamStats.getStats()
-    counters.value = {
-      ...counters.value,
+    Object.assign(counters, {
       lc: liveComments,
       commenter: appStore.userSession.stats.getUniqueCount(),
       syoken,
       totalPrice,
-    }
+    })
   }
 
+  // コメントイベントのkeyから値を取得
   const fetchEventCounters = () => {
     const grouped = appStore.userSession.visits.getGroupedByRule() ?? {}
     for (const ruleId of eventKeys.value) {
       if (!ruleId) continue
       const records = grouped[ruleId] ?? []
-      counters.value[ruleId] = records.reduce((sum, r) => sum + (r.visitValue ?? 0), 0)
+      counters[ruleId] = records.reduce((sum, r) => sum + (r.visitValue ?? 0), 0)
     }
   }
 
-  // ---------------------------------------------------------------------------
-  // リアクティブ更新（botMessages の変化をトリガーに統計を再取得）
-  // ---------------------------------------------------------------------------
+  // 変数プレースホルダーから値を取得
+  const updateVariableCounters = () => {
+    const evaluator = appStore.placeholderVariable.getEvaluator()
+    for (const key of Object.keys(variableLabelMap.value)) {
+      const v = evaluator.get(key)
+      counters[key] = typeof v === 'number' ? v : 0
+    }
+  }
 
+  // リアクティブ更新（botMessages の変化をトリガーに統計を再取得）
   const previewTick = computed(() => botMessages.value.length)
 
   watchEffect(() => {
     const _ = previewTick.value
     fetchStats()
     fetchEventCounters()
+    updateVariableCounters()
   })
 
-  // ---------------------------------------------------------------------------
   // Meta（upVote / viewer / follower）の購読
-  // ---------------------------------------------------------------------------
-
   let unsubscribeMeta: (() => void) | null = null
 
   onMounted(() => {
     const initial = appStore.serviceMetaStore.getCurrent()
-    counters.value = {
-      ...counters.value,
+    Object.assign(counters, {
       upVote: initial?.upVote ?? 0,
       viewer: initial?.viewer ?? 0,
       follower: initial?.follower ?? 0,
-    }
+    })
 
     unsubscribeMeta = appStore.serviceMetaStore.subscribe((event) => {
-      counters.value = {
-        ...counters.value,
+      Object.assign(counters, {
         upVote: event.current.upVote,
         viewer: event.current.viewer,
         follower: event.current.follower,
-      }
+      })
     })
   })
 
@@ -111,12 +99,9 @@ export function useStreamCounters(eventKeys: ComputedRef<string[]>) {
     unsubscribeMeta?.()
   })
 
-  // ---------------------------------------------------------------------------
-  // 公開
-  // ---------------------------------------------------------------------------
-
   return {
     counters,
     eventLabels,
+    variableLabels,
   }
 }

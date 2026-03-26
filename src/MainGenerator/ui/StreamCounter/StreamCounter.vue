@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { StreamCounterSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
@@ -20,5 +20,5 @@
 
   const eventKeys = computed(() => liverSettings.value?.eventCounters ?? [])
 
-  const { counters, eventLabels } = useStreamCounters(eventKeys)
+  const { counters, eventLabels } = useStreamCounters(eventKeys, ref({}))
 </script>

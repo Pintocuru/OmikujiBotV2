@@ -2,44 +2,56 @@
 import { z } from 'zod'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { normalizedObject } from '../ParsedDefault'
+import { streamDefaultKeyLabels } from './StreamCounterSchema'
+import { idSchema } from '@shared/types'
 
 /**
  * ライブクロック LiveClock
  */
-export const hogeMap = {
+
+// カウンターの種類
+export const cookieComponentMap = {
   sakura: {
     label: 'さくらツイン🌸',
-    kazu: 2,
+    maxCounters: 2,
     isColor: false,
+  },
+  // 追加例
+  single: {
+    label: 'シングル🍪',
+    maxCounters: 1,
+    isColor: true,
   },
 } as const
 
-export const cookieComponentMap = {
-  sakura: 'さくらツイン🌸',
-} as const
-
-const cookieComponentsEnum = Object.keys(cookieComponentMap) as CookieComponent[]
 export type CookieComponent = keyof typeof cookieComponentMap
+export const cookieComponentsEnum = Object.keys(cookieComponentMap) as CookieComponent[]
 
-// カウンターの種類
-/**
-type:
- default:高評価・閲覧数など、storeから取得できる値
-  event: コメントイベントから取得する値
-  variable : 変数プレースホルダーから取得する値
-   
-
-
- */
+// カウントする対象
+export const CookieCounterCountersSchema = z.discriminatedUnion('type', [
+  z.object({
+    id: idSchema,
+    type: z.literal('default').default('default'),
+    target: z.enum(streamDefaultKeyLabels).default('syoken'),
+    isMax: z.boolean().optional(),
+  }),
+  z.object({
+    id: idSchema,
+    type: z.literal('event').default('event'),
+    target: z.string(),
+    label: z.string(),
+  }),
+  z.object({
+    id: idSchema,
+    type: z.literal('variable').default('variable'),
+    target: z.string(),
+    label: z.string(),
+  }),
+])
 
 export const CookieCounterSchema = z.object({
   component: z.enum(cookieComponentsEnum).default('sakura').catch('sakura'), // カウンタースタイル
   color: normalizedObject(DaisyUiThemeFieldsSchema),
-
-  // 任意のカウンターは3つまで
-  counter1: z.enum(streamDefaultKeyLabels).default('syoken').catch('syoken'), // デフォルトカウンター（6種から選ぶ、順序なし）
-  counter2: z.enum(streamDefaultKeyLabels).default('syoken').catch('syoken'), // デフォルトカウンター（6種から選ぶ、順序なし）
-  counter3: z.enum(streamDefaultKeyLabels).default('syoken').catch('syoken'), // デフォルトカウンター（6種から選ぶ、順序なし）
-  eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
+  counters: z.array(CookieCounterCountersSchema).max(8).default([]), // 任意のカウンター
 })
 export type CookieCounterType = z.infer<typeof CookieCounterSchema>

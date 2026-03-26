@@ -17,7 +17,8 @@
       </template>
 
       <!-- meta -->
-      <ReactionDebugPanel v-if="isDev && 1" />
+      <ReactionDebugPanel v-if="isDev && 0" />
+      <CookieCounter v-if="isDev && 1" />
     </div>
 
     <!-- わんコメが起動されていない場合のエラー表示 -->
@@ -35,6 +36,7 @@
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
   import { COMPONENT_MAP } from './ui/ComponentMaps'
+  import CookieCounter from './ui/CookieCounter/CookieCounter.vue'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
