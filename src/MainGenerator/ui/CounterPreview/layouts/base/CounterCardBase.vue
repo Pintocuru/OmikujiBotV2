@@ -16,10 +16,10 @@
 </template>
 
 <script setup lang="ts">
-  import { SettingsCounterType } from '@/types/'
+  import { CounterPreviewType } from '@/types/'
 
   defineProps<{
-    counterSetting: SettingsCounterType
+    counterSetting: CounterPreviewType
     isBouncing?: boolean
   }>()
 </script>

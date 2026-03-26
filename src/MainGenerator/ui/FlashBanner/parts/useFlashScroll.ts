@@ -1,12 +1,12 @@
 // src/MainGenerator/ui/FlashBanner/parts/useFlashScroll.ts
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
-import type { SettingsFlashBannerType } from '@/types/OmikujiData/'
+import type { FlashBannerType } from '@/types/OmikujiData/'
 
 interface UseFlashScrollOptions {
   /** メッセージ（HTMLタグ除去後の長さでduration計算に使用） */
   getMessage: () => string
   /** settings.scrollSpeed / settings.scrollReturnMode を参照 */
-  getSettings: () => SettingsFlashBannerType
+  getSettings: () => FlashBannerType
 }
 
 const DOM_RENDER_DELAY = 50

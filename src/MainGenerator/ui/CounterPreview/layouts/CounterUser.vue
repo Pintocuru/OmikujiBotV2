@@ -21,14 +21,14 @@
 </template>
 
 <script setup lang="ts">
-  import { SettingsCounterType } from '@/types/'
+  import { CounterPreviewType } from '@/types/'
   import { useCounterDisplay } from './base/useCounterDisplay'
   import CounterCardBase from './base/CounterCardBase.vue'
   import UserNameBadge from './UserNameBadge.vue'
   import { UserNameType } from '@shared/types'
 
   const props = defineProps<{
-    counterSetting: SettingsCounterType
+    counterSetting: CounterPreviewType
     count: number | null
     users: UserNameType[]
   }>()

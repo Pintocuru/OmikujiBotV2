@@ -11,6 +11,7 @@ import SocialRoster from './SocialRoster/SocialRoster.vue'
 import FlashBanner from './FlashBanner/FlashBanner.vue'
 import DeadAir from './DeadAir/DeadAir.vue'
 import StreamCounter from './StreamCounter/StreamCounter.vue'
+import CookieCounter from './CookieCounter/CookieCounter.vue'
 
 /**
  * UiKind と Vueコンポーネントの純粋マッピング
@@ -22,6 +23,7 @@ export const COMPONENT_MAP: Record<UiKind, any> = {
   ranking: GameRankingViewer,
   counter: CounterPreview,
   streamCounter: StreamCounter,
+  cookieCounter: CookieCounter,
   winnerGroup: WinnerGroup,
   flightSeat: FlightSeat,
   socialRoster: SocialRoster,

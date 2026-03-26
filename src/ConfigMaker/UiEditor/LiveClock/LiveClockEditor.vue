@@ -7,7 +7,7 @@
   <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(style, key) in cookieComponentMap"
+        v-for="(style, key) in clockComponentMap"
         :key="key"
         class="badge cursor-pointer"
         :class="liveClock.component === key ? 'badge-primary' : 'badge-outline'"
@@ -52,7 +52,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { cookieComponentMap, LiveClockSchema } from '@/types/'
+  import { clockComponentMap, LiveClockSchema } from '@/types/'
   import LiveClockPreview from './LiveClockPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

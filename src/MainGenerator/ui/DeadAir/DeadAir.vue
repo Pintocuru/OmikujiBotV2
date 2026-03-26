@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
+  import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useAppStore } from '@main/stores/useAppStore'
   import { DeadAirSchema } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
@@ -27,8 +27,8 @@
 
   const settings = computed(() => DeadAirSchema.parse(data.value.components.settings.deadAir ?? {}))
   const eventKeys = computed(() => settings.value.eventRules.map((r) => r.counterKey).filter(Boolean))
-  const { counters } = useStreamCounters(eventKeys)
+  const { counters } = useStreamCounters(eventKeys, ref({}))
 
   const { phase, formattedTime, isWarning, isCritical, currentLives, bonusFraction, lifeFraction, optionalValue } =
-    useDeadAirLogic(settings, counters)
+    useDeadAirLogic(settings, ref(counters))
 </script>

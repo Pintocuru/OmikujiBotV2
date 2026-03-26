@@ -37,14 +37,14 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
+  import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
   import { useMessageTransition } from './useMessageTransition'
   import { useFlashScroll } from './useFlashScroll'
 
   const props = defineProps<{
-    settings: SettingsFlashBannerType
+    settings: FlashBannerType
     message: string
     layers: string[]
     color: CharacterColorType

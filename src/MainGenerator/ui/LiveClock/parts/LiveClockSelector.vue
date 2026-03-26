@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import { CookieComponent, LiveClockType } from '@/types/'
+  import { ClockComponent, LiveClockType } from '@/types/'
   import morning from '../layouts/Morning.vue'
   import soundPlayer from '../layouts/SoundPlayer.vue'
   import clearGlass from '../layouts/ClearGlass.vue'
@@ -29,7 +29,7 @@
     currentMsg: string
   }>()
 
-  const componentMap: Record<CookieComponent, Component> = {
+  const componentMap: Record<ClockComponent, Component> = {
     morning,
     soundPlayer,
     clearGlass,

@@ -38,7 +38,7 @@ export class SpecialActionProcessor {
        */
       // おみくじ回数をリセットする
       case 'resetOmikuji': {
-        this.store.userSession.visits.resetRule(actionItem.key)
+        this.store.userSession.visits.resetEvent(actionItem.key)
         postSystemMessage(`${actionItem.name}のおみくじ回数をリセットしました`, { username: '__INFO__' })
         return { handled: true, isCountEvent: false }
       }

@@ -23,10 +23,10 @@
   import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
   import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
-  import type { SettingsFlashBannerType } from '@/types/OmikujiData/'
+  import type { FlashBannerType } from '@/types/OmikujiData/'
 
   const props = defineProps<{
-    settings: SettingsFlashBannerType
+    settings: FlashBannerType
     messageText: string
   }>()
 

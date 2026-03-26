@@ -5,6 +5,7 @@ import ToastComponentEditor from './ToastWidgets/ToastWidgetsEditor.vue'
 import GameRankingEditor from './GameRanking/GameRankingEditor.vue'
 import CounterPreviewEditor from './CounterPreview/CounterPreviewEditor.vue'
 import StreamCounterEditor from './StreamCounter/StreamCounterEditor.vue'
+import CookieCounterEditor from './CookieCounter/CookieCounterEditor.vue'
 import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
 import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
 import SocialRosterEditor from './SocialRoster/SocialRosterEditor.vue'
@@ -107,6 +108,15 @@ export const uiItemMap: Record<string, UiItem> = {
     description: '複数カウンターの表示',
     component: StreamCounterEditor,
     targetKey: 'streamCounter',
+    visibility: [],
+  },
+
+  cookieCounter: {
+    icon: 'Cookie',
+    title: 'クッキーカウンターアイテム',
+    description: '単数カウンターの表示',
+    component: CookieCounterEditor,
+    targetKey: 'cookieCounter',
     visibility: [],
   },
 

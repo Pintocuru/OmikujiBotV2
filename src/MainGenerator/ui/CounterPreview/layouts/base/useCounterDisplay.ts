@@ -1,11 +1,11 @@
 // src/MainGenerator/ui/CounterPreview/layouts/base/useCounterDisplay.ts
 import { ref, watch, computed } from 'vue'
-import { SettingsCounterType } from '@/types/'
+import { CounterPreviewType } from '@/types/'
 import { UserNameType } from '@shared/types'
 
 export function useCounterDisplay(
   props: {
-    counterSetting: SettingsCounterType
+    counterSetting: CounterPreviewType
     count: number | null
     users: UserNameType[]
   },

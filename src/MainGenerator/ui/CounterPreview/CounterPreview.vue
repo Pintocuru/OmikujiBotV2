@@ -43,17 +43,17 @@
         ? appStore.streamStats.getStats().liveComments
         : appStore.userSession.stats.getUniqueCount()
     }
+
     return target === 'draw'
-      ? appStore.userSession.visits.getTotalByRuleId(effectiveRuleKey.value)
-      : appStore.userSession.visits.getByRuleId(effectiveRuleKey.value).length
+      ? appStore.userSession.visits.getTotal(effectiveRuleKey.value)
+      : appStore.userSession.visits.getUniqueCount(effectiveRuleKey.value)
   })
 
   const lastUserName = computed<UserNameType | null>(() => {
     const _ = tick.value
-    if (!isRuleActive.value) {
-      return appStore.userSession.stats.getLatest()
-    }
-    return appStore.userSession.visits.getLatestByRuleId(effectiveRuleKey.value)
+    if (!isRuleActive.value) return appStore.userSession.stats.getLatest()
+
+    return appStore.userSession.visits.getLatest(effectiveRuleKey.value)
   })
 
   const userList = ref<UserNameType[]>([])

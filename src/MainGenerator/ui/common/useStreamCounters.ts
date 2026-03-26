@@ -48,11 +48,10 @@ export function useStreamCounters(eventKeys: Ref<string[]>, variableLabelMap: Re
 
   // コメントイベントのkeyから値を取得
   const fetchEventCounters = () => {
-    const grouped = appStore.userSession.visits.getGroupedByRule() ?? {}
-    for (const ruleId of eventKeys.value) {
-      if (!ruleId) continue
-      const records = grouped[ruleId] ?? []
-      counters[ruleId] = records.reduce((sum, r) => sum + (r.visitValue ?? 0), 0)
+    for (const eventKey of eventKeys.value) {
+      if (!eventKey) continue
+      const records = appStore.userSession.visits.getByEvent(eventKey)
+      counters[eventKey] = records.reduce((sum, r) => sum + (r.visitValue ?? 0), 0)
     }
   }
 

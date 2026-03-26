@@ -26,6 +26,7 @@
         </div>
       </div>
     </div>
+    <div v-if="slots.length === 0" class="text-pink-400 text-2xl mt-10">まだ何も咲いていません…</div>
   </div>
 </template>
 
@@ -48,7 +49,7 @@
 
   const slots = computed(() =>
     props.counterDefs.slice(0, 2).map((def) => ({
-      label: getLabel(def.type, def.target, def.type === 'default' ? undefined : def.label),
+      label: getLabel(def.type, def.target, def.type !== 'variable' ? undefined : def.label),
       value: props.counters[def.target] ?? 0,
     }))
   )

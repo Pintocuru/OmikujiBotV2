@@ -109,7 +109,7 @@
     })
 
     // 対象のユーザーがいないなら稼働しない
-    const visits = appStore.userSession.visits.getByRuleId(ruleKey.value)
+    const visits = appStore.userSession.visits.getByEvent(ruleKey.value)
     if (visits.length === 0) return
 
     // わんコメにpost

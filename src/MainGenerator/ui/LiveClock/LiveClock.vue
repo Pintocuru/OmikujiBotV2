@@ -38,11 +38,9 @@
   })
 
   /* ───────── 時計 ───────── */
-
   const isMounted = ref(false)
 
   /* ───────── フリップ制御 ───────── */
-
   const isFlipped = ref(false)
   const currentMsg = ref('')
 

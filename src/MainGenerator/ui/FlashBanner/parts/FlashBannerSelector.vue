@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import type { CharacterColorType, SettingsFlashBannerType } from '@/types/OmikujiData/'
+  import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import type { FlashComponent } from '@/types/'
   import StandardItem from './StandardItem.vue'
   import TickerItem from './TickerItem.vue'
@@ -24,7 +24,7 @@
 
   const props = withDefaults(
     defineProps<{
-      settings: SettingsFlashBannerType
+      settings: FlashBannerType
       message: string
       layers: string[]
       color: CharacterColorType

@@ -13,7 +13,7 @@
         <!-- 未使用バッジ -->
         <span
           class="badge badge-outline cursor-pointer select-none"
-          :class="{ 'badge-ghost opacity-40': getSlotKind(slot) !== '' }"
+          :class="{ 'badge-ghost': getSlotKind(slot) !== '' }"
           @click="updateSlotKind(slot, '')"
         >
           未使用
@@ -26,7 +26,7 @@
           class="badge cursor-pointer select-none"
           :class="[
             slotConfigs.find((s) => s.slot === slot)?.badgeClass,
-            getSlotKind(slot) === comp.kind ? 'opacity-100' : 'badge-outline opacity-40',
+            getSlotKind(slot) === comp.kind ? '' : 'badge-outline',
             comp.disabled ? 'cursor-not-allowed' : '',
           ]"
           :title="comp.disabledReason || comp.label"
