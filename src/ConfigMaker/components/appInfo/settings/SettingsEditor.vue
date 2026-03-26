@@ -1,11 +1,7 @@
 <!-- src/ConfigMaker/components/appInfo/settings/SettingsEditor.vue -->
 <template>
   <!-- ジェネレーター設定 -->
-  <SubSectionHeader
-    icon="Sparkles"
-    title="ジェネレーター設定"
-    description="UI・効果音など、配信挙動に関わる設定をまとめるセクション"
-  />
+  <SubSectionHeader icon="Sparkles" title="ジェネレーター設定" description="UI・効果音など、配信挙動に関わる設定" />
 
   <!-- 効果音を鳴らす -->
   <SettingItem label="効果音を鳴らす" description="BOTの効果音を再生するか">
@@ -29,7 +25,7 @@
   <SubSectionHeader
     icon="Settings"
     title="コンフィグエディター設定"
-    description="エディターそのものの見た目・動作・ライセンスなど、アプリ本体の設定をまとめるセクション"
+    description="エディターの見た目・動作・ライセンスなど、アプリ本体の設定"
   />
   <!-- DaisyUIテーマ -->
   <SettingItem label="エディターテーマ" description="DaisyUiのカラーテーマを設定します" forceMode="pro">

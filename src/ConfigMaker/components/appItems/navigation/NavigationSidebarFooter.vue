@@ -16,7 +16,7 @@
         </button>
       </template>
 
-      <LicenseBadge />
+      <!-- ライセンススイッチ -->
       <LicenseSwitch />
     </template>
 
@@ -34,6 +34,9 @@
         設定を出力(js)
       </button>
     </template>
+
+    <!-- ライセンスバッジ -->
+    <LicenseBadge />
   </div>
 </template>
 
