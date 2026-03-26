@@ -42,14 +42,14 @@
   import NavigationSidebarFooter from './NavigationSidebarFooter.vue'
   import { PanelLeftClose, PanelLeftOpen, FolderCog } from 'lucide-vue-next'
 
-  // ── ストア ─────────────────────────────────────────────
+  // ストア ─
   const navigationStore = useNavigationStore()
   const { activeSection } = storeToRefs(navigationStore)
 
   const devStore = useDevStore()
   const { isServerConnected } = storeToRefs(devStore)
 
-  // ── ライセンスモード ──────────────────────────────────
+  // ライセンスモード
   const { isAdv, isPro, isGod } = useSettingMode()
 
   const currentMode = computed<'god' | 'pro' | 'adv' | 'basic'>(() => {
@@ -68,13 +68,13 @@
 
   const theme = computed(() => modeColorMap[currentMode.value])
 
-  // ── サイドバースタイル ────────────────────────────────
+  // サイドバースタイル
   const sidebarBorderClass = computed(() => `border-${theme.value} border-r-2`)
 
-  // ── 展開状態 ──────────────────────────────────────────
+  // 展開状態
   const isExpanded = ref(true)
 
-  // ── プリセットマネージャー ────────────────────────────
+  // プリセットマネージャー
   const openPresetManager = () => {
     activeSection.value = 'presetManager'
   }

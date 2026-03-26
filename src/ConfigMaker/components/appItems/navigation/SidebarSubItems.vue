@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/appItems/navigation/SidebarSubItems.vue -->
 <template>
   <!-- Record カテゴリ（ドラッグ可能） -->
   <div v-if="isRecord">

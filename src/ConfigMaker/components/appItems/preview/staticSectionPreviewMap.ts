@@ -1,4 +1,4 @@
-// src/ConfigMaker/components/preview/staticSectionPreviewMap.ts
+// src/ConfigMaker/components/appItems/preview/staticSectionPreviewMap.ts
 import type { Component } from 'vue'
 
 // Previewコンポーネント

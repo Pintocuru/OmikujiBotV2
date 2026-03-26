@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/appItems/navigation/SidebarSubItem.vue -->
 <template>
   <div
     class="group flex items-center gap-1 pl-4 pr-1 rounded hover:bg-base-300 cursor-pointer"

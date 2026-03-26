@@ -1,4 +1,4 @@
-//
+// src/ConfigMaker/components/appItems/navigation/StaticSectionMap.ts
 import { CategoryType } from '@/types'
 import { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
 

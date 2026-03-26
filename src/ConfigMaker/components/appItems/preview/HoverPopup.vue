@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/appItems/preview/HoverPopup.vue -->
 <template>
   <div v-if="visible" class="fixed z-50 pointer-events-none" :style="style">
     <div class="bg-base-200 shadow-lg rounded p-2 pointer-events-auto">

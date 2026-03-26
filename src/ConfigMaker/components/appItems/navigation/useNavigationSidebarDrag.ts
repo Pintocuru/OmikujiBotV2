@@ -1,3 +1,4 @@
+// src/ConfigMaker/components/appItems/navigation/useNavigationSidebarDrag.ts
 import { Ref, ref, watch, nextTick } from 'vue'
 import { storeToRefs } from 'pinia'
 import { CategoryType, RecordCategoryType } from '@/types/OmikujiData/'

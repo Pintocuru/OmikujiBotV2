@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/appItems/navigation/SidebarSectionList.vue -->
 <template>
   <div class="relative">
     <button
