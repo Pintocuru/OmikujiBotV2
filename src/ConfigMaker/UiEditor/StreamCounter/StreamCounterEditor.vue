@@ -102,8 +102,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsStreamSchema, labelStyleMap, streamComponentMap, streamDefaultMap } from '@/types/'
-  import type { StreamDefaultKey, SettingsStreamCounterType } from '@/types/'
+  import { StreamCounterSchema, labelStyleMap, streamComponentMap, streamDefaultMap } from '@/types/'
+  import type { StreamDefaultKey, StreamCounterType } from '@/types/'
   import StreamCounterPreview from './StreamCounterPreview.vue'
   import ColorCycleEditor from './ColorCycleEditor.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -115,18 +115,18 @@
   const { data } = storeToRefs(omikujiStore)
   const { isAdv, isPro } = useSettingMode()
 
-  const streamCounter = computed(() => data.value.components.settings.streamCounter ?? SettingsStreamSchema.parse({}))
+  const streamCounter = computed(() => data.value.components.settings.streamCounter ?? StreamCounterSchema.parse({}))
 
   // ---- Field Update ----
-  const updateField = (field: keyof SettingsStreamCounterType, value: unknown) => {
+  const updateField = (field: keyof StreamCounterType, value: unknown) => {
     omikujiStore.updateComponentSettings('streamCounter', {
       ...streamCounter.value,
       [field]: value,
     })
   }
 
-  const resetField = (field: keyof SettingsStreamCounterType) => {
-    const defaults = SettingsStreamSchema.parse({})
+  const resetField = (field: keyof StreamCounterType) => {
+    const defaults = StreamCounterSchema.parse({})
     updateField(field, defaults[field])
   }
 

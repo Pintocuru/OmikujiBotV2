@@ -17,7 +17,7 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { SettingsDeadSchema } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
+  import { DeadAirSchema } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import { useDeadAirLogic } from './composables/useDeadAirLogic'
   import DeadAirSelector from './parts/DeadAirSelector.vue'
@@ -25,7 +25,7 @@
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
 
-  const settings = computed(() => SettingsDeadSchema.parse(data.value.components.settings.deadAir ?? {}))
+  const settings = computed(() => DeadAirSchema.parse(data.value.components.settings.deadAir ?? {}))
   const eventKeys = computed(() => settings.value.eventRules.map((r) => r.counterKey).filter(Boolean))
   const { counters } = useStreamCounters(eventKeys)
 

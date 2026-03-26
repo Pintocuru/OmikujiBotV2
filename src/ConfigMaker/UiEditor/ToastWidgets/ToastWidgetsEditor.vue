@@ -97,7 +97,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleSchema, SettingsToastSchema, useFontFamily } from '@/types/'
+  import { BotMessageBubbleSchema, ToastWidgetsSchema, useFontFamily } from '@/types/'
   import CharacterSelectorMulti from './CharacterSelectorMulti.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
@@ -117,7 +117,7 @@
   const { updateCommonStyleField } = useCommonStyleUpdate()
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
-  const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
+  const toastSettings = computed(() => data.value.components.settings.toast ?? ToastWidgetsSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
   const characterArray = computed(() => Object.values(data.value.characters))
 
@@ -139,7 +139,7 @@
 
   // リセット関数
   const resetField = (field: keyof typeof toastSettings.value) => {
-    const defaults = SettingsToastSchema.parse({})
+    const defaults = ToastWidgetsSchema.parse({})
     updateField(field, defaults[field])
   }
 

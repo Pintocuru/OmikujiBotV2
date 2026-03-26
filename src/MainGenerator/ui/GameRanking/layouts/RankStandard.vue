@@ -17,14 +17,14 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { SettingsRankingType } from '@/types/OmikujiData/'
+  import { GameRankingType } from '@/types/OmikujiData/'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import GameRankingScore from './RankStandard/GameRankingScore.vue'
   import GameRankingList from './RankStandard/GameRankingList.vue'
 
   const props = defineProps<{
     botMessageExtra: BotMessageExtraType[]
-    settings: SettingsRankingType
+    settings: GameRankingType
   }>()
 
   // スコア表示用（scoreValue を持つもの）

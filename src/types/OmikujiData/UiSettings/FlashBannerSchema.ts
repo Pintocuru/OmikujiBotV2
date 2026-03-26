@@ -33,7 +33,7 @@ const defaultMessage = `<<
   '登録者数【<<follower>>】人 ご視聴ありがとうございます'
 >>`
 
-export const SettingsBannerSchema = z.object({
+export const FlashBannerSchema = z.object({
   component: z.enum(flashComponentsEnum).default('standard').catch('standard'),
   label: z.string().default('速報').catch(''),
   iconSize: z.number().int().min(0).max(24).default(12).catch(12),
@@ -44,4 +44,4 @@ export const SettingsBannerSchema = z.object({
   scrollSpeed: z.number().min(0).max(100).default(50).catch(50), // テキストスクロール速度 (px/sec)
   scrollReturnMode: z.enum(['loop', 'fade']).default('loop').catch('loop'), // 長文スクロール終了後の戻り方
 })
-export type SettingsFlashBannerType = z.infer<typeof SettingsBannerSchema>
+export type FlashBannerType = z.infer<typeof FlashBannerSchema>

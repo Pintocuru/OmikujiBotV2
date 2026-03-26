@@ -191,7 +191,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flashComponentMap, scrollReturnModeMap, SettingsBannerSchema } from '@/types/'
+  import { flashComponentMap, scrollReturnModeMap, FlashBannerSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CharacterSelectorSingle from '@config/UiEditor/ToastWidgets/CharacterSelectorSingle.vue'
@@ -207,7 +207,7 @@
   const { isCharacter } = useVisibilityAccess()
   const { updateCommonStyleField } = useCommonStyleUpdate()
 
-  const flashBanner = computed(() => data.value.components.settings.flashBanner ?? SettingsBannerSchema.parse({}))
+  const flashBanner = computed(() => data.value.components.settings.flashBanner ?? FlashBannerSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // Field Updates
@@ -219,7 +219,7 @@
   }
 
   const resetField = (field: keyof typeof flashBanner.value) => {
-    const defaults = SettingsBannerSchema.parse({})
+    const defaults = FlashBannerSchema.parse({})
     updateField(field, defaults[field])
   }
 

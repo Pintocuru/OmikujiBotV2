@@ -1,5 +1,5 @@
 // src/common/MockUser/MockGenerators.ts
-import { ExtraListsSchema, SettingsRankingType } from '@/types/'
+import { ExtraListsSchema, GameRankingType } from '@/types/'
 import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 import {
   UserStatsRecord,
@@ -118,10 +118,7 @@ export const generateDummyUserStats = (count: number, locale: LocaleType = 'ja')
 }
 
 // ランキング表示用のダミー BotMessage を生成
-export const generateDummyMessages = (
-  settings: SettingsRankingType,
-  locale: LocaleType = 'ja'
-): BotMessageExtraType[] => {
+export const generateDummyMessages = (settings: GameRankingType, locale: LocaleType = 'ja'): BotMessageExtraType[] => {
   const count = settings.limit ?? 10
   const usedNames = new Set<string>()
   const { min, max } = RANKING_POINTS_RANGE

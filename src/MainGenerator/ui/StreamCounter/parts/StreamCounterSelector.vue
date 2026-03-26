@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
   import { computed, toRef, type Component } from 'vue'
-  import type { SettingsStreamCounterType, LiverComponent } from '@/types/'
+  import type { StreamCounterType, LiverComponent } from '@/types/'
 
   import BasicCirclePlainItem from '../layouts/BasicCirclePlain.vue'
   import BasicCircleItem from '../layouts/BasicCircle.vue'
@@ -35,7 +35,7 @@
   import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
 
   const props = defineProps<{
-    settings: SettingsStreamCounterType
+    settings: StreamCounterType
     counters: Record<string, number>
     eventLabels: Record<string, string>
   }>()

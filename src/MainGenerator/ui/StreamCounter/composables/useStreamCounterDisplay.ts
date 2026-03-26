@@ -1,13 +1,13 @@
 // src/MainGenerator/ui/StreamCounter/composables/useStreamCounterDisplay.ts
 import { computed, type Ref } from 'vue'
-import type { SettingsStreamCounterType } from '@/types/'
+import type { StreamCounterType } from '@/types/'
 import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
 
 /**
  * StreamCounter 系コンポーネント共通のキー列挙・カラーパターン取得ロジック
  * BasicCircle など複数のスタイルコンポーネントで再利用できるよう切り出し
  */
-export function useStreamCounterDisplay(settings: Ref<SettingsStreamCounterType>) {
+export function useStreamCounterDisplay(settings: Ref<StreamCounterType>) {
   /**
    * 表示するカウンターキーの一覧（デフォルト + イベント、最大8件）
    */

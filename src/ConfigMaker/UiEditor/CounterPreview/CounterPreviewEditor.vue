@@ -81,7 +81,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { counterComponentMap, SettingsCounterSchema } from '@/types/'
+  import { counterComponentMap, CounterPreviewSchema } from '@/types/'
   import CounterPreviewPreview from './CounterPreviewPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -96,7 +96,7 @@
 
   const rulesComment = computed(() => data.value.comments)
 
-  const counter = computed(() => data.value.components.settings.counter ?? SettingsCounterSchema.parse({}))
+  const counter = computed(() => data.value.components.settings.counter ?? CounterPreviewSchema.parse({}))
 
   // 更新関数
   const updateField = (field: keyof typeof counter.value, value: any) => {
@@ -108,7 +108,7 @@
 
   // リセット関数
   const resetField = (field: keyof typeof counter.value) => {
-    const defaults = SettingsCounterSchema.parse({})
+    const defaults = CounterPreviewSchema.parse({})
     updateField(field, defaults[field])
   }
 

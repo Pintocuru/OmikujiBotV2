@@ -16,12 +16,12 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { SettingsDeadType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
+  import type { DeadAirType } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
   import { DeadAirPhase } from '../composables/useDeadAirLogic'
   import DeadAirBomb from '../layouts/DeadAirBomb.vue'
 
   const props = defineProps<{
-    settings: SettingsDeadType
+    settings: DeadAirType
     phase: DeadAirPhase
     formattedTime: string
     isWarning: boolean

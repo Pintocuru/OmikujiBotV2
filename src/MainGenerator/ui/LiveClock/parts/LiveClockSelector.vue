@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import { ClockComponent, SettingsClockType } from '@/types/'
+  import { CookieComponent, LiveClockType } from '@/types/'
   import morning from '../layouts/Morning.vue'
   import soundPlayer from '../layouts/SoundPlayer.vue'
   import clearGlass from '../layouts/ClearGlass.vue'
@@ -22,14 +22,14 @@
   import disco from '../layouts/Disco.vue'
 
   const props = defineProps<{
-    settings: SettingsClockType
+    settings: LiveClockType
     defaultMessage: string
     isMounted: boolean
     isFlipped: boolean
     currentMsg: string
   }>()
 
-  const componentMap: Record<ClockComponent, Component> = {
+  const componentMap: Record<CookieComponent, Component> = {
     morning,
     soundPlayer,
     clearGlass,

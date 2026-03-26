@@ -19,11 +19,11 @@ export const counterComponentMap = {
 const counterComponentValues = Object.keys(counterComponentMap) as CounterComponent[]
 export type CounterComponent = keyof typeof counterComponentMap
 
-export const SettingsCounterSchema = z.object({
+export const CounterPreviewSchema = z.object({
   component: z.enum(counterComponentValues).default('counterUser').catch('counterUser'),
   targetEventKey: z.string().default('').catch(''), // どのruleを対象にするか
   target: z.enum(['draw', 'user']).default('draw').catch('draw'), // 対象は回数かユーザー数か
   label: z.string().default('Counter').catch('Counter'), // カウンターのラベル
   color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
 })
-export type SettingsCounterType = z.infer<typeof SettingsCounterSchema>
+export type CounterPreviewType = z.infer<typeof CounterPreviewSchema>

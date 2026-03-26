@@ -3,17 +3,18 @@ import { z } from 'zod'
 import { CharacterColorScheme, DisplayOptionSchema } from './CharacterSchema'
 import { normalizedObject } from './ParsedDefault'
 import { fontFamilyMap, uiKindMap, UiSlotMap, uiSpecialSetMap } from '../MetaMaps'
-import { SettingsBubbleSchema } from './UiSettings/SettingsBubbleSchema'
-import { SettingsToastSchema } from './UiSettings/SettingsToastSchema'
-import { SettingsBannerSchema } from './UiSettings/SettingsBannerSchema'
-import { SettingsRankingSchema } from './UiSettings/SettingsRankingSchema'
-import { SettingsCounterSchema } from './UiSettings/SettingsCounterSchema'
-import { SettingsWinnerSchema } from './UiSettings/SettingsWinnerSchema'
-import { SettingsFlightSchema } from './UiSettings/SettingsFlightSchema'
-import { SettingsSocialSchema } from './UiSettings/SettingsSocialSchema'
-import { SettingsStreamSchema as SettingsStreamSchema } from './UiSettings/SettingsLiverSchema'
-import { SettingsDeadSchema } from './UiSettings/SettingsDeadSchema'
-import { SettingsClockSchema } from './UiSettings/SettingsClockSchema'
+import { CommentBubbleSchema } from './UiSettings/CommentBubbleSchema'
+import { ToastWidgetsSchema } from './UiSettings/ToastWidgetsSchema'
+import { FlashBannerSchema } from './UiSettings/FlashBannerSchema'
+import { GameRankingSchema } from './UiSettings/GameRankingSchema'
+import { CounterPreviewSchema } from './UiSettings/CounterPreviewSchema'
+import { WinnerGroupSchema } from './UiSettings/WinnerGroupSchema'
+import { FlightSeatSchema } from './UiSettings/FlightSeatSchema'
+import { SocialRosterSchema } from './UiSettings/SocialRosterSchema'
+import { StreamCounterSchema } from './UiSettings/StreamCounterSchema'
+import { DeadAirSchema } from './UiSettings/DeadAirSchema'
+import { LiveClockSchema } from './UiSettings/LiveClockSchema'
+import { CookieCounterSchema } from './UiSettings/CookieCounterSchema'
 
 /**
  * スロット定義
@@ -86,31 +87,33 @@ export type UiCommonStyleType = z.infer<typeof UiCommonStyleSchema>
  * UiSettingsSchema オブジェクトのスキーマ
  */
 export const settingsSchemaMap = {
-  bubble: SettingsBubbleSchema,
-  toast: SettingsToastSchema,
-  liveClock: SettingsClockSchema,
-  ranking: SettingsRankingSchema,
-  counter: SettingsCounterSchema,
-  winnerGroup: SettingsWinnerSchema,
-  flightSeat: SettingsFlightSchema,
-  socialRoster: SettingsSocialSchema,
-  flashBanner: SettingsBannerSchema,
-  streamCounter: SettingsStreamSchema,
-  deadAir: SettingsDeadSchema,
+  bubble: CommentBubbleSchema,
+  toast: ToastWidgetsSchema,
+  liveClock: LiveClockSchema,
+  ranking: GameRankingSchema,
+  counter: CounterPreviewSchema,
+  winnerGroup: WinnerGroupSchema,
+  flightSeat: FlightSeatSchema,
+  socialRoster: SocialRosterSchema,
+  flashBanner: FlashBannerSchema,
+  streamCounter: StreamCounterSchema,
+  cookieCounter: CookieCounterSchema,
+  deadAir: DeadAirSchema,
 } as const
 
 export const UiSettingsSchema = z.object({
-  bubble: SettingsBubbleSchema.optional(),
-  toast: SettingsToastSchema.optional(),
-  liveClock: SettingsClockSchema.optional(),
-  ranking: SettingsRankingSchema.optional(),
-  counter: SettingsCounterSchema.optional(),
-  winnerGroup: SettingsWinnerSchema.optional(),
-  flightSeat: SettingsFlightSchema.optional(),
-  socialRoster: SettingsSocialSchema.optional(),
-  flashBanner: SettingsBannerSchema.optional(),
-  streamCounter: SettingsStreamSchema.optional(),
-  deadAir: SettingsDeadSchema.optional(),
+  bubble: CommentBubbleSchema.optional(),
+  toast: ToastWidgetsSchema.optional(),
+  liveClock: LiveClockSchema.optional(),
+  ranking: GameRankingSchema.optional(),
+  counter: CounterPreviewSchema.optional(),
+  winnerGroup: WinnerGroupSchema.optional(),
+  flightSeat: FlightSeatSchema.optional(),
+  socialRoster: SocialRosterSchema.optional(),
+  flashBanner: FlashBannerSchema.optional(),
+  streamCounter: StreamCounterSchema.optional(),
+  cookieCounter: CookieCounterSchema.optional(),
+  deadAir: DeadAirSchema.optional(),
 })
 
 export type UiSettingsType = z.infer<typeof UiSettingsSchema>

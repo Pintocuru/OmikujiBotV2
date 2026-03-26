@@ -29,10 +29,10 @@ const defaultMessage = `<<
   '登録者数【<<follower>>】人 ご視聴ありがとうございます'
 >>`
 
-export const SettingsClockSchema = z.object({
+export const LiveClockSchema = z.object({
   component: z.enum(clockComponentsEnum).default('morning').catch('morning'),
   color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
   isSecond: z.boolean().default(false).catch(false), //
   defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),
 })
-export type SettingsClockType = z.infer<typeof SettingsClockSchema>
+export type LiveClockType = z.infer<typeof LiveClockSchema>

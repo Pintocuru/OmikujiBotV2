@@ -19,7 +19,7 @@ export type DeadEventRuleType = z.infer<typeof DeadEventRuleSchema>
  * obstacle: 背景色を決める「妨害するもの」。
  * 将来的に 'black' | 'white' | (characterKey) を受け入れる想定。
  */
-export const SettingsDeadSchema = z.object({
+export const DeadAirSchema = z.object({
   component: z.enum(deadComponentValues).default('bomb').catch('bomb'),
   obstacle: z.enum(['black', 'white']).default('black').catch('black'),
 
@@ -32,4 +32,4 @@ export const SettingsDeadSchema = z.object({
 
   optionalCounterKey: z.string().nullable().default(null).catch(null),
 })
-export type SettingsDeadType = z.infer<typeof SettingsDeadSchema>
+export type DeadAirType = z.infer<typeof DeadAirSchema>

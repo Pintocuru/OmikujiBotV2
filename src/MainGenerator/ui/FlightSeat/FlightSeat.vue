@@ -22,7 +22,7 @@
   import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
   import { storeToRefs } from 'pinia'
   import { isDev, statKeyNum, StatKeyNum } from '@/types'
-  import { SettingsFlightSchema, flightComponentDefaults } from '@/types'
+  import { FlightSeatSchema, flightComponentDefaults } from '@/types'
   import SeatSelector from './parts/FlightSeatSelector.vue'
   import FlightSeatDebug from './FlightSeatDebug.vue'
   import { useSeatManager } from './composables/useSeatManager'
@@ -32,7 +32,7 @@
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
-  const settings = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
+  const settings = computed(() => data.value.components.settings.flightSeat ?? FlightSeatSchema.parse({}))
 
   const { isComment } = useVisibilityAccess()
   const localStatKey = ref<StatKeyNum | null>(settings.value.statKey)

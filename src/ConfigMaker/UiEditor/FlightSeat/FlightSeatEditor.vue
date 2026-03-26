@@ -117,8 +117,8 @@
   import {
     flightComponentMap,
     flightComponentDefaults,
-    SettingsFlightSchema,
-    SettingsFlightSeatType,
+    FlightSeatSchema,
+    FlightSeatType,
     FlightComponentKind,
     StatKeyNum,
     presets,
@@ -131,7 +131,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const flightSeat = computed(() => SettingsFlightSchema.parse(data.value.components.settings.flightSeat ?? {}))
+  const flightSeat = computed(() => FlightSeatSchema.parse(data.value.components.settings.flightSeat ?? {}))
   const rulesComment = computed(() => data.value.comments)
 
   const { isAdv, isPro } = useSettingMode()
@@ -152,7 +152,7 @@
     }
   })
 
-  const updateField = (field: keyof SettingsFlightSeatType, value: any) => {
+  const updateField = (field: keyof FlightSeatType, value: any) => {
     omikujiStore.updateComponentSettings('flightSeat', {
       ...flightSeat.value,
       [field]: value,
@@ -169,8 +169,8 @@
     })
   }
 
-  const resetField = (field: keyof SettingsFlightSeatType) => {
-    updateField(field, SettingsFlightSchema.parse({})[field])
+  const resetField = (field: keyof FlightSeatType) => {
+    updateField(field, FlightSeatSchema.parse({})[field])
   }
 
   const statKeyLabelMap: Record<StatKeyNum, string> = {

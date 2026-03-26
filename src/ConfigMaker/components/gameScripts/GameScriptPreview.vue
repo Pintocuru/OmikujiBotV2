@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { GameScriptsType, SettingsBubbleSchema } from '@/types/'
+  import { GameScriptsType, CommentBubbleSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
@@ -43,7 +43,7 @@
   const scriptManager = GameScriptManager.getInstance()
 
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
+  const bubbleSettings = computed(() => data.value.components.settings.bubble ?? CommentBubbleSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // キャラクター取得

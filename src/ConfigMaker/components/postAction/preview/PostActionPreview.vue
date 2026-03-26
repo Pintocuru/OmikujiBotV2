@@ -70,7 +70,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { PostFlowType, SettingsBubbleSchema, SettingsToastSchema } from '@/types/'
+  import { PostFlowType, CommentBubbleSchema, ToastWidgetsSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SoundTestButton from './SoundTestButton.vue'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'
@@ -92,8 +92,8 @@
 
   const enableSecondary = computed(() => data.value.components.enableSecondary)
   const characters = computed(() => data.value.characters)
-  const bubbleSettings = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
-  const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
+  const bubbleSettings = computed(() => data.value.components.settings.bubble ?? CommentBubbleSchema.parse({}))
+  const toastSettings = computed(() => data.value.components.settings.toast ?? ToastWidgetsSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // キャラクター取得

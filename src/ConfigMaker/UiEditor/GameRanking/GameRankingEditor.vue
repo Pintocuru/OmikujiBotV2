@@ -124,7 +124,7 @@
     rankingSortOrderMap,
     ScriptGameKey,
     scriptGameKeys,
-    SettingsRankingSchema,
+    GameRankingSchema,
     useFontFamily,
   } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -139,7 +139,7 @@
   const { isAdv, isGod } = useSettingMode()
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
-  const ranking = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
+  const ranking = computed(() => data.value.components.settings.ranking ?? GameRankingSchema.parse({}))
 
   // 利用可能なゲームスクリプトを取得
   const enabledGameScriptMap = computed<Partial<Record<ScriptGameKey, (typeof gameMetaMap)[ScriptGameKey]>>>(() => {
@@ -173,7 +173,7 @@
 
   // リセット関数
   const resetField = (field: keyof typeof ranking.value) => {
-    const defaults = SettingsRankingSchema.parse({})
+    const defaults = GameRankingSchema.parse({})
     updateRankingField(field, defaults[field])
   }
 

@@ -8,7 +8,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsStreamSchema } from '@/types/'
+  import { StreamCounterSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import StreamCounterSelector from './parts/StreamCounterSelector.vue'
@@ -16,7 +16,7 @@
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
 
-  const liverSettings = computed(() => data.value.components.settings.streamCounter ?? SettingsStreamSchema.parse({}))
+  const liverSettings = computed(() => data.value.components.settings.streamCounter ?? StreamCounterSchema.parse({}))
 
   const eventKeys = computed(() => liverSettings.value?.eventCounters ?? [])
 

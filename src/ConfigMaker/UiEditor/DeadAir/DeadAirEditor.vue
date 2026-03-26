@@ -170,8 +170,8 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsDeadSchema, deadComponentMap } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
-  import type { SettingsDeadType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
+  import { DeadAirSchema, deadComponentMap } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
+  import type { DeadAirType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
   import DeadAirPreview from './DeadAirPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -179,15 +179,13 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  const deadAir = computed<SettingsDeadType>(
-    () => data.value.components.settings.deadAir ?? SettingsDeadSchema.parse({})
-  )
+  const deadAir = computed<DeadAirType>(() => data.value.components.settings.deadAir ?? DeadAirSchema.parse({}))
 
   // ---------------------------------------------------------------------------
   // Field update
   // ---------------------------------------------------------------------------
 
-  const updateField = (field: keyof SettingsDeadType, value: unknown) => {
+  const updateField = (field: keyof DeadAirType, value: unknown) => {
     omikujiStore.updateComponentSettings('deadAir', {
       ...deadAir.value,
       [field]: value,

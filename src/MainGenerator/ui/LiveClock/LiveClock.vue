@@ -15,14 +15,14 @@
   import { ref, watch, onMounted, onUnmounted, computed } from 'vue'
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
-  import { SettingsClockSchema } from '@/types/OmikujiData/UiSettings/SettingsClockSchema'
+  import { LiveClockSchema } from '@/types/OmikujiData/UiSettings/LiveClockSchema'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
   import LiveClockSelector from './parts/LiveClockSelector.vue'
 
   const appStore = useAppStore()
 
-  const settings = computed(() => SettingsClockSchema.parse(appStore.data.components?.settings?.liveClock ?? {}))
+  const settings = computed(() => LiveClockSchema.parse(appStore.data.components?.settings?.liveClock ?? {}))
 
   const { messages } = useFilteredBotMessages('liveClock')
   const { displayedComments, start, stop } = useBotDisplay(messages)

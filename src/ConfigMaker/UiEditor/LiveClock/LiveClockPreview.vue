@@ -18,14 +18,14 @@
   import { ref, computed, onMounted } from 'vue'
   import { storeToRefs } from 'pinia'
   import { isDev, useFontFamily } from '@/types/'
-  import type { SettingsClockType } from '@/types/OmikujiData/'
+  import type { LiveClockType } from '@/types/OmikujiData/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import LiveClockSelector from '@main/ui/LiveClock/parts/LiveClockSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { usePlaceholderInterval } from '@/MainGenerator/ui/common/usePlaceholderInterval'
 
   const props = defineProps<{
-    settings: SettingsClockType
+    settings: LiveClockType
     messageText: string
   }>()
 

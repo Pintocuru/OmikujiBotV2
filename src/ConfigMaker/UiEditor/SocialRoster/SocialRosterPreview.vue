@@ -26,7 +26,7 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsSocialSchema, UserStatsRecord, useFontFamily } from '@/types'
+  import { SocialRosterSchema, UserStatsRecord, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatCell from '@main/ui/FlightSeat/layouts/SeatCell.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
@@ -35,7 +35,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
-  const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SettingsSocialSchema.parse({}))
+  const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SocialRosterSchema.parse({}))
 
   const cellSizePxMap: Record<string, number> = {
     'h-8': 32,

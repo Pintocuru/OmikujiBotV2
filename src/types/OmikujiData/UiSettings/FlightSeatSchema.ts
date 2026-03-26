@@ -76,7 +76,7 @@ export const presets: Record<FlightComponentKind, Record<string, PresetItem> | n
 /**
  * SettingsFlightSchema
  */
-export const SettingsFlightSchema = z.object({
+export const FlightSeatSchema = z.object({
   component: z
     .enum(Object.keys(flightComponentMap) as [FlightComponentKind])
     .default('flightSeat')
@@ -86,4 +86,4 @@ export const SettingsFlightSchema = z.object({
   color: normalizedObject(DaisyUiThemeFieldsSchema),
   statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
 })
-export type SettingsFlightSeatType = z.infer<typeof SettingsFlightSchema>
+export type FlightSeatType = z.infer<typeof FlightSeatSchema>

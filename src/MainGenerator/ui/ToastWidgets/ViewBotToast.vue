@@ -37,13 +37,13 @@
   import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { SettingsToastSchema } from '@/types'
+  import { ToastWidgetsSchema } from '@/types'
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
 
   // ストアから必要な情報を取得
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
-  const toastSettings = computed(() => data.value.components.settings.toast ?? SettingsToastSchema.parse({}))
+  const toastSettings = computed(() => data.value.components.settings.toast ?? ToastWidgetsSchema.parse({}))
   const { iconSrc, getCharacterColor } = useCharacterManager()
 
   // ライセンス状態で閲覧できないなら表示させない

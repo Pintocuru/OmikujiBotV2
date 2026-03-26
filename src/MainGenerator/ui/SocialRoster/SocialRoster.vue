@@ -19,7 +19,7 @@
 <script setup lang="ts">
   import { computed, onMounted, onUnmounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsSocialSchema } from '@/types'
+  import { SocialRosterSchema } from '@/types'
   import { useSocialRosterManager } from './composables/useSocialRosterManager'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
@@ -27,7 +27,7 @@
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
-  const settings = computed(() => data.value.components.settings.socialRoster ?? SettingsSocialSchema.parse({}))
+  const settings = computed(() => data.value.components.settings.socialRoster ?? SocialRosterSchema.parse({}))
 
   const { isComment } = useVisibilityAccess()
 

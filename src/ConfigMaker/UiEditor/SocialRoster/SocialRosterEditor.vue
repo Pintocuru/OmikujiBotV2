@@ -135,7 +135,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsSocialSchema, SocialSortKey, StatKeyNum } from '@/types'
+  import { SocialRosterSchema, SocialSortKey, StatKeyNum } from '@/types'
   import SocialRosterPreview from './SocialRosterPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -144,7 +144,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SettingsSocialSchema.parse({}))
+  const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SocialRosterSchema.parse({}))
   const rulesComment = computed(() => data.value.comments)
 
   const { isAdv } = useSettingMode()
@@ -158,7 +158,7 @@
   }
 
   const resetField = (field: keyof typeof socialRoster.value) => {
-    const defaults = SettingsSocialSchema.parse({})
+    const defaults = SocialRosterSchema.parse({})
     updateField(field, defaults[field])
   }
 

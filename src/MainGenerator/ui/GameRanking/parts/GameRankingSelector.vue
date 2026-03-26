@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { RankingComponent, SettingsRankingType } from '@/types/'
+  import { RankingComponent, GameRankingType } from '@/types/'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 
   // 各コンポーネントのインポート
@@ -13,7 +13,7 @@
 
   const props = defineProps<{
     botMessageExtras: BotMessageExtraType[]
-    settings: SettingsRankingType
+    settings: GameRankingType
   }>()
 
   // コンポーネントマッピング

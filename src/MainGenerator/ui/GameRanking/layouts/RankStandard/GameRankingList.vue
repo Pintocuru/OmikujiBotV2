@@ -60,12 +60,12 @@
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import { generateDummyMessages } from '@/common/MockUser/MockGenerators'
   import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'
-  import { SettingsRankingType } from '@/types/OmikujiData'
+  import { GameRankingType } from '@/types/OmikujiData'
   import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
 
   const props = defineProps<{
     listMessages: BotMessageExtraType[]
-    settings: SettingsRankingType
+    settings: GameRankingType
   }>()
 
   // 表示用メッセージ（空の場合はダミーを生成）

@@ -1,10 +1,10 @@
 // src/MainGenerator/ui/DeadAir/composables/useDeadAirLogic.ts
 import { ref, computed, watch, onUnmounted, Ref } from 'vue'
-import type { SettingsDeadType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
+import type { DeadAirType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
 
 export type DeadAirPhase = 'running' | 'gameOver'
 
-export function useDeadAirLogic(settings: Ref<SettingsDeadType>, counters: Ref<Record<string, number>>) {
+export function useDeadAirLogic(settings: Ref<DeadAirType>, counters: Ref<Record<string, number>>) {
   // ---------------------------------------------------------------------------
   // 状態
   // ---------------------------------------------------------------------------

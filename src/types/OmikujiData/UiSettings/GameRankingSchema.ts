@@ -26,7 +26,7 @@ export type RankingSortOrder = keyof typeof rankingSortOrderMap
 const rankingComponentsEnum = Object.keys(rankingComponentMap) as RankingComponent[]
 export type RankingComponent = keyof typeof rankingComponentMap
 
-export const SettingsRankingSchema = z.object({
+export const GameRankingSchema = z.object({
   targetScriptKeys: z.array(ScriptGameExtendedKeySchema).default(['basicList']).catch(['basicList']),
   title: z.string().default('🍉スイカランキング🍉').catch('🍉スイカランキング🍉'),
   color: z.enum(themes).default('lofi').catch('lofi'),
@@ -34,4 +34,4 @@ export const SettingsRankingSchema = z.object({
   sortOrder: z.enum(rankingSortOrder).default('new').catch('new'),
   component: z.enum(rankingComponentsEnum).default('rankStandard').catch('rankStandard'),
 })
-export type SettingsRankingType = z.infer<typeof SettingsRankingSchema>
+export type GameRankingType = z.infer<typeof GameRankingSchema>

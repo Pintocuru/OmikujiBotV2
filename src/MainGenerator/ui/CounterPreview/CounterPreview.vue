@@ -12,7 +12,7 @@
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsCounterSchema } from '@/types'
+  import { CounterPreviewSchema } from '@/types'
   import CounterPreviewSelector from './parts/CounterPreviewSelector.vue'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
@@ -23,7 +23,7 @@
   const { data, botMessages } = storeToRefs(appStore)
   const { isComment } = useVisibilityAccess()
 
-  const counterSetting = computed(() => data.value.components.settings.counter ?? SettingsCounterSchema.parse({}))
+  const counterSetting = computed(() => data.value.components.settings.counter ?? CounterPreviewSchema.parse({}))
 
   // トリガー専用（依存まとめ）
   const tick = computed(() => botMessages.value.length)

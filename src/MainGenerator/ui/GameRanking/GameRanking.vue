@@ -19,7 +19,7 @@
 <script setup lang="ts">
   import { computed, ComputedRef, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageExtraSchema, BotMessageExtraType, isDev, SettingsRankingSchema } from '@/types/'
+  import { BotMessageExtraSchema, BotMessageExtraType, isDev, GameRankingSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import GameRankingSelector from './parts/GameRankingSelector.vue'
 
@@ -45,7 +45,7 @@
   })
 
   // ランキング設定を取得
-  const rankingSettings = computed(() => data.value.components.settings.ranking ?? SettingsRankingSchema.parse({}))
+  const rankingSettings = computed(() => data.value.components.settings.ranking ?? GameRankingSchema.parse({}))
 
   // ランキング対象のメッセージをフィルタリング
   // TODO:効率化を上げて欲しい

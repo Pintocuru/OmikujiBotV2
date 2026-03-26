@@ -25,7 +25,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsFlightSchema, flightComponentDefaults, useFontFamily } from '@/types/'
+  import { FlightSeatSchema, flightComponentDefaults, useFontFamily } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatSelector from '@/MainGenerator/ui/FlightSeat/parts/FlightSeatSelector.vue'
   import { calculateTotalSeats, parseCustomLayout } from '@main/ui/FlightSeat/composables/seatLayoutUtils'
@@ -37,7 +37,7 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
-  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? SettingsFlightSchema.parse({}))
+  const flightSeat = computed(() => data.value.components.settings.flightSeat ?? FlightSeatSchema.parse({}))
 
   // 現在選択中のkindに対応するdefault値
   const defaultValue = computed(() => flightComponentDefaults[flightSeat.value.component])

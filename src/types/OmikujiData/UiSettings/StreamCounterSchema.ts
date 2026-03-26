@@ -41,7 +41,7 @@ export type StreamDefaultKey = keyof typeof streamDefaultMap
  * ライバーカウンターv2 StreamCounter
  */
 
-export const SettingsStreamSchema = z.object({
+export const StreamCounterSchema = z.object({
   component: z.enum(streamComponentValues).default('basicCircle').catch('basicCircle'), // カウンタースタイル
   color: z.enum(themes).default('lofi').catch('lofi'), // DaisyUiテーマ
   colorCycle: z
@@ -55,4 +55,4 @@ export const SettingsStreamSchema = z.object({
     .catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
 })
-export type SettingsStreamCounterType = z.infer<typeof SettingsStreamSchema>
+export type StreamCounterType = z.infer<typeof StreamCounterSchema>

@@ -60,11 +60,11 @@
 </template>
 
 <script setup lang="ts">
-  import type { SettingsClockType } from '@/types/OmikujiData/'
+  import type { LiveClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
 
   defineProps<{
-    settings: SettingsClockType
+    settings: LiveClockType
     defaultMessage: string
     isMounted: boolean
     isFlipped: boolean

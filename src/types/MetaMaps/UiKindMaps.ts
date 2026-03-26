@@ -79,6 +79,13 @@ export const uiKindMap = {
     label: 'ライバーカウンター',
     description: '高評価・同接数等、複数のさまざまなカウンターを表示します',
   },
+  cookieCounter: {
+    primarySlot: 'extra',
+    slots: ['extra'],
+    icon: 'Cookie',
+    label: 'クッキーカウンター',
+    description: '高評価・同接数等、単一またはセットのカウンターを表示します',
+  },
   winnerGroup: {
     primarySlot: 'extra',
     slots: ['extra'],

@@ -90,7 +90,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsBubbleSchema } from '@/types/'
+  import { CommentBubbleSchema } from '@/types/'
   import { fontFamilyMap } from '@/types/MetaMaps/'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -110,7 +110,7 @@
   const { characterArray } = useCharacterManager()
   const { updateCommonStyleField } = useCommonStyleUpdate()
 
-  const bubble = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
+  const bubble = computed(() => data.value.components.settings.bubble ?? CommentBubbleSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
   // bubble設定の値を直接指定して更新する関数
@@ -141,7 +141,7 @@
 
   // リセット関数
   const resetField = (field: keyof typeof bubble.value) => {
-    const defaults = SettingsBubbleSchema.parse({})
+    const defaults = CommentBubbleSchema.parse({})
     updateFieldValue(field, defaults[field])
   }
 

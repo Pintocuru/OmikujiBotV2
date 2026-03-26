@@ -23,13 +23,13 @@
 
 <script setup lang="ts">
   import { ref, computed, toRef } from 'vue'
-  import type { SettingsDeadType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
+  import type { DeadAirType } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
   import { useDeadAirLogic } from '@main/ui/DeadAir/composables/useDeadAirLogic'
   import DeadAirSelector from '@main/ui/DeadAir/parts/DeadAirSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 
   const props = defineProps<{
-    deadAir: SettingsDeadType
+    deadAir: DeadAirType
   }>()
 
   // ---------------------------------------------------------------------------

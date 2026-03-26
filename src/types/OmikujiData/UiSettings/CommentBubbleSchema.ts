@@ -17,11 +17,11 @@ export const ShowCharactersSchema = z.object({
 })
 export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
 
-export const SettingsBubbleSchema = z.object({
+export const CommentBubbleSchema = z.object({
   showCharacters: normalizedObject(ShowCharactersSchema),
   characterSize: z.number().default(48).catch(48), // キャラクターの横幅
   bubbleMotionEnter: z.enum(enterMotionKeys).default('slideUp').catch('slideUp'), // フキダシのアニメーション(開始・表示中)
   bubbleTextAnimate: z.boolean().default(false).catch(false), // フキダシの文字表示をアニメーションさせるか
   bubbleTextSpeed: z.number().min(10).max(200).default(50).catch(50), // 文字送りの速度
 })
-export type SettingsBubbleType = z.infer<typeof SettingsBubbleSchema>
+export type CommentBubbleType = z.infer<typeof CommentBubbleSchema>

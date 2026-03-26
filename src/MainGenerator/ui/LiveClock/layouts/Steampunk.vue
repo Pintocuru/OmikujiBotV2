@@ -145,11 +145,11 @@
 <script setup lang="ts">
   import { ref, watch, computed } from 'vue'
   import { Cog } from 'lucide-vue-next'
-  import type { SettingsClockType } from '@/types/OmikujiData/'
+  import type { LiveClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
 
   const props = defineProps<{
-    settings: SettingsClockType
+    settings: LiveClockType
     defaultMessage: string
     isMounted: boolean
     isFlipped: boolean

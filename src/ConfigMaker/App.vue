@@ -20,22 +20,7 @@
       </div>
 
       <!-- 開発版の起動時に「開発者用プリセット管理」を目立たせるためのダミー -->
-      <div
-        v-if="isDev && Object.keys(data.comments).length === 0 && daisyUiTheme === 'dark'"
-        class="hero bg-base-200 min-h-screen"
-      >
-        <div class="hero-content text-center">
-          <div class="max-w-md space-y-4">
-            <h1 class="text-5xl font-bold">Welcome to <br />"Dev World..."</h1>
-            <p>
-              おまえが長く深淵を覗くならば、<br />
-              深淵もまた等しくおまえを見返すのだ。<br />
-              …で、どうやって君はこのコメントを見つけたんだ？
-            </p>
-            <button class="btn btn-primary" @click="omikujiStore.openLocalOmikujiData()">omikujiData.js を開く</button>
-          </div>
-        </div>
-      </div>
+      <AppDevWorld v-if="isDevWorld" />
 
       <!-- コンテンツ -->
       <ContentArea />
@@ -48,6 +33,7 @@
   import { storeToRefs } from 'pinia'
   import { isDev, OmikujiDataType } from '@/types'
   import AppHeader from './components/appItems/AppHeader.vue'
+  import AppDevWorld from './components/appItems/AppDevWorld.vue'
   import NavigationSidebar from './components/appItems/navigation/NavigationSidebar.vue'
   import ContentArea from './components/appItems/ContentArea.vue'
   import ConfigImport from './components/presetsImport/ConfigImport.vue'
@@ -73,6 +59,9 @@
   const importManager = useImportManager()
 
   const daisyUiTheme = computed(() => data.value.settings.daisyUiTheme)
+  const isDevWorld = computed(
+    () => isDev && Object.keys(data.value.comments).length === 0 && daisyUiTheme.value === 'dark'
+  )
 
   // スクロール監視
   useScrollToSection()

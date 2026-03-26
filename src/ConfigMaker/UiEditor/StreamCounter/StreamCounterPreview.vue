@@ -18,13 +18,13 @@
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { useFontFamily, type SettingsStreamCounterType } from '@/types/'
+  import { useFontFamily, type StreamCounterType } from '@/types/'
   import StreamCounterSelector from '@main/ui/StreamCounter/parts/StreamCounterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   const props = defineProps<{
-    streamCounter: SettingsStreamCounterType
+    streamCounter: StreamCounterType
     eventLabels: Record<string, string>
   }>()
 

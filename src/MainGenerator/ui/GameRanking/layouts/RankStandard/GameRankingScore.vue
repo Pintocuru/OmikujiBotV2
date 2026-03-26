@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
   import { computed, watch, ref } from 'vue'
-  import { SettingsRankingType } from '@/types/'
+  import { GameRankingType } from '@/types/'
   import { BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
   import { Trophy } from 'lucide-vue-next'
   import { useMotion } from '@vueuse/motion'
@@ -56,7 +56,7 @@
 
   const props = defineProps<{
     scoreMessages: BotMessageExtraType[]
-    settings: SettingsRankingType
+    settings: GameRankingType
   }>()
 
   const isVisible = ref(false)

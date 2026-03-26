@@ -1,6 +1,6 @@
 // src/MainGenerator/ui/DeadAir/composables/useDeadAirSelector.ts
 import { ref, computed, watch, onUnmounted } from 'vue'
-import type { SettingsDeadType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/SettingsDeadSchema'
+import type { DeadAirType, DeadEventRuleType } from '@/types/OmikujiData/UiSettings/DeadAirSchema'
 
 // ---------------------------------------------------------------------------
 // 型
@@ -12,7 +12,7 @@ export type DeadAirPhase = 'running' | 'gameOver'
 // composable
 // ---------------------------------------------------------------------------
 
-export function useDeadAirSelector(settings: SettingsDeadType, counters: Readonly<{ value: Record<string, number> }>) {
+export function useDeadAirSelector(settings: DeadAirType, counters: Readonly<{ value: Record<string, number> }>) {
   // --- 状態 -----------------------------------------------------------------
 
   // 残り秒数 */

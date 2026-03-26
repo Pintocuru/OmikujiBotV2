@@ -1,7 +1,7 @@
 // src/types/OmikujiData/UiSettings/SettingsSocialSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
-import { statKeyNum } from './SettingsFlightSchema'
+import { statKeyNum } from './FlightSeatSchema'
 
 /**
  * socialRoster ソーシャルゲーム風ユーザーリスト の表示名マップ
@@ -17,7 +17,7 @@ export type SocialComponent = keyof typeof socialComponentMap
 export const socialSortKeys = ['tc', 'no', 'isSyoken', 'lastVisit', 'giftPrice'] as const
 export type SocialSortKey = (typeof socialSortKeys)[number]
 
-export const SettingsSocialSchema = z.object({
+export const SocialRosterSchema = z.object({
   component: z
     .enum(Object.keys(socialComponentMap) as [SocialComponent])
     .default('grid')
@@ -39,4 +39,4 @@ export const SettingsSocialSchema = z.object({
   sortKey: z.enum(socialSortKeys).default('lastVisit').catch('lastVisit'),
   sortOrder: z.enum(['desc', 'asc']).default('desc').catch('desc'),
 })
-export type SettingsSocialRosterType = z.infer<typeof SettingsSocialSchema>
+export type SocialRosterType = z.infer<typeof SocialRosterSchema>

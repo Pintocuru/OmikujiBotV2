@@ -35,7 +35,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsBubbleSchema } from '@/types/'
+  import { CommentBubbleSchema } from '@/types/'
   import BubbleCharacterSelect from './BubbleCharacterSelect.vue'
   import CharacterAvatarPreview from './CharacterAvatarPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -46,7 +46,7 @@
   const { data } = storeToRefs(omikujiStore)
 
   // 個別のcomputed値（読み取り専用）
-  const bubble = computed(() => data.value.components.settings.bubble ?? SettingsBubbleSchema.parse({}))
+  const bubble = computed(() => data.value.components.settings.bubble ?? CommentBubbleSchema.parse({}))
   const characters = computed(() => data.value.characters)
 
   // 汎用的な更新関数
@@ -59,7 +59,7 @@
 
   // 共通リセット関数
   const resetField = (field: keyof typeof bubble.value) => {
-    const schemaDefaults = SettingsBubbleSchema.parse({})
+    const schemaDefaults = CommentBubbleSchema.parse({})
     const defaultValue = schemaDefaults[field]
     updateBubbleField(field, defaultValue)
   }
