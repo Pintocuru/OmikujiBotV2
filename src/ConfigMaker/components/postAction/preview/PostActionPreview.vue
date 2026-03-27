@@ -107,11 +107,12 @@
   const processedMessage = computed(() => {
     const _ = messageKey.value
 
-    if (props.action.actionType !== 'message') return ''
-    const content = props.action.message.bubble || '(未記入)'
-
-    // ★ プレビュー用の変換を適用
-    return transformIconPlaceholdersPreview(processTestPlaceholder(content, data.value.placeholders))
+    if (props.action.actionType !== 'message') return '(不正な処理です)'
+    const content = props.action.message.bubble
+    if (!content) return '(メッセージなし)'
+    const processed = processTestPlaceholder(content, data.value.placeholders)
+    if (!processed) return '(このメッセージは表示されません)'
+    return transformIconPlaceholdersPreview(processed)
   })
 
   // リフレッシュキー

@@ -1,7 +1,11 @@
 <!-- src/ConfigMaker/UiEditor/StreamCounter/StreamCounterEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <StreamCounterPreview :streamCounter="streamCounter" :event-labels="previewEventLabels" />
+  <StreamCounterPreview
+    :streamCounter="streamCounter"
+    :event-labels="previewEventLabels"
+    :variable-labels="previewVariableLabels"
+  />
 
   <!-- コンポーネント選択 -->
   <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
@@ -50,7 +54,6 @@
   <!-- カラーサイクル設定（分離コンポーネント） -->
   <ColorCycleEditor :colorCycle="streamCounter.colorCycle" @update:colorCycle="(v) => updateField('colorCycle', v)" />
 
-  <!-- プロパティ 'eventRules' は型 '{ streamCounter: { component: "basicCirclePlain" | "basicCircle" | "pixelBadgePlain" | "pixelBadge" | "magicalStone" | "starBurst" | "hexGrid"; color: "light" | "dark" | "cupcake" | ... 31 more ... | "silk"; ... 4 more ...; variableCounters: { ...; }[]; }; ... 29 more ...; _pStores?: Record<...> | undefined; }' に存在しません。ts-plugin(2339) -->
   <CounterSelectorPanel
     :counters="counters"
     :event-rules="eventRules"
@@ -119,6 +122,10 @@
 
   const previewEventLabels = computed<Record<string, string>>(() =>
     Object.fromEntries(eventRules.value.map((r) => [r.key, r.name]))
+  )
+
+  const previewVariableLabels = computed<Record<string, string>>(() =>
+    Object.fromEntries(streamCounter.value.variableCounters.map((c) => [c.target, c.label]))
   )
 
   // ---- CounterSelectorPanel イベントハンドラ ----

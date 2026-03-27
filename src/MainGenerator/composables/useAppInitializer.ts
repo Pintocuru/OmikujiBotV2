@@ -74,10 +74,11 @@ function filterNewOmikens(omikens: OmikenCommentType[]): OmikenCommentType[] {
   const appStore = useAppStore()
   const ignorePattern = appStore.data.settings.ignoreUserPattern
   const currentMeta = appStore.serviceMetaStore.getCurrent()
+  const includeExternalComments = appStore.data.settings.includeExternalComments ?? false
 
   return appStore.addOmikens(omikens).filter((omiken) => {
     if (ignoreOmikujiBot(omiken.userId)) return false
-    if (ignoreExternalOnLive(omiken.meta.isExternal, currentMeta?.isLive)) return false
+    if (!includeExternalComments && ignoreExternalOnLive(omiken.meta.isExternal, currentMeta?.isLive)) return false
     if (ignoreNamePattern(omiken.userName, ignorePattern)) return false
     return true
   })

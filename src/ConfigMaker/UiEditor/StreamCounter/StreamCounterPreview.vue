@@ -7,6 +7,7 @@
         :settings="streamCounter"
         :counters="previewCounters"
         :event-labels="previewEventLabels"
+        :variable-labels="variableLabels"
       />
     </div>
 
@@ -26,6 +27,7 @@
   const props = defineProps<{
     streamCounter: StreamCounterType
     eventLabels: Record<string, string>
+    variableLabels: Record<string, string>
   }>()
 
   const baseCounters: Record<string, number> = {
@@ -58,6 +60,7 @@
   })
 
   const previewEventLabels = computed(() => props.eventLabels)
+  const variableLabels = computed(() => props.variableLabels)
 
   const incrementAll = () => {
     const keys = [...Object.keys(baseCounters), ...props.streamCounter.eventCounters]

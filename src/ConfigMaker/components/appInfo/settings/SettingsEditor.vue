@@ -11,6 +11,22 @@
     </label>
   </SettingItem>
 
+  <!-- ツールでのコメントをユーザーリストに入れるか -->
+  <SettingItem label="外部コメントのリスト入り" description="配信中にツールコメントをユーザーとして扱うか">
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        :checked="settings.includeExternalComments"
+        @change="includeExternalComments"
+      />
+      <span>配信中、ツールのコメントを{{ settings.includeExternalComments ? 'カウントする' : '弾く' }}</span>
+    </label>
+    <p class="text-xs opacity-70 mt-1">
+      ※ 通常は OFF で問題ありません。BOT で賑やかしを行いたい場合のみ ON にしてください
+    </p>
+  </SettingItem>
+
   <!-- VisitUserにユーザーを入れない -->
   <SettingItem
     label="ユーザーを記録しないリスト"
@@ -123,6 +139,10 @@
   const handleMuteSound = (event: Event) => {
     const checked = (event.target as HTMLInputElement).checked
     updateField('soundEnabled', checked)
+  }
+  // 外部コメントのリスト入り
+  const includeExternalComments = () => {
+    updateField('includeExternalComments', !settings.value.includeExternalComments)
   }
 
   const bubbleText = computed<string>({

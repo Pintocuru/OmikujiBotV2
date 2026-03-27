@@ -50,6 +50,7 @@
   const getLabel = (key: string): string | Component => {
     const variable = getVariableLabel(key)
     if (variable !== key) return variable // key がそのまま返ってきた = 未ヒット
+    console.log(getEventLabel(key))
     return getEventLabel(key)
   }
 

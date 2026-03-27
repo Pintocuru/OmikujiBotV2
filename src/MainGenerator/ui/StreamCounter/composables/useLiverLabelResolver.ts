@@ -21,7 +21,7 @@ export function useLabelResolver(values: Ref<Record<string, string>>, labelStyle
     }
 
     // デフォルトキーでない → 従来どおり text
-    return values.value[key] ?? key
+    return values.value?.[key] ?? key
   }
 
   const isComponent = (label: string | Component): label is Component => typeof label !== 'string'

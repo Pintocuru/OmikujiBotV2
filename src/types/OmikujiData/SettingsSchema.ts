@@ -22,6 +22,7 @@ export const SettingsSchema = z.object({
   initialCategory: z.enum(categoryTypeLabel).default('comments').catch('comments'), // 読み込み時開くカテゴリ
   soundEnabled: z.boolean().default(true).catch(true), // サウンドを有効にするか
   ignoreUserPattern: z.string().default('__INFO__|__ERROR__').catch('__INFO__|__ERROR__'), // VisitUserを無視するリスト
+  includeExternalComments: z.boolean().default(false).catch(false), // 外部コメントをユーザーリストに入れるか
 })
 
 export type SettingsType = z.infer<typeof SettingsSchema>
