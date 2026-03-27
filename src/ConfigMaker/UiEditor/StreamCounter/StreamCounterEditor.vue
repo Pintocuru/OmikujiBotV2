@@ -50,59 +50,21 @@
   <!-- カラーサイクル設定（分離コンポーネント） -->
   <ColorCycleEditor :colorCycle="streamCounter.colorCycle" @update:colorCycle="(v) => updateField('colorCycle', v)" />
 
-  <!-- デフォルトカウンター選択 -->
-  <SettingItem
-    label="表示するカウンター"
-    description="クリックした順番に並びます"
-    :showReset="true"
-    @reset="resetMap.defaultCounters"
-  >
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(label, key) in streamDefaultMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="streamCounter.defaultCounters.includes(key) ? 'badge-primary' : 'badge-outline'"
-        @click="toggleDefaultCounter(key)"
-      >
-        {{ label }}
-      </div>
-    </div>
-  </SettingItem>
-
-  <!-- イベントカウンター選択 -->
-  <SettingItem
-    v-if="availableEventRules.length !== 0"
-    label="イベントカウンター"
-    description="クリックした順番に並びます"
-    :showReset="true"
-    @reset="resetMap.eventCounters"
-  >
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="rule in availableEventRules"
-        :key="rule.key"
-        class="badge cursor-pointer"
-        :class="[
-          streamCounter.eventCounters.includes(rule.key) ? 'badge-secondary' : 'badge-outline',
-          isEventCounterDisabled(rule.key) ? 'opacity-40 cursor-not-allowed' : '',
-        ]"
-        @click="toggleEventCounter(rule.key)"
-      >
-        {{ rule.name }}
-      </div>
-    </div>
-    <div class="text-xs text-base-content/50 mt-1">
-      合計 {{ totalCounterCount }}/8 件
-      <span v-if="totalCounterCount >= 8"> これ以上表示できません</span>
-    </div>
-  </SettingItem>
+  <!-- プロパティ 'eventRules' は型 '{ streamCounter: { component: "basicCirclePlain" | "basicCircle" | "pixelBadgePlain" | "pixelBadge" | "magicalStone" | "starBurst" | "hexGrid"; color: "light" | "dark" | "cupcake" | ... 31 more ... | "silk"; ... 4 more ...; variableCounters: { ...; }[]; }; ... 29 more ...; _pStores?: Record<...> | undefined; }' に存在しません。ts-plugin(2339) -->
+  <CounterSelectorPanel
+    :counters="counters"
+    :event-rules="eventRules"
+    :max-counters="maxCounters"
+    @add="handleAdd"
+    @remove="handleRemove"
+    @reset="handleReset"
+  />
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { StreamCounterSchema, labelStyleMap, streamComponentMap, streamDefaultMap } from '@/types/'
+  import { StreamCounterSchema, StreamCounterVariablesSchema, labelStyleMap, streamComponentMap } from '@/types/'
   import type { StreamDefaultKey, StreamCounterType } from '@/types/'
   import StreamCounterPreview from './StreamCounterPreview.vue'
   import ColorCycleEditor from './ColorCycleEditor.vue'
@@ -110,6 +72,8 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { themes } from '@shared/styles/DaisyUiTheme'
+  import type { CounterItem } from './CounterSelectorPanel.vue'
+  import CounterSelectorPanel from './CounterSelectorPanel.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -117,7 +81,6 @@
 
   const streamCounter = computed(() => data.value.components.settings.streamCounter ?? StreamCounterSchema.parse({}))
 
-  // ---- Field Update ----
   const updateField = (field: keyof StreamCounterType, value: unknown) => {
     omikujiStore.updateComponentSettings('streamCounter', {
       ...streamCounter.value,
@@ -126,66 +89,80 @@
   }
 
   const resetField = (field: keyof StreamCounterType) => {
-    const defaults = StreamCounterSchema.parse({})
-    updateField(field, defaults[field])
+    updateField(field, StreamCounterSchema.parse({})[field])
   }
 
-  const resetMap = {
-    defaultCounters: () => resetField('defaultCounters'),
-    eventCounters: () => resetField('eventCounters'),
-    labelStyle: () => resetField('labelStyle'),
-  }
+  // ---- CounterSelectorPanel 用に3フィールドを CounterItem[] に統合 ----
+  const counters = computed<CounterItem[]>(() => [
+    ...streamCounter.value.defaultCounters.map((target) => ({
+      id: `default:${target}`,
+      type: 'default' as const,
+      target,
+    })),
+    ...streamCounter.value.eventCounters.map((target) => ({
+      id: `event:${target}`,
+      type: 'event' as const,
+      target,
+    })),
+    ...streamCounter.value.variableCounters, // StreamCounterVariablesSchema[] がそのまま CounterItem と互換
+  ])
 
-  // ---- defaultCounters トグル ----
-  const toggleDefaultCounter = (key: StreamDefaultKey) => {
-    const current = streamCounter.value.defaultCounters
-    const isSelected = current.includes(key)
-    if (isSelected) {
-      updateField(
-        'defaultCounters',
-        current.filter((k) => k !== key)
-      )
-    } else {
-      if (totalCounterCount.value >= 8) return
-      updateField('defaultCounters', [...current, key])
-    }
-  }
+  const maxCounters = 8
 
-  // ---- eventCounters ----
-  const availableEventRules = computed(() => {
-    return Object.values(data.value.comments).map((record) => ({
+  // ---- イベントルール ----
+  const eventRules = computed(() =>
+    Object.values(data.value.comments).map((record) => ({
       key: record.key,
       name: record.name || record.key,
     }))
-  })
-
-  const totalCounterCount = computed(
-    () => streamCounter.value.defaultCounters.length + streamCounter.value.eventCounters.length
   )
 
-  const isEventCounterDisabled = (key: string) => {
-    return !streamCounter.value.eventCounters.includes(key) && totalCounterCount.value >= 8
+  const previewEventLabels = computed<Record<string, string>>(() =>
+    Object.fromEntries(eventRules.value.map((r) => [r.key, r.name]))
+  )
+
+  // ---- CounterSelectorPanel イベントハンドラ ----
+  const handleAdd = (item: Omit<CounterItem, 'id'>) => {
+    if (item.type === 'default') {
+      updateField('defaultCounters', [...streamCounter.value.defaultCounters, item.target as StreamDefaultKey])
+    } else if (item.type === 'event') {
+      updateField('eventCounters', [...streamCounter.value.eventCounters, item.target])
+    } else {
+      // variable: スキーマの parse で id を生成
+      const newItem = StreamCounterVariablesSchema.parse({
+        target: item.target,
+        label: item.label,
+      })
+      updateField('variableCounters', [...streamCounter.value.variableCounters, newItem])
+    }
   }
 
-  const toggleEventCounter = (key: string) => {
-    const current = streamCounter.value.eventCounters
-    const isSelected = current.includes(key)
-    if (isSelected) {
+  const handleRemove = (id: string) => {
+    // variable は UUID なので prefix なし
+    if (streamCounter.value.variableCounters.some((v) => v.id === id)) {
+      updateField(
+        'variableCounters',
+        streamCounter.value.variableCounters.filter((v) => v.id !== id)
+      )
+      return
+    }
+    // default / event は `type:target` の固定ID から復元
+    const [type, target] = id.split(':')
+    if (type === 'default') {
+      updateField(
+        'defaultCounters',
+        streamCounter.value.defaultCounters.filter((k) => k !== target)
+      )
+    } else if (type === 'event') {
       updateField(
         'eventCounters',
-        current.filter((k) => k !== key)
+        streamCounter.value.eventCounters.filter((k) => k !== target)
       )
-    } else {
-      if (totalCounterCount.value >= 8) return
-      updateField('eventCounters', [...current, key])
     }
   }
 
-  const previewEventLabels = computed<Record<string, string>>(() => {
-    const result: Record<string, string> = {}
-    for (const rule of availableEventRules.value) {
-      result[rule.key] = rule.name
-    }
-    return result
-  })
+  const handleReset = (type: 'default' | 'event') => {
+    if (type === 'default') resetField('defaultCounters')
+    else resetField('eventCounters')
+  }
 </script>

@@ -1,6 +1,7 @@
 // src/types/OmikujiData/UiSettings/SettingsLiverSchema.ts
 import { z } from 'zod'
 import { daisyUIColor, themes } from '@shared/styles/DaisyUiTheme'
+import { idSchema } from '@shared/types'
 
 /**
  * ライバーカウンターコンポーネントの表示名マップ
@@ -37,6 +38,14 @@ export const streamDefaultMap = {
 export const streamDefaultKeyLabels = Object.keys(streamDefaultMap) as StreamDefaultKey[]
 export type StreamDefaultKey = keyof typeof streamDefaultMap
 
+export const StreamCounterVariablesSchema = z.object({
+  id: idSchema,
+  type: z.literal('variable').default('variable'),
+  target: z.string(),
+  label: z.string(),
+})
+export type StreamCounterVariable = z.infer<typeof StreamCounterVariablesSchema>
+
 /**
  * ライバーカウンターv2 StreamCounter
  */
@@ -54,5 +63,6 @@ export const StreamCounterSchema = z.object({
     .default(['syoken', 'commenter', 'upVote', 'viewer'])
     .catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
   eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
+  variableCounters: z.array(StreamCounterVariablesSchema).default([]),
 })
 export type StreamCounterType = z.infer<typeof StreamCounterSchema>

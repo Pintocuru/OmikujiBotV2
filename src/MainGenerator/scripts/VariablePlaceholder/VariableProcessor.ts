@@ -34,7 +34,9 @@ export class VariablePlaceholderProcessor {
 
   process(text: string): VariablePlaceholderResult {
     const evaluator = this.context.getEvaluator()
-    let processed = text.replace(/\n/g, '')
+
+    // 専用のプリプロセッサでコメントと不要な改行を除去
+    let processed = this.preprocess(text)
 
     // v1 互換処理（非推奨・後方互換）
     processed = this.processLegacyVarDeclarations(processed, evaluator)
@@ -64,6 +66,24 @@ export class VariablePlaceholderProcessor {
         slots: extra.slots,
       },
     }
+  }
+
+  /**
+   * コード内のコメントを除去し、評価可能な 1 行の文字列に整形
+   */
+  private preprocess(text: string): string {
+    return (
+      text
+        // 1. ブロックコメント (/* ... */) を削除
+        .replace(/\/\*[\s\S]*?\*\//g, '')
+        // 2. 行コメント (// ...) を削除
+        //    改行コードの手前までを削除対象にします
+        .replace(/\/\/.*/g, '')
+        // 3. 全ての改行を除去して 1 行に連結
+        .replace(/\n/g, '')
+        // 4. 前後の余計な空白を削除
+        .trim()
+    )
   }
 
   private processExpressions(text: string, evaluator: ExpressionEngine): string {

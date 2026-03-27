@@ -32,15 +32,27 @@
   import HexGridItem from '../layouts/HexGrid.vue'
 
   import { useStreamCounterDisplay } from '../composables/useStreamCounterDisplay'
-  import { useLiverLabelResolver } from '../composables/useLiverLabelResolver'
+  import { useLabelResolver } from '../composables/useLiverLabelResolver'
 
   const props = defineProps<{
     settings: StreamCounterType
     counters: Record<string, number>
     eventLabels: Record<string, string>
+    variableLabels: Record<string, string>
   }>()
 
-  const { getLabel } = useLiverLabelResolver(toRef(props, 'eventLabels'), toRef(props.settings, 'labelStyle'))
+  // variableLabels を優先してマージ
+  const { getLabel: getEventLabel } = useLabelResolver(toRef(props, 'eventLabels'), toRef(props.settings, 'labelStyle'))
+  const { getLabel: getVariableLabel } = useLabelResolver(
+    toRef(props, 'variableLabels'),
+    toRef(props.settings, 'labelStyle')
+  )
+  const getLabel = (key: string): string | Component => {
+    const variable = getVariableLabel(key)
+    if (variable !== key) return variable // key がそのまま返ってきた = 未ヒット
+    return getEventLabel(key)
+  }
+
   const { allKeys, getPattern, formatValue } = useStreamCounterDisplay(toRef(props, 'settings'))
 
   const itemMap: Record<LiverComponent, Component> = {

@@ -1,3 +1,4 @@
+<!-- CookieCounter.vue -->
 <template>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
     <CookieCounterSelector
@@ -12,7 +13,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CookieCounterCountersSchema, CookieCounterSchema } from '@/types/'
+  import { CookieCounterSchema } from '@/types/'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import CookieCounterSelector from './parts/CookieCounterSelector.vue'
@@ -20,22 +21,7 @@
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
 
-  const cookieSettings = computed(
-    () =>
-      data.value.components.settings.cookieCounter ??
-      CookieCounterSchema.parse({
-        component: 'sakura',
-        counters: [
-          CookieCounterCountersSchema.parse({
-            type: 'default',
-            target: 'lc',
-          }),
-          CookieCounterCountersSchema.parse({
-            type: 'default',
-          }),
-        ],
-      })
-  )
+  const cookieSettings = computed(() => data.value.components.settings.cookieCounter ?? CookieCounterSchema.parse({}))
 
   // type: 'event' のターゲットキー一覧
   const eventKeys = computed<string[]>(() =>

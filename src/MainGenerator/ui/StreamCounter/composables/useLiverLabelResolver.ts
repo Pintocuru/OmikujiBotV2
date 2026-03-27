@@ -3,7 +3,7 @@ import type { Component, Ref } from 'vue'
 import { LIVER_EMOJI_LABELS, LIVER_LUCIDE_LABELS, LIVER_TEXT_LABELS } from './DefaultLabels'
 import { StreamDefaultKey, LiverLabelStyle } from '@/types'
 
-export function useLiverLabelResolver(eventLabels: Ref<Record<string, string>>, labelStyle: Ref<LiverLabelStyle>) {
+export function useLabelResolver(values: Ref<Record<string, string>>, labelStyle: Ref<LiverLabelStyle>) {
   const getLabel = (key: string): string | Component => {
     // デフォルトキーかどうか
     const isDefault = key in LIVER_LUCIDE_LABELS
@@ -21,7 +21,7 @@ export function useLiverLabelResolver(eventLabels: Ref<Record<string, string>>, 
     }
 
     // デフォルトキーでない → 従来どおり text
-    return eventLabels.value[key] ?? key
+    return values.value[key] ?? key
   }
 
   const isComponent = (label: string | Component): label is Component => typeof label !== 'string'
