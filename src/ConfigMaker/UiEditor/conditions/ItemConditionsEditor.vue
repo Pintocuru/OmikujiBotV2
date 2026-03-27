@@ -12,8 +12,12 @@
       <div class="flex flex-wrap items-center gap-2">
         <!-- 未使用バッジ -->
         <span
-          class="badge badge-outline cursor-pointer select-none"
-          :class="{ 'badge-ghost': getSlotKind(slot) !== '' }"
+          class="badge cursor-pointer select-none"
+          :class="[
+            getSlotKind(slot) === ''
+              ? 'badge-neutral text-neutral-content' // 選択状態（未使用）
+              : 'badge-outline text-base-content', // 非選択
+          ]"
           @click="updateSlotKind(slot, '')"
         >
           未使用
@@ -25,9 +29,9 @@
           :key="comp.kind"
           class="badge cursor-pointer select-none"
           :class="[
-            slotConfigs.find((s) => s.slot === slot)?.badgeClass,
-            getSlotKind(slot) === comp.kind ? '' : 'badge-outline',
-            comp.disabled ? 'cursor-not-allowed' : '',
+            getSlotKind(slot) === comp.kind ? 'badge-accent text-accent-content' : 'badge-outline text-base-content',
+
+            comp.disabled ? 'cursor-not-allowed opacity-50' : '',
           ]"
           :title="comp.disabledReason || comp.label"
           @click="!comp.disabled && updateSlotKind(slot, comp.kind)"
@@ -38,7 +42,7 @@
     </SettingItem>
   </template>
 
-  <!-- ?? -->
+  <!-- サブコンポーネントを使用するか -->
   <SubSectionHeader icon="ToggleRight" title="サブアイテムの使用設定" description="" />
 
   <!-- BOTコメントの投稿方法 -->
@@ -79,23 +83,14 @@
 
   // スロットごとの表示設定（enableSecondary が false のとき secondary を非表示）
   const slotConfigs = computed(() => {
-    const all: { slot: UiSlotType; label: string; badgeClass: string; selectClass: string }[] = [
-      { slot: 'primary', label: UiSlotMap.primary.label, badgeClass: 'badge-primary', selectClass: 'select-primary' },
-      {
-        slot: 'secondary',
-        label: UiSlotMap.secondary.label,
-        badgeClass: 'badge-secondary',
-        selectClass: 'select-secondary',
-      },
-      { slot: 'extra', label: UiSlotMap.extra.label, badgeClass: 'badge-accent', selectClass: 'select-accent' },
+    const all: { slot: UiSlotType; label: string }[] = [
+      { slot: 'primary', label: UiSlotMap.primary.label },
+      { slot: 'secondary', label: UiSlotMap.secondary.label },
+      { slot: 'extra', label: UiSlotMap.extra.label },
     ]
 
     return all.filter((s) => {
-      // 1. secondary の有効化チェック
       if (s.slot === 'secondary' && !enableSecondary.value) return false
-
-      // 2. そのスロットに割り当て可能なコンポーネントが1つでもあるかチェック
-      // getAvailableComponents(s.slot) が 0 件なら表示しない
       return getAvailableComponents(s.slot).length > 0
     })
   })

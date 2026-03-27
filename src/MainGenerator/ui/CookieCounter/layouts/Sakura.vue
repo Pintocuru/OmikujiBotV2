@@ -138,7 +138,7 @@
     display: inline-block; /* scale が効くように */
     transition: transform 0.05s linear;
     /* 縁取り */
-    -webkit-text-stroke: 0.05em rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.05em rgba(21, 21, 21, 0.6);
     paint-order: stroke fill;
   }
 
@@ -146,15 +146,11 @@
     font-family: 'Zen Maru Gothic', sans-serif;
     color: white;
     line-height: 1;
-    /* 影を重ねてさらに目立たせる */
-    text-shadow:
-      0 2px 8px rgba(0, 0, 0, 0.7),
-      0 0 24px rgba(249, 168, 212, 0.7);
   }
 
   .counter-label {
     color: white;
-    -webkit-text-stroke: 0.1em rgba(0, 0, 0, 0.7);
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+    -webkit-text-stroke: 0.1em rgba(21, 21, 21, 0.6);
+    text-shadow: 0 1px 4px rgba(21, 21, 21, 0.6);
   }
 </style>

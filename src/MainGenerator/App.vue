@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted } from 'vue'
+  import { computed, defineAsyncComponent, onMounted } from 'vue'
   import { isDev, useFontFamily } from '@/types/'
   import { useAppInitializer } from '@main/composables/useAppInitializer'
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'
@@ -34,13 +34,22 @@
   import ReactionDebugPanel from '@main/ui/_debug/ReactionDebugPanel.vue'
   import ErrorInitComponent from '@shared/components/error/ErrorInfoDaisy.vue'
   import ConnectionStatusIndicator from '@shared/components/error/ConnectionStatusIndicator.vue'
-  import { COMPONENT_MAP } from './ui/ComponentMaps'
+  import { COMPONENT_MAP_LOADER } from './ui/ComponentMaps'
 
   const appStore = useAppStore()
   const fontFamily = computed(() => useFontFamily(appStore.data.components.commonStyle.fontFamily ?? 'default'))
 
   // コンポーネント設定
   const SLOT_PRIORITY = { primary: 2, secondary: 2, extra: 1 } as const
+  const activeComponents = computed(() =>
+    appStore.data.components.conditions
+      .map((condition) => ({
+        slot: condition.slot,
+        component: defineAsyncComponent(COMPONENT_MAP_LOADER[condition.kind]),
+      }))
+      .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
+  )
+  /** 
   const activeComponents = computed(() => {
     return appStore.data.components.conditions
       .map((condition) => ({
@@ -49,6 +58,7 @@
       }))
       .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
   })
+      */
 
   // 初期化処理
   const { initialize } = useAppInitializer()
