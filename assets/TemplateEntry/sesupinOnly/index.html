@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="referrer" content="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script
+      src="http://localhost:11180/templates/preset/__origin/js/onesdk.js"
+      onload="window.__onesdkLoaded = true"
+      onerror="window.__onesdkLoaded = false"
+    ></script>
+    <script src="./omikujiData.js"></script>
+    <!-- onLoaderReady を先に定義 -->
+    <script>
+      window.OMIKUJI_MODE_OVERRIDE = 'dev'
+
+      function onLoaderReady() {
+        OmikujiLoader.run({
+          cssFiles: ['common.css'],
+          jsFiles: ['common.js', 'vendors.js', 'MainGenerator.js'],
+          requireOneComme: true,
+          mountFn() {
+            if (window.OmikujiBot?.mountMainGenerator) {
+              window.OmikujiBot.mountMainGenerator()
+            } else {
+              console.error('mountMainGenerator が見つかりません')
+            }
+          },
+        })
+      }
+    </script>
+    <!-- 関数定義の後に script.js を読む -->
+    <script src="http://localhost:11180/templates/custom/ZZZ_OmikujiBot/script.js" onload="onLoaderReady()"></script>
+  </head>
+  <body>
+    <div id="App"></div>
+  </body>
+</html>

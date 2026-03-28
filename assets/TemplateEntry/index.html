@@ -3,32 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="referrer" content="no-referrer" />
-
-    <!-- Vue（テンプレート側で持つべき依存） -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js" defer></script>
-
-    <!-- わんコメ SDK（テンプレート側で持つべき依存） -->
+    <!-- Vue -->
+    <script src="../__origin/js/vue3.min.js"></script>
+    <!-- わんコメ SDK -->
     <script
-      src="http://localhost:11180/templates/preset/__origin/js/onesdk.js"
-      defer
+      src="../__origin/js/onesdk.js"
       onload="window.__onesdkLoaded = true"
       onerror="window.__onesdkLoaded = false"
     ></script>
-
-    <!-- おみくじデータ（テンプレート固有） -->
-    <script src="./omikujiData.js" defer></script>
-
+    <!-- おみくじデータ -->
+    <script src="./omikujiData.js"></script>
     <!-- 共通ローダー -->
     <script src="./script.js"></script>
   </head>
-
   <body>
     <div id="App"></div>
-
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener('DOMContentLoaded', function () {
         OmikujiLoader.run({
-          cssFiles: ['common.css', 'MainGenerator.css'],
+          cssFiles: ['common.css'],
           jsFiles: ['common.js', 'vendors.js', 'MainGenerator.js'],
           requireOneComme: true,
           mountFn() {

@@ -7,6 +7,7 @@ import { alias } from '../vite.config'
 import dotenv from 'dotenv'
 import path from 'path'
 import { fileURLToPath } from 'url'
+import fs from 'fs'
 
 import { coreTargets, getAllProjects, packageTargets } from './buildProjects'
 import { execSync } from 'child_process'
@@ -21,6 +22,9 @@ const packageRoot = process.env.PACKAGE_ROOT
  * 型チェック + ESLint を本番前チェックとして実行
  */
 function runPreBuildChecks() {
+  // dist削除
+  cleanDist(packageRoot)
+
   // EsLint
   // skip
 //  console.log('[Check] Running ESLint...')
@@ -64,3 +68,13 @@ function runPreBuildChecks() {
     process.exit(1)
   }
 })()
+
+// 新しいバージョンをビルドする場合、dist フォルダをクリーンアップ
+function cleanDist(root: string) {
+  const distPath = path.join(root, 'dist')
+
+  if (fs.existsSync(distPath)) {
+    console.log(`[Clean] Removing dist: ${distPath}`)
+    fs.rmSync(distPath, { recursive: true, force: true })
+  }
+}

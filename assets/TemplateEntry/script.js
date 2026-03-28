@@ -1,36 +1,35 @@
 // script.js - index.html / ConfigMaker.html 共通ローダー
+// 配布版：./scripts/ 固定・localhostフォールバックなし
+
+const omikujiBotName = 'OmikujiBot'
 
 window.OmikujiLoader = {
-  // 単一スクリプトの動的読み込み
   loadScript(src) {
     return new Promise((resolve, reject) => {
       const s = document.createElement('script')
       s.src = src
       s.onload = resolve
-      s.onerror = reject
+      s.onerror = () => reject(new Error(`スクリプト読み込み失敗: ${src}`))
       document.head.appendChild(s)
     })
   },
 
-  // 単一CSSの動的読み込み
   loadCSS(href) {
     return new Promise((resolve, reject) => {
       const l = document.createElement('link')
       l.rel = 'stylesheet'
       l.href = href
       l.onload = resolve
-      l.onerror = reject
+      l.onerror = () => reject(new Error(`CSS読み込み失敗: ${href}`))
       document.head.appendChild(l)
     })
   },
 
-  // CSS・JS をまとめて読み込む
   async loadFrom(base, cssFiles, jsFiles) {
     await Promise.all(cssFiles.map((css) => this.loadCSS(base + css)))
     for (const js of jsFiles) await this.loadScript(base + js)
   },
 
-  // わんコメ未起動エラー表示
   showOneCommeError() {
     document.body.innerHTML = `
       <div style="padding:40px;font-family:sans-serif;text-align:center">
@@ -41,65 +40,87 @@ window.OmikujiLoader = {
     `
   },
 
-  // コアファイル読み込み失敗エラー表示
-  showLoadError() {
+  showLoadError(detail = '') {
     document.body.innerHTML = `
       <div style="padding:40px;font-family:sans-serif;color:#d33;text-align:center">
         <h1>読み込みエラー</h1>
-        <p>必要なコアファイルを読み込めませんでした。</p>
-        <p>テンプレートの配置または OmikujiBot のインストールを確認してください。</p>
+        <p>必要なファイルを読み込めませんでした。</p>
+        <p style="font-size:13px;color:#888">scripts/ フォルダが正しい場所にあるか確認してください。</p>
+        ${detail ? `<pre style="font-size:11px;color:#aaa;margin-top:12px">${detail}</pre>` : ''}
       </div>
     `
   },
 
-  // BASES を順に試してマウントする共通ロジック
-  async run({ cssFiles, jsFiles, mountFn, requireOneComme = false }) {
-    const BASES = ['http://localhost:11180/templates/custom/OmikujiBot/scripts/', './scripts/']
-
-    // Vue と onesdk が揃うまで最大5秒待つ
-    await this._waitFor(() => {
-      const vueReady = typeof window.Vue !== 'undefined'
-      const sdkReady = !requireOneComme || window.__onesdkLoaded !== undefined
-      return vueReady && sdkReady
-    }, 5000)
-
-    if (requireOneComme && window.__onesdkLoaded === false) {
-      this.showOneCommeError()
-      return
-    }
-
-    for (const base of BASES) {
-      try {
-        await this.loadFrom(base, cssFiles, jsFiles)
-        // assetBase への書き込み
-        window.OmikujiBot = window.OmikujiBot || {}
-        window.OmikujiBot.assetBase = base.replace(/scripts\/$/, '')
-        console.log('✔ 読み込み成功:', base)
-        mountFn()
-        return
-      } catch {
-        console.warn('⚠ 読み込み失敗:', base)
-      }
-    }
-
-    this.showLoadError()
-  },
-
-  _waitFor(conditionFn, timeout = 3000) {
+  // Vue の読み込みを待つ（onesdk チェックは requireOneComme 時のみ）
+  _waitForVue(timeout = 5000) {
     return new Promise((resolve, reject) => {
-      if (conditionFn()) return resolve()
+      if (typeof window.Vue !== 'undefined') return resolve()
       const interval = 50
       let elapsed = 0
       const timer = setInterval(() => {
         elapsed += interval
-        if (conditionFn()) {
+        if (typeof window.Vue !== 'undefined') {
           clearInterval(timer)
           resolve()
         } else if (elapsed >= timeout) {
           clearInterval(timer)
-          reject(new Error('タイムアウト: Vue または onesdk の読み込みを待機中'))
+          reject(new Error('タイムアウト: Vue の読み込みを待機中'))
         }
       }, interval)
     })
+  },
+
+  async run({ cssFiles, jsFiles, mountFn, requireOneComme = false }) {
+    // ./scripts/ 固定。BASESループなし
+    const BASE = './scripts/'
+
+    try {
+      await this._waitForVue()
+    } catch (e) {
+      this.showLoadError('Vue が読み込まれませんでした。')
+      return
+    }
+
+    if (requireOneComme) {
+      if (window.__onesdkLoaded === false) {
+        this.showOneCommeError()
+        return
+      }
+      // onesdk の読み込み完了を最大3秒待つ
+      const sdkReady = await new Promise((resolve) => {
+        if (window.__onesdkLoaded === true) return resolve(true)
+        let elapsed = 0
+        const timer = setInterval(() => {
+          elapsed += 50
+          if (window.__onesdkLoaded === true) {
+            clearInterval(timer)
+            resolve(true)
+          } else if (window.__onesdkLoaded === false || elapsed >= 3000) {
+            clearInterval(timer)
+            resolve(false)
+          }
+        }, 50)
+      })
+      if (!sdkReady) {
+        this.showOneCommeError()
+        return
+      }
+    }
+
+    try {
+      await this.loadFrom(BASE, cssFiles, jsFiles)
+    } catch (e) {
+      this.showLoadError(e.message)
+      return
+    }
+
+    window.OmikujiBot = window.OmikujiBot || {}
+    window.OmikujiBot.assetBase = BASE.replace(/scripts\/$/, '')
+
+    try {
+      mountFn()
+    } catch (e) {
+      console.error('mount 失敗:', e)
+    }
   },
 }
