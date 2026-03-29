@@ -4,7 +4,7 @@
  * 英語圏配信者っぽい名前（名）
  * 配信文化を反映した、親しみやすく覚えやすい名前
  */
-export const MOCK_GIVEN_NAME_EN_MAP = {
+export const MOCK_GIVEN_NAME_EN_MAP: Record<string, { label: string; avatarStyle: string }> = {
   alex: { label: 'Alex', avatarStyle: 'adventurer' },
   sam: { label: 'Sam', avatarStyle: 'pixel-art' },
   jordan: { label: 'Jordan', avatarStyle: 'fun-emoji' },
@@ -35,7 +35,7 @@ export const MOCK_GIVEN_NAME_EN_MAP = {
   bean: { label: 'Bean', avatarStyle: 'pixel-art' },
   nugget: { label: 'Nugget', avatarStyle: 'big-ears' },
   sprinkles: { label: 'Sprinkles', avatarStyle: 'lorelei' },
-} as const satisfies Record<string, { label: string; avatarStyle: string }>
+}
 
 // リスト（必要に応じて）
 export const MOCK_GIVEN_NAME_EN_LIST = Object.values(MOCK_GIVEN_NAME_EN_MAP)
@@ -44,7 +44,7 @@ export const MOCK_GIVEN_NAME_EN_LIST = Object.values(MOCK_GIVEN_NAME_EN_MAP)
  * 英語圏配信者っぽい苗字（姓）
  * 親しみやすく、覚えやすい苗字
  */
-export const MOCK_FAMILY_NAME_EN_MAP = {
+export const MOCK_FAMILY_NAME_EN_MAP: Record<string, string> = {
   smith: 'Smith',
   jones: 'Jones',
   williams: 'Williams',
@@ -65,7 +65,7 @@ export const MOCK_FAMILY_NAME_EN_MAP = {
   edwards: 'Edwards',
   green: 'Green',
   hall: 'Hall',
-} as const satisfies Record<string, string>
+}
 
 // リスト
 export const MOCK_FAMILY_NAME_EN_LIST = Object.values(MOCK_FAMILY_NAME_EN_MAP)

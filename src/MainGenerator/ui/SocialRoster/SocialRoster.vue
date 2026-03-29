@@ -2,16 +2,7 @@
 <template>
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
     <div class="card w-full bg-base-200 mx-auto p-4 space-y-2" :data-theme="settings.color">
-      <h2 v-if="settings.label" class="text-xl font-bold text-center">
-        {{ settings.label }}
-      </h2>
-
-      <SocialRosterSelector
-        :users="sortedUsers"
-        :component="settings.component"
-        :cellSize="settings.cellSize"
-        :statKey="settings.statKey"
-      />
+      <SocialRosterSelector :settings="settings" :users="sortedUsers" :streamScore="streamScore" />
     </div>
   </div>
 </template>
@@ -31,9 +22,8 @@
 
   const { isComment } = useVisibilityAccess()
 
-  const { sortedUsers, registerUser } = useSocialRosterManager({
+  const { sortedUsers, registerUser, streamScore } = useSocialRosterManager({
     sortKey: computed(() => settings.value.sortKey),
-    sortOrder: computed(() => settings.value.sortOrder),
   })
 
   let unsubscribe: (() => void) | null = null

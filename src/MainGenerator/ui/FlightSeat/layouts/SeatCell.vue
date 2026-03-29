@@ -61,7 +61,7 @@
     opacity?: boolean
   }>()
 
-  const cellSize = computed(() => props.size ?? 80)
+  const cellSize = computed(() => props.size ?? 64)
 
   // ---- カラー計算 -------------------------------------------------------
 

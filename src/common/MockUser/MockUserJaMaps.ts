@@ -3,7 +3,7 @@
 /**
  * ランダムな名前
  */
-export const MOCK_USER_GIVEN_JA_MAP = {
+export const MOCK_USER_GIVEN_JA_MAP: Record<string, { label: string; avatarStyle: string }> = {
   daisuika: {
     label: 'てい',
     avatarStyle: 'pixel-art',
@@ -160,7 +160,7 @@ export const MOCK_USER_GIVEN_JA_MAP = {
     label: '渋谷区大型デパートヨコセヨ',
     avatarStyle: 'pixel-art',
   },
-} as const satisfies Record<string, { label: string; avatarStyle: string }>
+}
 
 // ランダム選択用の配列（必要に応じて）
 export const MOCK_USER_GIVEN_JA_LIST = Object.values(MOCK_USER_GIVEN_JA_MAP)
@@ -168,7 +168,7 @@ export const MOCK_USER_GIVEN_JA_LIST = Object.values(MOCK_USER_GIVEN_JA_MAP)
 /**
  * ランダムな姓名
  */
-export const MOCK_FAMILY_NAME_JA_MAP = {
+export const MOCK_FAMILY_NAME_JA_MAP: Record<string, string> = {
   koe: '越愛',
   amagase: '天ヶ瀬',
   hoshizaki: '星ヶ崎',
@@ -219,7 +219,7 @@ export const MOCK_FAMILY_NAME_JA_MAP = {
   hatsuhaisin: '初配信',
   yamada: '山田（仮）',
   dennou: '電脳',
-} as const satisfies Record<string, string>
+}
 
 // ランダム選択用
 export const MOCK_FAMILY_NAME_JA_LIST = Object.values(MOCK_FAMILY_NAME_JA_MAP)

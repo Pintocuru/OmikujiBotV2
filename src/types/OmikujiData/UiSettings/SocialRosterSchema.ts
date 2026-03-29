@@ -1,20 +1,22 @@
 // src/types/OmikujiData/UiSettings/SettingsSocialSchema.ts
 import { z } from 'zod'
-import { themes } from '@shared/styles/DaisyUiTheme'
+import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
 import { statKeyNum } from './FlightSeatSchema'
+import { normalizedObject } from '../ParsedDefault'
 
 /**
  * socialRoster ソーシャルゲーム風ユーザーリスト の表示名マップ
  */
 export const socialComponentMap = {
-  grid: 'ソーシャルグリッド',
+  grid: { label: '無地グリッド', accessLevel: 'basic', isColor: false },
+  streamPower: { label: '配信戦闘力', accessLevel: 'adv', isColor: true },
 } as const
 
 /**
  * ソーシャルゲーム風ユーザーリスト socialRoster
  */
 export type SocialComponent = keyof typeof socialComponentMap
-export const socialSortKeys = ['tc', 'no', 'isSyoken', 'lastVisit', 'giftPrice'] as const
+export const socialSortKeys = ['lastVisit', 'giftPrice', 'tc', 'no', 'isSyoken'] as const
 export type SocialSortKey = (typeof socialSortKeys)[number]
 
 export const SocialRosterSchema = z.object({
@@ -23,20 +25,15 @@ export const SocialRosterSchema = z.object({
     .default('grid')
     .catch('grid'),
 
-  // セルサイズ（Tailwindクラスで指定）
-  cellSize: z.enum(['h-8', 'h-10', 'h-12', 'h-16', 'h-20', 'h-24']).default('h-16').catch('h-16'),
-
   // どのeventを対象にするか。空文字なら全体から
   targetEventKey: z.string().default('').catch(''),
 
-  label: z.string().default('').catch(''),
-  color: z.enum(themes).default('lofi').catch('lofi'),
+  color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
 
   // セルに表示する値
   statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
 
   // ソート基準・順序
   sortKey: z.enum(socialSortKeys).default('lastVisit').catch('lastVisit'),
-  sortOrder: z.enum(['desc', 'asc']).default('desc').catch('desc'),
 })
 export type SocialRosterType = z.infer<typeof SocialRosterSchema>

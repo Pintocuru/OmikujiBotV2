@@ -7,15 +7,27 @@ import { SocialSortKey } from '@/types'
 
 interface SocialRosterManagerOptions {
   sortKey: Ref<SocialSortKey>
-  sortOrder: Ref<'desc' | 'asc'>
 }
 
 export function useSocialRosterManager(options: SocialRosterManagerOptions) {
   const appStore = useAppStore()
-  const { sortKey, sortOrder } = options
+  const { sortKey } = options
 
   // userId → UserStatsRecord のMap（全員保持）
   const userMap = ref<Map<string, UserStatsRecord>>(new Map())
+
+  // 配信戦闘力
+  const streamScore = computed(() => {
+    const users = Array.from(userMap.value.values())
+
+    // 1. tc + giftPrice の合計
+    const total = users.reduce((sum, user) => {
+      return sum + (user.tc ?? 0) + (user.giftPrice ?? 0)
+    }, 0)
+
+    // 2. ユーザー数を掛ける
+    return total * users.length
+  })
 
   // ソート済みの表示用リスト
   const sortedUsers = computed(() => {
@@ -23,7 +35,7 @@ export function useSocialRosterManager(options: SocialRosterManagerOptions) {
     return users.sort((a, b) => {
       const aVal = getSortValue(a, sortKey.value)
       const bVal = getSortValue(b, sortKey.value)
-      return sortOrder.value === 'desc' ? bVal - aVal : aVal - bVal
+      return aVal - bVal
     })
   })
 
@@ -50,5 +62,6 @@ export function useSocialRosterManager(options: SocialRosterManagerOptions) {
     registerUser,
     clearAll,
     totalUsers: computed(() => userMap.value.size),
+    streamScore,
   }
 }

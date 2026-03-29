@@ -4,7 +4,7 @@
  * 韓国語配信者っぽい名前（名）
  * 親しみやすく、覚えやすい名前
  */
-export const MOCK_GIVEN_NAME_KO_MAP = {
+export const MOCK_GIVEN_NAME_KO_MAP: Record<string, { label: string; avatarStyle: string }> = {
   jiWoo: { label: '지우', avatarStyle: 'adventurer' },
   minJun: { label: '민준', avatarStyle: 'pixel-art' },
   seoYeon: { label: '서연', avatarStyle: 'lorelei' },
@@ -15,7 +15,7 @@ export const MOCK_GIVEN_NAME_KO_MAP = {
   naEun: { label: '나은', avatarStyle: 'lorelei' },
   doYun: { label: '도윤', avatarStyle: 'sunset' },
   yeJin: { label: '예진', avatarStyle: 'soft' },
-} as const satisfies Record<string, { label: string; avatarStyle: string }>
+}
 
 export const MOCK_GIVEN_NAME_KO_LIST = Object.values(MOCK_GIVEN_NAME_KO_MAP)
 
@@ -23,7 +23,7 @@ export const MOCK_GIVEN_NAME_KO_LIST = Object.values(MOCK_GIVEN_NAME_KO_MAP)
  * 韓国語配信者っぽい苗字（姓）
  * 一般的で親しみやすい苗字
  */
-export const MOCK_FAMILY_NAME_KO_MAP = {
+export const MOCK_FAMILY_NAME_KO_MAP: Record<string, string> = {
   kim: '김',
   lee: '이',
   park: '박',
@@ -34,6 +34,6 @@ export const MOCK_FAMILY_NAME_KO_MAP = {
   yoon: '윤',
   jang: '장',
   lim: '임',
-} as const satisfies Record<string, string>
+}
 
 export const MOCK_FAMILY_NAME_KO_LIST = Object.values(MOCK_FAMILY_NAME_KO_MAP)

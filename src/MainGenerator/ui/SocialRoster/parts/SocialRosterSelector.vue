@@ -1,25 +1,30 @@
 <!-- src/MainGenerator/ui/SocialRoster/parts/SocialRosterSelector.vue -->
 <template>
-  <component :is="gridComponent" :users="users" :cellSize="cellSize" :statKey="statKey" />
+  <component
+    :is="currentComponent"
+    :users="users"
+    :statKey="settings.statKey"
+    :color="settings.color"
+    :streamScore="streamScore"
+  />
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { SocialComponent, StatKeyNum, UserStatsRecord } from '@/types'
-  import SocialRosterGrid from './SocialRosterGrid.vue'
+  import { type Component, computed } from 'vue'
+  import { SocialComponent, SocialRosterType, UserStatsRecord } from '@/types'
+  import grid from '../layouts/Grid.vue'
+  import streamPower from '../layouts/StreamPower.vue'
 
   const props = defineProps<{
+    settings: SocialRosterType
     users: UserStatsRecord[]
-    component: SocialComponent
-    cellSize: string
-    statKey: StatKeyNum | null
+    streamScore: number
   }>()
 
-  const gridComponent = computed(() => {
-    switch (props.component) {
-      case 'grid':
-      default:
-        return SocialRosterGrid
-    }
-  })
+  const componentMap: Record<SocialComponent, Component> = {
+    grid,
+    streamPower,
+  }
+
+  const currentComponent = computed(() => componentMap[props.settings.component] ?? grid)
 </script>

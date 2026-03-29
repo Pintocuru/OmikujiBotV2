@@ -3,35 +3,27 @@
   <!-- プレビュー -->
   <SocialRosterPreview />
 
-  <!-- タイトル -->
-  <SettingItem label="タイトル" description="タイトルを設定します" :showReset="true" @reset="resetMap.label">
-    <input
-      type="text"
-      class="input input-bordered w-full"
-      :value="socialRoster.label"
-      @input="(e) => updateField('label', (e.target as HTMLInputElement).value)"
-    />
-  </SettingItem>
-
-  <!-- セルサイズ -->
-  <SettingItem
-    label="セルサイズ"
-    description="アイコンの大きさを指定します"
-    :showReset="true"
-    @reset="resetMap.cellSize"
-  >
+  <!-- コンポーネント選択 -->
+  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(label, key) in cellSizeLabelMap"
+        v-for="(value, key) in socialComponentMap"
         :key="key"
-        class="badge badge-lg cursor-pointer"
-        :class="socialRoster.cellSize === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('cellSize', key)"
+        class="badge cursor-pointer"
+        :class="socialRoster.component === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('component', key)"
       >
-        {{ label }}
+        {{ value.label }}
       </div>
     </div>
   </SettingItem>
+
+  <!-- テーマカラー -->
+  <DaisyUiThemeEditor
+    v-if="isAdv && socialComponentMap[socialRoster.component].isColor"
+    :model-value="socialRoster.color"
+    @update:model-value="(newValue) => updateField('color', newValue)"
+  />
 
   <!-- ソート基準 -->
   <SettingItem label="並び順" description="ユーザーの表示順を指定します" :showReset="true" @reset="resetMap.sortKey">
@@ -44,26 +36,6 @@
         @click="updateField('sortKey', key)"
       >
         {{ label }}
-      </div>
-    </div>
-  </SettingItem>
-
-  <!-- ソート順 -->
-  <SettingItem label="昇順/降順" description="並び順の方向を指定します">
-    <div class="flex flex-wrap gap-2">
-      <div
-        class="badge badge-lg cursor-pointer"
-        :class="socialRoster.sortOrder === 'desc' ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('sortOrder', 'desc')"
-      >
-        降順（多い順）
-      </div>
-      <div
-        class="badge badge-lg cursor-pointer"
-        :class="socialRoster.sortOrder === 'asc' ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('sortOrder', 'asc')"
-      >
-        昇順（少ない順）
       </div>
     </div>
   </SettingItem>
@@ -88,19 +60,6 @@
         {{ label }}
       </div>
     </div>
-  </SettingItem>
-
-  <!-- テーマカラー -->
-  <SettingItem v-if="isAdv" label="テーマカラー" description="テーマカラーを選択" forceMode="adv">
-    <select
-      class="select select-bordered"
-      :value="socialRoster.color"
-      @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
-    >
-      <option v-for="theme in themes" :key="theme" :value="theme">
-        {{ theme }}
-      </option>
-    </select>
   </SettingItem>
 
   <!-- 対象イベントキー -->
@@ -135,19 +94,19 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SocialRosterSchema, SocialSortKey, StatKeyNum } from '@/types'
+  import { socialComponentMap, SocialRosterSchema, SocialSortKey, StatKeyNum } from '@/types'
   import SocialRosterPreview from './SocialRosterPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { themes } from '@shared/styles/DaisyUiTheme'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SocialRosterSchema.parse({}))
   const rulesComment = computed(() => data.value.comments)
 
-  const { isAdv } = useSettingMode()
+  const { isAdv, isPro } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
   const updateField = (field: keyof typeof socialRoster.value, value: any) => {
@@ -163,27 +122,16 @@
   }
 
   const resetMap = {
-    label: () => resetField('label'),
-    cellSize: () => resetField('cellSize'),
     sortKey: () => resetField('sortKey'),
     targetEventKey: () => resetField('targetEventKey'),
   }
 
-  const cellSizeLabelMap: Record<string, string> = {
-    'h-8': '極小 (32px)',
-    'h-10': '小 (40px)',
-    'h-12': '中小 (48px)',
-    'h-16': '中 (64px)',
-    'h-20': '大 (80px)',
-    'h-24': '特大 (96px)',
-  }
-
   const sortKeyLabelMap: Record<SocialSortKey, string> = {
-    tc: '総チャット数',
-    no: '配信内チャット数',
-    isSyoken: '初見',
     lastVisit: '最終訪問',
     giftPrice: 'ギフト金額',
+    no: '配信内チャット数',
+    tc: '総チャット数',
+    isSyoken: '初見',
   }
 
   const statKeyLabelMap: Record<StatKeyNum, string> = {

@@ -4,7 +4,7 @@
  * タイ語配信者っぽい名前（名）
  * 親しみやすく、覚えやすいニックネーム
  */
-export const MOCK_GIVEN_NAME_TH_MAP = {
+export const MOCK_GIVEN_NAME_TH_MAP: Record<string, { label: string; avatarStyle: string }> = {
   may: { label: 'เมย์', avatarStyle: 'lorelei' }, // May（5月生まれに多い）
   ploy: { label: 'พลอย', avatarStyle: 'soft' }, // Ploy（宝石）
   ice: { label: 'ไอซ์', avatarStyle: 'pixel-art' }, // Ice（英語由来）
@@ -25,7 +25,7 @@ export const MOCK_GIVEN_NAME_TH_MAP = {
   ken: { label: 'เคน', avatarStyle: 'big-ears' }, // Ken（ケン）
   james: { label: 'เจมส์', avatarStyle: 'soft' }, // James（ジェームズ）
   belle: { label: 'เบลล์', avatarStyle: 'lorelei' }, // Belle（ベル）
-} as const satisfies Record<string, { label: string; avatarStyle: string }>
+}
 
 export const MOCK_GIVEN_NAME_TH_LIST = Object.values(MOCK_GIVEN_NAME_TH_MAP)
 
@@ -33,7 +33,7 @@ export const MOCK_GIVEN_NAME_TH_LIST = Object.values(MOCK_GIVEN_NAME_TH_MAP)
  * タイ語配信者っぽい苗字（姓）
  * 一般的で親しみやすい苗字
  */
-export const MOCK_FAMILY_NAME_TH_MAP = {
+export const MOCK_FAMILY_NAME_TH_MAP: Record<string, string> = {
   saetang: 'แสงตัง', // Saetang（最も多い苗字）
   sukkasem: 'สุขเกษม', // Sukkasem（幸福）
   sangthong: 'สังข์ทอง', // Sangthong（金の貝）
@@ -54,6 +54,6 @@ export const MOCK_FAMILY_NAME_TH_MAP = {
   somchai: 'สมชาย', // Somchai（男らしい）
   sompong: 'สมพงษ์', // Sompong（一族）
   somsak: 'สมศักดิ์', // Somsak（名誉）
-} as const satisfies Record<string, string>
+}
 
 export const MOCK_FAMILY_NAME_TH_LIST = Object.values(MOCK_FAMILY_NAME_TH_MAP)

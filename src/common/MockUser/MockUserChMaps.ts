@@ -4,7 +4,7 @@
  * 中文配信者っぽい名前（名）
  * 親しみやすく、覚えやすい名前
  */
-export const MOCK_GIVEN_NAME_ZH_MAP = {
+export const MOCK_GIVEN_NAME_ZH_MAP: Record<string, { label: string; avatarStyle: string }> = {
   xiaoYu: { label: '小宇', avatarStyle: 'adventurer' },
   aJie: { label: '阿杰', avatarStyle: 'pixel-art' },
   xiaoMing: { label: '小明', avatarStyle: 'fun-emoji' },
@@ -15,7 +15,7 @@ export const MOCK_GIVEN_NAME_ZH_MAP = {
   tangTang: { label: '糖糖', avatarStyle: 'soft' },
   yuanQi: { label: '元氣', avatarStyle: 'sunset' },
   douDou: { label: '豆豆', avatarStyle: 'pixel-art' },
-} as const satisfies Record<string, { label: string; avatarStyle: string }>
+}
 
 export const MOCK_GIVEN_NAME_ZH_LIST = Object.values(MOCK_GIVEN_NAME_ZH_MAP)
 
@@ -23,7 +23,7 @@ export const MOCK_GIVEN_NAME_ZH_LIST = Object.values(MOCK_GIVEN_NAME_ZH_MAP)
  * 中文配信者っぽい苗字（姓）
  * 一般的で親しみやすい苗字
  */
-export const MOCK_FAMILY_NAME_ZH_MAP = {
+export const MOCK_FAMILY_NAME_ZH_MAP: Record<string, string> = {
   wang: '王',
   li: '李',
   zhang: '張',
@@ -34,6 +34,6 @@ export const MOCK_FAMILY_NAME_ZH_MAP = {
   zhao: '趙',
   wu: '吳',
   zhou: '周',
-} as const satisfies Record<string, string>
+}
 
 export const MOCK_FAMILY_NAME_ZH_LIST = Object.values(MOCK_FAMILY_NAME_ZH_MAP)
