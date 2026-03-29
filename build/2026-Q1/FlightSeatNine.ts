@@ -1,20 +1,20 @@
-// build/2026-Q1/GraduationIcons.ts
+// build/2026-Q1/FlightSeatNine.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'GraduationIcons',
-  title: 'あつめて！卒業写真メーカー',
+  key: 'FlightSeatNine',
+  title: '私を構成する 9 人のユーザー。',
   description: 'コメントしたユーザーをランダムに枠に入れるジェネレーター',
   banner: '',
-  tags: ['卒業写真メーカー', 'フライトシート'],
-  boothId: '8069882',
+  tags: ['私を構成する9人のユーザー。', 'フライトシート'],
+  boothId: '8060471',
   category: '2026-Q1',
   licenseLabel: '利用規約に従う',
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = [''] as const
+const COLOR_VARIANTS = ['', ] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
@@ -23,9 +23,8 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'GraduationIcons', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBotMain' },
-  { project: 'GraduationIcons', type: 'JSON', accessLevel: 'basic' },
-  { project: 'GraduationIcons', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'FlightSeatNine', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'FlightSeatNine', type: 'JSON', accessLevel: 'basic' },
 ]
 
 export default { getProjects, buildTargets }

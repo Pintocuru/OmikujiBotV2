@@ -38,8 +38,7 @@ const templateList: Record<AccessLevelType, string[]> = {
     '2026-Q1/StreamCounter/StreamCounterPixelOhayou.json',
     '2026-Q1/LiveClock/LiveClockMorning.json',
     '2026-Q1/BreakingSyoken/BreakingSyoken.json',
-    '2026-Q1/MyNineViewers/MyNineViewers.json',
-    '2026-Q1/GraduationIcons/GraduationIcons.json',
+    '2026-Q1/FlightSeat/FlightSeatNine.json',
     '2026-Q1/HonjoFox/HonjoFox.json',
   ],
   pro: [
@@ -47,6 +46,7 @@ const templateList: Record<AccessLevelType, string[]> = {
     '2025-Q4/GouseiSuika/GouseiSuika.json',
     '2026-Q1/LenormandOracle/LenormandOracle.json',
     '2026-Q1/RunicOracle/RunicOracle.json',
+    '2026-Q1/FlightSeat/FlightSeatGraduation.json',
   ],
   godMode: [
     // 内部用パック

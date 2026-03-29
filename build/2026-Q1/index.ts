@@ -5,8 +5,8 @@ import HonjoFoxProject from './HonjoFox'
 import BreakingSyoken from './BreakingSyoken'
 import LenormandOracle from './LenormandOracle'
 import RunicOracle from './RunicOracle'
-import MyNineViewers from './MyNineViewers'
-import GraduationIcons from './GraduationIcons'
+import FlightSeatNine from './FlightSeatNine'
+import FlightSeatGraduation from './FlightSeatGraduation'
 import StreamCounterCircle from './StreamCounterCircle'
 import StreamCounterPixel from './StreamCounterPixel'
 import LiveClockMorning from './LiveClockMorning'
@@ -19,8 +19,8 @@ export default [
   // RunicOracle,
   // HonjoFoxProject,
   // BreakingSyoken,
-  // MyNineViewers,
-  // GraduationIcons,
+  // FlightSeatNine,
+   FlightSeatGraduation,
   // StreamCounterCircle,
   // StreamCounterPixel,
   // LiveClockMorning,
