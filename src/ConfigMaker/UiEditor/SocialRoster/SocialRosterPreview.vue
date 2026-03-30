@@ -2,16 +2,7 @@
 <template>
   <HudPreview>
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="socialRoster.color">
-      <div class="grid w-full" :style="{ gridTemplateColumns: `repeat(auto-fill, ${cellPx}px)` }">
-        <SeatCell
-          v-for="(user, i) in previewUsers"
-          :key="user.userId"
-          :seat="user"
-          :index="i"
-          :statKey="socialRoster.statKey"
-          :size="cellPx"
-        />
-      </div>
+      <SocialRosterSelector :settings="socialRoster" :users="sortedPreviewUsers" :streamScore="streamScore" />
     </div>
     <template #hud>
       <div class="space-x-2">
@@ -28,29 +19,24 @@
   import { storeToRefs } from 'pinia'
   import { SocialRosterSchema, UserStatsRecord, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import SeatCell from '@main/ui/FlightSeat/layouts/SeatCell.vue'
+  import SocialRosterSelector from '@main/ui/SocialRoster/parts/SocialRosterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
+  import { calcStreamScore, sortUsers } from '@/MainGenerator/ui/SocialRoster/composables/socialRosterLogic'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
   const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SocialRosterSchema.parse({}))
 
-  const cellSizePxMap: Record<string, number> = {
-    'h-8': 32,
-    'h-10': 40,
-    'h-12': 48,
-    'h-16': 64,
-    'h-20': 80,
-    'h-24': 96,
-  }
-  const cellPx = computed(() => cellSizePxMap[socialRoster.value.cellSize] ?? 64)
-
   const previewUsers = ref<UserStatsRecord[]>(generateDummyUserStats(8))
 
+  const streamScore = computed(() => calcStreamScore(previewUsers.value))
+
+  const sortedPreviewUsers = computed(() => sortUsers(previewUsers.value, socialRoster.value.sortKey))
+
   function addPreviewUser() {
-    previewUsers.value.push(generateDummyUserStats(1)[0])
+    previewUsers.value.unshift(generateDummyUserStats(1)[0])
   }
 
   function resetPreviewUsers() {

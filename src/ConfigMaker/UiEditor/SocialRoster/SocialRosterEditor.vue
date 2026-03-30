@@ -26,36 +26,19 @@
   />
 
   <!-- ソート基準 -->
-  <SettingItem label="並び順" description="ユーザーの表示順を指定します" :showReset="true" @reset="resetMap.sortKey">
+  <SettingItem
+    label="右下のステータス"
+    description="アイコンの右下に表示する内容"
+    :showReset="true"
+    @reset="resetMap.sortKey"
+  >
     <div class="flex flex-wrap gap-2">
       <div
-        v-for="(label, key) in sortKeyLabelMap"
+        v-for="(label, key) in socialSortKeyMap"
         :key="key"
         class="badge badge-lg cursor-pointer"
         :class="socialRoster.sortKey === key ? 'badge-primary' : 'badge-outline'"
         @click="updateField('sortKey', key)"
-      >
-        {{ label }}
-      </div>
-    </div>
-  </SettingItem>
-
-  <!-- 右下のステータス -->
-  <SettingItem label="右下のステータス" description="アイコンの右下に表示する内容">
-    <div class="flex flex-wrap gap-2">
-      <div
-        class="badge badge-lg cursor-pointer"
-        :class="socialRoster.statKey === null ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('statKey', null)"
-      >
-        非表示
-      </div>
-      <div
-        v-for="(label, key) in statKeyLabelMap"
-        :key="key"
-        class="badge badge-lg cursor-pointer"
-        :class="socialRoster.statKey === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('statKey', key)"
       >
         {{ label }}
       </div>
@@ -94,7 +77,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { socialComponentMap, SocialRosterSchema, SocialSortKey, StatKeyNum } from '@/types'
+  import { socialComponentMap, SocialRosterSchema, socialSortKeyMap } from '@/types'
   import SocialRosterPreview from './SocialRosterPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -124,19 +107,5 @@
   const resetMap = {
     sortKey: () => resetField('sortKey'),
     targetEventKey: () => resetField('targetEventKey'),
-  }
-
-  const sortKeyLabelMap: Record<SocialSortKey, string> = {
-    lastVisit: '最終訪問',
-    giftPrice: 'ギフト金額',
-    no: '配信内チャット数',
-    tc: '総チャット数',
-    isSyoken: '初見',
-  }
-
-  const statKeyLabelMap: Record<StatKeyNum, string> = {
-    userName: 'ユーザー名',
-    tc: 'チャット数',
-    giftPrice: 'ギフト金額',
   }
 </script>

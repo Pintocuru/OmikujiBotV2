@@ -1,12 +1,15 @@
 <!-- src/MainGenerator/ui/SocialRoster/parts/SocialRosterSelector.vue -->
 <template>
-  <component
-    :is="currentComponent"
-    :users="users"
-    :statKey="settings.statKey"
-    :color="settings.color"
-    :streamScore="streamScore"
-  />
+  <div class="bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color.daisyUiTheme">
+    <component
+      :is="currentComponent"
+      :users="users"
+      :sortKey="settings.sortKey"
+      :color="settings.color"
+      :streamScore="streamScore"
+      :size="size"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -20,6 +23,8 @@
     users: UserStatsRecord[]
     streamScore: number
   }>()
+
+  const size = 80
 
   const componentMap: Record<SocialComponent, Component> = {
     grid,

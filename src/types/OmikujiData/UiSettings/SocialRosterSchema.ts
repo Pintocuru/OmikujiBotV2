@@ -1,7 +1,6 @@
 // src/types/OmikujiData/UiSettings/SettingsSocialSchema.ts
 import { z } from 'zod'
-import { DaisyUiThemeFieldsSchema, themes } from '@shared/styles/DaisyUiTheme'
-import { statKeyNum } from './FlightSeatSchema'
+import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { normalizedObject } from '../ParsedDefault'
 
 /**
@@ -11,13 +10,19 @@ export const socialComponentMap = {
   grid: { label: '無地グリッド', accessLevel: 'basic', isColor: false },
   streamPower: { label: '配信戦闘力', accessLevel: 'adv', isColor: true },
 } as const
-
-/**
- * ソーシャルゲーム風ユーザーリスト socialRoster
- */
 export type SocialComponent = keyof typeof socialComponentMap
-export const socialSortKeys = ['lastVisit', 'giftPrice', 'tc', 'no', 'isSyoken'] as const
-export type SocialSortKey = (typeof socialSortKeys)[number]
+
+export const socialSortKeyMap = {
+  lastVisit: 'なし',
+  isSyoken: '初見',
+  userName: 'ユーザー名',
+  giftPrice: 'ギフト金額',
+  tc: '総チャット数',
+  no: '配信内チャット数',
+} as const
+
+const socialSortKeyEnum = Object.keys(socialSortKeyMap) as SocialSortKey[]
+export type SocialSortKey = keyof typeof socialSortKeyMap
 
 export const SocialRosterSchema = z.object({
   component: z
@@ -30,10 +35,7 @@ export const SocialRosterSchema = z.object({
 
   color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
 
-  // セルに表示する値
-  statKey: z.enum(statKeyNum).nullable().default(null).catch(null),
-
   // ソート基準・順序
-  sortKey: z.enum(socialSortKeys).default('lastVisit').catch('lastVisit'),
+  sortKey: z.enum(socialSortKeyEnum).default('lastVisit').catch('lastVisit'),
 })
 export type SocialRosterType = z.infer<typeof SocialRosterSchema>

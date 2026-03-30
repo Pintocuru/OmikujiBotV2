@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, onMounted, onUnmounted } from 'vue'
+  import { computed, onMounted, onUnmounted, toRef } from 'vue'
   import { storeToRefs } from 'pinia'
   import { SocialRosterSchema } from '@/types'
   import { useSocialRosterManager } from './composables/useSocialRosterManager'
@@ -22,9 +22,7 @@
 
   const { isComment } = useVisibilityAccess()
 
-  const { sortedUsers, registerUser, streamScore } = useSocialRosterManager({
-    sortKey: computed(() => settings.value.sortKey),
-  })
+  const { sortedUsers, registerUser, streamScore } = useSocialRosterManager(toRef(settings.value, 'sortKey'))
 
   let unsubscribe: (() => void) | null = null
 
