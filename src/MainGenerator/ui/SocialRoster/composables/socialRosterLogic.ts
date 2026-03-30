@@ -29,5 +29,5 @@ export function calcStreamScore(users: Iterable<UserStatsRecord>): number {
     if (user.isSyoken) syokenCount++
   }
 
-  return Math.floor(total * Math.sqrt(userCount) * Math.sqrt(syokenCount + 1))
+  return Math.floor(total * Math.sqrt(userCount))
 }

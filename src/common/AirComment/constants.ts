@@ -2,7 +2,7 @@
 import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
 
 // 切替フラグ（ここを直接変更する）
-export const USERNAME_MODE: 'simple' | 'mock' = 'mock'
+export const USERNAME_MODE: 'simple' | 'mock' = 'simple'
 // 'simple' → NAME_PARTS
 // 'mock'   → generateDummyVisitRecords
 
