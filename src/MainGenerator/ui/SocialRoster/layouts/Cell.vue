@@ -25,7 +25,7 @@
 
       <!-- userName -->
       <template v-else-if="sortKey === 'userName'">
-        <div class="leading-tight break-all line-clamp-2 text-xs seat-text-stroke">
+        <div class="leading-tight break-all line-clamp-2 text-sm seat-text-stroke">
           {{ seat.userName }}
         </div>
       </template>

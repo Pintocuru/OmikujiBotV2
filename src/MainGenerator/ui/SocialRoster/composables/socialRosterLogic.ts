@@ -4,6 +4,7 @@ import { UserStatsRecord, SocialSortKey } from '@/types'
 export function getSortValue(user: UserStatsRecord, key: SocialSortKey): number {
   if (key === 'isSyoken') return user.isSyoken ? 1 : 0
   if (key === 'userName') return user.lastVisit ?? 0
+  if (key === 'tc') return user.lastVisit ?? 0 // 総合コメントはソートしない
   return user[key] ?? 0
 }
 

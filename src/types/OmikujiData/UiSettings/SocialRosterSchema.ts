@@ -10,14 +10,15 @@ export const socialComponentMap = {
   grid: { label: '無地グリッド', accessLevel: 'basic', isColor: false },
   streamPower: { label: '配信戦闘力', accessLevel: 'adv', isColor: true },
 } as const
+const socialComponentEnum = Object.keys(socialComponentMap) as SocialComponent[]
 export type SocialComponent = keyof typeof socialComponentMap
 
 export const socialSortKeyMap = {
   lastVisit: 'なし',
   isSyoken: '初見',
-  userName: 'ユーザー名',
+  userName: 'ユーザー名(ソートなし)',
   giftPrice: 'ギフト金額',
-  tc: '総チャット数',
+  tc: '総チャット数(ソートなし)',
   no: '配信内チャット数',
 } as const
 
@@ -25,17 +26,15 @@ const socialSortKeyEnum = Object.keys(socialSortKeyMap) as SocialSortKey[]
 export type SocialSortKey = keyof typeof socialSortKeyMap
 
 export const SocialRosterSchema = z.object({
-  component: z
-    .enum(Object.keys(socialComponentMap) as [SocialComponent])
-    .default('grid')
-    .catch('grid'),
-
-  // どのeventを対象にするか。空文字なら全体から
-  targetEventKey: z.string().default('').catch(''),
-
+  component: z.enum(socialComponentEnum).default('grid').catch('grid'),
+  targetEventKey: z.string().default('').catch(''), // どのeventを対象にするか
   color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
-
-  // ソート基準・順序
-  sortKey: z.enum(socialSortKeyEnum).default('lastVisit').catch('lastVisit'),
+  sortKey: z.enum(socialSortKeyEnum).default('lastVisit').catch('lastVisit'), // ソート基準・順序
 })
 export type SocialRosterType = z.infer<typeof SocialRosterSchema>
+
+export type SocialRosterCounts = {
+  streamScore: number // 配信戦闘力
+  syokenCount: number // 初見数
+  userCount: number // ユーザー数
+}

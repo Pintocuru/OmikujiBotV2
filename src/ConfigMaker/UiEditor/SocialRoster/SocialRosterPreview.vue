@@ -2,7 +2,7 @@
 <template>
   <HudPreview>
     <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="socialRoster.color">
-      <SocialRosterSelector :settings="socialRoster" :users="sortedPreviewUsers" :streamScore="streamScore" />
+      <SocialRosterSelector :settings="socialRoster" :users="sortedPreviewUsers" :social-roster-counts="counts" />
     </div>
     <template #hud>
       <div class="space-x-2">
@@ -17,7 +17,7 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SocialRosterSchema, UserStatsRecord, useFontFamily } from '@/types'
+  import { SocialRosterCounts, SocialRosterSchema, UserStatsRecord, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SocialRosterSelector from '@main/ui/SocialRoster/parts/SocialRosterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
@@ -31,7 +31,18 @@
 
   const previewUsers = ref<UserStatsRecord[]>(generateDummyUserStats(8))
 
-  const streamScore = computed(() => calcStreamScore(previewUsers.value))
+  const counts = computed<SocialRosterCounts>(() => {
+    const users = previewUsers.value
+
+    let syokenCount = 0
+    for (const u of users) if (u.isSyoken) syokenCount++
+
+    return {
+      streamScore: calcStreamScore(users),
+      syokenCount,
+      userCount: users.length,
+    }
+  })
 
   const sortedPreviewUsers = computed(() => sortUsers(previewUsers.value, socialRoster.value.sortKey))
 

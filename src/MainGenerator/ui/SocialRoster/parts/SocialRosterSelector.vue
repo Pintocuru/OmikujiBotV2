@@ -6,7 +6,7 @@
       :users="users"
       :sortKey="settings.sortKey"
       :color="settings.color"
-      :streamScore="streamScore"
+      :socialRosterCounts="socialRosterCounts"
       :size="size"
     />
   </div>
@@ -14,14 +14,14 @@
 
 <script setup lang="ts">
   import { type Component, computed } from 'vue'
-  import { SocialComponent, SocialRosterType, UserStatsRecord } from '@/types'
+  import { SocialComponent, SocialRosterCounts, SocialRosterType, UserStatsRecord } from '@/types'
   import grid from '../layouts/Grid.vue'
   import streamPower from '../layouts/StreamPower.vue'
 
   const props = defineProps<{
     settings: SocialRosterType
     users: UserStatsRecord[]
-    streamScore: number
+    socialRosterCounts: SocialRosterCounts
   }>()
 
   const size = 80

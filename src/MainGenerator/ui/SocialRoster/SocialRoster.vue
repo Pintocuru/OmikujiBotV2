@@ -1,9 +1,11 @@
 <!-- src/MainGenerator/ui/SocialRoster/SocialRoster.vue -->
 <template>
   <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
-    <div class="card w-full bg-base-200 mx-auto p-4 space-y-2" :data-theme="settings.color">
-      <SocialRosterSelector :settings="settings" :users="sortedUsers" :streamScore="streamScore" />
-    </div>
+    <SocialRosterSelector
+      :settings="settings"
+      :users="sortedUsers.length ? sortedUsers : generateDummyUserStats(200)"
+      :social-roster-counts="counts"
+    />
   </div>
 </template>
 
@@ -15,6 +17,7 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import SocialRosterSelector from './parts/SocialRosterSelector.vue'
+  import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
@@ -22,7 +25,7 @@
 
   const { isComment } = useVisibilityAccess()
 
-  const { sortedUsers, registerUser, streamScore } = useSocialRosterManager(toRef(settings.value, 'sortKey'))
+  const { sortedUsers, registerUser, counts } = useSocialRosterManager(toRef(settings.value, 'sortKey'))
 
   let unsubscribe: (() => void) | null = null
 

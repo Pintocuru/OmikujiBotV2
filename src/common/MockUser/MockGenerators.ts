@@ -103,12 +103,14 @@ export const generateDummyVisitRecords = (count: number, locale: LocaleType = 'j
 export const generateDummyUserStats = (count: number, locale: LocaleType = 'ja'): UserStatsRecord[] => {
   const { tc, no, score, giftPrice } = USER_STATS_RANGES
   const maxCount = Math.min(count, 300)
+  let previewIdCounter = 0
 
   return Array.from({ length: maxCount }, () => {
     const userName = buildUserName(locale)
     return UserStatsRecordSchema.parse({
       userName,
-      userId: userName,
+      userId: `${userName}-${previewIdCounter++}`,
+      isSyoken: Math.random() < 0.05,
       tc: randInt(tc.min, tc.max),
       no: randInt(no.min, no.max),
       score: randInt(score.min, score.max),
