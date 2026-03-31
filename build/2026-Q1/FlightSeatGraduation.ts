@@ -10,11 +10,12 @@ const PROJECT = {
   tags: ['卒業写真メーカー', 'フライトシート'],
   boothId: '8069882',
   category: '2026-Q1',
+  series: 'FlightSeat',
   licenseLabel: '利用規約に従う',
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = ['','Pro'] as const
+const COLOR_VARIANTS = ['', 'Pro'] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {

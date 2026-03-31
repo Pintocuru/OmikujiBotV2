@@ -10,6 +10,8 @@ import FlightSeatGraduation from './FlightSeatGraduation'
 import StreamCounterCircle from './StreamCounterCircle'
 import StreamCounterPixel from './StreamCounterPixel'
 import LiveClockMorning from './LiveClockMorning'
+import FlightSeatCrowded100 from './FlightSeatCrowded100'
+import FlightSeatCrowded300 from './FlightSeatCrowded300'
 
 export default [
   /* 完成されてないもの */
@@ -24,4 +26,6 @@ export default [
   // StreamCounterCircle,
   // StreamCounterPixel,
   // LiveClockMorning,
+  FlightSeatCrowded100,
+  FlightSeatCrowded300,
 ]

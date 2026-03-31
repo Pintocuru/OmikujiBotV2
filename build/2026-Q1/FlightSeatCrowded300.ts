@@ -8,8 +8,9 @@ const PROJECT = {
   description: 'コメントしたユーザーをランダムに枠に入れるジェネレーター',
   banner: '',
   tags: ['フライトシート', '300人埋めてみろよVTuber'],
-  boothId: '8060471',
+  boothId: '8145288',
   category: '2026-Q1',
+  series: 'FlightSeat',
   licenseLabel: 'CC-BY 4.0',
 } satisfies ProjectParams
 

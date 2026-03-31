@@ -84,7 +84,7 @@ export function createProject(packageRoot: string, color: string, params: Projec
       name: `おみくじBOT ${params.title} ${colorLabel}OmikujiBot ${id}`,
       label: `${params.title} ${colorLabel} ${id}`,
       boothURL: `https://pintocuru.booth.pm/items/${params.boothId}`,
-      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/${params.category}/${params.key}`,
+      readmeURL: `https://github.com/Pintocuru/OmikujiBot-Docs/tree/main/${params.category}/${series}/README.ja.md`,
       description: params.description,
     },
 

@@ -29,24 +29,22 @@
         leave-from-class="opacity-100 max-h-96"
         leave-to-class="opacity-0 max-h-0"
       >
-        <div v-if="isExpanded && selectedCategory === key && isOpenCategory[key]">
-          <template v-if="isExpanded && selectedCategory === key && isOpenCategory[key]">
-            <!-- Record：ドラッグ可能なアイテムリスト（アイテム選択済みのときのみ表示） -->
-            <SidebarRecordItems
-              v-if="getVariant(key) === 'record' && selectedItemKey"
-              :category="key"
-              v-model="getDraggableModel(key).value"
-              v-model:isDragEnabled="isDragEnabled"
-              @dragEnd="onDragEnd"
-            />
+        <template v-if="isExpanded && selectedCategory === key && isOpenCategory[key]">
+          <!-- Record：ドラッグ可能なアイテムリスト（アイテム選択済みのときのみ表示） -->
+          <SidebarRecordItems
+            v-if="getVariant(key) === 'record' && selectedItemKey"
+            :category="key"
+            v-model="getDraggableModel(key).value"
+            v-model:isDragEnabled="isDragEnabled"
+            @dragEnd="onDragEnd"
+          />
 
-            <!-- Array：jsonMerge の静的リスト -->
-            <SidebarArrayItems v-else-if="getVariant(key) === 'array'" :category="key" :items="getStaticItems(key)" />
+          <!-- Array：jsonMerge の静的リスト -->
+          <SidebarArrayItems v-else-if="getVariant(key) === 'array'" :category="key" :items="getStaticItems(key)" />
 
-            <!-- Object：appInfo / components のセクションリスト -->
-            <SidebarObjectItems v-else-if="getVariant(key) === 'object'" :category="key" />
-          </template>
-        </div>
+          <!-- Object：appInfo / components のセクションリスト -->
+          <SidebarObjectItems v-else-if="getVariant(key) === 'object'" :category="key" />
+        </template>
       </transition>
     </template>
   </div>
@@ -71,17 +69,17 @@
     theme: string
   }>()
 
-  // ── Context（theme / selectedItemKey / activeSection を子孫全体に注入） ──
+  // Context（theme / selectedItemKey / activeSection を子孫全体に注入）
   provideSidebarContext(computed(() => props.theme))
 
-  // ── ストア ────────────────────────────────────────────
+  // ストア
   const navigationStore = useNavigationStore()
   const { selectedCategory, selectedItemKey } = storeToRefs(navigationStore)
 
-  // ── カテゴリユーティリティ ─────────────────────────────
+  // カテゴリユーティリティ
   const { getCategoryItemCount, filteredCategoryLabels } = useCategoryUtils()
 
-  // ── ドラッグ ──────────────────────────────────────────
+  // ドラッグ
   const { draggableItems, onDragEnd, isDragDisabled } = useNavigationSidebarDrag(computed(() => props.isExpanded))
   // isDragDisabled（ドラッグ中フラグ）を isDragEnabled として子に渡す
   const isDragEnabled = computed({
@@ -97,10 +95,10 @@
       },
     })
 
-  // ── サブ項目ロジック ───────────────────────────────────
+  // サブ項目ロジック
   const { getVariant, getStaticItems } = useSidebarSubItems()
 
-  // ── 開閉状態 ─────────────────────────────────────────
+  // 開閉状態
   const isOpenCategory = ref<Record<string, boolean>>({})
 
   const navigateCategory = (key: CategoryType) => {
@@ -108,7 +106,7 @@
     navigationStore.selectCategory(key)
   }
 
-  // ── スタイル ─────────────────────────────────────────
+  // スタイル
   const categoryButtonClass = (key: CategoryType) => {
     if (selectedCategory.value !== key) return 'btn-ghost'
     return `bg-${props.theme} text-${props.theme}-content hover:bg-${props.theme}`

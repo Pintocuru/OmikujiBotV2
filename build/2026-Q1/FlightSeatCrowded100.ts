@@ -8,8 +8,9 @@ const PROJECT = {
   description: 'コメントしたユーザーをランダムに枠に入れるジェネレーター',
   banner: '',
   tags: ['フライトシート', 'ともだち100人できるかな'],
-  boothId: '8060471',
+  boothId: '8145227',
   category: '2026-Q1',
+  series: 'FlightSeat',
   licenseLabel: 'CC-BY 4.0',
 } satisfies ProjectParams
 
@@ -23,7 +24,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'FlightSeatCrowded100', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'FlightSeatCrowded100', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   { project: 'FlightSeatCrowded100', type: 'JSON', accessLevel: 'basic' },
 ]
 
