@@ -23,21 +23,22 @@ export class EventCommentProcessor {
   /**
    * メイン処理: コメントを処理して拡張コメントを作成
    */
-  respondToComments(omikens: OmikenCommentType[]): void {
+  async respondToComments(omikens: OmikenCommentType[]): Promise<void> {
     if (omikens.length === 0) return
-    const botMessages = omikens.flatMap((omiken) => this.processUserComment(omiken))
+    const botMessagesArrays = await Promise.all(omikens.map((omiken) => this.processUserComment(omiken)))
+    const botMessages = botMessagesArrays.flat()
     if (botMessages.length > 0) this.store.scheduleBotMessages(botMessages)
   }
 
   /**
    * ユーザーコメントの処理
    */
-  private processUserComment(omiken: OmikenCommentType): BotMessageType[] {
+  private async processUserComment(omiken: OmikenCommentType): Promise<BotMessageType[]> {
     try {
       const sortedRules = this.getSortedEnabledRules()
 
       for (const rule of sortedRules) {
-        const result = this.processRule(omiken, rule)
+        const result = await this.processRule(omiken, rule)
 
         // イベントが成功し、botメッセージが生成された場合はここで終了
         if (result.botMessages.length > 0) {
@@ -58,7 +59,7 @@ export class EventCommentProcessor {
   /**
    * 単一イベントの処理
    */
-  private processRule(omiken: OmikenCommentType, event: CommentEventType): ProcessResult {
+  private async processRule(omiken: OmikenCommentType, event: CommentEventType): Promise<ProcessResult> {
     const { data } = this.store
 
     // 1. コメントイベントの条件チェック
@@ -97,8 +98,9 @@ export class EventCommentProcessor {
 
     // 6. 通常アクション: カウントしてから実行
     this.recordDraw(omiken, event)
+
     const omikujiProcessor = new OmikujiProcessor()
-    const botMessages = omikujiProcessor.executeActionItem(actionItem, omiken)
+    const botMessages = await omikujiProcessor.executeActionItem(actionItem, omiken)
     const isCommentTriggered = event.trigger.conditions.includes('comment')
 
     return { isCommentTriggered, botMessages }

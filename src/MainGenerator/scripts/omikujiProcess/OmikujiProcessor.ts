@@ -25,10 +25,10 @@ export class OmikujiProcessor {
   }
 
   // おみくじ抽選&おみくじ処理
-  executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): BotMessageType[] {
+  async executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): Promise<BotMessageType[]> {
     const actionItem = this.lotteryOmikujiItem(omikujiSet)
     if (!actionItem) return []
-    return this.executeActionItem(actionItem, omiken)
+    return await this.executeActionItem(actionItem, omiken)
   }
 
   /**
@@ -48,10 +48,10 @@ export class OmikujiProcessor {
     }
   }
 
-  executeActionItem(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
+  async executeActionItem(actionItem: ActionSetType, omiken?: OmikenCommentType): Promise<BotMessageType[]> {
     if (actionItem.type === 'special') return []
     const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
-    return this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
+    return await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
   }
 
   /**

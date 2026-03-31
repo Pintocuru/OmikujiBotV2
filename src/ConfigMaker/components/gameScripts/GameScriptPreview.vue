@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, ref, watchEffect } from 'vue'
   import { GameScriptsType, CommentBubbleSchema } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
@@ -46,6 +46,9 @@
   const bubbleSettings = computed(() => data.value.components.settings.bubble ?? CommentBubbleSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)
 
+  const processedMessage = ref('')
+  const messageKey = ref(0)
+
   // キャラクター取得
   const isValid = computed(() => {
     if (!props.gameScripts) return false
@@ -68,15 +71,16 @@
   })
 
   // メッセージ処理
-  const processedMessage = computed(() => {
+  watchEffect(async () => {
     const _ = messageKey.value
     const scriptId = props.gameScripts?.scriptId
-    if (!scriptId) return ''
-
-    return scriptManager.playSampleScript(scriptId, props.gameScripts?.queryString)
+    if (!scriptId) {
+      processedMessage.value = ''
+      return
+    }
+    processedMessage.value = await scriptManager.playSampleScript(scriptId, props.gameScripts?.queryString)
   })
 
   // リフレッシュキー
-  const messageKey = ref(0)
   const refreshMessage = () => messageKey.value++
 </script>

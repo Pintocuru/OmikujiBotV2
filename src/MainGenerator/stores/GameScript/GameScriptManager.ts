@@ -1,5 +1,5 @@
 // src/MainGenerator/stores/GameScript/GameScriptManager.ts
-import { GameScriptsType, GameStateType, ScriptClass, ScriptGameKey, scriptGameKeys, ScriptResult } from '@/types/'
+import { GameScriptsType, GameStateType, ScriptClass, ScriptGameKey, ScriptResult } from '@/types/'
 import { gameExecuteMap } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserManager } from '../UserManager/UserManager'
@@ -15,54 +15,36 @@ export class GameScriptManager {
     return this.instance
   }
 
-  private constructor() {
-    this.initializeScripts()
-  }
-
-  /**
-   * ゲームスクリプトの初期化
-   */
-  private initializeScripts(): void {
-    try {
-      for (const scriptId of scriptGameKeys) {
-        if (this.scriptInstances[scriptId]) continue
-
-        const scriptInstance = gameExecuteMap[scriptId]
-        this.scriptInstances[scriptId] = scriptInstance
-
-        // ★ visitManagerが既に設定されていれば注入
-        if (this.userManager && 'initialize' in scriptInstance && typeof scriptInstance.initialize === 'function') {
-          scriptInstance.initialize(this.userManager)
-        }
-      }
-    } catch (error) {
-      console.error('スクリプト初期化エラー:', error)
-      postSystemMessage(`❌ スクリプト初期化エラー: ${error}`)
-    }
-  }
-
   /**
    * スクリプト実行
    */
-  playScript = (gameScripts: GameScriptsType, omiken?: OmikenCommentType): ScriptResult | null => {
+  playScript = async (gameScripts: GameScriptsType, omiken?: OmikenCommentType): Promise<ScriptResult | null> => {
     if (!gameScripts) return null
     const { scriptId, queryString, characterKey } = gameScripts
     if (!scriptId) return null
 
-    const scriptInstance = this.scriptInstances[scriptId]
-    if (!scriptInstance) {
-      console.warn(`スクリプトインスタンスが見つかりません: ${scriptId}`)
-      return null
+    // キャッシュになければ動的インポート
+    if (!this.scriptInstances[scriptId]) {
+      try {
+        const mod = await gameExecuteMap[scriptId]()
+        this.scriptInstances[scriptId] = mod.default
+        // userManager の注入
+        if (this.userManager && 'initialize' in mod.default) {
+          mod.default.initialize(this.userManager)
+        }
+      } catch (error) {
+        console.error(`スクリプトロードエラー (${scriptId}):`, error)
+        postSystemMessage(`❌ スクリプトロードエラー: ${error}`)
+        return null
+      }
     }
 
+    const scriptInstance = this.scriptInstances[scriptId]!
     try {
-      const scriptResult = scriptInstance.run(queryString, characterKey, omiken)
-      // TODO:API送信するならこのタイミングだと思う
-
-      return scriptResult
+      return scriptInstance.run(queryString, characterKey, omiken)
     } catch (error) {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
-      postSystemMessage(`❌ スクリプト初期化エラー: ${error}`)
+      postSystemMessage(`❌ スクリプト実行エラー: ${error}`)
       return null
     }
   }
@@ -70,15 +52,25 @@ export class GameScriptManager {
   /**
    * サンプルラン
    */
-  playSampleScript(scriptId: string, queryString: string): string {
+  async playSampleScript(scriptId: string, queryString: string): Promise<string> {
     if (!scriptId) return '(スクリプトが指定されていません)'
-    const scriptInstance = this.scriptInstances[scriptId]
-    if (!scriptInstance) {
-      console.warn(`スクリプトインスタンスが見つかりません: ${scriptId}`)
-      return 'スクリプトが正常に稼働できません'
-    } else if (!scriptInstance.sampleRun) {
-      return 'テストに対応していないスクリプトです'
+
+    // キャッシュになければ動的インポートでロード
+    if (!this.scriptInstances[scriptId]) {
+      try {
+        const mod = await gameExecuteMap[scriptId as ScriptGameKey]()
+        this.scriptInstances[scriptId] = mod.default
+        if (this.userManager && 'initialize' in mod.default) {
+          mod.default.initialize(this.userManager)
+        }
+      } catch (error) {
+        console.error(`スクリプトロードエラー (${scriptId}):`, error)
+        return 'スクリプトが正常に稼働できません'
+      }
     }
+
+    const scriptInstance = this.scriptInstances[scriptId]!
+    if (!scriptInstance.sampleRun) return 'テストに対応していないスクリプトです'
 
     try {
       return scriptInstance.sampleRun(queryString)
@@ -86,6 +78,26 @@ export class GameScriptManager {
       console.error(`スクリプト実行エラー (${scriptId}):`, error)
       return `スクリプト実行エラー(${scriptId}): ${error}`
     }
+  }
+
+  /**
+   * スクリプトインスタンスをキャッシュから取得、なければ動的インポート
+   */
+  private async loadScript(scriptId: string): Promise<ScriptClass | null> {
+    if (!this.scriptInstances[scriptId]) {
+      try {
+        const mod = await gameExecuteMap[scriptId as ScriptGameKey]()
+        this.scriptInstances[scriptId] = mod.default
+        if (this.userManager && 'initialize' in mod.default) {
+          mod.default.initialize(this.userManager)
+        }
+      } catch (error) {
+        console.error(`スクリプトロードエラー (${scriptId}):`, error)
+        postSystemMessage(`❌ スクリプトロードエラー: ${error}`)
+        return null
+      }
+    }
+    return this.scriptInstances[scriptId] ?? null
   }
 
   /**
@@ -114,14 +126,7 @@ export class GameScriptManager {
    * 特定のスクリプトインスタンスをリセット
    */
   reset(scriptKey: ScriptGameKey): void {
-    if (!this.scriptInstances[scriptKey]) {
-      console.warn(`リセット対象のスクリプトが見つかりません: ${scriptKey}`)
-      return
-    }
-
-    // 削除して再初期化
     delete this.scriptInstances[scriptKey]
-    if (gameExecuteMap[scriptKey]) this.scriptInstances[scriptKey] = gameExecuteMap[scriptKey]
   }
 
   /**
@@ -129,6 +134,5 @@ export class GameScriptManager {
    */
   allReset(): void {
     this.scriptInstances = {}
-    this.initializeScripts()
   }
 }

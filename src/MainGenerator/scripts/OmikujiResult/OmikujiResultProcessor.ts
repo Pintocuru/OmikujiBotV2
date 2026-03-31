@@ -53,15 +53,15 @@ export class OmikujiResultProcessor {
   /**
    * おみくじ結果を処理してBotMessageを生成
    */
-  process(
+  async process(
     actionItem: ActionSetType,
     defaultPlaceholders: Record<string, string | number>,
     omiken?: OmikenCommentType
-  ): BotMessageType[] {
+  ): Promise<BotMessageType[]> {
     try {
       switch (actionItem.type) {
         case 'gameScripts':
-          return this.processGameScripts(actionItem, omiken)
+          return await this.processGameScripts(actionItem, omiken)
 
         case 'postActions':
           return this.processPostActions(actionItem, defaultPlaceholders, omiken)
@@ -80,22 +80,22 @@ export class OmikujiResultProcessor {
   /**
    * gameScripts処理
    */
-  private processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): BotMessageType[] {
+  private async processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): Promise<BotMessageType[]> {
     // 1. スクリプトの実行
-    const scriptResult = this.playScript(actionItem.gameScripts, omiken)
+    const scriptResult = await this.playScript(actionItem.gameScripts, omiken)
     if (!scriptResult) return []
+
     const { actions, botMessageExtras: scriptMessages } = scriptResult
 
     // 2. 変数プレースホルダーを処理
     const processedActions = this.processVariables(actions)
 
-    // 3. わんコメへ投稿 (置換後のアクションを投稿)
+    // 3. わんコメへ投稿
     this.postMessage.post(processedActions.map((a) => a.action))
 
     // 4. BotMessage を生成
     const botMessages = this.generateBotMessages(processedActions, omiken)
 
-    // ゲームスクリプトと生成したメッセージを返す
     return [...scriptMessages, ...botMessages]
   }
 

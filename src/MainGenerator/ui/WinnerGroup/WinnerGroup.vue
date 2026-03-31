@@ -93,11 +93,11 @@
     historyItems.value = []
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
     previewKey.value++
 
     // WinnerGroup の実行
-    const result = appStore.scriptManager.playScript({
+    const result = await appStore.scriptManager.playScript({
       delaySeconds: 0,
       scriptId: 'WinnerGroup',
       queryString: winnerSetting.value.queryString,

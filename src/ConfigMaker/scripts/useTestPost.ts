@@ -54,7 +54,7 @@ export function useTestPost() {
     })
   }
 
-  const postTestOmikujiItem = (
+  const postTestOmikujiItem = async (
     postActions: PostFlowType[],
     gameScripts?: GameScriptsType | null,
     omikujiItem?: OmikujiItemType
@@ -65,10 +65,9 @@ export function useTestPost() {
       ? { ...omikujiItem, postActions }
       : ActionSetSchema.parse({ postActions, gameScripts })
 
-    // イベントなし: postActionsのみで簡易実行
     const processItem = selectedRule.value ? actionItem : ActionSetSchema.parse({ postActions })
 
-    const botMessages = resultProcessor.process(processItem, defaultPlaceholdersShortLabels, MOCK_COMMENT)
+    const botMessages = await resultProcessor.process(processItem, defaultPlaceholdersShortLabels, MOCK_COMMENT)
 
     if (omikujiItem) showOmikujiResultToast(omikujiItem)
     executeTestPostDelays(botMessages)

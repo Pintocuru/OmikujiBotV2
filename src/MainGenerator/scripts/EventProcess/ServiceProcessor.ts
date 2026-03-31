@@ -47,9 +47,7 @@ export class EventServiceProcessor {
   /**
    * メタデータ更新時の処理
    */
-  private processMetaRules(event: MetaUpdateEvent): void {
-    // previousがない場合（MetaStateService側で初回）は
-    // スナップショット値をpreviousとして補完する
+  private async processMetaRules(event: MetaUpdateEvent): Promise<void> {
     const resolvedEvent: MetaUpdateEvent =
       event.previous === null && (this.lastUpVote !== null || this.lastViewer !== null)
         ? {
@@ -70,7 +68,7 @@ export class EventServiceProcessor {
 
     for (const rule of enabledRules) {
       if (evaluateServiceTrigger(rule.trigger, resolvedEvent)) {
-        const omikujiMessages = this.omikujiProcessor.executeOmikuji(rule.omikuji)
+        const omikujiMessages = await this.omikujiProcessor.executeOmikuji(rule.omikuji)
         this.store.scheduleBotMessages(omikujiMessages)
       }
     }
