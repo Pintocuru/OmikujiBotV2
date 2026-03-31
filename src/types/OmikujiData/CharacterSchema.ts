@@ -16,13 +16,13 @@ export type CharacterEmotionType = keyof typeof characterEmotionMap
 /**
  * CharacterColorSchema
  */
+// TODO(v3): 廃止
 export const CharacterColorScheme = z.object({
   isTheme: z.boolean().default(true).catch(true), // DaisyUI テーマを使うかどうか
   ...DaisyUiThemeFieldsSchema.shape,
   nameColor: z.string().default('#212121').catch('#212121'),
   textColor: z.string().default('#212121').catch('#212121'),
   backgroundColor: z.string().default('#FAFAFA').catch('#FAFAFA'),
-  // TODO(v3): customClasses を廃止
   customClasses: z
     .string()
     .optional()
@@ -63,11 +63,38 @@ export type DisplayOptionType = z.infer<typeof DisplayOptionSchema>
  * CharacterSchema
  */
 export const CharacterSchema = z.object({
+  // TODO(v3): BaseRecordSchema に変更
   ...PresetMetadataSchema.shape,
   displayName: z.string().default('').catch(''),
   image: normalizedObject(CharacterImageSetSchema),
+  // TODO(v3): CharacterColorScheme ではなく DaisyUiThemeFieldsSchema を使う
   color: normalizedObject(CharacterColorScheme),
   displayOption: normalizedObject(DisplayOptionSchema),
 })
 
 export type CharacterType = z.infer<typeof CharacterSchema>
+
+/**
+
+const CharacterImageSchema = z.object({
+  src: z.array(z.string()).catch([]),
+
+  // 将来用（今は未使用でもOK）
+  animation: z
+    .object({
+      type: z.enum(['none', 'blink', 'breath', 'bounce', 'custom']),
+      duration: z.number().default(1.5),
+      loop: z.boolean().default(true),
+    })
+    .optional(),
+})
+
+
+export const CharacterImageSetSchema = z.record(
+  z.string(), CharacterImageSchema
+)
+
+
+
+
+ */
