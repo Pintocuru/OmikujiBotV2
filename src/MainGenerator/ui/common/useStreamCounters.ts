@@ -20,6 +20,7 @@ export function useStreamCounters(eventKeys: Ref<string[]>, variableLabelMap: Re
     commenter: 0,
     lc: 0,
     totalPrice: 0,
+    reaction: 0,
   })
 
   // eventLabels（CommentRule.key → name マッピング）
@@ -38,11 +39,13 @@ export function useStreamCounters(eventKeys: Ref<string[]>, variableLabelMap: Re
   // 取得関数
   const fetchStats = () => {
     const { liveComments, syoken, totalPrice } = appStore.streamStats.getStats()
+    const reaction = appStore.reactionStats.getGrandTotal()
     Object.assign(counters, {
       lc: liveComments,
       commenter: appStore.userSession.stats.getUniqueCount(),
       syoken,
       totalPrice,
+      reaction,
     })
   }
 

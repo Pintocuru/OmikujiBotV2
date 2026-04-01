@@ -26,6 +26,6 @@ export default [
   // StreamCounterCircle,
   // StreamCounterPixel,
   // LiveClockMorning,
-  FlightSeatCrowded100,
-  FlightSeatCrowded300,
+  // FlightSeatCrowded100,
+  // FlightSeatCrowded300,
 ]

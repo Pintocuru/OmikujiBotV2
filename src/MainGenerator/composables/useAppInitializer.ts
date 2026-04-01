@@ -11,13 +11,16 @@ import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 const TIME_THRESHOLD = 10000
 
 export function useAppInitializer() {
+  const appStore = useAppStore()
+  const { isComment } = useVisibilityAccess()
+
   const initialize = async () => {
     const { setStatus, setError } = useAppStore()
     const commentProcessor = new EventCommentProcessor()
     setStatus('initializing')
 
     try {
-      const isInit = await GetOmikenComments((omikens, isReset) => {
+      const isInit = await GetOmikenComments((omikens, isReset, isFirstLoad) => {
         try {
           // リセット検出
           if (isReset) {
@@ -27,15 +30,17 @@ export function useAppInitializer() {
 
           // 新規コメントを記録
           const newOmikens = filterNewOmikens(omikens)
+          appStore.addOmikens(newOmikens)
 
           // 投稿から10秒以内のものだけ、下記の処理を行う
-          const recentOmikens = newOmikens.filter((omiken) => Date.now() - omiken.timestamp < TIME_THRESHOLD)
+          const recentOmikens = isFirstLoad
+            ? newOmikens // 初回だけ recent フィルタを無視
+            : newOmikens.filter((o) => Date.now() - o.timestamp < TIME_THRESHOLD)
 
           // 新規コメントからユーザーデータを記録
           recordStats(recentOmikens)
 
           // コメントイベント
-          const { isComment } = useVisibilityAccess()
           if (!isComment.value) return
           commentProcessor.respondToComments(recentOmikens)
         } catch (error) {
@@ -69,14 +74,13 @@ function resetAppState() {
   appStore.userSession.resetSession()
 }
 
-// コメントを追加
+// コメントをフィルター
 function filterNewOmikens(omikens: OmikenCommentType[]): OmikenCommentType[] {
   const appStore = useAppStore()
   const ignorePattern = appStore.data.settings.ignoreUserPattern
   const currentMeta = appStore.serviceMetaStore.getCurrent()
   const includeExternalComments = appStore.data.settings.includeExternalComments ?? false
-
-  return appStore.addOmikens(omikens).filter((omiken) => {
+  return omikens.filter((omiken) => {
     if (ignoreOmikujiBot(omiken.userId)) return false
     if (!includeExternalComments && ignoreExternalOnLive(omiken.meta.isExternal, currentMeta?.isLive)) return false
     if (ignoreNamePattern(omiken.userName, ignorePattern)) return false

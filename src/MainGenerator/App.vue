@@ -49,16 +49,6 @@
       }))
       .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
   )
-  /** 
-  const activeComponents = computed(() => {
-    return appStore.data.components.conditions
-      .map((condition) => ({
-        slot: condition.slot,
-        component: COMPONENT_MAP[condition.kind],
-      }))
-      .sort((a, b) => SLOT_PRIORITY[b.slot] - SLOT_PRIORITY[a.slot])
-  })
-      */
 
   // 初期化処理
   const { initialize } = useAppInitializer()

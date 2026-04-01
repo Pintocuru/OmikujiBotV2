@@ -34,6 +34,7 @@ export const streamDefaultMap = {
   viewer: '同時接続数',
   totalPrice: 'ギフト金額',
   follower: '登録者数',
+  reaction: 'リアクション数(Youtubeのみ)',
 } as const
 export const streamDefaultKeyLabels = Object.keys(streamDefaultMap) as StreamDefaultKey[]
 export type StreamDefaultKey = keyof typeof streamDefaultMap
