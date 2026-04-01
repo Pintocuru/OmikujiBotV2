@@ -3,7 +3,7 @@ import { GameScriptsType, GameStateType, ScriptClass, ScriptGameKey, ScriptResul
 import { gameExecuteMap } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserManager } from '../UserManager/UserManager'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { postSystemMessage } from '@shared/sdk/post/PostOneComme'
 
 export class GameScriptManager {
   private scriptInstances: Record<string, ScriptClass> = {}

@@ -13,7 +13,7 @@ import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/Placeh
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { playSoundDelay } from '@sounds/PlaySound'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { postSystemMessage } from '@shared/sdk/post/PostOneComme'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 
 /**

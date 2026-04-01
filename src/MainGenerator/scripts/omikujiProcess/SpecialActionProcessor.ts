@@ -2,7 +2,7 @@
 import { ActionSetType } from '@/types/OmikujiData/'
 import { useAppStore } from '@main/stores/useAppStore'
 import { UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { postSystemMessage } from '@shared/sdk/post/PostOneComme'
 import { GameStateType } from '@/types'
 
 export interface SpecialActionResult {

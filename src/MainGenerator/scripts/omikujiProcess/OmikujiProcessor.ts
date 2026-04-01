@@ -9,7 +9,7 @@ import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType, ServiceMetaCondition } from '@shared/types'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { postSystemMessage } from '@shared/sdk/post/PostOneComme'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
 export class OmikujiProcessor {

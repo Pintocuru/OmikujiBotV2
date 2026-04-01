@@ -1,7 +1,7 @@
 // src/MainGenerator/stores/MetaState/MetaStateService.ts
 import { ServiceMetaWatcher } from '@shared/sdk/subscribe/GetMetas'
 import { ServiceMeta } from '@onecomme.com/onesdk/types/Service'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { postSystemMessage } from '@shared/sdk/post/PostOneComme'
 import { isDev } from '@/types'
 
 export interface ServiceMetaStoreType {

@@ -4,7 +4,7 @@ import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessChecke
 import { useAppStore } from '@main/stores/useAppStore'
 import { generatorApi } from '@/PresetManager/services/generatorApi'
 import { GetOmikenComments } from '@shared/sdk/subscribe/OmikenComment/GetOmikenComments'
-import { postSystemMessage } from '@shared/sdk/postMessage/PostOneComme'
+import { postSystemMessage } from '@shared/sdk/post/PostOneComme'
 import { OmikenCommentType } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 
@@ -27,10 +27,9 @@ export function useAppInitializer() {
             resetAppState()
             return
           }
-
           // 新規コメントを記録
-          const newOmikens = filterNewOmikens(omikens)
-          appStore.addOmikens(newOmikens)
+          const filterOmikens = filterNewOmikens(omikens)
+          const newOmikens = appStore.addOmikens(filterOmikens)
 
           // 投稿から10秒以内のものだけ、下記の処理を行う
           const recentOmikens = isFirstLoad
@@ -39,10 +38,10 @@ export function useAppInitializer() {
 
           // 新規コメントからユーザーデータを記録
           recordStats(recentOmikens)
+          if (isFirstLoad) return
 
           // コメントイベント
-          if (!isComment.value) return
-          commentProcessor.respondToComments(recentOmikens)
+          if (isComment.value) commentProcessor.respondToComments(recentOmikens)
         } catch (error) {
           console.error('[useAppInitializer] コメント処理エラー:', error)
           postSystemMessage(`コメント処理エラー: ${error}`, { speech: false, throttle: true })

@@ -15,7 +15,7 @@
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
   import { addWeightPercentages, drawOmikuji, OmikujiWeightItem } from '@shared/utils/omikuji/DrawOmikuji'
-  import { postSpeech } from '@shared/sdk/postMessage/PostOneComme'
+  import { postSpeech } from '@shared/sdk/post/PostOneComme'
   import { Dices } from 'lucide-vue-next'
 
   const props = defineProps<{

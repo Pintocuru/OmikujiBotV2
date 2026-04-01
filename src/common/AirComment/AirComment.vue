@@ -47,7 +47,7 @@
 <script setup lang="ts">
   import { ref, onUnmounted } from 'vue'
   import { COMMENTS, generateUsername } from './constants'
-  import { postComment } from '@shared/sdk/postMessage/PostOneComme'
+  import { postComment } from '@shared/sdk/post/PostOneComme'
   import { CommentPickSchema } from '@shared/types'
   import { getAvatarUrl } from '../DiceBear/getAvatarUrl'
 
