@@ -20,13 +20,18 @@
           }"
         />
 
-        <!-- 正面パネル -->
+        <!-- 正面パネル（押し込みで translate する） -->
         <div
           class="relative rounded-sm"
           :class="`bg-${color.backFrom} border-[10px]`"
-          :style="{ zIndex: DEPTH + 1, borderColor: highlightColor }"
+          :style="{
+            zIndex: DEPTH + 1,
+            borderColor: highlightColor,
+            transform: `translate(${mainPush.x}px, ${mainPush.y}px)`,
+            transition: mainPush.transitioning ? 'none' : 'transform 0.12s ease-out',
+          }"
         >
-          <!-- 左上ハイライト辺（上・左だけ明るい） -->
+          <!-- ベベル: 左上ハイライト / 右下シャドウ -->
           <div
             class="absolute inset-0 rounded-sm pointer-events-none"
             :style="{
@@ -35,17 +40,19 @@
           />
 
           <!-- 数値 -->
-          <div class="flex flex-col items-center justify-center px-4 py-0 gap-1">
+          <div class="flex items-center justify-center px-4 py-0 gap-1" style="min-width: 260px; min-height: 180px">
             <span
               class="counter-value text-9xl leading-none"
               :class="`text-${color.backFrom}-content`"
-              :style="{
-                transform: `skewX(-6deg) scale(${mainScale})`,
-                transformOrigin: 'center',
-              }"
-              >{{ formatValue(displayMain) }}
-            </span>
+              :style="{ transform: `skewX(-6deg)` }"
+              >{{ formatValue(displayMain) }}</span
+            >
           </div>
+
+          <!-- ラベル: 左下に絶対配置 -->
+          <span class="counter-label absolute bottom-2 left-3" :class="`text-${color.backFrom}-content`">{{
+            slots[0].label
+          }}</span>
         </div>
       </div>
 
@@ -73,7 +80,12 @@
         <div
           class="relative rounded-sm"
           :class="`bg-${color.backTo} border-[10px]`"
-          :style="{ zIndex: SUB_DEPTH + 1, borderColor: subHighlightColor }"
+          :style="{
+            zIndex: SUB_DEPTH + 1,
+            borderColor: subHighlightColor,
+            transform: `translate(${subPush.x}px, ${subPush.y}px)`,
+            transition: subPush.transitioning ? 'none' : 'transform 0.12s ease-out',
+          }"
         >
           <div
             class="absolute inset-0 rounded-sm pointer-events-none"
@@ -82,17 +94,19 @@
             }"
           />
 
-          <div class="flex flex-col items-center justify-center px-4 py-1 gap-1">
+          <div class="flex items-center justify-center px-4 py-1 gap-1" style="min-width: 140px; min-height: 110px">
             <span
               class="counter-value text-7xl leading-none"
               :class="`text-${color.backTo}-content`"
-              :style="{
-                transform: `skewX(-6deg) scale(${subScale})`,
-                transformOrigin: 'center',
-              }"
+              :style="{ transform: `skewX(-6deg)` }"
               >{{ formatValue(displaySub) }}</span
             >
           </div>
+
+          <!-- ラベル: 左下に絶対配置 -->
+          <span class="counter-label absolute bottom-1.5 left-3" :class="`text-${color.backTo}-content`">{{
+            slots[1].label
+          }}</span>
         </div>
       </div>
     </div>
@@ -100,7 +114,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
+  import { computed, reactive, watch } from 'vue'
   import { useTransition, TransitionPresets } from '@vueuse/core'
   import type { CookieCounterType } from '@/types/'
   import { useCookieLabelResolver } from '../composables/useCookieLabelResolver'
@@ -116,8 +130,14 @@
   // ────────────────────────────────────────────
   // 定数
   // ────────────────────────────────────────────
-  const DEPTH = 48
+  const DEPTH = 16
   const SUB_DEPTH = 15
+
+  // 押し込み量 = 影の最大オフセット量と同じにする（影にぴったり重なる）
+  const MAIN_PUSH_X = DEPTH * 3
+  const MAIN_PUSH_Y = DEPTH * 2
+  const SUB_PUSH_X = SUB_DEPTH * 3
+  const SUB_PUSH_Y = SUB_DEPTH * 2
 
   // ────────────────────────────────────────────
   // ラベル解決・スロット
@@ -133,9 +153,7 @@
   )
 
   // ────────────────────────────────────────────
-  // 枠線ハイライト・シャドウカラー（CSS変数から取得）
-  // DaisyUI の oklch 変数を直接参照できないため
-  // white/black の半透明で光源・影を演出
+  // ベベルカラー
   // ────────────────────────────────────────────
   const highlightColor = 'rgba(255,255,255,0.45)'
   const shadowColor = 'rgba(0,0,0,0.45)'
@@ -152,36 +170,37 @@
   const displaySub = useTransition(subSource, { duration: 600, transition: TransitionPresets.easeOutCubic })
 
   // ────────────────────────────────────────────
-  // バウンスアニメーション
+  // 押し込みアニメーション
+  //
+  // 仕組み：
+  //   1. CSS transition を OFF にして正面パネルを
+  //      影の最大オフセット位置（影と重なる位置）へ瞬間移動
+  //   2. 1フレーム後に transition を ON にして (0,0) へ ease-out で戻す
+  //
+  // → 「ガコッ」と押し込まれて、ゆっくり浮き上がるような動き
   // ────────────────────────────────────────────
-  const BOUNCE_FRAMES = [1.0, 0.5, 1.3, 0.8, 1.1, 0.9, 1.0]
-  const FRAME_MS = 80
-
-  function useBounceScale() {
-    const scale = ref(1)
+  function usePushAnimation(maxX: number, maxY: number) {
+    const push = reactive({ x: 0, y: 0, transitioning: false })
     let timer: ReturnType<typeof setTimeout> | null = null
 
     const trigger = () => {
       if (timer) return
-      let i = 0
-      const next = () => {
-        scale.value = BOUNCE_FRAMES[i]
-        i++
-        if (i < BOUNCE_FRAMES.length) {
-          timer = setTimeout(next, FRAME_MS)
-        } else {
-          scale.value = 1
-          timer = null
-        }
-      }
-      next()
+      push.transitioning = true
+      push.x = maxX
+      push.y = maxY
+      timer = setTimeout(() => {
+        push.transitioning = false
+        push.x = 0
+        push.y = 0
+        timer = null
+      }, 16)
     }
 
-    return { scale, trigger }
+    return { push, trigger }
   }
 
-  const { scale: mainScale, trigger: triggerMain } = useBounceScale()
-  const { scale: subScale, trigger: triggerSub } = useBounceScale()
+  const { push: mainPush, trigger: triggerMain } = usePushAnimation(MAIN_PUSH_X, MAIN_PUSH_Y)
+  const { push: subPush, trigger: triggerSub } = usePushAnimation(SUB_PUSH_X, SUB_PUSH_Y)
 
   watch(mainSource, (n, o) => {
     if (n !== o) triggerMain()
@@ -190,3 +209,20 @@
     if (n !== o) triggerSub()
   })
 </script>
+
+<style scoped>
+  .counter-value {
+    font-weight: 900;
+    display: inline-block;
+    -webkit-text-stroke: 0.03em rgba(0, 0, 0, 0.35);
+    paint-order: stroke fill;
+    letter-spacing: -4px;
+  }
+
+  .counter-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    opacity: 0.7;
+  }
+</style>
