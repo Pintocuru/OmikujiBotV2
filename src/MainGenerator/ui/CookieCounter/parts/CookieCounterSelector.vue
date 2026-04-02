@@ -1,12 +1,13 @@
 <!-- src/MainGenerator/ui/CookieCounter/parts/CookieCounterSelector.vue -->
 <template>
-  <div class="w-full transparent-bg" :data-theme="settings.color">
+  <div class="w-full bg-base-100 transparent-bg" :data-theme="settings.color.daisyUiTheme">
     <component
       :is="currentItem"
       :counters="counters"
       :counter-defs="settings.counters"
       :event-labels="eventLabels"
       :variable-labels="variableLabels"
+      :color="settings.color"
     />
   </div>
 </template>
@@ -15,6 +16,7 @@
   import { computed, type Component } from 'vue'
   import type { CookieCounterType, CookieComponent } from '@/types/'
   import Sakura from '../layouts/Sakura.vue'
+  import Block3d from '../layouts/Block3d.vue'
 
   const props = defineProps<{
     settings: CookieCounterType
@@ -25,6 +27,7 @@
 
   const itemMap: Record<CookieComponent, Component> = {
     sakura: Sakura,
+    block3d: Block3d,
   }
 
   const currentItem = computed(() => itemMap[props.settings.component] ?? Sakura)

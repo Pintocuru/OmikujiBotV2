@@ -16,6 +16,11 @@ export const cookieComponentMap = {
     maxCounters: 2,
     isColor: false,
   },
+  block3d: {
+    label: 'ブロックツイン',
+    maxCounters: 2,
+    isColor: true,
+  },
 } as const
 
 export type CookieComponent = keyof typeof cookieComponentMap
