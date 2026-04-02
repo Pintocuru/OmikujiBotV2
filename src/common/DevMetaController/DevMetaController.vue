@@ -16,13 +16,13 @@
       <!-- Number fields -->
       <template v-if="!collapsed">
         <template v-for="key in numberKeys" :key="key">
-          <label class="label">
-            <span class="label-text text-xs opacity-60 uppercase flex items-center gap-1">
-              {{ key }}
-              <span v-if="isRunning" class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-            </span>
-          </label>
-          <div class="join w-full">
+          <div class="join">
+            <label class="label pr-2">
+              <span class="label-text text-xs opacity-60 uppercase flex items-center gap-1">
+                {{ key }}
+                <span v-if="isRunning" class="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
+              </span>
+            </label>
             <button class="btn btn-xs btn-outline join-item" @click="increment(key, -1)">-1</button>
             <input
               type="number"
@@ -35,8 +35,7 @@
         </template>
 
         <!-- Apply -->
-        <div class="join w-full">
-          <button class="btn btn-xs btn-error join-item flex-1" @click="apply">Apply</button>
+        <div class="join">
           <button
             class="btn btn-xs join-item flex-1"
             :class="isRunning ? 'btn-error' : 'btn-primary'"
@@ -159,12 +158,4 @@
   }
 
   onUnmounted(stopAuto)
-
-  /** 外部から呼ぶ用 */
-  defineExpose({
-    setMeta(partial: Partial<NumericFields>) {
-      Object.assign(fields, partial)
-      apply()
-    },
-  })
 </script>

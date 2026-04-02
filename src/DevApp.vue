@@ -15,6 +15,18 @@
         <!-- リセットボタン -->
         <button class="btn btn-sm btn-warning" @click="resetAll">セッションリセット</button>
       </template>
+
+      <template #hudLeft>
+        <!-- 変数プレースホルダー -->
+        <div
+          v-for="([key, value], i) in Object.entries(appStore.placeholderVariable.getAll())"
+          :key="i"
+          class="flex gap-2"
+        >
+          <span class="font-mono w-50">{{ key }}</span>
+          <span>{{ value }}</span>
+        </div>
+      </template>
     </HudPreview>
   </template>
 

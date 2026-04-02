@@ -18,12 +18,27 @@
 
       <!-- Accordion Body -->
       <template v-if="!collapsed">
-        <!-- Interval -->
-        <label class="label">
-          <span class="label-text text-xs opacity-60"> INTERVAL (SEC) </span>
-        </label>
+        <div class="join">
+          <!-- Interval -->
+          <label class="label pr-2">
+            <span class="label-text text-xs opacity-60"> INTERVAL (SEC) </span>
+          </label>
 
-        <input type="number" step="0.1" min="0.1" v-model.number="intervalSec" class="input input-bordered input-xs" />
+          <input
+            type="number"
+            step="0.1"
+            min="0.1"
+            v-model.number="intervalSec"
+            class="input input-bordered input-xs"
+          />
+        </div>
+
+        <button
+          class="btn btn-xs btn-accent join-item flex-1"
+          @click="USERNAME_MODE = USERNAME_MODE === 'simple' ? 'mock' : 'simple'"
+        >
+          MODE: {{ USERNAME_MODE }}
+        </button>
 
         <!-- Buttons -->
         <div class="join w-full">
@@ -46,7 +61,7 @@
 
 <script setup lang="ts">
   import { ref, onUnmounted } from 'vue'
-  import { COMMENTS, generateUsername } from './constants'
+  import { COMMENTS, generateMockUsername, generateSimpleUsername } from './constants'
   import { postComment } from '@shared/sdk/post/PostOneComme'
   import { CommentPickSchema } from '@shared/types'
   import { getAvatarUrl } from '../DiceBear/getAvatarUrl'
@@ -56,6 +71,12 @@
   const count = ref(0)
   const lastComment = ref('(テストコメントが入ります)')
   const collapsed = ref(false)
+
+  // 切替フラグ（ref 化）
+  const USERNAME_MODE = ref<'simple' | 'mock'>('simple')
+  function generateUsername(): string {
+    return USERNAME_MODE.value === 'mock' ? generateMockUsername() : generateSimpleUsername()
+  }
 
   let timer: ReturnType<typeof setTimeout> | null = null
 
@@ -109,7 +130,7 @@
 
   async function burstSend() {
     for (let i = 0; i < 100; i++) {
-      setTimeout(sendComment, i * 30)
+      setTimeout(sendComment, i * 5)
     }
   }
 

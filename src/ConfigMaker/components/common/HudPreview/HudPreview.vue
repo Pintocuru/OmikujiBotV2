@@ -8,21 +8,22 @@
       </div>
 
       <!-- 右下に配置するHUD用のスロット -->
-      <div class="absolute bottom-2 right-2 z-10">
+      <div class="absolute bottom-2 right-2 z-10 space-y-1">
         <slot name="hud" />
       </div>
 
-      <template v-if="(isAdminOnly && isDev) || !isAdminOnly">
-        <!-- Scale -->
-        <input
-          type="range"
-          min="0.2"
-          max="1"
-          step="0.1"
-          v-model="scale"
-          class="range range-xs absolute bottom-8 left-2 w-12"
-        />
+      <!-- 右下に配置するHUD用のスロット -->
+      <div class="absolute bottom-2 left-2 z-10 space-y-2">
+        <!-- スケール値表示 -->
+        <slot name="hudLeft" />
+        <div class="flex gap-2">
+          <!-- Scale -->
+          <div class="text-xs text-white bg-black/50 px-1 rounded">{{ Math.round(scale * 100) }}%</div>
+          <input type="range" min="0.2" max="1" step="0.1" v-model="scale" class="range range-xs w-12" />
+        </div>
+      </div>
 
+      <template v-if="(isAdminOnly && isDev) || !isAdminOnly">
         <!-- Lucide Icons -->
         <div
           class="absolute top-2 right-2 flex gap-1 transition-opacity duration-300"
@@ -49,11 +50,6 @@
             class="cursor-pointer hover:text-gray-300 transition-colors"
             @click="hue = (hue + 40) % 360"
           />
-        </div>
-
-        <!-- スケール値表示 -->
-        <div class="absolute bottom-2 left-2 text-xs text-white bg-black/50 px-1 rounded">
-          {{ Math.round(scale * 100) }}%
         </div>
       </template>
     </div>
