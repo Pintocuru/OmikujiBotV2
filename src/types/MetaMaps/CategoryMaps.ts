@@ -25,7 +25,7 @@ export const categoryMap = {
     icon: 'ThumbsUp',
   },
   reactions: {
-    label: 'リアクションイベント',
+    label: 'リアクションイベント(Youtube)',
     description: '視聴者のリアクション（❤ 😄 🎉 😳 💯）でおみくじを発動します',
     icon: 'Smile',
   },

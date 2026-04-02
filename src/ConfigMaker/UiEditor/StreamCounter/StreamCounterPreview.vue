@@ -36,6 +36,7 @@
     syoken: 123,
     commenter: 456,
     lc: 7890,
+    totalComments: 123456,
     totalPrice: 5000,
     follower: 78900,
   }
