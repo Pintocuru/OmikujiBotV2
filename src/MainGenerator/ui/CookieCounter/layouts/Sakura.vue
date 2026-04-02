@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/CookieCounter/layouts/Sakura.vue -->
 <template>
-  <div class="flex justify-center pt-20">
+  <div class="flex justify-center items-center min-h-screen">
     <!-- メイン花びら（サブの absolute 基準） -->
     <div v-if="slots[0]" class="relative inline-flex items-center justify-center">
       <SakuraPetal class="w-110 h-110 animate-spin-slow" />
@@ -14,7 +14,7 @@
       <!-- サブ花びら：メインの right-0 top-0 基点で右上へオフセット -->
       <div
         v-if="slots[1]"
-        class="absolute top-20 -right-5 flex items-center justify-center"
+        class="absolute top-5 -right-10 flex items-center justify-center"
         style="transform: translate(50%, -50%)"
       >
         <SakuraPetal class="w-60 h-60 animate-spin-slow-reverse" />

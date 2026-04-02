@@ -28,6 +28,7 @@
     @add="pushCounter"
     @remove="removeCounter"
     @reset="(type) => updateCounters(counters.filter((c) => c.type !== type))"
+    @reorder="updateCounters2"
   />
 </template>
 
@@ -41,7 +42,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterSelectorPanel from '../StreamCounter/CounterSelectorPanel.vue'
+  import CounterSelectorPanel, { CounterItem } from '../StreamCounter/CounterSelectorPanel.vue'
 
   const { data } = storeToRefs(useOmikujiStore())
   const omikujiStore = useOmikujiStore()
@@ -70,6 +71,10 @@
     omikujiStore.updateComponentSettings('cookieCounter', { ...cookieCounter.value, [field]: value })
   }
   const updateCounters = (next: typeof counters.value) => updateField('counters', next)
+
+  const updateCounters2 = (next: CounterItem[]) => {
+    updateField('counters', next)
+  }
 
   // ---- カウンター操作 ----
 

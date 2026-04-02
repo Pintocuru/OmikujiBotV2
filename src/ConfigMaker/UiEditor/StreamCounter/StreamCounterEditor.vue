@@ -61,6 +61,7 @@
     @add="handleAdd"
     @remove="handleRemove"
     @reset="handleReset"
+    @reorder="handleReorder"
   />
 </template>
 
@@ -119,6 +120,28 @@
       name: record.name || record.key,
     }))
   )
+
+  const handleReorder = (list: CounterItem[]) => {
+    const defaultCounters: StreamDefaultKey[] = []
+    const eventCounters: string[] = []
+    const variableCounters: typeof streamCounter.value.variableCounters = []
+
+    for (const item of list) {
+      if (item.type === 'default') {
+        defaultCounters.push(item.target as StreamDefaultKey)
+      } else if (item.type === 'event') {
+        eventCounters.push(item.target)
+      } else {
+        // id一致で元データ拾う
+        const found = streamCounter.value.variableCounters.find((v) => v.id === item.id)
+        if (found) variableCounters.push(found)
+      }
+    }
+
+    updateField('defaultCounters', defaultCounters)
+    updateField('eventCounters', eventCounters)
+    updateField('variableCounters', variableCounters)
+  }
 
   const previewEventLabels = computed<Record<string, string>>(() =>
     Object.fromEntries(eventRules.value.map((r) => [r.key, r.name]))

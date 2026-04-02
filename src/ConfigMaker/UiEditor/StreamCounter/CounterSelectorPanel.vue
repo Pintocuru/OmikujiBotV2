@@ -97,11 +97,17 @@
   <div v-if="counters.length > 0" class="mt-4 p-4 bg-base-200 rounded-box text-sm">
     <div class="font-bold mb-2">表示順（最大 {{ maxCounters }} 個）: 現在 {{ counterCount }}個</div>
     <div class="flex flex-wrap gap-1">
-      <div v-for="(c, i) in counters" :key="c.id" class="badge badge-ghost gap-1">
-        <span class="opacity-50 text-[10px]">{{ i + 1 }}</span>
-        {{ getLabel(c) }}
-        <button class="btn btn-ghost btn-xs px-0 min-h-0 h-auto" @click.stop="emit('remove', c.id)">×</button>
-      </div>
+      <VueDraggable v-model="draggableCounters" :animation="150" handle=".drag-handle" class="flex flex-wrap gap-1">
+        <div
+          v-for="(c, i) in draggableCounters"
+          :key="c.id"
+          class="badge badge-primary gap-1 drag-handle cursor-grab active:cursor-grabbing"
+        >
+          <span class="opacity-50 text-xs">{{ i + 1 }}</span>
+          {{ getLabel(c) }}
+          <button class="btn btn-ghost btn-xs px-0 min-h-0 h-auto" @click.stop="emit('remove', c.id)">×</button>
+        </div>
+      </VueDraggable>
     </div>
   </div>
 </template>
@@ -111,6 +117,7 @@
   import { X } from 'lucide-vue-next'
   import { streamDefaultMap } from '@/types/'
   import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { VueDraggable } from 'vue-draggable-plus'
 
   // 共通の Counter 型（CookieCounter の counters と互換）
   export interface CounterItem {
@@ -120,7 +127,7 @@
     label?: string
   }
 
-  export interface EventRule {
+  interface EventRule {
     key: string
     name: string
   }
@@ -135,12 +142,18 @@
     (e: 'add', item: Omit<CounterItem, 'id'>): void
     (e: 'remove', id: string): void
     (e: 'reset', type: 'default' | 'event'): void
+    (e: 'reorder', items: CounterItem[]): void
   }>()
 
   const variableInput = reactive({ target: '', label: '' })
 
   const counterCount = computed(() => props.counters.length)
   const variableItems = computed(() => props.counters.filter((c) => c.type === 'variable'))
+
+  const draggableCounters = computed({
+    get: () => [...props.counters], // コピーを返してpropsの直接mutateを防ぐ
+    set: (v) => emit('reorder', v),
+  })
 
   const isSelected = (type: CounterItem['type'], target: string) =>
     props.counters.some((c) => c.type === type && c.target === target)
