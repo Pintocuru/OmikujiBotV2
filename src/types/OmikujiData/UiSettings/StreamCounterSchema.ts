@@ -7,13 +7,34 @@ import { idSchema } from '@shared/types'
  * ライバーカウンターコンポーネントの表示名マップ
  */
 export const streamComponentMap = {
-  basicCirclePlain: '丸型シンプル',
-  basicCircle: '丸型カラー',
-  pixelBadgePlain: 'ピクセルバッジ',
-  pixelBadge: 'ピクセルカラー',
-  magicalStone: '魔法石',
-  starBurst: '星',
-  hexGrid: 'ヘキサゴン',
+  basicCirclePlain: {
+    label: '丸型シンプル',
+    accessLevel: 'basic',
+  },
+  basicCircle: {
+    label: '丸型カラー',
+    accessLevel: 'pro',
+  },
+  pixelBadgePlain: {
+    label: 'ピクセルバッジ',
+    accessLevel: 'basic',
+  },
+  pixelBadge: {
+    label: 'ピクセルカラー',
+    accessLevel: 'pro',
+  },
+  magicalStone: {
+    label: '魔法石',
+    accessLevel: 'pro',
+  },
+  starBurst: {
+    label: '星',
+    accessLevel: 'pro',
+  },
+  hexGrid: {
+    label: 'ヘキサゴン',
+    accessLevel: 'pro',
+  },
 } as const
 const streamComponentValues = Object.keys(streamComponentMap) as LiverComponent[]
 export type LiverComponent = keyof typeof streamComponentMap

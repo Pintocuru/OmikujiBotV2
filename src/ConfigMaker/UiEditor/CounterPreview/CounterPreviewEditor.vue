@@ -7,19 +7,11 @@
   <DaisyUiThemeEditor :model-value="counter.color" @update:model-value="(newValue) => updateField('color', newValue)" />
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(style, key) in counterComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="counter.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ style }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="counter.component"
+    :options="counterComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- 設定項目 -->
   <SettingItem v-if="isComment" label="対象イベントキー" description="どのイベントを対象にするか">
@@ -87,6 +79,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

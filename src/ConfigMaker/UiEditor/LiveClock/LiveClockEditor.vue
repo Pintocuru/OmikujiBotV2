@@ -4,23 +4,15 @@
   <LiveClockPreview :settings="liveClock" :messageText="messageText" />
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(style, key) in clockComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="liveClock.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ style }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="liveClock.component"
+    :options="clockComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor
-    v-if="isAdv"
+    v-if="isAdv && clockComponentMap[liveClock.component].isColor"
     :model-value="liveClock.color"
     @update:model-value="(newValue) => updateField('color', newValue)"
   />
@@ -59,10 +51,11 @@
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import MessageTextDialog from '@config/components/postAction/Message/MessageTextDialog.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const liveClock = computed(() => data.value?.components?.settings?.liveClock ?? LiveClockSchema.parse({}))
 

@@ -8,19 +8,11 @@
   />
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(style, key) in streamComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="streamCounter.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ style }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="streamCounter.component"
+    :options="streamComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- テーマ -->
   <SettingItem v-if="isAdv" label="テーマ" description="カラーテーマを選択します" forceMode="adv">
@@ -78,10 +70,11 @@
   import { themes } from '@shared/styles/DaisyUiTheme'
   import type { CounterItem } from './CounterSelectorPanel.vue'
   import CounterSelectorPanel from './CounterSelectorPanel.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const streamCounter = computed(() => data.value.components.settings.streamCounter ?? StreamCounterSchema.parse({}))
 

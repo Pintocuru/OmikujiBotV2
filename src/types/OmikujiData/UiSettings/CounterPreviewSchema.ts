@@ -7,10 +7,22 @@ import { normalizedObject } from '../ParsedDefault'
  * カウンターコンポーネントの表示名マップ
  */
 export const counterComponentMap = {
-  counterUser: 'カウンター+最後のユーザー',
-  counterTimer: '最後のユーザーからの経過時間',
-  userList: 'ユーザーリスト(バッジ)',
-  UserCardScroller: 'ユーザーリスト(縦型)',
+  counterUser: {
+    label: 'カウンター+最後のユーザー',
+    accessLevel: 'pro',
+  },
+  counterTimer: {
+    label: '最後のユーザーからの経過時間',
+    accessLevel: 'pro',
+  },
+  userList: {
+    label: 'ユーザーリスト(バッジ)',
+    accessLevel: 'pro',
+  },
+  UserCardScroller: {
+    label: 'ユーザーリスト(縦型)',
+    accessLevel: 'pro',
+  },
 } as const
 
 /**

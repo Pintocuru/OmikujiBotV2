@@ -7,8 +7,16 @@ import { normalizedObject } from '../ParsedDefault'
  * socialRoster ソーシャルゲーム風ユーザーリスト の表示名マップ
  */
 export const socialComponentMap = {
-  grid: { label: '無地グリッド', accessLevel: 'basic', isColor: false },
-  streamPower: { label: '配信戦闘力', accessLevel: 'adv', isColor: true },
+  grid: {
+    label: '無地グリッド',
+    accessLevel: 'basic',
+    isColor: false,
+  },
+  streamPower: {
+    label: '配信戦闘力',
+    accessLevel: 'pro',
+    isColor: true,
+  },
 } as const
 const socialComponentEnum = Object.keys(socialComponentMap) as SocialComponent[]
 export type SocialComponent = keyof typeof socialComponentMap

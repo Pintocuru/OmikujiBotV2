@@ -4,19 +4,11 @@
   <SocialRosterPreview />
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(value, key) in socialComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="socialRoster.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ value.label }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="socialRoster.component"
+    :options="socialComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- テーマカラー -->
   <DaisyUiThemeEditor
@@ -83,6 +75,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

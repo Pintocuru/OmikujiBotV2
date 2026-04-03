@@ -2,20 +2,12 @@
 <template>
   <FlightSeatPreview />
 
-  <!-- コンポーネント種別 -->
-  <SettingItem v-if="isPro" label="レイアウト種別" description="座席の見た目を選択します" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(label, key) in flightComponentMap"
-        :key="key"
-        class="badge badge-lg cursor-pointer"
-        :class="flightSeat.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateComponent(key)"
-      >
-        {{ label }}
-      </div>
-    </div>
-  </SettingItem>
+  <!-- コンポーネント選択 -->
+  <DisplayStyleSelector
+    :modelValue="flightSeat.component"
+    :options="flightComponentDefs"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- プリセット選択 -->
   <template v-if="isPro && currentPresets">
@@ -64,13 +56,13 @@
         非表示
       </div>
       <div
-        v-for="(label, key) in statKeyLabelMap"
+        v-for="(def, key) in statKeyDefs"
         :key="key"
         class="badge badge-lg cursor-pointer"
         :class="flightSeat.statKey === key ? 'badge-primary' : 'badge-outline'"
         @click="updateField('statKey', key)"
       >
-        {{ label }}
+        {{ def.label }}
       </div>
     </div>
   </SettingItem>
@@ -115,19 +107,20 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import {
-    flightComponentMap,
+    flightComponentDefs,
     flightComponentDefaults,
     FlightSeatSchema,
     FlightSeatType,
     FlightComponentKind,
-    StatKeyNum,
     presets,
+    statKeyDefs,
   } from '@/types/'
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -153,6 +146,8 @@
   })
 
   const updateField = (field: keyof FlightSeatType, value: any) => {
+    if (field === 'component') updateComponent(value)
+
     omikujiStore.updateComponentSettings('flightSeat', {
       ...flightSeat.value,
       [field]: value,
@@ -171,12 +166,6 @@
 
   const resetField = (field: keyof FlightSeatType) => {
     updateField(field, FlightSeatSchema.parse({})[field])
-  }
-
-  const statKeyLabelMap: Record<StatKeyNum, string> = {
-    userName: 'ユーザー名',
-    tc: 'チャット数',
-    giftPrice: 'ギフト金額',
   }
 
   const currentPresets = computed(() => {

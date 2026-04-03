@@ -45,12 +45,11 @@
             <div class="flex items-center gap-1">
               <!-- 時間ブロック -->
               <div class="flex items-baseline gap-0.5">
-                <div
-                  class="clock-digit bg-base-200 border-2 rounded-md px-1.5 py-0.5 shadow-inner"
-                  :class="borderColorClass"
-                >
-                  <span class="font-mono font-black text-5xl text-base-content leading-none tracking-tight">
-                    {{ hours }}
+                <div class="bg-base-200 border-2 rounded-md px-1 shadow-inner" :class="borderColorClass">
+                  <span class="countdown font-mono font-black text-5xl text-base-content">
+                    <span :style="{ '--value': hours, '--digits': 2 }">
+                      {{ hours }}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -67,12 +66,11 @@
 
               <!-- 分ブロック -->
               <div class="flex items-baseline gap-0.5">
-                <div
-                  class="clock-digit bg-base-200 border-2 rounded-md px-1.5 py-0.5 shadow-inner"
-                  :class="borderColorClass"
-                >
-                  <span class="font-mono font-black text-5xl text-base-content leading-none tracking-tight">
-                    {{ minutes }}
+                <div class="bg-base-200 border-2 rounded-md px-1 shadow-inner" :class="borderColorClass">
+                  <span class="countdown font-mono font-black text-5xl text-base-content">
+                    <span :style="{ '--value': minutes, '--digits': 2 }">
+                      {{ minutes }}
+                    </span>
                   </span>
                 </div>
               </div>
@@ -80,7 +78,11 @@
               <!-- 秒（オプション） -->
               <div v-if="settings.isSecond" class="flex items-end pb-0.5 pl-1">
                 <div class="bg-base-200 border rounded px-1 py-0.5 shadow-inner" :class="textColorClass">
-                  <span class="font-mono font-bold text-3xl text-base-content leading-none">{{ seconds }}</span>
+                  <span class="countdown font-mono font-bold text-3xl text-base-content leading-none">
+                    <span :style="{ '--value': seconds, '--digits': 2 }">
+                      {{ seconds }}
+                    </span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -242,12 +244,5 @@
     opacity: 0;
     transform: translateY(-20px) scale(0.9);
     filter: blur(3px);
-  }
-
-  /* 数字ブロックの内側シャドウ強調 */
-  .clock-digit {
-    box-shadow:
-      inset 0 2px 6px rgba(0, 0, 0, 0.4),
-      inset 0 -1px 2px rgba(255, 255, 255, 0.05);
   }
 </style>

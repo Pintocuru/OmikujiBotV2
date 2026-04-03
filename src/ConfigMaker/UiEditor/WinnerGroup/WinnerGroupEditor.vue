@@ -14,19 +14,11 @@
   </HudPreview>
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="カウンターの表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(style, key) in winnerComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="winnerSetting.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ style }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="winnerSetting.component"
+    :options="winnerComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- 設定項目 -->
   <SettingItem label="対象イベントキー" description="どのイベントを対象にするか">
@@ -99,6 +91,7 @@
   import { parseQueryString } from '@/GameScripts/parseQueryString'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

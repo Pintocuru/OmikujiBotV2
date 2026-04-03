@@ -5,11 +5,31 @@ import { z } from 'zod'
  * ニュースフラッシュ FlashBanner
  */
 export const flashComponentMap = {
-  standard: 'シンプル',
-  ticker: 'ティッカー',
-  glass: 'ガラス',
-  arcade: 'アーケード',
-  scroll: 'スクロール',
+  standard: {
+    label: 'シンプル',
+    accessLevel: 'basic',
+    isSimple: false,
+  },
+  scroll: {
+    label: 'スクロール',
+    accessLevel: 'basic',
+    isSimple: true,
+  },
+  ticker: {
+    label: 'ティッカー',
+    accessLevel: 'pro',
+    isSimple: false,
+  },
+  glass: {
+    label: 'ガラス',
+    accessLevel: 'pro',
+    isSimple: false,
+  },
+  arcade: {
+    label: 'アーケード',
+    accessLevel: 'pro',
+    isSimple: false,
+  },
 } as const
 
 // scrollReturnMode の表示ラベル

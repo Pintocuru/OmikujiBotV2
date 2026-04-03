@@ -2,7 +2,7 @@
 import { z } from 'zod'
 
 export const deadComponentMap = {
-  bomb: '爆弾',
+  bomb: { label: '爆弾', accessLevel: 'pro' },
 } as const
 const deadComponentValues = Object.keys(deadComponentMap) as DeadComponent[]
 export type DeadComponent = keyof typeof deadComponentMap

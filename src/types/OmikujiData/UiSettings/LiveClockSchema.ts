@@ -7,11 +7,31 @@ import { normalizedObject } from '../ParsedDefault'
  * ライブクロック LiveClock
  */
 export const clockComponentMap = {
-  morning: 'モーニング',
-  soundPlayer: 'サウンドプレイヤー',
-  clearGlass: 'クリアガラス',
-  steampunk: 'スチーム',
-  disco: 'ディスコ',
+  morning: {
+    label: 'モーニング',
+    accessLevel: 'pro',
+    isColor: true,
+  },
+  soundPlayer: {
+    label: 'サウンドプレイヤー',
+    accessLevel: 'pro',
+    isColor: true,
+  },
+  clearGlass: {
+    label: 'クリアガラス',
+    accessLevel: 'pro',
+    isColor: true,
+  },
+  steampunk: {
+    label: 'スチーム',
+    accessLevel: 'pro',
+    isColor: true,
+  },
+  disco: {
+    label: 'ディスコ',
+    accessLevel: 'pro',
+    isColor: false,
+  },
 } as const
 
 const clockComponentsEnum = Object.keys(clockComponentMap) as ClockComponent[]

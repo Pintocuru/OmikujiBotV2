@@ -8,19 +8,11 @@
   />
 
   <!-- コンポーネント選択 -->
-  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(style, key) in flashComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="flashBanner.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ style }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="flashBanner.component"
+    :options="flashComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- デフォルトカラー設定 -->
   <template v-if="!flashBanner.defaultCharacterKey || !isCharacter">
@@ -195,15 +187,15 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CharacterSelectorSingle from '@config/UiEditor/ToastWidgets/CharacterSelectorSingle.vue'
-  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import MessageTextDialog from '@config/components/postAction/Message/MessageTextDialog.vue'
   import FlashBannerPreview from './FlashBannerPreview.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro } = useSettingMode()
   const { isCharacter } = useVisibilityAccess()
   const { updateCommonStyleField } = useCommonStyleUpdate()
 

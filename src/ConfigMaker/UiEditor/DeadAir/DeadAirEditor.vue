@@ -4,19 +4,11 @@
   <DeadAirPreview :deadAir="deadAir" />
 
   <!-- コンポーネント選択 -->
-  <SettingItem label="表示スタイル" description="表示形式を選択">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(label, key) in deadComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="deadAir.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ label }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="deadAir.component"
+    :options="deadComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- 背景色 -->
   <SettingItem label="背景色" description="ウィジェット背景を選択">
@@ -175,6 +167,7 @@
   import DeadAirPreview from './DeadAirPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

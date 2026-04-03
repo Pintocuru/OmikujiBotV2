@@ -6,8 +6,14 @@ import { themes } from '@shared/styles/DaisyUiTheme'
  * ラッキーメンバーズコンポーネントの表示名マップ
  */
 export const winnerComponentMap = {
-  valentineCoupling: 'バレンタイン・カップリング',
-  topStars: 'トップスターズ',
+  valentineCoupling: {
+    label: 'バレンタイン・カップリング',
+    accessLevel: 'pro',
+  },
+  topStars: {
+    label: 'トップスターズ',
+    accessLevel: 'pro',
+  },
 } as const
 
 /**

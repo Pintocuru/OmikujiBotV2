@@ -1,26 +1,22 @@
 <template>
+  <!-- プレビュー -->
   <CookieCounterPreview :cookieCounter="cookieCounter" :event-labels="eventLabels" :variable-labels="variableInput" />
 
-  <SettingItem v-if="isPro" label="表示スタイル" description="表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(config, key) in cookieComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="cookieCounter.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateField('component', key)"
-      >
-        {{ config.label }}
-      </div>
-    </div>
-  </SettingItem>
+  <!-- コンポーネント選択 -->
+  <DisplayStyleSelector
+    :modelValue="cookieCounter.component"
+    :options="cookieComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
+  <!-- カラー選択 -->
   <DaisyUiThemeEditor
     v-if="isAdv && cookieComponentMap[cookieCounter.component].isColor"
     :model-value="cookieCounter.color"
     @update:model-value="(v) => updateField('color', v)"
   />
 
+  <!-- カウンター設定 -->
   <CounterSelectorPanel
     :counters="counters"
     :event-rules="eventRules"
@@ -35,18 +31,17 @@
 <script setup lang="ts">
   import { computed, reactive } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { cookieComponentMap, CookieCounterSchema, CookieCounterCountersSchema } from '@/types/'
-  import type { CookieCounterType } from '@/types/'
+  import { cookieComponentMap, CookieCounterSchema, CookieCounterCountersSchema, CookieCounterType } from '@/types/'
   import CookieCounterPreview from './CookieCounterPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-  import SettingItem from '@config/components/parts/SettingItem.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import CounterSelectorPanel, { CounterItem } from '../StreamCounter/CounterSelectorPanel.vue'
 
   const { data } = storeToRefs(useOmikujiStore())
   const omikujiStore = useOmikujiStore()
-  const { isAdv, isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
 
   const variableInput = reactive({ target: '', label: '' })
 

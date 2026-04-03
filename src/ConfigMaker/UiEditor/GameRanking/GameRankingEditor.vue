@@ -8,20 +8,11 @@
   </HudPreview>
 
   <!-- コンポーネント選択 -->
-  <!-- !現在は使わないのでisDev -->
-  <SettingItem v-if="isDev && isGod" label="表示スタイル" description="ランキングの表示形式を選択" forceMode="pro">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(style, key) in rankingComponentMap"
-        :key="key"
-        class="badge cursor-pointer"
-        :class="ranking.component === key ? 'badge-primary' : 'badge-outline'"
-        @click="updateRankingField('component', key)"
-      >
-        {{ style }}
-      </div>
-    </div>
-  </SettingItem>
+  <DisplayStyleSelector
+    :modelValue="ranking.component"
+    :options="rankingComponentMap"
+    @update:modelValue="(val) => updateField('component', val)"
+  />
 
   <!-- テーマカラー -->
   <SettingItem v-if="isAdv" label="カラー" description="ランキングのテーマカラーを選択します" forceMode="adv">
@@ -29,7 +20,7 @@
       class="select select-bordered"
       :value="ranking.color"
       :disabled="!isAdv"
-      @change="(e) => updateRankingField('color', (e.target as HTMLSelectElement).value)"
+      @change="(e) => updateField('color', (e.target as HTMLSelectElement).value)"
     >
       <option v-for="theme in themes" :key="theme" :value="theme">
         {{ theme }}
@@ -73,7 +64,7 @@
       type="text"
       class="input input-bordered w-full"
       :value="ranking.title"
-      @input="(e) => updateRankingField('title', (e.target as HTMLInputElement).value)"
+      @input="(e) => updateField('title', (e.target as HTMLInputElement).value)"
     />
   </SettingItem>
 
@@ -108,7 +99,7 @@
         :disabled="!isAdv"
         class="input input-bordered w-24"
         :value="ranking.limit"
-        @input="(e) => updateRankingField('limit', Number((e.target as HTMLInputElement).value))"
+        @input="(e) => updateField('limit', Number((e.target as HTMLInputElement).value))"
       />
     </SettingItem>
   </div>
@@ -133,6 +124,7 @@
   import GameRankingSelector from '@main/ui/GameRanking/parts/GameRankingSelector.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
+  import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -157,7 +149,7 @@
   })
 
   // 更新関数
-  const updateRankingField = (field: keyof typeof ranking.value, value: any) => {
+  const updateField = (field: keyof typeof ranking.value, value: any) => {
     omikujiStore.updateComponentSettings('ranking', {
       ...ranking.value,
       [field]: value,
@@ -168,13 +160,13 @@
   const toggleScriptKey = (key: ScriptGameKey | 'basicList') => {
     const current = ranking.value.targetScriptKeys ?? []
     const next = current.includes(key) ? current.filter((k) => k !== key) : [...current, key]
-    updateRankingField('targetScriptKeys', next)
+    updateField('targetScriptKeys', next)
   }
 
   // リセット関数
   const resetField = (field: keyof typeof ranking.value) => {
     const defaults = GameRankingSchema.parse({})
-    updateRankingField(field, defaults[field])
+    updateField(field, defaults[field])
   }
 
   const resetMap = {

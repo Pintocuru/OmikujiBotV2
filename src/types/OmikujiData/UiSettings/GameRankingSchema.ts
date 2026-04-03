@@ -14,7 +14,10 @@ export const rankingSortOrderMap = {
 
 // ランキングコンポーネントの選択肢
 export const rankingComponentMap = {
-  rankStandard: 'カウンター+最後のユーザー',
+  rankStandard: {
+    label: 'スタンダード',
+    accessLevel: 'basic',
+  },
 } as const
 
 /**

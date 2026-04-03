@@ -13,11 +13,13 @@ import { idSchema } from '@shared/types'
 export const cookieComponentMap = {
   sakura: {
     label: 'さくらツイン🌸',
+    accessLevel: 'pro',
     maxCounters: 2,
     isColor: false,
   },
   block3d: {
     label: 'ブロックツイン',
+    accessLevel: 'pro',
     maxCounters: 2,
     isColor: true,
   },
