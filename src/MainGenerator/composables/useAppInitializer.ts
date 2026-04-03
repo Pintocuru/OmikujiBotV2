@@ -13,8 +13,13 @@ const TIME_THRESHOLD = 10000
 export function useAppInitializer() {
   const appStore = useAppStore()
   const { isComment } = useVisibilityAccess()
+  let isInitialized = false
 
   const initialize = async () => {
+    // 不可解な多重呼び出しの防衛
+    if (isInitialized) return
+    isInitialized = true
+
     const { setStatus, setError } = useAppStore()
     const commentProcessor = new EventCommentProcessor()
     setStatus('initializing')

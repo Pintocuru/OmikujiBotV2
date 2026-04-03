@@ -12,7 +12,7 @@ export function createAppServices() {
   const userSession = new UserManager()
   const scriptManager = GameScriptManager.getInstance()
   const serviceMetaStore = ServiceMetaStore.getInstance()
-  const streamStats = new StreamStatsManager()
+  const streamStats = StreamStatsManager.getInstance()
   const placeholderVariable = new PlaceholderVariable()
   const reactionStats = new ReactionStatsManager()
 

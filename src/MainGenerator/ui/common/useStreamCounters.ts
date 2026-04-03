@@ -97,9 +97,12 @@ export function useStreamCounters(eventKeys: Ref<string[]>, variableLabelMap: Re
         follower: event.current.follower,
       })
     })
+
+    appStore.streamStats.setOnReset(fetchStats)
   })
 
   onUnmounted(() => {
+    appStore.streamStats.setOnReset(null)
     unsubscribeMeta?.()
   })
 

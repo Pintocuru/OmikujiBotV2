@@ -5,7 +5,7 @@
     <div v-if="slots[0]" class="relative inline-flex items-center justify-center">
       <SakuraPetal class="w-110 h-110 animate-spin-slow" />
       <div class="absolute flex flex-col items-center leading-tight">
-        <span class="counter-label text-6xl">{{ slots[0].label }}</span>
+        <span class="counter-label text-6xl truncate">{{ slots[0].label }}</span>
         <span class="counter-value text-[260px] -mt-8" :style="{ transform: `scale(${mainScale})` }">
           {{ formatValue(displayMain) }}
         </span>
@@ -19,7 +19,7 @@
       >
         <SakuraPetal class="w-60 h-60 animate-spin-slow-reverse" />
         <div class="absolute flex flex-col items-center leading-tight">
-          <span class="counter-label text-4xl">{{ slots[1].label }}</span>
+          <span class="counter-label text-4xl truncate">{{ slots[1].label }}</span>
           <span class="counter-value text-9xl -mt-3" :style="{ transform: `scale(${subScale})` }">
             {{ formatValue(displaySub) }}
           </span>

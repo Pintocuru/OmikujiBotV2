@@ -9,22 +9,35 @@ export interface StreamStats {
 }
 
 /**
- * 配信全体の集計値を管理するクラス
+ * 配信全体の集計値を管理するクラス（シングルトン）
  */
 export class StreamStatsManager {
+  private static instance: StreamStatsManager | null = null
+  private onReset: (() => void) | null = null
+
   private liveComments = 0
   private totalPrice = 0
   private syoken = 0
-  private totalComments = 0 // 追加
+  private totalComments = 0
+
+  static getInstance(): StreamStatsManager {
+    if (!StreamStatsManager.instance) {
+      StreamStatsManager.instance = new StreamStatsManager()
+    }
+    return StreamStatsManager.instance
+  }
+
+  /** テスト用：インスタンスをリセット */
+  static resetInstance(): void {
+    StreamStatsManager.instance = null
+  }
 
   record(omiken: OmikenCommentType): void {
     const { tc, lc, no } = omiken.meta
     const giftPrice = omiken.giftPrice ?? 0
 
-    // 初見判定
     if (tc === 1) this.syoken++
 
-    // コメント累計（ユニーク考慮）
     if (no === 1) {
       this.totalComments += tc
     } else {
@@ -40,14 +53,19 @@ export class StreamStatsManager {
       liveComments: this.liveComments,
       syoken: this.syoken,
       totalPrice: this.totalPrice,
-      totalComments: this.totalComments, // 追加
+      totalComments: this.totalComments,
     }
+  }
+
+  setOnReset(callback: (() => void) | null): void {
+    this.onReset = callback
   }
 
   reset(): void {
     this.liveComments = 0
     this.totalPrice = 0
     this.syoken = 0
-    this.totalComments = 0 // 追加
+    this.totalComments = 0
+    this.onReset?.()
   }
 }

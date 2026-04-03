@@ -161,6 +161,7 @@
   const isDisabled = (type: CounterItem['type'], target: string) =>
     !isSelected(type, target) && counterCount.value >= props.maxCounters
 
+  // TODO:表示がIDになっているので修正
   const getLabel = (c: CounterItem) =>
     c.type === 'default'
       ? (streamDefaultMap[c.target as keyof typeof streamDefaultMap] ?? c.target)
