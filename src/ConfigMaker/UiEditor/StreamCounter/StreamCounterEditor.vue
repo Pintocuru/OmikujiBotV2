@@ -91,16 +91,23 @@
 
   // ---- CounterSelectorPanel 用に3フィールドを CounterItem[] に統合 ----
   const counters = computed<CounterItem[]>(() => [
+    // デフォルトのカウンター
     ...streamCounter.value.defaultCounters.map((target) => ({
       id: `default:${target}`,
       type: 'default' as const,
       target,
     })),
-    ...streamCounter.value.eventCounters.map((target) => ({
-      id: `event:${target}`,
-      type: 'event' as const,
-      target,
-    })),
+    // コメントイベントのカウンター
+    ...streamCounter.value.eventCounters.map((target) => {
+      const rule = eventRules.value.find((r) => r.key === target)
+      return {
+        id: `event:${target}`,
+        type: 'event' as const,
+        target,
+        label: rule?.name || target, // ここで確実にラベルを特定する
+      }
+    }),
+    // 変数カウンター
     ...streamCounter.value.variableCounters, // StreamCounterVariablesSchema[] がそのまま CounterItem と互換
   ])
 

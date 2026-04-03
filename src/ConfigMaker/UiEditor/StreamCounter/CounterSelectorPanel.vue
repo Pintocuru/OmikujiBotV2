@@ -162,10 +162,21 @@
     !isSelected(type, target) && counterCount.value >= props.maxCounters
 
   // TODO:表示がIDになっているので修正
-  const getLabel = (c: CounterItem) =>
-    c.type === 'default'
-      ? (streamDefaultMap[c.target as keyof typeof streamDefaultMap] ?? c.target)
-      : c.label || c.target
+  const getLabel = (c: CounterItem) => {
+    if (c.type === 'default') {
+      return streamDefaultMap[c.target as keyof typeof streamDefaultMap] ?? c.target
+    }
+
+    // label があればそれを使う、なければ eventRules から探す、最後は target
+    if (c.label) return c.label
+
+    if (c.type === 'event') {
+      const rule = props.eventRules.find((r) => r.key === c.target)
+      return rule?.name || c.target
+    }
+
+    return c.target
+  }
 
   const toggleDefault = (target: string, label: string) => {
     if (isSelected('default', target)) {
