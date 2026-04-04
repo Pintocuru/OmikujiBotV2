@@ -51,7 +51,7 @@ export const streamDefaultMap = {
   syoken: '初コメ',
   commenter: 'コメントをしたユーザー数',
   lc: '配信コメント数',
-  totalComments: '総合コメント数',
+  totalComments: '累計コメント数',
   upVote: '高評価数',
   viewer: '同時接続数',
   totalPrice: 'ギフト金額',

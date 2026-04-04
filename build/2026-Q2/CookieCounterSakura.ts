@@ -8,14 +8,14 @@ const PROJECT = {
   description: '高評価も！コメント数も！いろいろカウントできる多機能カウンターテンプレート',
   banner: '',
   tags: ['クッキーカウンター', '桜カウンター'],
-  boothId: '8145227',
+  boothId: '8162455',
   category: '2026-Q1',
   series: 'CookieCounter',
   licenseLabel: 'CC-BY 4.0',
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = [''] as const
+const COLOR_VARIANTS = ['', 'Ohayou'] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
@@ -26,6 +26,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 const buildTargets: PackageBuildTarget[] = [
   { project: 'SakuraCounter', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
   { project: 'SakuraCounter', type: 'JSON', accessLevel: 'basic' },
+  { project: 'SakuraCounterOhayou', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
