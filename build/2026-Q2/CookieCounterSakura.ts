@@ -9,13 +9,13 @@ const PROJECT = {
   banner: '',
   tags: ['クッキーカウンター', '桜カウンター'],
   boothId: '8162455',
-  category: '2026-Q1',
+  category: '2026-Q2',
   series: 'CookieCounter',
   licenseLabel: 'CC-BY 4.0',
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = ['', 'Ohayou'] as const
+const COLOR_VARIANTS = [''] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
