@@ -104,9 +104,13 @@ div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vu
   }
 
   // ── 公開 API ───────────────────────────────────────────────────────────────
-  const showModal = () => {
+  const showModal = (key?: string) => {
     initDraft()
-    if (props.initialEmotionKey) selectedEmotionKey.value = props.initialEmotionKey
+    if (key) {
+      selectedEmotionKey.value = key
+    } else if (props.initialEmotionKey) {
+      selectedEmotionKey.value = props.initialEmotionKey
+    }
     baseDialog.value?.showModal()
   }
 

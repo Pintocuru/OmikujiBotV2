@@ -1,27 +1,51 @@
 <!-- src/common/LayerImage/LayerImage.vue -->
 <template>
-  <div class="relative overflow-hidden" :class="[sizeClass, round && 'rounded-full', border && 'border']">
+  <div class="relative" :class="[sizeClass, round && 'rounded-full', border && 'border']">
     <div v-if="variant" v-motion :initial="variant.initial" :visible="variant.visible" class="w-full h-full">
       <template v-if="sources.length">
+        <template v-for="(src, i) in sources" :key="i">
+          <video
+            v-if="isVideo(src)"
+            :src="src"
+            autoplay
+            :loop="animation?.loop ?? true"
+            muted
+            playsinline
+            class="absolute inset-0 object-contain"
+            :style="{ zIndex: sources.length - i }"
+            @error="onError(i)"
+          />
+          <img
+            v-else
+            :src="src"
+            class="absolute inset-0 object-contain"
+            :style="{ zIndex: sources.length - i }"
+            @error="onError(i)"
+          />
+        </template>
+      </template>
+    </div>
+    <template v-else-if="sources.length">
+      <template v-for="(src, i) in sources" :key="i">
+        <video
+          v-if="isVideo(src)"
+          :src="src"
+          autoplay
+          :loop="animation?.loop ?? true"
+          muted
+          playsinline
+          class="absolute inset-0 object-contain"
+          :style="{ zIndex: sources.length - i }"
+          @error="onError(i)"
+        />
         <img
-          v-for="(src, i) in sources"
-          :key="i"
+          v-else
           :src="src"
           class="absolute inset-0 object-contain"
           :style="{ zIndex: sources.length - i }"
           @error="onError(i)"
         />
       </template>
-    </div>
-    <template v-else-if="sources.length">
-      <img
-        v-for="(src, i) in sources"
-        :key="i"
-        :src="src"
-        class="absolute inset-0 object-contain"
-        :style="{ zIndex: sources.length - i }"
-        @error="onError(i)"
-      />
     </template>
   </div>
 </template>
@@ -40,6 +64,9 @@
   }>()
 
   const errorIndexes = ref(new Set<number>())
+  const isVideo = (src: string) => {
+    return /\.(webm|mp4)$/i.test(src)
+  }
 
   const rawLayers = computed(() => (typeof props.layers === 'string' ? [props.layers] : props.layers))
 

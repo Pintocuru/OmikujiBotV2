@@ -59,7 +59,7 @@
 
   const layers = computed(() => (Array.isArray(props.src) ? props.src : []))
 
-  const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg']
+  const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg', 'webm', 'mp4']
   const extensionIndex = ref(0)
 
   const handleSetDefaultPath = () => {

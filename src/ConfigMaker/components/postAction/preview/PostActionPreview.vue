@@ -17,6 +17,7 @@
           v-if="isCharacter"
           :layers="character ? character.image[action.iconKey].src : []"
           :size="bubbleSettings.characterSize"
+          :animation="character?.image[action.iconKey].animation"
         />
       </div>
       <!-- トースト -->

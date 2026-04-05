@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/components/characters/CharacterImage/EmotionAnimationEditor.vue -->
 <template>
   <div class="space-y-3">
-    <div class="text-xs font-medium text-base-content/70 mb-1">アニメーション</div>
+    <div class="text-xs font-medium text-base-content/70 mb-1">アニメーション・プレビュー</div>
 
     <!-- プレビュー -->
     <div class="flex justify-center bg-base-200 rounded p-3">
@@ -11,7 +11,7 @@
     <!-- タイプ選択 -->
     <div class="space-y-1">
       <label class="text-xs text-base-content/60">動作タイプ</label>
-      <select class="select select-xs w-full" v-model="localAnimation.type">
+      <select class="select select-xs w-full" v-model="localAnimation.type" @change="applyAnimation">
         <option v-for="(label, key) in loopMotionMap" :key="key" :value="key">
           {{ label }}
         </option>
@@ -27,9 +27,9 @@
         <input
           type="range"
           class="range range-xs range-primary"
-          min="0.3"
+          min="0.4"
           max="5"
-          step="0.1"
+          step="0.2"
           v-model.number="localAnimation.duration"
         />
         <div class="flex justify-between text-xs text-base-content/40"><span>速い</span><span>遅い</span></div>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, computed } from 'vue'
+  import { ref, watch, computed, watchEffect } from 'vue'
   import { loopMotionMap } from '@/types/MetaMaps/enterMotionMaps'
   import type { CharacterAnimationType } from '@/types/'
   import ImagePreview from '@/common/LayerImage/ImagePreview.vue'
@@ -70,29 +70,22 @@
     loop: props.animation?.loop ?? true,
   })
 
-  /** emotionKey が変わったら必ず props.animation で再初期化 */
-  watch(
-    () => props.emotionKey,
-    () => {
+  const applyAnimation = () => {
+    emit('update:animation', localAnimation.value.type === 'none' ? undefined : { ...localAnimation.value })
+  }
+
+  const initializedKey = ref<string | null>(null)
+
+  watchEffect(() => {
+    if (props.emotionKey && initializedKey.value !== props.emotionKey) {
       localAnimation.value = {
         type: props.animation?.type ?? 'none',
         duration: props.animation?.duration ?? 1.5,
         loop: props.animation?.loop ?? true,
       }
+      initializedKey.value = props.emotionKey
     }
-  )
-
-  /** 同一感情のまま外部から animation が更新された場合（reset など）に追従 */
-  watch(
-    () => props.animation,
-    (val) => {
-      localAnimation.value = {
-        type: val?.type ?? 'none',
-        duration: val?.duration ?? 1.5,
-        loop: val?.loop ?? true,
-      }
-    }
-  )
+  })
 
   watch(
     localAnimation,

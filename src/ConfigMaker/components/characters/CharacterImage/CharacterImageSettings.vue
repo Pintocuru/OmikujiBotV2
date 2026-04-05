@@ -60,12 +60,12 @@
     if (key in currentImages.value) return
     pushImages({ ...currentImages.value, [key]: { label, src: [`${props.selectedItemKey}/${key}.webp`] } })
     editingEmotionKey.value = key
-    editModalRef.value?.showModal()
+    editModalRef.value?.showModal(key)
   }
 
   const handleSelectEmotion = (key: string) => {
     editingEmotionKey.value = key
-    editModalRef.value?.showModal()
+    editModalRef.value?.showModal(key)
   }
 
   const handleAddEmotion = () => {
@@ -74,7 +74,7 @@
     pushImages({ ...currentImages.value, [key]: { label: key, src: [] } })
     newEmotionKey.value = ''
     editingEmotionKey.value = key
-    editModalRef.value?.showModal()
+    editModalRef.value?.showModal(key)
   }
 
   // ── モーダルからの emit ハンドラ ──────────────────────────────────────────
