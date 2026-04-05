@@ -19,6 +19,7 @@ export class StreamStatsManager {
   private totalPrice = 0
   private syoken = 0
   private totalComments = 0
+  private seenUsers = new Set<string>()
 
   static getInstance(): StreamStatsManager {
     if (!StreamStatsManager.instance) {
@@ -33,13 +34,15 @@ export class StreamStatsManager {
   }
 
   record(omiken: OmikenCommentType): void {
-    const { tc, lc, no } = omiken.meta
+    const { tc, lc } = omiken.meta
     const giftPrice = omiken.giftPrice ?? 0
+    const userId = omiken.userId
 
     if (tc === 1) this.syoken++
 
-    if (no === 1) {
+    if (!this.seenUsers.has(userId)) {
       this.totalComments += tc
+      this.seenUsers.add(userId)
     } else {
       this.totalComments += 1
     }
@@ -66,6 +69,7 @@ export class StreamStatsManager {
     this.totalPrice = 0
     this.syoken = 0
     this.totalComments = 0
+    this.seenUsers.clear()
     this.onReset?.()
   }
 }
