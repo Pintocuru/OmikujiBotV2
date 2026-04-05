@@ -1,6 +1,5 @@
 // src/types/MainGenerator/BotMessageSchema.ts
 import { z } from 'zod'
-import { CharacterEmotionSchema } from '../OmikujiData/CharacterSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { v4 } from 'uuid'
 import { ScriptGameExtendedKeySchema } from '../OmikujiData/ActionSet'
@@ -23,7 +22,7 @@ const CommentBubbleSchema = z.object({
   message: z.string(),
   isToast: z.boolean().default(false),
   characterKey: z.string().nullable().default(null),
-  iconKey: CharacterEmotionSchema.default('default'),
+  iconKey: z.string().default('default').catch('default'),
   displaySeconds: z.number().min(0).max(60).nullable().optional(),
 })
 

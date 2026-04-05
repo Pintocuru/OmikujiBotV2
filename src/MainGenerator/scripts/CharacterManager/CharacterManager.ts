@@ -1,11 +1,5 @@
 // src/MainGenerator/scripts/CharacterManager/CharacterManager.ts
-import {
-  CharacterType,
-  OmikujiDataType,
-  CharacterEmotionType,
-  CharacterColorType,
-  DisplayOptionType,
-} from '@/types/OmikujiData/'
+import { CharacterType, OmikujiDataType, CharacterColorType, DisplayOptionType } from '@/types/'
 import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
@@ -33,7 +27,7 @@ export class CharacterManager {
    * キャラクターの妥当性を検証し、適切なキーと表情を返す
    * 画像の有無に関わらず、定義が存在すればそのキャラクターのキーを維持する
    */
-  resolveCharacter(data: { characterKey: string | null; iconKey: CharacterEmotionType }) {
+  resolveCharacter(data: { characterKey: string | null; iconKey: string }) {
     const { characterKey, iconKey } = data
 
     // キャラクター定義が存在するか確認。存在しない場合は null にフォールバック
@@ -92,34 +86,52 @@ export class CharacterManager {
     const char = this.characterMap.get(characterKey)
     if (!char) return false
 
-    const images = char.image?.default
-    return Array.isArray(images) && images.some((p) => p && p.trim())
+    return Object.values(char.image).some((item) => item?.src.some((p) => p && p.trim()))
   }
 
   /**
    * 指定された表情の画像アセットが存在するか確認。ない場合はキャラクター自体の 'default' 画像を返す
    */
-  resolveEmotion(characterKey: string | null, iconKey: CharacterEmotionType): CharacterEmotionType {
+  resolveEmotion(characterKey: string | null, iconKey: string): string {
     if (!characterKey) return 'default'
     const character = this.characterMap.get(characterKey)
     if (!character) return 'default'
 
-    const hasImage = character.image?.[iconKey]?.some((p) => p && p.trim()) ?? false
-    return hasImage ? iconKey : 'default'
+    const hasTarget = character.image?.[iconKey]?.src.some((p) => p && p.trim()) ?? false
+    if (hasTarget) return iconKey
+
+    const hasDefault = character.image?.['default']?.src.some((p) => p && p.trim()) ?? false
+    if (hasDefault) return 'default'
+
+    // defaultもない場合は最初の有効な感情キーにフォールバック
+    const fallbackKey = Object.entries(character.image).find(([_, item]) => item?.src.some((p) => p && p.trim()))?.[0]
+
+    return fallbackKey ?? 'default'
   }
 
   /**
    * キャラクターとアイコンから画像urlを返す
    */
-  iconSrc(characterKey: string | null, iconKey: CharacterEmotionType): string[] {
+  iconSrc(characterKey: string | null, iconKey: string): string[] {
     if (!characterKey) return []
-
     const char = this.characterMap.get(characterKey)
     if (!char) return []
 
-    // 指定された表情がなければ default 表情、それもなければ空配列
-    const images = char.image?.[iconKey] || char.image?.['default'] || []
-    return images.filter((p) => p && p.trim())
+    const getSrc = (key: string) => char.image?.[key]?.src.filter((p) => p && p.trim()) ?? []
+
+    const target = getSrc(iconKey)
+    if (target.length > 0) return target
+
+    const defaultSrc = getSrc('default')
+    if (defaultSrc.length > 0) return defaultSrc
+
+    // defaultもなければ最初の有効なsrcを返す
+    for (const item of Object.values(char.image)) {
+      const src = item?.src.filter((p) => p && p.trim()) ?? []
+      if (src.length > 0) return src
+    }
+
+    return []
   }
 
   /**

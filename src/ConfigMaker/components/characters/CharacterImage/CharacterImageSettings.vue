@@ -1,69 +1,99 @@
-<!-- src/ConfigMaker/components/characters/CharacterImage/CharacterImageSettings.vue -->
 <template>
-  <!-- 画像設定の説明 -->
   <ImageSettingsInfo />
 
-  <!-- 各画像プレビュー -->
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2">
-    <EmotionImageItem
-      v-for="(emotion, key) in characterEmotionMap"
-      :key="key"
-      :emotion-key="key"
-      :emotion-label="emotion"
-      :current-value="currentImages[key]"
-      :selected-item-key="selectedItemKey"
-      :is-default-filled="isDefaultFilled"
-      @update="handleUpdate"
-      @reset="handleReset"
-    />
+  <!-- サムネイル一覧（クリックで編集） -->
+  <div class="flex gap-2 mb-2">
+    <input type="text" class="input input-sm" placeholder="新しい感情キー（例: surprised）" v-model="newEmotionKey" />
+    <button class="btn btn-sm btn-primary" @click="handleAddEmotion" :disabled="!newEmotionKey.trim()">
+      <Plus class="w-4 h-4" />追加
+    </button>
   </div>
+
+  <EmotionGrid :images="currentImages" @select="handleSelectEmotion" />
+
+  <!-- 編集ダイアログ -->
+  <EmotionEditModal
+    ref="editModalRef"
+    :model-value="currentImages"
+    :selected-item-key="selectedItemKey"
+    :is-default-filled="isDefaultFilled"
+    :initial-emotion-key="editingEmotionKey"
+    @update="handleUpdate"
+    @updateName="handleUpdateName"
+    @reset="handleReset"
+    @remove="handleRemoveEmotion"
+  />
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
-  import { CharacterEmotionType, CharacterImageSetSchema, CharacterImageType, characterEmotionMap } from '@/types/'
+  import { computed, ref } from 'vue'
+  import { CharacterImageSetSchema, CharacterImageType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ImageSettingsInfo from './ImageSettingsInfo.vue'
-  import EmotionImageItem from './EmotionImageItem.vue'
+  import EmotionGrid from './EmotionGrid.vue'
+  import EmotionEditModal from './EmotionEditModal.vue'
 
   const props = defineProps<{
     modelValue: CharacterImageType
     selectedItemKey: string | null
   }>()
 
-  defineEmits<{
-    'update:modelValue': [value: CharacterImageType]
-  }>()
-
   const { updateRecordProperty } = useOmikujiStore()
+  const editModalRef = ref<InstanceType<typeof EmotionEditModal> | null>(null)
+  const editingEmotionKey = ref<string | null>(null)
+  const newEmotionKey = ref('')
+
+  const handleSelectEmotion = (key: string) => {
+    editingEmotionKey.value = key
+    editModalRef.value?.showModal()
+  }
+
+  const handleAddEmotion = () => {
+    const key = newEmotionKey.value.trim()
+    if (!key || key in currentImages.value) return
+    pushImages({ ...currentImages.value, [key]: { label: key, src: [] } })
+    newEmotionKey.value = ''
+    // 追加直後に編集ダイアログを開く
+    editingEmotionKey.value = key
+    editModalRef.value?.showModal()
+  }
+
   const currentImages = computed(() => props.modelValue ?? CharacterImageSetSchema.parse({}))
 
   const isDefaultFilled = computed(() => {
-    const layers = currentImages.value.default ?? []
-    return layers.some((v) => v.trim() !== '')
+    return currentImages.value['default']?.src.some((v) => v.trim() !== '') ?? false
   })
 
   const imageExtensions = ['png', 'gif', 'webp', 'jpg', 'jpeg', 'svg']
-  const extensionIndexMap = new Map<CharacterEmotionType, number>()
+  const extensionIndexMap = new Map<string, number>()
 
-  const handleUpdate = (key: CharacterEmotionType, value: string[]) => {
+  const pushImages = (newImages: CharacterImageType) => {
     if (!props.selectedItemKey) return
-    const newImages = { ...currentImages.value, [key]: value }
     updateRecordProperty('characters', props.selectedItemKey, 'image', newImages)
   }
 
-  const handleReset = (key: CharacterEmotionType) => {
-    if (!props.selectedItemKey) return
+  const handleUpdate = (key: string, src: string[]) => {
+    const item = currentImages.value[key]
+    pushImages({ ...currentImages.value, [key]: { ...item, src } })
+  }
 
-    const currentIndex = extensionIndexMap.get(key) || 0
-    const nextIndex = (currentIndex + 1) % imageExtensions.length
-    extensionIndexMap.set(key, nextIndex)
+  const handleUpdateName = (key: string, name: string) => {
+    const item = currentImages.value[key]
+    pushImages({ ...currentImages.value, [key]: { ...item, label: name } })
+  }
 
-    const nextExt = imageExtensions[currentIndex]
-    const newPath = `${props.selectedItemKey}/${key}.${nextExt}`
-    const currentValue = currentImages.value[key]
+  const handleReset = (key: string) => {
+    const currentIndex = extensionIndexMap.get(key) ?? 0
+    extensionIndexMap.set(key, (currentIndex + 1) % imageExtensions.length)
+    const ext = imageExtensions[currentIndex]
+    const newPath = `${props.selectedItemKey}/${key}.${ext}`
+    const currentSrc = currentImages.value[key]?.src ?? []
+    const newSrc = currentSrc.length === 0 ? [newPath] : [newPath, ...currentSrc.slice(1)]
+    handleUpdate(key, newSrc)
+  }
 
-    const newValue = currentValue.length === 0 ? [newPath] : [newPath, ...currentValue.slice(1)]
-    handleUpdate(key, newValue)
+  const handleRemoveEmotion = (key: string) => {
+    const { [key]: _, ...rest } = currentImages.value
+    pushImages(rest as CharacterImageType)
   }
 </script>

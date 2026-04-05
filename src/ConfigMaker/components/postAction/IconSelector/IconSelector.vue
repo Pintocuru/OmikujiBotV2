@@ -29,18 +29,18 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import { characterEmotionMap, CharacterEmotionType } from '@/types/'
+  import { characterEmotionMap } from '@/types/'
   import IconSelectorModal from './IconSelectorModal.vue'
   import { User } from 'lucide-vue-next'
 
   const props = defineProps<{
     characterKey: string
-    iconKey: CharacterEmotionType
+    iconKey: string
   }>()
 
   const emit = defineEmits<{
     'update:iconKey': [value: string]
-    showSelector: [characterKey: string, iconKey: CharacterEmotionType]
+    showSelector: [characterKey: string, iconKey: string]
   }>()
 
   const showHoverSelector = ref(false)
@@ -57,7 +57,7 @@
     iconSelectorModalRef.value?.showModal()
   }
 
-  const handleIconSelect = (selectedIcon: CharacterEmotionType) => {
+  const handleIconSelect = (selectedIcon: string) => {
     localIconKey.value = selectedIcon
   }
 </script>

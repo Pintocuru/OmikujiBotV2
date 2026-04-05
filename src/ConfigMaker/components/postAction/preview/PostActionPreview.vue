@@ -15,7 +15,7 @@
         />
         <LayerImage
           v-if="isCharacter"
-          :layers="character ? character.image[action.iconKey] : []"
+          :layers="character ? character.image[action.iconKey].src : []"
           :size="bubbleSettings.characterSize"
         />
       </div>
@@ -26,7 +26,7 @@
           :key="messageKey"
           :message="processedMessage"
           :color="character ? character.color : commonStyle.defaultColor"
-          :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey] : []"
+          :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey].src : []"
           :showToastsOnRight="toastSettings.showToastsOnRight"
         />
       </div>

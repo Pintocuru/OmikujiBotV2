@@ -2,7 +2,7 @@
 import type { OmikujiDataType } from '@/types/OmikujiData/'
 import type { JsonMergeRemapType } from '@/types/OmikujiData/'
 import type { ActionSetType, PostFlowType, GameScriptsType } from '@/types/OmikujiData/'
-import { CharacterEmotionType, eventCategoryLabel } from '@/types/OmikujiData'
+import { eventCategoryLabel } from '@/types/OmikujiData'
 
 /**
  * PostActionの配列に対してリマップルールを適用
@@ -29,7 +29,7 @@ function remapPostActions(postActions: PostFlowType[], remaps: JsonMergeRemapTyp
       if (remap.fromIconKey && remap.toIconKey && remappedAction.iconKey === remap.fromIconKey) {
         remappedAction = {
           ...remappedAction,
-          iconKey: remap.toIconKey as CharacterEmotionType,
+          iconKey: remap.toIconKey,
         }
         hasChanged = true
       }

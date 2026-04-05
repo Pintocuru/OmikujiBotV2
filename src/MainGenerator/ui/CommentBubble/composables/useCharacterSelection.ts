@@ -1,6 +1,6 @@
 // src/MainGenerator/ui/CommentBubble/composables/useCharacterSelection.ts
 import { computed, Ref } from 'vue'
-import { ShowCharacters, CharacterType, BotMessageBubbleType, characterEmotionKeys } from '@/types/'
+import { ShowCharacters, CharacterType, BotMessageBubbleType } from '@/types/'
 import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
 /**
@@ -115,51 +115,9 @@ export function useCharacterSelection(
       .filter((item): item is { slotIndex: number; character: CharacterType } => item !== null)
   })
 
-  /**
-   * 開発時用：全キャラクターの画像状態を検証
-   */
-  const validateAllCharacters = () => {
-    if (import.meta.env.MODE !== 'development') return
-
-    const issues: string[] = []
-    const warnings: string[] = []
-
-    Object.entries(charactersMap.value).forEach(([key, character]) => {
-      const hasAnyImage = characterEmotionKeys.some((emotion) => {
-        const imagePaths = character.image?.[emotion]
-        return imagePaths?.some((path: string) => path?.trim())
-      })
-
-      if (!hasAnyImage) {
-        issues.push(`⚠️  "${key}" (${character.name}): NO images in any emotion`)
-        return
-      }
-
-      const emptyEmotions = characterEmotionKeys.filter((emotion) => {
-        const imagePaths = character.image?.[emotion]
-        return !imagePaths?.some((path: string) => path?.trim())
-      })
-
-      if (emptyEmotions.length > 0 && emptyEmotions.length < characterEmotionKeys.length) {
-        warnings.push(`ℹ️  "${key}": Missing ${emptyEmotions.join(', ')}`)
-      }
-    })
-
-    if (issues.length > 0) {
-      console.error('❌ CHARACTER VALIDATION FAILED\n' + issues.join('\n'))
-    }
-    if (warnings.length > 0) {
-      console.info('CHARACTER WARNINGS\n' + warnings.join('\n'))
-    }
-    if (issues.length === 0 && warnings.length === 0) {
-      console.log('✅ All characters validated successfully')
-    }
-  }
-
   return {
     latestCommenterKey,
     slotCharacters,
     getMessageCount,
-    validateAllCharacters,
   }
 }

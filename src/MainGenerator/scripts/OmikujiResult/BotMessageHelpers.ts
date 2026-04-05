@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageHelpers.ts
 import { BotMessageBubbleSchema, BotMessageExtraSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
-import { CharacterEmotionType, PostFlowMessageType } from '@/types/OmikujiData/'
+import { PostFlowMessageType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderExtra } from '@/types/MainGenerator/OmikujiResultTypes'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
@@ -53,7 +53,7 @@ export function createBotMessagesFromAction(
  */
 function createBubbleMessage(
   characterKey: string | null,
-  iconKey: CharacterEmotionType,
+  iconKey: string,
   bubble: string,
   isToast: boolean | undefined,
   delaySeconds: number,

@@ -1,7 +1,6 @@
 // src/ConfigMaker/scripts/CharacterManager/useCharacterManager.ts
 import { computed } from 'vue'
 import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'
-import { CharacterEmotionType } from '@/types/OmikujiData'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { buildDefaultShowCharacters } from '@main/scripts/CharacterManager/CharacterManagerHelper'
 
@@ -35,10 +34,9 @@ export const useCharacterManager = () => {
     // メソッド類を公開（Main側とインターフェースを合わせる）
     getCharacterColor: (key: string | null) => manager.value.getCharacterColor(key),
     isValidCharacter: (key: string | null) => manager.value.isValidCharacter(key),
-    iconSrc: (key: string | null, emotion: CharacterEmotionType) => manager.value.iconSrc(key, emotion),
-    resolveEmotion: (key: string | null, emotion: CharacterEmotionType) => manager.value.resolveEmotion(key, emotion),
-    resolveCharacter: (data: { characterKey: string | null; iconKey: CharacterEmotionType }) =>
-      manager.value.resolveCharacter(data),
+    iconSrc: (key: string | null, emotion: string) => manager.value.iconSrc(key, emotion),
+    resolveEmotion: (key: string | null, emotion: string) => manager.value.resolveEmotion(key, emotion),
+    resolveCharacter: (data: { characterKey: string | null; iconKey: string }) => manager.value.resolveCharacter(data),
     // キャラクター名を取得
     getCharacterName: (key: string | null) => {
       if (!key) return undefined

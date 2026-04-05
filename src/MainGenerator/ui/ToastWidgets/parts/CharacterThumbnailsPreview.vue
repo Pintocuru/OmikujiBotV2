@@ -19,7 +19,7 @@
           :class="['w-12 h-12', 'rounded-full border border-base-100 shadow-lg']"
           :style="{ backgroundColor: character.color?.backgroundColor }"
         >
-          <CharacterLayerImage :layers="character.image?.default" :size="12" :color="character.color" />
+          <CharacterLayerImage :layers="getDefaultLayers(character)" :size="12" :color="character.color" />
         </div>
       </div>
     </div>
@@ -50,7 +50,18 @@
     characterClick: [character: CharacterType, isRightClick: boolean]
   }>()
 
-  // --- ホバー表示ロジックの追加 ---
+  const getDefaultLayers = (character: CharacterType): string[] => {
+    const image = character.image
+    // defaultがあればそのsrc、なければ最初に見つかった有効なsrc
+    const defaultSrc = image?.['default']?.src.filter((p) => p?.trim()) ?? []
+    if (defaultSrc.length > 0) return defaultSrc
+
+    for (const item of Object.values(image ?? {})) {
+      const src = item?.src.filter((p) => p?.trim()) ?? []
+      if (src.length > 0) return src
+    }
+    return []
+  }
 
   // 表示状態 (hoverVisibility が false の場合は常に true)
   const isVisible = ref(true)

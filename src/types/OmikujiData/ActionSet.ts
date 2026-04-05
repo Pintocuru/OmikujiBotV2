@@ -1,6 +1,5 @@
 // src/types/OmikujiData/ActionSet.ts
 import { z } from 'zod'
-import { CharacterEmotionSchema } from './CharacterSchema'
 import { WeightValuesArraySchema } from './PlaceholderSchema'
 import { soundKeys } from './SoundKey'
 import { normalizedObject } from './ParsedDefault'
@@ -31,7 +30,7 @@ export const PostFlowMessageSchema = z.object({
   // TODO(v3) : actionType -> kind
   actionType: z.literal('message').default('message'),
   characterKey: z.string().nullable().default(null).catch(null),
-  iconKey: CharacterEmotionSchema.default('default').catch('default'),
+  iconKey: z.string().default('default').catch('default'),
   sound: z
     .union([z.enum(soundKeys), z.literal('')])
     .default('')

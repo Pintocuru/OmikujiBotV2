@@ -14,7 +14,7 @@
           class="cursor-pointer"
         />
 
-        <LayerImage v-if="isCharacter" :layers="character.image?.default || ''" :size="bubbleSettings.characterSize" />
+        <LayerImage v-if="isCharacter" :layers="getDefaultLayers(character)" :size="bubbleSettings.characterSize" />
       </div>
     </div>
     <NoParamsCard v-else :message="`スクリプトID${isCharacter ? 'とキャラクターキー' : ''}を設定してください`" />
@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
-  import { GameScriptsType, CommentBubbleSchema } from '@/types/'
+  import { GameScriptsType, CommentBubbleSchema, CharacterType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 
@@ -48,6 +48,19 @@
 
   const processedMessage = ref('')
   const messageKey = ref(0)
+
+  const getDefaultLayers = (char: CharacterType | undefined): string[] => {
+    if (!char) return []
+    const image = char.image
+    const defaultSrc = image?.['default']?.src.filter((p) => p?.trim()) ?? []
+    if (defaultSrc.length > 0) return defaultSrc
+
+    for (const item of Object.values(image ?? {})) {
+      const src = item?.src.filter((p) => p?.trim()) ?? []
+      if (src.length > 0) return src
+    }
+    return []
+  }
 
   // キャラクター取得
   const isValid = computed(() => {

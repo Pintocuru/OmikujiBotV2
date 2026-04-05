@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterEmotionType, isDev, PostFlowMessageType, soundMetaMap } from '@/types/'
+  import {  isDev, PostFlowMessageType, soundMetaMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
@@ -125,6 +125,6 @@
   })
 
   const updateIconKey = (value: string) => {
-    updateAction({ iconKey: value as CharacterEmotionType })
+    updateAction({ iconKey: value  })
   }
 </script>

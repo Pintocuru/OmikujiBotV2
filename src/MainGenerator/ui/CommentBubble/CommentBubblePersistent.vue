@@ -15,7 +15,7 @@
 
       <!-- キャラクター画像（画像がある場合のみ表示） -->
       <div v-if="isValidCharacter(character.key)" class="flex justify-center items-end">
-        <LayerImage :layers="characterLayers" :size="bubble.characterSize" />
+        <LayerImage :layers="characterLayers" :size="bubble.characterSize" :animation="characterAnimation" />
       </div>
     </div>
   </div>
@@ -50,10 +50,14 @@
 
   // キャラクター感情状態（composableを統合）
   const messagesRef = computed(() => props.messages)
-  const { getCharacterLayers, updateCharacterEmotion } = useCharacterEmotionState(messagesRef, characterMap)
+  const { getCharacterLayers, getCharacterAnimation, updateCharacterEmotion } = useCharacterEmotionState(
+    messagesRef,
+    characterMap
+  )
 
   // このキャラクターのレイヤー
   const characterLayers = computed(() => getCharacterLayers(props.character.key))
+  const characterAnimation = computed(() => getCharacterAnimation(props.character.key))
 
   // キャラクタースタイル（最新発言者をハイライト）
   const characterStyle = computed(() => ({

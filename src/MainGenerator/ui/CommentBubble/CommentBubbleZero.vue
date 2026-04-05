@@ -21,6 +21,7 @@
               :layers="getCharacterLayers(message)"
               :size="bubble.characterSize"
               :color="getCharacterColor(message.bubble?.characterKey)"
+              :animation="getCharacterAnimation(message)"
             />
           </div>
         </template>
@@ -47,7 +48,7 @@
   }>()
 
   const appStore = useAppStore()
-  const { hasImage, getCharacterLayers, getCharacterColor } = useCharacterManager()
+  const { hasImage, getCharacterLayers, getCharacterColor, getCharacterAnimation } = useCharacterManager()
 
   // 設定の取得
   const bubble = computed(() => appStore.data.components.settings.bubble || CommentBubbleSchema.parse({}))

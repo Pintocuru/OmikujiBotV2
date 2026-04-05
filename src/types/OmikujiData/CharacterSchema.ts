@@ -5,6 +5,7 @@ import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { rpgVoiceKeys } from './SoundKey'
 import { characterEmotionMap, displayModeMap } from '../MetaMaps'
 import { normalizedObject } from './ParsedDefault'
+import { loopMotionMap } from '../MetaMaps/enterMotionMaps'
 
 /**
  * CharacterEmotion 感情ラベル
@@ -31,15 +32,51 @@ export const CharacterColorScheme = z.object({
 export type CharacterColorType = z.infer<typeof CharacterColorScheme>
 
 /**
+ * アニメーション
+ */
+const loopMotion = Object.keys(loopMotionMap) as LoopMotionType[]
+export type LoopMotionType = keyof typeof loopMotionMap
+
+export const CharacterAnimationSchema = z.object({
+  type: z.enum(loopMotion).default('none'),
+  duration: z.number().default(1.5),
+  loop: z.boolean().default(true),
+})
+export type CharacterAnimationType = z.infer<typeof CharacterAnimationSchema>
+
+/**
  * 画像セット
  */
-const LayerSchema = z.array(z.string()).catch([])
-export const CharacterImageSetSchema = z.object(
-  Object.fromEntries(Object.keys(characterEmotionMap).map((key) => [key, LayerSchema])) as Record<
-    CharacterEmotionType,
-    typeof LayerSchema
-  >
-)
+const CharacterImageSchema = z.object({
+  label: z.string().default(''),
+  src: z.array(z.string()).catch([]),
+  animation: CharacterAnimationSchema.optional(),
+})
+
+const LegacyOrNewImageSchema = z.union([
+  z.array(z.string()), // 旧
+  CharacterImageSchema, // 新
+])
+
+export const CharacterImageSetSchema = z.record(z.string(), LegacyOrNewImageSchema).transform((val) => {
+  const result: Record<string, z.infer<typeof CharacterImageSchema>> = {}
+
+  for (const key in val) {
+    const v = val[key]
+
+    // 旧 → 新へ変換
+    if (Array.isArray(v)) {
+      result[key] = {
+        src: v,
+        label: key in characterEmotionMap ? characterEmotionMap[key as keyof typeof characterEmotionMap] : key,
+      }
+    } else {
+      result[key] = v
+    }
+  }
+
+  return result
+})
 export type CharacterImageType = z.infer<typeof CharacterImageSetSchema>
 
 /**
@@ -73,28 +110,3 @@ export const CharacterSchema = z.object({
 })
 
 export type CharacterType = z.infer<typeof CharacterSchema>
-
-/**
-
-const CharacterImageSchema = z.object({
-  src: z.array(z.string()).catch([]),
-
-  // 将来用（今は未使用でもOK）
-  animation: z
-    .object({
-      type: z.enum(['none', 'blink', 'breath', 'bounce', 'custom']),
-      duration: z.number().default(1.5),
-      loop: z.boolean().default(true),
-    })
-    .optional(),
-})
-
-
-export const CharacterImageSetSchema = z.record(
-  z.string(), CharacterImageSchema
-)
-
-
-
-
- */

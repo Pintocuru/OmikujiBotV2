@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { CharacterManager } from '../CharacterManager/CharacterManager'
-import { CharacterEmotionType, ShowCharactersSchema } from '@/types/OmikujiData'
+import { CharacterAnimationType, ShowCharactersSchema } from '@/types/OmikujiData'
 import { BotMessageBubbleType } from '@/types'
 
 /**
@@ -56,17 +56,31 @@ export const useCharacterManager = () => {
   }
 
   // 表情を解決（画像がない場合はdefaultにフォールバック）
-  const resolveEmotion = (characterKey: string, iconKey: CharacterEmotionType): CharacterEmotionType => {
+  const resolveEmotion = (characterKey: string, iconKey: string): string => {
     return manager.value.resolveEmotion(characterKey, iconKey)
   }
 
+  // アニメーションを取得
+  const getCharacterAnimation = (message: BotMessageBubbleType): CharacterAnimationType | undefined => {
+    if (!manager.value.isCharacterMode) return undefined
+
+    const key = message.bubble?.characterKey
+    if (!key || !manager.value.isValidCharacter(key)) return undefined
+
+    const char = manager.value.getCharacter(key)
+    if (!char) return undefined
+
+    const iconKey = manager.value.resolveEmotion(key, message.bubble?.iconKey ?? 'default')
+    return char.image[iconKey]?.animation
+  }
+
   // アイコン画像のURLを取得
-  const iconSrc = (characterKey: string | null, iconKey: CharacterEmotionType): string[] => {
+  const iconSrc = (characterKey: string | null, iconKey: string): string[] => {
     return manager.value.iconSrc(characterKey, iconKey)
   }
 
   // ?
-  const resolveCharacter = (data: { characterKey: string | null; iconKey: CharacterEmotionType }) => {
+  const resolveCharacter = (data: { characterKey: string | null; iconKey: string }) => {
     return manager.value.resolveCharacter(data)
   }
 
@@ -83,6 +97,7 @@ export const useCharacterManager = () => {
     isValidCharacter,
     hasImage,
     resolveEmotion,
+    getCharacterAnimation,
     iconSrc,
     resolveCharacter,
   }

@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { CharacterEmotionType, CharacterType, ShowCharacters } from '@/types/'
+  import type { CharacterType, ShowCharacters } from '@/types/'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import PreviewSection from './PreviewSection.vue'
@@ -71,22 +71,22 @@
    */
   const getRandomCharacterLayers = (character: CharacterType): string[] => {
     const images = character.image
-    const emotions = Object.keys(images) as CharacterEmotionType[]
 
-    const validEmotions = emotions.filter((emotion) => {
-      const layers = images[emotion] || []
-      return layers.some((path) => path && path.trim() !== '')
+    const validEmotions = Object.keys(images).filter((key) => {
+      const src = images[key]?.src ?? []
+      return src.some((path) => path && path.trim() !== '')
     })
+
     if (validEmotions.length === 0) return []
+
     const hasDefault = validEmotions.includes('default')
 
-    // 80% は default 優先
-    if (hasDefault && Math.random() < 0.8) return images.default || []
+    if (hasDefault && Math.random() < 0.8) {
+      return images['default']?.src ?? []
+    }
 
-    // 残り 20% は default を含めた完全ランダム
     const randomEmotion = validEmotions[Math.floor(Math.random() * validEmotions.length)]
-
-    return images[randomEmotion] || []
+    return images[randomEmotion]?.src ?? []
   }
 
   /**
