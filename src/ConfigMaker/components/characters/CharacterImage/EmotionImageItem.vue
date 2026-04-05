@@ -1,4 +1,4 @@
-<!-- EmotionImageItem.vue -->
+<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionImageItem.vue -->
 <template>
   <div class="space-y-3">
     <!-- ヘッダー：表示名・キー・警告・削除 -->

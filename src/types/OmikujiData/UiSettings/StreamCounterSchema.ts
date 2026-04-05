@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsLiverSchema.ts
+// src/types/OmikujiData/UiSettings/StreamCounterSchema.ts
 import { z } from 'zod'
 import { daisyUIColor, themes } from '@shared/styles/DaisyUiTheme'
 import { idSchema } from '@shared/types'

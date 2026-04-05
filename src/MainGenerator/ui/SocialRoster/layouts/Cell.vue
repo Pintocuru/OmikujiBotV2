@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlightSeat/layouts/SeatCell.vue -->
+<!-- src/MainGenerator/ui/SocialRoster/layouts/Cell.vue -->
 <template>
   <div class="relative flex items-center justify-center seat-pop">
     <div class="avatar">

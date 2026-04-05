@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/postAction/IconSelector/IconSelectorModal.vue -->
 <template>
   <dialog ref="modalRef" class="modal">
     <div class="modal-box max-w-4xl space-y-4">

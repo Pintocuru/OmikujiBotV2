@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/UiEditor/CookieCounter/CookieCounterPreview.vue -->
 <template>
   <HudPreview :defaultScale="0.4">
     <div :class="[fontFamily]">

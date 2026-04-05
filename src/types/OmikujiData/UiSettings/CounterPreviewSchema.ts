@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsCounterSchema.ts
+// src/types/OmikujiData/UiSettings/CounterPreviewSchema.ts
 import { z } from 'zod'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { normalizedObject } from '../ParsedDefault'

@@ -1,4 +1,4 @@
-// build/2026-Q1/index.ts
+// build/2026-Q2/index.ts
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import CookieCounterSakura from './CookieCounterSakura'
 

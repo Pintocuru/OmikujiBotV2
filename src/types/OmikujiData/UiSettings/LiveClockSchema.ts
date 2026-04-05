@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsClockSchema.ts
+// src/types/OmikujiData/UiSettings/LiveClockSchema.ts
 import { z } from 'zod'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { normalizedObject } from '../ParsedDefault'

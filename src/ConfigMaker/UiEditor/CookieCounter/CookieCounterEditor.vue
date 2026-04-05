@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/UiEditor/CookieCounter/CookieCounterEditor.vue -->
 <template>
   <!-- プレビュー -->
   <CookieCounterPreview :cookieCounter="cookieCounter" :event-labels="eventLabels" :variable-labels="variableInput" />

@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsWinnerSchema.ts
+// src/types/OmikujiData/UiSettings/WinnerGroupSchema.ts
 import { z } from 'zod'
 import { themes } from '@shared/styles/DaisyUiTheme'
 

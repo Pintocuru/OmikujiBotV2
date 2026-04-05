@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/SocialRoster/layouts/StreamPower.vue -->
 <template>
   <div
     class="relative rounded-3xl border-4 p-2 overflow-hidden transition-colors duration-500"

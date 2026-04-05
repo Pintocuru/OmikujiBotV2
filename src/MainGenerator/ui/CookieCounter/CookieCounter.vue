@@ -1,4 +1,4 @@
-<!-- CookieCounter.vue -->
+<!-- src/MainGenerator/ui/CookieCounter/CookieCounter.vue -->
 <template>
   <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
     <CookieCounterSelector

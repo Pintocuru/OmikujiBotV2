@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/appItems/preview/BaseRecordPreview.vue -->
+<!-- src/ConfigMaker/components/appItems/preview/BaseSettings.vue -->
 <template>
   <div class="text-xs space-y-1 max-w-xs">
     <!-- name -->

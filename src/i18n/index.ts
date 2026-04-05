@@ -1,3 +1,4 @@
+// src/i18n/index.ts
 import i18next from 'i18next'
 import ja from './ja.json'
 import en from './en.json'

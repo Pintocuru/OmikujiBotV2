@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/characters/CharacterImage/CharacterImageSettings.vue -->
 <template>
   <ImageSettingsInfo />
 

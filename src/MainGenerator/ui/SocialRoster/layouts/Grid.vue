@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/SocialRoster/parts/SocialRosterGrid.vue -->
+<!-- src/MainGenerator/ui/SocialRoster/layouts/Grid.vue -->
 <template>
   <div class="grid w-full" :style="{ gridTemplateColumns: `repeat(auto-fill, ${size}px)` }">
     <Cell

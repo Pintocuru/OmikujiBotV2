@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsDeadSchema.ts
+// src/types/OmikujiData/UiSettings/DeadAirSchema.ts
 import { z } from 'zod'
 
 export const deadComponentMap = {

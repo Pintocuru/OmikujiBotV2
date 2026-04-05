@@ -1,4 +1,4 @@
-// src/types/OmikujiData/UiSettings/SettingsFlightSchema.ts
+// src/types/OmikujiData/UiSettings/FlightSeatSchema.ts
 import { z } from 'zod'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { normalizedObject } from '../ParsedDefault'

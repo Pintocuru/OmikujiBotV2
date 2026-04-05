@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/UiEditor/CommonStyle/DisplayStyleSelector.vue -->
 <template>
   <SettingItem v-if="visibleOptions.length > 1" label="表示スタイル" description="表示形式を選択">
     <div class="flex flex-wrap gap-2">
