@@ -10,7 +10,7 @@
     >
       <div class="text-center p-2">
         <div class="w-24 h-24 mx-auto relative">
-          <LayerImage :layers="item.src" :size="24" />
+          <LayerImage :layers="item.src" :size="24" :animation="item.animation" />
           <!-- ホバー時に編集アイコンをオーバーレイ -->
           <div
             class="absolute inset-0 bg-base-100/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded"
@@ -28,6 +28,7 @@
 <script setup lang="ts">
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import type { CharacterImageType } from '@/types/'
+  import { Pencil } from 'lucide-vue-next'
 
   defineProps<{
     images: CharacterImageType

@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
-  import { getImagePath, LoopMotionType } from '@/types/'
+  import { CharacterAnimationType, getImagePath } from '@/types/'
   import { createLoopVariants } from '@/MainGenerator/scripts/MotionVariants/CharacterLoopMotion'
 
   const props = defineProps<{
@@ -36,11 +36,7 @@
     size?: number
     round?: boolean
     border?: boolean
-    animation?: {
-      type: LoopMotionType
-      duration: number
-      loop: boolean
-    }
+    animation?: CharacterAnimationType
   }>()
 
   const errorIndexes = ref(new Set<number>())

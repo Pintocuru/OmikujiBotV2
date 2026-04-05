@@ -1,7 +1,7 @@
 <!-- src/common/LayerImage/ImagePreview.vue -->
 <template>
   <div @click="showPreview = true" class="cursor-pointer">
-    <LayerImage :layers="layers" :size="size" />
+    <LayerImage :layers="layers" :size="size" :animation="animation" />
   </div>
 
   <Transition name="fade">
@@ -20,10 +20,12 @@
 <script setup lang="ts">
   import { ref } from 'vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
+  import { CharacterAnimationType } from '@/types'
 
   defineProps<{
     layers: string[] | string
     size: number // 表示サイズ
+    animation?: CharacterAnimationType
   }>()
 
   const showPreview = ref(false)

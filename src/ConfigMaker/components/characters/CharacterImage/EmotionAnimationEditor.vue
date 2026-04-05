@@ -1,0 +1,111 @@
+<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionAnimationEditor.vue -->
+<template>
+  <div class="space-y-3">
+    <div class="text-xs font-medium text-base-content/70 mb-1">アニメーション</div>
+
+    <!-- プレビュー -->
+    <div class="flex justify-center bg-base-200 rounded p-3">
+      <ImagePreview :key="previewKey" :layers="src" :size="24" :animation="animation" />
+    </div>
+
+    <!-- タイプ選択 -->
+    <div class="space-y-1">
+      <label class="text-xs text-base-content/60">動作タイプ</label>
+      <select class="select select-xs w-full" v-model="localAnimation.type">
+        <option v-for="(label, key) in loopMotionMap" :key="key" :value="key">
+          {{ label }}
+        </option>
+      </select>
+    </div>
+
+    <template v-if="localAnimation.type !== 'none'">
+      <div class="space-y-1">
+        <div class="flex justify-between">
+          <label class="text-xs text-base-content/60">速度（秒）</label>
+          <span class="text-xs font-mono">{{ localAnimation.duration }}s</span>
+        </div>
+        <input
+          type="range"
+          class="range range-xs range-primary"
+          min="0.3"
+          max="5"
+          step="0.1"
+          v-model.number="localAnimation.duration"
+        />
+        <div class="flex justify-between text-xs text-base-content/40"><span>速い</span><span>遅い</span></div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <input type="checkbox" class="toggle toggle-xs toggle-primary" v-model="localAnimation.loop" />
+        <label class="text-xs text-base-content/60">
+          {{ localAnimation.loop ? 'ループ再生' : '1回のみ再生' }}
+        </label>
+      </div>
+    </template>
+
+    <div v-else class="text-xs text-base-content/30 text-center py-4">アニメーションなし</div>
+  </div>
+</template>
+
+<script setup lang="ts">
+  import { ref, watch, computed } from 'vue'
+  import { loopMotionMap } from '@/types/MetaMaps/enterMotionMaps'
+  import type { CharacterAnimationType } from '@/types/'
+  import ImagePreview from '@/common/LayerImage/ImagePreview.vue'
+
+  const props = defineProps<{
+    /** どの感情のアニメーションか（変化時に local state をリセットするために使用） */
+    emotionKey: string
+    src: string[]
+    animation: CharacterAnimationType | undefined
+  }>()
+
+  const emit = defineEmits<{
+    'update:animation': [animation: CharacterAnimationType | undefined]
+  }>()
+
+  const localAnimation = ref<CharacterAnimationType>({
+    type: props.animation?.type ?? 'none',
+    duration: props.animation?.duration ?? 1.5,
+    loop: props.animation?.loop ?? true,
+  })
+
+  /** emotionKey が変わったら必ず props.animation で再初期化 */
+  watch(
+    () => props.emotionKey,
+    () => {
+      localAnimation.value = {
+        type: props.animation?.type ?? 'none',
+        duration: props.animation?.duration ?? 1.5,
+        loop: props.animation?.loop ?? true,
+      }
+    }
+  )
+
+  /** 同一感情のまま外部から animation が更新された場合（reset など）に追従 */
+  watch(
+    () => props.animation,
+    (val) => {
+      localAnimation.value = {
+        type: val?.type ?? 'none',
+        duration: val?.duration ?? 1.5,
+        loop: val?.loop ?? true,
+      }
+    }
+  )
+
+  watch(
+    localAnimation,
+    (val) => {
+      emit('update:animation', val.type === 'none' ? undefined : { ...val })
+    },
+    { deep: true }
+  )
+
+  /** プレビュー用の key: 感情・type・duration・loop が変わったら再マウント */
+  // TODO:リアクティブが遅延しているためか、ボタンの見た目とは真逆の結果になっている。修正が必要
+  const previewKey = computed(
+    () =>
+      `${props.emotionKey}-${localAnimation.value.type}-${localAnimation.value.duration}-${localAnimation.value.loop}`
+  )
+</script>
