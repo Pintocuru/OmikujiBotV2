@@ -14,6 +14,7 @@ export const COMPONENT_MAP_LOADER: Record<UiKind, () => Promise<any>> = {
   flightSeat: () => import('./FlightSeat/FlightSeat.vue'),
   socialRoster: () => import('./SocialRoster/SocialRoster.vue'),
   flashBanner: () => import('./FlashBanner/FlashBanner.vue'),
+  commentSpin: () => import('./CommentSpin/CommentSpin.vue'),
   deadAir: () => import('./DeadAir/DeadAir.vue'),
 }
 

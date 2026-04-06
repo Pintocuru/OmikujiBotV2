@@ -36,7 +36,7 @@ export class PostOmikujiService {
     await Promise.all(posts.map((post) => this.processPost(post)))
   }
 
-  // --- Private: ディスパッチ ---
+  //  Private: ディスパッチ
   private async processPost(post: PostFlowType): Promise<void> {
     // enableSecondary が false なら全部投稿
     if (post.actionType === 'message') {
@@ -56,8 +56,7 @@ export class PostOmikujiService {
     }
   }
 
-  // --- Private: メッセージ投稿 ---
-
+  //  Private: メッセージ投稿
   private async processMessagePost(post: PostFlowMessageType): Promise<void> {
     const bubble = cleanPostMessage(post.message.bubble)
     if (!bubble) return
@@ -99,7 +98,7 @@ export class PostOmikujiService {
     }
   }
 
-  // --- Private: サービス管理 ---
+  //  Private: サービス管理
 
   /**
    * キャラクターの frameId を解決し、未作成なら新規作成して返す。
@@ -128,7 +127,7 @@ export class PostOmikujiService {
     }
   }
 
-  // --- Private: ユーティリティ ---
+  //  Private: ユーティリティ
 
   private resolveRepeatCount(repeat?: number | 'viewer' | 'upVote'): number {
     if (!repeat) return 1
@@ -144,7 +143,7 @@ export class PostOmikujiService {
   }
 }
 
-// --- Module-level utilities ---
+//  Module-level utilities
 
 function cleanPostMessage(raw: string): string {
   return raw

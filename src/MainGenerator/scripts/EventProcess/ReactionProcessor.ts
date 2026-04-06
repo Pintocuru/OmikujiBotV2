@@ -50,7 +50,7 @@ export class EventReactionProcessor {
 
     for (const event of enabledEvents) {
       if (evaluateReactionTrigger(event.trigger, this.store.reactionStats)) {
-        const messages = await this.omikujiProcessor.executeOmikuji(event.omikuji, 'reactions')
+        const messages = await this.omikujiProcessor.executeOmikuji(event.key, event.omikuji, 'reactions')
         this.store.scheduleBotMessages(messages)
       }
     }

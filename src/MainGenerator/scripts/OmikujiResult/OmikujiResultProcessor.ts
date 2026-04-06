@@ -56,15 +56,16 @@ export class OmikujiResultProcessor {
   async process(
     actionItem: ActionSetType,
     defaultPlaceholders: Record<string, string | number>,
-    omiken?: OmikenCommentType
+    omiken?: OmikenCommentType,
+    isOnecommePost = true
   ): Promise<BotMessageType[]> {
     try {
       switch (actionItem.type) {
         case 'gameScripts':
-          return await this.processGameScripts(actionItem, omiken)
+          return await this.processGameScripts(actionItem, omiken, isOnecommePost)
 
         case 'postActions':
-          return this.processPostActions(actionItem, defaultPlaceholders, omiken)
+          return this.processPostActions(actionItem, defaultPlaceholders, omiken, isOnecommePost)
 
         default:
           return []
@@ -80,7 +81,11 @@ export class OmikujiResultProcessor {
   /**
    * gameScripts処理
    */
-  private async processGameScripts(actionItem: ActionSetType, omiken?: OmikenCommentType): Promise<BotMessageType[]> {
+  private async processGameScripts(
+    actionItem: ActionSetType,
+    omiken?: OmikenCommentType,
+    isOnecommePost?: boolean
+  ): Promise<BotMessageType[]> {
     // 1. スクリプトの実行
     const scriptResult = await this.playScript(actionItem.gameScripts, omiken)
     if (!scriptResult) return []
@@ -91,10 +96,10 @@ export class OmikujiResultProcessor {
     const processedActions = this.processVariables(actions)
 
     // 3. わんコメへ投稿
-    this.postMessage.post(processedActions.map((a) => a.action))
+    if (isOnecommePost) this.postMessage.post(processedActions.map((a) => a.action))
 
     // 4. BotMessage を生成
-    const botMessages = this.generateBotMessages(processedActions, omiken)
+    const botMessages = this.generateBotMessages(processedActions, omiken, isOnecommePost)
 
     return [...scriptMessages, ...botMessages]
   }
@@ -105,7 +110,8 @@ export class OmikujiResultProcessor {
   private processPostActions(
     actionItem: ActionSetType,
     defaultPlaceholders: Record<string, string | number>,
-    omiken?: OmikenCommentType
+    omiken?: OmikenCommentType,
+    isOnecommePost?: boolean
   ): BotMessageType[] {
     // アクションを展開
     const expandedActions = ActionSetExpander.expand(actionItem.postActions, this.actionSets)
@@ -123,16 +129,20 @@ export class OmikujiResultProcessor {
     const processedActions = this.processVariables(resolvedActions)
 
     // 2. わんコメへ投稿
-    this.postMessage.post(processedActions.map((a) => a.action))
+    if (isOnecommePost) this.postMessage.post(processedActions.map((a) => a.action))
 
     // 3. BotMessageを生成 (解析済みのデータを使用)
-    return this.generateBotMessages(processedActions, omiken)
+    return this.generateBotMessages(processedActions, omiken, isOnecommePost)
   }
 
   /**
    * 処理済みアクションからBotMessageを生成
    */
-  private generateBotMessages(processedActions: ProcessedPostAction[], omiken?: OmikenCommentType): BotMessageType[] {
+  private generateBotMessages(
+    processedActions: ProcessedPostAction[],
+    omiken?: OmikenCommentType,
+    isOnecommePost?: boolean
+  ): BotMessageType[] {
     const messages: BotMessageType[] = []
 
     for (const item of processedActions) {
@@ -156,9 +166,9 @@ export class OmikujiResultProcessor {
           )
         )
 
-        if (action.sound && this.soundEnabled) playSoundDelay(action.sound, delaySeconds)
+        if (action.sound && this.soundEnabled && isOnecommePost) playSoundDelay(action.sound, delaySeconds)
       } else if (action.actionType === 'sound') {
-        if (action.sound && this.soundEnabled) playSoundDelay(action.sound, delaySeconds)
+        if (action.sound && this.soundEnabled && isOnecommePost) playSoundDelay(action.sound, delaySeconds)
       }
     }
     return messages

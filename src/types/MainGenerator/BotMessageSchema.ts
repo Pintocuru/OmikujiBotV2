@@ -1,7 +1,7 @@
 // src/types/MainGenerator/BotMessageSchema.ts
 import { z } from 'zod'
 import { ScriptGameExtendedKeySchema, eventCategoryLabel } from '../OmikujiData'
-import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
+import { OmikenCommentSchema, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { DaisyUIColorSchema } from '@shared/styles/DaisyUiTheme'
 import { idSchema } from '@shared/types'
 
@@ -19,6 +19,7 @@ const BotMessageBaseSchema = z.object({
       omikujiKey: z.string().optional(),
     })
     .optional(),
+  origin: OmikenCommentSchema.optional(),
 })
 export type BotMessageBaseType = z.infer<typeof BotMessageBaseSchema>
 

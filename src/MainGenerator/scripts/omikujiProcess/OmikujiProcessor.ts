@@ -27,13 +27,15 @@ export class OmikujiProcessor {
 
   // おみくじ抽選&おみくじ処理
   async executeOmikuji(
+    eventKey: string,
     omikujiSet: OmikujiSetType,
     category: EventCategoryType,
-    omiken?: OmikenCommentType
+    omiken?: OmikenCommentType,
+    isOnecommePost?: boolean
   ): Promise<BotMessageType[]> {
     const actionItem = this.lotteryOmikujiItem(omikujiSet)
     if (!actionItem) return []
-    return await this.executeActionItem(actionItem, category, omiken)
+    return await this.executeActionItem(eventKey, actionItem, category, omiken, isOnecommePost)
   }
 
   /**
@@ -54,20 +56,23 @@ export class OmikujiProcessor {
   }
 
   async executeActionItem(
+    eventKey: string,
     actionItem: ActionSetType,
     category: EventCategoryType,
-    omiken?: OmikenCommentType
+    omiken?: OmikenCommentType,
+    isOnecommePost?: boolean
   ): Promise<BotMessageType[]> {
     if (actionItem.type === 'special') return []
     const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
-    const message = await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
+    const message = await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken, isOnecommePost)
     return message.map((m) => ({
       ...m,
       source: {
         category,
-        eventKey: actionItem.key,
-        omikujiKey: actionItem.id,
+        eventKey: eventKey,
+        omikujiKey: actionItem.key,
       },
+      origin: omiken,
     }))
   }
 

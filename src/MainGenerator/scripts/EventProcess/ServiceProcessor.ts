@@ -62,13 +62,13 @@ export class EventServiceProcessor {
           }
         : event
 
-    const enabledRules = Object.values(this.store.data.metas)
+    const enabledEvents = Object.values(this.store.data.metas)
       .filter((rule) => rule.isEnabled)
       .sort((a, b) => a.order - b.order)
 
-    for (const rule of enabledRules) {
-      if (evaluateServiceTrigger(rule.trigger, resolvedEvent)) {
-        const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji, 'metas')
+    for (const event of enabledEvents) {
+      if (evaluateServiceTrigger(event.trigger, resolvedEvent)) {
+        const messages = await this.omikujiProcessor.executeOmikuji(event.key, event.omikuji, 'metas')
         this.store.scheduleBotMessages(messages)
       }
     }

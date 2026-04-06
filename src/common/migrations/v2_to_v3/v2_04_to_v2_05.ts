@@ -1,5 +1,5 @@
 // src/common/migrations/v2_to_v3/v2_04_to_v2_05.ts
-import { v4 } from 'uuid'
+import { nanoid } from 'nanoid'
 
 export function migrateV204ToV205(data: any) {
   resetOmikujiIdsInRules(data.comments)
@@ -18,7 +18,7 @@ function resetOmikujiIdsInRules(record: Record<string, any> | undefined | null) 
 
     rule.omikuji = rule.omikuji.map((item: any) => ({
       ...item,
-      id: v4(),
+      id: nanoid(),
     }))
   }
 }

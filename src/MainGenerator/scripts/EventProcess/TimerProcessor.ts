@@ -45,13 +45,13 @@ export class EventTimerProcessor {
   /**
    * onStart モード: 起動時に一度だけ scheduleBotMessages を直接呼び出す
    */
-  private async executeOnStart(rule: TimerEventType): Promise<void> {
+  private async executeOnStart(event: TimerEventType): Promise<void> {
     try {
       const appStore = useAppStore()
-      const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji, 'timers')
+      const messages = await this.omikujiProcessor.executeOmikuji(event.key, event.omikuji, 'timers')
       appStore.scheduleBotMessages(messages)
     } catch (error) {
-      console.error(`onStart ${rule.key} execution error:`, error)
+      console.error(`onStart ${event.key} execution error:`, error)
     }
   }
 
@@ -98,13 +98,13 @@ export class EventTimerProcessor {
   /**
    * タイマー実行時の処理
    */
-  private async executeTimer(rule: TimerEventType): Promise<void> {
+  private async executeTimer(event: TimerEventType): Promise<void> {
     try {
       const appStore = useAppStore()
-      const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji, 'timers')
+      const messages = await this.omikujiProcessor.executeOmikuji(event.key, event.omikuji, 'timers')
       appStore.scheduleBotMessages(messages)
     } catch (error) {
-      console.error(`Timer ${rule.key} execution error:`, error)
+      console.error(`Timer ${event.key} execution error:`, error)
     }
   }
 

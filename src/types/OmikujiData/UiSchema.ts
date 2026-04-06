@@ -6,6 +6,7 @@ import { fontFamilyMap, uiKindMap, UiSlotMap, uiSpecialSetMap } from '../MetaMap
 import { CommentBubbleSchema } from './UiSettings/CommentBubbleSchema'
 import { ToastWidgetsSchema } from './UiSettings/ToastWidgetsSchema'
 import { FlashBannerSchema } from './UiSettings/FlashBannerSchema'
+import { CommentSpinSchema } from './UiSettings/CommentSpinSchema'
 import { GameRankingSchema } from './UiSettings/GameRankingSchema'
 import { CounterPreviewSchema } from './UiSettings/CounterPreviewSchema'
 import { WinnerGroupSchema } from './UiSettings/WinnerGroupSchema'
@@ -96,6 +97,7 @@ export const settingsSchemaMap = {
   flightSeat: FlightSeatSchema,
   socialRoster: SocialRosterSchema,
   flashBanner: FlashBannerSchema,
+  commentSpin: CommentSpinSchema,
   streamCounter: StreamCounterSchema,
   cookieCounter: CookieCounterSchema,
   deadAir: DeadAirSchema,
@@ -111,6 +113,7 @@ export const UiSettingsSchema = z.object({
   flightSeat: FlightSeatSchema.optional(),
   socialRoster: SocialRosterSchema.optional(),
   flashBanner: FlashBannerSchema.optional(),
+  commentSpin: CommentSpinSchema.optional(),
   streamCounter: StreamCounterSchema.optional(),
   cookieCounter: CookieCounterSchema.optional(),
   deadAir: DeadAirSchema.optional(),

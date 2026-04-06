@@ -10,6 +10,7 @@ import WinnerGroupEditor from './WinnerGroup/WinnerGroupEditor.vue'
 import FlightSeatEditor from './FlightSeat/FlightSeatEditor.vue'
 import SocialRosterEditor from './SocialRoster/SocialRosterEditor.vue'
 import FlashBannerEditor from './FlashBanner/FlashBannerEditor.vue'
+import CommentSpinEditor from './CommentSpin/CommentSpinEditor.vue'
 import FontFamilyEditor from './CommonStyle/FontFamilyEditor.vue'
 import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
 import DeadAirEditor from './DeadAir/DeadAirEditor.vue'
@@ -72,6 +73,15 @@ export const uiItemMap: Record<string, UiItem> = {
     description: 'ニュースバナー風のフキダシ設定',
     component: FlashBannerEditor,
     targetKey: 'flashBanner',
+    visibility: [],
+  },
+
+  commentSpin: {
+    icon: 'UserSquare',
+    title: 'コメントルーレットアイテム',
+    description: 'ランダムなテキストをアニメーションで表示',
+    component: CommentSpinEditor,
+    targetKey: 'commentSpin',
     visibility: [],
   },
 

@@ -100,7 +100,7 @@ export class EventCommentProcessor {
     this.recordDraw(omiken, event)
 
     const omikujiProcessor = new OmikujiProcessor()
-    const botMessages = await omikujiProcessor.executeActionItem(actionItem, 'comments', omiken)
+    const botMessages = await omikujiProcessor.executeActionItem(event.key, actionItem, 'comments', omiken)
     const isCommentTriggered = event.trigger.conditions.includes('comment')
 
     return { isCommentTriggered, botMessages }
