@@ -4,6 +4,7 @@ import {
   ActionSetType,
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
+  EventCategoryType,
 } from '@/types/'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
@@ -25,10 +26,14 @@ export class OmikujiProcessor {
   }
 
   // おみくじ抽選&おみくじ処理
-  async executeOmikuji(omikujiSet: OmikujiSetType, omiken?: OmikenCommentType): Promise<BotMessageType[]> {
+  async executeOmikuji(
+    omikujiSet: OmikujiSetType,
+    category: EventCategoryType,
+    omiken?: OmikenCommentType
+  ): Promise<BotMessageType[]> {
     const actionItem = this.lotteryOmikujiItem(omikujiSet)
     if (!actionItem) return []
-    return await this.executeActionItem(actionItem, omiken)
+    return await this.executeActionItem(actionItem, category, omiken)
   }
 
   /**
@@ -48,10 +53,22 @@ export class OmikujiProcessor {
     }
   }
 
-  async executeActionItem(actionItem: ActionSetType, omiken?: OmikenCommentType): Promise<BotMessageType[]> {
+  async executeActionItem(
+    actionItem: ActionSetType,
+    category: EventCategoryType,
+    omiken?: OmikenCommentType
+  ): Promise<BotMessageType[]> {
     if (actionItem.type === 'special') return []
     const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
-    return await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
+    const message = await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
+    return message.map((m) => ({
+      ...m,
+      source: {
+        category,
+        eventKey: actionItem.key,
+        omikujiKey: actionItem.id,
+      },
+    }))
   }
 
   /**

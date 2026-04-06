@@ -3,7 +3,6 @@ import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 import { GetReactions } from '@shared/sdk/subscribe/GetReactions'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
 import { evaluateReactionTrigger } from '@/MainGenerator/scripts/EventProcess/ReactionTriggerEvaluator'
-import { addSourceCategory } from './AddSourceHelper'
 
 /** 10秒間リアクションがなければバーストレベルを1下げる */
 const BURST_DECAY_MS = 10_000
@@ -51,9 +50,8 @@ export class EventReactionProcessor {
 
     for (const event of enabledEvents) {
       if (evaluateReactionTrigger(event.trigger, this.store.reactionStats)) {
-        const messages = await this.omikujiProcessor.executeOmikuji(event.omikuji)
-        const enriched = addSourceCategory(messages, 'reactions')
-        this.store.scheduleBotMessages(enriched)
+        const messages = await this.omikujiProcessor.executeOmikuji(event.omikuji, 'reactions')
+        this.store.scheduleBotMessages(messages)
       }
     }
   }

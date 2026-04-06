@@ -3,7 +3,6 @@ import { evaluateServiceTrigger } from './ServiceTriggerEvaluator'
 import { MetaUpdateEvent } from '@main/stores/MetaState/MetaStateService'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
-import { addSourceCategory } from './AddSourceHelper'
 
 /**
  * 配信数値イベントの実行を管理
@@ -69,9 +68,8 @@ export class EventServiceProcessor {
 
     for (const rule of enabledRules) {
       if (evaluateServiceTrigger(rule.trigger, resolvedEvent)) {
-        const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji)
-        const enriched = addSourceCategory(messages, 'metas')
-        this.store.scheduleBotMessages(enriched)
+        const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji, 'metas')
+        this.store.scheduleBotMessages(messages)
       }
     }
   }
