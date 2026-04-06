@@ -43,6 +43,13 @@ export const uiKindMap = {
     icon: 'Megaphone',
     description: 'ニュース風のテロップを表示します。',
   },
+  commentSpin: {
+    primarySlot: 'primary',
+    slots: ['primary'],
+    label: 'コメントスピン',
+    icon: 'Shuffle',
+    description: 'コメントをランダムに選んでルーレット風に表示します。',
+  },
   liveClock: {
     primarySlot: 'primary',
     slots: ['primary'],

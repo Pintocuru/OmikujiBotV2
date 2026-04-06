@@ -2,6 +2,7 @@
 import { TimerEventType } from '@/types/OmikujiData/'
 import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
 import { useAppStore } from '@main/stores/useAppStore'
+import { addSourceCategory } from './AddSourceHelper'
 
 interface TimerState {
   timerId: number
@@ -48,8 +49,9 @@ export class EventTimerProcessor {
   private async executeOnStart(rule: TimerEventType): Promise<void> {
     try {
       const appStore = useAppStore()
-      const omikujiMessages = await this.omikujiProcessor.executeOmikuji(rule.omikuji)
-      appStore.scheduleBotMessages(omikujiMessages)
+      const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji)
+      const enriched = addSourceCategory(messages, 'timers')
+      appStore.scheduleBotMessages(enriched)
     } catch (error) {
       console.error(`onStart ${rule.key} execution error:`, error)
     }
@@ -101,8 +103,9 @@ export class EventTimerProcessor {
   private async executeTimer(rule: TimerEventType): Promise<void> {
     try {
       const appStore = useAppStore()
-      const omikujiMessages = await this.omikujiProcessor.executeOmikuji(rule.omikuji)
-      appStore.scheduleBotMessages(omikujiMessages)
+      const messages = await this.omikujiProcessor.executeOmikuji(rule.omikuji)
+      const enriched = addSourceCategory(messages, 'timers')
+      appStore.scheduleBotMessages(enriched)
     } catch (error) {
       console.error(`Timer ${rule.key} execution error:`, error)
     }

@@ -1,18 +1,26 @@
 // src/types/MainGenerator/BotMessageSchema.ts
 import { z } from 'zod'
+import { ScriptGameExtendedKeySchema, eventCategoryLabel } from '../OmikujiData'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
-import { v4 } from 'uuid'
-import { ScriptGameExtendedKeySchema } from '../OmikujiData/ActionSet'
 import { DaisyUIColorSchema } from '@shared/styles/DaisyUiTheme'
+import { idSchema } from '@shared/types'
 
 /**
  * BotMessageBaseSchema
  */
 const BotMessageBaseSchema = z.object({
-  id: z.string().default(() => v4()),
+  id: idSchema,
   timestamp: z.string().default(() => new Date().toISOString()),
   delaySeconds: z.number().default(0),
+  source: z
+    .object({
+      category: z.enum(eventCategoryLabel).optional(),
+      eventKey: z.string().optional(),
+      omikujiKey: z.string().optional(),
+    })
+    .optional(),
 })
+export type BotMessageBaseType = z.infer<typeof BotMessageBaseSchema>
 
 /**
  * CommentBubbleSchema

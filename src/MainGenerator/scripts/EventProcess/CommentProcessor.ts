@@ -10,6 +10,7 @@ import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSche
 import { checkAllTriggers } from '@shared/utils/trigger/TriggerChecker'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 import { ActionSetType } from '@/types/OmikujiData/'
+import { addSourceCategory } from './AddSourceHelper'
 
 interface ProcessResult {
   isCommentTriggered: boolean
@@ -26,8 +27,9 @@ export class EventCommentProcessor {
   async respondToComments(omikens: OmikenCommentType[]): Promise<void> {
     if (omikens.length === 0) return
     const botMessagesArrays = await Promise.all(omikens.map((omiken) => this.processUserComment(omiken)))
-    const botMessages = botMessagesArrays.flat()
-    if (botMessages.length > 0) this.store.scheduleBotMessages(botMessages)
+    const messages = botMessagesArrays.flat()
+    const enriched = addSourceCategory(messages, 'comments')
+    this.store.scheduleBotMessages(enriched)
   }
 
   /**

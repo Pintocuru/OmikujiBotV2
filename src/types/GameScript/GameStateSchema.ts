@@ -1,12 +1,12 @@
 // src/types/GameScript/GameStateSchema.ts
-import { v4 } from 'uuid'
+import { idSchema } from '@shared/types'
 import { z } from 'zod'
 
 /**
  * 個別の記録（1回ごとの実行結果）
  */
 export const GameLogSchema = z.object({
-  id: z.string().default(() => v4()),
+  id: idSchema,
   userId: z.string(), // 実行者のユーザーID
   score: z.number(), // ランキング判定用のメイン数値
   item: z.string().optional(), // 汎用string
