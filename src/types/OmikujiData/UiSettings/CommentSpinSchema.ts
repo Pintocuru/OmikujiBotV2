@@ -2,26 +2,52 @@
 import { z } from 'zod'
 import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { normalizedObject } from '../ParsedDefault'
+import { AccessLevelType } from '@shared/types'
 
 export const spinComponentMap = {
   standard: {
     label: '語尾ルーレット',
     accessLevel: 'pro',
     isColor: true,
+    animations: ['vertical', 'horizontal'],
   },
   character: {
     label: 'キャラクタールーレット',
     accessLevel: 'pro',
     isColor: true,
+    animations: ['vertical', 'horizontal'],
   },
-} as const
-
+  flipCalendar: {
+    label: 'フリップ/カレンダー',
+    accessLevel: 'godMode',
+    isColor: true,
+    animations: ['flip', 'calendar'],
+  },
+} as const satisfies Record<
+  string,
+  {
+    label: string
+    accessLevel: AccessLevelType
+    isColor: boolean
+    animations: readonly spinAnimation[]
+  }
+>
 const spinComponentsEnum = Object.keys(spinComponentMap) as spinComponent[]
 export type spinComponent = keyof typeof spinComponentMap
+
+export const spinAnimationMap = {
+  vertical: { label: '縦スロット' },
+  horizontal: { label: '横回転' },
+  flip: { label: 'コインフリップ' },
+  calendar: { label: 'カレンダー' },
+} as const
+const spinAnimationEnum = Object.keys(spinAnimationMap) as spinAnimation[]
+export type spinAnimation = keyof typeof spinAnimationMap
 
 export const CommentSpinSchema = z.object({
   component: z.enum(spinComponentsEnum).default('standard').catch('standard'),
   color: normalizedObject(DaisyUiThemeFieldsSchema),
+  animation: z.enum(spinAnimationEnum).default('vertical').catch('vertical'),
   size: z
     .object({
       width: z.number().default(320).catch(320), // px

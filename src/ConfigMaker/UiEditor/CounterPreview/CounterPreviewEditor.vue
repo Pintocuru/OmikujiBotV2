@@ -83,7 +83,6 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro } = useSettingMode()
 
   const { isComment } = useVisibilityAccess()
 

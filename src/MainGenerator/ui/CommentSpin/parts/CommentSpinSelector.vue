@@ -8,6 +8,7 @@
       :slot-messages="slotMessages"
       :resolved-message="resolvedMessage"
       :size="settings.size"
+      :animation="settings.animation"
       :characters="characters"
       @animation-ready="(el: HTMLElement, itemHeight: number) => emit('animation-ready', el, itemHeight)"
       @animation-end="emit('animation-end')"
@@ -22,6 +23,7 @@
   import type { CommentSpinType, spinComponent } from '@/types/OmikujiData/UiSettings/CommentSpinSchema'
   import Standard from '../layouts/Standard.vue'
   import CharacterSpin from '../layouts/CharacterSpin.vue'
+  import FlipCalendar from '../layouts/FlipCalendar.vue'
 
   const props = defineProps<{
     settings: CommentSpinType
@@ -39,6 +41,7 @@
   const itemMap: Record<spinComponent, Component> = {
     standard: Standard,
     character: CharacterSpin,
+    flipCalendar: FlipCalendar,
   }
 
   const currentItem = computed(() => itemMap[props.settings.component] ?? Standard)

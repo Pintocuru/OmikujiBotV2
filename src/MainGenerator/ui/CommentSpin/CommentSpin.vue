@@ -35,12 +35,13 @@
       },
     })
   )
+  const animation = computed(() => spinSettings.value.animation)
   const characters = computed(() => data.value.characters)
 
   const { messages } = useFilteredBotMessages('commentSpin')
 
   const { slotMessages, isSpinning, resolvedMessage, startSpin, onAnimationReady, onAnimationEnd } =
-    useCommentSpinAnimation()
+    useCommentSpinAnimation({ type: animation })
 
   useCommentSpinMessages({ messages, onReady: startSpin })
 </script>

@@ -1,12 +1,12 @@
 <!-- src/ConfigMaker/UiEditor/commentSpin/CommentSpinEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <CommentSpinPreview :key="`${commentSpin.component}`" :settings="commentSpin" :messageText="messageText" />
+  <CommentSpinPreview :key="`${commentSpin.component}`" :settings="commentSpin" />
 
   <!-- コンポーネント選択 -->
   <DisplayStyleSelector
     :modelValue="commentSpin.component"
-    :options="flashComponentMap"
+    :options="spinComponentMap"
     @update:modelValue="(val) => updateField('component', val)"
   />
 
@@ -17,13 +17,68 @@
       @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
     />
   </template>
+
+  <!-- サイズ設定 -->
+  <SettingItem label="表示サイズ" description="ルーレットの幅と高さを調整します（px）">
+    <div class="flex flex-col gap-4">
+      <!-- 幅 -->
+      <div>
+        <div class="flex justify-between text-xs mb-1">
+          <span>幅 (Width)</span>
+          <span>{{ commentSpin.size.width }}px</span>
+        </div>
+
+        <input
+          type="range"
+          min="160"
+          max="640"
+          step="8"
+          class="range range-primary"
+          :value="commentSpin.size.width"
+          @input="(e) => updateSize('width', Number((e.target as HTMLInputElement).value))"
+        />
+      </div>
+
+      <!-- 高さ -->
+      <div>
+        <div class="flex justify-between text-xs mb-1">
+          <span>高さ (Height)</span>
+          <span>{{ commentSpin.size.height }}px</span>
+        </div>
+
+        <input
+          type="range"
+          min="64"
+          max="400"
+          step="8"
+          class="range range-secondary"
+          :value="commentSpin.size.height"
+          @input="(e) => updateSize('height', Number((e.target as HTMLInputElement).value))"
+        />
+      </div>
+    </div>
+  </SettingItem>
+
+  <!-- アニメーション選択 -->
+  <SettingItem label="アニメーション" description="ルーレットの回転演出を選択します">
+    <select
+      class="select select-bordered w-full"
+      :value="commentSpin.animation"
+      @change="(e) => updateField('animation', (e.target as HTMLSelectElement).value)"
+    >
+      <option v-for="(opt, key) in spinAnimationMap" :key="key" :value="key">
+        {{ opt.label }}
+      </option>
+    </select>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flashComponentMap, CommentSpinSchema } from '@/types/'
+  import { CommentSpinSchema, spinAnimationMap, spinComponentMap } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
@@ -45,12 +100,13 @@
       [field]: value,
     })
   }
-
-  // Message Text
-  const messageText = computed<string>({
-    get: () => commentSpin.value.defaultMessage ?? '',
-    set: (value) => {
-      updateField('defaultMessage', value)
-    },
-  })
+  const updateSize = (key: 'width' | 'height', value: number) => {
+    omikujiStore.updateComponentSettings('commentSpin', {
+      ...commentSpin.value,
+      size: {
+        ...commentSpin.value.size,
+        [key]: value,
+      },
+    })
+  }
 </script>
