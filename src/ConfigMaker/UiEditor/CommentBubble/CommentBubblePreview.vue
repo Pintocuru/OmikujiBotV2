@@ -1,6 +1,6 @@
 <!-- src/ConfigMaker/UiEditor/CommentBubble/CommentBubblePreview.vue -->
 <template>
-  <div  class="flex flex-col items-center space-y-2">
+  <div class="flex flex-col items-center space-y-2">
     <!-- 横幅調整スライダー -->
     <div v-if="isSlider" class="flex items-center gap-4 p-2 bg-base-200 rounded-lg">
       <label class="text-sm font-medium">横幅:</label>
@@ -132,9 +132,9 @@
   }
 
   // 右クリックでアニメーションを非表示にする関数
-  const hideAnimation = async () => {
+  const hideAnimation = () => {
     // MotionWrapperのhide関数を呼び出すだけ
-    await motionWrapper.value?.hide()
+    motionWrapper.value?.hide()
   }
 
   // プレビュー表示をランダムに切り替える関数

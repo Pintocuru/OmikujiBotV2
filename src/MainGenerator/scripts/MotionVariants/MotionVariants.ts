@@ -11,7 +11,8 @@ export const enterMotionKeys = Object.keys(enterMotionMap) as EnterMotionType[]
 export type EnterMotionType = keyof typeof enterMotionMap
 
 // アニメーション設定を、VueUse Motionの variants 形式で定義
-export const motionVariants: Record<EnterMotionType, MotionVariants<EnterMotionType>> = {
+// TODO:廃止
+const motionVariants: Record<EnterMotionType, MotionVariants<EnterMotionType>> = {
   ...baseVariants, // ベース・基本系
   ...slideVariants, // スライド系
   ...flipVariants, // フリップ・回転系

@@ -1,7 +1,6 @@
-// src/MainGenerator/scripts/MotionVariants/useMotionAnimation.ts
-import { ref, computed, nextTick, Ref, ComputedRef } from 'vue'
-import { MotionVariants, useMotion } from '@vueuse/motion'
-import { EnterMotionType, motionVariants } from './MotionVariants'
+import { computed, nextTick, Ref, ComputedRef, onUnmounted } from 'vue'
+import { EnterMotionType } from './MotionVariants'
+import { enterMotionMap } from '@/types/MetaMaps/enterMotionMaps'
 
 export interface MotionAnimationEmits {
   'update:visible': [value: boolean]
@@ -13,7 +12,7 @@ export interface MotionAnimationEmits {
 
 export interface UseMotionAnimationOptions {
   motion: ComputedRef<EnterMotionType>
-  leaveMotion?: ComputedRef<EnterMotionType | undefined> // undefined を許容
+  leaveMotion?: ComputedRef<EnterMotionType | undefined>
   visible: Ref<boolean>
   autoHide: boolean
   hideDelay: number
@@ -23,44 +22,15 @@ export interface UseMotionAnimationOptions {
 export function useMotionAnimation(options: UseMotionAnimationOptions) {
   const { motion, leaveMotion, visible, autoHide, hideDelay, emit } = options
 
-  // 要素の参照
-  const motionElement = ref<HTMLElement>()
+  let autoHideTimer: ReturnType<typeof setTimeout> | null = null
 
-  // Motion Instanceの管理
-  let motionInstance: ReturnType<typeof useMotion> | null = null
-  let autoHideTimer: number | null = null
-
-  // アニメーション設定の算出
-  const motionVariant = computed(() => motionVariants[motion.value])
-
-  // Leave用のモーション設定 (leaveMotionが指定されていればそれを使用)
-  const leaveMotionVariant = computed(() => {
-    const targetMotion = leaveMotion?.value ?? motion.value
-    return motionVariants[targetMotion]
+  const motionConfig = computed(() => enterMotionMap[motion.value])
+  const leaveConfig = computed(() => {
+    const target = leaveMotion?.value ?? motion.value
+    return enterMotionMap[target]
   })
 
-  // Motion Instanceを初期化する関数
-  const initializeMotion = () => {
-    if (motionElement.value) {
-      motionInstance = useMotion(motionElement.value, {
-        initial: motionVariant.value.initial,
-        enter: motionVariant.value.enter,
-        leave: leaveMotionVariant.value.leave, // leave は leaveMotionVariant を使用
-      } as MotionVariants<string>)
-    }
-  }
-
-  // 自動非表示のタイマーを設定
-  const setAutoHideTimer = () => {
-    if (autoHide && visible.value) {
-      clearAutoHideTimer()
-      autoHideTimer = window.setTimeout(() => {
-        hide()
-      }, hideDelay)
-    }
-  }
-
-  // 自動非表示のタイマーをクリア
+  // --- タイマー関連 ---
   const clearAutoHideTimer = () => {
     if (autoHideTimer) {
       clearTimeout(autoHideTimer)
@@ -68,97 +38,98 @@ export function useMotionAnimation(options: UseMotionAnimationOptions) {
     }
   }
 
-  // Transitionのleaveイベントハンドラー
-  const onLeave = async (el: Element, done: () => void) => {
-    emit('leave-start')
-    try {
-      if (motionInstance?.apply) {
-        await motionInstance.apply('leave')
-      }
-      emit('leave-complete')
-      done()
-    } catch (error) {
-      console.warn('Leave animation failed:', error)
-      emit('leave-complete')
-      done()
+  const setAutoHideTimer = () => {
+    clearAutoHideTimer()
+    if (autoHide && visible.value) {
+      autoHideTimer = setTimeout(() => hide(), hideDelay)
     }
   }
 
-  // 表示処理
-  const show = async () => {
-    emit('update:visible', true)
-    await nextTick()
-    initializeMotion()
+  // --- Transition Hooks ---
+
+  // Transitionの @before-enter または @enter で呼ぶ
+  const onBeforeEnter = (el: Element) => {
     emit('enter-start')
-
-    const shouldSkipEnterAnimation = motion.value === 'none'
-
-    try {
-      if (motionInstance?.apply && !shouldSkipEnterAnimation) {
-        await motionInstance.apply('enter')
-      } else if (motionInstance?.set && shouldSkipEnterAnimation) {
-        motionInstance.set(motionVariant.value.enter ?? 'none')
-      }
-
-      emit('enter-complete')
-      setAutoHideTimer()
-    } catch (error) {
-      console.warn('Enter animation failed:', error)
-
-      if (motionInstance?.set) {
-        motionInstance.set(motionVariant.value.enter ?? 'none')
-      }
-
-      emit('enter-complete')
-      setAutoHideTimer()
+    const htmlEl = el as HTMLElement
+    // 初期状態 (opacity-0等) があれば付与
+    if (motionConfig.value.initial) {
+      htmlEl.classList.add(...motionConfig.value.initial.split(' '))
     }
   }
 
-  // 非表示処理
-  const hide = async () => {
-    if (visible.value && motionInstance?.apply) {
-      clearAutoHideTimer()
-      emit('leave-start')
-      try {
-        await motionInstance.apply('leave')
-        emit('update:visible', false)
-        emit('leave-complete')
-      } catch (error) {
-        console.warn('Hide animation failed:', error)
-        emit('update:visible', false)
-        emit('leave-complete')
-      }
+  const onEnter = (el: Element, done: () => void) => {
+    const htmlEl = el as HTMLElement
+
+    // initialクラスを削除してアニメーション開始
+    if (motionConfig.value.initial) {
+      htmlEl.classList.remove(...motionConfig.value.initial.split(' '))
     }
+
+    if (motion.value === 'none') {
+      done()
+      return
+    }
+
+    executeAnimation(htmlEl, motionConfig.value.enter, done)
   }
 
-  // トグル処理
-  const toggle = async () => {
-    if (visible.value) {
-      await hide()
-    } else {
-      await show()
-    }
+  const onAfterEnter = () => {
+    emit('enter-complete')
+    setAutoHideTimer()
   }
 
-  // リロード処理
+  const onLeave = (el: Element, done: () => void) => {
+    clearAutoHideTimer()
+    emit('leave-start')
+
+    const htmlEl = el as HTMLElement
+    if (motion.value === 'none' || !leaveConfig.value.leave) {
+      done()
+      return
+    }
+
+    executeAnimation(htmlEl, leaveConfig.value.leave, done)
+  }
+
+  const onAfterLeave = () => {
+    emit('leave-complete')
+  }
+
+  // アニメーション実行の共通処理
+  const executeAnimation = (el: HTMLElement, animationClass: string, done: () => void) => {
+    const onAnimationEnd = (e: AnimationEvent) => {
+      if (e.target !== el) return
+      el.removeEventListener('animationend', onAnimationEnd)
+      // アニメーションクラスをクリーンアップ
+      el.classList.remove('animate__animated', ...animationClass.split(' '))
+      done()
+    }
+
+    el.addEventListener('animationend', onAnimationEnd)
+    el.classList.add('animate__animated', ...animationClass.split(' '))
+  }
+
+  // --- 操作用関数 ---
+  const show = () => emit('update:visible', true)
+  const hide = () => emit('update:visible', false)
+  const toggle = () => (visible.value ? hide() : show())
+
   const reload = async () => {
-    if (visible.value) {
-      emit('update:visible', false)
-      await nextTick()
-      await show()
-    } else {
-      emit('update:visible', true)
-    }
+    hide()
+    await nextTick()
+    show()
   }
+
+  onUnmounted(() => clearAutoHideTimer())
 
   return {
-    motionElement,
-    motionVariant,
-    leaveMotionVariant, // 追加
-    initializeMotion,
-    setAutoHideTimer,
-    clearAutoHideTimer,
+    motionConfig,
+    leaveConfig,
+    onBeforeEnter,
+    onEnter,
+    onAfterEnter,
     onLeave,
+    onAfterLeave,
     show,
     hide,
     toggle,

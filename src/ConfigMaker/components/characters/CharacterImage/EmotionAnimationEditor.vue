@@ -12,7 +12,7 @@
     <div class="space-y-1">
       <label class="text-xs text-base-content/60">動作タイプ</label>
       <select class="select select-xs w-full" v-model="localAnimation.type" @change="applyAnimation">
-        <option v-for="(label, key) in loopMotionMap" :key="key" :value="key">
+        <option v-for="label in loopMotion" :key="label" :value="label">
           {{ label }}
         </option>
       </select>
@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
   import { ref, watch, computed, watchEffect } from 'vue'
-  import { loopMotionMap } from '@/types/MetaMaps/enterMotionMaps'
+  import { loopMotion } from '@/types/MetaMaps/enterMotionMaps'
   import type { CharacterAnimationType } from '@/types/'
   import ImagePreview from '@/common/LayerImage/ImagePreview.vue'
 
@@ -96,7 +96,6 @@
   )
 
   /** プレビュー用の key: 感情・type・duration・loop が変わったら再マウント */
-  // TODO:リアクティブが遅延しているためか、ボタンの見た目とは真逆の結果になっている。修正が必要
   const previewKey = computed(
     () =>
       `${props.emotionKey}-${localAnimation.value.type}-${localAnimation.value.duration}-${localAnimation.value.loop}`

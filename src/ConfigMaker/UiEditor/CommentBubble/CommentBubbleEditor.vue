@@ -32,7 +32,7 @@
       :disabled="!isPro"
     >
       <option v-for="(value, key) in enterMotionMap" :key="key" :value="key">
-        {{ value }}
+        {{ value.label }}
       </option>
     </select>
   </SettingItem>
