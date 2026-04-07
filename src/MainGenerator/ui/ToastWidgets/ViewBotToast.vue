@@ -34,7 +34,7 @@
   import ToastBubbleItem from './parts/ToastBubbleItem.vue'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
   import { useAppStore } from '@main/stores/useAppStore'
-  import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
+  import MotionWrapper from '@main/ui/CommentBubble/MotionVariants/MotionWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { ToastWidgetsSchema } from '@/types'

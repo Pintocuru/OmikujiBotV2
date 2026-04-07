@@ -125,13 +125,7 @@ export type UiSettingsType = z.infer<typeof UiSettingsSchema>
  * ComponentsSchema
  */
 export const UiSchema = z.object({
-  conditions: UiConditionsSchema.default([
-    { slot: 'primary', kind: 'bubble' },
-    { slot: 'secondary', kind: 'toast' },
-  ]).catch([
-    { slot: 'primary', kind: 'bubble' },
-    { slot: 'secondary', kind: 'toast' },
-  ]),
+  conditions: UiConditionsSchema.default([]).catch([]),
   enableSecondary: z.boolean().default(true).catch(true), // 表示形式 を使用するか
 
   // スペシャルセット nullでないなら conditions より優先

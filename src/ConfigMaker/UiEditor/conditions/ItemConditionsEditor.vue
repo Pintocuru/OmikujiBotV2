@@ -2,6 +2,7 @@
 <template>
   <!-- スロット別コンポーネント設定 -->
   <SubSectionHeader
+    v-if="slotConfigs.length > 0"
     icon="LayoutGrid"
     title="スロット別アイテム設定"
     description="ジェネレーターに表示するアイテムを選択します"

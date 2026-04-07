@@ -1,7 +1,7 @@
 // src/types/OmikujiData/UiSettings/CommentBubbleSchema.ts
 import { z } from 'zod'
-import { enterMotionKeys } from '@main/scripts/MotionVariants/MotionVariants'
 import { normalizedObject } from '../ParsedDefault'
+import { enterMotionMap } from '@/types/MetaMaps/enterMotionMaps'
 
 /**
  * フキダシ・キャラクター
@@ -16,6 +16,10 @@ export const ShowCharactersSchema = z.object({
   slot4: z.array(z.string()).default([]),
 })
 export type ShowCharacters = z.infer<typeof ShowCharactersSchema>
+
+//
+export const enterMotionKeys = Object.keys(enterMotionMap) as EnterMotionType[]
+export type EnterMotionType = keyof typeof enterMotionMap
 
 export const CommentBubbleSchema = z.object({
   showCharacters: normalizedObject(ShowCharactersSchema),

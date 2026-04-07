@@ -1,18 +1,11 @@
 <!-- src/ConfigMaker/UiEditor/CommentBubble/CommentBubblePreview.vue -->
 <template>
   <div class="flex flex-col items-center space-y-2">
-    <!-- 横幅調整スライダー -->
-    <div v-if="isSlider" class="flex items-center gap-4 p-2 bg-base-200 rounded-lg">
-      <label class="text-sm font-medium">横幅:</label>
-      <input type="range" :min="minWidth" :max="maxWidth" v-model="currentWidth" class="range range-primary flex-1" />
-      <span class="text-sm">{{ currentWidth }}px</span>
-    </div>
-
     <!-- プレビュー表示エリア（横幅制限付き） -->
     <div
       class="relative flex flex-col items-center cursor-pointer"
       :class="fontClass"
-      :style="{ width: currentWidth + 'px' }"
+      :style="{ width: 320 + 'px' }"
       @click="reloadAnimation"
       @contextmenu.prevent="hideAnimation"
     >
@@ -40,36 +33,21 @@
         </button>
       </div>
     </div>
-
-    <!-- 幅プリセットボタン -->
-    <div v-if="isSlider" class="flex gap-2 justify-center flex-wrap">
-      <button
-        v-for="preset in widthPresets"
-        :key="preset.name"
-        class="btn btn-xs"
-        :class="{ 'btn-primary': currentWidth === preset.value, 'btn-outline': currentWidth !== preset.value }"
-        @click="currentWidth = preset.value"
-      >
-        {{ preset.name }}
-      </button>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
   import { ref, computed } from 'vue'
-  import { CharacterColorType } from '@/types/OmikujiData/'
+  import { CharacterColorType, EnterMotionType } from '@/types/OmikujiData/'
   import { FontFamilyType, useFontFamily } from '@/types/'
   import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
-  import { EnterMotionType } from '@main/scripts/MotionVariants/MotionVariants'
-  import MotionWrapper from '@main/scripts/MotionVariants/MotionWrapper.vue'
+  import MotionWrapper from '@main/ui/CommentBubble/MotionVariants/MotionWrapper.vue'
 
   const props = withDefaults(
     defineProps<{
       botName?: string
       color: CharacterColorType
       customClasses?: string
-      isSlider?: boolean
       fontFamily?: FontFamilyType
       bubbleMotionEnter?: EnterMotionType
       animatedText?: boolean
@@ -78,7 +56,6 @@
     {
       botName: 'テストユーザー',
       fontFamily: 'default',
-      isSlider: false,
       bubbleMotionEnter: 'slideUp',
       animatedText: false,
       animatedTextSpeed: 50,
@@ -93,21 +70,6 @@
 
   // アニメーション表示フラグ
   const shouldShowBubble = ref(true)
-
-  // 横幅設定（TailwindCSSのmax-w-*を参考）
-  const minWidth = 160 // max-w-28 (112px) 相当
-  const maxWidth = 576 // max-w-xl (576px) 相当
-  const currentWidth = ref(320) // デフォルトは max-w-sm (320px) 相当
-
-  // 横幅プリセット（TailwindCSSの値を参考）
-  const widthPresets = [
-    { name: 'XS', value: 160 }, // max-w-xs 相当
-    { name: 'SM', value: 256 }, // max-w-sm 相当
-    { name: 'MD', value: 320 }, // max-w-md 相当
-    { name: 'LG', value: 384 }, // max-w-lg 相当
-    { name: 'XL', value: 448 }, // max-w-xl 相当
-    { name: '最大', value: maxWidth },
-  ]
 
   // プレビュー用のサンプルデータ配列
   const previewDataList = [

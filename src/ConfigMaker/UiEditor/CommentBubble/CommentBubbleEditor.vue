@@ -3,6 +3,7 @@
   <!-- プレビュー表示 -->
   <HudPreview>
     <CommentBubblePreview
+      :key="bubble.bubbleMotionEnter"
       :color="localColor"
       :fontFamily="commonStyle.fontFamily"
       :custom-classes="localColor.customClasses"

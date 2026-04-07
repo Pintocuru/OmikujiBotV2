@@ -16,8 +16,8 @@
 
 <script setup lang="ts">
   import { computed, toRef } from 'vue'
-  import { EnterMotionType } from './MotionVariants'
   import { useMotionAnimation, MotionAnimationEmits } from './useMotionAnimation'
+  import { EnterMotionType } from '@/types'
 
   const props = withDefaults(
     defineProps<{
