@@ -1,12 +1,5 @@
 // src/types/MetaMaps/enterMotionMaps.ts
 
-type AnimationDef = string | object // Animate.cssのクラス名 or VueUseのVariantオブジェクト
-
-interface LoopMotionConfig {
-  label: string
-  variant: AnimationDef // ループする動きの定義
-}
-
 export interface EnterMotionConfig {
   label: string
   initial: string // 登場前の隠し状態
@@ -106,33 +99,6 @@ export const enterMotionMap = {
     leave: 'animate__fadeOut',
   },
 } as const satisfies Record<string, EnterMotionConfig>
-
-export const loopMotionMap = {
-  none: 'なし',
-  // ─── 拡大縮小系 ──────────────────────────
-  pulse: '拡大縮小',
-  heartbeat: '鼓動',
-  // ─── 移動系 ──────────────────────────────
-  float: '上下浮遊（ふわふわ）',
-  slideLR: '左右スライド',
-  // ─── 回転系 ──────────────────────────────
-  rotate: '回転（時計回り）',
-  rotateR: '逆回転（反時計回り）',
-  // ─── 揺れ系（Aviutl定番） ────────────────
-  swing: '左右揺れ（振り子）',
-  shake: '小刻みシェイク（ガクガク）',
-  bounce: 'バウンド（ぽんぽん）',
-  // ─── 弾性・変形系（Aviutl人気） ──────────
-  rubber: 'ゴム伸縮（ぎゅいーん）',
-  squash: 'スクイーズ（ぺちゃんこ→プニッ）',
-  // ─── 点滅・明滅系 ────────────────────────
-  glow: 'ふわっと明滅（ゆっくり点滅）',
-  blink: '高速点滅（チカチカ）',
-  // ─── 傾き系（Aviutl定番） ────────────────
-  tilt: '傾き（ぐらぐら）',
-  // ─── 総合モーション（Aviutlで人気） ──────
-  combo: '総合揺れ（大小＋回転＋伸縮）',
-} as const
 
 // Animate.cssの全アニメーションタイプ（必要に応じて絞り込む）
 export const loopMotion = [

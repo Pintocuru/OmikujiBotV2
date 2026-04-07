@@ -5,7 +5,7 @@ import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
 import { rpgVoiceKeys } from './SoundKey'
 import { characterEmotionMap, displayModeMap } from '../MetaMaps'
 import { normalizedObject } from './ParsedDefault'
-import { loopMotion } from '../MetaMaps/enterMotionMaps'
+import { loopMotionMap } from '../MetaMaps/loopMotionMaps'
 
 /**
  * CharacterEmotion 感情ラベル
@@ -34,8 +34,8 @@ export type CharacterColorType = z.infer<typeof CharacterColorScheme>
 /**
  * アニメーション
  */
-//const loopMotion = Object.keys(loopMotionMap) as LoopMotionType[]
-export type LoopMotionType = (typeof loopMotion)[number]
+const loopMotion = Object.keys(loopMotionMap) as LoopMotionType[]
+export type LoopMotionType = keyof typeof loopMotionMap
 
 export const CharacterAnimationSchema = z.object({
   type: z.enum(loopMotion).default('none').catch('none'),

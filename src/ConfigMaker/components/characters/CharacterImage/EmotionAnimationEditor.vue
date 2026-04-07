@@ -12,8 +12,8 @@
     <div class="space-y-1">
       <label class="text-xs text-base-content/60">動作タイプ</label>
       <select class="select select-xs w-full" v-model="localAnimation.type" @change="applyAnimation">
-        <option v-for="label in loopMotion" :key="label" :value="label">
-          {{ label }}
+        <option v-for="(value, key) in loopMotionMap" :key="key" :value="key">
+          {{ value.label }}
         </option>
       </select>
     </div>
@@ -49,9 +49,9 @@
 
 <script setup lang="ts">
   import { ref, watch, computed, watchEffect } from 'vue'
-  import { loopMotion } from '@/types/MetaMaps/enterMotionMaps'
   import type { CharacterAnimationType } from '@/types/'
   import ImagePreview from '@/common/LayerImage/ImagePreview.vue'
+  import { loopMotionMap } from '@/types/MetaMaps/loopMotionMaps'
 
   const props = defineProps<{
     /** どの感情のアニメーションか（変化時に local state をリセットするために使用） */
