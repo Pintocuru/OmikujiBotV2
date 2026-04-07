@@ -3,6 +3,7 @@
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">
     <GlobalCharacterChanger category="timers" />
+     <IconKeyChanger category="timers" />  
   </div>
 
   <!-- タブ部分 -->
@@ -61,6 +62,7 @@
   import { computed } from 'vue'
   import { TimerEventType } from '@/types/OmikujiData/'
   import GlobalCharacterChanger from '../events/CharacterChanger/CharacterChanger.vue'
+  import IconKeyChanger from '@config/components/events/IconKeyChanger/IconKeyChanger.vue'
   import TimerIntervalEditor from './TimerIntervalEditor.vue'
   import OmikujiSetEditor from '@config/components/events/OmikujiSetEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'

@@ -2,6 +2,7 @@
 <template>
   <div class="flex justify-end gap-2">
     <CharacterChanger category="actionSets" />
+    <IconKeyChanger category="actionSets" />
   </div>
   <!-- タブ部分 -->
   <RecordTabs />
@@ -45,6 +46,7 @@
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'
   import CharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
+  import IconKeyChanger from '@config/components/events/IconKeyChanger/IconKeyChanger.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import { storeToRefs } from 'pinia'

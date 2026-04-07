@@ -15,9 +15,9 @@
         />
         <LayerImage
           v-if="isCharacter"
-          :layers="character ? character.image[action.iconKey].src : []"
+          :layers="character?.image?.[action.iconKey]?.src ?? []"
           :size="bubbleSettings.characterSize"
-          :animation="character?.image[action.iconKey].animation"
+          :animation="character?.image?.[action.iconKey]?.animation"
         />
       </div>
       <!-- トースト -->
@@ -27,7 +27,7 @@
           :key="messageKey"
           :message="processedMessage"
           :color="character ? character.color : commonStyle.defaultColor"
-          :iconLayers="character && toastSettings.showToastsCharacter ? character.image[action.iconKey].src : []"
+          :iconLayers="character?.image?.[action.iconKey]?.src ?? []"
           :showToastsOnRight="toastSettings.showToastsOnRight"
         />
       </div>

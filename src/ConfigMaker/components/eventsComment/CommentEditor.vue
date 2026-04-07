@@ -4,6 +4,7 @@
   <div class="flex justify-end gap-2">
     <!-- 全体キャラ変更 -->
     <GlobalCharacterChanger category="comments" />
+     <IconKeyChanger category="comments" />  
   </div>
 
   <!-- タブ部分 -->
@@ -77,6 +78,7 @@
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import OmikujiSetEditor from '@config/components/events/OmikujiSetEditor.vue'
   import GlobalCharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
+  import IconKeyChanger from '@config/components/events/IconKeyChanger/IconKeyChanger.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'

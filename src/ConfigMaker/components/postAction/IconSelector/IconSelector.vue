@@ -2,8 +2,8 @@
 <template>
   <div class="flex gap-1">
     <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
-      <option v-for="(emotion, key) in characterEmotionMap" :key="key" :value="key">
-        {{ emotion }}
+      <option v-for="(value, key) in characterImages" :key="key" :value="key">
+        {{ value.label }}
       </option>
     </select>
     <div class="relative">
@@ -29,9 +29,9 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import { characterEmotionMap } from '@/types/'
   import IconSelectorModal from './IconSelectorModal.vue'
   import { User } from 'lucide-vue-next'
+  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
 
   const props = defineProps<{
     characterKey: string
@@ -42,6 +42,9 @@
     'update:iconKey': [value: string]
     showSelector: [characterKey: string, iconKey: string]
   }>()
+
+  const { characterMap } = useCharacterManager()
+  const characterImages = computed(() => characterMap.value[props.characterKey]?.image ?? {})
 
   const showHoverSelector = ref(false)
   const iconSelectorModalRef: Ref<InstanceType<typeof IconSelectorModal> | null> = ref(null)

@@ -5,6 +5,7 @@
     <div class="flex justify-end gap-2">
       <!-- キャラクター一括変更ボタン -->
       <CharacterChanger :category="category" :selectedId="selectedItemKey" />
+     <IconKeyChanger :category="category" :selectedId="selectedItemKey"/>  
 
       <!-- おみくじテストボタン -->
       <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
@@ -62,6 +63,7 @@
   import { OmikujiItemSchema, OmikujiItemType, EventCategoryType } from '@/types/OmikujiData/'
   import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
   import CharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
+  import IconKeyChanger from '@config/components/events/IconKeyChanger/IconKeyChanger.vue'
   import OmikujiItemEditor from '@config/components/events/OmikujiItem/OmikujiItemEditor.vue'
   import { useTestPost } from '@config/scripts/useTestPost'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

@@ -3,6 +3,7 @@
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">
     <GlobalCharacterChanger category="metas" />
+     <IconKeyChanger category="metas" />  
   </div>
 
   <!-- タブ部分 -->
@@ -63,6 +64,7 @@
   import { ServiceEventType } from '@/types/OmikujiData/'
   import CommentTriggerEditor from './ServiceTrigger.vue'
   import GlobalCharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
+  import IconKeyChanger from '@config/components/events/IconKeyChanger/IconKeyChanger.vue'
   import OmikujiSetEditor from '@config/components/events/OmikujiSetEditor.vue'
   import RecordTabs from '@config/components/RecordTabs/RecordTabs.vue'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'

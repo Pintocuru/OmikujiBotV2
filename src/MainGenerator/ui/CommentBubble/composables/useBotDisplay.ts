@@ -82,19 +82,22 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
         // DisplayBotMessageとして作成
         const displayMessage: BotMessageBubbleType = {
           ...nextComment,
-          display: { visible: true },
+          display: {
+            visible: true,
+            hideTimeout: undefined,
+          },
         }
 
-        // Enterアニメーション用に少し遅延してvisibleをtrueに
-        setTimeout(() => {
-          if (displayMessage.display) displayMessage.display.visible = true
-        }, 50)
+        if (displayMessage.display) displayMessage.display.visible = true
 
         // 指定時間後にLeaveアニメーションを開始
-        if (displayMessage.display && totalLifeTime !== null) {
-          displayMessage.display.hideTimeout = setTimeout(() => {
-            hideComment(nextComment.id)
-          }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as unknown as number
+        if (totalLifeTime !== null) {
+          // IDで検索せず、このスコープの displayMessage を直接操作する
+          displayMessage.display!.hideTimeout = setTimeout(() => {
+            if (displayMessage.display) {
+              displayMessage.display.visible = false
+            }
+          }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as any
         }
 
         displayedComments.value.unshift(displayMessage)
