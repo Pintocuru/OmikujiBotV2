@@ -8,12 +8,12 @@ import { storeToRefs } from 'pinia'
 
 interface UseCommentSpinMessagesOptions {
   messages: ComputedRef<BotMessageBubbleType[]> /** フィルタ済みメッセージ */
-  onReady: (msgs: BotMessageBubbleType[]) => void /** スピン開始を通知するコールバック */
+  startSpin: (msgs: BotMessageBubbleType[]) => void /** スピン開始を通知するコールバック */
 }
 
 const DUMMY_COUNT = 5
 
-export function useCommentSpinMessages({ messages, onReady }: UseCommentSpinMessagesOptions) {
+export function useCommentSpinMessages({ messages, startSpin }: UseCommentSpinMessagesOptions) {
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
 
@@ -52,7 +52,7 @@ export function useCommentSpinMessages({ messages, onReady }: UseCommentSpinMess
     async (msg) => {
       if (!msg) return
       const results = await buildSlotMessages(msg)
-      if (results.length) onReady(results)
+      if (results.length) startSpin(results)
     },
     { immediate: true }
   )

@@ -20,11 +20,11 @@
   import { AccessLevelType } from '@shared/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
   type BaseComponentConfig = {
     label: string
     accessLevel: AccessLevelType
-    [key: string]: unknown
   }
 
   const props = defineProps<{
@@ -38,16 +38,9 @@
 
   const { accessMode } = useSettingMode()
 
-  // アクセスレベル比較用
-  const ACCESS_ORDER: AccessLevelType[] = ['none', 'basic', 'adv', 'pro', 'godMode']
-
-  function hasAccess(user: AccessLevelType, required: AccessLevelType) {
-    return ACCESS_ORDER.indexOf(user) >= ACCESS_ORDER.indexOf(required)
-  }
-
   // 表示対象だけ抽出
   const visibleOptions = computed(() =>
-    Object.entries(props.options).filter(([_, config]) => hasAccess(accessMode.value, config.accessLevel))
+    Object.entries(props.options).filter(([_, config]) => hasAccessPure(config.accessLevel, accessMode.value))
   )
 
   function select(key: string) {

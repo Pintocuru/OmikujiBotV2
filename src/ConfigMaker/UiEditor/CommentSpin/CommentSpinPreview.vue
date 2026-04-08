@@ -4,6 +4,7 @@
     <div class="flex justify-center" :class="[fontFamily]">
       <CommentSpinSelector
         :settings="settings"
+        :color="getCharacterColor(resolvedMessage?.bubble.characterKey ?? null) || defaultColor"
         :isSpinning="isSpinning"
         :slotMessages="slotMessages"
         :resolvedMessage="resolvedMessage"
@@ -15,8 +16,8 @@
     <!-- 右下に表示するHUD（スケーリングされない） -->
     <template #hud>
       <div class="flex gap-2">
-        <button class="btn btn-primary btn-sm" @click="startSpin(createSlotMessages())">スピン</button>
-        <button class="btn btn-secondary btn-sm" @click="startSpin(createLongSlotMessages())">長文スロット</button>
+        <button class="btn btn-primary btn-xs" @click="startSpin(createSlotMessages())">スピン</button>
+        <button class="btn btn-secondary btn-xs" @click="startSpin(createLongSlotMessages())">長文スロット</button>
       </div>
     </template>
   </HudPreview>
@@ -40,7 +41,8 @@
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
 
-  const { characterMap } = useCharacterManager()
+  const { characterMap, getCharacterColor } = useCharacterManager()
+  const defaultColor = computed(() => data.value.components.commonStyle.defaultColor)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const animationType = computed(() => props.settings.animation)

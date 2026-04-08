@@ -1,7 +1,9 @@
 // src/common/DiceBear/getAvatarUrl.ts
+import { nanoid } from 'nanoid'
 
-export const getAvatarUrl = (name: string) => {
-  const seed = encodeURIComponent(name)
+export const getAvatarUrl = (name?: string) => {
+  const rawSeed = name?.trim() || nanoid()
+  const seed = encodeURIComponent(rawSeed)
 
   const style = AVATAR_STYLES[hash(seed) % AVATAR_STYLES.length]
   return `https://api.dicebear.com/9.x/${style}/svg?seed=${seed}&size=32`

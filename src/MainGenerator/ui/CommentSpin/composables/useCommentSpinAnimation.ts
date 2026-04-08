@@ -1,16 +1,14 @@
 import { ref, nextTick, Ref } from 'vue'
-import type { BotMessageBubbleType } from '@/types'
-
-export type SpinAnimationType = 'vertical' | 'horizontal' | 'flip' | 'calendar'
+import type { BotMessageBubbleType, spinAnimation } from '@/types'
 
 interface AnimationOptions {
   duration?: number
   easing?: string
-  type?: Ref<SpinAnimationType>
+  type?: Ref<spinAnimation>
 }
 
 export function useCommentSpinAnimation(options: AnimationOptions = {}) {
-  const { duration = 1400, easing = 'cubic-bezier(0.25, 0.1, 0.1, 1)' } = options
+  const { duration = 1500, easing = 'cubic-bezier(0.25, 0.1, 0.1, 1)' } = options
   const animationType = options.type?.value ?? 'vertical'
 
   const slotMessages = ref<BotMessageBubbleType[]>([])
@@ -53,9 +51,15 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
     if (!anim) return
 
     anim.onfinish = () => {
-      isSpinning.value = false
       const last = slotMessages.value[slotMessages.value.length - 1]
       if (last) resolvedMessage.value = last
+
+      // displaySeconds を取得（null/undefined の場合は 0）
+      const delayMs = (resolvedMessage.value?.bubble.displaySeconds ?? 0) * 1000
+
+      setTimeout(() => {
+        isSpinning.value = false
+      }, delayMs)
     }
   }
 

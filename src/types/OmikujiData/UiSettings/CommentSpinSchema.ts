@@ -1,7 +1,5 @@
 // src/types/OmikujiData/UiSettings/CommentSpinSchema.ts
 import { z } from 'zod'
-import { DaisyUiThemeFieldsSchema } from '@shared/styles/DaisyUiTheme'
-import { normalizedObject } from '../ParsedDefault'
 import { AccessLevelType } from '@shared/types'
 
 export const spinComponentMap = {
@@ -46,7 +44,6 @@ export type spinAnimation = keyof typeof spinAnimationMap
 
 export const CommentSpinSchema = z.object({
   component: z.enum(spinComponentsEnum).default('standard').catch('standard'),
-  color: normalizedObject(DaisyUiThemeFieldsSchema),
   animation: z.enum(spinAnimationEnum).default('vertical').catch('vertical'),
   size: z
     .object({

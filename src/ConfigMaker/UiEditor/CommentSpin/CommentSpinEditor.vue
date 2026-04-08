@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/UiEditor/commentSpin/CommentSpinEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <CommentSpinPreview :key="`${commentSpin.component}`" :settings="commentSpin" />
+  <CommentSpinPreview :key="`${commentSpin.component}-${commentSpin.animation}`" :settings="commentSpin" />
 
   <!-- コンポーネント選択 -->
   <DisplayStyleSelector

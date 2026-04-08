@@ -1,5 +1,5 @@
 // src/MainGenerator/ui/CommentSpin/layouts/composables/useSpinSlot.ts
-import { ref, computed, watch, nextTick } from 'vue'
+import { ref, computed, watch, nextTick, onUnmounted } from 'vue'
 import type { BotMessageBubbleType, spinAnimation } from '@/types'
 
 interface SpinSlotOptions {
@@ -7,17 +7,17 @@ interface SpinSlotOptions {
   resolvedMessage: () => BotMessageBubbleType | null
   size: () => { width: number; height: number }
   animation: () => spinAnimation
+  slotMessages?: () => BotMessageBubbleType[] // flipLoop 用（flip/calendar のみ使用）
   emit: (event: 'animation-ready', el: HTMLElement, itemSize: number) => void
 }
 
-export function useSpinSlot({ isSpinning, resolvedMessage, size, animation, emit }: SpinSlotOptions) {
+export function useSpinSlot({ isSpinning, resolvedMessage, size, animation, slotMessages, emit }: SpinSlotOptions) {
   const slotTrackRef = ref<HTMLElement | null>(null)
   const resolvedRef = ref<HTMLElement | null>(null)
 
-  // 横回転か縦回転かに応じたトラック方向クラス
+  // ── scroll/horizontal 用 ──────────────────────────────
   const trackClass = computed(() => (animation() === 'horizontal' ? 'flex flex-row h-full' : 'flex flex-col w-full'))
 
-  // 各アイテムのスタイル（横回転: 幅固定, 縦回転: 高さ固定）
   const itemStyle = computed(() => {
     const { width, height } = size()
     return animation() === 'horizontal'
@@ -25,19 +25,70 @@ export function useSpinSlot({ isSpinning, resolvedMessage, size, animation, emit
       : { height: `${height}px`, width: '100%' }
   })
 
-  // animation-ready の emit に渡すアイテムサイズ
   const itemSize = computed(() => (animation() === 'horizontal' ? size().width : size().height))
 
-  // スピン開始時に animation-ready を emit
+  // ── flipLoop 用（flip/calendar のみ） ─────────────────
+  const currentIndex = ref(0)
+  const isFlipping = ref(false)
+  let flipInterval: ReturnType<typeof setInterval> | null = null
+
+  const isFlipMode = computed(() => {
+    const a = animation()
+    return a === 'flip' || a === 'calendar'
+  })
+
+  function startFlipLoop() {
+    currentIndex.value = 0
+    isFlipping.value = false
+    const isCalendar = animation() === 'calendar'
+
+    flipInterval = setInterval(
+      () => {
+        isFlipping.value = true
+        setTimeout(
+          () => {
+            const msgs = slotMessages?.() ?? []
+            currentIndex.value = (currentIndex.value + 1) % (msgs.length || 1)
+            isFlipping.value = false
+          },
+          isCalendar ? 200 : 250
+        )
+      },
+      isCalendar ? 400 : 500
+    )
+  }
+
+  function stopFlipLoop() {
+    if (flipInterval) {
+      clearInterval(flipInterval)
+      flipInterval = null
+    }
+    isFlipping.value = false
+  }
+
+  onUnmounted(stopFlipLoop)
+
+  // ── isSpinning watch ──────────────────────────────────
   watch(isSpinning, async (val) => {
-    if (!val) return
+    if (!val) {
+      stopFlipLoop()
+      return
+    }
     await nextTick()
-    if (slotTrackRef.value) {
-      emit('animation-ready', slotTrackRef.value, itemSize.value)
+
+    if (isFlipMode.value) {
+      startFlipLoop()
+      // AnimationController との互換のため dummy emit
+      const dummyEl = document.createElement('div')
+      emit('animation-ready', dummyEl, size().height)
+    } else {
+      if (slotTrackRef.value) {
+        emit('animation-ready', slotTrackRef.value, itemSize.value)
+      }
     }
   })
 
-  // 確定時のフェードインアニメーション
+  // ── resolvedMessage watch（共通） ─────────────────────
   watch(resolvedMessage, async () => {
     await nextTick()
     if (!resolvedRef.value) return
@@ -51,9 +102,14 @@ export function useSpinSlot({ isSpinning, resolvedMessage, size, animation, emit
   })
 
   return {
+    // scroll/horizontal 用
     slotTrackRef,
-    resolvedRef,
     trackClass,
     itemStyle,
+    // flip/calendar 用
+    currentIndex,
+    isFlipping,
+    // 共通
+    resolvedRef,
   }
 }

@@ -78,7 +78,7 @@ export const uiItemMap: Record<string, UiItem> = {
 
   commentSpin: {
     icon: 'UserSquare',
-    title: 'コメントルーレットアイテム',
+    title: 'コメントスピンアイテム',
     description: 'ランダムなテキストをアニメーションで表示',
     component: CommentSpinEditor,
     targetKey: 'commentSpin',
