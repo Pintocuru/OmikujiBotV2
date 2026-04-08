@@ -56,7 +56,7 @@ export const useCharacterManager = () => {
   }
 
   // 表情を解決（画像がない場合はdefaultにフォールバック）
-  const resolveEmotion = (characterKey: string, iconKey: string): string => {
+  const resolveEmotion = (characterKey: string, iconKey?: string): string => {
     return manager.value.resolveEmotion(characterKey, iconKey)
   }
 
@@ -75,7 +75,7 @@ export const useCharacterManager = () => {
   }
 
   // アイコン画像のURLを取得
-  const iconSrc = (characterKey: string | null, iconKey: string): string[] => {
+  const iconSrc = (characterKey: string | null, iconKey?: string): string[] => {
     return manager.value.iconSrc(characterKey, iconKey)
   }
 

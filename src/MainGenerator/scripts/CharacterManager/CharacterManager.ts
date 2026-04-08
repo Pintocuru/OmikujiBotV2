@@ -92,8 +92,8 @@ export class CharacterManager {
   /**
    * 指定された表情の画像アセットが存在するか確認。ない場合はキャラクター自体の 'default' 画像を返す
    */
-  resolveEmotion(characterKey: string | null, iconKey: string): string {
-    if (!characterKey) return 'default'
+  resolveEmotion(characterKey: string | null, iconKey?: string): string {
+    if (!characterKey || !iconKey) return 'default'
     const character = this.characterMap.get(characterKey)
     if (!character) return 'default'
 
@@ -112,7 +112,7 @@ export class CharacterManager {
   /**
    * キャラクターとアイコンから画像urlを返す
    */
-  iconSrc(characterKey: string | null, iconKey: string): string[] {
+  iconSrc(characterKey: string | null, iconKey = 'default'): string[] {
     if (!characterKey) return []
     const char = this.characterMap.get(characterKey)
     if (!char) return []

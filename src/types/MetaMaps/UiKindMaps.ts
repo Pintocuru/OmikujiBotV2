@@ -45,7 +45,7 @@ export const uiKindMap = {
   },
   commentSpin: {
     primarySlot: 'primary',
-    slots: ['primary'],
+    slots: ['primary', 'secondary'],
     label: 'コメントスピン',
     icon: 'Shuffle',
     description: 'コメントをランダムに選んでルーレット風に表示します。',

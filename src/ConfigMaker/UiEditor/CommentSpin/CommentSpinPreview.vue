@@ -4,6 +4,7 @@
     <div class="flex justify-center" :class="[fontFamily]">
       <CommentSpinSelector
         :settings="settings"
+        :logoPath="[settings.logoPath]"
         :color="getCharacterColor(resolvedMessage?.bubble.characterKey ?? null) || defaultColor"
         :isSpinning="isSpinning"
         :slotMessages="slotMessages"

@@ -7,14 +7,9 @@
       :class="animationClass"
       :style="animationStyle"
     >
-      <CharacterLayer
-        v-for="(src, i) in sources"
-        :key="i"
-        :src="src"
-        :loop="animation?.loop ?? true"
-        :style="{ zIndex: sources.length - i }"
-        @error="onError(i)"
-      />
+      <div v-for="(src, i) in sources" :key="i" class="absolute inset-0" :style="{ zIndex: sources.length - i }">
+        <CharacterLayer :src="src" :loop="animation?.loop ?? true" @error="onError(i)" />
+      </div>
     </div>
   </div>
 </template>

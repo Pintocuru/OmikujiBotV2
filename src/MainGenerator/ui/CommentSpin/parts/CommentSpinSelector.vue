@@ -4,6 +4,7 @@
     <component
       :is="currentItem"
       :color="color"
+      :logoPath="logoPath"
       :is-spinning="isSpinning"
       :slot-messages="slotMessages"
       :resolved-message="resolvedMessage"
@@ -28,6 +29,7 @@
 
   const props = defineProps<{
     settings: CommentSpinType
+    logoPath: string[]
     color: DaisyUiThemeFieldsType
     isSpinning: boolean
     slotMessages: BotMessageBubbleType[]

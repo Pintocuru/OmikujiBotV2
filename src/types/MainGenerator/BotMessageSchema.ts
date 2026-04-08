@@ -24,33 +24,6 @@ const BotMessageBaseSchema = z.object({
 export type BotMessageBaseType = z.infer<typeof BotMessageBaseSchema>
 
 /**
- * CommentBubbleSchema
- */
-const CommentBubbleSchema = z.object({
-  name: z.string().nullable().default(null),
-  message: z.string(),
-  isToast: z.boolean().default(false),
-  characterKey: z.string().nullable().default(null),
-  iconKey: z.string().default('default').catch('default'),
-  displaySeconds: z.number().min(0).max(60).nullable().optional(),
-})
-
-const DisplayStatusSchema = z.object({
-  visible: z.boolean().default(true),
-  hideTimeout: z.number().optional(),
-})
-
-/**
- * BotMessageBubbleSchema
- */
-export const BotMessageBubbleSchema = BotMessageBaseSchema.extend({
-  type: z.literal('comment').default('comment'),
-  bubble: CommentBubbleSchema,
-  display: DisplayStatusSchema.optional(),
-})
-export type BotMessageBubbleType = z.infer<typeof BotMessageBubbleSchema>
-
-/**
  * ExtraMessageSchema
  */
 export const ExtraListsSchema = z.object({
@@ -79,6 +52,34 @@ export const ExtraSlotsSchema = z.object({
   slot9: z.string().optional(),
 })
 export type ExtraSlotsType = z.infer<typeof ExtraSlotsSchema>
+
+/**
+ * CommentBubbleSchema
+ */
+const CommentBubbleSchema = z.object({
+  name: z.string().nullable().default(null),
+  message: z.string(),
+  isToast: z.boolean().default(false),
+  characterKey: z.string().nullable().default(null),
+  iconKey: z.string().default('default').catch('default'),
+  displaySeconds: z.number().min(0).max(60).nullable().optional(),
+})
+
+const DisplayStatusSchema = z.object({
+  visible: z.boolean().default(true),
+  hideTimeout: z.number().optional(),
+})
+
+/**
+ * BotMessageBubbleSchema
+ */
+export const BotMessageBubbleSchema = BotMessageBaseSchema.extend({
+  type: z.literal('comment').default('comment'),
+  bubble: CommentBubbleSchema,
+  slots: ExtraSlotsSchema.optional(),
+  display: DisplayStatusSchema.optional(),
+})
+export type BotMessageBubbleType = z.infer<typeof BotMessageBubbleSchema>
 
 /**
  * BotMessageExtraSchema

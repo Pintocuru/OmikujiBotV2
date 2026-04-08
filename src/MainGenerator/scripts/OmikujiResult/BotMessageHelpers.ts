@@ -1,5 +1,10 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageHelpers.ts
-import { BotMessageBubbleSchema, BotMessageExtraSchema, BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
+import {
+  BotMessageBubbleSchema,
+  BotMessageExtraSchema,
+  BotMessageType,
+  ExtraSlotsType,
+} from '@/types/MainGenerator/BotMessageSchema'
 import { PostFlowMessageType } from '@/types/OmikujiData/'
 import { OmikenCommentType, UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { VariablePlaceholderExtra } from '@/types/MainGenerator/OmikujiResultTypes'
@@ -32,7 +37,8 @@ export function createBotMessagesFromAction(
       bubble,
       isToast,
       delaySeconds,
-      characterManager
+      characterManager,
+      extra?.slots
     )
     messages.push(bubbleMessage)
 
@@ -57,7 +63,8 @@ function createBubbleMessage(
   bubble: string,
   isToast: boolean | undefined,
   delaySeconds: number,
-  characterManager?: CharacterManager
+  characterManager?: CharacterManager,
+  slots?: ExtraSlotsType
 ): BotMessageType {
   const resolved = characterManager?.resolveCharacter({ characterKey, iconKey })
   const character = resolved && characterManager?.getCharacter(resolved.characterKey)
@@ -71,6 +78,7 @@ function createBubbleMessage(
       characterKey: resolved?.characterKey,
       iconKey: resolved?.iconKey,
     },
+    slots,
   })
 }
 

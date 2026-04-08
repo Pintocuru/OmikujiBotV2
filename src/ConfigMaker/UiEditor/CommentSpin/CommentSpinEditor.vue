@@ -11,12 +11,10 @@
   />
 
   <!-- デフォルトカラー設定 -->
-  <template v-if="!isCharacter">
-    <ColorModeSelector
-      :model-value="commonStyle.defaultColor"
-      @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
-    />
-  </template>
+  <ColorModeSelector
+    :model-value="commonStyle.defaultColor"
+    @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
+  />
 
   <!-- サイズ設定 -->
   <SettingItem label="表示サイズ" description="ルーレットの幅と高さを調整します（px）">
@@ -70,6 +68,17 @@
         {{ opt.label }}
       </option>
     </select>
+  </SettingItem>
+
+  <!-- タイトルロゴ設定 -->
+  <SettingItem label="タイトルロゴパス" description="characters フォルダ内の画像パスを指定">
+    <input
+      type="text"
+      class="input input-bordered w-full font-mono text-sm"
+      :value="commentSpin.logoPath"
+      placeholder="例: chocolate/titleLogo.webp"
+      @input="(e) => updateField('logoPath', (e.target as HTMLInputElement).value)"
+    />
   </SettingItem>
 </template>
 
