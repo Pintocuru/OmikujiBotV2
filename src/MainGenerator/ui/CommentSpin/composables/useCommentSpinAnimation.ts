@@ -1,7 +1,6 @@
 import { ref, nextTick, Ref } from 'vue'
 import type { BotMessageBubbleType, spinAnimation } from '@/types'
 import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
-import { hoge } from '@/EditorPlugin/scripts/hoge'
 
 interface AnimationOptions {
   duration?: number
@@ -57,18 +56,24 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
     anim.onfinish = () => {
       const last = slotMessages.value[slotMessages.value.length - 1]
       if (last) resolvedMessage.value = last
-
-      // displaySeconds を取得（null/undefined の場合は 0）
-      // slot0 : logoPath を変更し大当たり演出をするか(1ならtrue)
-      // slot1 : 終了後、演出等で次の回転受付を蹴る時間(ms)
       const { iconSrc } = useCharacterManager()
 
-      const hoge1 = Number(resolvedMessage.value?.slots?.slot0) ?? 0
-      const hoge2 = resolvedMessage.value?.bubble.characterKey // キャラクターキー
-      const hoge3 = resolvedMessage.value?.bubble.iconKey // アイコンキー
-      const src = hoge2 ? iconSrc(hoge2, hoge3) : [] // hoge1 がtrue かつ srcが空でないなら、 次の発動まで logoPath を変更する
+      // --- 判定 ---
+      // slot0 : logoPath を変更し大当たり演出をするか(1ならtrue)
+      const isHit = !!Boolean(resolvedMessage.value?.slots?.slot0)
 
+      const characterKey = resolvedMessage.value?.bubble.characterKey ?? null
+      const iconKey = resolvedMessage.value?.bubble.iconKey
+
+      const src = characterKey ? iconSrc(characterKey, iconKey) : []
+
+      // --- 大当たり演出 ---
+      if (isHit && src.length > 0) overrideLogoPath.value = src
+
+      // --- 待機時間 ---
+      // slot1 : 終了後、演出等で次の回転受付を蹴る時間(ms)
       const delayMs = (Number(resolvedMessage.value?.slots?.slot1) ?? 0) * 1000
+
       setTimeout(() => {
         isSpinning.value = false
       }, delayMs)

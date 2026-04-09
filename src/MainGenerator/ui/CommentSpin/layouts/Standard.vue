@@ -88,7 +88,7 @@
     'animation-end': []
   }>()
 
-  const { trackClass, itemStyle } = useSpinSlot({
+  const { slotTrackRef, resolvedRef, trackClass, itemStyle } = useSpinSlot({
     isSpinning: () => props.isSpinning,
     resolvedMessage: () => props.resolvedMessage,
     size: () => props.size,

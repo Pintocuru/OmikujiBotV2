@@ -7,7 +7,7 @@
 
     <ul
       tabindex="0"
-      class="dropdown-content menu z-50 w-32 rounded-md border border-base-300 bg-base-100 shadow-lg p-1"
+      class="dropdown-content menu z-50 w-32 rounded-md border border-base-300 bg-base-200 text-base-content shadow-lg p-1"
     >
       <!-- 有効/無効 -->
       <li>

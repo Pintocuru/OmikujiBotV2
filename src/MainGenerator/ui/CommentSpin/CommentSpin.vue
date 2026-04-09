@@ -30,9 +30,7 @@
   const { getCharacterColor } = useCharacterManager()
   const defaultColor = computed(() => data.value.components.commonStyle.defaultColor)
 
-  const displayLogoPath = computed(() => {
-    return overrideLogoPath.value ?? [spinSettings.value.logoPath]
-  })
+  const displayLogoPath = computed(() => overrideLogoPath.value ?? [spinSettings.value.logoPath])
 
   const spinSettings = computed(() => data.value.components.settings.commentSpin ?? CommentSpinSchema.parse({}))
   const animation = computed(() => spinSettings.value.animation)

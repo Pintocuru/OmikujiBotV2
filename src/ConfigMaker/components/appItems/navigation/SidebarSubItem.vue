@@ -2,7 +2,7 @@
 <template>
   <div>
     <div
-      class="group flex items-center gap-1 pl-4 pr-1 rounded hover:bg-base-300 cursor-pointer"
+      class="group flex items-center gap-1 pl-4 pr-1 rounded hover:bg-neutral hover:text-neutral-content cursor-pointer"
       :class="isSelected ? `bg-${theme} text-${theme}-content` : ''"
       @click="emit('select')"
       @dblclick.stop="emit('item-dblclick', itemKey)"

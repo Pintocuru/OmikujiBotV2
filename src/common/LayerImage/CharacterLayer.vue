@@ -4,7 +4,6 @@
     :src="src"
     autoplay
     :loop="loop"
-    muted
     playsinline
     class="object-contain w-full h-full"
     @error="emit('error')"
@@ -19,7 +18,9 @@
     src: string
     loop?: boolean
   }>()
-  const emit = defineEmits<{ error: [] }>()
+  const emit = defineEmits<{
+    error: []
+  }>()
 
-  const isVideo = computed(() => /\.(webm|mp4)$/i.test(props.src))
+  const isVideo = computed(() => /\.(webm|mp4|mp3|wav|ogg)$/i.test(props.src))
 </script>
