@@ -9,7 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
-dist-ssr
+design_raw
 *.local
 .obsidian
 distZipped
@@ -20,7 +20,10 @@ distZipped
 .idea
 .DS_Store
 *.suo
+*.ntvs*
+*.njsproj
 *.sln
 *.sw?
 *.db
-*.lnk
+*.webm
+*.mp4

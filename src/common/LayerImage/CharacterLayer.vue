@@ -3,7 +3,7 @@
     v-if="isVideo"
     :src="src"
     autoplay
-    :loop="loop"
+    loop
     playsinline
     class="object-contain w-full h-full"
     @error="emit('error')"
@@ -16,7 +16,6 @@
 
   const props = defineProps<{
     src: string
-    loop?: boolean
   }>()
   const emit = defineEmits<{
     error: []
