@@ -93,9 +93,11 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
         // 指定時間後にLeaveアニメーションを開始
         if (totalLifeTime !== null) {
           // IDで検索せず、このスコープの displayMessage を直接操作する
+          const targetId = displayMessage.id // IDを固定
           displayMessage.display!.hideTimeout = setTimeout(() => {
-            if (displayMessage.display) {
-              displayMessage.display.visible = false
+            const target = displayedComments.value.find((m) => m.id === targetId)
+            if (target && target.display) {
+              target.display.visible = false // これならVueが確実に検知できる
             }
           }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as any
         }
