@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/CommentSpin/parts/CharacterSlot.vue -->
+<!-- src/MainGenerator/ui/CommentSpin/layouts/CharacterSlot.vue -->
 <template>
   <div
     class="shrink-0 rounded-lg overflow-hidden bg-base-300"

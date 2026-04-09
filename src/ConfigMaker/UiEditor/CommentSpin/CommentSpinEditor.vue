@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/UiEditor/commentSpin/CommentSpinEditor.vue -->
+<!-- src/ConfigMaker/UiEditor/CommentSpin/CommentSpinEditor.vue -->
 <template>
   <!-- プレビュー -->
   <CommentSpinPreview :key="`${commentSpin.component}-${commentSpin.animation}`" :settings="commentSpin" />
@@ -88,7 +88,6 @@
   import { CommentSpinSchema, spinAnimationMap, spinComponentMap } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import CommentSpinPreview from './CommentSpinPreview.vue'
@@ -96,7 +95,6 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isCharacter } = useVisibilityAccess()
   const { updateCommonStyleField } = useCommonStyleUpdate()
 
   const commentSpin = computed(() => data.value.components.settings.commentSpin ?? CommentSpinSchema.parse({}))

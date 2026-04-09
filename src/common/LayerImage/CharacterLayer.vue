@@ -1,3 +1,4 @@
+<!-- src/common/LayerImage/CharacterLayer.vue -->
 <template>
   <video
     v-if="isVideo"

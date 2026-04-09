@@ -1,3 +1,4 @@
+// src/types/MetaMaps/loopMotionMaps.ts
 export interface LoopMotionConfig {
   label: string
   variant: string // すべてCSSクラス名に統一

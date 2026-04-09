@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/CommentBubble/MotionVariants/MotionWrapper.vue -->
 <template>
   <Transition
     appear

@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/CommentSpin/components/StandardMessage.vue -->
+<!-- src/MainGenerator/ui/CommentSpin/layouts/StandardMessage.vue -->
 <template>
   <div
     class="font-bold tracking-widest text-base-content text-center leading-tight overflow-hidden break-words"

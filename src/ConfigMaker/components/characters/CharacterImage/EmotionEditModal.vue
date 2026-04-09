@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vue -->
 div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vue -->
 <template>
   <BaseEditDialog ref="baseDialog" title="感情画像の編集" icon="Info" @save="handleSave" @cancel="handleCancel">

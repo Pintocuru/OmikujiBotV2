@@ -1,3 +1,4 @@
+// src/common/LayerImage/useImageSources.ts
 import { computed, ref, watch } from 'vue'
 import { getImagePath } from '@/types/'
 

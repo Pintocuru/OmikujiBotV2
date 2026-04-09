@@ -1,3 +1,4 @@
+<!-- src/common/LayerImage/LayerImage.vue -->
 <template>
   <div class="relative" :class="[sizeClass, round && 'rounded-full', border && 'border']">
     <div
