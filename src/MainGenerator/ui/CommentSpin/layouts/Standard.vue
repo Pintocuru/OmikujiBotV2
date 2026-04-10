@@ -2,16 +2,7 @@
 <template>
   <div class="flex flex-col items-center">
     <!-- タイトルロゴ -->
-    <div class="relative grid max-w-[400px] min-w-[200px]" :style="{ width: `${size.width}px` }">
-      <div
-        v-for="(src, i) in logoPath"
-        :key="i"
-        class="col-start-1 row-start-1"
-        :style="{ zIndex: logoPath.length - i }"
-      >
-        <CharacterLayer class="w-full h-auto block" :src="getImagePath(src)" />
-      </div>
-    </div>
+    <LayerImage2 :layers="logoPath" :max-width="400" :min-width="200" />
 
     <!-- スロット -->
     <div
@@ -67,11 +58,11 @@
 </template>
 
 <script setup lang="ts">
-  import { getImagePath, type BotMessageBubbleType, type spinAnimation } from '@/types'
+  import { type BotMessageBubbleType, type spinAnimation } from '@/types'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
   import StandardMessage from './StandardMessage.vue'
   import { useSpinSlot } from './composables/useSpinSlot'
-  import CharacterLayer from '@/common/LayerImage/CharacterLayer.vue'
+  import LayerImage2 from '@/common/LayerImage/LayerImage2.vue'
 
   const props = defineProps<{
     color: DaisyUiThemeFieldsType

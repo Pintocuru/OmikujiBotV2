@@ -10,7 +10,6 @@
       :resolved-message="resolvedMessage"
       :size="settings.size"
       :animation="settings.animation"
-      :characters="characters"
       @animation-ready="(el: HTMLElement, itemHeight: number) => emit('animation-ready', el, itemHeight)"
       @animation-end="emit('animation-end')"
     />
@@ -20,7 +19,6 @@
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
   import type { BotMessageBubbleType } from '@/types'
-  import type { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import type { CommentSpinType, spinComponent } from '@/types/OmikujiData/UiSettings/CommentSpinSchema'
   import Standard from '../layouts/Standard.vue'
   import CharacterSpin from '../layouts/CharacterSpin.vue'
@@ -34,7 +32,6 @@
     isSpinning: boolean
     slotMessages: BotMessageBubbleType[]
     resolvedMessage: BotMessageBubbleType | null
-    characters: Record<string, CharacterType>
   }>()
 
   const emit = defineEmits<{

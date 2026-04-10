@@ -64,8 +64,8 @@
       :value="commentSpin.animation"
       @change="(e) => updateField('animation', (e.target as HTMLSelectElement).value)"
     >
-      <option v-for="(opt, key) in spinAnimationMap" :key="key" :value="key">
-        {{ opt.label }}
+      <option v-for="(opt, key) in filterSpinAnimationMap" :key="key" :value="key">
+        {{ opt?.label }}
       </option>
     </select>
   </SettingItem>
@@ -92,10 +92,12 @@
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import CommentSpinPreview from './CommentSpinPreview.vue'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
+  import { useVisibleOptions } from '../CommonStyle/useVisibleOptions'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { updateCommonStyleField } = useCommonStyleUpdate()
+  const { visibleOptions: filterSpinAnimationMap } = useVisibleOptions(spinAnimationMap)
 
   const commentSpin = computed(() => data.value.components.settings.commentSpin ?? CommentSpinSchema.parse({}))
   const commonStyle = computed(() => data.value.components.commonStyle)

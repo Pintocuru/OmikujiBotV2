@@ -1,9 +1,6 @@
 <!-- src/MainGenerator/ui/CommentSpin/layouts/CharacterSlot.vue -->
 <template>
-  <div
-    class="shrink-0 rounded-lg overflow-hidden bg-base-300"
-    :style="{ width: `${size * 4}px`, height: `${size * 4}px` }"
-  >
+  <div class="shrink-0 rounded-lg overflow-hidden" :style="{ width: `${size * 4}px`, height: `${size * 4}px` }">
     <LayerImage v-if="layers.length" :layers="layers" :size="size" :animation="animation" />
     <!-- キャラ未設定フォールバック -->
     <img v-else :src="fallbackAvatarUrl" class="w-full h-full object-cover" />
@@ -17,16 +14,19 @@
   import type { CharacterAnimationType } from '@/types/OmikujiData/CharacterSchema'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const props = defineProps<{
     msg: BotMessageBubbleType
-    characters: Record<string, CharacterType>
     size: number
   }>()
 
+  const appStore = useAppStore()
+  const characters = computed(() => appStore.data.characters)
+
   const character = computed<CharacterType | null>(() => {
     const key = props.msg.bubble.characterKey
-    return key ? (props.characters[key] ?? null) : null
+    return key ? (characters.value[key] ?? null) : null
   })
 
   // name を渡さなければ完全ランダム

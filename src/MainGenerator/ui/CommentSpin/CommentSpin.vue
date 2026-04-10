@@ -8,7 +8,6 @@
       :is-spinning="isSpinning"
       :slot-messages="slotMessages"
       :resolved-message="resolvedMessage"
-      :characters="characters"
       @animation-ready="(el, h) => onAnimationReady(el, h)"
       @animation-end="onAnimationEnd"
     />
@@ -35,7 +34,6 @@
 
   const spinSettings = computed(() => data.value.components.settings.commentSpin ?? CommentSpinSchema.parse({}))
   const animation = computed(() => spinSettings.value.animation)
-  const characters = computed(() => data.value.characters)
 
   const { messages } = useFilteredBotMessages('commentSpin')
 

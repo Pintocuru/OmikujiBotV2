@@ -4,13 +4,13 @@ import { AccessLevelType } from '@shared/types'
 
 export const spinComponentMap = {
   standard: {
-    label: '語尾ルーレット',
+    label: 'ルーレット',
     accessLevel: 'pro',
     isColor: true,
     animations: ['vertical', 'horizontal'],
   },
   character: {
-    label: 'キャラクタールーレット',
+    label: 'スロット',
     accessLevel: 'pro',
     isColor: true,
     animations: ['vertical', 'horizontal'],
@@ -34,10 +34,10 @@ const spinComponentsEnum = Object.keys(spinComponentMap) as spinComponent[]
 export type spinComponent = keyof typeof spinComponentMap
 
 export const spinAnimationMap = {
-  vertical: { label: '縦スロット' },
-  horizontal: { label: '横回転' },
-  flip: { label: 'コインフリップ' },
-  calendar: { label: 'カレンダー' },
+  vertical: { label: '縦スロット', accessLevel: 'pro' },
+  horizontal: { label: '横回転', accessLevel: 'pro' },
+  flip: { label: 'コインフリップ', accessLevel: 'godMode' },
+  calendar: { label: 'カレンダー', accessLevel: 'godMode' },
 } as const
 const spinAnimationEnum = Object.keys(spinAnimationMap) as spinAnimation[]
 export type spinAnimation = keyof typeof spinAnimationMap
