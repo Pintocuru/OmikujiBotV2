@@ -3,6 +3,7 @@
   <div class="bg-base-100 transparent-bg" :data-theme="color.daisyUiTheme">
     <component
       :is="currentItem"
+      :settings="settings"
       :color="color"
       :logoPath="logoPath"
       :is-spinning="isSpinning"

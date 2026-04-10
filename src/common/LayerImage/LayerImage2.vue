@@ -4,11 +4,11 @@
     <div
       v-for="(src, i) in sources"
       :key="i"
-      class="col-start-1 row-start-1 relative animate__animated"
+      class="col-start-1 row-start-1 absolute inset-0 animate__animated"
       :class="animationClass"
       :style="{ ...animationStyle, zIndex: sources.length - i }"
     >
-      <CharacterLayer class="w-full h-auto block" :src="src" :loop="animation?.loop ?? true" @error="onError(i)" />
+      <CharacterLayer class="w-full h-full" :src="src" :loop="animation?.loop ?? true" @error="onError(i)" />
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@
   const props = defineProps<{
     layers: string[] | string
     width?: number // 指定なければ100%
+    height?: number
     maxWidth?: number // オプション
     minWidth?: number // オプション
     round?: boolean
@@ -34,6 +35,7 @@
 
   const containerStyle = computed(() => ({
     width: props.width ? `${props.width}px` : '100%',
+    height: props.height ? `${props.height}px` : '100%',
     maxWidth: props.maxWidth ? `${props.maxWidth}px` : undefined,
     minWidth: props.minWidth ? `${props.minWidth}px` : undefined,
   }))

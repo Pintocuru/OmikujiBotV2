@@ -9,7 +9,7 @@
     }"
   >
     <!-- 下地（LayerImage2） -->
-    <LayerImage2 :layers="logoPath" class="absolute inset-0 w-full h-full" style="z-index: 0" />
+    <LayerImage2 :layers="settings.logoPath" class="absolute inset-0 w-full h-full" style="z-index: 0" />
 
     <!-- スロット本体 -->
     <div class="absolute inset-0 overflow-hidden" style="z-index: 1">
@@ -48,15 +48,15 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { BotMessageBubbleType, spinAnimation } from '@/types'
+  import type { BotMessageBubbleType, CommentSpinType, spinAnimation } from '@/types'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
   import CharacterSlot from './CharacterSlot.vue'
   import { useSpinSlot } from './composables/useSpinSlot'
   import LayerImage2 from '@/common/LayerImage/LayerImage2.vue'
 
   const props = defineProps<{
+    settings: CommentSpinType
     color: DaisyUiThemeFieldsType
-    logoPath: string[]
     isSpinning: boolean
     slotMessages: BotMessageBubbleType[]
     resolvedMessage: BotMessageBubbleType | null
