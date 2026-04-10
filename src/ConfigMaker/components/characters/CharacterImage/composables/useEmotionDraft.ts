@@ -33,53 +33,6 @@ export function useEmotionDraft(getModelValue: () => CharacterImageType) {
     delete draftValue.value[key]
   }
 
-  // ── 差分計算 ──────────────────────────────────────────────────────────────
-
-  type DiffResult = {
-    removed: string[]
-    srcChanged: { key: string; src: string[] }[]
-    labelChanged: { key: string; label: string }[]
-    animationChanged: { key: string; animation: CharacterAnimationType | undefined }[]
-  }
-
-  const buildDiff = (): DiffResult => {
-    const original = getModelValue()
-    const result: DiffResult = {
-      removed: [],
-      srcChanged: [],
-      labelChanged: [],
-      animationChanged: [],
-    }
-
-    // 削除されたキー
-    for (const key of Object.keys(original)) {
-      if (!(key in draftValue.value)) {
-        result.removed.push(key)
-      }
-    }
-
-    // 変更・追加されたキー
-    for (const [key, item] of Object.entries(draftValue.value)) {
-      const orig = original[key]
-
-      if (!orig || JSON.stringify(orig.src) !== JSON.stringify(item.src)) {
-        result.srcChanged.push({ key, src: item.src })
-      }
-
-      if (!orig || orig.label !== item.label) {
-        result.labelChanged.push({ key, label: item.label ?? '' })
-      }
-
-      const origAnim = orig?.animation
-      const draftAnim = item.animation
-      if (JSON.stringify(origAnim) !== JSON.stringify(draftAnim)) {
-        result.animationChanged.push({ key, animation: draftAnim })
-      }
-    }
-
-    return result
-  }
-
   return {
     draftValue,
     initDraft,
@@ -88,6 +41,5 @@ export function useEmotionDraft(getModelValue: () => CharacterImageType) {
     updateLabel,
     updateAnimation,
     removeKey,
-    buildDiff,
   }
 }

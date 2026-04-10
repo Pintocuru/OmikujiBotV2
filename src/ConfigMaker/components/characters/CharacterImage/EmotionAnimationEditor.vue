@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-  import { ref, watch, computed, watchEffect } from 'vue'
+  import { ref, watch, computed } from 'vue'
   import type { CharacterAnimationType } from '@/types/'
   import ImagePreview from '@/common/LayerImage/ImagePreview.vue'
   import { loopMotionMap } from '@/types/MetaMaps/loopMotionMaps'
@@ -70,34 +70,24 @@
     loop: props.animation?.loop ?? true,
   })
 
+  // プレビュー用の key: 感情・type・duration・loop が変わったら再マウント
+  const previewKey = computed(
+    () =>
+      `${props.emotionKey}-${localAnimation.value.type}-${localAnimation.value.duration}-${localAnimation.value.loop}`
+  )
+
   const applyAnimation = () => {
     emit('update:animation', localAnimation.value.type === 'none' ? undefined : { ...localAnimation.value })
   }
 
-  const initializedKey = ref<string | null>(null)
-
-  watchEffect(() => {
-    if (props.emotionKey && initializedKey.value !== props.emotionKey) {
+  watch(
+    () => props.emotionKey,
+    () => {
       localAnimation.value = {
         type: props.animation?.type ?? 'none',
         duration: props.animation?.duration ?? 1.5,
         loop: props.animation?.loop ?? true,
       }
-      initializedKey.value = props.emotionKey
     }
-  })
-
-  watch(
-    localAnimation,
-    (val) => {
-      emit('update:animation', val.type === 'none' ? undefined : { ...val })
-    },
-    { deep: true }
-  )
-
-  /** プレビュー用の key: 感情・type・duration・loop が変わったら再マウント */
-  const previewKey = computed(
-    () =>
-      `${props.emotionKey}-${localAnimation.value.type}-${localAnimation.value.duration}-${localAnimation.value.loop}`
   )
 </script>

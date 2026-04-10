@@ -1,7 +1,12 @@
 <!-- src/ConfigMaker/components/characters/CharacterImage/CharacterImageSettings.vue -->
 <template>
   <div class="flex gap-2 mb-2">
-    <input type="text" class="input input-sm" placeholder="新しい感情キー（例: surprised）" v-model="newEmotionKey" />
+    <input
+      type="text"
+      class="input input-sm"
+      placeholder="新しいエモーションキー（例: surprised）"
+      v-model="newEmotionKey"
+    />
     <button class="btn btn-sm btn-primary" @click="handleAddEmotion" :disabled="!newEmotionKey.trim()">
       <Plus class="w-4 h-4" />追加
     </button>
@@ -17,9 +22,7 @@
     :selected-item-key="selectedItemKey"
     :is-default-filled="isDefaultFilled"
     :initial-emotion-key="editingEmotionKey"
-    @update="handleUpdate"
-    @updateName="handleUpdateName"
-    @updateAnimation="handleUpdateAnimation"
+    @update="handleUpdateImages"
     @remove="handleRemoveEmotion"
   />
 </template>
@@ -27,7 +30,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { Plus } from 'lucide-vue-next'
-  import { CharacterImageSetSchema, CharacterImageType, CharacterAnimationType } from '@/types/'
+  import { CharacterImageSetSchema, CharacterImageType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import EmotionPresetButtons from './EmotionPresetButtons.vue'
 
@@ -56,6 +59,10 @@
   }
 
   // ── 感情の追加・選択 ──────────────────────────────────────────────────────
+  const handleUpdateImages = (newImages: CharacterImageType) => {
+    pushImages(newImages)
+  }
+
   const handleAddPreset = (key: string, label: string) => {
     if (key in currentImages.value) return
     pushImages({ ...currentImages.value, [key]: { label, src: [`${props.selectedItemKey}/${key}.webp`] } })
@@ -75,27 +82,6 @@
     newEmotionKey.value = ''
     editingEmotionKey.value = key
     editModalRef.value?.showModal(key)
-  }
-
-  // ── モーダルからの emit ハンドラ ──────────────────────────────────────────
-  const handleUpdate = (key: string, src: string[]) => {
-    const item = currentImages.value[key]
-    pushImages({ ...currentImages.value, [key]: { ...item, src } })
-  }
-
-  const handleUpdateName = (key: string, name: string) => {
-    const item = currentImages.value[key]
-    pushImages({ ...currentImages.value, [key]: { ...item, label: name } })
-  }
-
-  const handleUpdateAnimation = (key: string, animation: CharacterAnimationType | undefined) => {
-    const item = currentImages.value[key]
-    if (!item) return
-    const { animation: _old, ...rest } = item
-    pushImages({
-      ...currentImages.value,
-      [key]: animation ? { ...rest, animation } : { ...rest },
-    })
   }
 
   // ── 感情の削除 ────────────────────────────────────────────────────────────

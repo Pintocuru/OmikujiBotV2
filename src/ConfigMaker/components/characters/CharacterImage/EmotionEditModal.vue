@@ -1,7 +1,6 @@
 <!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vue -->
-div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vue -->
 <template>
-  <BaseEditDialog ref="baseDialog" title="感情画像の編集" icon="Info" @save="handleSave" @cancel="handleCancel">
+  <BaseEditDialog ref="baseDialog" title="エモーション画像の編集" icon="Info" @save="handleSave">
     <div v-if="selectedEmotionKey && draftItem" class="space-y-2">
       <ImageSettingsInfo />
       <!-- ヘッダー: 表示名・削除・リセット -->
@@ -37,7 +36,7 @@ div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vu
 
 <script setup lang="ts">
   import { ref, computed, watch } from 'vue'
-  import type { CharacterAnimationType, CharacterImageType } from '@/types/'
+  import type { CharacterImageType } from '@/types/'
   import EmotionImageItem from './EmotionImageItem.vue'
   import EmotionLayerEditor from './EmotionLayerEditor.vue'
   import EmotionAnimationEditor from './EmotionAnimationEditor.vue'
@@ -54,9 +53,7 @@ div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vu
   }>()
 
   const emit = defineEmits<{
-    update: [key: string, src: string[]]
-    updateName: [key: string, name: string]
-    updateAnimation: [key: string, animation: CharacterAnimationType | undefined]
+    update: [value: CharacterImageType]
     remove: [key: string]
   }>()
 
@@ -65,9 +62,7 @@ div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vu
   const selectedEmotionKey = ref<string | null>(null)
 
   // ── Draft 管理 ────────────────────────────────────────────────────────────
-  const { draftValue, initDraft, updateSrc, updateLabel, updateAnimation, buildDiff } = useEmotionDraft(
-    () => props.modelValue
-  )
+  const { draftValue, initDraft, updateSrc, updateLabel, updateAnimation } = useEmotionDraft(() => props.modelValue)
 
   const draftItem = computed(() =>
     selectedEmotionKey.value ? (draftValue.value[selectedEmotionKey.value] ?? null) : null
@@ -92,16 +87,8 @@ div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vu
 
   // ── 保存: diff を emit ────────────────────────────────────────────────────
   const handleSave = () => {
-    const { removed, srcChanged, labelChanged, animationChanged } = buildDiff()
-
-    for (const key of removed) emit('remove', key)
-    for (const { key, src } of srcChanged) emit('update', key, src)
-    for (const { key, label } of labelChanged) emit('updateName', key, label)
-    for (const { key, animation } of animationChanged) emit('updateAnimation', key, animation)
-  }
-
-  const handleCancel = () => {
-    // draft 破棄のみ（close は BaseEditDialog 側が行う）
+    const finalDraft = { ...draftValue.value }
+    emit('update', finalDraft)
   }
 
   // ── 公開 API ───────────────────────────────────────────────────────────────
@@ -125,17 +112,5 @@ div<!-- src/ConfigMaker/components/characters/CharacterImage/EmotionEditModal.vu
     (key) => {
       if (key) selectedEmotionKey.value = key
     }
-  )
-
-  // reset 操作（props 経由）をダイアログ表示中も draft に反映
-  watch(
-    () => props.modelValue,
-    (val) => {
-      const key = selectedEmotionKey.value
-      if (key && val[key]) {
-        draftValue.value[key] = JSON.parse(JSON.stringify(val[key]))
-      }
-    },
-    { deep: true }
   )
 </script>

@@ -14,11 +14,11 @@
         パスをセット
       </button>
       ボタンをクリックすると、
-      <code class="label bg-accent text-accent-content"> [キャラクターID]/[感情名].png, gif, webp...</code>
+      <code class="label bg-accent text-accent-content"> [キャラクターID]/[エモーション名].png, gif, webp...</code>
       といった画像の拡張子が順に切り替わります。目的の拡張子になるまでクリックしてください。
     </p>
     <p class="mt-2 text-sm">
-      <strong>レイヤー機能:</strong> 各感情に複数の画像を設定できます。
+      <strong>レイヤー機能:</strong> 各エモーションに複数の画像を設定できます。
       上のレイヤーほど手前に表示されます（配列の0番が最前面）。
     </p>
   </InformationCard>

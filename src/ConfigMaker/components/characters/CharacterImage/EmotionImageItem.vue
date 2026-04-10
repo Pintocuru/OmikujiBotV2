@@ -3,7 +3,7 @@
   <div class="flex items-center gap-2">
     <div class="flex-1">
       <div class="flex items-center gap-2">
-        <label class="text-sm text-base-content/60 shrink-0">表示名</label>
+        <label class="text-sm text-base-content/60 shrink-0">エモーション名</label>
         <input
           type="text"
           class="input input-xs flex-1"
