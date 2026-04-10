@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref } from 'vue'
+  import { computed, nextTick, ref } from 'vue'
   import { Plus } from 'lucide-vue-next'
   import { CharacterImageSetSchema, CharacterImageType } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
@@ -63,10 +63,11 @@
     pushImages(newImages)
   }
 
-  const handleAddPreset = (key: string, label: string) => {
+  const handleAddPreset = async (key: string, label: string) => {
     if (key in currentImages.value) return
     pushImages({ ...currentImages.value, [key]: { label, src: [`${props.selectedItemKey}/${key}.webp`] } })
     editingEmotionKey.value = key
+    await nextTick() // 待機
     editModalRef.value?.showModal(key)
   }
 
@@ -75,12 +76,13 @@
     editModalRef.value?.showModal(key)
   }
 
-  const handleAddEmotion = () => {
+  const handleAddEmotion = async () => {
     const key = newEmotionKey.value.trim()
     if (!key || key in currentImages.value) return
     pushImages({ ...currentImages.value, [key]: { label: key, src: [] } })
     newEmotionKey.value = ''
     editingEmotionKey.value = key
+    await nextTick() // 2. DOMとPropsの更新を待機
     editModalRef.value?.showModal(key)
   }
 

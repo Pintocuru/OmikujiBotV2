@@ -50,6 +50,7 @@
   import { OmikujiItemType } from '@/types/OmikujiData/'
   import OmikujiLegendItem from './OmikujiLegendItem.vue'
   import { addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
+  import { getColorForIndex } from './useOmikujiWeight'
 
   const props = defineProps<{
     items: OmikujiItemType[]
@@ -81,22 +82,4 @@
     if (val.length === current.length && val.every((v, i) => v === current[i])) return
     emit('update:items', [...val])
   })
-
-  const getColorForIndex = (index: number): string => {
-    const colors = [
-      '#3b82f6',
-      '#8b5cf6',
-      '#ec4899',
-      '#f59e0b',
-      '#10b981',
-      '#06b6d4',
-      '#6366f1',
-      '#84cc16',
-      '#ef4444',
-      '#14b8a6',
-      '#f97316',
-      '#a855f7',
-    ]
-    return colors[index % colors.length]
-  }
 </script>

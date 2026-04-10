@@ -5,7 +5,7 @@
 
     <!-- プレビュー -->
     <div class="flex justify-center bg-base-200 rounded p-3">
-      <ImagePreview :key="previewKey" :layers="src" :size="24" :animation="animation" />
+      <ImagePreview :key="previewKey" :layers="src" :size="24" :animation="localAnimation" />
     </div>
 
     <!-- タイプ選択 -->
@@ -77,7 +77,8 @@
   )
 
   const applyAnimation = () => {
-    emit('update:animation', localAnimation.value.type === 'none' ? undefined : { ...localAnimation.value })
+    const payload = localAnimation.value.type === 'none' ? undefined : { ...localAnimation.value }
+    emit('update:animation', payload)
   }
 
   watch(

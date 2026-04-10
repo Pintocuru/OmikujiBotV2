@@ -5,7 +5,7 @@
     <div class="flex justify-end gap-2">
       <!-- キャラクター一括変更ボタン -->
       <CharacterChanger :category="category" :selectedId="selectedItemKey" />
-     <IconKeyChanger :category="category" :selectedId="selectedItemKey"/>  
+      <IconKeyChanger :category="category" :selectedId="selectedItemKey" />
 
       <!-- おみくじテストボタン -->
       <div class="tooltip tooltip-bottom" data-tip="わんコメを起動すると、投稿の確認ができます">
@@ -22,11 +22,11 @@
     </div>
 
     <!-- おみくじリスト一覧（クリックで選択） -->
-    <OmikujiCardControls
+    <OmikujiWeightProgressBar
       :items="omikujiSets"
       :selectedIndex="selectedOmikujiIndex"
-      @sort="handleSort"
       @update:items="omikujiSets = $event"
+      @update:weight="({ index, weight }) => (omikujiSets = updateItemWeight(omikujiSets, index, weight))"
       @select="selectedOmikujiIndex = $event"
     />
 
@@ -61,7 +61,7 @@
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
   import { OmikujiItemSchema, OmikujiItemType, EventCategoryType } from '@/types/OmikujiData/'
-  import OmikujiCardControls from './OmikujiCard/OmikujiCardControls.vue'
+  import OmikujiWeightProgressBar from './OmikujiCard/OmikujiWeightProgressBar.vue'
   import CharacterChanger from '@config/components/events/CharacterChanger/CharacterChanger.vue'
   import IconKeyChanger from '@config/components/events/IconKeyChanger/IconKeyChanger.vue'
   import OmikujiItemEditor from '@config/components/events/OmikujiItem/OmikujiItemEditor.vue'
@@ -69,6 +69,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import { Dices, Plus, X } from 'lucide-vue-next'
+  import { getColorForIndex, updateItemWeight } from './OmikujiCard/useOmikujiWeight'
 
   const props = defineProps<{
     category: EventCategoryType
@@ -107,47 +108,6 @@
 
     // 新しく追加したアイテムを自動選択
     selectedOmikujiIndex.value = omikujiSets.value.length - 1
-  }
-
-  // ソート処理
-  const handleSort = (payload: { type: 'weight' | 'name'; order?: 'asc' | 'desc' }) => {
-    let sorted = [...omikujiSets.value]
-
-    if (payload.type === 'weight') {
-      sorted.sort((a, b) => {
-        return payload.order === 'desc' ? b.weight - a.weight : a.weight - b.weight
-      })
-    } else if (payload.type === 'name') {
-      sorted.sort((a, b) => {
-        const aName = a.name || ''
-        const bName = b.name || ''
-        return aName.localeCompare(bName, 'ja')
-      })
-    }
-
-    omikujiSets.value = sorted
-
-    // ソート後、選択をリセット
-    selectedOmikujiIndex.value = null
-  }
-
-  // プログレスバーと同じ色を取得
-  const getColorForIndex = (index: number): string => {
-    const colors = [
-      '#3b82f6',
-      '#8b5cf6',
-      '#ec4899',
-      '#f59e0b',
-      '#10b981',
-      '#06b6d4',
-      '#6366f1',
-      '#84cc16',
-      '#ef4444',
-      '#14b8a6',
-      '#f97316',
-      '#a855f7',
-    ]
-    return colors[index % colors.length]
   }
 
   watch(

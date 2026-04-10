@@ -27,7 +27,7 @@
     </div>
 
     <!-- Weight編集 -->
-    <div class="text-base" :class="{ 'text-primary': isSelected }">
+    <div class="text-base" :class="{ 'text-primary-content': isSelected }">
       <input
         v-if="!item?.isPriority"
         type="number"
