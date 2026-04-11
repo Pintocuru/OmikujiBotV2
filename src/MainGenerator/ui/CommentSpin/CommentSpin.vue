@@ -35,7 +35,9 @@
   const spinSettings = computed(() => data.value.components.settings.commentSpin ?? CommentSpinSchema.parse({}))
   const animation = computed(() => spinSettings.value.animation)
 
-  const { messages } = useFilteredBotMessages('commentSpin')
+  const { messages } = useFilteredBotMessages('commentSpin', {
+    allowEmptyMessage: true,
+  })
 
   const { slotMessages, isSpinning, resolvedMessage, overrideLogoPath, startSpin, onAnimationReady, onAnimationEnd } =
     useCommentSpinAnimation({ type: animation })

@@ -24,7 +24,9 @@
 
   const settings = computed(() => LiveClockSchema.parse(appStore.data.components?.settings?.liveClock ?? {}))
 
-  const { messages } = useFilteredBotMessages('liveClock')
+  const { messages } = useFilteredBotMessages('liveClock', {
+    userIconSize: 6,
+  })
   const { displayedComments, start, stop } = useBotDisplay(messages)
 
   const {

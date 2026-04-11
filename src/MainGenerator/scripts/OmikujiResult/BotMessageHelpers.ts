@@ -23,29 +23,24 @@ export function createBotMessagesFromAction(
 ): BotMessageType[] {
   const bubble = action.message.bubble || ''
   const isToast = action.message.isToast
-  const hasBubble = bubble.trim().length > 0
-
   const hasRanking = !!extra?.scriptKey && (!!extra?.lists || !!extra?.slots)
 
   const messages: BotMessageType[] = []
 
-  // Bubbleメッセージ
-  if (hasBubble) {
-    const bubbleMessage = createBubbleMessage(
-      action.characterKey,
-      action.iconKey,
-      bubble,
-      isToast,
-      delaySeconds,
-      characterManager,
-      extra?.slots
-    )
-    messages.push(bubbleMessage)
+  const bubbleMessage = createBubbleMessage(
+    action.characterKey,
+    action.iconKey,
+    bubble,
+    isToast,
+    delaySeconds,
+    characterManager,
+    extra?.slots
+  )
+  messages.push(bubbleMessage)
 
-    // RPG音声再生
-    if (!isToast) {
-      playRpgVoiceForCharacter(action.characterKey, bubble, delaySeconds, characterManager)
-    }
+  // RPG音声再生
+  if (!isToast) {
+    playRpgVoiceForCharacter(action.characterKey, bubble, delaySeconds, characterManager)
   }
 
   // Rankingメッセージ
@@ -60,7 +55,7 @@ export function createBotMessagesFromAction(
 function createBubbleMessage(
   characterKey: string | null,
   iconKey: string,
-  bubble: string,
+  message: string,
   isToast: boolean | undefined,
   delaySeconds: number,
   characterManager?: CharacterManager,
@@ -73,7 +68,7 @@ function createBubbleMessage(
     delaySeconds,
     bubble: {
       name: character?.displayName || '',
-      message: bubble,
+      message,
       isToast,
       characterKey: resolved?.characterKey,
       iconKey: resolved?.iconKey,

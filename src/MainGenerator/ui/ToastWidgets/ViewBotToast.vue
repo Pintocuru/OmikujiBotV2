@@ -48,7 +48,9 @@
 
   // ライセンス状態で閲覧できないなら表示させない
   const { isCharacter } = useVisibilityAccess()
-  const { messages } = useFilteredBotMessages('toast')
+  const { messages } = useFilteredBotMessages('toast', {
+    userIconSize: 6,
+  })
 
   // コメント表示ロジック
   const { displayedComments, removeComment, hideComment, start, stop } = useBotDisplay(messages)

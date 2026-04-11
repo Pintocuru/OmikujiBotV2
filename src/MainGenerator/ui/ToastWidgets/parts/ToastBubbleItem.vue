@@ -40,5 +40,5 @@
     getProfileImage?: (userId: string) => string | undefined
   }>()
 
-  const displayedHtml = computed(() => resolveIconPlaceholders(props.message, props.getProfileImage))
+  const displayedHtml = computed(() => resolveIconPlaceholders(props.message, props.getProfileImage, 6))
 </script>
