@@ -4,7 +4,7 @@
     <div
       v-for="(src, i) in sources"
       :key="i"
-      class="col-start-1 row-start-1 absolute inset-0 animate__animated"
+      class="col-start-1 row-start-1 animate__animated"
       :class="animationClass"
       :style="{ ...animationStyle, zIndex: sources.length - i }"
     >

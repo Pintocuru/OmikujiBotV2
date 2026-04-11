@@ -58,7 +58,11 @@
   </SettingItem>
 
   <!-- アニメーション選択 -->
-  <SettingItem label="アニメーション" description="ルーレットの回転演出を選択します">
+  <SettingItem
+    v-if="Object.keys(filterSpinAnimationMap).length > 1"
+    label="アニメーション"
+    description="ルーレットの回転演出を選択します"
+  >
     <select
       class="select select-bordered w-full"
       :value="commentSpin.animation"

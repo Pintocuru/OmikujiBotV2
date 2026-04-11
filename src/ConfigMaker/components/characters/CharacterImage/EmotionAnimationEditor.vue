@@ -5,7 +5,7 @@
 
     <!-- プレビュー -->
     <div class="flex justify-center bg-base-200 rounded p-3">
-      <ImagePreview :key="previewKey" :layers="src" :size="24" :animation="localAnimation" />
+      <ImagePreview :key="previewKey" :layers="src" :width="192" :animation="localAnimation" />
     </div>
 
     <!-- タイプ選択 -->

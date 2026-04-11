@@ -2,7 +2,7 @@
 <template>
   <div class="flex flex-col items-center">
     <!-- タイトルロゴ -->
-    <LayerImage2 :layers="logoPath" :max-width="400" :min-width="200" />
+    <LayerImage2 :layers="logoPath" :width="size.width" :max-width="400" :min-width="200" />
 
     <!-- スロット -->
     <div
@@ -22,7 +22,7 @@
       </div>
 
       <!-- スロット -->
-      <div class="absolute inset-0 flex items-center justify-center overflow-hidden px-10">
+      <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
         <!-- 回転中 -->
         <div
           v-if="isSpinning && slotMessages.length"

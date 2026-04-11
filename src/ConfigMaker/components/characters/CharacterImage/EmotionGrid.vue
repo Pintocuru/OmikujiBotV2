@@ -60,9 +60,13 @@
     reorder: [newImages: CharacterImageType]
   }>()
 
-  // ── images オブジェクト → 配列へ変換 ─────────────────────────────────────
-  const toEntries = (images: CharacterImageType): EmotionEntry[] =>
-    Object.entries(images).map(([key, value]) => ({ key, value }))
+  // ── images オブジェクト → 配列へ変換 数値だとバグが起こるので修正してる
+  const normalizeKey = (key: string) => (/^\d+$/.test(key) ? `k${key}` : key)
+  const toEntries = (images: CharacterImageType) =>
+    Object.entries(images).map(([key, value]) => ({
+      key: normalizeKey(key),
+      value,
+    }))
 
   const draggableItems = ref<EmotionEntry[]>(toEntries(props.images))
 

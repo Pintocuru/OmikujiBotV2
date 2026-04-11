@@ -37,7 +37,7 @@
         :value="layer"
         @input="handleLayerUpdate(index, ($event.target as HTMLInputElement).value)"
       />
-      <ImagePreview :layers="layer" :size="16" />
+      <ImagePreview :layers="layer" :width="128" />
     </div>
   </div>
 </template>
