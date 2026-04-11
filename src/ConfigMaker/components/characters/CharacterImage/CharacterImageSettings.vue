@@ -14,14 +14,13 @@
 
   <EmotionPresetButtons :existing-keys="Object.keys(currentImages)" @add="handleAddPreset" />
 
-  <EmotionGrid :images="currentImages" @select="handleSelectEmotion" />
+  <EmotionGrid :images="currentImages" @select="handleSelectEmotion" @reorder="pushImages" />
 
   <EmotionEditModal
     ref="editModalRef"
     :model-value="currentImages"
     :selected-item-key="selectedItemKey"
     :is-default-filled="isDefaultFilled"
-    :initial-emotion-key="editingEmotionKey"
     @update="handleUpdateImages"
     @remove="handleRemoveEmotion"
   />
@@ -44,7 +43,6 @@
 
   const { updateRecordProperty } = useOmikujiStore()
   const editModalRef = ref<InstanceType<typeof EmotionEditModal> | null>(null)
-  const editingEmotionKey = ref<string | null>(null)
   const newEmotionKey = ref('')
 
   // ── 現在の画像データ ──────────────────────────────────────────────────────
@@ -66,13 +64,11 @@
   const handleAddPreset = async (key: string, label: string) => {
     if (key in currentImages.value) return
     pushImages({ ...currentImages.value, [key]: { label, src: [`${props.selectedItemKey}/${key}.webp`] } })
-    editingEmotionKey.value = key
-    await nextTick() // 待機
-    editModalRef.value?.showModal(key)
+    await nextTick()
+    editModalRef.value?.showModal(key) // key を直接渡すだけ
   }
 
   const handleSelectEmotion = (key: string) => {
-    editingEmotionKey.value = key
     editModalRef.value?.showModal(key)
   }
 
@@ -81,8 +77,7 @@
     if (!key || key in currentImages.value) return
     pushImages({ ...currentImages.value, [key]: { label: key, src: [] } })
     newEmotionKey.value = ''
-    editingEmotionKey.value = key
-    await nextTick() // 2. DOMとPropsの更新を待機
+    await nextTick()
     editModalRef.value?.showModal(key)
   }
 

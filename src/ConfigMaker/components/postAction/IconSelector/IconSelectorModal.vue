@@ -4,7 +4,7 @@
     <div class="modal-box max-w-4xl space-y-4">
       <h3 class="font-bold text-lg">{{ characterName }} - アイコン選択</h3>
 
-      <EmotionGrid :images="characterImages" :selected-key="currentIconKey" @select="selectEmotion" />
+      <EmotionGrid :images="characterImages" :selected-key="currentIconKey" readonly @select="selectEmotion" />
 
       <div class="modal-action">
         <button @click="closeModal" class="btn">キャンセル</button>

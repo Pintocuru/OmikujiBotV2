@@ -33,6 +33,7 @@
       <!-- 確定表示 -->
       <div
         v-else-if="resolvedMessage"
+        :key="resolvedMessage.id"
         ref="resolvedRef"
         class="flex items-center justify-center gap-3 w-full"
         :style="{ height: `${size.height}px` }"

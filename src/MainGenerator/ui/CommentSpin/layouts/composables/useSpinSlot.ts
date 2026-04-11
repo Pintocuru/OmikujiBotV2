@@ -89,12 +89,15 @@ export function useSpinSlot({ isSpinning, resolvedMessage, size, animation, slot
   })
 
   // ── resolvedMessage watch（共通） ─────────────────────
-  watch(resolvedMessage, async () => {
+  watch([isSpinning, resolvedMessage], async ([spinning, msg]) => {
+    if (spinning || !msg) return
     await nextTick()
     if (!resolvedRef.value) return
+
+    // 停止時のアニメーション
     resolvedRef.value.animate(
       [
-        { opacity: '0', transform: 'scale(0.85)' },
+        { opacity: '0', transform: 'scale(0.95)' },
         { opacity: '1', transform: 'scale(1)' },
       ],
       { duration: 300, easing: 'ease-out', fill: 'forwards' }
