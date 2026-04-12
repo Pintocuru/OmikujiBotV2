@@ -9,7 +9,7 @@
       :animation="animation"
     />
     <!-- キャラ未設定フォールバック -->
-    <img v-else :src="fallbackAvatarUrl" class="w-full h-full object-cover" />
+    <img v-else :src="fallbackAvatarUrl" class="w-full h-full object-cover" :style="containerStyle" />
   </div>
 </template>
 
@@ -46,4 +46,9 @@
 
   const layers = computed<string[]>(() => imageEntry.value?.src ?? [])
   const animation = computed<CharacterAnimationType | undefined>(() => imageEntry.value?.animation)
+
+  const containerStyle = computed(() => ({
+    width: props.size.width ? `${props.size.width}px` : '100%',
+    height: props.size.height ? `${props.size.height}px` : '100%',
+  }))
 </script>
