@@ -1,7 +1,13 @@
 <!-- src/MainGenerator/ui/CommentSpin/layouts/CharacterSlot.vue -->
 <template>
-  <div class="shrink-0 rounded-lg overflow-hidden" :style="{ width: `${size * 4}px`, height: `${size * 4}px` }">
-    <LayerImage2 v-if="layers.length" :layers="layers" :width="size * 4" :height="size * 4" :animation="animation" />
+  <div class="shrink-0 rounded-lg overflow-hidden">
+    <LayerImage2
+      v-if="layers.length"
+      :layers="layers"
+      :width="size.width"
+      :height="size.height"
+      :animation="animation"
+    />
     <!-- キャラ未設定フォールバック -->
     <img v-else :src="fallbackAvatarUrl" class="w-full h-full object-cover" />
   </div>
@@ -18,7 +24,7 @@
 
   const props = defineProps<{
     msg: BotMessageBubbleType
-    size: number
+    size: { width: number; height: number }
   }>()
 
   const appStore = useAppStore()

@@ -110,7 +110,6 @@
   import { storeToRefs } from 'pinia'
   import {
     gameMetaMap,
-    isDev,
     rankingComponentMap,
     rankingSortOrderMap,
     ScriptGameKey,
@@ -128,7 +127,7 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isAdv, isGod } = useSettingMode()
+  const { isAdv } = useSettingMode()
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const ranking = computed(() => data.value.components.settings.ranking ?? GameRankingSchema.parse({}))

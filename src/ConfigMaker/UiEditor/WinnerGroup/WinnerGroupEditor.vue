@@ -85,7 +85,6 @@
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import WinnerGroupSelector from '@main/ui/WinnerGroup/parts/WinnerGroupSelector.vue'
   import { generateDummyWinnerUsers } from '@/common/MockUser/MockGenerators'
   import { parseQueryString } from '@/GameScripts/parseQueryString'
@@ -95,7 +94,6 @@
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
-  const { isPro } = useSettingMode()
   const previewKey = ref(0)
   const rulesComment = computed(() => data.value.comments)
   const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))

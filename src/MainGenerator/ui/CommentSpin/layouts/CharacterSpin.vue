@@ -1,15 +1,8 @@
 <!-- src/MainGenerator/ui/CommentSpin/layouts/CharacterSpin.vue -->
 <template>
-  <div
-    class="relative rounded-xl shadow-lg border-4 overflow-hidden bg-base-200"
-    :class="[`border-${color.backFrom}`]"
-    :style="{
-      width: `${size.width}px`,
-      height: `${size.height}px`,
-    }"
-  >
+  <div class="relative rounded-xl shadow-lg border-4 overflow-hidden bg-base-200" :class="[`border-${color.backFrom}`]">
     <!-- 下地（LayerImage2） -->
-    <LayerImage2 :layers="settings.logoPath" class="absolute inset-0 w-full h-full" style="z-index: 0" />
+    <LayerImage2 :layers="settings.logoPath" :width="size.width" :height="size.height" class="absolute inset-0" />
 
     <!-- スロット本体 -->
     <div class="absolute inset-0 overflow-hidden" style="z-index: 1">
@@ -26,7 +19,7 @@
           class="flex items-center justify-center gap-3 shrink-0"
           :style="itemStyle"
         >
-          <CharacterSlot :msg="msg" :size="imageSize" />
+          <CharacterSlot :msg="msg" :size="size" />
         </div>
       </div>
 
@@ -38,7 +31,7 @@
         class="flex items-center justify-center gap-3 w-full"
         :style="{ height: `${size.height}px` }"
       >
-        <CharacterSlot :msg="resolvedMessage" :size="imageSize" />
+        <CharacterSlot :msg="resolvedMessage" :size="size" />
       </div>
 
       <!-- フォールバック -->
@@ -48,7 +41,6 @@
 </template>
 
 <script setup lang="ts">
-  import { computed } from 'vue'
   import type { BotMessageBubbleType, CommentSpinType, spinAnimation } from '@/types'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
   import CharacterSlot from './CharacterSlot.vue'
@@ -77,6 +69,4 @@
     animation: () => props.animation,
     emit: (event, el, itemSize) => emit(event, el, itemSize),
   })
-
-  const imageSize = computed(() => Math.floor(props.size.height / 4))
 </script>

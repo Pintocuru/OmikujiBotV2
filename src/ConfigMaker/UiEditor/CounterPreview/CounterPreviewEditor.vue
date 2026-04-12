@@ -78,7 +78,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
+  import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()

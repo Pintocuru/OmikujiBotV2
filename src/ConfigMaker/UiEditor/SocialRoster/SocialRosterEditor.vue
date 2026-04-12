@@ -82,7 +82,7 @@
   const socialRoster = computed(() => data.value.components.settings.socialRoster ?? SocialRosterSchema.parse({}))
   const rulesComment = computed(() => data.value.comments)
 
-  const { isAdv, isPro } = useSettingMode()
+  const { isAdv } = useSettingMode()
   const { isComment } = useVisibilityAccess()
 
   const updateField = (field: keyof typeof socialRoster.value, value: any) => {
