@@ -3,7 +3,7 @@ import { computed, ComputedRef } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
-import { UiKind } from '@/types'
+import { UiKind, uiSpecialSetMap } from '@/types'
 import { VisibilityKey } from '../useUiItemMap'
 
 export const useUiVisibility = () => {
@@ -15,7 +15,15 @@ export const useUiVisibility = () => {
 
   const conditions = computed(() => data.value.components.conditions)
 
-  const hasComponentKind = (kind: UiKind) => conditions.value.some((c) => c.kind === kind)
+  const hasComponentKind = (kind: UiKind): boolean => {
+    const { specialSet, conditions } = data.value.components
+
+    // specialSet 中は kinds に含まれるかで判定
+    if (specialSet) {
+      return (uiSpecialSetMap[specialSet].kinds as readonly string[]).includes(kind)
+    }
+    return conditions.some((c) => c.kind === kind)
+  }
 
   const settings = computed(() => data.value.components.settings)
   const isComponentEnabled = (kind: UiKind): boolean =>

@@ -21,7 +21,11 @@
     title="アイテム表示設定"
     description="ジェネレーターで表示するアイテムの設定"
   >
-    <ItemConditionsEditor />
+    <!-- isGod のときのみスペシャルセット切り替えを表示 -->
+    <SpecialSetEditor v-if="isGod || isDev" />
+
+    <!-- specialSet未設定時のみ個別スロット設定を表示 -->
+    <ItemConditionsEditor v-if="!specialSet" />
   </SectionCard>
 
   <!-- 各アイテム設定 -->
@@ -48,9 +52,15 @@
   import { useAccessChecker, useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
+  import SpecialSetEditor from './conditions/SpecialSetEditor.vue'
   import { useUiVisibility } from './conditions/useUiVisibility'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { isDev } from '@/types'
+  import { useOmikujiStore } from '../stores/useOmikujiStore'
+
+  const omikujiStore = useOmikujiStore()
+  const { data } = storeToRefs(omikujiStore)
+  const specialSet = computed(() => data.value.components.specialSet)
 
   const { itemSlotEnabled } = useFlagsSettings()
   const { hasAccess } = useAccessChecker()
