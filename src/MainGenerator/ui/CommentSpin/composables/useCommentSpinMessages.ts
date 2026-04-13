@@ -38,7 +38,7 @@ export function useCommentSpinMessages({ messages, startSpin }: UseCommentSpinMe
     const results: BotMessageBubbleType[] = []
 
     for (let i = 0; i < DUMMY_COUNT; i++) {
-      const res = await processor.executeOmikuji(eventKey, eventData.omikuji, category, msg.origin, false)
+      const res = await processor.executeDummyOmikuji(eventKey, eventData.omikuji, category, msg.origin)
       const bubble = res.find((m): m is BotMessageBubbleType => m.type === 'comment')
       if (bubble) results.push(bubble)
     }

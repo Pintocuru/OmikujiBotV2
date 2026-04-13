@@ -51,6 +51,14 @@
       <p class="text-sm opacity-70 mt-2">アクションセット</p>
     </div>
 
+    <!-- 評価ブロックなど、プレビューがない場合 -->
+    <div v-else class="w-full text-center opacity-60">
+      <div class="flex flex-col items-center space-y-2">
+        <Settings :size="64" class="text-gray-400" />
+        <p class="text-sm">このアクションにはプレビューがありません</p>
+      </div>
+    </div>
+
     <!-- テストボタン -->
     <div class="w-full text-center mt-2">
       <WordPartyTestButton
@@ -80,7 +88,7 @@
   import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
   import ToastBubbleItem from '@main/ui/ToastWidgets/parts/ToastBubbleItem.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
-  import { Volume2, PartyPopper, MessagesSquare } from 'lucide-vue-next'
+  import { Volume2, PartyPopper, MessagesSquare, Settings } from 'lucide-vue-next'
 
   const props = defineProps<{
     action: PostFlowType

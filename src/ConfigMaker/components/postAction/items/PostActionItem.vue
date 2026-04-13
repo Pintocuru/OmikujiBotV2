@@ -13,11 +13,11 @@
       <SettingItem label="🚀 アクションタイプ" description="種類を選択します">
         <div class="flex flex-wrap gap-2">
           <span
-            v-for="[type, meta] in Object.entries(PostFlowKindMaps)"
+            v-for="(meta, type) in PostFlowKindMaps"
             :key="type"
             class="badge badge-sm cursor-pointer"
             :class="action.actionType === type ? 'badge-primary' : 'badge-outline'"
-            @click="updateActionType(type as PostFlowKind)"
+            @click="updateActionType(type)"
           >
             {{ meta.label }}
           </span>
@@ -53,6 +53,7 @@
   import MessageSettings from '../Message/MessageSettings.vue'
   import SoundSettings from '../Sounds/SoundSettings.vue'
   import WordPartySettings from '../WordParty/WordPartySettings.vue'
+  import VariableSettings from '../variable/VariableSettings.vue'
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -76,6 +77,7 @@
       message: MessageSettings,
       sound: SoundSettings,
       wordParty: WordPartySettings,
+      variable: VariableSettings,
       actionSet: ActionSetSettings,
     }
 

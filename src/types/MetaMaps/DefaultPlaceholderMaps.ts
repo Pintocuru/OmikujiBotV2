@@ -25,6 +25,7 @@ export const defaultPlaceholderMap = {
   commenter: { slot: 'event', label: 'コメントをしたユーザー数', short: '[コメントしたユーザー数]' },
   syoken: { slot: 'event', label: '初見さんの数', short: '[初見さん数]' },
   winner: { slot: 'event', label: 'コメントをしたランダムなユーザー', short: '[ランダムユーザー]' },
+  winnerId: { slot: 'event', label: 'コメントをしたランダムなユーザーID', short: 'test_userId' },
   clock: { slot: 'event', label: '現在時刻', short: '[現在時刻]' },
 
   lc: { slot: 'comment', label: countUnitConditionMap.lc.label, short: '[配信コメント数]' },

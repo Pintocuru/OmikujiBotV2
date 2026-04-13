@@ -10,7 +10,7 @@ export class DisplayVariableResolver {
    */
   processPostActions(postActions: PostFlowType[]): PostFlowType[] {
     return postActions.map((action) => {
-      if (action.actionType === 'message') {
+      if (action.actionType === 'message' || action.actionType === 'variable') {
         return {
           ...action,
           message: {

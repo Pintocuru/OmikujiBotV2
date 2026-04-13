@@ -1,7 +1,7 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultProcessor.ts
 import { BotMessageType, ProcessedPostAction } from '@/types/'
-import { OmikujiDataType, ActionSetType, PostFlowType, PostFlowMessageType } from '@/types/OmikujiData/'
-import { createBotMessagesFromAction } from './BotMessageHelpers'
+import { OmikujiDataType, ActionSetType, PostFlowType } from '@/types/OmikujiData/'
+import { createBotMessagesFromAction, createBotMessagesFromVariable } from './BotMessageHelpers'
 import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
@@ -56,24 +56,49 @@ export class OmikujiResultProcessor {
   async process(
     actionItem: ActionSetType,
     defaultPlaceholders: Record<string, string | number>,
-    omiken?: OmikenCommentType,
-    isOnecommePost = true
+    omiken?: OmikenCommentType
   ): Promise<BotMessageType[]> {
     try {
       switch (actionItem.type) {
         case 'gameScripts':
-          return await this.processGameScripts(actionItem, omiken, isOnecommePost)
+          return await this.processGameScripts(actionItem, omiken, true) // 投稿あり固定
 
         case 'postActions':
-          return this.processPostActions(actionItem, defaultPlaceholders, omiken, isOnecommePost)
+          return this.processPostActions(actionItem, defaultPlaceholders, omiken, true) // 投稿あり固定
 
         default:
           return []
       }
     } catch (error) {
       console.error('おみくじ実行エラー', error)
-      const msg = `おみくじ実行エラー ${error}`
-      postSystemMessage(msg)
+      postSystemMessage(`おみくじ実行エラー ${error}`)
+      return []
+    }
+  }
+
+  /**
+   * スロット演出用ダミーメッセージを生成。
+   * わんコメへの投稿・サウンド再生は行わない。
+   */
+  async processDummy(
+    actionItem: ActionSetType,
+    defaultPlaceholders: Record<string, string | number>,
+    omiken?: OmikenCommentType
+  ): Promise<BotMessageType[]> {
+    try {
+      switch (actionItem.type) {
+        case 'gameScripts':
+          return await this.processGameScripts(actionItem, omiken, false)
+
+        case 'postActions':
+          return this.processPostActions(actionItem, defaultPlaceholders, omiken, false)
+
+        default:
+          return []
+      }
+    } catch (error) {
+      console.error('おみくじ実行エラー', error)
+      postSystemMessage(`おみくじ実行エラー ${error}`)
       return []
     }
   }
@@ -126,10 +151,16 @@ export class OmikujiResultProcessor {
     this.placeContext.clear()
 
     // 1. 評価ブロック(変数プレースホルダー)を処理
-    const processedActions = this.processVariables(resolvedActions)
+    const processedActions = isOnecommePost
+      ? this.processVariables(resolvedActions)
+      : resolvedActions.map((action): ProcessedPostAction => ({ action }))
 
     // 2. わんコメへ投稿
-    if (isOnecommePost) this.postMessage.post(processedActions.map((a) => a.action))
+    if (isOnecommePost) {
+      // variable は投稿対象から除外
+      const postTargets = processedActions.filter((a) => a.action.actionType !== 'variable')
+      this.postMessage.post(postTargets.map((a) => a.action))
+    }
 
     // 3. BotMessageを生成 (解析済みのデータを使用)
     return this.generateBotMessages(processedActions, omiken, isOnecommePost)
@@ -167,6 +198,9 @@ export class OmikujiResultProcessor {
         )
 
         if (action.sound && this.soundEnabled && isOnecommePost) playSoundDelay(action.sound, delaySeconds)
+      } else if (action.actionType === 'variable') {
+        // 投稿なし・音声なし。変数処理と BotMessage 生成のみ
+        messages.push(...createBotMessagesFromVariable(extra, delaySeconds, omiken))
       } else if (action.actionType === 'sound') {
         if (action.sound && this.soundEnabled && isOnecommePost) playSoundDelay(action.sound, delaySeconds)
       }
@@ -179,14 +213,15 @@ export class OmikujiResultProcessor {
    */
   private processVariables(actions: PostFlowType[]): ProcessedPostAction[] {
     return actions.map((action): ProcessedPostAction => {
-      // message以外、またはbubbleがない場合はそのまま
-      if (action.actionType !== 'message' || !action.message.bubble) return { action }
+      // message と variable のみ処理。それ以外またはbubbleがない場合はそのまま
+      if (action.actionType !== 'message' && action.actionType !== 'variable') return { action }
+      if (!action.message.bubble) return { action }
 
       // 変数処理の実行（ランキング抽出等）
       const result = this.variableProcessor.process(action.message.bubble)
 
-      // 投稿用のデータを更新（bubbleを置換後のものに差し替え）
-      const updatedAction: PostFlowMessageType = {
+      // bubbleを置換後のものに差し替え
+      const updatedAction = {
         ...action,
         message: {
           ...action.message,
@@ -196,7 +231,7 @@ export class OmikujiResultProcessor {
 
       return {
         action: updatedAction,
-        extra: result.extra, // 解析結果を保持
+        extra: result.extra,
       }
     })
   }

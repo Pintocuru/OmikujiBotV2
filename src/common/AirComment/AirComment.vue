@@ -110,7 +110,7 @@
     try {
       await postComment(
         {
-          service: { id: 'OmikenReimu' },
+          service: { id: '26c434d4-db3b-4975-9061-093cf7cdb5b2' },
           comment: CommentPickSchema.parse({
             userId: username,
             name: username,

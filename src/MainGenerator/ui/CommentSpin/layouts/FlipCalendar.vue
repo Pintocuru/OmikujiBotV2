@@ -15,7 +15,7 @@
             class="absolute left-0 overflow-hidden top-1/2 z-10 [transform-origin:bottom_center] [backface-visibility:hidden]"
             :style="{ width: `${imgSize}px`, height: `${imgSize / 2}px` }"
           >
-            <CharacterSlot :msg="currentMsg" :characters="characters" :size="slotSize" />
+            <CharacterSlot :msg="currentMsg" :characters="characters" :size="size" />
           </div>
 
           <!-- 上：prevMsg（フリップ中は prevMsg、静止中は currentMsg） -->
@@ -24,7 +24,7 @@
             :class="{ 'card-top-flip': isFlipping }"
             :style="{ width: `${imgSize}px`, height: `${imgSize / 2}px` }"
           >
-            <CharacterSlot :msg="prevMsg ?? currentMsg" :characters="characters" :size="slotSize" />
+            <CharacterSlot :msg="prevMsg ?? currentMsg" :characters="characters" :size="size" />
           </div>
         </template>
 
@@ -37,14 +37,14 @@
           >
             <!-- 表：prevMsg -->
             <div class="absolute inset-0 flex items-center justify-center [backface-visibility:hidden]">
-              <CharacterSlot v-if="prevMsg" :msg="prevMsg" :characters="characters" :size="slotSize" />
+              <CharacterSlot v-if="prevMsg" :msg="prevMsg" :characters="characters" :size="size" />
             </div>
 
             <!-- 裏：currentMsg -->
             <div
               class="absolute inset-0 flex items-center justify-center [backface-visibility:hidden] [transform:rotateY(180deg)]"
             >
-              <CharacterSlot :msg="currentMsg" :characters="characters" :size="slotSize" />
+              <CharacterSlot :msg="currentMsg" :characters="characters" :size="size" />
             </div>
           </div>
         </template>
@@ -58,7 +58,7 @@
       class="flex items-center justify-center"
       :style="{ width: `${size.width}px`, height: `${size.height}px` }"
     >
-      <CharacterSlot :msg="resolvedMessage" :characters="characters" :size="slotSize" />
+      <CharacterSlot :msg="resolvedMessage" :characters="characters" :size="size" />
     </div>
 
     <!-- fallback -->
@@ -99,9 +99,6 @@
   })
 
   const imgSize = computed(() => Math.min(props.size.width, props.size.height) * 0.8)
-
-  // CharacterSlot の size prop（height / 4 ベース、CharacterSpin と同じ算出式）
-  const slotSize = computed(() => Math.floor((Math.min(props.size.width, props.size.height) * 0.8) / 4))
 
   const currentMsg = computed(() => props.slotMessages[currentIndex.value] ?? null)
 

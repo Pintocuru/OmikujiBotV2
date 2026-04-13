@@ -63,6 +63,15 @@ export const PostFlowWordPartySchema = z.object({
 })
 export type PostFlowWordPartyType = z.infer<typeof PostFlowWordPartySchema>
 
+// PostFlow Variable
+export const PostFlowVariableSchema = z.object({
+  ...PostFlowBaseSchema.shape,
+  // TODO(v3) : actionType -> kind
+  actionType: z.literal('variable').default('variable'),
+  message: normalizedObject(PostFlowMessageContentSchema),
+})
+export type PostFlowVariableType = z.infer<typeof PostFlowVariableSchema>
+
 // PostFlow bot
 export const PostFlowBotSchema = PostFlowBaseSchema.extend({
   // TODO(v3) : actionType -> kind
@@ -94,7 +103,9 @@ export const PostFlowSchema = z.discriminatedUnion('actionType', [
   PostFlowMessageSchema,
   PostFlowSoundSchema,
   PostFlowWordPartySchema,
+  PostFlowVariableSchema,
   PostFlowCallSchema,
+
   // PostFlowBotSchema, // TODO:実装
   //  PostFlowGameSchema, // v3時追加
 ])

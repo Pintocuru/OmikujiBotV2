@@ -50,6 +50,18 @@ export function createBotMessagesFromAction(
 }
 
 /**
+ * PostFlowVariable からBotMessageを生成
+ */
+export function createBotMessagesFromVariable(
+  extra: VariablePlaceholderExtra | undefined,
+  delaySeconds: number,
+  omiken?: OmikenCommentType
+): BotMessageType[] {
+  const hasRanking = extra?.scriptKey && (extra.lists || extra.slots)
+  return hasRanking ? [createRankingMessage(delaySeconds, extra, omiken)] : []
+}
+
+/**
  * Bubbleメッセージを生成
  */
 function createBubbleMessage(
