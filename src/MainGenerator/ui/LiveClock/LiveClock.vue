@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/LiveClock/LiveClock.vue -->
 <template>
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+  <CenteringWrapper>
     <LiveClockSelector
       :settings="settings"
       :default-message="defaultMessage"
@@ -8,7 +8,7 @@
       :is-flipped="isFlipped"
       :current-msg="currentMsg"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -19,6 +19,7 @@
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
   import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
   import LiveClockSelector from './parts/LiveClockSelector.vue'
+  import CenteringWrapper from '../common/CenteringWrapper.vue'
 
   const appStore = useAppStore()
 

@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/FlashBanner/FlashBanner.vue -->
 <template>
-  <div class="fixed top-0 w-full flex justify-center">
+  <CenteringWrapper>
     <FlashBannerSelector
       :key="currentMessage?.id ?? 'default'"
       :settings="settings"
@@ -9,7 +9,7 @@
       :color="currentCharacterColor"
       :label-class="blinkClass"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -20,6 +20,7 @@
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import { useFlashBannerLogic } from './composables/useFlashBannerLogic'
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
+  import CenteringWrapper from '../common/CenteringWrapper.vue'
 
   const { getCharacterColor, getCharacterLayers } = useCharacterManager()
 

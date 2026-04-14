@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/WinnerGroup/WinnerGroup.vue -->
 <template>
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+  <CenteringWrapper>
     <!-- 履歴ボタン -->
     <HistoryButton :history-items="historyItems" :color="winnerSetting.color" @clear="clearHistory" />
 
@@ -12,7 +12,7 @@
       :is-visible="isVisible"
       @click="handleClick"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -24,6 +24,7 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
   import { UserNameType } from '@shared/types'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
 
   interface HistoryItem {
     id: string

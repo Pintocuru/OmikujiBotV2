@@ -19,22 +19,22 @@ export const defaultBasePlaceholderLabel = [
 export const defaultPlaceholderLabel = [...defaultBasePlaceholderLabel, 'user', 'userId', 'price', 'tc', 'draws']
 
 export const defaultPlaceholderMap = {
-  user: { slot: 'comment', label: 'コメントしたユーザー', short: '[ユーザー名]' },
+  user: { slot: 'comment', label: 'コメントしたユーザー', short: 'User_Name' },
   userId: { slot: 'comment', label: 'コメントしたユーザーID', short: 'test_userId' },
-  price: { slot: 'comment', label: 'ギフト金額', short: '[ギフト金額]' },
-  commenter: { slot: 'event', label: 'コメントをしたユーザー数', short: '[コメントしたユーザー数]' },
-  syoken: { slot: 'event', label: '初見さんの数', short: '[初見さん数]' },
-  winner: { slot: 'event', label: 'コメントをしたランダムなユーザー', short: '[ランダムユーザー]' },
+  price: { slot: 'comment', label: 'ギフト金額', short: 'Gift_Price' },
+  commenter: { slot: 'event', label: 'コメントをしたユーザー数', short: 'Commenter_Count' },
+  syoken: { slot: 'event', label: '初見さんの数', short: 'Syoken_Count' },
+  winner: { slot: 'event', label: 'コメントをしたランダムなユーザー', short: 'Winner_Name' },
   winnerId: { slot: 'event', label: 'コメントをしたランダムなユーザーID', short: 'test_userId' },
-  clock: { slot: 'event', label: '現在時刻', short: '[現在時刻]' },
+  clock: { slot: 'event', label: '現在時刻', short: 'Clock_Time' },
 
-  lc: { slot: 'comment', label: countUnitConditionMap.lc.label, short: '[配信コメント数]' },
-  tc: { slot: 'comment', label: countUnitConditionMap.tc.label, short: '[個人コメント数]' },
-  draws: { slot: 'comment', label: countUnitConditionMap.draws.label, short: '[おみくじ発動回数]' },
+  lc: { slot: 'comment', label: countUnitConditionMap.lc.label, short: 'LiveComment_Count' },
+  tc: { slot: 'comment', label: countUnitConditionMap.tc.label, short: 'TotalComment_Count' },
+  draws: { slot: 'comment', label: countUnitConditionMap.draws.label, short: 'Omikuji_Draws_Count' },
 
-  viewer: { slot: 'event', label: serviceMetaConditionMap.viewer.label, short: '[視聴者数]' },
-  upVote: { slot: 'event', label: serviceMetaConditionMap.upVote.label, short: '[高評価数]' },
-  follower: { slot: 'event', label: serviceMetaConditionMap.follower.label, short: '[登録者数]' },
+  viewer: { slot: 'event', label: serviceMetaConditionMap.viewer.label, short: 'Viewer_Count' },
+  upVote: { slot: 'event', label: serviceMetaConditionMap.upVote.label, short: 'UpVote_Count' },
+  follower: { slot: 'event', label: serviceMetaConditionMap.follower.label, short: 'Subscribe_Count' },
 } as const
 
 /**

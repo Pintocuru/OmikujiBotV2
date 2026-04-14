@@ -1,12 +1,12 @@
 <!-- src/MainGenerator/ui/CounterPreview/CounterPreview.vue -->
 <template>
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full overflow-hidden">
+  <CenteringWrapper>
     <CounterPreviewSelector
       :counter-setting="counterSetting"
       :count="count"
       :users="hasPreviewData ? userList : generateDummyVisitRecords(500)"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +18,7 @@
   import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
   import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
   import { UserNameType } from '@shared/types'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
 
   const appStore = useAppStore()
   const { data, botMessages } = storeToRefs(appStore)

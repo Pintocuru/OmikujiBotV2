@@ -1,12 +1,12 @@
 <!-- src/MainGenerator/ui/SocialRoster/SocialRoster.vue -->
 <template>
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+  <CenteringWrapper>
     <SocialRosterSelector
       :settings="settings"
       :users="sortedUsers.length ? sortedUsers : generateDummyUserStats(200)"
       :social-roster-counts="counts"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +18,7 @@
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import SocialRosterSelector from './parts/SocialRosterSelector.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)

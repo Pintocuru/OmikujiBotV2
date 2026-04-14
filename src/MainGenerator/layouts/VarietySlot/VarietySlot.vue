@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/layouts/TemplaLayout.vue -->
+<!-- src/MainGenerator/layouts/VarietySlot/VarietySlot.vue -->
 <template>
   <CommentSpin />
   <GameRanking />

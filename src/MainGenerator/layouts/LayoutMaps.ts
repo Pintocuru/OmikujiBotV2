@@ -1,6 +1,7 @@
-// src/MainGenerator/ui/layouts/index.ts
+// src/MainGenerator/layouts/LayoutMaps.ts
 import { UiSpecialSetType } from '@/types'
 
 export const SPECIAL_SET_LAYOUT_LOADER: Record<UiSpecialSetType, () => Promise<any>> = {
-  templa: () => import('./TemplaLayout.vue'),
+  OmikujiBot: () => import('./OmikujiBot/OmikujiBot.vue'),
+  VarietySlot: () => import('./VarietySlot/VarietySlot.vue'),
 }

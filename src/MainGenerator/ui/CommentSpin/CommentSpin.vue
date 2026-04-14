@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/CommentSpin/CommentSpin.vue -->
 <template>
-  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full flex justify-center">
+  <CenteringWrapper>
     <CommentSpinSelector
       :settings="spinSettings"
       :logoPath="displayLogoPath"
@@ -11,14 +11,15 @@
       @animation-ready="(el, h) => onAnimationReady(el, h)"
       @animation-end="onAnimationEnd"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
+  import { useFilteredBotMessages } from '@main/ui/common/useFilteredBotMessages'
   import { CommentSpinSchema } from '@/types/OmikujiData/UiSettings/CommentSpinSchema'
   import { useCommentSpinMessages } from './composables/useCommentSpinMessages'
   import { useCommentSpinAnimation } from './composables/useCommentSpinAnimation'

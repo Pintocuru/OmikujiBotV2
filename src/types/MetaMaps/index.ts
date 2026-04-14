@@ -12,4 +12,4 @@ export * from './ReactionTriggerMaps'
 
 export * from './SoundKeyMaps'
 export * from './UiKindMaps'
-export * from './uiSpecialSetMap'
+export * from './UiSpecialSetMap'

@@ -1,10 +1,15 @@
-// d
+// src/types/MetaMaps/UiSpecialSetMap.ts
 
 // specialSet
 export const uiSpecialSetMap = {
-  templa: {
-    label: 'てんぷらさん用セット',
+  OmikujiBot: {
+    label: 'おみくじBOT',
+    description: 'フキダシ＋トースト＋ランキングのセット',
+    kinds: ['bubble', 'toast', 'ranking'],
+  },
+  VarietySlot: {
+    label: 'VarietySlot',
     description: 'ライバーカウンター＋スナイプタイマーのセット',
-    kinds: ['flashBanner', 'ranking'],
+    kinds: ['commentSpin', 'ranking'],
   },
 } as const

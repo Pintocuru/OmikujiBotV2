@@ -1,13 +1,13 @@
 <!-- src/MainGenerator/ui/CookieCounter/CookieCounter.vue -->
 <template>
-  <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full flex justify-center">
+  <CenteringWrapper>
     <CookieCounterSelector
       :settings="cookieSettings"
       :counters="counters"
       :event-labels="eventLabels"
       :variable-labels="variableLabels"
     />
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -17,6 +17,7 @@
   import { useAppStore } from '@main/stores/useAppStore'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import CookieCounterSelector from './parts/CookieCounterSelector.vue'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)

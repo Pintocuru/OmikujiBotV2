@@ -1,16 +1,18 @@
 <!-- src/MainGenerator/ui/DeadAir/DeadAir.vue -->
 <template>
-  <DeadAirSelector
-    :settings="settings"
-    :phase="phase"
-    :formatted-time="formattedTime"
-    :is-warning="isWarning"
-    :is-critical="isCritical"
-    :current-lives="currentLives"
-    :bonus-fraction="bonusFraction"
-    :life-fraction="lifeFraction"
-    :optional-value="optionalValue"
-  />
+  <CenteringWrapper>
+    <DeadAirSelector
+      :settings="settings"
+      :phase="phase"
+      :formatted-time="formattedTime"
+      :is-warning="isWarning"
+      :is-critical="isCritical"
+      :current-lives="currentLives"
+      :bonus-fraction="bonusFraction"
+      :life-fraction="lifeFraction"
+      :optional-value="optionalValue"
+    />
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -21,6 +23,7 @@
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import { useDeadAirLogic } from './composables/useDeadAirLogic'
   import DeadAirSelector from './parts/DeadAirSelector.vue'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)

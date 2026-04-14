@@ -9,7 +9,8 @@
       title="アプリ設定"
       description="このコンフィグエディターに関する設定です"
     >
-      <SettingsEditor />
+      <GeneratorSettingsEditor />
+      <EditorSettingsEditor />
     </SectionCard>
 
     <!-- 実績 -->
@@ -63,7 +64,8 @@
 </template>
 
 <script setup lang="ts">
-  import SettingsEditor from './settings/SettingsEditor.vue'
+  import GeneratorSettingsEditor from './settings/GeneratorSettingsEditor.vue'
+  import EditorSettingsEditor from './settings/EditorSettingsEditor.vue'
   import FlagsInfo from './FlagsInfo/FlagsInfo.vue'
   import FlagsSettings from './FlagsSettings/FlagsSettings.vue'
   import PackageBasicInfo from './meta/PackageBasicInfo.vue'

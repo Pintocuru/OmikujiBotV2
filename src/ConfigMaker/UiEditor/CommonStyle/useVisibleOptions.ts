@@ -1,4 +1,4 @@
-// src/common/composables/useVisibleOptions.ts
+// src/ConfigMaker/UiEditor/CommonStyle/useVisibleOptions.ts
 import { computed, type ComputedRef } from 'vue'
 import type { AccessLevelType } from '@shared/types'
 import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'

@@ -1,4 +1,4 @@
-// src/ConfigMaker/scripts/useOmikujiWeight.ts
+// src/ConfigMaker/components/events/OmikujiCard/useOmikujiWeight.ts
 import { OmikujiItemType } from '@/types/OmikujiData/'
 
 /** インデックスに対応する色を返す（12色ループ） */

@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/FlightSeat/FlightSeat.vue -->
 <template>
-  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+  <CenteringWrapper>
     <SeatSelector
       :color="settings.color"
       :seats="seats"
@@ -15,7 +15,7 @@
     <template v-if="isDev && 0">
       <FlightSeatDebug :occupiedSeats="occupiedSeats" :totalSeats="totalSeats" :debugLog="debugLog" />
     </template>
-  </div>
+  </CenteringWrapper>
 </template>
 
 <script setup lang="ts">
@@ -28,6 +28,7 @@
   import { useSeatManager } from './composables/useSeatManager'
   import { calculateTotalSeats, parseCustomLayout } from './composables/seatLayoutUtils'
   import { useAppStore } from '@main/stores/useAppStore'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
   import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 
   const appStore = useAppStore()

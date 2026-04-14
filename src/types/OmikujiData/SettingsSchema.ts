@@ -15,14 +15,18 @@ export type LocaleType = (typeof locales)[number]
  * エディター設定
  */
 export const SettingsSchema = z.object({
-  locale: z.enum(locales).default('ja').catch('ja'),
-  commentType: z.enum(commentModeTypes).default('OneComme').catch('OneComme'),
-  licenseKeyHash: z.string().default('').catch(''),
-  daisyUiTheme: z.enum(themes).default('dark').catch('dark'),
-  initialCategory: z.enum(categoryTypeLabel).default('comments').catch('comments'), // 読み込み時開くカテゴリ
+  // TODO(v3): generator にネスト
+  commentType: z.enum(commentModeTypes).default('OneComme').catch('OneComme'), // コメント購読タイプ
   soundEnabled: z.boolean().default(true).catch(true), // サウンドを有効にするか
   ignoreUserPattern: z.string().default('__INFO__|__ERROR__').catch('__INFO__|__ERROR__'), // VisitUserを無視するリスト
   includeExternalComments: z.boolean().default(false).catch(false), // 外部コメントをユーザーリストに入れるか
+  uiPlacement: z.enum(['center', 'embedded']).default('center').catch('center'), // 単体のアイテムを中央に配置するか
+
+  // TODO(v3): editor にネスト
+  locale: z.enum(locales).default('ja').catch('ja'), // 言語設定
+  licenseKeyHash: z.string().default('').catch(''), // ライセンスキー
+  daisyUiTheme: z.enum(themes).default('dark').catch('dark'), // エディターのテーマカラー
+  initialCategory: z.enum(categoryTypeLabel).default('comments').catch('comments'), // 読み込み時に開くカテゴリ
 })
 
 export type SettingsType = z.infer<typeof SettingsSchema>

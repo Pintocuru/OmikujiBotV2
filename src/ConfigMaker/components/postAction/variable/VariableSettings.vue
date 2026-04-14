@@ -1,4 +1,4 @@
-<!-- src/ConfigMaker/components/postAction/Message/MessageSettings.vue -->
+<!-- src/ConfigMaker/components/postAction/variable/VariableSettings.vue -->
 <template>
   <SettingItem label="💬 メッセージ内容" description="プレースホルダーが使えます">
     <MessageTextDialog v-model="bubbleText" :isCommentMode="true" />
