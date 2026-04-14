@@ -1,23 +1,22 @@
 <!-- src/MainGenerator/ui/FlightSeat/parts/FlightSeatSelector.vue -->
 <template>
-  <div class="flex justify-center">
-    <div
-      :class="
-        kind === 'plain' || kind === 'ferrisWheel'
-          ? 'bg-base-100 transparent-bg'
-          : 'card bg-base-200 p-4 rounded-xl shadow-xl space-y-2'
-      "
-      :data-theme="color.daisyUiTheme"
-    >
-      <component
-        :is="layoutComponent"
-        :key="totalSeats"
-        :color="color"
-        :seats="seats"
-        :statKey="statKey"
-        :customLayout="customLayout"
-      />
-    </div>
+  <div
+    class="flex"
+    :class="
+      kind === 'plain' || kind === 'ferrisWheel'
+        ? 'bg-base-100 transparent-bg'
+        : 'card bg-base-200 p-4 rounded-xl shadow-xl space-y-2'
+    "
+    :data-theme="color.daisyUiTheme"
+  >
+    <component
+      :is="layoutComponent"
+      :key="totalSeats"
+      :color="color"
+      :seats="seats"
+      :statKey="statKey"
+      :customLayout="customLayout"
+    />
   </div>
 </template>
 

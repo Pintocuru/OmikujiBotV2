@@ -58,6 +58,7 @@ export class VariablePlaceholderProcessor {
     const extra = this.buildExtraData(allVars)
     for (const key of RESERVED_KEYS) evaluator.remove(key)
 
+    const hasUnresolved = /\{\{[\s\S]*?\}\}/.test(processed)
     return {
       bubble: processed,
       extra: {
@@ -65,6 +66,7 @@ export class VariablePlaceholderProcessor {
         lists: extra.lists,
         slots: extra.slots,
       },
+      hasError: hasUnresolved,
     }
   }
 

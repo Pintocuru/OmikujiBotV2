@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/CommentSpin/parts/CommentSpinSelector.vue -->
 <template>
-  <div class="bg-base-100 transparent-bg" :data-theme="color.daisyUiTheme">
+  <div class="bg-base-100 transparent-bg" :data-theme="color.daisyUiTheme" :style="wrapperStyle">
     <component
       :is="currentItem"
       :settings="settings"
@@ -47,4 +47,12 @@
   }
 
   const currentItem = computed(() => itemMap[props.settings.component] ?? Standard)
+
+  const wrapperStyle = computed(() => {
+    const size = props.settings.size
+    return {
+      width: `${size.width}px`,
+      maxWidth: '100%', // 念のため
+    }
+  })
 </script>

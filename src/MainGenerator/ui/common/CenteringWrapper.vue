@@ -7,14 +7,12 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { storeToRefs } from 'pinia'
   import { useAppStore } from '@/MainGenerator/stores/useAppStore'
 
   const appStore = useAppStore()
-  const { data } = storeToRefs(appStore)
 
-  const uiPlacement = computed(() => data.value.settings.uiPlacement)
-  const specialSet = computed(() => data.value.components.specialSet)
+  const uiPlacement = computed(() => appStore.data.settings.uiPlacement)
+  const specialSet = computed(() => appStore.data.components.specialSet)
 
   const containerClass = computed(() => {
     if (uiPlacement.value === 'center' && specialSet.value === null) {

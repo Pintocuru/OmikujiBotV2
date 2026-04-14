@@ -1,8 +1,13 @@
 <!-- src/MainGenerator/layouts/OmikujiBot/OmikujiBot.vue -->
 <template>
+  <!-- フキダシ・トーストは専用uiとしてこのままにする -->
   <CommentBubble />
   <ToastWidgets />
-  <GameRanking />
+
+  <!-- ランキング -->
+  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-full">
+    <GameRanking />
+  </div>
 </template>
 
 <script setup lang="ts">

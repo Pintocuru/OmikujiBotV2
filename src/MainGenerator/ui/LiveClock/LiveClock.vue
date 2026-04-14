@@ -40,10 +40,10 @@
     commitIfPending(!isFlipped.value)
   })
 
-  /* ───────── 時計 ───────── */
+  // 時計
   const isMounted = ref(false)
 
-  /* ───────── フリップ制御 ───────── */
+  // フリップ制御
   const isFlipped = ref(false)
   const currentMsg = ref('')
 
@@ -78,8 +78,7 @@
     }, lifeTime)
   }
 
-  /* ───────── コメント監視 ───────── */
-
+  // コメント監視
   watch(
     () => displayedComments.value[0],
     (latest) => {
@@ -101,7 +100,7 @@
     }
   )
 
-  /* ───────── ライフサイクル ───────── */
+  // ライフサイクル
 
   onMounted(() => {
     //startLiveClock()

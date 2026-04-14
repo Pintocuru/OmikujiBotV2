@@ -9,7 +9,10 @@ import { DisplayVariableResolver } from '@main/scripts/DisplayVariable/DisplayVa
 /**
  * テスト用：メッセージのプレースホルダーを処理して bubble を返す
  */
-export const processTestPlaceholder = (message: string, placeholders: Record<string, PlaceholderType>): string => {
+export const processTestPlaceholder = (
+  message: string,
+  placeholders: Record<string, PlaceholderType>
+): { text: string; hasError: boolean } => {
   try {
     // 参照プレースホルダー
     const dummyContext = new PlaceholderVariable()
@@ -23,16 +26,29 @@ export const processTestPlaceholder = (message: string, placeholders: Record<str
     contentPlaceholder.updateResolvedValues(context.getAll())
     const withStatic = contentPlaceholder.processText(resolved)
 
-    // プレースホルダー展開後、もう1回変換する
+    // 再解決
     const resolved2 = displayVariable.resolve(withStatic)
 
-    // 評価ブロック(変数プレースホルダー)
+    // 評価ブロック
     const dynamicProcessor = new VariablePlaceholderProcessor(dummyContext)
     const processed = dynamicProcessor.process(resolved2)
 
-    return processed.bubble
+    // 未処理 {{ }} が残っていればエラー
+    const hasError = /\{\{[\s\S]*?\}\}/.test(processed.bubble)
+
+    if (hasError) {
+      const highlighted = processed.bubble.replace(/\{\{[\s\S]*?\}\}/g, (m) => {
+        return m
+      })
+
+      return { text: highlighted, hasError: true }
+    }
+
+    return { text: processed.bubble, hasError: false }
   } catch {
-    // ★ プレビューでは失敗しても原文を返す
-    return message
+    return {
+      text: message,
+      hasError: true,
+    }
   }
 }

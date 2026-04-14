@@ -15,6 +15,7 @@ export interface VariablePlaceholderExtra {
 export interface VariablePlaceholderResult {
   bubble: string
   extra?: VariablePlaceholderExtra
+  hasError?: boolean
 }
 
 /**

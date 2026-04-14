@@ -37,7 +37,7 @@
   const animation = computed(() => spinSettings.value.animation)
 
   const { messages } = useFilteredBotMessages('commentSpin', {
-    allowEmptyMessage: true,
+    allowEmptyMessage: false,
   })
 
   const { slotMessages, isSpinning, resolvedMessage, overrideLogoPath, startSpin, onAnimationReady, onAnimationEnd } =

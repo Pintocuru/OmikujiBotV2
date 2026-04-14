@@ -13,12 +13,19 @@
       <!-- プレースホルダー展開例 -->
 
       <div class="divider text-xs my-1">展開例</div>
+      <div v-if="hasError">⚠️ 評価できない式があります</div>
       <div
-        class="bg-base-200 rounded-lg px-3 py-2 text-xs font-mono text-base-content/70 whitespace-pre-wrap break-words cursor-pointer hover:bg-base-300 transition-colors select-none relative group"
+        v-if="expandedPreviewDisplay.length"
+        class="rounded-lg px-3 py-2 text-xs font-mono whitespace-pre-wrap break-words cursor-pointer transition-colors select-none relative group"
+        :class="[
+          hasError
+            ? 'bg-error/10 text-error border border-error/30'
+            : 'bg-base-200 text-base-content/70 hover:bg-base-300',
+        ]"
         :title="'クリックで更新'"
         v-html="expandedPreviewDisplay"
         @click="refresh"
-      ></div>
+      />
     </div>
   </div>
 </template>
@@ -62,13 +69,21 @@
   })
 
   // 展開例（refreshCount を依存に含めることで再計算される）
-  const expandedPreviewDisplay = computed(() => {
-    // refreshCount を参照して reactivity を確保
+  const expandedResult = computed(() => {
     void refreshCount.value
     try {
-      return escapeHtml(processTestPlaceholder(props.draftText, data.placeholders ?? {}))
+      return processTestPlaceholder(props.draftText, data.placeholders ?? {})
     } catch {
-      return escapeHtml(props.draftText)
+      return {
+        text: props.draftText,
+        hasError: true,
+      }
     }
   })
+
+  const expandedPreviewDisplay = computed(() => {
+    return escapeHtml(expandedResult.value.text)
+  })
+
+  const hasError = computed(() => expandedResult.value.hasError)
 </script>

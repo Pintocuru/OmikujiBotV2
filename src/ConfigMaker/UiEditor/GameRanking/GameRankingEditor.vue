@@ -75,7 +75,7 @@
         <div
           v-for="(order, key) in rankingSortOrderMap"
           :key="key"
-          class="badge badge-lg cursor-pointer"
+          class="badge badge-lg cursor-pointer whitespace-nowrap"
           :class="ranking.sortOrder === key ? 'badge-primary' : 'badge-outline'"
           @click="ranking.sortOrder = key"
         >

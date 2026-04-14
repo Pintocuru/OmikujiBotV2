@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/UiEditor/SocialRoster/SocialRosterPreview.vue -->
 <template>
   <HudPreview>
-    <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="socialRoster.color">
+    <div :class="[fontFamily]">
       <SocialRosterSelector :settings="socialRoster" :users="sortedPreviewUsers" :social-roster-counts="counts" />
     </div>
     <template #hud>

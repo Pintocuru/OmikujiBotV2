@@ -1,6 +1,10 @@
 <!-- src/ConfigMaker/UiEditor/CommonStyle/DisplayStyleSelector.vue -->
 <template>
-  <SettingItem v-if="Object.keys(visibleOptions).length > 1" label="表示スタイル" description="表示形式を選択">
+  <SettingItem
+    v-if="(Object.keys(visibleOptions).length > 1 && !specialSet) || isGod"
+    label="表示スタイル"
+    description="表示形式を選択"
+  >
     <div class="flex flex-wrap gap-2">
       <div
         v-for="(config, key) in visibleOptions"
@@ -19,6 +23,9 @@
   import { AccessLevelType } from '@shared/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibleOptions } from './useVisibleOptions'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { computed } from 'vue'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   type BaseComponentConfig = {
     label: string
@@ -34,6 +41,10 @@
     (e: 'update:modelValue', value: string): void
   }>()
 
+  const appStore = useAppStore()
+  const { isGod } = useSettingMode()
+  // specialSet = null でないなら、表示しない
+  const specialSet = computed(() => appStore.data.components.specialSet)
   const { visibleOptions } = useVisibleOptions(props.options)
 
   function select(key: string) {

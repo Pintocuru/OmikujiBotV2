@@ -15,13 +15,7 @@
   </div>
 
   <!-- メインダイアログ -->
-  <BaseEditDialog
-    ref="baseDialog"
-    title="メッセージ詳細エディター"
-    icon="MessageSquare"
-    @save="handleSave"
-    @cancel="handleCancel"
-  >
+  <BaseEditDialog ref="baseDialog" title="メッセージ詳細エディター" icon="MessageSquare" @save="handleSave">
     <!-- 左: プレビュー -->
     <template #sidebar-left>
       <MessagePreviewPanel :draft-text="draftText" />
@@ -128,10 +122,6 @@
   const handleSave = () => {
     emit('update:modelValue', draftText.value)
     baseDialog.value?.close()
-  }
-
-  const handleCancel = () => {
-    // draft を破棄するだけ。close は BaseEditDialog 側が呼ぶ。
   }
 
   const lineCount = computed(() => draftText.value.split('\n').length)

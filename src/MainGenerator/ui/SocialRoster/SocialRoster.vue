@@ -1,11 +1,13 @@
 <!-- src/MainGenerator/ui/SocialRoster/SocialRoster.vue -->
 <template>
   <CenteringWrapper>
-    <SocialRosterSelector
-      :settings="settings"
-      :users="sortedUsers.length ? sortedUsers : generateDummyUserStats(200)"
-      :social-roster-counts="counts"
-    />
+    <div class="max-h-screen overflow-y-auto w-full">
+      <SocialRosterSelector
+        :settings="settings"
+        :users="sortedUsers.length ? sortedUsers : generateDummyUserStats(200)"
+        :social-roster-counts="counts"
+      />
+    </div>
   </CenteringWrapper>
 </template>
 

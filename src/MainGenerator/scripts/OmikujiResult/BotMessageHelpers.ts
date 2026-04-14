@@ -2,6 +2,7 @@
 import {
   BotMessageBubbleSchema,
   BotMessageExtraSchema,
+  BotMessageExtraType,
   BotMessageType,
   ExtraSlotsType,
 } from '@/types/MainGenerator/BotMessageSchema'
@@ -96,7 +97,7 @@ function createRankingMessage(
   delaySeconds: number,
   extra: VariablePlaceholderExtra,
   omiken?: OmikenCommentType
-): BotMessageType {
+): BotMessageExtraType {
   return BotMessageExtraSchema.parse({
     delaySeconds,
     scriptKey: extra.scriptKey,

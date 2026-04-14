@@ -1,7 +1,11 @@
 <!-- src/MainGenerator/layouts/VarietySlot/VarietySlot.vue -->
 <template>
-  <CommentSpin />
-  <GameRanking />
+  <div class="flex flex-col items-center space-y-4">
+    <CommentSpin />
+    <div class="w-full">
+      <GameRanking />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">

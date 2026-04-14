@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/CommentSpin/layouts/Standard.vue -->
 <template>
-  <div class="flex flex-col items-center">
+  <div>
     <!-- タイトルロゴ -->
     <LayerImage2 :layers="logoPath" :width="size.width" :max-width="400" :min-width="200" />
 
