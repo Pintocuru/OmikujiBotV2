@@ -53,7 +53,7 @@
     if (!result?.content) return showError()
 
     const message = processTestPlaceholder(result.content, placeholdersMap.value)
-    showResult(result, message)
-    postSpeech(message)
+    showResult(result, message.text)
+    postSpeech(message.text)
   }
 </script>

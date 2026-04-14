@@ -25,6 +25,7 @@
   import CharacterSpin from '../layouts/CharacterSpin.vue'
   import FlipCalendar from '../layouts/FlipCalendar.vue'
   import { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
+  import Popup from '../layouts/Popup.vue'
 
   const props = defineProps<{
     settings: CommentSpinType
@@ -44,6 +45,7 @@
     standard: Standard,
     character: CharacterSpin,
     flipCalendar: FlipCalendar,
+    popup: Popup,
   }
 
   const currentItem = computed(() => itemMap[props.settings.component] ?? Standard)

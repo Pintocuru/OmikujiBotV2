@@ -10,7 +10,7 @@ interface AnimationOptions {
 }
 
 export function useCommentSpinAnimation(options: AnimationOptions = {}) {
-  const { duration = 1500, easing = 'cubic-bezier(0.25, 0.1, 0.1, 1)' } = options
+  const { duration = 3000, easing = 'cubic-bezier(0.25, 0.1, 0.1, 1)' } = options
   const animationType = options.type?.value ?? 'vertical'
 
   const slotMessages = ref<BotMessageBubbleType[]>([])
@@ -73,7 +73,7 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
 
       // --- 待機時間 ---
       // slot1 : 終了後、演出等で次の回転受付を蹴る時間(ms)
-      const delayMs = (Number(resolvedMessage.value?.slots?.slot1) ?? 0) * 1000
+      const delayMs = (Number(resolvedMessage.value?.slots?.slot1) ?? 3) * 1000
 
       setTimeout(() => {
         isSpinning.value = false

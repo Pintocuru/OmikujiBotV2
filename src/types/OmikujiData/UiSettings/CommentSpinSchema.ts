@@ -15,6 +15,12 @@ export const spinComponentMap = {
     isColor: true,
     animations: ['vertical', 'horizontal'],
   },
+  popup: {
+    label: 'ポップアップ',
+    accessLevel: 'pro',
+    isColor: true,
+    animations: ['vertical', 'horizontal'],
+  },
   flipCalendar: {
     label: 'フリップ/カレンダー',
     accessLevel: 'godMode',

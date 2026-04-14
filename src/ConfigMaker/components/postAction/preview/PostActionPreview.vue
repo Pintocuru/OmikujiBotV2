@@ -121,7 +121,7 @@
     if (!content) return '(メッセージなし)'
     const processed = processTestPlaceholder(content, data.value.placeholders)
     if (!processed) return '(このメッセージは表示されません)'
-    return transformIconPlaceholdersPreview(processed)
+    return transformIconPlaceholdersPreview(processed.text)
   })
 
   // リフレッシュキー

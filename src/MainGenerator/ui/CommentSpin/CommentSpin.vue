@@ -43,5 +43,5 @@
   const { slotMessages, isSpinning, resolvedMessage, overrideLogoPath, startSpin, onAnimationReady, onAnimationEnd } =
     useCommentSpinAnimation({ type: animation })
 
-  useCommentSpinMessages({ messages, startSpin })
+  useCommentSpinMessages({ messages, startSpin, isSpinning })
 </script>
