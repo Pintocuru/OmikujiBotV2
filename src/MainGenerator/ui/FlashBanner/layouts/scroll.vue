@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/parts/ScrollItem.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/layouts/scroll.vue -->
 <template>
   <div class="flex items-center overflow-hidden" :class="[settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']">
     <!-- ラベルブロック：強調カラー帯 -->
@@ -37,7 +37,7 @@
   import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
-  import { useMessageTransition } from './useMessageTransition'
+  import { useMessageTransition } from '../composables/useMessageTransition'
 
   const props = defineProps<{
     settings: FlashBannerType

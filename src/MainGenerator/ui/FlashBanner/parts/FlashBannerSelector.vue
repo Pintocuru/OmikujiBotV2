@@ -7,40 +7,34 @@
       :message="message"
       :layers="layers"
       :color="color"
-      :label-class="labelClass"
+      :label-class="labelClass ?? ''"
     />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
-  import type { FlashComponent } from '@/types/'
-  import StandardItem from './StandardItem.vue'
-  import TickerItem from './TickerItem.vue'
-  import GlassItem from './GlassItem.vue'
-  import ArcadeItem from './ArcadeItem.vue'
-  import ScrollItem from './ScrollItem.vue'
+  import { CharacterColorType, FlashBannerType, FlashComponent } from '@/types/'
+  import standard from '../layouts/standard.vue'
+  import ticker from '../layouts/ticker.vue'
+  import glass from '../layouts/glass.vue'
+  import arcade from '../layouts/arcade.vue'
+  import scroll from '../layouts/scroll.vue'
 
-  const props = withDefaults(
-    defineProps<{
-      settings: FlashBannerType
-      message: string
-      layers: string[]
-      color: CharacterColorType
-      labelClass?: string
-    }>(),
-    {
-      labelClass: '',
-    }
-  )
+  const props = defineProps<{
+    settings: FlashBannerType
+    message: string
+    layers: string[]
+    color: CharacterColorType
+    labelClass?: string
+  }>()
 
   const componentMap: Record<FlashComponent, Component> = {
-    standard: StandardItem,
-    ticker: TickerItem,
-    glass: GlassItem,
-    arcade: ArcadeItem,
-    scroll: ScrollItem,
+    standard,
+    ticker,
+    glass,
+    arcade,
+    scroll,
   }
-  const currentComponent = computed(() => componentMap[props.settings.component] ?? StandardItem)
+  const currentComponent = computed(() => componentMap[props.settings.component] ?? standard)
 </script>

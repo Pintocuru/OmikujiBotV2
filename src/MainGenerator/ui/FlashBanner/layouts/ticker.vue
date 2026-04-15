@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/parts/TickerItem.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/layouts/ticker.vue -->
 <template>
   <div
     class="flex items-center overflow-hidden px-2"
@@ -44,7 +44,7 @@
   import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
-  import { useMessageTransition } from './useMessageTransition'
+  import { useMessageTransition } from '../composables/useMessageTransition'
 
   const props = defineProps<{
     settings: FlashBannerType

@@ -1,4 +1,4 @@
-// src/MainGenerator/ui/FlashBanner/parts/useMessageTransition.ts
+// src/MainGenerator/ui/FlashBanner/composables/useMessageTransition.ts
 import { ref, watch } from 'vue'
 import { useMotion } from '@vueuse/motion'
 

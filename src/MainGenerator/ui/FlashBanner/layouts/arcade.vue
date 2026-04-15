@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/parts/ArcadeItem.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/layouts/arcade.vue -->
 <template>
   <div
     class="flex items-center min-h-18 overflow-hidden gap-4 px-4"
@@ -40,8 +40,8 @@
   import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
-  import { useMessageTransition } from './useMessageTransition'
-  import { useFlashScroll } from './useFlashScroll'
+  import { useMessageTransition } from '../composables/useMessageTransition'
+  import { useFlashScroll } from '../composables/useFlashScroll'
 
   const props = defineProps<{
     settings: FlashBannerType

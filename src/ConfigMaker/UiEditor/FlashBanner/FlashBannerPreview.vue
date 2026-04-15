@@ -21,7 +21,7 @@
   import FlashBannerSelector from '@main/ui/FlashBanner/parts/FlashBannerSelector.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
-  import { useDelayedBlink } from '@main/ui/FlashBanner/parts/useDelayedBlink'
+  import { useDelayedBlink } from '@/MainGenerator/ui/FlashBanner/composables/useDelayedBlink'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import type { FlashBannerType } from '@/types/OmikujiData/'
 

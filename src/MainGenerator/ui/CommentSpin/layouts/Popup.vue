@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/CommentSpin/layouts/PopupSpin.vue -->
+<!-- src/MainGenerator/ui/CommentSpin/layouts/Popup.vue -->
 <template>
   <Transition name="popup">
     <div

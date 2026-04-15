@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/FlashBanner/parts/GlassItem.vue -->
+<!-- src/MainGenerator/ui/FlashBanner/layouts/glass.vue -->
 <template>
   <div
     class="flex items-center min-h-12 rounded-full overflow-hidden gap-3 px-4 py-2"
@@ -40,8 +40,8 @@
   import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
-  import { useMessageTransition } from './useMessageTransition'
-  import { useFlashScroll } from './useFlashScroll'
+  import { useMessageTransition } from '../composables/useMessageTransition'
+  import { useFlashScroll } from '../composables/useFlashScroll'
 
   const props = defineProps<{
     settings: FlashBannerType

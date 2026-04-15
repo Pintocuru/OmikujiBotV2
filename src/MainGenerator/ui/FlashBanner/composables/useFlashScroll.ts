@@ -1,4 +1,4 @@
-// src/MainGenerator/ui/FlashBanner/parts/useFlashScroll.ts
+// src/MainGenerator/ui/FlashBanner/composables/useFlashScroll.ts
 import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
 import type { FlashBannerType } from '@/types/OmikujiData/'
 
