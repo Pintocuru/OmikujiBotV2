@@ -11,39 +11,34 @@ const DISPLAY_CONFIG = {
   MAX_MESSAGE_LENGTH: 100,
 } as const
 
-// 共通の基底composable
 export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
   const displayedComments = ref<BotMessageBubbleType[]>([])
   const animationFrameId = ref<number>()
 
-  const comments = computed(() =>
-    botMessages.value.filter((m) => {
-      return !!m.bubble?.message
-    })
-  )
+  const comments = computed(() => botMessages.value.filter((m) => !!m.bubble?.message))
 
-  // MotionWrapperのafter-leaveイベントから呼ばれる関数
+  // MotionWrapper の after-leave から呼ばれる（CommentBubble 用途）
+  // FlashBanner では MotionWrapper がないため呼ばれないが、
+  // hideTimeout コールバック内で visible=false にした後、
+  // このメソッドを直接呼ぶことで即座にエントリを除去できる
   const removeComment = (messageId: string) => {
     const index = displayedComments.value.findIndex((item) => item.id === messageId)
-    if (index > -1) {
-      const comment = displayedComments.value[index]
-      // hideTimeoutをクリア
-      if (comment.display?.hideTimeout) {
-        clearTimeout(comment.display?.hideTimeout)
-      }
-      displayedComments.value.splice(index, 1)
+    if (index === -1) return
+    const comment = displayedComments.value[index]
+    if (comment.display?.hideTimeout) {
+      clearTimeout(comment.display.hideTimeout)
     }
+    displayedComments.value.splice(index, 1)
   }
 
-  // コメントのvisibleをfalseにしてLeaveアニメーションを開始
+  // visible を false にして Leave アニメーションを開始する（CommentBubble 用途）
   const hideComment = (messageId: string) => {
     const comment = displayedComments.value.find((item) => item.id === messageId)
-    if (comment && comment.display) {
+    if (comment?.display) {
       comment.display.visible = false
     }
   }
 
-  // 表示制御ロジック
   const useEnhancedDisplayControl = () => {
     let lastTime = 0
     const processedMessages = new Map<string, string>()
@@ -53,33 +48,28 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
 
       const newComments = comments.value.filter((comment) => {
         const key = buildMessageKey(comment)
-        const prev = processedMessages.get(comment.id)
-        return prev !== key
+        return processedMessages.get(comment.id) !== key
       })
       if (newComments.length === 0) return
 
       lastTime = now
 
       newComments.forEach((nextComment) => {
-        let totalLifeTime: number | null = null
-
+        // --- 表示時間の解決 ---
+        let totalLifeTime: number | null
         const sec = nextComment.bubble?.displaySeconds
-
         if (sec === null) {
-          // null → 無限表示
-          totalLifeTime = null
+          totalLifeTime = null // null → 無限表示
         } else if (sec !== undefined) {
-          // 数値が入っている → 指定秒数
-          totalLifeTime = sec * 1000
+          totalLifeTime = sec * 1000 // 数値指定
         } else {
-          // undefined → 自動計算
+          // undefined → 文字数から自動計算
           const rawLength = nextComment.bubble?.message?.length ?? 0
           const commentLength = Math.min(rawLength, DISPLAY_CONFIG.MAX_MESSAGE_LENGTH)
           const extraTime = Math.max(commentLength - DISPLAY_CONFIG.THRESHOLD, 0) * DISPLAY_CONFIG.EXTRA_TIME_PER_CHAR
           totalLifeTime = DISPLAY_CONFIG.BASE_LIFE_TIME + extraTime
         }
 
-        // DisplayBotMessageとして作成
         const displayMessage: BotMessageBubbleType = {
           ...nextComment,
           display: {
@@ -88,18 +78,29 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
           },
         }
 
-        if (displayMessage.display) displayMessage.display.visible = true
-
-        // 指定時間後にLeaveアニメーションを開始
         if (totalLifeTime !== null) {
-          // IDで検索せず、このスコープの displayMessage を直接操作する
-          const targetId = displayMessage.id // IDを固定
+          const targetId = displayMessage.id
           displayMessage.display!.hideTimeout = setTimeout(() => {
+            // visible を false にする（MotionWrapper がある場合は after-leave を待つ）
             const target = displayedComments.value.find((m) => m.id === targetId)
-            if (target && target.display) {
-              target.display.visible = false // これならVueが確実に検知できる
+            if (target?.display) {
+              target.display.visible = false
             }
-          }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as any
+
+            // FlashBanner のように MotionWrapper がない場合はここで即 remove する
+            // MotionWrapper がある場合は after-leave イベントから removeComment が呼ばれるため
+            // 二重削除にならないよう、removeComment 内で index チェックを行っている
+            //
+            // ※ FlashBanner 側でこの composable を使う場合は、
+            //   onMessageChanged などのタイミングで removeComment を呼ぶか、
+            //   visible=false になった時点で currentMessage の computed が
+            //   自動的に defaultMessage へフォールバックするため、
+            //   エントリが残り続けても UI への影響はない。
+            //   ただし配列が肥大化しないよう LEAVE_ANIMATION_DELAY 後に remove する。
+            setTimeout(() => {
+              removeComment(targetId)
+            }, DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY)
+          }, totalLifeTime - DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY) as unknown as number
         }
 
         displayedComments.value.unshift(displayMessage)
@@ -115,25 +116,17 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
 
     const start = () => {
       processedMessages.clear()
-      // 既存のタイムアウトをすべてクリア
       displayedComments.value.forEach((comment) => {
-        if (comment.display?.hideTimeout) {
-          clearTimeout(comment.display?.hideTimeout)
-        }
+        if (comment.display?.hideTimeout) clearTimeout(comment.display.hideTimeout)
       })
       displayedComments.value = []
       update()
     }
 
     const stop = () => {
-      if (animationFrameId.value) {
-        cancelAnimationFrame(animationFrameId.value)
-      }
-      // すべてのタイムアウトをクリア
+      if (animationFrameId.value) cancelAnimationFrame(animationFrameId.value)
       displayedComments.value.forEach((comment) => {
-        if (comment.display?.hideTimeout) {
-          clearTimeout(comment.display?.hideTimeout)
-        }
+        if (comment.display?.hideTimeout) clearTimeout(comment.display.hideTimeout)
       })
       processedMessages.clear()
       displayedComments.value = []
@@ -152,6 +145,6 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
     stop: displayControl.stop,
   }
 }
-const buildMessageKey = (msg: BotMessageBubbleType) => {
-  return [msg.bubble?.message ?? '', msg.bubble?.displaySeconds ?? 'auto'].join('|')
-}
+
+const buildMessageKey = (msg: BotMessageBubbleType): string =>
+  [msg.bubble?.message ?? '', msg.bubble?.displaySeconds ?? 'auto'].join('|')

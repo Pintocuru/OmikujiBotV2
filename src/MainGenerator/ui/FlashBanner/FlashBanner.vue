@@ -2,9 +2,9 @@
 <template>
   <CenteringWrapper>
     <FlashBannerSelector
-      :key="currentMessage?.id ?? 'default'"
+      :key="currentMessage.id"
       :settings="settings"
-      :message="currentMessage?.bubble?.message ?? ''"
+      :message="currentMessage.bubble?.message ?? ''"
       :layers="layers"
       :color="currentCharacterColor"
       :label-class="blinkClass"
@@ -13,33 +13,37 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch, onMounted, onUnmounted } from 'vue'
-  import { BotMessageBubbleSchema } from '@/types'
+  import { computed, onMounted, onUnmounted } from 'vue'
+  import { BotMessageBubbleSchema, FlashBannerSchema } from '@/types'
   import FlashBannerSelector from './parts/FlashBannerSelector.vue'
   import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
-  import { useFlashBannerLogic } from './composables/useFlashBannerLogic'
+  import { useFlashBannerDisplay } from './composables/useFlashBannerDisplay'
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
   import CenteringWrapper from '../common/CenteringWrapper.vue'
+  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useDelayedBlink } from './composables/useDelayedBlink'
+  import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
 
+  const appStore = useAppStore()
   const { getCharacterColor, getCharacterLayers } = useCharacterManager()
-
-  const { settings, blinkClass, triggerBlink, defaultComment, commitIfPending, registerIntervalHook } =
-    useFlashBannerLogic()
+  const settings = computed(() => FlashBannerSchema.parse(appStore.data.components?.settings?.flashBanner ?? {}))
+  const { blinkClass, triggerBlink } = useDelayedBlink({
+    transitionDuration: 350,
+    blinkDuration: 750,
+  })
+  const {
+    message: defaultComment,
+    commitIfPending,
+    registerIntervalHook,
+  } = usePlaceholderInterval(() => settings.value.defaultMessage ?? '')
 
   const { messages } = useFilteredBotMessages('flashBanner', {
     displaySeconds: settings.value.displaySeconds,
     userIconSize: 12,
   })
+
   const { displayedComments, start, stop } = useBotDisplay(messages)
-
-  // 現在デフォルト表示中かを返すヘルパー
-  const isShowingDefault = () => !displayedComments.value.find((m) => m.display?.visible)
-
-  // インターバルのタイミングでデフォルト表示中なら即反映
-  registerIntervalHook(() => {
-    commitIfPending(isShowingDefault())
-  })
 
   const defaultMessage = computed(() =>
     BotMessageBubbleSchema.parse({
@@ -52,49 +56,21 @@
     })
   )
 
-  const currentMessage = computed(() => {
-    const visibleMessage = displayedComments.value.find((m) => m.display?.visible)
-    return visibleMessage ?? defaultMessage.value
+  // メッセージ切り替え時に blink を発火（watch 不使用）
+  const { currentMessage, isShowingDefault } = useFlashBannerDisplay({
+    displayedComments,
+    defaultMessage,
+    onMessageChanged: () => triggerBlink(true),
   })
 
-  const layers = computed(() => {
-    if (!currentMessage.value) return []
-    return getCharacterLayers(currentMessage.value)
+  // インターバルのタイミングでデフォルト表示中なら pending な defaultComment を反映
+  registerIntervalHook(() => {
+    commitIfPending(isShowingDefault())
   })
 
-  const currentCharacterColor = computed(() => {
-    const key = currentMessage.value?.bubble?.characterKey ?? null
-    return getCharacterColor(key)
-  })
+  const layers = computed(() => getCharacterLayers(currentMessage.value))
 
-  const previousMessageId = ref<string | undefined>(undefined)
-
-  // 既存のid watchはそのまま維持（コメント←→デフォルト切り替え用）
-  watch(
-    () => currentMessage.value?.id,
-    async (newId) => {
-      if (!newId) {
-        previousMessageId.value = newId
-        return
-      }
-      if (newId !== previousMessageId.value && previousMessageId.value !== undefined) {
-        await triggerBlink(true)
-      }
-      previousMessageId.value = newId
-    }
-  )
-
-  // ★ 追加: デフォルト表示中のメッセージ内容変化を検知してblink
-  watch(
-    () => defaultComment.value,
-    async (newVal, oldVal) => {
-      if (newVal === oldVal) return
-      // デフォルト表示中のときだけ発火
-      if (isShowingDefault()) {
-        await triggerBlink(true)
-      }
-    }
-  )
+  const currentCharacterColor = computed(() => getCharacterColor(currentMessage.value.bubble?.characterKey ?? null))
 
   onMounted(() => start())
   onUnmounted(() => stop())

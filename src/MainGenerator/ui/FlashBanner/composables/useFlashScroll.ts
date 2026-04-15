@@ -1,11 +1,9 @@
 // src/MainGenerator/ui/FlashBanner/composables/useFlashScroll.ts
-import { ref, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, watchEffect, onMounted, onUnmounted, nextTick } from 'vue'
 import type { FlashBannerType } from '@/types/OmikujiData/'
 
 interface UseFlashScrollOptions {
-  /** メッセージ（HTMLタグ除去後の長さでduration計算に使用） */
   getMessage: () => string
-  /** settings.scrollSpeed / settings.scrollReturnMode を参照 */
   getSettings: () => FlashBannerType
 }
 
@@ -26,12 +24,8 @@ export function useFlashScroll({ getMessage, getSettings }: UseFlashScrollOption
   const textRef = ref<HTMLElement | null>(null)
   const containerRef = ref<HTMLElement | null>(null)
   const shouldScroll = ref(false)
-  const scrollDuration = ref(14) // 秒
-
-  // scrollReturnMode に応じたアニメーションクラス
+  const scrollDuration = ref(14)
   const scrollClass = ref<'animate-scroll-loop' | 'animate-scroll-fade' | ''>('')
-
-  // --------  幅計測 --------
 
   const checkScrollNeeded = async () => {
     await nextTick()
@@ -55,31 +49,24 @@ export function useFlashScroll({ getMessage, getSettings }: UseFlashScrollOption
 
     shouldScroll.value = true
     const settings = getSettings()
-
-    // scrollSpeed (px/sec) からアニメーション時間を計算
-    // 移動距離 = テキスト幅の 60% (ticker-scroll の -60% translateX に対応)
     const scrollDistance = textWidth * 0.6
     const speed = settings.scrollSpeed > 0 ? settings.scrollSpeed : 80
     scrollDuration.value = Math.max(3, scrollDistance / speed)
-
-    // scrollReturnMode に応じたクラス付与
     scrollClass.value = settings.scrollReturnMode === 'fade' ? 'animate-scroll-fade' : 'animate-scroll-loop'
   }
 
-  // --------  メッセージ変更時の再計測 --------
-
-  watch(getMessage, () => {
+  // watch → watchEffect に変更（依存関係を自動追跡）
+  // メッセージが変わったら即スクロール状態をリセットして再計測
+  watchEffect(() => {
+    getMessage() // 依存として登録
     shouldScroll.value = false
     scrollClass.value = ''
     checkScrollNeeded()
   })
 
-  // --------  ResizeObserver --------
-
   let resizeObserver: ResizeObserver | null = null
 
   onMounted(() => {
-    checkScrollNeeded()
     if (containerRef.value) {
       resizeObserver = new ResizeObserver(checkScrollNeeded)
       resizeObserver.observe(containerRef.value)
