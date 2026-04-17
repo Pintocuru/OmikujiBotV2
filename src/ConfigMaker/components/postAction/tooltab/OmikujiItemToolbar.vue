@@ -93,18 +93,17 @@
       return
     }
 
-    // 上書き確認
-    const result = await swalModal.confirmDelete({
-      title: '現在の内容を上書きしますか？',
-      confirmButtonText: '上書きする',
+    const result = await swalModal.confirmTriple({
+      title: 'JSONを貼り付けます',
+      text: '現在のデータをどうしますか？',
     })
 
-    if (!result.isConfirmed) return
-
-    emit('update:modelValue', parsed)
-
-    swalToast.success({
-      title: 'クリップボードから貼り付けました',
-    })
+    if (result.isConfirmed) {
+      emit('update:modelValue', parsed)
+      swalToast.success({ title: 'クリップボードから貼り付けました（上書き）' })
+    } else if (result.isDenied) {
+      emit('update:modelValue', [...props.modelValue, ...parsed])
+      swalToast.success({ title: 'クリップボードから貼り付けました（マージ）' })
+    }
   }
 </script>

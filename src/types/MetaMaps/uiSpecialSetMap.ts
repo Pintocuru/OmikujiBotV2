@@ -9,7 +9,12 @@ export const uiSpecialSetMap = {
   },
   VarietySlot: {
     label: 'VarietySlot',
-    description: 'ライバーカウンター＋スナイプタイマーのセット',
+    description: 'コメントスロット＋ランキングのセット',
     kinds: ['commentSpin', 'ranking'],
+  },
+  GogoBonus: {
+    label: '得点表記付きスロット',
+    description: 'コメントスロット＋クッキーカウンターのセット',
+    kinds: ['commentSpin', 'cookieCounter'],
   },
 } as const

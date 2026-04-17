@@ -110,4 +110,18 @@ export const swalModal = {
       ...options,
     })
   },
+
+  confirmTriple(options: SweetAlertOptions = {}) {
+    return Swal.fire({
+      icon: 'question',
+      title: '確認',
+      showConfirmButton: true,
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: '上書きする',
+      denyButtonText: 'マージする',
+      cancelButtonText: 'キャンセル',
+      ...options,
+    })
+  },
 }
