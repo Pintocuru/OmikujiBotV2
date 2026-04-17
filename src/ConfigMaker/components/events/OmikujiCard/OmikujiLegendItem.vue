@@ -16,7 +16,7 @@
     <!-- 情報 -->
     <div class="flex-1 min-w-0">
       <div class="truncate font-medium">
-        {{ item.name || `アイテム${index + 1}` }}
+        {{ item.name || `アイテム` }}
       </div>
       {{ percentage }}%
 
@@ -39,16 +39,26 @@
         class="input input-xs input-bordered w-16 flex-shrink-0"
       />
     </div>
+
+    <!-- メニュー -->
+    <div class="ml-auto">
+      <MenuDropdown @duplicate="duplicate" @delete="remove" @click.stop />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-  import { OmikujiItemType } from '@/types/OmikujiData/'
+  import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { EventCategoryType, OmikujiItemType } from '@/types/OmikujiData/'
+  import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
+  import { generateId } from '@shared/types'
   import { GripVertical } from 'lucide-vue-next'
 
-  defineProps<{
+  const props = defineProps<{
+    category: EventCategoryType
+    selectedItemKey: string | null
     item: OmikujiItemType
-    index: number
     color: string
     percentage: string
     isSelected: boolean
@@ -64,5 +74,42 @@
     if (!isNaN(value) && value >= 0) {
       emit('update:weight', value)
     }
+  }
+
+  const { updateRecordProperty } = useOmikujiStore()
+  const { getItem } = useGetRecordData()
+
+  const duplicate = () => {
+    if (!props.selectedItemKey) return
+
+    const record = getItem(props.category, props.selectedItemKey)
+    if (!record?.omikuji) return
+
+    const index = record.omikuji.findIndex((v) => v.id === props.item.id)
+    if (index === -1) return
+
+    const id = generateId()
+    const duplicated = {
+      ...JSON.parse(JSON.stringify(props.item)),
+      id,
+      key: id,
+      name: `${props.item.name}(コピー)`,
+    }
+
+    const newList = [...record.omikuji]
+    newList.splice(index + 1, 0, duplicated)
+
+    updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newList)
+  }
+
+  const remove = () => {
+    if (!props.selectedItemKey) return
+
+    const record = getItem(props.category, props.selectedItemKey)
+    if (!record?.omikuji) return
+
+    const newList = record.omikuji.filter((v) => v.id !== props.item.id)
+
+    updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', newList)
   }
 </script>

@@ -1,43 +1,25 @@
 <!-- src/ConfigMaker/components/events/OmikujiCard/OmikujiWeightProgressBar.vue -->
 <template>
-  <div v-if="items.length > 0" class="mt-4">
+  <div v-if="items.length > 0">
     <div class="space-y-2">
-      <!-- プログレスバー本体 -->
-      <div class="flex w-full h-8 rounded overflow-hidden border border-base-300">
-        <div
-          v-for="(item, index) in localItems"
-          :key="index"
-          :style="{
-            width: `${item.weightPercent}%`,
-            backgroundColor: getColorForIndex(index),
-          }"
-          class="tooltip tooltip-top flex items-center justify-center text-xs text-white font-semibold cursor-pointer hover:brightness-110 transition-all"
-          :data-tip="`${items[index].name || `アイテム${index + 1}`}: ${item.weightPercent}%`"
-          @click="$emit('select', index)"
-        >
-          <span v-if="typeof item.weightPercent === 'number' && item.weightPercent > 8" class="truncate px-1">
-            {{ item.weightPercent > 12 ? items[index].name || `#${index + 1}` : '' }}
-          </span>
-        </div>
-      </div>
-
       <!-- 凡例（ドラッグ可能） -->
       <VueDraggable
-        v-model="localDraggableItems"
+        v-model="draggableItems"
         handle=".legend-drag-handle"
         :animation="200"
-        class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2"
+        class="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2"
       >
         <OmikujiLegendItem
-          v-for="(item, index) in localDraggableItems"
+          v-for="(item, index) in draggableItems"
           :key="item.id ?? `legend-${index}`"
+          :category="category"
+          :selectedItemKey="selectedItemKey"
           :item="item"
-          :index="index"
           :color="getColorForIndex(index)"
           :percentage="String(localItems[index]?.weightPercent)"
-          :isSelected="selectedIndex === index"
+          :isSelected="selectedId === item.id"
           @update:weight="$emit('update:weight', { index, weight: $event })"
-          @select="$emit('select', index)"
+          @select="$emit('select', item.id)"
         />
       </VueDraggable>
     </div>
@@ -45,41 +27,32 @@
 </template>
 
 <script setup lang="ts">
-  import { computed, ref, watch } from 'vue'
+  import { computed } from 'vue'
   import { VueDraggable } from 'vue-draggable-plus'
-  import { OmikujiItemType } from '@/types/OmikujiData/'
+  import { EventCategoryType, OmikujiItemType } from '@/types/OmikujiData/'
   import OmikujiLegendItem from './OmikujiLegendItem.vue'
   import { addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'
   import { getColorForIndex } from './useOmikujiWeight'
 
   const props = defineProps<{
+    category: EventCategoryType
+    selectedItemKey: string | null
     items: OmikujiItemType[]
-    selectedIndex: number | null
+    selectedId: string | null
   }>()
 
   const emit = defineEmits<{
     'update:items': [items: OmikujiItemType[]]
     'update:weight': [payload: { index: number; weight: number }]
-    select: [index: number]
+    select: [id: string]
   }>()
 
   const localItems = computed(() => addWeightPercentages(props.items))
 
-  // ドラッグ用バッファ（前回と同じ無限ループ対策）
-  const localDraggableItems = ref<OmikujiItemType[]>([...props.items])
-
-  watch(
-    () => props.items,
-    (val) => {
-      if (val.length === localDraggableItems.value.length && val.every((v, i) => v === localDraggableItems.value[i]))
-        return
-      localDraggableItems.value = [...val]
-    }
-  )
-
-  watch(localDraggableItems, (val) => {
-    const current = props.items
-    if (val.length === current.length && val.every((v, i) => v === current[i])) return
-    emit('update:items', [...val])
+  const draggableItems = computed({
+    get: () => props.items,
+    set: (val: OmikujiItemType[]) => {
+      emit('update:items', val)
+    },
   })
 </script>

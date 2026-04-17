@@ -1,14 +1,15 @@
 // src/MainGenerator/stores/CooldownManager/CooldownManager.ts
-
 /**
  * クールダウン管理クラス
- * 時間ベースの制御に特化（連投・回数制限は扱わない）
  */
 export class CooldownManager {
   private static instance: CooldownManager | null = null
 
-  /** 最後に処理が成功した時刻（ms） */
+  /** 最後に処理が成功した時刻（ms）: グローバルクールダウン用 */
   private lastProcessedTime = 0
+
+  /** ActionSet単位のクールダウン管理: key -> 最終実行時刻（ms） */
+  private readonly actionCooldownMap = new Map<string, number>()
 
   /** 配信セッション識別子 */
   private readonly sessionId: string
@@ -46,10 +47,11 @@ export class CooldownManager {
    */
   resetSession(): void {
     this.lastProcessedTime = 0
+    this.actionCooldownMap.clear()
   }
 
   /**
-   * クールダウン判定
+   * クールダウン判定（グローバル）
    * @param cooldownSeconds クールダウン秒数（0以下なら制限なし）
    * @returns クールダウン中なら true
    */
@@ -86,5 +88,30 @@ export class CooldownManager {
   getElapsedSeconds(): number {
     if (this.lastProcessedTime === 0) return Infinity
     return (Date.now() - this.lastProcessedTime) / 1000
+  }
+
+  // ──────────────────────────────────────────
+  // ActionSet 単位のクールダウン管理
+  // ──────────────────────────────────────────
+
+  /**
+   * ActionSet クールダウン判定
+   * @param actionKey ActionSet の key
+   * @param cooldownSeconds クールダウン秒数（0以下なら制限なし）
+   * @returns クールダウン中なら true
+   */
+  isActionCooldownBlocked(actionKey: string, cooldownSeconds: number): boolean {
+    if (cooldownSeconds <= 0) return false
+    const lastTime = this.actionCooldownMap.get(actionKey)
+    if (lastTime === undefined) return false
+    return (Date.now() - lastTime) / 1000 < cooldownSeconds
+  }
+
+  /**
+   * ActionSet の最終実行時刻を記録
+   * @param actionKey ActionSet の key
+   */
+  recordActionExecution(actionKey: string): void {
+    this.actionCooldownMap.set(actionKey, Date.now())
   }
 }

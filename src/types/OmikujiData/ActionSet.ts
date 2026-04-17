@@ -190,6 +190,9 @@ export const ActionSetBaseSchema = z.object({
   // TODO(v3) :  behavior -> special に戻す
   special: ActionSpecialSchema.optional(),
   behavior: normalizedObject(ActionBehaviorSchema),
+
+  /** アクション実行後のクールダウン秒数。設定した秒数の間、同一アクションの重複実行をブロックする */
+  actionCooldownSeconds: z.number().min(0).optional(),
 })
 
 export const ActionSetSchema = ActionSetBaseSchema.transform((value) => {

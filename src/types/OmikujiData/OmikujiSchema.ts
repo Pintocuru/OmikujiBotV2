@@ -9,6 +9,7 @@ import { ActionSetBaseSchema, PostFlowMessageSchema } from './ActionSet'
 export const OmikujiItemSchema = z.object({
   ...ActionSetBaseSchema.shape,
   weight: z.number().min(0).default(1).catch(1), // 出現割合
+  // TODO(v3): 削除
   rank: z.number().min(0).max(1).optional(), // 優先度
   isPriority: z.boolean().default(false).catch(false), // 優先 trueならrank=1
   criteria: z.union([CriteriaThresholdSchema, z.null()]).default(null).catch(null),

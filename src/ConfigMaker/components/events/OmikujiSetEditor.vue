@@ -23,11 +23,13 @@
 
     <!-- おみくじリスト一覧（クリックで選択） -->
     <OmikujiWeightProgressBar
+      :category="category"
+      :selectedItemKey="selectedItemKey"
       :items="omikujiSets"
-      :selectedIndex="selectedOmikujiIndex"
+      :selectedId="selectedOmikujiId"
       @update:items="omikujiSets = $event"
       @update:weight="({ index, weight }) => (omikujiSets = updateItemWeight(omikujiSets, index, weight))"
-      @select="selectedOmikujiIndex = $event"
+      @select="selectedOmikujiId = $event"
     />
 
     <!-- 選択されたアイテムの編集 -->
@@ -41,10 +43,6 @@
           おみくじ編集:
           {{ omikujiSets[selectedOmikujiIndex]?.name || `アイテム${selectedOmikujiIndex + 1}` }}
         </h3>
-
-        <button @click="selectedOmikujiIndex = null" class="btn btn-xs btn-ghost text-white hover:bg-white/20">
-          <X class="w-4 h-4" />
-        </button>
       </div>
 
       <!-- 本文 -->
@@ -68,7 +66,7 @@
   import { useTestPost } from '@config/scripts/useTestPost'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
-  import { Dices, Plus, X } from 'lucide-vue-next'
+  import { Dices, Plus } from 'lucide-vue-next'
   import { getColorForIndex, updateItemWeight } from './OmikujiCard/useOmikujiWeight'
 
   const props = defineProps<{
@@ -81,7 +79,7 @@
   const { postTestOmikuji } = useTestPost()
 
   // 選択されたおみくじアイテムのインデックス
-  const selectedOmikujiIndex = ref<number | null>(0)
+  const selectedOmikujiId = ref<string | null>(null)
 
   // Computed
   const omikujiSets = computed({
@@ -93,12 +91,12 @@
     set: (value: OmikujiItemType[]) => {
       if (!props.selectedItemKey) return
       updateRecordProperty(props.category, props.selectedItemKey, 'omikuji', value)
-
-      // 選択インデックスが範囲外になったらリセット
-      if (selectedOmikujiIndex.value !== null && selectedOmikujiIndex.value >= value.length) {
-        selectedOmikujiIndex.value = null
-      }
     },
+  })
+
+  const selectedOmikujiIndex = computed(() => {
+    if (!selectedOmikujiId.value) return null
+    return omikujiSets.value.findIndex((v) => v.id === selectedOmikujiId.value)
   })
 
   // Methods
@@ -106,17 +104,16 @@
     const newOmikuji = OmikujiItemSchema.parse({})
     omikujiSets.value = [...omikujiSets.value, newOmikuji]
 
-    // 新しく追加したアイテムを自動選択
-    selectedOmikujiIndex.value = omikujiSets.value.length - 1
+    selectedOmikujiId.value = newOmikuji.id
   }
 
   watch(
     () => props.selectedItemKey,
     () => {
       if (omikujiSets.value.length === 0) {
-        selectedOmikujiIndex.value = null
+        selectedOmikujiId.value = null
       } else {
-        selectedOmikujiIndex.value = 0
+        selectedOmikujiId.value = omikujiSets.value[0].id
       }
     }
   )

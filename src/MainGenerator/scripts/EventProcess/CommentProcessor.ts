@@ -68,6 +68,9 @@ export class EventCommentProcessor {
     }
 
     // 2. 制限チェック
+    // TODO(v3):制限チェックを廃止
+    // クールダウン処理は OmikujiResultProcessor で
+    // 重複処理は criteria で行うようにする
     const restrictionResult = checkRestrictions(omiken, event)
     if (restrictionResult.isBlocked) {
       const enableSecondary = data.components.enableSecondary
@@ -96,12 +99,13 @@ export class EventCommentProcessor {
       }
     }
 
-    // 6. 通常アクション: カウントしてから実行
-    this.recordDraw(omiken, event)
-
+    // 6. 通常アクション
     const omikujiProcessor = new OmikujiProcessor()
     const botMessages = await omikujiProcessor.executeActionItem(event.key, actionItem, 'comments', omiken)
     const isCommentTriggered = event.trigger.conditions.includes('comment')
+
+    // botMessages が空ではない場合にカウント
+    if (botMessages.length > 0) this.recordDraw(omiken, event)
 
     return { isCommentTriggered, botMessages }
   }
