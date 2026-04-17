@@ -13,8 +13,13 @@ export const uiSpecialSetMap = {
     kinds: ['commentSpin', 'ranking'],
   },
   GogoBonus: {
-    label: '得点表記付きスロット',
+    label: 'ペカるボタン',
     description: 'コメントスロット＋クッキーカウンターのセット',
     kinds: ['commentSpin', 'cookieCounter'],
+  },
+  Golden65536: {
+    label: 'ゴールデン65536',
+    description: 'コメントスロット＋ライバーカウンターのセット',
+    kinds: ['commentSpin', 'streamCounter'],
   },
 } as const

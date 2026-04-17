@@ -5,4 +5,5 @@ export const SPECIAL_SET_LAYOUT_LOADER: Record<UiSpecialSetType, () => Promise<a
   OmikujiBot: () => import('./OmikujiBot/OmikujiBot.vue'),
   VarietySlot: () => import('./VarietySlot/VarietySlot.vue'),
   GogoBonus: () => import('./GogoBonus/GogoBonus.vue'),
+  Golden65536: () => import('./Golden65536/Golden65536.vue'),
 }
