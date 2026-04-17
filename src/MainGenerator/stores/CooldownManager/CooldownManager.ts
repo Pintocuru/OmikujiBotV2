@@ -6,7 +6,9 @@ export class CooldownManager {
   private static instance: CooldownManager | null = null
 
   /** 最後に処理が成功した時刻（ms）: グローバルクールダウン用 */
-  private lastProcessedTime = 0
+  private lastProcessedTime = 0 // TODO(v3): 廃止。
+
+  private nextAllowedTime = 0
 
   /** ActionSet単位のクールダウン管理: key -> 最終実行時刻（ms） */
   private readonly actionCooldownMap = new Map<string, number>()
@@ -95,23 +97,15 @@ export class CooldownManager {
   // ──────────────────────────────────────────
 
   /**
-   * ActionSet クールダウン判定
-   * @param actionKey ActionSet の key
-   * @param cooldownSeconds クールダウン秒数（0以下なら制限なし）
-   * @returns クールダウン中なら true
+   * 実行可能か判定し、可能であればその場で時刻を更新する
    */
-  isActionCooldownBlocked(actionKey: string, cooldownSeconds: number): boolean {
-    if (cooldownSeconds <= 0) return false
-    const lastTime = this.actionCooldownMap.get(actionKey)
-    if (lastTime === undefined) return false
-    return (Date.now() - lastTime) / 1000 < cooldownSeconds
-  }
+  checkAndLock(cooldownSeconds: number): boolean {
+    const now = Date.now()
+    if (now < this.nextAllowedTime) return true
 
-  /**
-   * ActionSet の最終実行時刻を記録
-   * @param actionKey ActionSet の key
-   */
-  recordActionExecution(actionKey: string): void {
-    this.actionCooldownMap.set(actionKey, Date.now())
+    // ★未来にロックを置く（これが重要）
+    this.nextAllowedTime = now + cooldownSeconds * 1000
+
+    return false
   }
 }

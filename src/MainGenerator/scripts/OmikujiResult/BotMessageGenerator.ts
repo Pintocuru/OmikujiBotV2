@@ -106,4 +106,26 @@ export class BotMessageGenerator {
 
     return messages
   }
+
+  /**
+   * 変数プレースホルダー {{ }} を計算せずに除去する（ダミー演出用）
+   */
+  stripVariables(actions: PostFlowType[]): ProcessedPostAction[] {
+    const EVAL_PATTERN = /\{\{[\s\S]*?\}\}/g
+
+    return actions.map((action): ProcessedPostAction => {
+      if (action.actionType !== 'message' && action.actionType !== 'variable') return { action }
+      if (!action.message.bubble) return { action }
+
+      return {
+        action: {
+          ...action,
+          message: {
+            ...action.message,
+            bubble: action.message.bubble.replace(EVAL_PATTERN, ''),
+          },
+        },
+      }
+    })
+  }
 }

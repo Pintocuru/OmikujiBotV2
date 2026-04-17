@@ -58,10 +58,12 @@ export class OmikujiResultProcessor {
     isOnecommePost?: boolean
   ): Promise<BotMessageType[]> {
     try {
-      // actionCooldownSeconds が設定されている場合、クールダウン中なら空を返す
-      const { actionCooldownSeconds, key } = actionItem
-      if (actionCooldownSeconds && this.cooldownManager.isActionCooldownBlocked(key, actionCooldownSeconds)) {
-        return []
+      const { actionCooldownSeconds = 0 } = actionItem
+
+      if (isOnecommePost) {
+        if (this.cooldownManager.checkAndLock(actionCooldownSeconds)) {
+          return []
+        }
       }
 
       let messages: BotMessageType[]
@@ -77,11 +79,6 @@ export class OmikujiResultProcessor {
 
         default:
           return []
-      }
-
-      // 処理成功後にクールダウンを記録
-      if (actionCooldownSeconds && messages.length > 0) {
-        this.cooldownManager.recordActionExecution(key)
       }
 
       return messages

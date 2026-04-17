@@ -25,21 +25,20 @@ export class OmikujiProcessor {
     )
   }
 
-  // おみくじ抽選&おみくじ処理
+  /**
+   * おみくじ抽選 & 実行 (本番用)
+   */
   async executeOmikuji(
     eventKey: string,
     omikujiSet: OmikujiSetType,
     category: EventCategoryType,
     omiken?: OmikenCommentType
   ): Promise<BotMessageType[]> {
-    const actionItem = this.lotteryOmikujiItem(omikujiSet)
-    if (!actionItem) return []
-    return this.executeActionItem(eventKey, actionItem, category, omiken)
+    return this.runFlow(eventKey, omikujiSet, category, omiken, false)
   }
 
   /**
-   * スロット演出用ダミーメッセージを生成。
-   * わんコメへの投稿・サウンド再生は行わない。
+   * おみくじ抽選 & 実行 (スロット演出用)
    */
   async executeDummyOmikuji(
     eventKey: string,
@@ -47,9 +46,30 @@ export class OmikujiProcessor {
     category: EventCategoryType,
     omiken?: OmikenCommentType
   ): Promise<BotMessageType[]> {
+    return this.runFlow(eventKey, omikujiSet, category, omiken, true)
+  }
+
+  /**
+   * 共通の実行フロー
+   */
+  private async runFlow(
+    eventKey: string,
+    omikujiSet: OmikujiSetType,
+    category: EventCategoryType,
+    omiken?: OmikenCommentType,
+    isDummy: boolean = false
+  ): Promise<BotMessageType[]> {
     const actionItem = this.lotteryOmikujiItem(omikujiSet)
-    if (!actionItem) return []
-    return this.executeDummyActionItem(eventKey, actionItem, category, omiken)
+    if (!actionItem || actionItem.type === 'special') return []
+
+    const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
+
+    // isDummyによって呼び出すメソッドを切り替える
+    const messages = isDummy
+      ? await this.omikujiResult.processDummy(actionItem, defaultPlaceholders, omiken)
+      : await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
+
+    return this.attachSource(messages, category, eventKey, actionItem.key, omiken)
   }
 
   /**
@@ -78,18 +98,6 @@ export class OmikujiProcessor {
     if (actionItem.type === 'special') return []
     const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
     const messages = await this.omikujiResult.process(actionItem, defaultPlaceholders, omiken)
-    return this.attachSource(messages, category, eventKey, actionItem.key, omiken)
-  }
-
-  private async executeDummyActionItem(
-    eventKey: string,
-    actionItem: ActionSetType,
-    category: EventCategoryType,
-    omiken?: OmikenCommentType
-  ): Promise<BotMessageType[]> {
-    if (actionItem.type === 'special') return []
-    const defaultPlaceholders = this.getDefaultPlaceholders(omiken)
-    const messages = await this.omikujiResult.processDummy(actionItem, defaultPlaceholders, omiken)
     return this.attachSource(messages, category, eventKey, actionItem.key, omiken)
   }
 

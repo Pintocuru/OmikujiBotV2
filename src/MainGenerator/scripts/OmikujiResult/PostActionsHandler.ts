@@ -34,24 +34,21 @@ export class PostActionsHandler {
     omiken?: OmikenCommentType,
     isOnecommePost?: boolean
   ): BotMessageType[] {
-    // アクションを展開
+    // 1. アクション展開とプレースホルダー置換
     const expandedActions = ActionSetExpander.expand(actionItem.postActions, this.actionSets)
-
-    // 変数展開
     const displayResolved = this.displayResolver.processPostActions(expandedActions)
 
-    // プレースホルダー処理
     this.placeContext.updateValues(defaultPlaceholders)
     this.placeProcess.updateResolvedValues(this.placeContext.getAll())
     const resolvedActions = this.placeProcess.processPostActions(displayResolved)
     this.placeContext.clear()
 
-    // 1. 評価ブロック(変数プレースホルダー)を処理
+    // 2. 評価ブロック {{ }} の処理
     const processedActions: ProcessedPostAction[] = isOnecommePost
-      ? this.generator.processVariables(resolvedActions)
-      : resolvedActions.map((action): ProcessedPostAction => ({ action }))
+      ? this.generator.processVariables(resolvedActions) // 本番：計算して置換
+      : this.generator.stripVariables(resolvedActions) // ダミー：計算せず除去
 
-    // 2. わんコメへ投稿 & BotMessage を生成
+    // 3. BotMessage 生成
     return this.generator.postAndGenerate(processedActions, omiken, isOnecommePost)
   }
 }
