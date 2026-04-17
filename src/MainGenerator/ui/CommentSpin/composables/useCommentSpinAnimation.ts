@@ -1,7 +1,7 @@
 // src/MainGenerator/ui/CommentSpin/composables/useCommentSpinAnimation.ts
 import { ref, nextTick, Ref } from 'vue'
 import type { BotMessageBubbleType, spinAnimation } from '@/types'
-import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
 interface AnimationOptions {
   duration?: number
@@ -18,8 +18,18 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
   const resolvedMessage = ref<BotMessageBubbleType | null>(null)
   const overrideLogoPath = ref<string[] | null>(null)
 
+  // 実行中アニメーションを保持（再起動時にキャンセルするため）
+  let currentAnimation: Animation | null = null
+
   async function startSpin(msgs: BotMessageBubbleType[]) {
-    if (isSpinning.value) return
+    // ガード削除：スピン中でも再起動を許可
+
+    // 前のアニメーションが残っていればキャンセル（onfinish は発火させない）
+    if (currentAnimation) {
+      currentAnimation.onfinish = null
+      currentAnimation.cancel()
+      currentAnimation = null
+    }
 
     overrideLogoPath.value = null
     isSpinning.value = false
@@ -54,30 +64,26 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
 
     if (!anim) return
 
+    currentAnimation = anim
+
     anim.onfinish = () => {
+      // すでに別のアニメーションに切り替わっていたら無視
+      if (currentAnimation !== anim) return
+
+      currentAnimation = null
+
       const last = slotMessages.value[slotMessages.value.length - 1]
       if (last) resolvedMessage.value = last
       const { iconSrc } = useCharacterManager()
 
-      // --- 判定 ---
-      // slot0 : logoPath を変更し大当たり演出をするか(1ならtrue)
       const isHit = !!Boolean(resolvedMessage.value?.slots?.slot0)
-
       const characterKey = resolvedMessage.value?.bubble.characterKey ?? null
       const iconKey = resolvedMessage.value?.bubble.iconKey
-
       const src = characterKey ? iconSrc(characterKey, iconKey) : []
 
-      // --- 大当たり演出 ---
       if (isHit && src.length > 0) overrideLogoPath.value = src
 
-      // --- 待機時間 ---
-      // slot1 : 終了後、演出等で次の回転受付を蹴る時間(ms)
-      const delayMs = (Number(resolvedMessage.value?.slots?.slot1) ?? 3) * 1000
-
-      setTimeout(() => {
-        isSpinning.value = false
-      }, delayMs)
+      isSpinning.value = false
     }
   }
 
@@ -95,13 +101,10 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
     onAnimationEnd,
   }
 
-  // =========================
-  // 各アニメーション実装
-  // =========================
+  // 各アニメーション実装（変更なし）
 
   function verticalSpin(el: HTMLElement, itemHeight: number) {
     const targetY = -((slotMessages.value.length - 1) * itemHeight)
-
     return el.animate([{ transform: 'translateY(0)' }, { transform: `translateY(${targetY}px)` }], {
       duration,
       easing,
@@ -111,7 +114,6 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
 
   function horizontalSpin(el: HTMLElement, itemWidth: number) {
     const targetX = -((slotMessages.value.length - 1) * itemWidth)
-
     return el.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${targetX}px)` }], {
       duration,
       easing,
@@ -151,9 +153,6 @@ export function useCommentSpinAnimation(options: AnimationOptions = {}) {
 
     animateStep()
 
-    // 擬似Animation返却（finish制御用）
-    return {
-      onfinish: null as any,
-    } as Animation
+    return { onfinish: null as any } as Animation
   }
 }

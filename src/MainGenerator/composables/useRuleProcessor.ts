@@ -2,7 +2,7 @@
 import { watch, onUnmounted } from 'vue'
 import { useAppStore } from '@main/stores/useAppStore'
 import { EventTimerProcessor } from '@main/scripts/EventProcess/TimerProcessor'
-import { EventServiceProcessor } from '@/MainGenerator/scripts/EventProcess/ServiceProcessor'
+import { EventServiceProcessor } from '@main/scripts/EventProcess/ServiceProcessor'
 import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
 import { EventReactionProcessor } from '../scripts/EventProcess/ReactionProcessor'
 

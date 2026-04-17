@@ -17,14 +17,14 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { useAppStore } from '@main/stores/useAppStore'
-  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
-  import { useFilteredBotMessages } from '@main/ui/common/useFilteredBotMessages'
-  import { CommentSpinSchema } from '@/types/OmikujiData/UiSettings/CommentSpinSchema'
+  import { CommentSpinSchema } from '@/types'
   import { useCommentSpinMessages } from './composables/useCommentSpinMessages'
   import { useCommentSpinAnimation } from './composables/useCommentSpinAnimation'
   import CommentSpinSelector from './parts/CommentSpinSelector.vue'
-  import { useCharacterManager } from '@/MainGenerator/scripts/CharacterManager/useCharacterManager'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
+  import { useFilteredBotMessages } from '@main/ui/common/useFilteredBotMessages'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
@@ -43,5 +43,5 @@
   const { slotMessages, isSpinning, resolvedMessage, overrideLogoPath, startSpin, onAnimationReady, onAnimationEnd } =
     useCommentSpinAnimation({ type: animation })
 
-  useCommentSpinMessages({ messages, startSpin, isSpinning })
+  useCommentSpinMessages({ messages, startSpin })
 </script>

@@ -21,7 +21,7 @@
   import { useFlashBannerDisplay } from './composables/useFlashBannerDisplay'
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
   import CenteringWrapper from '../common/CenteringWrapper.vue'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
   import { useDelayedBlink } from './composables/useDelayedBlink'
   import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
 

@@ -111,7 +111,7 @@
     ...streamCounter.value.variableCounters, // StreamCounterVariablesSchema[] がそのまま CounterItem と互換
   ])
 
-  const maxCounters = 8
+  const maxCounters = 24
 
   // ---- イベントルール ----
   const eventRules = computed(() =>

@@ -61,7 +61,7 @@
 <script setup lang="ts">
   import { ref, computed, onMounted, onUnmounted } from 'vue'
   import { useAppStore } from '@main/stores/useAppStore'
-  import type { BurstState } from '@/MainGenerator/stores/ReactionManager/ReactionStatsManager'
+  import type { BurstState } from '@main/stores/ReactionManager/ReactionStatsManager'
 
   const appStore = useAppStore()
   const reactionStats = appStore.reactionStats

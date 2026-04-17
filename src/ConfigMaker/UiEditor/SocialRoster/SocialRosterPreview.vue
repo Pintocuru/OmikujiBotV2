@@ -22,7 +22,7 @@
   import SocialRosterSelector from '@main/ui/SocialRoster/parts/SocialRosterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { generateDummyUserStats } from '@/common/MockUser/MockGenerators'
-  import { calcStreamScore, sortUsers } from '@/MainGenerator/ui/SocialRoster/composables/socialRosterLogic'
+  import { calcStreamScore, sortUsers } from '@main/ui/SocialRoster/composables/socialRosterLogic'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)

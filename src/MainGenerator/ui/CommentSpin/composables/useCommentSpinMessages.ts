@@ -1,26 +1,22 @@
 // src/MainGenerator/ui/CommentSpin/composables/useCommentSpinMessages.ts
-import { computed, watch, ref } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
+import { computed, watch } from 'vue'
+import type { ComputedRef } from 'vue'
 import type { BotMessageBubbleType } from '@/types'
-import { OmikujiProcessor } from '@/MainGenerator/scripts/OmikujiProcess/OmikujiProcessor'
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { OmikujiProcessor } from '@main/scripts/OmikujiProcess/OmikujiProcessor'
+import { useAppStore } from '@main/stores/useAppStore'
 import { storeToRefs } from 'pinia'
 
 interface UseCommentSpinMessagesOptions {
   messages: ComputedRef<BotMessageBubbleType[]>
   startSpin: (msgs: BotMessageBubbleType[]) => void
-  isSpinning: Ref<boolean> // ← 追加
 }
 
 const DUMMY_COUNT = 5
-const QUEUE_LIMIT = 0 // 最大積み数（お好みで）
 
-export function useCommentSpinMessages({ messages, startSpin, isSpinning }: UseCommentSpinMessagesOptions) {
+export function useCommentSpinMessages({ messages, startSpin }: UseCommentSpinMessagesOptions) {
   const appStore = useAppStore()
   const { data } = storeToRefs(appStore)
   const processor = new OmikujiProcessor()
-
-  const queue = ref<BotMessageBubbleType[]>([])
 
   const lastMessage = computed(() => {
     const arr = messages.value.filter((m) => m.source)
@@ -45,32 +41,16 @@ export function useCommentSpinMessages({ messages, startSpin, isSpinning }: UseC
     return results
   }
 
-  // スピン終了を監視して次を流す
-  watch(isSpinning, async (spinning) => {
-    if (spinning) return
-    const next = queue.value.shift()
-    if (!next) return
-    const results = await buildSlotMessages(next)
-    if (results.length) startSpin(results)
-  })
-
   watch(
     lastMessage,
     async (msg) => {
       if (!msg) return
-      if (!isSpinning.value) {
-        // 空きがあればすぐ回す
-        const results = await buildSlotMessages(msg)
-        if (results.length) startSpin(results)
-      } else {
-        // 回転中ならキューに積む（上限超えは捨てる）
-        if (queue.value.length < QUEUE_LIMIT) {
-          queue.value.push(msg)
-        }
-      }
+      // スピン中かどうかに関わらず即起動（割り込みはuseCommentSpinAnimation側に任せる）
+      const results = await buildSlotMessages(msg)
+      if (results.length) startSpin(results)
     },
     { immediate: true }
   )
 
-  return { lastMessage, queue }
+  return { lastMessage }
 }

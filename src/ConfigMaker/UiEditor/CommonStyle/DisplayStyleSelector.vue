@@ -23,7 +23,7 @@
   import { AccessLevelType } from '@shared/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibleOptions } from './useVisibleOptions'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
   import { computed } from 'vue'
   import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 

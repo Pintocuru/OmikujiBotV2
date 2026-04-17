@@ -10,32 +10,45 @@ export const streamComponentMap = {
   basicCirclePlain: {
     label: '丸型シンプル',
     accessLevel: 'basic',
+    layout: 'horizontal', // 横並び
   },
   basicCircle: {
     label: '丸型カラー',
     accessLevel: 'pro',
+    layout: 'horizontal',
   },
   pixelBadgePlain: {
     label: 'ピクセルバッジ',
     accessLevel: 'basic',
+    layout: 'horizontal',
   },
   pixelBadge: {
     label: 'ピクセルカラー',
     accessLevel: 'pro',
+    layout: 'horizontal',
   },
   magicalStone: {
     label: '魔法石',
     accessLevel: 'pro',
+    layout: 'horizontal',
   },
   starBurst: {
     label: '星',
     accessLevel: 'pro',
+    layout: 'horizontal',
   },
   hexGrid: {
     label: 'ヘキサゴン',
     accessLevel: 'pro',
+    layout: 'horizontal',
+  },
+  badge: {
+    label: 'バッジ',
+    accessLevel: 'godMode',
+    layout: 'vertical',
   },
 } as const
+
 const streamComponentValues = Object.keys(streamComponentMap) as LiverComponent[]
 export type LiverComponent = keyof typeof streamComponentMap
 
@@ -85,7 +98,7 @@ export const StreamCounterSchema = z.object({
     .array(z.enum(streamDefaultKeyLabels))
     .default(['syoken', 'commenter', 'upVote', 'viewer'])
     .catch(['upVote']), // デフォルトカウンター（6種から選ぶ、順序なし）
-  eventCounters: z.array(z.string()).max(8).default([]).catch([]), // event カウンター CommentRuleSchema.key
+  eventCounters: z.array(z.string()).max(16).default([]).catch([]), // event カウンター CommentRuleSchema.key
   variableCounters: z.array(StreamCounterVariablesSchema).default([]),
 })
 export type StreamCounterType = z.infer<typeof StreamCounterSchema>

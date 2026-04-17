@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
 
   const appStore = useAppStore()
 

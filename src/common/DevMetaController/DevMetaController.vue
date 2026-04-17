@@ -51,7 +51,7 @@
 
 <script setup lang="ts">
   import { reactive, ref, onUnmounted } from 'vue'
-  import { ServiceMetaStore, NormalizedMeta } from '@/MainGenerator/stores/MetaState/MetaStateService'
+  import { ServiceMetaStore, NormalizedMeta } from '@main/stores/MetaState/MetaStateService'
 
   const store = ServiceMetaStore.getInstance()
   const collapsed = ref(false)

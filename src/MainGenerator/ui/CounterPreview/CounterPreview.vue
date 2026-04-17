@@ -15,7 +15,7 @@
   import { CounterPreviewSchema } from '@/types'
   import CounterPreviewSelector from './parts/CounterPreviewSelector.vue'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { useVisibilityAccess } from '@/MainGenerator/scripts/FeatureAccess/useAccessCheckerMain'
+  import { useVisibilityAccess } from '@main/scripts/FeatureAccess/useAccessCheckerMain'
   import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
   import { UserNameType } from '@shared/types'
   import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'

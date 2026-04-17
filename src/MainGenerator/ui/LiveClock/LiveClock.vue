@@ -16,7 +16,7 @@
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
   import { useBotDisplay } from '../CommentBubble/composables/useBotDisplay'
   import { LiveClockSchema } from '@/types/OmikujiData/UiSettings/LiveClockSchema'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
   import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
   import LiveClockSelector from './parts/LiveClockSelector.vue'
   import CenteringWrapper from '../common/CenteringWrapper.vue'

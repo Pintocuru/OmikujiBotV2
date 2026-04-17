@@ -1,12 +1,13 @@
 <!-- src/MainGenerator/ui/StreamCounter/parts/StreamCounterSelector.vue -->
 <template>
   <div class="w-full bg-base-100 transparent-bg" :data-theme="settings.color">
-    <div class="flex flex-wrap justify-center gap-2 py-2">
-      <!-- allKeys が空のときのツッコミ -->
-      <div v-if="allKeys.length === 0" class="badge badge-error font-bold py-4">表示するカウンターはありません</div>
+    <div v-if="allKeys.length === 0" class="flex flex-col items-center">
+      <div class="badge badge-error font-bold">表示するカウンターはありません</div>
+    </div>
 
-      <!-- 通常表示 -->
-      <div v-else v-for="(key, index) in allKeys" :key="key">
+    <!-- layoutに応じて動的にクラスを変更 -->
+    <div v-else :class="layoutClass">
+      <div v-for="(key, index) in allKeys" :key="key">
         <component
           :is="currentItem"
           :index="index"
@@ -21,15 +22,16 @@
 
 <script setup lang="ts">
   import { computed, toRef, type Component } from 'vue'
-  import type { StreamCounterType, LiverComponent } from '@/types/'
+  import { type StreamCounterType, type LiverComponent, streamComponentMap } from '@/types/'
 
-  import BasicCirclePlainItem from '../layouts/BasicCirclePlain.vue'
-  import BasicCircleItem from '../layouts/BasicCircle.vue'
-  import PixelBadgePlainItem from '../layouts/PixelBadgePlain.vue'
-  import PixelBadgeItem from '../layouts/PixelBadge.vue'
-  import MagicalStoneItem from '../layouts/MagicalStone.vue'
-  import StarBurstItem from '../layouts/StarBurst.vue'
-  import HexGridItem from '../layouts/HexGrid.vue'
+  import BasicCirclePlain from '../layouts/BasicCirclePlain.vue'
+  import BasicCircle from '../layouts/BasicCircle.vue'
+  import PixelBadgePlain from '../layouts/PixelBadgePlain.vue'
+  import PixelBadge from '../layouts/PixelBadge.vue'
+  import MagicalStone from '../layouts/MagicalStone.vue'
+  import StarBurst from '../layouts/StarBurst.vue'
+  import HexGrid from '../layouts/HexGrid.vue'
+  import Badge from '../layouts/Badge.vue'
 
   import { useStreamCounterDisplay } from '../composables/useStreamCounterDisplay'
   import { useLabelResolver } from '../composables/useLiverLabelResolver'
@@ -57,14 +59,32 @@
   const { allKeys, getPattern, formatValue } = useStreamCounterDisplay(toRef(props, 'settings'))
 
   const itemMap: Record<LiverComponent, Component> = {
-    basicCirclePlain: BasicCirclePlainItem,
-    basicCircle: BasicCircleItem,
-    pixelBadge: PixelBadgeItem,
-    pixelBadgePlain: PixelBadgePlainItem,
-    magicalStone: MagicalStoneItem,
-    starBurst: StarBurstItem,
-    hexGrid: HexGridItem,
+    basicCirclePlain: BasicCirclePlain,
+    basicCircle: BasicCircle,
+    pixelBadge: PixelBadge,
+    pixelBadgePlain: PixelBadgePlain,
+    magicalStone: MagicalStone,
+    starBurst: StarBurst,
+    hexGrid: HexGrid,
+    badge: Badge,
   }
 
-  const currentItem = computed(() => itemMap[props.settings.component] ?? BasicCircleItem)
+  const currentItem = computed(() => itemMap[props.settings.component] ?? BasicCircle)
+
+  // 現在のコンポーネントのレイアウト設定を取得
+  const currentLayout = computed(() => {
+    const component = streamComponentMap[props.settings.component]
+    return component?.layout ?? 'horizontal' // デフォルトは横並び
+  })
+
+  // layoutに応じて動的にクラスを変更
+  const layoutClass = computed(() => {
+    switch (currentLayout.value) {
+      case 'vertical':
+        return 'flex flex-col items-center gap-2'
+      case 'horizontal':
+      default:
+        return 'flex flex-wrap justify-center gap-4 py-2'
+    }
+  })
 </script>

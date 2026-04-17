@@ -22,7 +22,7 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import LiveClockSelector from '@main/ui/LiveClock/parts/LiveClockSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
-  import { usePlaceholderInterval } from '@/MainGenerator/ui/common/usePlaceholderInterval'
+  import { usePlaceholderInterval } from '@main/ui/common/usePlaceholderInterval'
 
   const props = defineProps<{
     settings: LiveClockType

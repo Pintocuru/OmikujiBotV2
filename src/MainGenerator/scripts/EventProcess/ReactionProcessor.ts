@@ -1,8 +1,8 @@
 // src/MainGenerator/scripts/EventProcess/ReactionProcessor.ts
-import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+import { useAppStore } from '@main/stores/useAppStore'
 import { GetReactions } from '@shared/sdk/subscribe/GetReactions'
 import { OmikujiProcessor } from '../OmikujiProcess/OmikujiProcessor'
-import { evaluateReactionTrigger } from '@/MainGenerator/scripts/EventProcess/ReactionTriggerEvaluator'
+import { evaluateReactionTrigger } from '@main/scripts/EventProcess/ReactionTriggerEvaluator'
 
 /** 10秒間リアクションがなければバーストレベルを1下げる */
 const BURST_DECAY_MS = 10_000

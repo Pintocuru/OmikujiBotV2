@@ -33,7 +33,7 @@
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import type { CommentSpinType } from '@/types/OmikujiData/'
-  import { useCommentSpinAnimation } from '@/MainGenerator/ui/CommentSpin/composables/useCommentSpinAnimation'
+  import { useCommentSpinAnimation } from '@main/ui/CommentSpin/composables/useCommentSpinAnimation'
 
   const props = defineProps<{
     settings: CommentSpinType

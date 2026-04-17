@@ -20,7 +20,7 @@
   import type { CharacterAnimationType } from '@/types/OmikujiData/CharacterSchema'
   import LayerImage2 from '@/common/LayerImage/LayerImage2.vue'
   import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
-  import { useAppStore } from '@/MainGenerator/stores/useAppStore'
+  import { useAppStore } from '@main/stores/useAppStore'
 
   const props = defineProps<{
     msg: BotMessageBubbleType
