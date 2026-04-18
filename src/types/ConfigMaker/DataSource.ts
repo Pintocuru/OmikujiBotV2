@@ -1,4 +1,4 @@
-// src/types/DataSource.ts
+// src/types/ConfigMaker/DataSource.ts
 
 export type DataSource = 'api' | 'local' | 'unknown'
 

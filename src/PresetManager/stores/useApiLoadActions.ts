@@ -1,6 +1,6 @@
 // src/PresetManager/stores/useApiLoadActions.ts
 import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
-import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
+import { useNavigationStore } from '@config/stores/useNavigationStore'
 import { DevConfigStateType } from '@/PresetManager/devTypes'
 import { configApi } from '@/PresetManager/services/configApi'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'

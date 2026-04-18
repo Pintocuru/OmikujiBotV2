@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/ui/StreamCounter/layouts/badge.vue -->
+<!-- src/MainGenerator/ui/StreamCounter/layouts/Badge.vue -->
 <template>
   <div class="flex items-center justify-center transition duration-150 pixel-badge">
     <!-- ラベル（アイコン or テキスト） -->

@@ -79,7 +79,7 @@
   import { useImportManager } from '@config/components/presetsImport/composables/useImportManager'
   import ConfigImportModal from '@config/components/presetsImport/ConfigImportModal.vue'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { Download, FileText, Edit } from 'lucide-vue-next'
 
   const props = defineProps<{

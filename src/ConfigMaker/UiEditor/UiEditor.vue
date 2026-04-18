@@ -50,7 +50,7 @@
   import ItemConditionsEditor from './conditions/ItemConditionsEditor.vue'
   import ItemsSettings from './conditions/ItemsSettings.vue'
   import { useAccessChecker, useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { useFlagsSettings } from '@/ConfigMaker/components/appInfo/FlagsSettings/useFlagsSettings'
+  import { useFlagsSettings } from '@config/components/appInfo/FlagsSettings/useFlagsSettings'
   import SectionCard from '@shared/components/parts/SectionCard.vue'
   import SpecialSetEditor from './conditions/SpecialSetEditor.vue'
   import { useUiVisibility } from './conditions/useUiVisibility'

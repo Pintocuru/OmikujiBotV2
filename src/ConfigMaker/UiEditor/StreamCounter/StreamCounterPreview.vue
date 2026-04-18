@@ -22,7 +22,7 @@
   import { useFontFamily, type StreamCounterType } from '@/types/'
   import StreamCounterSelector from '@main/ui/StreamCounter/parts/StreamCounterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { usePreviewCounters } from './usePreviewCounters'
 
   const props = defineProps<{

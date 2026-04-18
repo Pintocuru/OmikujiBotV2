@@ -118,7 +118,7 @@
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { useSettingMode, useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 

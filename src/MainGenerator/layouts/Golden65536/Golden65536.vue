@@ -1,4 +1,4 @@
-<!-- src/MainGenerator/layouts/VarietySlot/VarietySlot.vue -->
+<!-- src/MainGenerator/layouts/Golden65536/Golden65536.vue -->
 <template>
   <div class="flex flex-col items-center">
     <CommentSpin />

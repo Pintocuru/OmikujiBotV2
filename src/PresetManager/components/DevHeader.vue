@@ -77,7 +77,7 @@
   import { useDevStore } from '@/PresetManager/stores/useDevStore'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
-  import { useNavigationStore } from '@/ConfigMaker/stores/useNavigationStore'
+  import { useNavigationStore } from '@config/stores/useNavigationStore'
   import { swalModal, swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'
   import { Download, Save } from 'lucide-vue-next'
 

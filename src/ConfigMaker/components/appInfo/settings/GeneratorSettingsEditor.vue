@@ -70,7 +70,7 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import MessageTextEditor from '@/ConfigMaker/components/postAction/Message/MessageTextEditor.vue'
+  import MessageTextEditor from '@config/components/postAction/Message/MessageTextEditor.vue'
   import { playSound } from '@/common/sounds'
   import { AlignCenter, LayoutTemplate } from 'lucide-vue-next'
 

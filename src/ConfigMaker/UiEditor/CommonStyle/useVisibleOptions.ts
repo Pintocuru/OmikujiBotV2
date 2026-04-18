@@ -1,7 +1,7 @@
 // src/ConfigMaker/UiEditor/CommonStyle/useVisibleOptions.ts
 import { computed, type ComputedRef } from 'vue'
 import type { AccessLevelType } from '@shared/types'
-import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 import { hasAccessPure } from '@/common/FeatureAccess/useAccessChecker'
 
 export type BaseComponentConfig = {

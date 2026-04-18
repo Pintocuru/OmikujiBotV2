@@ -49,13 +49,13 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import {  isDev, PostFlowMessageType, soundMetaMap } from '@/types/'
+  import { isDev, PostFlowMessageType, soundMetaMap, systemBotMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import MessageTextDialog from './MessageTextDialog.vue'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
   const props = defineProps<{
     action: PostFlowMessageType
@@ -73,11 +73,6 @@
   const enableSecondary = computed(() => data.components.enableSecondary)
   const soundEnabled = computed(() => data.settings.soundEnabled)
 
-  const SYSTEM_BOT_MAP = {
-    omiken: 'おみくじBOT(その1)',
-    omiken2: 'おみくじBOT(その2)',
-  } as const
-
   // --- Computed Properties ---
 
   // 表示すべきキャラクターリストを判定
@@ -86,7 +81,7 @@
       // 既存の characterMap から名前だけを抽出したオブジェクトを返す
       return Object.fromEntries(Object.entries(characterMap.value).map(([k, v]) => [k, v.name]))
     }
-    return SYSTEM_BOT_MAP
+    return systemBotMap
   })
 
   const showCharacterSettings = computed(() => isCharacter.value || isDev)
@@ -125,6 +120,6 @@
   })
 
   const updateIconKey = (value: string) => {
-    updateAction({ iconKey: value  })
+    updateAction({ iconKey: value })
   }
 </script>

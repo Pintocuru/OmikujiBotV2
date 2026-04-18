@@ -4,7 +4,7 @@ import { PlaceholderSchema, PlaceholderType, handelNormalizedValues } from '@/ty
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { defaultBasePlaceholderLabel, defaultPlaceholderMap } from '@/types/MetaMaps/DefaultPlaceholderMaps'
-import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
 
 const PLACEHOLDER_PATTERN = /<<([^>]+)>>/g
 const PLACEHOLDER_ID_PATTERN = /^[a-zA-Z0-9_]+$/

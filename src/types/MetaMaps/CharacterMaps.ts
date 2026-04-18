@@ -13,6 +13,14 @@ export const characterEmotionMap = {
 } as const
 
 /**
+ *
+ */
+export const systemBotMap = {
+  omiken: 'おみくじBOT(その1)',
+  omiken2: 'おみくじBOT(その2)',
+} as const
+
+/**
  * 表示モードのラベルマップ
  */
 export const displayModeMap = {

@@ -2,12 +2,13 @@
 <template>
   <div class="flex gap-1">
     <select v-model="localIconKey" class="select select-bordered select-sm flex-1">
-      <option v-for="(value, key) in characterImages" :key="key" :value="key">
-        {{ value.label }}
+      <option v-for="(label, key) in selectOptions" :key="key" :value="key">
+        {{ label }}
       </option>
     </select>
     <div class="relative">
       <button
+        v-if="isCharacter"
         @click="showIconSelector"
         @mouseenter="showHoverSelector = true"
         @mouseleave="showHoverSelector = false"
@@ -20,6 +21,7 @@
   </div>
 
   <IconSelectorModal
+    v-if="isCharacter"
     ref="iconSelectorModalRef"
     :characterKey="characterKey"
     :currentIconKey="localIconKey"
@@ -31,11 +33,13 @@
   import { ref, computed, Ref } from 'vue'
   import IconSelectorModal from './IconSelectorModal.vue'
   import { User } from 'lucide-vue-next'
-  import { useCharacterManager } from '@/ConfigMaker/scripts/CharacterManager/useCharacterManager'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
+  import { characterEmotionMap } from '@/types/MetaMaps/CharacterMaps'
 
   const props = defineProps<{
     characterKey: string
     iconKey: string
+    isCharacter?: boolean
   }>()
 
   const emit = defineEmits<{
@@ -44,16 +48,23 @@
   }>()
 
   const { characterMap } = useCharacterManager()
-  const characterImages = computed(() => characterMap.value[props.characterKey]?.image ?? {})
+
+  // isCharacter なら characterMap の image、そうでなければ characterEmotionMap をフォールバックとして使用
+  const selectOptions = computed<Record<string, string>>(() => {
+    if (props.isCharacter) {
+      return Object.fromEntries(
+        Object.entries(characterMap.value[props.characterKey]?.image ?? {}).map(([k, v]) => [k, v.label])
+      )
+    }
+    return characterEmotionMap
+  })
 
   const showHoverSelector = ref(false)
   const iconSelectorModalRef: Ref<InstanceType<typeof IconSelectorModal> | null> = ref(null)
 
   const localIconKey = computed({
     get: () => props.iconKey,
-    set: (newValue) => {
-      emit('update:iconKey', newValue)
-    },
+    set: (newValue) => emit('update:iconKey', newValue),
   })
 
   const showIconSelector = () => {

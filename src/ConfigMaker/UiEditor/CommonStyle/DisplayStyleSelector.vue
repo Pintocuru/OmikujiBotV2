@@ -25,7 +25,7 @@
   import { useVisibleOptions } from './useVisibleOptions'
   import { useAppStore } from '@main/stores/useAppStore'
   import { computed } from 'vue'
-  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
+  import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
 
   type BaseComponentConfig = {
     label: string

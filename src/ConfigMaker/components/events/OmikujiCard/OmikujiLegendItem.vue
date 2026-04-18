@@ -48,8 +48,8 @@
 </template>
 
 <script setup lang="ts">
-  import { useGetRecordData } from '@/ConfigMaker/stores/useGetRecordData'
-  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
+  import { useGetRecordData } from '@config/stores/useGetRecordData'
+  import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { EventCategoryType, OmikujiItemType } from '@/types/OmikujiData/'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'
   import { generateId } from '@shared/types'
