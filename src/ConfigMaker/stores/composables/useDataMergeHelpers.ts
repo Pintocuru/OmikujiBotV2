@@ -4,7 +4,7 @@ import { ImportMode } from '@config/components/presetsImport/ImportTypes'
 import { AccessLevelType } from '@shared/types'
 
 // basic > adv > pro > godMode > none の順（インデックスが小さいほど優先度が高い）
-const ACCESS_LEVEL_PRIORITY: AccessLevelType[] = ['basic', 'adv', 'pro', 'godMode', 'none']
+export const ACCESS_LEVEL_PRIORITY: AccessLevelType[] = ['basic', 'adv', 'pro', 'godMode', 'none']
 
 /**
  * データマージ処理のヘルパー関数を提供

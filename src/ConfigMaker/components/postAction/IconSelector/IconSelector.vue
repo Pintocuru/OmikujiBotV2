@@ -31,15 +31,15 @@
 
 <script setup lang="ts">
   import { ref, computed, Ref } from 'vue'
-  import IconSelectorModal from './IconSelectorModal.vue'
-  import { User } from 'lucide-vue-next'
-  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import { characterEmotionMap } from '@/types/MetaMaps/CharacterMaps'
+  import IconSelectorModal from './IconSelectorModal.vue'
+  import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
+  import { User } from 'lucide-vue-next'
+  import { useVisibilityAccess } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const props = defineProps<{
     characterKey: string
     iconKey: string
-    isCharacter?: boolean
   }>()
 
   const emit = defineEmits<{
@@ -48,10 +48,11 @@
   }>()
 
   const { characterMap } = useCharacterManager()
+  const { isCharacter } = useVisibilityAccess()
 
   // isCharacter なら characterMap の image、そうでなければ characterEmotionMap をフォールバックとして使用
   const selectOptions = computed<Record<string, string>>(() => {
-    if (props.isCharacter) {
+    if (isCharacter.value) {
       return Object.fromEntries(
         Object.entries(characterMap.value[props.characterKey]?.image ?? {}).map(([k, v]) => [k, v.label])
       )
