@@ -5,8 +5,8 @@
     "description": "",
     "version": "0.0.1",
     "generatorName": "omikuji-bot",
-    "generatorVersion": "2.12.0-beta21",
-    "dataVersion": 2.20120002021,
+    "generatorVersion": "2.12.0-beta22",
+    "dataVersion": 2.20120002022,
     "author": "Pintocuru",
     "tags": [],
     "license": "CC-BY 4.0"
@@ -19,7 +19,7 @@
       "name": "ゴールド65536",
       "description": "ギリシャ神話をイメージしたスロットです",
       "createdAt": "2026-04-08T05:38:54.159Z",
-      "updatedAt": "2026-04-17T16:22:21.161Z",
+      "updatedAt": "2026-04-18T01:24:43.257Z",
       "order": 1,
       "isEnabled": true,
       "daisyColor": "primary",
@@ -252,10 +252,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k256",
               "sound": "",
-              "message": {
-                "bubble": "256\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "256\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -297,10 +294,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k512",
               "sound": "",
-              "message": {
-                "bubble": "512\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "512\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -342,10 +336,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k1024",
               "sound": "",
-              "message": {
-                "bubble": "1024\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "1024\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -387,10 +378,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k2048",
               "sound": "",
-              "message": {
-                "bubble": "2048\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "2048\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -432,10 +420,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k4096",
               "sound": "",
-              "message": {
-                "bubble": "4096\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "4096\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -477,10 +462,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k8192",
               "sound": "",
-              "message": {
-                "bubble": "8192\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "8192\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -522,10 +504,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k65536",
               "sound": "",
-              "message": {
-                "bubble": "65536\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "65536\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -795,10 +774,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k256",
               "sound": "",
-              "message": {
-                "bubble": "256\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "256\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -840,10 +816,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k512",
               "sound": "",
-              "message": {
-                "bubble": "512\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "512\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -885,10 +858,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k1024",
               "sound": "",
-              "message": {
-                "bubble": "1024\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "1024\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -930,10 +900,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k2048",
               "sound": "",
-              "message": {
-                "bubble": "2048\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "2048\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -975,10 +942,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k4096",
               "sound": "",
-              "message": {
-                "bubble": "4096\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "4096\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -1020,10 +984,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k8192",
               "sound": "",
-              "message": {
-                "bubble": "8192\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "8192\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {
@@ -1065,10 +1026,7 @@
               "characterKey": "Golden65536",
               "iconKey": "k65536",
               "sound": "",
-              "message": {
-                "bubble": "65536\n{{\n  slot0 = 'true';  // 演出するか\n  slot1 = '10'  // 演出秒数\n }}",
-                "isToast": true
-              }
+              "message": { "bubble": "65536\n{{\n  slot0 = 'true';  // 演出するか\n }}", "isToast": true }
             },
             { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["SpinCount"] },
             {

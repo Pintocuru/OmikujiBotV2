@@ -3,6 +3,7 @@
 // 各型定義の公開
 export * from './env'
 
+export * from './ConfigMaker/index'
 export * from './MainGenerator/index'
 export * from './GameScript/index'
 export * from './MetaMaps/index'

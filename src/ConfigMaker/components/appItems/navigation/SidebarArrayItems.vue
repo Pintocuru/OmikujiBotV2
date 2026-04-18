@@ -1,16 +1,18 @@
 <!-- src/ConfigMaker/components/appItems/navigation/SidebarArrayItems.vue -->
 <template>
-  <SidebarSubItem
-    v-for="item in items"
-    :key="item.key"
-    :category="category"
-    :itemKey="item.key"
-    :label="item.label"
-    :isDragEnabled="false"
-    :isSelected="selectedItemKey === item.key"
-    :sections="[]"
-    @select="navigationStore.selectItem(item.key)"
-  />
+  <div>
+    <SidebarSubItem
+      v-for="item in items"
+      :key="item.key"
+      :category="category"
+      :itemKey="item.key"
+      :label="item.label"
+      :isDragEnabled="false"
+      :isSelected="selectedItemKey === item.key"
+      :sections="[]"
+      @select="navigationStore.selectItem(item.key)"
+    />
+  </div>
 </template>
 
 <script setup lang="ts">

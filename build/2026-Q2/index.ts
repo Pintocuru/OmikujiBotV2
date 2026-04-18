@@ -7,5 +7,6 @@ export default [
   /* 完成されてないもの */
   // まだない
   /* BOOTHで発売されてるもの */
-  SlotPortrait,
+  // CookieCounterSakura,
+  // SlotPortrait,
 ]

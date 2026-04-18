@@ -8,6 +8,7 @@ import { useRecordCRUD } from './composables/useRecordCRUD'
 import { useRecordProperties } from './composables/useRecordProperties'
 import { useRecordSort } from './composables/useRecordSort'
 import { useSettingsOperations } from './composables/useSettingsOperations'
+import { DataSource } from '@/types'
 
 /**
  * おみくじデータの中心的なstore
@@ -20,8 +21,11 @@ export const useOmikujiStore = defineStore('omikuji', () => {
   const hasChanged = ref(false)
   const resetChangeState = () => (hasChanged.value = false)
 
+  // 読み込んだデータの種類
+  const dataSource = ref<DataSource>('unknown')
+
   // データIO・マージ
-  const dataIO = useDataIO(data)
+  const dataIO = useDataIO(data, dataSource)
   const dataMerge = useDataMerge(data, hasChanged)
 
   // レコード操作
@@ -37,6 +41,7 @@ export const useOmikujiStore = defineStore('omikuji', () => {
     data,
     hasChanged,
     resetChangeState,
+    dataSource,
 
     // データIO・マージ
     ...dataIO,

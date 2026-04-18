@@ -28,13 +28,13 @@ const PROJECT = {
 } satisfies ProjectParams
 
 // バリエーション定義
-const COLOR_VARIANTS = [''] as const
+const COLOR_VARIANTS = ['', 'Pro'] as const
 
-// ビルドターゲット（pro はコメントアウトされていたため basic のみ採用）
+// ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  // { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
-  // { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
+  { project: 'StrawberryChocolate', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolatePro', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'StrawberryChocolate', type: 'JSON', accessLevel: 'basic' },
 ]
 
 // プロジェクト一覧

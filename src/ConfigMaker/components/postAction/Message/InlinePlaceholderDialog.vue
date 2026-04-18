@@ -58,12 +58,6 @@
         </div>
       </div>
 
-      <!-- プレビュー -->
-      <div v-if="preview" class="bg-base-200 rounded-lg px-3 py-2">
-        <p class="text-xs text-base-content/50 mb-1">生成されるテキスト:</p>
-        <code class="text-xs font-mono text-accent break-all whitespace-pre-wrap">{{ preview }}</code>
-      </div>
-
       <!-- フッター -->
       <div class="flex justify-end gap-2">
         <button class="btn btn-sm btn-ghost" @click="close">キャンセル</button>
