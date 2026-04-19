@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import CookieCounterSakura from './CookieCounterSakura'
 import SlotPortrait from './SlotPortrait'
+import Golden65536 from './Golden65536'
 
 export default [
   /* 完成されてないもの */
@@ -9,4 +10,5 @@ export default [
   /* BOOTHで発売されてるもの */
   // CookieCounterSakura,
   // SlotPortrait,
+  Golden65536,
 ]
