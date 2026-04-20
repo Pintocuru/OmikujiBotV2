@@ -49,6 +49,7 @@
   const animationType = computed(() => props.settings.animation)
 
   const { slotMessages, isSpinning, resolvedMessage, startSpin, onAnimationReady } = useCommentSpinAnimation({
+    duration: props.settings.durationSeconds * 1000,
     type: animationType,
   })
 

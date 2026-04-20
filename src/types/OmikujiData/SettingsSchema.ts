@@ -21,6 +21,7 @@ export const SettingsSchema = z.object({
   ignoreUserPattern: z.string().default('__INFO__|__ERROR__').catch('__INFO__|__ERROR__'), // VisitUserを無視するリスト
   includeExternalComments: z.boolean().default(false).catch(false), // 外部コメントをユーザーリストに入れるか
   uiPlacement: z.enum(['center', 'embedded']).default('center').catch('center'), // 単体のアイテムを中央に配置するか
+  basicDelaySeconds: z.number().min(0).max(5).default(1).catch(1), // 投稿の基本的な遅延時間（秒）
 
   // TODO(v3): editor にネスト
   locale: z.enum(locales).default('ja').catch('ja'), // 言語設定

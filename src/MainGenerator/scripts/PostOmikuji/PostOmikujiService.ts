@@ -20,12 +20,14 @@ export class PostOmikujiService {
   private readonly serviceMetaStore = ServiceMetaStore.getInstance()
   private readonly characterManager: CharacterManager
   private readonly enableSecondary: boolean
+  private readonly basicDelaySeconds: number
   private services: Service[] = []
   private createdServiceIds = new Set<string>()
 
   constructor(omikujiData: OmikujiDataType) {
     this.characterManager = new CharacterManager(omikujiData)
     this.enableSecondary = omikujiData.components.enableSecondary
+    this.basicDelaySeconds = omikujiData.settings.basicDelaySeconds
   }
 
   /**
@@ -70,13 +72,13 @@ export class PostOmikujiService {
       if (frameId) {
         this.postAsComment(bubble, character?.displayName, delaySeconds, frameId, displayOption.imageBase64)
       } else {
-        postSpeech(bubble, delaySeconds)
+        postSpeech(bubble, this.withBasicDelay(delaySeconds))
       }
       return
     }
 
     if (displayOption.mode === 'voice') {
-      postSpeech(bubble, delaySeconds)
+      postSpeech(bubble, this.withBasicDelay(delaySeconds))
     }
     // none / rpgVoice はわんコメ側では何もしない
   }
@@ -90,12 +92,16 @@ export class PostOmikujiService {
   ): void {
     try {
       const sendComment = buildCommentRequest(frameId, bubble, displayName, imageBase64)
-      postComment(sendComment, delaySeconds)
+      postComment(sendComment, this.withBasicDelay(delaySeconds))
     } catch (error) {
       const msg = `キャラクターコメント投稿エラー: ${error}`
       console.error(msg)
       postSystemMessage(msg)
     }
+  }
+
+  private withBasicDelay(delay: number = 0): number {
+    return delay + this.basicDelaySeconds
   }
 
   //  Private: サービス管理

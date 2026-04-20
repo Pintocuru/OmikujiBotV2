@@ -3,6 +3,25 @@
   <!-- ジェネレーター設定 -->
   <SubSectionHeader icon="Sparkles" title="ジェネレーター設定" description="UI・効果音など、配信挙動に関わる設定" />
 
+  <!-- 基本ディレイ時間設定 -->
+  <SettingItem label="投稿の基本遅延時間" description="BOTメッセージの表示や投稿を遅延（秒）">
+    <div class="flex flex-col gap-2">
+      <div class="flex justify-between text-xs">
+        <span>{{ settings.basicDelaySeconds }}s</span>
+      </div>
+
+      <input
+        type="range"
+        min="0"
+        max="3"
+        step="0.5"
+        class="range range-accent"
+        :value="settings.basicDelaySeconds"
+        @input="(e) => updateField('basicDelaySeconds', Number((e.target as HTMLInputElement).value))"
+      />
+    </div>
+  </SettingItem>
+
   <!-- 効果音を鳴らす -->
   <SettingItem label="効果音を鳴らす" description="BOTの効果音を再生するか">
     <label class="flex items-center gap-2 cursor-pointer">

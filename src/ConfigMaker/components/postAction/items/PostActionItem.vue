@@ -29,7 +29,7 @@
         <input
           type="number"
           v-model.number="delaySeconds"
-          min="-1"
+          :min="basicDelaySeconds * -1"
           step="0.1"
           class="input input-bordered input-sm w-32"
           placeholder="0"
@@ -57,6 +57,7 @@
   import ActionSetSettings from '../ActionSet/ActionSetSettings.vue'
   import PostActionPreview from '../preview/PostActionPreview.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
+  import { useOmikujiStore } from '@/ConfigMaker/stores/useOmikujiStore'
 
   // Props
   const props = defineProps<{
@@ -70,6 +71,9 @@
     remove: [index: number]
     'update:action': [value: PostFlowType]
   }>()
+
+  const omikujiStore = useOmikujiStore()
+  const basicDelaySeconds = computed(() => omikujiStore.data.settings.basicDelaySeconds ?? 1)
 
   // 現在表示すべきコンポーネントの決定
   const currentComponent = computed(() => {

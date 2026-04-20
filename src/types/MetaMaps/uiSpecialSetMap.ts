@@ -9,12 +9,17 @@ export const uiSpecialSetMap = {
   },
   VarietySlot: {
     label: 'クイズバラエティスロット',
-    description: 'コメントスロット＋ランキングのセット',
+    description: 'クイズバラエティスロット用のセット',
     kinds: ['commentSpin', 'cookieCounter'],
+  },
+  VarietySlotRanking: {
+    label: 'バラエティスロットランキング',
+    description: 'クイズバラエティスロットランキング用のセット',
+    kinds: ['commentSpin', 'cookieCounter', 'ranking'],
   },
   GogoBonus: {
     label: 'ペカるボタン',
-    description: 'コメントスロット＋クッキーカウンターのセット',
+    description: 'ペカるボタン用のセット',
     kinds: ['commentSpin', 'cookieCounter'],
   },
   Golden65536: {

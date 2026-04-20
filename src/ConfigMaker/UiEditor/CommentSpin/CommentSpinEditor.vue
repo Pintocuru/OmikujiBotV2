@@ -1,7 +1,10 @@
 <!-- src/ConfigMaker/UiEditor/CommentSpin/CommentSpinEditor.vue -->
 <template>
   <!-- プレビュー -->
-  <CommentSpinPreview :key="`${commentSpin.component}-${commentSpin.animation}`" :settings="commentSpin" />
+  <CommentSpinPreview
+    :key="`${commentSpin.component}-${commentSpin.animation}-${commentSpin.durationSeconds}`"
+    :settings="commentSpin"
+  />
 
   <!-- コンポーネント選択 -->
   <DisplayStyleSelector
@@ -54,6 +57,25 @@
           @input="(e) => updateSize('height', Number((e.target as HTMLInputElement).value))"
         />
       </div>
+    </div>
+  </SettingItem>
+
+  <!-- 再生時間設定 -->
+  <SettingItem label="回転の再生時間" description="アニメーションの再生時間（秒）">
+    <div class="flex flex-col gap-2">
+      <div class="flex justify-between text-xs">
+        <span>{{ commentSpin.durationSeconds }}s</span>
+      </div>
+
+      <input
+        type="range"
+        min="0.5"
+        max="5"
+        step="0.1"
+        class="range range-accent"
+        :value="commentSpin.durationSeconds"
+        @input="(e) => updateField('durationSeconds', Number((e.target as HTMLInputElement).value))"
+      />
     </div>
   </SettingItem>
 

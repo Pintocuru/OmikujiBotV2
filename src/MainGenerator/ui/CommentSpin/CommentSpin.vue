@@ -41,7 +41,10 @@
   })
 
   const { slotMessages, isSpinning, resolvedMessage, overrideLogoPath, startSpin, onAnimationReady, onAnimationEnd } =
-    useCommentSpinAnimation({ type: animation })
+    useCommentSpinAnimation({
+      duration: spinSettings.value.durationSeconds * 1000,
+      type: animation,
+    })
 
   useCommentSpinMessages({ messages, startSpin })
 </script>

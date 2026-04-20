@@ -5,16 +5,11 @@ import { soundKeys } from './SoundKey'
 import { normalizedObject } from './ParsedDefault'
 import { actionSetKindMap, PostFlowKindMaps, actionSpecialMap } from '../MetaMaps'
 import { BaseRecordSchema } from '@shared/types'
-import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { gameMetaMap } from '../MetaMaps/'
 
 // PostFlow delaySeconds
 const PostFlowBaseSchema = z.object({
-  delaySeconds: z
-    .number()
-    .min(POST_SETTINGS.basicDelaySeconds * -1)
-    .default(0)
-    .catch(0),
+  delaySeconds: z.number().default(0).catch(0),
 })
 
 // PostFlow message

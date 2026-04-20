@@ -7,7 +7,6 @@ import { CharacterManager, checkIsCharacterMode } from '@main/scripts/CharacterM
 import { PostOmikujiService } from '@main/scripts/PostOmikuji/PostOmikujiService'
 import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 import { playSoundDelay } from '@sounds/PlaySound'
-import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 
 export class BotMessageGenerator {
@@ -15,6 +14,7 @@ export class BotMessageGenerator {
   private readonly postMessage: PostOmikujiService
   private readonly soundEnabled: boolean
   private readonly enableSecondary: boolean
+  private readonly basicDelaySeconds: number
   private readonly characterManager?: CharacterManager
 
   constructor(omikujiData: OmikujiDataType, variable: PlaceholderVariableType) {
@@ -22,6 +22,7 @@ export class BotMessageGenerator {
     this.postMessage = new PostOmikujiService(omikujiData)
     this.soundEnabled = omikujiData.settings.soundEnabled
     this.enableSecondary = omikujiData.components?.enableSecondary ?? true
+    this.basicDelaySeconds = omikujiData.settings.basicDelaySeconds ?? 1
 
     // isCharacterMode の影響を受けるコード
     const isCharacterMode = checkIsCharacterMode(omikujiData)
@@ -76,7 +77,7 @@ export class BotMessageGenerator {
 
     for (const item of processedActions) {
       const { action, extra } = item
-      const delaySeconds = action.delaySeconds + POST_SETTINGS.basicDelaySeconds
+      const delaySeconds = action.delaySeconds + this.basicDelaySeconds
 
       if (action.actionType === 'message') {
         // ここで判定：設定が無効なら、action のコピーを作って isToast を false に書き換える

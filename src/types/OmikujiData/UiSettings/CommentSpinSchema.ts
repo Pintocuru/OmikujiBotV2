@@ -57,6 +57,7 @@ export const CommentSpinSchema = z.object({
       height: z.number().default(96).catch(96), // px（アニメーション計算にも使う）
     })
     .default({ width: 320, height: 96 }),
+  durationSeconds: z.number().default(3).catch(3),
   logoPath: z.string().default('').catch(''),
 })
 export type CommentSpinType = z.infer<typeof CommentSpinSchema>
