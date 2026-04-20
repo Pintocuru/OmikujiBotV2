@@ -12,13 +12,16 @@
     <select
       :value="settings.daisyUiTheme"
       @change="(e) => updateField('daisyUiTheme', (e.target as HTMLSelectElement).value)"
-      class="select select-bordered w-full max-w-xs"
+      class="select select-bordered"
       :disabled="!isPro"
     >
       <option v-for="theme in themes" :key="theme" :value="theme">
         {{ theme }}
       </option>
     </select>
+    <span class="pl-2">
+      <button class="btn btn-sm btn-outline" @click="setRandomTheme" :disabled="!isPro">ランダム</button>
+    </span>
   </SettingItem>
 
   <!-- ライセンスキー -->
@@ -101,6 +104,12 @@
 
   const resetMap = {
     initialCategory: () => resetField('initialCategory'),
+  }
+
+  const setRandomTheme = () => {
+    if (!themes.length) return
+    const random = themes[Math.floor(Math.random() * themes.length)]
+    updateField('daisyUiTheme', random)
   }
 
   // ライセンスキー変更時のモーダル表示

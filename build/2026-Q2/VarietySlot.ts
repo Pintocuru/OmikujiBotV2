@@ -11,7 +11,7 @@ const PROJECT = {
   boothId: '8188701',
   category: '2026-Q2',
   series: 'CommentSpin',
-  licenseLabel: 'CC-BY 4.0',
+  licenseLabel: '利用規約に従う',
   extraFiles: [{ from: 'assets/Characters/VarietySlot/', to: 'Characters/VarietySlot/' }],
 } satisfies ProjectParams
 
