@@ -9,7 +9,7 @@
       <CommentSpin />
     </DraggableWrapper>
 
-    <DraggableWrapper>
+    <DraggableWrapper resizable>
       <div class="scale-150 origin-top">
         <GameRanking />
       </div>

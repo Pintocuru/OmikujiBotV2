@@ -54,7 +54,7 @@
   import { ServiceMetaStore, NormalizedMeta } from '@main/stores/MetaState/MetaStateService'
 
   const store = ServiceMetaStore.getInstance()
-  const collapsed = ref(false)
+  const collapsed = ref(true)
 
   type NumericFields = Pick<NormalizedMeta, 'viewer' | 'upVote' | 'follower'>
 

@@ -8,13 +8,13 @@ export const uiSpecialSetMap = {
     kinds: ['bubble', 'toast', 'ranking'],
   },
   VarietySlot: {
-    label: 'クイズバラエティスロット',
-    description: 'クイズバラエティスロット用のセット',
+    label: 'クイズせかいはバラエティスロット',
+    description: 'クイズせかいはバラエティスロット用のセット',
     kinds: ['commentSpin', 'cookieCounter'],
   },
   VarietySlotRanking: {
     label: 'バラエティスロットランキング',
-    description: 'クイズバラエティスロットランキング用のセット',
+    description: 'クイズせかいはバラエティスロットランキング用のセット',
     kinds: ['commentSpin', 'cookieCounter', 'ranking'],
   },
   GogoBonus: {

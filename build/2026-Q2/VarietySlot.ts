@@ -4,10 +4,10 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 
 const PROJECT = {
   key: 'VarietySlot',
-  title: '配信マネーは今回ドォーダイ!!',
+  title: 'クイズせかいはバラエティスロット',
   description: 'リスナーが増えるほど回る!昭和バラエティ風スロットテンプレート',
   banner: '',
-  tags: ['コメントスピン', 'クイズバラエティスロット'],
+  tags: ['コメントスピン', 'クイズせかいはバラエティスロット'],
   boothId: '8188701',
   category: '2026-Q2',
   series: 'CommentSpin',

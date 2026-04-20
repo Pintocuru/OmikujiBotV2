@@ -4,7 +4,12 @@
   <SubSectionHeader icon="Sparkles" title="ジェネレーター設定" description="UI・効果音など、配信挙動に関わる設定" />
 
   <!-- 基本ディレイ時間設定 -->
-  <SettingItem label="投稿の基本遅延時間" description="BOTメッセージの表示や投稿を遅延（秒）">
+  <SettingItem
+    label="投稿の基本遅延時間"
+    description="BOTメッセージの表示や投稿を遅延（秒）"
+    :showReset="true"
+    @reset="resetMap.basicDelaySeconds"
+  >
     <div class="flex flex-col gap-2">
       <div class="flex justify-between text-xs">
         <span>{{ settings.basicDelaySeconds }}s</span>
@@ -31,7 +36,12 @@
   </SettingItem>
 
   <!-- ツールでのコメントをユーザーリストに入れるか -->
-  <SettingItem label="外部コメントのリスト入り" description="配信中にツールコメントをユーザーとして扱うか">
+  <SettingItem
+    label="外部コメントのリスト入り"
+    description="配信中にツールコメントをユーザーとして扱うか"
+    :showReset="true"
+    @reset="resetMap.includeExternalComments"
+  >
     <label class="flex items-center gap-2 cursor-pointer">
       <input
         type="checkbox"
@@ -146,6 +156,8 @@
 
   const resetMap = {
     ignoreUserPattern: () => resetField('ignoreUserPattern'),
+    basicDelaySeconds: () => resetField('basicDelaySeconds'),
+    includeExternalComments: () => resetField('includeExternalComments'),
   }
 
   // 効果音: OFF → ON になったときにプレビュー再生

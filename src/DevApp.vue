@@ -8,12 +8,14 @@
     <HudPreview :isHeight="false">
       <MainGenerator />
       <template #hud>
-        <!-- エアコメメーカー -->
-        <AirComment />
-        <!-- メタデータ操作ツール -->
-        <DevMetaController />
-        <!-- リセットボタン -->
-        <button class="btn btn-sm btn-warning" @click="resetAll">セッションリセット</button>
+        <DraggableWrapper>
+          <!-- エアコメメーカー -->
+          <AirComment />
+          <!-- メタデータ操作ツール -->
+          <DevMetaController />
+          <!-- リセットボタン -->
+          <button class="btn btn-sm btn-warning" @click="resetAll">セッションリセット</button>
+        </DraggableWrapper>
       </template>
 
       <template #hudLeft>
@@ -51,6 +53,7 @@
   import DevMetaController from '@/common/DevMetaController/DevMetaController.vue'
   import { Settings, Cpu } from 'lucide-vue-next'
   import { useAppStore } from './MainGenerator/stores/useAppStore'
+  import DraggableWrapper from '@main/layouts/DraggableWrapper.vue'
 
   const showMain = ref(false)
   const appStore = useAppStore()
