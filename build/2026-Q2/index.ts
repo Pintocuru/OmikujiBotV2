@@ -3,6 +3,7 @@
 import CookieCounterSakura from './CookieCounterSakura'
 import SlotPortrait from './SlotPortrait'
 import Golden65536 from './Golden65536'
+import VarietySlot from './VarietySlot'
 
 export default [
   /* 完成されてないもの */
@@ -10,5 +11,6 @@ export default [
   /* BOOTHで発売されてるもの */
   // CookieCounterSakura,
   // SlotPortrait,
-  Golden65536,
+  // Golden65536,
+  VarietySlot,
 ]

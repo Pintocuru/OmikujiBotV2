@@ -5,7 +5,7 @@
       <CommentSpin />
     </DraggableWrapper>
 
-    <DraggableWrapper>
+    <DraggableWrapper resizable>
       <div class="w-fit overflow-hidden">
         <div class="scale-75 origin-top">
           <StreamCounter />

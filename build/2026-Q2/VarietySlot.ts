@@ -16,7 +16,7 @@ const PROJECT = {
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = [''] as const
+const COLOR_VARIANTS = ['', 'Ranking'] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
@@ -26,6 +26,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
   { project: 'VarietySlot', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'VarietySlotRanking', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
