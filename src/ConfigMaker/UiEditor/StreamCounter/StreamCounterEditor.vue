@@ -54,6 +54,7 @@
     @remove="handleRemove"
     @reset="handleReset"
     @reorder="handleReorder"
+    @update="handleUpdate"
   />
 </template>
 
@@ -68,9 +69,9 @@
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import type { CounterItem } from './CounterSelectorPanel.vue'
-  import CounterSelectorPanel from './CounterSelectorPanel.vue'
+  import CounterSelectorPanel from './CounterSelector/CounterSelectorPanel.vue'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
+  import { CounterItem } from './CounterSelector/counterTypes'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
@@ -194,5 +195,12 @@
   const handleReset = (type: 'default' | 'event') => {
     if (type === 'default') resetField('defaultCounters')
     else resetField('eventCounters')
+  }
+
+  const handleUpdate = (payload: { id: string; patch: { target: string; label: string } }) => {
+    updateField(
+      'variableCounters',
+      streamCounter.value.variableCounters.map((v) => (v.id === payload.id ? { ...v, ...payload.patch } : v))
+    )
   }
 </script>

@@ -8,9 +8,9 @@ export const uiSpecialSetMap = {
     kinds: ['bubble', 'toast', 'ranking'],
   },
   VarietySlot: {
-    label: 'VarietySlot',
+    label: 'クイズバラエティスロット',
     description: 'コメントスロット＋ランキングのセット',
-    kinds: ['commentSpin', 'ranking'],
+    kinds: ['commentSpin', 'cookieCounter'],
   },
   GogoBonus: {
     label: 'ペカるボタン',

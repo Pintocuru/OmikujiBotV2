@@ -26,6 +26,7 @@
     @remove="removeCounter"
     @reset="(type) => updateCounters(counters.filter((c) => c.type !== type))"
     @reorder="updateCounters2"
+    @update="updateCounter"
   />
 </template>
 
@@ -38,7 +39,8 @@
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
-  import CounterSelectorPanel, { CounterItem } from '../StreamCounter/CounterSelectorPanel.vue'
+  import CounterSelectorPanel from '../StreamCounter/CounterSelector/CounterSelectorPanel.vue'
+  import { CounterItem } from '../StreamCounter/CounterSelector/counterTypes'
 
   const { data } = storeToRefs(useOmikujiStore())
   const omikujiStore = useOmikujiStore()
@@ -70,6 +72,15 @@
 
   const updateCounters2 = (next: CounterItem[]) => {
     updateField('counters', next)
+  }
+
+  const updateCounter = (payload: { id: string; patch: { target: string; label: string } }) => {
+    updateCounters(
+      counters.value.map((c) => {
+        if (c.id !== payload.id || c.type !== 'variable') return c
+        return { ...c, ...payload.patch }
+      })
+    )
   }
 
   // ---- カウンター操作 ----

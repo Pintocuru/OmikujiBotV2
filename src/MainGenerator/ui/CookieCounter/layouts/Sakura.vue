@@ -1,31 +1,35 @@
 <!-- src/MainGenerator/ui/CookieCounter/layouts/Sakura.vue -->
 <template>
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center pt-30">
     <!-- メイン花びら（サブの absolute 基準） -->
-    <div v-if="slots[0]" class="relative inline-flex items-center justify-center">
+    <div v-if="slots[0]" class="relative inline-block">
       <SakuraPetal class="w-110 h-110 animate-spin-slow" />
-      <div class="absolute flex flex-col items-center leading-tight">
-        <span class="counter-label text-6xl truncate">{{ slots[0].label }}</span>
-        <span class="counter-value text-[260px] -mt-8" :style="{ transform: `scale(${mainScale})` }">
-          {{ formatValue(displayMain) }}
-        </span>
-      </div>
 
-      <!-- サブ花びら：メインの right-0 top-0 基点で右上へオフセット -->
-      <div
-        v-if="slots[1]"
-        class="absolute top-5 -right-10 flex items-center justify-center"
-        style="transform: translate(50%, -50%)"
-      >
-        <SakuraPetal class="w-60 h-60 animate-spin-slow-reverse" />
-        <div class="absolute flex flex-col items-center leading-tight">
-          <span class="counter-label text-4xl truncate">{{ slots[1].label }}</span>
-          <span class="counter-value text-9xl -mt-3" :style="{ transform: `scale(${subScale})` }">
-            {{ formatValue(displaySub) }}
+      <!-- メインの数字・ラベル -->
+      <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
+        <div class="flex flex-col items-center">
+          <span class="counter-label text-6xl truncate">{{ slots[0].label }}</span>
+          <span class="counter-value text-[260px] -mt-8" :style="{ transform: `scale(${mainScale})` }">
+            {{ formatValue(displayMain) }}
           </span>
         </div>
       </div>
+
+      <!-- サブ花びら -->
+      <div v-if="slots[1]" class="absolute top-5 -right-10" style="transform: translate(50%, -50%)">
+        <SakuraPetal class="w-60 h-60 animate-spin-slow-reverse" />
+
+        <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
+          <div class="flex flex-col items-center">
+            <span class="counter-label text-4xl truncate">{{ slots[1].label }}</span>
+            <span class="counter-value text-9xl -mt-3" :style="{ transform: `scale(${subScale})` }">
+              {{ formatValue(displaySub) }}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
+
     <div v-if="slots.length === 0" class="text-pink-400 text-2xl mt-10">まだ何も咲いていません…</div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/CookieCounter/layouts/Block3d.vue -->
 <template>
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center items-center">
     <div v-if="slots.length === 0" class="text-base-content/40 text-2xl">まだ何も表示されません…</div>
 
     <div v-else class="relative">
