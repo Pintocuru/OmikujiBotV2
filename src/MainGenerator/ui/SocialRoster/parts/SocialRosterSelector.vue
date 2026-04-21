@@ -1,14 +1,18 @@
 <!-- src/MainGenerator/ui/SocialRoster/parts/SocialRosterSelector.vue -->
 <template>
-  <div class="bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color.daisyUiTheme">
-    <component
-      :is="currentComponent"
-      :users="users"
-      :sortKey="settings.sortKey"
-      :color="settings.color"
-      :socialRosterCounts="socialRosterCounts"
-      :size="size"
-    />
+  <div class="flex flex-col w-full">
+    <div class="bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color.daisyUiTheme">
+      <component
+        :is="currentComponent"
+        :users="users"
+        :sortKey="settings.sortKey"
+        :color="settings.color"
+        :counts="counts"
+        :size="size"
+        :maxRows="settings.layoutLimit.maxRows"
+        :maxColumns="settings.layoutLimit.maxColumns"
+      />
+    </div>
   </div>
 </template>
 
@@ -21,7 +25,7 @@
   const props = defineProps<{
     settings: SocialRosterType
     users: UserStatsRecord[]
-    socialRosterCounts: SocialRosterCounts
+    counts: SocialRosterCounts
   }>()
 
   const size = 80

@@ -16,7 +16,7 @@
       <!-- 初見数 -->
       <div class="flex flex-col items-center leading-none">
         <Sprout class="w-4 h-4 mb-0.5" />
-        <span class="text-xl font-bold">{{ socialRosterCounts.syokenCount }}</span>
+        <span class="text-xl font-bold">{{ counts.syokenCount }}</span>
       </div>
 
       <!-- 区切り線 -->
@@ -39,24 +39,28 @@
       <!-- ユーザー数 -->
       <div class="flex flex-col items-center leading-none">
         <Users class="w-4 h-4 mb-0.5" />
-        <span class="text-xl font-bold">{{ socialRosterCounts.userCount }}</span>
+        <span class="text-xl font-bold">{{ counts.userCount }}</span>
       </div>
     </div>
 
     <!-- ユーザーリスト -->
-    <div class="grid gap-2 justify-center" style="grid-template-columns: repeat(auto-fill, 80px)">
-      <div v-for="user in users" :key="`${user.userId}-${user.timestamp}`" class="seat-container">
-        <Cell :seat="user" :size="size" :index="0" :sortKey="sortKey" />
-      </div>
-    </div>
+    <grid
+      :users="users"
+      :sortKey="sortKey"
+      :color="color"
+      :counts="counts"
+      :size="size"
+      :maxRows="maxRows"
+      :maxColumns="maxColumns"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { UserStatsRecord, SocialSortKey, SocialRosterCounts } from '@/types'
+  import grid from './Grid.vue'
   import { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
-  import Cell from './Cell.vue'
   import { Sprout, Users } from 'lucide-vue-next'
 
   const props = defineProps<{
@@ -64,11 +68,13 @@
     users: UserStatsRecord[]
     sortKey: SocialSortKey
     color: DaisyUiThemeFieldsType
-    socialRosterCounts: SocialRosterCounts
+    counts: SocialRosterCounts
+    maxRows: number | null
+    maxColumns: number | null
   }>()
 
   const digits = computed(() => {
-    const str = Math.floor(props.socialRosterCounts.streamScore).toString()
+    const str = Math.floor(props.counts.streamScore).toString()
     // 最小6桁、スコアが増えれば自動で伸びる
     return str.padStart(Math.max(6, str.length), '0').split('').map(Number)
   })

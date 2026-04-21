@@ -38,6 +38,13 @@ export const SocialRosterSchema = z.object({
   targetEventKey: z.string().default('').catch(''), // どのeventを対象にするか
   color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
   sortKey: z.enum(socialSortKeyEnum).default('lastVisit').catch('lastVisit'), // ソート基準・順序
+  // 縦・横のアイコン上限数
+  layoutLimit: z
+    .object({
+      maxRows: z.number().int().positive().nullable().default(null).catch(null),
+      maxColumns: z.number().int().positive().nullable().default(null).catch(null),
+    })
+    .default({ maxRows: null, maxColumns: null }),
 })
 export type SocialRosterType = z.infer<typeof SocialRosterSchema>
 

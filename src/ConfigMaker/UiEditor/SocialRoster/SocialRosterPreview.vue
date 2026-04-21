@@ -2,7 +2,7 @@
 <template>
   <HudPreview>
     <div :class="[fontFamily]">
-      <SocialRosterSelector :settings="socialRoster" :users="sortedPreviewUsers" :social-roster-counts="counts" />
+      <SocialRosterSelector :settings="socialRoster" :users="sortedPreviewUsers" :counts="counts" />
     </div>
     <template #hud>
       <div class="space-x-2">

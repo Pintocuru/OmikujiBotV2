@@ -17,6 +17,14 @@
     @update:model-value="(newValue) => updateField('color', newValue)"
   />
 
+  <!-- レイアウト制限 -->
+  <SettingItem label="レイアウト制限" description="行数・列数の最大値を設定">
+    <LayoutLimitEditor
+      :model-value="socialRoster.layoutLimit"
+      @update:model-value="(newValue) => updateField('layoutLimit', newValue)"
+    />
+  </SettingItem>
+
   <!-- ソート基準 -->
   <SettingItem
     label="右下のステータス"
@@ -76,6 +84,7 @@
   import { useSettingMode, useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
+  import LayoutLimitEditor from './LayoutLimitEditor.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
