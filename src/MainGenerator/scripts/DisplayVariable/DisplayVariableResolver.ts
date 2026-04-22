@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/DisplayVariable/DisplayVariableResolver.ts
-import { PostFlowType } from '@/types'
+import { hasPostFlowMessage, PostFlowType } from '@/types'
 import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 
 export class DisplayVariableResolver {
@@ -10,7 +10,7 @@ export class DisplayVariableResolver {
    */
   processPostActions(postActions: PostFlowType[]): PostFlowType[] {
     return postActions.map((action) => {
-      if (action.actionType === 'message' || action.actionType === 'variable') {
+      if (hasPostFlowMessage(action)) {
         return {
           ...action,
           message: {

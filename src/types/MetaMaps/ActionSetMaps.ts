@@ -8,7 +8,7 @@ export const PostFlowKindMaps = {
   sound: { label: 'サウンド', icon: 'Volume2' },
   wordParty: { label: 'WordParty', icon: 'PartyPopper' },
   variable: { label: '評価ブロック', icon: 'Brackets' },
-  // bot: { label: 'BOTちゃん', icon: 'Bot' },
+  bot: { label: 'BOTちゃん', icon: 'Bot' },
 
   // TODO(v3) : actionSet -> flowCall
   actionSet: { label: 'アクションセット', icon: 'MessagesSquare' },

@@ -1,5 +1,12 @@
 // src/MainGenerator/scripts/ContentPlaceholder/processor.ts
-import { PostFlowType, PlaceholderType, handelNormalizedValues, WeightValuesArrayType, WeightValueType } from '@/types/'
+import {
+  PostFlowType,
+  PlaceholderType,
+  handelNormalizedValues,
+  WeightValuesArrayType,
+  WeightValueType,
+  hasPostFlowMessage,
+} from '@/types/'
 import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 
@@ -45,7 +52,7 @@ export class ContentPlaceholder {
    */
   processPostActions(postActions: PostFlowType[]): PostFlowType[] {
     return postActions.map((action) => {
-      if (action.actionType === 'message' || action.actionType === 'variable') {
+      if (hasPostFlowMessage(action)) {
         return {
           ...action,
           message: {

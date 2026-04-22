@@ -1,6 +1,6 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageGenerator.ts
 import { BotMessageType, ProcessedPostAction } from '@/types/'
-import { PostFlowType, OmikujiDataType } from '@/types/OmikujiData/'
+import { PostFlowType, OmikujiDataType, hasPostFlowMessage } from '@/types/OmikujiData/'
 import { createBotMessagesFromAction, createBotMessagesFromVariable } from './BotMessageHelpers'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
 import { CharacterManager, checkIsCharacterMode } from '@main/scripts/CharacterManager/CharacterManager'
@@ -34,8 +34,8 @@ export class BotMessageGenerator {
    */
   processVariables(actions: PostFlowType[]): ProcessedPostAction[] {
     return actions.map((action): ProcessedPostAction => {
-      // message と variable のみ処理。それ以外またはbubbleがない場合はそのまま
-      if (action.actionType !== 'message' && action.actionType !== 'variable') return { action }
+      // bubbleがない場合はそのまま
+      if (!hasPostFlowMessage(action)) return { action }
       if (!action.message.bubble) return { action }
 
       // 変数処理の実行（ランキング抽出等）

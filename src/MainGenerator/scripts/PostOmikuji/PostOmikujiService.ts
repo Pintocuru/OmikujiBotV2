@@ -9,6 +9,7 @@ import { POST_SETTINGS } from '@shared/sdk/PostSettings'
 import { ServiceAPI } from '@shared/sdk/service/ServiceAPI'
 import { executeWordParty } from '@shared/sdk/post/PostWordParty'
 import { Service } from '@onecomme.com/onesdk/types/Service'
+import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'
 
 const MAX_REPEAT_COUNT = 30
 
@@ -45,6 +46,15 @@ export class PostOmikujiService {
       // Secondary なのに無効設定なら、何もしない（スキップ）
       if (this.enableSecondary && post.message.isToast) return
       await this.processMessagePost(post)
+    }
+
+    // コメントテスター の投稿
+    if (post.actionType === 'bot') {
+      const dummyUser = generateDummyVisitRecords(1)[0]
+      await postSystemMessage(post.message.bubble, {
+        username: post.botName ? post.botName : dummyUser.userName,
+        delaySeconds: post.delaySeconds,
+      })
     }
 
     // WordParty の投稿

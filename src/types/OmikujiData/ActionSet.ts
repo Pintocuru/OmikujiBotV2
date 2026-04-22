@@ -75,10 +75,7 @@ export const PostFlowBotSchema = PostFlowBaseSchema.extend({
   // TODO(v3) : actionType -> kind
   actionType: z.literal('bot').default('bot'),
   botName: z.string().default('').catch(''),
-  userId: z.string().default('OmikujiBot').catch('OmikujiBot'),
-  comment: z.string().default('').catch(''),
-  imageBase64: z.string().default('').catch(''), // 表示時のアイコン
-  frameId: z.string().default('').catch(''), // わんコメの枠指定
+  message: normalizedObject(PostFlowMessageContentSchema),
 })
 export type PostFlowBotType = z.infer<typeof PostFlowBotSchema>
 
@@ -96,15 +93,27 @@ export type PostFlowCallType = z.infer<typeof PostFlowCallSchema>
 // アクションタイプの定義
 export type PostFlowKind = keyof typeof PostFlowKindMaps
 
+/**
+ * message プロパティを持つ PostFlow のユニオン型
+ */
+export type PostFlowWithMessageType = PostFlowMessageType | PostFlowVariableType | PostFlowBotType
+
+/**
+ * 与えられた PostFlow が message プロパティを保持しているか判定する
+ */
+export const hasPostFlowMessage = (flow: PostFlowType): flow is PostFlowWithMessageType => {
+  return flow.actionType === 'message' || flow.actionType === 'variable' || flow.actionType === 'bot'
+}
+
 // PostFlow わんコメ・BOTちゃんに投稿する型定義
 export const PostFlowSchema = z.discriminatedUnion('actionType', [
   PostFlowMessageSchema,
   PostFlowSoundSchema,
   PostFlowWordPartySchema,
   PostFlowVariableSchema,
+  PostFlowBotSchema,
   PostFlowCallSchema,
 
-  // PostFlowBotSchema, // TODO:実装
   //  PostFlowGameSchema, // v3時追加
 ])
 export type PostFlowType = z.infer<typeof PostFlowSchema>
