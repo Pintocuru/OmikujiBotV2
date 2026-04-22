@@ -39,23 +39,23 @@
     <MessageTextDialog v-model="bubbleText" :isCommentMode="true" />
   </SettingItem>
 
-  <SettingItem v-if="soundEnabled" label="🔊 サウンド" description="フキダシ表示時に鳴らす音">
-    <select v-model="sound" class="select select-bordered select-sm w-full">
-      <option value="">（なし）</option>
-      <option v-for="(value, key) in soundMetaMap" :key="key" :value="key">{{ value }} ({{ key }})</option>
-    </select>
-  </SettingItem>
+  <SoundSettings
+    v-if="soundEnabled"
+    :action="action"
+    @update:action="emit('update:action', $event as PostFlowMessageType)"
+  />
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { isDev, PostFlowMessageType, soundMetaMap, systemBotMap } from '@/types/'
+  import { isDev, PostFlowMessageType, systemBotMap } from '@/types/'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import MessageTextDialog from './MessageTextDialog.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
+  import SoundSettings from '../Sounds/SoundSettings.vue'
 
   const props = defineProps<{
     action: PostFlowMessageType
@@ -112,11 +112,6 @@
       updateAction({
         message: { ...props.action.message, bubble: value },
       }),
-  })
-
-  const sound = computed({
-    get: () => props.action.sound || '',
-    set: (value) => updateAction({ sound: value || undefined }),
   })
 
   const updateIconKey = (value: string) => {

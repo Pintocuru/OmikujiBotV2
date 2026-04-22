@@ -1,7 +1,6 @@
 // src/common/migrations/v1_to_v2/OmikujiDataV200/ActionSet.ts
 import { z } from 'zod'
 import { CharacterEmotionSchema } from './CharacterSchema'
-import { soundList } from '@sounds/soundMap'
 import { PostActionType as OldPostActionType } from '@/common/migrations/v1_to_v2/OmikujiDataV130/OmikujiSchema'
 import { BaseRecordSchema } from '@shared/types'
 import { POST_SETTINGS } from '@shared/sdk/PostSettings'
@@ -42,7 +41,7 @@ export const PostActionMessageSchema = z.object({
   actionType: z.literal('message').default('message'),
   characterKey: z.string().catch('omiken'),
   iconKey: CharacterEmotionSchema.default('default').catch('default'),
-  sound: z.enum(soundList).default('').catch(''),
+  sound: z.any().default('').catch(''),
   message: PostActionMessageMessageSchema.default(PostActionMessageMessageSchema.parse({})).catch(
     PostActionMessageMessageSchema.parse({})
   ),
@@ -53,7 +52,7 @@ export type PostActionMessageType = z.infer<typeof PostActionMessageSchema>
 export const PostActionSoundSchema = z.object({
   ...PostActionBaseSchema.shape,
   actionType: z.literal('sound').default('sound'),
-  sound: z.enum(soundList).default('').catch(''),
+  sound: z.any().default('').catch(''),
 })
 export type PostActionSoundType = z.infer<typeof PostActionSoundSchema>
 

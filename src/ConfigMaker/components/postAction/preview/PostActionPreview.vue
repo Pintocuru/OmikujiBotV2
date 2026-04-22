@@ -69,8 +69,8 @@
       />
       <SoundTestButton
         v-if="soundEnabled && (action.actionType === 'sound' || action.actionType === 'message')"
-        label="サウンドのテスト実行"
-        :pattern="action.sound"
+        :sound="action.sound"
+        :soundPath="action.soundPath"
       />
     </div>
   </div>

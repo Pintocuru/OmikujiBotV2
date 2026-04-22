@@ -94,13 +94,13 @@
 <script setup lang="ts">
   import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsSchema, soundMetaMap } from '@/types/'
+  import { SettingsSchema, SoundKeyType, soundMap } from '@/types/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
   import MessageTextEditor from '@config/components/postAction/Message/MessageTextEditor.vue'
-  import { playSound } from '@/common/sounds'
+  import { playSoundResolved } from '@/common/sounds'
   import { AlignCenter, LayoutTemplate } from 'lucide-vue-next'
 
   const omikujiStore = useOmikujiStore()
@@ -162,10 +162,10 @@
 
   // 効果音: OFF → ON になったときにプレビュー再生
   const playRandomSound = () => {
-    const keys = Object.keys(soundMetaMap) as Array<keyof typeof soundMetaMap>
+    const keys = Object.keys(soundMap) as SoundKeyType[]
     if (keys.length === 0) return
     const randomKey = keys[Math.floor(Math.random() * keys.length)]
-    playSound(randomKey)
+    playSoundResolved(randomKey)
   }
 
   watch(

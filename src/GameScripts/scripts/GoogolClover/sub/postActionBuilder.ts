@@ -35,13 +35,13 @@ export function buildPostActions(params: PostActionBuildParams): PostFlowType[] 
   // 成功時のアクション
   const successActions: PostFlowType[] = [
     { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji01' },
-    { actionType: 'sound', delaySeconds: 1, sound: 'carnival' },
+    { actionType: 'sound', delaySeconds: 1, sound: 'carnival', soundPath: '' },
   ]
 
   // 失敗時のアクション
   const failureActions: PostFlowType[] = [
     { actionType: 'wordParty', delaySeconds: 0, wordParty: 'MaidenOmikuji08' },
-    { actionType: 'sound', delaySeconds: 1, sound: 'fail' },
+    { actionType: 'sound', delaySeconds: 1, sound: 'fail', soundPath: '' },
     { actionType: 'wordParty', delaySeconds: 1, wordParty: 'GoogolCloverFail' },
   ]
 

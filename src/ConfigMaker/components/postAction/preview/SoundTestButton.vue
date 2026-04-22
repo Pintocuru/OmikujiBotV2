@@ -1,27 +1,21 @@
 <!-- src/ConfigMaker/components/postAction/preview/SoundTestButton.vue -->
 <template>
-  <button @click="handleClick" :disabled="!props.pattern" class="btn btn-xs btn-secondary">
-    {{ props.label }}
+  <button @click="handleClick" :disabled="!sound && !soundPath" class="btn btn-xs btn-secondary">
+    サウンドのテスト実行
   </button>
 </template>
 
 <script setup lang="ts">
   import { SoundKeyType } from '@/types'
-  import { playSound } from '@sounds/PlaySound'
+  import { playSoundResolved } from '@sounds/PlaySound'
 
-  const props = withDefaults(
-    defineProps<{
-      pattern?: SoundKeyType | ''
-      label?: string
-    }>(),
-    {
-      label: 'サウンドテスト',
-    }
-  )
+  const props = defineProps<{
+    sound: SoundKeyType | ''
+    soundPath: string
+  }>()
 
   // pattern をサウンド名として再生
   function handleClick() {
-    if (!props.pattern) return
-    playSound(props.pattern)
+    playSoundResolved(props.sound, props.soundPath)
   }
 </script>

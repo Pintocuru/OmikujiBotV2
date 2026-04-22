@@ -10,6 +10,6 @@ export * from './GameMetaMaps'
 export * from './ServiceTriggerMaps'
 export * from './ReactionTriggerMaps'
 
-export * from './SoundKeyMaps'
+export * from './SoundMaps'
 export * from './UiKindMaps'
 export * from './UiSpecialSetMap'

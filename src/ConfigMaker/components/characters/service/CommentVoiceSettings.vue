@@ -54,7 +54,7 @@
       @change="onSoundChange($event)"
       class="select select-bordered w-full max-w-xs"
     >
-      <option v-for="(value, key) in rpgVoiceMetaMap" :key="key" :value="key">
+      <option v-for="(value, key) in rpgVoiceMap" :key="key" :value="key">
         {{ value }}
       </option>
     </select>
@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { displayModeMap, DisplayOptionType, RpgVoiceKeyType, rpgVoiceMetaMap } from '@/types/'
+  import { displayModeMap, DisplayOptionType, RpgVoiceKeyType, rpgVoiceMap } from '@/types/'
   import CharacterBase64Settings from './CharacterBase64Settings.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { playRpgVoiceLoop } from '@/common/sounds'

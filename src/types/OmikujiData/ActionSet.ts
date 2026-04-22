@@ -12,6 +12,15 @@ const PostFlowBaseSchema = z.object({
   delaySeconds: z.number().default(0).catch(0),
 })
 
+// sound
+const SoundMixin = {
+  sound: z
+    .union([z.enum(soundKeys), z.literal('')])
+    .default('')
+    .catch(''),
+  soundPath: z.string().default('').catch(''),
+}
+
 // PostFlow message
 export const PostFlowMessageContentSchema = z.object({
   bubble: z.string().default('').catch(''),
@@ -26,10 +35,7 @@ export const PostFlowMessageSchema = z.object({
   actionType: z.literal('message').default('message'),
   characterKey: z.string().nullable().default(null).catch(null),
   iconKey: z.string().default('default').catch('default'),
-  sound: z
-    .union([z.enum(soundKeys), z.literal('')])
-    .default('')
-    .catch(''),
+  ...SoundMixin,
   message: normalizedObject(PostFlowMessageContentSchema),
 })
 export type PostFlowMessageType = z.infer<typeof PostFlowMessageSchema>
@@ -39,10 +45,7 @@ export const PostFlowSoundSchema = z.object({
   ...PostFlowBaseSchema.shape,
   // TODO(v3) : actionType -> kind
   actionType: z.literal('sound').default('sound'),
-  sound: z
-    .union([z.enum(soundKeys), z.literal('')])
-    .default('')
-    .catch(''),
+  ...SoundMixin,
 })
 export type PostFlowSoundType = z.infer<typeof PostFlowSoundSchema>
 

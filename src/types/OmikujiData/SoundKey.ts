@@ -1,14 +1,14 @@
 // src/types/OmikujiData/SoundKey.ts
-import { rpgVoiceMetaMap, soundMetaMap } from '../MetaMaps'
+import { rpgVoiceMap, soundMap } from '../MetaMaps'
 
 /**
  * サウンドキー
  */
-export type SoundKeyType = keyof typeof soundMetaMap
-export const soundKeys = Object.keys(soundMetaMap) as SoundKeyType[]
+export const soundKeys = Object.keys(soundMap) as SoundKeyType[]
+export type SoundKeyType = keyof typeof soundMap
 
 /**
  * RPG風サウンド
  */
-export const rpgVoiceKeys = Object.keys(rpgVoiceMetaMap) as RpgVoiceKeyType[]
-export type RpgVoiceKeyType = keyof typeof rpgVoiceMetaMap
+export const rpgVoiceKeys = Object.keys(rpgVoiceMap) as RpgVoiceKeyType[]
+export type RpgVoiceKeyType = keyof typeof rpgVoiceMap
