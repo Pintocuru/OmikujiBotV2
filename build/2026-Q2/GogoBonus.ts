@@ -4,14 +4,14 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 
 const PROJECT = {
   key: 'GogoBonus',
-  title: 'GogoBonus',
+  title: 'ペカるLAMP',
   description: 'リアクションボタンで回る！パチスロ風ジェネレーターテンプレート',
   banner: '',
   tags: ['コメントスピン', 'ペカるLAMP'],
-  boothId: '8188701',
+  boothId: '8251498',
   category: '2026-Q2',
   series: 'CommentSpin',
-  licenseLabel: 'CC-BY 4.0',
+  licenseLabel: '利用規約に従う',
   extraFiles: [
     { from: 'assets/Characters/GogoBonus/', to: 'Characters/GogoBonus/' },
     { from: 'assets/sounds/GogoBonus/', to: 'assets/sounds/GogoBonus/' },
