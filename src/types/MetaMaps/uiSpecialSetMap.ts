@@ -18,8 +18,8 @@ export const uiSpecialSetMap = {
     kinds: ['commentSpin', 'cookieCounter', 'ranking'],
   },
   GogoBonus: {
-    label: 'ペカるボタン',
-    description: 'ペカるボタン用のセット',
+    label: 'ペカるLAMP',
+    description: 'ペカるLAMP用のセット',
     kinds: ['commentSpin', 'cookieCounter'],
   },
   Golden65536: {

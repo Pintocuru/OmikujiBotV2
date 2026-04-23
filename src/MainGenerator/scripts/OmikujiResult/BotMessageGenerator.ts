@@ -96,13 +96,13 @@ export class BotMessageGenerator {
           )
         )
 
-        if (action.sound && this.soundEnabled && isOnecommePost)
+        if ((action.sound || action.soundPath) && this.soundEnabled && isOnecommePost)
           playSoundDelay(action.sound, action.soundPath, delaySeconds)
       } else if (action.actionType === 'variable') {
         // 投稿なし・音声なし。変数処理と BotMessage 生成のみ
         messages.push(...createBotMessagesFromVariable(extra, delaySeconds, omiken))
       } else if (action.actionType === 'sound') {
-        if (action.sound && this.soundEnabled && isOnecommePost)
+        if ((action.sound || action.soundPath) && this.soundEnabled && isOnecommePost)
           playSoundDelay(action.sound, action.soundPath, delaySeconds)
       }
     }
