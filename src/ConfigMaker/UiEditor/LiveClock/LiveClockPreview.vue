@@ -5,6 +5,7 @@
       <LiveClockSelector
         :settings="settings"
         :default-message="defaultMessage"
+        :default-message-array="defaultMessageArray"
         :is-mounted="isMounted"
         :is-flipped="isFlipped"
         :current-msg="currentMsg"
@@ -37,6 +38,7 @@
 
   const {
     message: defaultMessage,
+    messageArray: defaultMessageArray,
     registerIntervalHook,
     commitIfPending,
   } = usePlaceholderInterval(() => settings.value.defaultMessage ?? '', 5000)

@@ -40,8 +40,9 @@
             v-if="defaultMessage"
             class="text-lg font-bold tracking-normal line-clamp-1 drop-shadow-sm"
             :class="`text-${backTo}`"
-            v-html="defaultMessage"
-          />
+          >
+            <RotatingMessage :message="defaultMessage" />
+          </div>
         </div>
       </div>
 
@@ -67,9 +68,10 @@
 </template>
 
 <script setup lang="ts">
-  import type { LiveClockType } from '@/types/OmikujiData/'
-  import { useLiveClockTime } from '../composables/useLiveClockTime'
   import { computed } from 'vue'
+  import { LiveClockType } from '@/types/OmikujiData/'
+  import { useLiveClockTime } from '../composables/useLiveClockTime'
+  import RotatingMessage from '../common/RotatingMessage.vue'
 
   const props = defineProps<{
     settings: LiveClockType

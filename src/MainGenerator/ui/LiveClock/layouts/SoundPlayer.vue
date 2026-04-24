@@ -6,6 +6,15 @@
         <transition name="cyber-slide" mode="out-in">
           <!-- 時計表示 -->
           <div v-if="!isFlipped" key="clock" class="w-full">
+            <!-- 日付表示 -->
+            <div
+              v-if="settings.isDate && !isFlipped"
+              class="font-mono text-xl font-bold -mb-3"
+              :class="`text-${backFrom}`"
+            >
+              {{ year }}/{{ month }}/{{ date }} ({{ day }})
+            </div>
+
             <!-- 時刻表示 -->
             <div
               class="flex items-baseline font-mono text-6xl font-black leading-none tracking-tighter"
@@ -19,31 +28,20 @@
               <span v-if="settings.isSecond" class="pl-3 text-5xl leading-none">{{ seconds }}</span>
             </div>
 
-            <!-- 日付表示 -->
-            <div
-              v-if="settings.isDate && !isFlipped"
-              class="font-mono text-xl font-bold -mt-2"
-              :class="`text-${backFrom}`"
-            >
-              {{ year }}/{{ month }}/{{ date }} ({{ day }})
-            </div>
-
             <div class="flex items-center gap-2 -mt-1">
               <!-- ON_AIR バッジ（第一カラー） -->
               <div
                 class="px-1 text-sm rounded-sm font-bold tracking-wider animate-pulse"
                 :class="[`bg-${backTo}`, `text-${backTo}-content`]"
-                style="animation-duration: 10s"
+                style="animation-duration: 6s"
               >
                 ON_AIR
               </div>
 
-              <!-- 下部メッセージ（第一カラー） -->
-              <div
-                class="text-lg truncate font-bold line-clamp-1"
-                :class="`text-${backTo}`"
-                v-html="defaultMessage"
-              ></div>
+              <!-- 下部メッセージ -->
+              <div class="text-lg truncate font-bold line-clamp-1" :class="`text-${backTo}`">
+                <RotatingMessage :message="defaultMessage" />
+              </div>
             </div>
           </div>
 
@@ -72,9 +70,10 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import type { LiveClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
-  import { computed } from 'vue'
+  import RotatingMessage from '../common/RotatingMessage.vue'
 
   const props = defineProps<{
     settings: LiveClockType

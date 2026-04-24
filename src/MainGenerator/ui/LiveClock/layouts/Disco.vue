@@ -1,11 +1,11 @@
 <!-- src/MainGenerator/ui/LiveClock/layouts/Disco.vue -->
 <template>
   <div
-    class="w-full max-w-[340px] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+    class="w-[340px] transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
     :class="isMounted ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-50 translate-y-10'"
   >
     <!-- 外枠：グラデーションアニメーション -->
-    <div class="disco-border-anim p-1 rounded-[2rem] shadow-[0_0_30px_rgba(192,38,211,0.5)] overflow-hidden">
+    <div class="disco-border-anim p-1 rounded-[2rem]">
       <!-- 内側：ガラス質感の背景 -->
       <div
         class="relative bg-black/80 backdrop-blur-md rounded-[1.8rem] h-[110px] flex items-center justify-center overflow-hidden border border-white/10"
@@ -23,7 +23,7 @@
 
         <transition name="disco-pop" mode="out-in">
           <!-- 時計表示面 -->
-          <div v-if="!isFlipped" key="clock" class="text-center -mt-3">
+          <div v-if="!isFlipped" key="clock" class="text-center">
             <div
               class="flex items-center justify-center text-7xl font-black italic tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-400 drop-shadow-[0_2px_10px_rgba(255,255,255,0.4)]"
             >
@@ -36,12 +36,20 @@
               <span>{{ minutes }}</span>
               <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
             </div>
+
+            <!-- 日付表示 -->
+            <div
+              v-if="settings.isDate && !isFlipped"
+              class="flex items-center justify-center text-lg font-bold -mt-1 -mb-2"
+            >
+              {{ year }}/{{ month }}/{{ date }} ({{ day }})
+            </div>
+
             <div v-if="defaultMessage" class="flex items-center justify-center gap-1">
               <span class="text-sm text-yellow-400 animate-bounce">★</span>
-              <div
-                class="text-base font-bold text-yellow-400 uppercase tracking-widest drop-shadow-sm line-clamp-1"
-                v-html="defaultMessage"
-              ></div>
+              <div class="text-base font-bold text-yellow-400 uppercase tracking-widest drop-shadow-sm line-clamp-1">
+                <RotatingMessage :message="defaultMessage" />
+              </div>
               <span class="text-sm text-yellow-400 animate-bounce">★</span>
             </div>
           </div>
@@ -62,6 +70,7 @@
 <script setup lang="ts">
   import type { LiveClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
+  import RotatingMessage from '../common/RotatingMessage.vue'
 
   defineProps<{
     settings: LiveClockType
@@ -71,7 +80,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+  const { hours, minutes, seconds, colonVisible, year, month, date, day } = useLiveClockTime()
 </script>
 
 <style scoped>

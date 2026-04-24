@@ -96,10 +96,9 @@
                 <!-- 装飾ライン -->
                 <div class="absolute left-0 top-0 bottom-0 w-1 opacity-70" :class="`bg-${backFrom}`"></div>
                 <div class="absolute right-0 top-0 bottom-0 w-1 opacity-70" :class="`bg-${backFrom}`"></div>
-                <div
-                  class="text-base font-bold text-center line-clamp-1 text-base-content/70 pl-1"
-                  v-html="defaultMessage"
-                ></div>
+                <div class="text-base font-bold text-center line-clamp-1 text-base-content/70 pl-1">
+                  <RotatingMessage :message="defaultMessage" />
+                </div>
               </div>
             </div>
           </div>
@@ -152,6 +151,7 @@
   import { Cog } from 'lucide-vue-next'
   import type { LiveClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
+  import RotatingMessage from '../common/RotatingMessage.vue'
 
   const props = defineProps<{
     settings: LiveClockType

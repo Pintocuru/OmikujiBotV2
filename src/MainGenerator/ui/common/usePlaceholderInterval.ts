@@ -1,20 +1,23 @@
 // src/MainGenerator/ui/common/usePlaceholderInterval.ts
-import { ref, watch, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { usePlaceholderResolver } from '@main/ui/common/usePlaceholderResolver'
 
 export function usePlaceholderInterval(templateRef: () => string, intervalMs = 30000) {
   const { resolveComment } = usePlaceholderResolver()
 
-  const refreshKey = ref(0)
+  const getTemplates = (): string[] => {
+    const t = templateRef()
+    return Array.isArray(t) ? t : [t ?? '']
+  }
 
-  const generate = () => resolveComment(templateRef() ?? '')
+  const generateOne = (): string => {
+    const list = getTemplates()
+    const picked = list[Math.floor(Math.random() * list.length)] ?? ''
+    return resolveComment(picked)
+  }
 
-  const message = ref(generate())
+  const message = ref(generateOne())
   const pending = ref<string | null>(null)
-
-  watch(refreshKey, () => {
-    pending.value = generate()
-  })
 
   function commitIfPending(isShowingDefault: boolean) {
     if (pending.value !== null && isShowingDefault) {
@@ -27,7 +30,9 @@ export function usePlaceholderInterval(templateRef: () => string, intervalMs = 3
 
   onMounted(() => {
     interval = setInterval(() => {
-      refreshKey.value++
+      // 直接更新
+      pending.value = generateOne()
+
       _onInterval()
     }, intervalMs)
   })

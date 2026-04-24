@@ -48,16 +48,16 @@
               >
                 {{ year }}/{{ month }}/{{ date }} ({{ day }})
               </div>
+            </div>
 
-              <!-- 下部メッセージ -->
-              <div
-                v-if="defaultMessage"
-                class="px-3 rounded-full border bg-base-200 shadow-sm"
-                :class="`border-${backTo}`"
-              >
-                <div class="text-sm font-black flex items-center gap-1 text-base-content/70">
-                  <span class="line-clamp-1" v-html="defaultMessage"></span>
-                </div>
+            <!-- 下部メッセージ -->
+            <div
+              v-if="defaultMessage"
+              class="px-3 rounded-full border bg-base-200 shadow-sm"
+              :class="`border-${backTo}`"
+            >
+              <div class="text-sm font-black gap-1 text-base-content/70 line-clamp-1">
+                <RotatingMessage :message="defaultMessage" />
               </div>
             </div>
           </div>
@@ -100,6 +100,7 @@
   import type { LiveClockType } from '@/types/OmikujiData/'
   import { useLiveClockTime } from '../composables/useLiveClockTime'
   import { computed } from 'vue'
+  import RotatingMessage from '../common/RotatingMessage.vue'
 
   const props = defineProps<{
     settings: LiveClockType
@@ -111,7 +112,7 @@
 
   const { hours, minutes, seconds, colonVisible, year, month, date, day } = useLiveClockTime()
 
-  // DaisyUI カラーキー（primary / secondary / accent / ...）
+  // DaisyUI カラーキー
   const backFrom = computed(() => props.settings.color.backFrom)
   const backTo = computed(() => props.settings.color.backTo)
 
