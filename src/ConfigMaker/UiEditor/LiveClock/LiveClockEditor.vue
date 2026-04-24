@@ -27,6 +27,19 @@
     <MessageTextDialog v-model="messageText" />
   </SettingItem>
 
+  <!-- 日付を表示するか -->
+  <SettingItem label="日付表示" description="時計に日付を表示するか">
+    <label class="flex items-center cursor-pointer">
+      <input
+        type="checkbox"
+        class="toggle toggle-primary"
+        v-model="liveClock.isDate"
+        @change="(e) => updateField('isDate', (e.target as HTMLInputElement).checked)"
+      />
+      <span class="ml-2"> 日付を表示{{ liveClock.isDate ? 'する' : 'しない' }} </span>
+    </label>
+  </SettingItem>
+
   <!-- 秒数を表示するか -->
   <SettingItem label="秒数表示" description="時計に秒数を表示するか">
     <label class="flex items-center cursor-pointer">

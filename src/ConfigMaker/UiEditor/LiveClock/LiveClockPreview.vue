@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/UiEditor/LiveClock/LiveClockPreview.vue -->
 <template>
-  <HudPreview :maxHeightClass="isDev ? 'min-h-32' : ''" :isAdminOnly="true">
-    <div :class="[fontFamily]">
+  <HudPreview maxHeightClass="">
+    <div class="flex justify-center" :class="[fontFamily]">
       <LiveClockSelector
         :settings="settings"
         :default-message="defaultMessage"
@@ -17,7 +17,7 @@
 <script setup lang="ts">
   import { ref, computed, onMounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { isDev, useFontFamily } from '@/types/'
+  import { useFontFamily } from '@/types/'
   import type { LiveClockType } from '@/types/OmikujiData/'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import LiveClockSelector from '@main/ui/LiveClock/parts/LiveClockSelector.vue'

@@ -3,7 +3,7 @@
   <div :class="[heightClass, 'overflow-hidden relative']">
     <div :style="bgStyle" class="w-full h-full">
       <!-- スケーリング可能なコンテンツ（メインスロット） -->
-      <div :style="contentStyle" class="origin-top-left">
+      <div :style="contentStyle" class="origin-top">
         <slot />
       </div>
 

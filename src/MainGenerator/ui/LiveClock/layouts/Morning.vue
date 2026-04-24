@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/LiveClock/layouts/Morning.vue -->
 <template>
   <div
-    class="w-full max-w-xs transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+    class="w-80 transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
     :class="isMounted ? 'opacity-100 scale-100' : 'opacity-0 scale-75 translate-y-4'"
   >
     <!-- メインフレーム -->
@@ -18,33 +18,46 @@
       <div class="relative h-full flex flex-col items-center justify-center pt-2">
         <transition name="magical-pop" mode="out-in">
           <!-- 時計 -->
-          <div v-if="!isFlipped" key="clock" class="-mt-4 flex flex-col items-center">
-            <div
-              class="flex items-center justify-center font-['Quicksand'] font-bold text-7xl tracking-tighter"
-              :class="`text-${backFrom}`"
-            >
-              <span>{{ hours }}</span>
-
-              <span
-                class="mx-1.5 pb-2 transition-opacity duration-300"
-                :class="{ 'opacity-100': colonVisible, 'opacity-20': !colonVisible }"
+          <div v-if="!isFlipped" class="-mt-4 flex flex-col items-center">
+            <div key="clock">
+              <!-- 時刻表示 -->
+              <div
+                class="flex items-center justify-center font-['Quicksand'] font-bold text-7xl tracking-tighter"
+                :class="`text-${backFrom}`"
               >
-                :
-              </span>
+                <span>{{ hours }}</span>
 
-              <span>{{ minutes }}</span>
+                <span
+                  class="mx-1.5 pb-2 transition-opacity duration-300"
+                  :class="{ 'opacity-100': colonVisible, 'opacity-20': !colonVisible }"
+                >
+                  :
+                </span>
 
-              <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
-            </div>
+                <span>{{ minutes }}</span>
 
-            <!-- 下部メッセージ -->
-            <div
-              v-if="defaultMessage"
-              class="px-3 rounded-full border bg-base-200 shadow-sm"
-              :class="`border-${backTo}`"
-            >
-              <div class="text-sm font-black flex items-center gap-1 text-base-content/70">
-                <span class="line-clamp-1" v-html="defaultMessage"></span>
+                <!-- 秒表示 -->
+                <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
+              </div>
+
+              <!-- 日付表示 -->
+              <div
+                v-if="settings.isDate && !isFlipped"
+                class="flex items-center justify-center font-['Quicksand'] text-lg font-bold -mt-3"
+                :class="`text-${backFrom}`"
+              >
+                {{ year }}/{{ month }}/{{ date }} ({{ day }})
+              </div>
+
+              <!-- 下部メッセージ -->
+              <div
+                v-if="defaultMessage"
+                class="px-3 rounded-full border bg-base-200 shadow-sm"
+                :class="`border-${backTo}`"
+              >
+                <div class="text-sm font-black flex items-center gap-1 text-base-content/70">
+                  <span class="line-clamp-1" v-html="defaultMessage"></span>
+                </div>
               </div>
             </div>
           </div>
@@ -96,7 +109,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+  const { hours, minutes, seconds, colonVisible, year, month, date, day } = useLiveClockTime()
 
   // DaisyUI カラーキー（primary / secondary / accent / ...）
   const backFrom = computed(() => props.settings.color.backFrom)

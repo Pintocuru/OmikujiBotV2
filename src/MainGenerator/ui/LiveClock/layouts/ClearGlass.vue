@@ -16,16 +16,29 @@
         </div>
 
         <div class="card-body items-center justify-center gap-0.5 p-2 relative">
+          <!-- 時計 -->
           <div class="flex text-7xl font-black tracking-tight -mt-3 drop-shadow-sm" :class="`text-${backFrom}`">
+            <!-- 時刻表示 -->
             <span>{{ hours }}</span>
             <span class="mx-0.5 transition-opacity duration-75" :class="{ 'opacity-0': !colonVisible }">:</span>
             <span>{{ minutes }}</span>
+            <!-- 秒表示 -->
             <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
           </div>
 
+          <!-- 日付表示 -->
+          <div
+            v-if="settings.isDate"
+            class="flex items-center justify-center text-lg font-bold -mt-1"
+            :class="`text-${backFrom}`"
+          >
+            {{ year }}/{{ month }}/{{ date }} ({{ day }})
+          </div>
+
+          <!-- 下部メッセージ -->
           <div
             v-if="defaultMessage"
-            class="text-lg font-bold tracking-normal mt-1 line-clamp-1 drop-shadow-sm"
+            class="text-lg font-bold tracking-normal line-clamp-1 drop-shadow-sm"
             :class="`text-${backTo}`"
             v-html="defaultMessage"
           />
@@ -66,7 +79,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+  const { hours, minutes, seconds, colonVisible, year, month, date, day } = useLiveClockTime()
 
   const backFrom = computed(() => props.settings.color.backFrom)
   const backTo = computed(() => props.settings.color.backTo)

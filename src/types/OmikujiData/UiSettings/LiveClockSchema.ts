@@ -52,7 +52,8 @@ const defaultMessage = `<<
 export const LiveClockSchema = z.object({
   component: z.enum(clockComponentsEnum).default('morning').catch('morning'),
   color: normalizedObject(DaisyUiThemeFieldsSchema), // DaisyUIテーマカラー
-  isSecond: z.boolean().default(false).catch(false), //
+  isSecond: z.boolean().default(false).catch(false), // 秒数を入れるか
+  isDate: z.boolean().default(false).catch(false), // 日付をいれるか
   defaultMessage: z.string().default(defaultMessage).catch(defaultMessage),
 })
 export type LiveClockType = z.infer<typeof LiveClockSchema>

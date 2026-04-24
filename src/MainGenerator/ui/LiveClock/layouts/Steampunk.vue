@@ -1,19 +1,11 @@
 <!-- src/MainGenerator/ui/LiveClock/layouts/Steampunk.vue -->
 <template>
   <div
-    class="w-full max-w-xs transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
+    class="w-xs transition-all duration-700 ease-[cubic-bezier(0.34,1.56,0.64,1)]"
     :class="isMounted ? 'opacity-100 scale-100' : 'opacity-0 scale-75 translate-y-4'"
   >
     <!-- メインフレーム -->
-    <div
-      class="relative border-4 rounded-[1.5rem] overflow-hidden h-[130px] bg-base-300"
-      :class="borderColorClass"
-      style="
-        box-shadow:
-          inset 0 2px 8px rgba(0, 0, 0, 0.5),
-          0 0 20px rgba(0, 0, 0, 0.4);
-      "
-    >
+    <div class="relative border-4 rounded-[1.5rem] overflow-hidden h-[130px] bg-base-300" :class="borderColorClass">
       <!-- リベット（四隅） -->
       <div
         v-for="position in rivetPositions"
@@ -87,8 +79,19 @@
               </div>
             </div>
 
+            <!-- 日付表示 -->
+            <div
+              v-if="settings.isDate"
+              class="flex items-center justify-center text-base font-mono font-bold"
+              :class="`text-${backFrom}`"
+            >
+              <span class="text-lg text-base-content" :class="borderColorClass">
+                {{ year }}/{{ month }}/{{ date }} ({{ day }})
+              </span>
+            </div>
+
             <!-- ゲージバー風メッセージ -->
-            <div v-if="defaultMessage" class="mt-2 w-full">
+            <div v-if="defaultMessage" class="w-full">
               <div class="relative rounded bg-base-100 px-3 py-0.5 overflow-hidden" :class="borderColorClass">
                 <!-- 装飾ライン -->
                 <div class="absolute left-0 top-0 bottom-0 w-1 opacity-70" :class="`bg-${backFrom}`"></div>
@@ -158,7 +161,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+  const { hours, minutes, seconds, colonVisible, year, month, date, day } = useLiveClockTime()
 
   const backFrom = computed(() => props.settings.color.backFrom)
 

@@ -1,11 +1,12 @@
 <!-- src/MainGenerator/ui/LiveClock/layouts/SoundPlayer.vue -->
 <template>
-  <div class="w-full max-w-md transition-all duration-500 ease-out">
+  <div class="w-md transition-all duration-500 ease-out">
     <div class="cyber-frame relative bg-base-200 border px-4 overflow-hidden" :class="`border-${backFrom}`">
-      <div class="relative h-24 flex items-center">
+      <div class="relative h-28 flex items-center">
         <transition name="cyber-slide" mode="out-in">
           <!-- 時計表示 -->
           <div v-if="!isFlipped" key="clock" class="w-full">
+            <!-- 時刻表示 -->
             <div
               class="flex items-baseline font-mono text-6xl font-black leading-none tracking-tighter"
               :class="`text-${backFrom}`"
@@ -14,14 +15,25 @@
               <span class="mx-1 transition-opacity duration-100" :class="{ 'opacity-20': !colonVisible }">:</span>
               <span>{{ minutes }}</span>
 
-              <span v-if="settings.isSecond" class="pl-3 mt-4 text-5xl leading-none">{{ seconds }}</span>
+              <!-- 秒表示 -->
+              <span v-if="settings.isSecond" class="pl-3 text-5xl leading-none">{{ seconds }}</span>
             </div>
 
-            <div class="flex items-center gap-2">
+            <!-- 日付表示 -->
+            <div
+              v-if="settings.isDate && !isFlipped"
+              class="font-mono text-xl font-bold -mt-2"
+              :class="`text-${backFrom}`"
+            >
+              {{ year }}/{{ month }}/{{ date }} ({{ day }})
+            </div>
+
+            <div class="flex items-center gap-2 -mt-1">
               <!-- ON_AIR バッジ（第一カラー） -->
               <div
-                class="px-1 text-sm rounded-sm font-bold tracking-wider"
+                class="px-1 text-sm rounded-sm font-bold tracking-wider animate-pulse"
                 :class="[`bg-${backTo}`, `text-${backTo}-content`]"
+                style="animation-duration: 10s"
               >
                 ON_AIR
               </div>
@@ -72,7 +84,7 @@
     currentMsg: string
   }>()
 
-  const { hours, minutes, seconds, colonVisible } = useLiveClockTime()
+  const { hours, minutes, seconds, colonVisible, year, month, date, day } = useLiveClockTime()
 
   // DaisyUI カラーキー（primary / secondary / accent / ...）
   const backFrom = computed(() => props.settings.color.backFrom)
