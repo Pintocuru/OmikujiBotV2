@@ -2,14 +2,14 @@
 <template>
   <div class="w-md transition-all duration-500 ease-out">
     <div class="cyber-frame relative bg-base-200 border px-4 overflow-hidden" :class="`border-${backFrom}`">
-      <div class="relative h-28 flex items-center">
+      <div class="relative h-38 flex items-center">
         <transition name="cyber-slide" mode="out-in">
           <!-- 時計表示 -->
           <div v-if="!isFlipped" key="clock" class="w-full">
             <!-- 日付表示 -->
             <div
               v-if="settings.isDate && !isFlipped"
-              class="font-mono text-xl font-bold -mb-3"
+              class="font-mono text-2xl font-bold -mb-3"
               :class="`text-${backFrom}`"
             >
               {{ year }}/{{ month }}/{{ date }} ({{ day }})
@@ -17,7 +17,7 @@
 
             <!-- 時刻表示 -->
             <div
-              class="flex items-baseline font-mono text-6xl font-black leading-none tracking-tighter"
+              class="flex items-baseline font-mono text-8xl font-black leading-none tracking-tighter"
               :class="`text-${backFrom}`"
             >
               <span>{{ hours }}</span>
@@ -25,13 +25,13 @@
               <span>{{ minutes }}</span>
 
               <!-- 秒表示 -->
-              <span v-if="settings.isSecond" class="pl-3 text-5xl leading-none">{{ seconds }}</span>
+              <span v-if="settings.isSecond" class="pl-3 text-6xl leading-none">{{ seconds }}</span>
             </div>
 
-            <div class="flex items-center gap-2 -mt-1">
+            <div class="flex items-center gap-1 -mt-1">
               <!-- ON_AIR バッジ（第一カラー） -->
               <div
-                class="px-1 text-sm rounded-sm font-bold tracking-wider animate-pulse"
+                class="px-1 text-base rounded-sm font-bold animate-pulse"
                 :class="[`bg-${backTo}`, `text-${backTo}-content`]"
                 style="animation-duration: 6s"
               >
@@ -39,7 +39,7 @@
               </div>
 
               <!-- 下部メッセージ -->
-              <div class="text-lg truncate font-bold line-clamp-1" :class="`text-${backTo}`">
+              <div class="text-xl truncate font-bold line-clamp-1" :class="`text-${backTo}`">
                 <RotatingMessage :message="defaultMessage" />
               </div>
             </div>
@@ -47,12 +47,12 @@
 
           <!-- メッセージ表示 -->
           <div v-else key="msg" class="w-full" :class="`text-${backTo}`">
-            <div class="flex items-center gap-2 text-sm tracking-[0.2em]" :class="`text-${backFrom}`">
+            <div class="flex items-center gap-2 text-lg tracking-[0.2em]" :class="`text-${backFrom}`">
               <span class="animate-pulse">▶▶</span>
               <span>SIGNAL_RECEIVED</span>
             </div>
 
-            <p class="text-2xl font-bold leading-tight h-14 line-clamp-2 italic" v-html="currentMsg"></p>
+            <p class="text-3xl font-bold leading-tight line-clamp-3" v-html="currentMsg"></p>
 
             <!-- プログレスバー（第二カラー） -->
             <div class="mt-2 w-full relative overflow-hidden" :class="`bg-${backTo}`">

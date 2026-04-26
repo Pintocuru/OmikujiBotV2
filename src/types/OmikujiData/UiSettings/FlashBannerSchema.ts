@@ -8,27 +8,32 @@ export const flashComponentMap = {
   standard: {
     label: 'シンプル',
     accessLevel: 'basic',
-    isSimple: false,
+    isScrollSelect: true,
   },
   scroll: {
     label: 'スクロール',
     accessLevel: 'basic',
-    isSimple: true,
+    isScrollSelect: false,
   },
   ticker: {
     label: 'ティッカー',
     accessLevel: 'pro',
-    isSimple: false,
+    isScrollSelect: false,
   },
   glass: {
     label: 'ガラス',
     accessLevel: 'pro',
-    isSimple: false,
+    isScrollSelect: true,
+  },
+  clear: {
+    label: 'クリア',
+    accessLevel: 'pro',
+    isScrollSelect: true,
   },
   arcade: {
     label: 'アーケード',
     accessLevel: 'pro',
-    isSimple: false,
+    isScrollSelect: true,
   },
 } as const
 

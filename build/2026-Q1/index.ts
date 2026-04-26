@@ -10,6 +10,7 @@ import FlightSeatGraduation from './FlightSeatGraduation'
 import StreamCounterCircle from './StreamCounterCircle'
 import StreamCounterPixel from './StreamCounterPixel'
 import LiveClockMorning from './LiveClockMorning'
+import LiveClockSoundPlayer from './LiveClockSoundPlayer'
 import FlightSeatCrowded100 from './FlightSeatCrowded100'
 import FlightSeatCrowded300 from './FlightSeatCrowded300'
 
@@ -26,6 +27,7 @@ export default [
   // StreamCounterCircle,
   // StreamCounterPixel,
   // LiveClockMorning,
+  LiveClockSoundPlayer,
   // FlightSeatCrowded100,
   // FlightSeatCrowded300,
 ]

@@ -5,7 +5,8 @@
       :key="currentMessage.id"
       :settings="settings"
       :message="currentMessage.bubble?.message ?? ''"
-      :layers="layers"
+      :characterLayers="characterLayers"
+      :characterAnimation="characterAnimation"
       :color="currentCharacterColor"
       :label-class="blinkClass"
     />
@@ -26,7 +27,7 @@
   import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
 
   const appStore = useAppStore()
-  const { getCharacterColor, getCharacterLayers } = useCharacterManager()
+  const { getCharacterColor, getCharacterLayers, getCharacterAnimation } = useCharacterManager()
   const settings = computed(() => FlashBannerSchema.parse(appStore.data.components?.settings?.flashBanner ?? {}))
   const { blinkClass, triggerBlink } = useDelayedBlink({
     transitionDuration: 350,
@@ -56,7 +57,7 @@
     })
   )
 
-  // メッセージ切り替え時に blink を発火（watch 不使用）
+  // メッセージ切り替え時に blink を発火
   const { currentMessage, isShowingDefault } = useFlashBannerDisplay({
     displayedComments,
     defaultMessage,
@@ -68,8 +69,8 @@
     commitIfPending(isShowingDefault())
   })
 
-  const layers = computed(() => getCharacterLayers(currentMessage.value))
-
+  const characterLayers = computed(() => getCharacterLayers(currentMessage.value))
+  const characterAnimation = computed(() => getCharacterAnimation(currentMessage.value))
   const currentCharacterColor = computed(() => getCharacterColor(currentMessage.value.bubble?.characterKey ?? null))
 
   onMounted(() => start())

@@ -11,7 +11,7 @@
     <FlashBannerSelector
       :settings="flashBannerSample"
       :message="flashBannerSample.defaultMessage"
-      :layers="[]"
+      :characterLayers="[]"
       :color="commonStyle.defaultColor"
     />
   </div>

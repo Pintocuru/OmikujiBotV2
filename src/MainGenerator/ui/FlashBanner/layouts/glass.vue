@@ -17,7 +17,7 @@
 
     <!-- アイコン -->
     <div v-if="shouldShowIcon" class="shrink-0 flex items-center">
-      <LayerImage :layers="layers" :size="settings.iconSize" />
+      <LayerImage :layers="characterLayers" :size="settings.iconSize" :animation="characterAnimation" />
     </div>
 
     <!-- メッセージ -->
@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
+  import type { CharacterAnimationType, CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
   import { useMessageTransition } from '../composables/useMessageTransition'
@@ -46,7 +46,8 @@
   const props = defineProps<{
     settings: FlashBannerType
     message: string
-    layers: string[]
+    characterLayers: string[]
+    characterAnimation?: CharacterAnimationType
     color: CharacterColorType
     labelClass?: string
   }>()
@@ -61,7 +62,7 @@
     opacity: '0.92',
   }
 
-  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
+  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.characterLayers.length > 0)
 
   const { displayMessage, wrapperRef } = useMessageTransition(() => props.message)
 

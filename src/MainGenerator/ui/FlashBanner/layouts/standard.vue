@@ -11,8 +11,8 @@
     </div>
 
     <!-- アイコン -->
-    <div v-if="shouldShowIcon" class="flex-shrink-0 flex items-center">
-      <LayerImage :layers="layers" :size="settings.iconSize" />
+    <div v-if="shouldShowIcon">
+      <LayerImage :layers="characterLayers" :size="settings.iconSize" :animation="characterAnimation" />
     </div>
 
     <!-- スクロールテロップ -->
@@ -32,7 +32,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watch } from 'vue'
-  import { CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
+  import { CharacterAnimationType, CharacterColorType, FlashBannerType } from '@/types/OmikujiData/'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { createUiMap } from '@main/ui/CommentBubble/composables/UiBubbleMap'
   import { useMessageTransition } from '../composables/useMessageTransition'
@@ -41,13 +41,14 @@
   const props = defineProps<{
     settings: FlashBannerType
     message: string
-    layers: string[]
+    characterLayers: string[]
+    characterAnimation?: CharacterAnimationType
     color: CharacterColorType
     labelClass?: string
   }>()
 
   const uiMap = computed(() => createUiMap({ color: props.color }))
-  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.layers.length > 0)
+  const shouldShowIcon = computed(() => props.settings.iconSize > 0 && props.characterLayers.length > 0)
 
   const { displayMessage } = useMessageTransition(() => props.message)
 

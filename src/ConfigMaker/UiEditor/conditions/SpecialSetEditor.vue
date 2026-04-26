@@ -1,32 +1,34 @@
 <!-- src/ConfigMaker/UiEditor/conditions/SpecialSetEditor.vue -->
 <template>
   <div class="flex flex-col gap-3">
-    <!-- specialSet 選択（isGod のみ） -->
-    <SubSectionHeader icon="Settings" title="スペシャルセット選択" description="管理者モードでのみ変更できます" />
-    <SettingItem forceMode="god" label="スペシャルセット" description="専用レイアウトを使用する場合に選択します">
-      <div class="flex flex-wrap gap-2">
-        <!-- null = 個別設定 -->
-        <span
-          class="badge cursor-pointer select-none"
-          :class="specialSet === null ? 'badge-neutral text-neutral-content' : 'badge-outline text-base-content'"
-          @click="updateSpecialSet(null)"
-        >
-          個別設定
-        </span>
+    <template v-if="isGod">
+      <!-- specialSet 選択（isGod のみ） -->
+      <SubSectionHeader icon="Settings" title="スペシャルセット選択" description="管理者モードでのみ変更できます" />
+      <SettingItem forceMode="god" label="スペシャルセット" description="専用レイアウトを使用する場合に選択します">
+        <div class="flex flex-wrap gap-2">
+          <!-- null = 個別設定 -->
+          <span
+            class="badge cursor-pointer select-none"
+            :class="specialSet === null ? 'badge-neutral text-neutral-content' : 'badge-outline text-base-content'"
+            @click="updateSpecialSet(null)"
+          >
+            個別設定
+          </span>
 
-        <!-- 各specialSet -->
-        <span
-          v-for="(def, key) in uiSpecialSetMap"
-          :key="key"
-          class="badge cursor-pointer select-none"
-          :class="specialSet === key ? 'badge-accent text-accent-content' : 'badge-outline text-base-content'"
-          :title="def.description"
-          @click="updateSpecialSet(key)"
-        >
-          {{ def.label }}
-        </span>
-      </div>
-    </SettingItem>
+          <!-- 各specialSet -->
+          <span
+            v-for="(def, key) in uiSpecialSetMap"
+            :key="key"
+            class="badge cursor-pointer select-none"
+            :class="specialSet === key ? 'badge-accent text-accent-content' : 'badge-outline text-base-content'"
+            :title="def.description"
+            @click="updateSpecialSet(key)"
+          >
+            {{ def.label }}
+          </span>
+        </div>
+      </SettingItem>
+    </template>
 
     <!-- specialSet 選択中の詳細 -->
     <template v-if="setDef">
@@ -48,9 +50,11 @@
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
+  import { useSettingMode } from '@/ConfigMaker/scripts/useAccessCheckerConfig'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
+  const { isGod } = useSettingMode()
 
   const specialSet = computed(() => data.value.components.specialSet)
 

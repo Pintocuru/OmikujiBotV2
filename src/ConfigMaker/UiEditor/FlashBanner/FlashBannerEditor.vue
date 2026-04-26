@@ -146,7 +146,7 @@
 
   <!-- スクロール折り返し方式 -->
   <SettingItem
-    v-if="flashBanner.component !== 'ticker' && flashBanner.component !== 'scroll'"
+    v-if="flashComponentMap[flashBanner.component].isScrollSelect"
     label="スクロール折り返し"
     description="長文スクロール終了後の戻り方を選択します"
     :showReset="true"

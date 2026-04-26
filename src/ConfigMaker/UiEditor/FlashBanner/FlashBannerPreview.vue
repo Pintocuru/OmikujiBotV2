@@ -5,7 +5,7 @@
       <FlashBannerSelector
         :settings="settings"
         :message="defaultComment || '(デフォルトメッセージが設定されない場合、自動的に枠が非表示になります)'"
-        :layers="iconSrc(settings.defaultCharacterKey, 'default')"
+        :characterLayers="iconSrc(settings.defaultCharacterKey, 'default')"
         :color="getCharacterColor(settings.defaultCharacterKey)"
         :label-class="blinkClass"
       />

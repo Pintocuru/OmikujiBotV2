@@ -5,7 +5,8 @@
       :is="currentComponent"
       :settings="settings"
       :message="message"
-      :layers="layers"
+      :characterLayers="characterLayers"
+      :characterAnimation="characterAnimation"
       :color="color"
       :label-class="labelClass ?? ''"
     />
@@ -14,27 +15,30 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import { CharacterColorType, FlashBannerType, FlashComponent } from '@/types/'
+  import { CharacterAnimationType, CharacterColorType, FlashBannerType, FlashComponent } from '@/types/'
   import standard from '../layouts/standard.vue'
+  import scroll from '../layouts/scroll.vue'
   import ticker from '../layouts/ticker.vue'
   import glass from '../layouts/glass.vue'
+  import clear from '../layouts/clear.vue'
   import arcade from '../layouts/arcade.vue'
-  import scroll from '../layouts/scroll.vue'
 
   const props = defineProps<{
     settings: FlashBannerType
     message: string
-    layers: string[]
+    characterLayers: string[]
+    characterAnimation?: CharacterAnimationType
     color: CharacterColorType
     labelClass?: string
   }>()
 
   const componentMap: Record<FlashComponent, Component> = {
     standard,
+    scroll,
     ticker,
     glass,
+    clear,
     arcade,
-    scroll,
   }
   const currentComponent = computed(() => componentMap[props.settings.component] ?? standard)
 </script>
