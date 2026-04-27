@@ -1,9 +1,9 @@
-// build/2026-Q1/LiveClockSoundPlayer.ts
+// build/2026-Q1/LiveClockSound.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 
 const PROJECT = {
-  key: 'LiveClockSoundPlayer',
+  key: 'LiveClockSound',
   series: 'LiveClock',
   title: '挨拶する時計 サウンドプレイヤー',
   description: 'コメントしたリスナーに挨拶してくれる 時計型BOTテンプレート',
@@ -24,7 +24,7 @@ const PROJECT = {
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = [''] as const
+const COLOR_VARIANTS = ['', 'Adv'] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
@@ -33,9 +33,9 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'LiveClockSoundPlayer', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'LiveClockSoundPlayer', type: 'JSON', accessLevel: 'basic' },
-  { project: 'LiveClockSoundPlayer', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'LiveClockSound', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'LiveClockSound', type: 'JSON', accessLevel: 'basic' },
+  { project: 'LiveClockSoundAdv', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }

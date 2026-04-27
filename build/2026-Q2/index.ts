@@ -14,5 +14,5 @@ export default [
   // SlotPortrait,
   // Golden65536,
   // VarietySlot,
-  GogoBonus,
+  // GogoBonus,
 ]
