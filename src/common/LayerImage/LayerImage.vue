@@ -1,16 +1,14 @@
 <!-- src/common/LayerImage/LayerImage.vue -->
 <template>
-  <div class="relative" :class="[sizeClass, round && 'rounded-full', border && 'border']">
+  <div class="relative grid" :class="[round && 'rounded-full', border && 'border']" :style="containerStyle">
     <div
-      v-if="sources.length"
-      :key="animationKey"
-      class="w-full h-full relative animate__animated"
+      v-for="(src, i) in sources"
+      :key="i"
+      class="col-start-1 row-start-1 animate__animated"
       :class="animationClass"
-      :style="animationStyle"
+      :style="{ ...animationStyle, zIndex: sources.length - i }"
     >
-      <div v-for="(src, i) in sources" :key="i" class="absolute inset-0" :style="{ zIndex: sources.length - i }">
-        <CharacterLayer :src="src" :loop="animation?.loop ?? true" @error="onError(i)" />
-      </div>
+      <MediaLayer class="w-full h-full" :src="src" @error="onError(i)" />
     </div>
   </div>
 </template>
@@ -18,23 +16,37 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { CharacterAnimationType, loopMotionMap } from '@/types/'
-  import CharacterLayer from './CharacterLayer.vue'
+  import MediaLayer from './MediaLayer.vue'
   import { useImageSources } from './useImageSources'
   import 'animate.css'
   import './animations.css'
 
   const props = defineProps<{
     layers: string[] | string
-    size?: number
+    // --- サイズ: size(Tailwind整数) か width/height(px) のどちらか ---
+    size?: number // 旧 LayerImage 互換。Tailwind w-N h-N に変換
+    width?: number // px 指定（size より優先）
+    height?: number
+    maxWidth?: number
+    minWidth?: number
     round?: boolean
     border?: boolean
     animation?: CharacterAnimationType
   }>()
 
-  const sizeClass = computed(() => `w-${props.size || 16} h-${props.size || 16}`)
-  const { sources, onError } = useImageSources(() => props.layers)
+  const containerStyle = computed(() => {
+    // width prop があれば px、なければ size を rem 換算（1単位=0.25rem=4px）
+    const w = props.width ? `${props.width}px` : props.size ? `${props.size * 4}px` : '100%'
+    const h = props.height ? `${props.height}px` : props.size ? `${props.size * 4}px` : '100%'
+    return {
+      width: w,
+      height: h,
+      maxWidth: props.maxWidth ? `${props.maxWidth}px` : undefined,
+      minWidth: props.minWidth ? `${props.minWidth}px` : undefined,
+    }
+  })
 
-  const animationKey = computed(() => `${props.animation?.type}-${props.animation?.duration}-${props.animation?.loop}`)
+  const { sources, onError } = useImageSources(() => props.layers)
 
   const animationClass = computed(() => {
     const anim = props.animation
@@ -46,18 +58,13 @@
   const animationStyle = computed(() => {
     const anim = props.animation
     if (!anim || anim.type === 'none') return {}
-
     const duration = `${anim.duration ?? 1.5}s`
     const iteration = anim.loop ? 'infinite' : '1'
-
     return {
-      // 自作CSS用 (animations.css)
       '--anim-duration': duration,
       '--anim-iteration-count': iteration,
-
-      // animate.css 標準用 (bounce 等に必要)
       '--animate-duration': duration,
-      '--animate-iteration-count': iteration, // ←ここを "anim" ではなく "animate" にする
+      '--animate-iteration-count': iteration,
     }
   })
 </script>

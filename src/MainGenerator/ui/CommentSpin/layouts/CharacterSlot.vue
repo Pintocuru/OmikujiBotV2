@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/CommentSpin/layouts/CharacterSlot.vue -->
 <template>
   <div class="shrink-0 rounded-lg overflow-hidden">
-    <LayerImage2
+    <LayerImage
       v-if="layers.length"
       :layers="layers"
       :width="size.width"
@@ -18,7 +18,7 @@
   import type { BotMessageBubbleType } from '@/types'
   import type { CharacterType } from '@/types/OmikujiData/CharacterSchema'
   import type { CharacterAnimationType } from '@/types/OmikujiData/CharacterSchema'
-  import LayerImage2 from '@/common/LayerImage/LayerImage2.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { getAvatarUrl } from '@/common/DiceBear/getAvatarUrl'
   import { useAppStore } from '@main/stores/useAppStore'
 

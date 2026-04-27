@@ -2,7 +2,7 @@
 <template>
   <div>
     <!-- タイトルロゴ -->
-    <LayerImage2 :layers="logoPath" :width="size.width" :max-width="400" :min-width="200" />
+    <LayerImage :layers="logoPath" :width="size.width" :max-width="400" :min-width="200" />
 
     <!-- スロット -->
     <div
@@ -62,7 +62,7 @@
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
   import StandardMessage from './StandardMessage.vue'
   import { useSpinSlot } from './composables/useSpinSlot'
-  import LayerImage2 from '@/common/LayerImage/LayerImage2.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
 
   const props = defineProps<{
     color: DaisyUiThemeFieldsType

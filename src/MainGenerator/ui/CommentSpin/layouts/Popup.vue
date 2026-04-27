@@ -6,7 +6,7 @@
       class="relative rounded-xl shadow-lg border-4 overflow-hidden bg-base-200"
       :class="[`border-${color.backFrom}`]"
     >
-      <LayerImage2 :layers="settings.logoPath" :width="size.width" :height="size.height" class="absolute inset-0" />
+      <LayerImage :layers="settings.logoPath" :width="size.width" :height="size.height" class="absolute inset-0" />
 
       <div class="absolute inset-0 overflow-hidden" style="z-index: 1">
         <!-- 回転中 -->
@@ -45,7 +45,7 @@
   import type { BotMessageBubbleType, CommentSpinType, spinAnimation } from '@/types'
   import type { DaisyUiThemeFieldsType } from '@shared/styles/DaisyUiTheme'
   import CharacterSlot from './CharacterSlot.vue'
-  import LayerImage2 from '@/common/LayerImage/LayerImage2.vue'
+  import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import { useSpinSlot } from './composables/useSpinSlot'
   import { usePopupVisibility } from '../composables/usePopupVisibility'
 
