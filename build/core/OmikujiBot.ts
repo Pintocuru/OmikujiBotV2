@@ -26,7 +26,7 @@ function project(packageRoot: string): ProjectConfig {
     template: null,
     json: undefined,
 
-    filesToCopy: [...DEFAULT_FILES_TO_COPY, { from: 'assets/sounds/', to: 'assets/sounds/' }],
+    filesToCopy: [...DEFAULT_FILES_TO_COPY, { from: 'assets/sounds/core/', to: 'assets/sounds/' }],
   }
 }
 

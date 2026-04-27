@@ -17,10 +17,9 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
+  import { CharacterAnimationType, loopMotionMap } from '@/types/'
   import CharacterLayer from './CharacterLayer.vue'
   import { useImageSources } from './useImageSources'
-  import { loopMotionMap } from '@/types/MetaMaps/loopMotionMaps'
-  import type { CharacterAnimationType } from '@/types/'
   import 'animate.css'
   import './animations.css'
 

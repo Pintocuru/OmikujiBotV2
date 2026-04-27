@@ -22,5 +22,5 @@
     error: []
   }>()
 
-  const isVideo = computed(() => /\.(webm|mp4|mp3|wav|ogg)$/i.test(props.src))
+  const isVideo = computed(() => /\.(webm|mp4)$/i.test(props.src))
 </script>

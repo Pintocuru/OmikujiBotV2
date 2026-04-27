@@ -13,8 +13,8 @@ const PROJECT = {
   series: 'CommentSpin',
   licenseLabel: '利用規約に従う',
   extraFiles: [
-    { from: 'assets/Characters/GogoBonus/', to: 'Characters/GogoBonus/' },
-    { from: 'assets/sounds/GogoBonus/', to: 'assets/sounds/GogoBonus/' },
+    { from: 'assets/Characters/2026-Q2/GogoBonus/', to: 'Characters/GogoBonus/' },
+    { from: 'assets/sounds/2026-Q2/GogoBonus/', to: 'assets/sounds/GogoBonus/' },
   ],
 } satisfies ProjectParams
 

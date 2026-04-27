@@ -9,6 +9,7 @@ export * from './FontFamilyMaps'
 export * from './GameMetaMaps'
 export * from './ServiceTriggerMaps'
 export * from './ReactionTriggerMaps'
+export * from './loopMotionMaps'
 
 export * from './SoundMaps'
 export * from './UiKindMaps'

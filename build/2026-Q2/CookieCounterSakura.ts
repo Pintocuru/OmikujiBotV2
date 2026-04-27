@@ -12,6 +12,7 @@ const PROJECT = {
   category: '2026-Q2',
   series: 'CookieCounter',
   licenseLabel: 'CC-BY 4.0',
+  extraFiles: [{ from: 'assets/Characters/2026-Q2/CookieCounterSakura/', to: 'Characters/CookieCounterSakura/' }],
 } satisfies ProjectParams
 
 // バリエーション
