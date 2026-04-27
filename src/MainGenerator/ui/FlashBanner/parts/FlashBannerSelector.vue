@@ -22,6 +22,7 @@
   import glass from '../layouts/glass.vue'
   import clear from '../layouts/clear.vue'
   import arcade from '../layouts/arcade.vue'
+  import tweet from '../layouts/tweet.vue'
 
   const props = defineProps<{
     settings: FlashBannerType
@@ -39,6 +40,7 @@
     glass,
     clear,
     arcade,
+    tweet,
   }
   const currentComponent = computed(() => componentMap[props.settings.component] ?? standard)
 </script>

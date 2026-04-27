@@ -14,7 +14,6 @@ function resolveAsset(path: string) {
  * sound + soundPath を解決して再生
  */
 export const playSoundResolved = (sound: string, soundPath = '') => {
-  console.log({ sound, soundPath })
   const path = resolveSound(sound, soundPath)
   if (!path) return
   const audio = new Audio(resolveAsset(path))

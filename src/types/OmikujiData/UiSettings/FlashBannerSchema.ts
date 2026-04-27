@@ -35,6 +35,11 @@ export const flashComponentMap = {
     accessLevel: 'pro',
     isScrollSelect: true,
   },
+  tweet: {
+    label: 'ツイート',
+    accessLevel: 'basic',
+    isScrollSelect: false,
+  },
 } as const
 
 // scrollReturnMode の表示ラベル
@@ -61,7 +66,7 @@ const defaultMessage = `<<
 export const FlashBannerSchema = z.object({
   component: z.enum(flashComponentsEnum).default('standard').catch('standard'),
   label: z.string().default('速報').catch(''),
-  iconSize: z.number().int().min(0).max(24).default(12).catch(12),
+  iconSize: z.number().int().min(0).max(40).default(12).catch(12),
   displaySeconds: z.number().int().min(0).max(60).nullable().default(null).catch(null),
   showItemOnRight: z.boolean().default(false).catch(false),
   defaultCharacterKey: z.string().nullable().default(null).catch(null),

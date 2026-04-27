@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import { createViteAliases } from './tools/viteConfig/CreateViteAliases'
 import { baseViteConfig, } from '../../shared/utils/ViteConfig/viteConfigBase'
 import { characterAssetsPlugin } from './tools/viteConfig/characterAssetsPlugin'
+import { soundAssetsPlugin } from './tools/viteConfig/soundAssetsPlugin'
 
 // projectRoot の設定
 const __filename = fileURLToPath(import.meta.url)
@@ -17,7 +18,10 @@ export const alias = { ...createViteAliases(projectRoot) }
 
 export default defineConfig(() => {
   const overrideConfig: UserConfig = {
-    plugins: [characterAssetsPlugin(projectRoot)],
+    plugins: [
+      characterAssetsPlugin(projectRoot),
+      soundAssetsPlugin(projectRoot),
+    ],
     resolve: { alias },
     server: {
       watch: {

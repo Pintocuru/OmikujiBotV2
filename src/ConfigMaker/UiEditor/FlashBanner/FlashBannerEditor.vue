@@ -64,13 +64,13 @@
       <input
         type="range"
         min="0"
-        max="24"
+        max="40"
         step="2"
         class="range range-primary flex-1"
         :value="flashBanner.iconSize"
         @input="(e) => updateField('iconSize', Number((e.target as HTMLInputElement).value))"
       />
-      <div class="w-12 text-right">{{ flashBanner.iconSize }}px</div>
+      <div class="w-12 text-right">{{ flashBanner.iconSize * 4 }}px</div>
     </div>
   </SettingItem>
 

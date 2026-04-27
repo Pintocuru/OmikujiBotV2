@@ -4,6 +4,6 @@ import OmikujiBotSpecial from './OmikujiBotSpecial'
 import StrawberryChocolate from './StrawberryChocolate'
 
 export default [
-  // StrawberryChocolate,
-  //  OmikujiBotSpecial
+  StrawberryChocolate,
+  // OmikujiBotSpecial
 ]
