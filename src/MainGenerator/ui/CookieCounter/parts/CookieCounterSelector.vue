@@ -8,6 +8,7 @@
       :event-labels="eventLabels"
       :variable-labels="variableLabels"
       :color="settings.color"
+      :images="settings.images"
     />
   </div>
 </template>

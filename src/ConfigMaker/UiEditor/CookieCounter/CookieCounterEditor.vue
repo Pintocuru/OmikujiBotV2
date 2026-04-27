@@ -12,10 +12,32 @@
 
   <!-- カラー選択 -->
   <DaisyUiThemeEditor
-    v-if="isAdv && cookieComponentMap[cookieCounter.component].isColor"
+    v-if="isAdv && currentComponentDef.isColor"
     :model-value="cookieCounter.color"
     @update:model-value="(v) => updateField('color', v)"
   />
+
+  <!-- 画像パス指定（hasImage コンポーネントのみ） -->
+  <template v-if="currentComponentDef.hasImage">
+    <SettingItem label="メイン画像" description="1つ目に使う画像ファイルのパス">
+      <input
+        type="text"
+        class="input input-bordered input-sm w-full"
+        placeholder="images/sakura.webp"
+        :value="cookieCounter.images.main"
+        @change="updateImage('main', ($event.target as HTMLInputElement).value)"
+      />
+    </SettingItem>
+    <SettingItem label="サブ画像" description="2つ目の画像パス。空欄ならメイン画像を使用">
+      <input
+        type="text"
+        class="input input-bordered input-sm w-full"
+        placeholder="空欄でメインと同じ画像"
+        :value="cookieCounter.images.sub"
+        @change="updateImage('sub', ($event.target as HTMLInputElement).value)"
+      />
+    </SettingItem>
+  </template>
 
   <!-- カウンター設定 -->
   <CounterSelectorPanel
@@ -25,7 +47,7 @@
     @add="pushCounter"
     @remove="removeCounter"
     @reset="(type) => updateCounters(counters.filter((c) => c.type !== type))"
-    @reorder="updateCounters2"
+    @reorder="updateCounters"
     @update="updateCounter"
   />
 </template>
@@ -41,6 +63,7 @@
   import DaisyUiThemeEditor from '@config/components/common/ThemeColorPicker/DaisyUiThemeEditor.vue'
   import CounterSelectorPanel from '../StreamCounter/CounterSelector/CounterSelectorPanel.vue'
   import { CounterItem } from '../StreamCounter/CounterSelector/counterTypes'
+  import SettingItem from '@config/components/parts/SettingItem.vue'
 
   const { data } = storeToRefs(useOmikujiStore())
   const omikujiStore = useOmikujiStore()
@@ -50,15 +73,11 @@
 
   const cookieCounter = computed(() => data.value.components.settings.cookieCounter ?? CookieCounterSchema.parse({}))
   const counters = computed(() => cookieCounter.value.counters)
-  const counterCount = computed(() => counters.value.length)
   const maxCounters = computed(() => cookieComponentMap[cookieCounter.value.component].maxCounters)
+  const currentComponentDef = computed(() => cookieComponentMap[cookieCounter.value.component])
 
-  // イベントルール（ラベルマップも兼用）
   const eventRules = computed(() =>
-    Object.values(data.value.comments || {}).map((r) => ({
-      key: r.key,
-      name: r.name || r.key,
-    }))
+    Object.values(data.value.comments || {}).map((r) => ({ key: r.key, name: r.name || r.key }))
   )
   const eventLabels = computed<Record<string, string>>(() =>
     Object.fromEntries(eventRules.value.map((r) => [r.key, r.name]))
@@ -68,11 +87,14 @@
   const updateField = (field: keyof CookieCounterType, value: unknown) => {
     omikujiStore.updateComponentSettings('cookieCounter', { ...cookieCounter.value, [field]: value })
   }
-  const updateCounters = (next: typeof counters.value) => updateField('counters', next)
 
-  const updateCounters2 = (next: CounterItem[]) => {
-    updateField('counters', next)
+  // ---- images 更新 ----
+  const updateImage = (key: keyof CookieCounterType['images'], value: string) => {
+    updateField('images', { ...cookieCounter.value.images, [key]: value })
   }
+
+  // counters 配列の全体を差し替える（並び替え・フィルタ共用）
+  const updateCounters = (next: CounterItem[] | typeof counters.value) => updateField('counters', next)
 
   const updateCounter = (payload: { id: string; patch: { target: string; label: string } }) => {
     updateCounters(
@@ -83,12 +105,10 @@
     )
   }
 
-  // ---- カウンター操作 ----
-
   const removeCounter = (id: string) => updateCounters(counters.value.filter((c) => c.id !== id))
 
   const pushCounter = (payload: Parameters<typeof CookieCounterCountersSchema.parse>[0]) => {
-    if (counterCount.value >= maxCounters.value) return
+    if (counters.value.length >= maxCounters.value) return
     try {
       updateCounters([...counters.value, CookieCounterCountersSchema.parse(payload)])
     } catch (e) {

@@ -16,12 +16,14 @@ export const cookieComponentMap = {
     accessLevel: 'pro',
     maxCounters: 2,
     isColor: false,
+    hasImage: true,
   },
   block3d: {
     label: 'ブロックツイン',
     accessLevel: 'pro',
     maxCounters: 2,
     isColor: true,
+    hasImage: false,
   },
 } as const
 
@@ -48,9 +50,16 @@ export const CookieCounterCountersSchema = z.discriminatedUnion('type', [
   }),
 ])
 
+//
+export const CookieCounterImagesSchema = z.object({
+  main: z.string().default(''),
+  sub: z.string().default(''),
+})
+
 export const CookieCounterSchema = z.object({
   component: z.enum(cookieComponentsEnum).default('sakura').catch('sakura'), // カウンタースタイル
   color: normalizedObject(DaisyUiThemeFieldsSchema),
   counters: z.array(CookieCounterCountersSchema).max(8).default([]), // 任意のカウンター
+  images: normalizedObject(CookieCounterImagesSchema),
 })
 export type CookieCounterType = z.infer<typeof CookieCounterSchema>

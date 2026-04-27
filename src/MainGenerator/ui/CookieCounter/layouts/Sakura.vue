@@ -3,7 +3,7 @@
   <div class="flex justify-center items-center pt-30">
     <!-- メイン花びら（サブの absolute 基準） -->
     <div v-if="slots[0]" class="relative inline-block">
-      <SakuraPetal class="w-110 h-110 animate-spin-slow" />
+      <SakuraPetal :src="props.images.main" class="w-110 h-110 animate-spin-slow" />
 
       <!-- メインの数字・ラベル -->
       <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
@@ -17,7 +17,7 @@
 
       <!-- サブ花びら -->
       <div v-if="slots[1]" class="absolute top-5 -right-10" style="transform: translate(50%, -50%)">
-        <SakuraPetal class="w-60 h-60 animate-spin-slow-reverse" />
+        <SakuraPetal :src="props.images.sub || props.images.main" class="w-60 h-60 animate-spin-slow-reverse" />
 
         <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 leading-tight">
           <div class="flex flex-col items-center">
@@ -46,6 +46,7 @@
     counterDefs: CookieCounterType['counters']
     eventLabels: Record<string, string>
     variableLabels: Record<string, string>
+    images: CookieCounterType['images']
   }>()
 
   const { getLabel } = useCookieLabelResolver(props.eventLabels, props.variableLabels)
