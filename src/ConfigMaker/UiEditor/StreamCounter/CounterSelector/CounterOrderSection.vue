@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/UiEditor/StreamCounter/CounterSelector/CounterOrderSection.vue -->
 <template>
   <div v-if="counters.length > 0" class="mt-4 p-4 bg-base-200 rounded-box text-sm">
     <div class="font-bold mb-2">表示順（最大 {{ maxCounters }} 個）: 現在 {{ counters.length }}個</div>

@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/UiEditor/SocialRoster/LayoutLimitEditor.vue -->
 <template>
   <div class="flex flex-col gap-4">
     <div v-for="field in ['maxRows', 'maxColumns'] as const" :key="field">

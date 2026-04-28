@@ -1,3 +1,4 @@
+<!-- src/ConfigMaker/UiEditor/StreamCounter/CounterSelector/CounterSelectorPanel.vue -->
 <template>
   <!-- 標準カウンター -->
   <SettingItem

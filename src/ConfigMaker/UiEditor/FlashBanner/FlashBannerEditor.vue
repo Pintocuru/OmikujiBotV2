@@ -34,12 +34,7 @@
     </SettingItem>
 
     <!-- ラベル・キャラクターを右側にするか -->
-    <SettingItem
-      label="ラベル位置"
-      description="ラベル・キャラクターを右側に表示するか"
-      :showReset="true"
-      @reset="resetMap.showCharacterOnRight"
-    >
+    <SettingItem label="ラベル位置" description="ラベル・キャラクターの表示位置">
       <label class="flex items-center cursor-pointer">
         <input
           type="checkbox"

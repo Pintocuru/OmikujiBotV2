@@ -1,3 +1,4 @@
+// src/ConfigMaker/UiEditor/StreamCounter/CounterSelector/counterTypes.ts
 import { streamDefaultMap } from '@/types/'
 
 export interface CounterItem {

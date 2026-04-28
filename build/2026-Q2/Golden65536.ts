@@ -1,4 +1,4 @@
-// build/2026-Q2/CookieCounterSakura.ts
+// build/2026-Q2/Golden65536.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

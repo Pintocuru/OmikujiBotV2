@@ -17,14 +17,14 @@
   import { computed, onMounted, onUnmounted } from 'vue'
   import { BotMessageBubbleSchema, FlashBannerSchema } from '@/types'
   import FlashBannerSelector from './parts/FlashBannerSelector.vue'
-  import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
-  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
+  import { useDelayedBlink } from './composables/useDelayedBlink'
   import { useFlashBannerDisplay } from './composables/useFlashBannerDisplay'
   import { useFilteredBotMessages } from '../common/useFilteredBotMessages'
+  import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
   import CenteringWrapper from '../common/CenteringWrapper.vue'
   import { useAppStore } from '@main/stores/useAppStore'
-  import { useDelayedBlink } from './composables/useDelayedBlink'
-  import { usePlaceholderInterval } from '../common/usePlaceholderInterval'
+  import { useBotDisplay } from '@main/ui/CommentBubble/composables/useBotDisplay'
+  import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
 
   const appStore = useAppStore()
   const { getCharacterColor, getCharacterLayers, getCharacterAnimation } = useCharacterManager()
@@ -65,9 +65,7 @@
   })
 
   // インターバルのタイミングでデフォルト表示中なら pending な defaultComment を反映
-  registerIntervalHook(() => {
-    commitIfPending(isShowingDefault())
-  })
+  registerIntervalHook(() => commitIfPending(isShowingDefault()))
 
   const characterLayers = computed(() => getCharacterLayers(currentMessage.value))
   const characterAnimation = computed(() => getCharacterAnimation(currentMessage.value))
@@ -76,28 +74,3 @@
   onMounted(() => start())
   onUnmounted(() => stop())
 </script>
-
-<style scoped>
-  .banner-swap-enter-active {
-    animation: banner-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-  .banner-swap-leave-active {
-    animation: banner-out 0.2s ease-in both;
-  }
-  @keyframes banner-in {
-    from {
-      opacity: 0;
-      transform: translateY(6px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  @keyframes banner-out {
-    to {
-      opacity: 0;
-      transform: translateY(-4px);
-    }
-  }
-</style>
