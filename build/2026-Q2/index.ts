@@ -6,6 +6,7 @@ import Golden65536 from './Golden65536'
 import VarietySlot from './VarietySlot'
 import GogoBonus from './GogoBonus'
 import TweetSpiki from './TweetSpiki'
+import TweetSpikiKR from './TweetSpikiKR'
 
 export default [
   /* 完成されてないもの */
@@ -17,4 +18,5 @@ export default [
   // VarietySlot,
   // GogoBonus,
   TweetSpiki,
+  TweetSpikiKR,
 ]

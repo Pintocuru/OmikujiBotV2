@@ -4,7 +4,7 @@ import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/
 
 const PROJECT = {
   key: 'TweetSpiki',
-  title: '挨拶するｽﾋﾟｷ',
+  title: '配信向けｽﾋﾟｷ',
   description: 'ｽﾋﾟｷ がﾁｮﾜﾖ- するジェネレーター',
   banner: '',
   tags: ['トリッカル', 'スピキ', '스피키'],
@@ -20,7 +20,7 @@ const PROJECT = {
 } satisfies ProjectParams
 
 // バリエーション
-const COLOR_VARIANTS = ['', 'KR'] as const
+const COLOR_VARIANTS = [''] as const
 
 // プロジェクト一覧
 function getProjects(packageRoot: string): ProjectConfig[] {
@@ -30,7 +30,6 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
   { project: 'TweetSpiki', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'TweetSpikiKR', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
