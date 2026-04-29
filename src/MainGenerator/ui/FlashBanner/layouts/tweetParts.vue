@@ -2,8 +2,8 @@
 <template>
   <div class="flex flex-col" :class="alignClass">
     <!-- 本体 -->
-    <div class="rounded-xl border border-base-content bg-base-100 px-3 py-2 max-w-sm">
-      <span class="block font-bold text-xl text-base-content overflow-hidden" :style="clampStyle">
+    <div class="rounded-xl border border-base-content bg-base-100 px-3 py-2 max-w-md">
+      <span class="block font-bold text-3xl text-base-content overflow-hidden" :style="clampStyle">
         {{ message }}
       </span>
     </div>

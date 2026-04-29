@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/FlashBanner/layouts/tweet.vue -->
 <template>
-  <div class="flex items-end gap-2" :class="[settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']">
+  <div class="flex items-end gap-2 p-4" :class="[settings.showItemOnRight ? 'flex-row-reverse' : 'flex-row']">
     <!-- アイコン + フキダシ（縦積み） -->
     <div
       v-if="shouldShowIcon"

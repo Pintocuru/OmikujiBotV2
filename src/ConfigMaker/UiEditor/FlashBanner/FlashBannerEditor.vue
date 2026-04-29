@@ -59,7 +59,7 @@
       <input
         type="range"
         min="0"
-        max="40"
+        max="60"
         step="2"
         class="range range-primary flex-1"
         :value="flashBanner.iconSize"
