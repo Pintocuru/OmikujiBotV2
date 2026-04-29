@@ -44,11 +44,7 @@
 
         <!-- メニュー -->
         <div class="ml-auto" @click.stop>
-          <MenuDropdown
-            :disable-delete="merge.length <= 1"
-            @duplicate="duplicateItem(item)"
-            @delete="removeItem(item.id)"
-          />
+          <MenuDropdown @duplicate="duplicateItem(item)" @delete="removeItem(item.id)" />
         </div>
       </div>
     </VueDraggable>
