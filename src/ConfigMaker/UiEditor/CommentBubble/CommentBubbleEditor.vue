@@ -91,7 +91,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CommentBubbleSchema } from '@/types/'
+  import { CommentBubbleSchema } from '@/types'
   import { fontFamilyMap } from '@/types/MetaMaps/'
   import CommentBubblePreview from './CommentBubblePreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

@@ -16,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CounterPreviewType } from '@/types/'
+  import { CounterPreviewType } from '@/types'
 
   defineProps<{
     counterSetting: CounterPreviewType

@@ -42,7 +42,7 @@ span<!-- src/ConfigMaker/components/presetsImport/ComponentConfigSection.vue -->
 </template>
 
 <script setup lang="ts">
-  import { uiKindMap, UiKind } from '@/types/'
+  import { uiKindMap, UiKind } from '@/types'
   import { useImportManager } from './composables/useImportManager'
   import { ComponentImportConfig } from './ImportTypes'
 

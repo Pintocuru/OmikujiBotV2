@@ -11,7 +11,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CounterPreviewSchema, useFontFamily } from '@/types/'
+  import { CounterPreviewSchema, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import CounterPreviewSelector from '@main/ui/CounterPreview/parts/CounterPreviewSelector.vue'
   import { generateDummyVisitRecords } from '@/common/MockUser/MockGenerators'

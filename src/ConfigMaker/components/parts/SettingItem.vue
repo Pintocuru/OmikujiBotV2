@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-  import { isDev } from '@/types/'
+  import { isDev } from '@/types'
   import LicenseBadge from '@config/components/parts/LicenseBadge.vue'
   import SettingItem from '@shared/components/parts/SettingItem.vue'
   import { DaisyUIColorType } from '@shared/styles/DaisyUiTheme'

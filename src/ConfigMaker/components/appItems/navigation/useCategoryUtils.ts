@@ -1,10 +1,10 @@
 // src/ConfigMaker/components/appItems/navigation/useCategoryUtils.ts
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
-import { categoryMap, CategoryType } from '@/types/'
+import { categoryMap, CategoryType } from '@/types'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useAccessChecker } from '@config/scripts/useAccessCheckerConfig'
-import { isDev } from '@/types/'
+import { isDev } from '@/types'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 
 export const useCategoryUtils = () => {

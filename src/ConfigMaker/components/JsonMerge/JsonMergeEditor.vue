@@ -120,7 +120,7 @@
   import { ref, computed } from 'vue'
   import { VueDraggable } from 'vue-draggable-plus'
   import { GripVertical, Plus } from 'lucide-vue-next'
-  import { CharacterType } from '@/types/'
+  import { CharacterType } from '@/types'
   import { JsonMergeItemSchema, JsonMergeRemapSchema, JsonMergeItemType } from '@/types/OmikujiData/JsonMergeType'
   import JsonMergeRemapEditor from './JsonMergeRemapEditor.vue'
   import JsonMergeSourceFileSelector from './JsonMergeSourceFileSelector.vue'

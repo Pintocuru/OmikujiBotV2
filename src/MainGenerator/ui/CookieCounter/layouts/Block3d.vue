@@ -116,7 +116,7 @@
 <script setup lang="ts">
   import { computed, reactive, watch } from 'vue'
   import { useTransition, TransitionPresets } from '@vueuse/core'
-  import type { CookieCounterType } from '@/types/'
+  import type { CookieCounterType } from '@/types'
   import { useCookieLabelResolver } from '../composables/useCookieLabelResolver'
 
   const props = defineProps<{

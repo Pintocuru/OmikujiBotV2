@@ -1,7 +1,7 @@
 // src/GameScripts/scripts/WinnerGroup/execute.ts
-import { ScriptClass, ScriptResult, PostFlowType, BotMessageExtraType, BotMessageExtraSchema } from '@/types/'
+import { ScriptClass, ScriptResult, PostFlowType, BotMessageExtraType, BotMessageExtraSchema } from '@/types'
 import { parseQueryString } from '@game/parseQueryString'
-import { PostFlowMessageSchema } from '@/types/'
+import { PostFlowMessageSchema } from '@/types'
 import { GameParamsSchema } from './params'
 import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { prepareUserInfo } from '@/GameScripts/scriptsEngine/RankingMessage/RankingMessage'

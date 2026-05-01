@@ -48,7 +48,7 @@
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import SubSectionHeader from '@shared/components/parts/SubSectionHeader.vue'
-  import { categoryMap, recordCategoryLabel, RecordCategoryType } from '@/types/'
+  import { categoryMap, recordCategoryLabel, RecordCategoryType } from '@/types'
   import { AccessLevelLabels } from '@shared/types'
   import { useFlagsSettings } from './useFlagsSettings'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

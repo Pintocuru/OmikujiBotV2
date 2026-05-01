@@ -1,6 +1,6 @@
 // src/MainGenerator/ui/CounterPreview/layouts/base/useCounterDisplay.ts
 import { ref, watch, computed } from 'vue'
-import { CounterPreviewType } from '@/types/'
+import { CounterPreviewType } from '@/types'
 import { UserNameType } from '@shared/types'
 
 export function useCounterDisplay(

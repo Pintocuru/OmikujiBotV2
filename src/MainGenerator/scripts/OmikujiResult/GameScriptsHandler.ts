@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/GameScriptsHandler.ts
-import { BotMessageType } from '@/types/'
+import { BotMessageType } from '@/types'
 import { ActionSetType } from '@/types/OmikujiData/'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

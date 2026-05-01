@@ -25,7 +25,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { FlightSeatSchema, flightComponentDefaults, useFontFamily } from '@/types/'
+  import { FlightSeatSchema, flightComponentDefaults, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SeatSelector from '@main/ui/FlightSeat/parts/FlightSeatSelector.vue'
   import { calculateTotalSeats, parseCustomLayout } from '@main/ui/FlightSeat/composables/seatLayoutUtils'

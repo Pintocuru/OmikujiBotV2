@@ -178,7 +178,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { flashComponentMap, scrollReturnModeMap, FlashBannerSchema } from '@/types/'
+  import { flashComponentMap, scrollReturnModeMap, FlashBannerSchema } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CharacterSelectorSingle from '@config/UiEditor/ToastWidgets/CharacterSelectorSingle.vue'

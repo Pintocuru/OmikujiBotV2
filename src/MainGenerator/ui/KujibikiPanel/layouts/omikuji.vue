@@ -64,7 +64,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { BotMessageBubbleType } from '@/types/'
+  import { BotMessageBubbleType } from '@/types'
 
   const props = defineProps<{
     messages: BotMessageBubbleType[]

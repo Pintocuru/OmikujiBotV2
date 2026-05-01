@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
   import { computed, ref, watchEffect } from 'vue'
-  import { GameScriptsType, CommentBubbleSchema, CharacterType } from '@/types/'
+  import { GameScriptsType, CommentBubbleSchema, CharacterType } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { storeToRefs } from 'pinia'
 

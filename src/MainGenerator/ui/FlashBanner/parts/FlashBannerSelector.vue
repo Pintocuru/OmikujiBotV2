@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import { CharacterAnimationType, CharacterColorType, FlashBannerType, FlashComponent } from '@/types/'
+  import { CharacterAnimationType, CharacterColorType, FlashBannerType, FlashComponent } from '@/types'
   import standard from '../layouts/standard.vue'
   import scroll from '../layouts/scroll.vue'
   import ticker from '../layouts/ticker.vue'

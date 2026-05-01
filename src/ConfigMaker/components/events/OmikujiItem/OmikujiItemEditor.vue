@@ -52,7 +52,7 @@
 
 <script setup lang="ts">
   import { computed, watch } from 'vue'
-  import { ActionSetKind, actionSetKindMap, PostFlowType } from '@/types/'
+  import { ActionSetKind, actionSetKindMap, PostFlowType } from '@/types'
   import OmikujiItemHeader from './OmikujiItemHeader.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'

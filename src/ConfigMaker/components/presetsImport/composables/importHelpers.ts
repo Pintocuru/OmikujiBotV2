@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/presetsImport/composables/importHelpers.ts
 import { OmikujiDataType, RecordCategoryType, recordCategoryLabel, RecordCategoryDataMap } from '@/types/OmikujiData/'
-import { UiKind } from '@/types/'
+import { UiKind } from '@/types'
 import { CategoryImportConfig, ComponentImportConfig, ConflictInfo } from '../ImportTypes'
 
 /**

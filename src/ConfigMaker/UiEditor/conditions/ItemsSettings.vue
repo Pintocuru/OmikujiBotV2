@@ -27,8 +27,8 @@
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
-  import { settingsSchemaMap, uiKindMap } from '@/types/'
-  import type { UiKind } from '@/types/'
+  import { settingsSchemaMap, uiKindMap } from '@/types'
+  import type { UiKind } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { swalModal } from '@/common/SweetAlert2/SweetAlert2Toast'
 

@@ -97,7 +97,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleSchema, ToastWidgetsSchema, useFontFamily } from '@/types/'
+  import { BotMessageBubbleSchema, ToastWidgetsSchema, useFontFamily } from '@/types'
   import CharacterSelectorMulti from './CharacterSelectorMulti.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'

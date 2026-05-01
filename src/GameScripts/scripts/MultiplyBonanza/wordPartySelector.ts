@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/MultiplyBonanza/wordPartySelector.ts
 import { GameResult } from './gameConfig'
-import { PostFlowWordPartyType } from '@/types/'
+import { PostFlowWordPartyType } from '@/types'
 
 /**
  * WordParty演出の設定

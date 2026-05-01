@@ -36,7 +36,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import SettingItem from '../parts/SettingItem.vue'
-  import { ServiceConditionType, serviceConditionMap, serviceSimpleComparisonConditionMap } from '@/types/'
+  import { ServiceConditionType, serviceConditionMap, serviceSimpleComparisonConditionMap } from '@/types'
 
   const props = defineProps<{
     modelValue?: ServiceConditionType

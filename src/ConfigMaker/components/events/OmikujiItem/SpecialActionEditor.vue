@@ -99,7 +99,7 @@
     ActionBehaviorLogType,
     actionSpecialMap,
     LOG_FORMAT_DEFAULT,
-  } from '@/types/'
+  } from '@/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useGetRecordData } from '@config/stores/useGetRecordData'

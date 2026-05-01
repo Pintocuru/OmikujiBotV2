@@ -69,7 +69,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { streamDefaultMap } from '@/types/'
+  import { streamDefaultMap } from '@/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import CounterVariableSection from './CounterVariableSection.vue'
   import CounterOrderSection from './CounterOrderSection.vue'

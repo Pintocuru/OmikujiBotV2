@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
   import { WeightValuesArrayType } from '@/types/OmikujiData/PlaceholderSchema'
-  import { PostFlowCallType } from '@/types/'
+  import { PostFlowCallType } from '@/types'
   import { useWeightValueManagement } from './useWeightValueManagement'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
   import MenuDropdown from '@shared/components/parts/MenuDropdown.vue'

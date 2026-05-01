@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import { FlagsType, FlagsUsageSchema, isDev } from '@/types/'
+  import { FlagsType, FlagsUsageSchema, isDev } from '@/types'
   import FlagsUsage from './FlagsUsageSettings.vue'
   import FlagsGames from './FlagsGamesSettings.vue'
   import FlagsDeveloper from './FlagsDeveloperSettings.vue'

@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/OmikujiResultProcessor.ts
-import { BotMessageType } from '@/types/'
+import { BotMessageType } from '@/types'
 import { OmikujiDataType, ActionSetType } from '@/types/OmikujiData/'
 import { PlaceholderVariableType } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 import { CooldownManager } from '@main/stores/CooldownManager/CooldownManager'

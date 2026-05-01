@@ -16,7 +16,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { defaultPlaceholdersShortLabels, isDev, useFontFamily } from '@/types/'
+  import { defaultPlaceholdersShortLabels, isDev, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import FlashBannerSelector from '@main/ui/FlashBanner/parts/FlashBannerSelector.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'

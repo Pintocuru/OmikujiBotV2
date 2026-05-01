@@ -74,7 +74,7 @@
     CommentTriggerCondition,
     commentTriggerConditionMap,
     CommentTriggerType,
-  } from '@/types/'
+  } from '@/types'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'
 
   const props = defineProps<{

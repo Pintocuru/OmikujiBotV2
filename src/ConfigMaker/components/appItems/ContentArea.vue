@@ -18,7 +18,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { categoryMap, CategoryType } from '@/types/'
+  import { categoryMap, CategoryType } from '@/types'
   import { useNavigationStore } from '@config/stores/useNavigationStore'
   import CommentEventEditor from '@config/components/eventsComment/CommentEditor.vue'
   import TimerEventEditor from '@config/components/eventsTimer/TimerEditor.vue'

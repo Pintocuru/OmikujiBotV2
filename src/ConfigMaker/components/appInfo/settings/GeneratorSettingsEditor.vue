@@ -94,7 +94,7 @@
 <script setup lang="ts">
   import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { SettingsSchema, SoundKeyType, soundMap } from '@/types/'
+  import { SettingsSchema, SoundKeyType, soundMap } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import type { SettingsType } from '@/types/OmikujiData/SettingsSchema'

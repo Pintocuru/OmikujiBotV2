@@ -39,7 +39,7 @@
 <script setup lang="ts">
   import { ref, computed } from 'vue'
   import { CharacterColorType, EnterMotionType } from '@/types/OmikujiData/'
-  import { FontFamilyType, useFontFamily } from '@/types/'
+  import { FontFamilyType, useFontFamily } from '@/types'
   import CommentBubbleItem from '@main/ui/CommentBubble/parts/CommentBubbleItem.vue'
   import MotionWrapper from '@main/ui/CommentBubble/MotionVariants/MotionWrapper.vue'
 

@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostFlowWordPartyType } from '@/types/'
+  import { PostFlowWordPartyType } from '@/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
 
   const props = defineProps<{

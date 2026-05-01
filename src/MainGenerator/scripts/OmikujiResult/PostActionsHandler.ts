@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/PostActionsHandler.ts
-import { BotMessageType, ProcessedPostAction } from '@/types/'
+import { BotMessageType, ProcessedPostAction } from '@/types'
 import { ActionSetType, OmikujiDataType } from '@/types/OmikujiData/'
 import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'

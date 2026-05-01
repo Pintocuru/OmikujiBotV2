@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CookieCounterSchema } from '@/types/'
+  import { CookieCounterSchema } from '@/types'
   import CookieCounterSelector from './parts/CookieCounterSelector.vue'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'

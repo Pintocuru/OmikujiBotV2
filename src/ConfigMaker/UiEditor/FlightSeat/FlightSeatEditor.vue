@@ -114,7 +114,7 @@
     FlightComponentKind,
     presets,
     statKeyDefs,
-  } from '@/types/'
+  } from '@/types'
   import FlightSeatPreview from './FlightSeatPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

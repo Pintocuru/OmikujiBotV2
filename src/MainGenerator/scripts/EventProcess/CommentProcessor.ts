@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/EventProcess/CommentProcessor.ts
-import { BotMessageEmptySchema, BotMessageType, CommentEventType } from '@/types/'
+import { BotMessageEmptySchema, BotMessageType, CommentEventType } from '@/types'
 import { OmikujiSetType } from '@/types/OmikujiData/'
 import { buildRestrictionMessages } from '../BotMessage/createBotMessages'
 import { checkRestrictions } from '@main/scripts/OmikujiProcess/RestrictionChecker'

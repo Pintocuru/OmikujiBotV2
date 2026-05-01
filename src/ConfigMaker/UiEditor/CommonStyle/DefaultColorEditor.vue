@@ -34,7 +34,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { FlashBannerSchema, useFontFamily } from '@/types/'
+  import { FlashBannerSchema, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
   import FlashBannerSelector from '@main/ui/FlashBanner/parts/FlashBannerSelector.vue'

@@ -54,7 +54,7 @@
   import { storeToRefs } from 'pinia'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { JsonMergeRemapType } from '@/types/OmikujiData/JsonMergeType'
-  import { CharacterType, characterEmotionMap } from '@/types/'
+  import { CharacterType, characterEmotionMap } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 
   const props = defineProps<{

@@ -49,7 +49,7 @@
 
 <script setup lang="ts">
   import { computed, ref } from 'vue'
-  import { PostFlowSchema, PostFlowType, PostFlowKind, PostFlowKindMaps } from '@/types/'
+  import { PostFlowSchema, PostFlowType, PostFlowKind, PostFlowKindMaps } from '@/types'
   import MessageSettings from '../Message/MessageSettings.vue'
   import SoundSettings from '../Sounds/SoundSettings.vue'
   import WordPartySettings from '../WordParty/WordPartySettings.vue'

@@ -111,7 +111,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CommentSpinSchema, spinAnimationMap, spinComponentMap } from '@/types/'
+  import { CommentSpinSchema, spinAnimationMap, spinComponentMap } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'

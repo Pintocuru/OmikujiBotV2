@@ -35,7 +35,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CommentBubbleSchema } from '@/types/'
+  import { CommentBubbleSchema } from '@/types'
   import BubbleCharacterSelect from './BubbleCharacterSelect.vue'
   import CharacterAvatarPreview from './CharacterAvatarPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

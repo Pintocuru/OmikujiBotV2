@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { ActionSetType } from '@/types/'
+  import { ActionSetType } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import BaseSettingsEditor from '@config/components/common/BaseSettingsEditor.vue'
   import PostActionsEditor from '@config/components/postAction/PostActionsEditor.vue'

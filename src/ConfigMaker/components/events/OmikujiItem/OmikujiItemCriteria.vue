@@ -89,7 +89,7 @@
     criteriaThresholdConditionLabels,
     CriteriaThresholdSchema,
     CriteriaThresholdType,
-  } from '@/types/'
+  } from '@/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 

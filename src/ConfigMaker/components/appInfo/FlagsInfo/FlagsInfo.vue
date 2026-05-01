@@ -71,7 +71,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { categoryMap, uiKindMap, gameMetaMap, UiKind } from '@/types/'
+  import { categoryMap, uiKindMap, gameMetaMap, UiKind } from '@/types'
   import FeatureCard from './FeatureCard.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'

@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/FortuneRanking/execute.ts
 import { DEFAULT_FRUITS, DEFAULT_KEY_MAP } from './params'
-import { ScriptClass, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'

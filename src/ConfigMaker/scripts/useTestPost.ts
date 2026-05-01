@@ -10,7 +10,7 @@ import {
   ActionSetType,
   ActionSetSchema,
   defaultPlaceholdersShortLabels,
-} from '@/types/'
+} from '@/types'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { GameScriptManager } from '@main/stores/GameScript/GameScriptManager'
 import { drawOmikuji, addWeightPercentages } from '@shared/utils/omikuji/DrawOmikuji'

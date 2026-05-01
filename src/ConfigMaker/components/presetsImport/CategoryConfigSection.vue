@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CategoryType, RecordCategoryType, categoryMap } from '@/types/'
+  import { CategoryType, RecordCategoryType, categoryMap } from '@/types'
   import { useImportManager } from './composables/useImportManager'
   import CategoryModeSelector from './CategoryModeSelector.vue'
   import ConflictsList from './ConflictsList.vue'

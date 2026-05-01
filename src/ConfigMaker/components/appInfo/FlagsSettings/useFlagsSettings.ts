@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { storeToRefs } from 'pinia'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
-import { FlagsDeveloperType, FlagsUsageType, RecordCategoryType } from '@/types/'
+import { FlagsDeveloperType, FlagsUsageType, RecordCategoryType } from '@/types'
 
 export function useFlagsSettings() {
   const omikujiStore = useOmikujiStore()

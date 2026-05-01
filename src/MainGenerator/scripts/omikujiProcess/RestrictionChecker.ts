@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/RestrictionChecker.ts
-import { CommentEventType } from '@/types/'
+import { CommentEventType } from '@/types'
 import { useAppStore } from '@main/stores/useAppStore'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

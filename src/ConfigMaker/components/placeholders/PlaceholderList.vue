@@ -66,7 +66,7 @@
 
 <script setup lang="ts">
   import { toRef } from 'vue'
-  import { PostFlowType } from '@/types/'
+  import { PostFlowType } from '@/types'
   import { usePlaceholders } from './composables/usePlaceholders'
   import PlaceholderItem from './PlaceholderItem.vue'
   import NoParamsCard from '@shared/components/parts/NoParamsCard.vue'

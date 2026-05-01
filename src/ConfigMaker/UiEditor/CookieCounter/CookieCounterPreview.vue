@@ -21,8 +21,8 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { useFontFamily } from '@/types/'
-  import type { CookieCounterType } from '@/types/'
+  import { useFontFamily } from '@/types'
+  import type { CookieCounterType } from '@/types'
   import CookieCounterSelector from '@main/ui/CookieCounter/parts/CookieCounterSelector.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

@@ -37,7 +37,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { CharacterType, ShowCharacters } from '@/types/'
+  import type { CharacterType, ShowCharacters } from '@/types'
   import CharacterLayerImage from '@/common/LayerImage/CharacterLayerImage.vue'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
   import PreviewSection from './PreviewSection.vue'

@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiProcess/ActionSetValidator.ts
-import { PostFlowType } from '@/types/'
+import { PostFlowType } from '@/types'
 
 export interface CircularReferenceResult {
   hasCircular: boolean

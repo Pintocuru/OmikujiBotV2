@@ -79,7 +79,7 @@
 <script setup lang="ts">
   import { computed, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { PostFlowType, CommentBubbleSchema, ToastWidgetsSchema } from '@/types/'
+  import { PostFlowType, CommentBubbleSchema, ToastWidgetsSchema } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SoundTestButton from './SoundTestButton.vue'
   import { processTestPlaceholder } from './TestPlaceholderProcessor'

@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/PostOmikuji/PostOmikujiService.ts
-import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types/'
+import { PostFlowType, CharacterType, PostFlowMessageType, OmikujiDataType } from '@/types'
 import { BOT_ICON } from './BotIcon'
 import { ServiceMetaStore } from '@main/stores/MetaState/MetaStateService'
 import { CharacterManager } from '@main/scripts/CharacterManager/CharacterManager'

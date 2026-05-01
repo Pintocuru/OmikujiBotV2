@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PostFlowType, PostFlowKindMaps } from '@/types/'
+  import { PostFlowType, PostFlowKindMaps } from '@/types'
   import { resolveLucideIcon } from '@shared/utils/LucideIcon/useLucideIcon'
 
   const props = defineProps<{

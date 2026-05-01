@@ -1,14 +1,11 @@
 // src/MainGenerator/ui/FlashBanner/composables/useFlashBannerDisplay.ts
-
-import { computed, ref } from 'vue'
-import type { Ref } from 'vue'
-import type { BotMessageBubbleType } from '@/types/'
+import { computed, ref, type Ref } from 'vue'
+import { BotMessageBubbleType } from '@/types'
 
 interface UseFlashBannerDisplayOptions {
   displayedComments: Ref<BotMessageBubbleType[]>
   defaultMessage: Readonly<Ref<BotMessageBubbleType>>
-  /** メッセージ切り替え時に呼び出される（blink など副作用用） */
-  onMessageChanged?: () => void
+  onMessageChanged?: () => void /** メッセージ切り替え時に呼び出される（blink など副作用用） */
 }
 
 export function useFlashBannerDisplay({

@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/DwarfBomb/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types'
 import { playGame, generatePartyEffects } from './game/game' // ← クラスではなく関数をimport
 import { parseQueryString } from '@game/parseQueryString'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'

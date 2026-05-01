@@ -24,7 +24,7 @@
     characterEmotionKeys,
     CharacterSchema,
     ToastWidgetsSchema,
-  } from '@/types/'
+  } from '@/types'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useCharacterManager } from '@main/scripts/CharacterManager/useCharacterManager'
   import CharacterThumbnailsPreview from './parts/CharacterThumbnailsPreview.vue'

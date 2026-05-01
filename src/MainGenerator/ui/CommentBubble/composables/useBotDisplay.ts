@@ -1,6 +1,6 @@
 // src/MainGenerator/ui/CommentBubble/composables/useBotDisplay.ts
 import { ref, computed, Ref } from 'vue'
-import { BotMessageBubbleType } from '@/types/'
+import { BotMessageBubbleType } from '@/types'
 
 const DISPLAY_CONFIG = {
   INTERVAL: 250,

@@ -5,7 +5,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CounterComponent, CounterPreviewType } from '@/types/'
+  import { CounterComponent, CounterPreviewType } from '@/types'
   import UserList from '../layouts/UserList.vue'
   import UserCardScroller from '../layouts/UserCardScroller.vue'
   import CounterUser from '../layouts/CounterUser.vue'

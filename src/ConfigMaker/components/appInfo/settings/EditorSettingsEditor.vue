@@ -71,7 +71,7 @@
 <script setup lang="ts">
   import { computed, watch } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { categoryMap, isDev, SettingsSchema } from '@/types/'
+  import { categoryMap, isDev, SettingsSchema } from '@/types'
   import LicenseSwitch from './LicenseSwitch.vue'
   import { resolveSettingMode } from '@/common/FeatureAccess/SettingMode'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'

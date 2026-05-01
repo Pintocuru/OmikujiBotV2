@@ -1,6 +1,6 @@
 // src/common/FeatureAccess/useAccessChecker.ts
 import { computed, type Ref } from 'vue'
-import { OmikujiDataType, UiKind, UiSlotType } from '@/types/'
+import { OmikujiDataType, UiKind, UiSlotType } from '@/types'
 import { useSettingModeFromHash } from './SettingMode'
 import { AccessLevelType } from '@shared/types'
 

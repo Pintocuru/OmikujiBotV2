@@ -69,7 +69,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { UiSlotType, UiKind, getKindsForSlot, uiKindMap, UiSlotMap } from '@/types/'
+  import { UiSlotType, UiKind, getKindsForSlot, uiKindMap, UiSlotMap } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import InformationCard from '@shared/components/parts/InformationCard.vue'

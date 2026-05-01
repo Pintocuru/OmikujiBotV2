@@ -1,7 +1,7 @@
 // src/common/LayerImage/useCharacterAnimation.ts
 import { computed, type Ref } from 'vue'
 import { loopMotionMap } from '@/types/MetaMaps/loopMotionMaps'
-import type { CharacterAnimationType } from '@/types/'
+import type { CharacterAnimationType } from '@/types'
 import 'animate.css'
 
 export function useCharacterAnimation(

@@ -1,6 +1,6 @@
 // src/GameScripts/scripts/MultiplyBonanza/execute.ts
 import { GameParams, GameParamsSchema } from './params'
-import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types/'
+import { ScriptClass, PostFlowType, GameStateType, PostFlowMessageSchema, ScriptResult } from '@/types'
 import { GameEngine } from './game'
 import { LogRankScript } from '@game/scriptsEngine/LogRank/execute'
 import { parseQueryString } from '@game/parseQueryString'

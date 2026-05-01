@@ -93,7 +93,7 @@
 </template>
 
 <script setup lang="ts">
-  import { RecordCategoryType } from '@/types/'
+  import { RecordCategoryType } from '@/types'
   import { useKeyEditor } from './composables/useKeyEditor'
   import ModalFooterActions from '@config/components/parts/ModalFooterActions.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'

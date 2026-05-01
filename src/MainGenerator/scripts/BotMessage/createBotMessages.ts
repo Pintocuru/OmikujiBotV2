@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/BotMessage/createBotMessages.ts
-import { BotMessageBubbleSchema, BotMessageBubbleType, CommentEventType } from '@/types/'
+import { BotMessageBubbleSchema, BotMessageBubbleType, CommentEventType } from '@/types'
 import { RestrictionCheckResult } from '../OmikujiProcess/RestrictionChecker'
 import { useCharacterManager } from '../CharacterManager/useCharacterManager'
 

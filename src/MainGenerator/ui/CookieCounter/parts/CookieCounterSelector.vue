@@ -15,7 +15,7 @@
 
 <script setup lang="ts">
   import { computed, type Component } from 'vue'
-  import type { CookieCounterType, CookieComponent } from '@/types/'
+  import type { CookieCounterType, CookieComponent } from '@/types'
   import Sakura from '../layouts/Sakura.vue'
   import Block3d from '../layouts/Block3d.vue'
 

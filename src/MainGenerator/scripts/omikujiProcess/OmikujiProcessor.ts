@@ -5,7 +5,7 @@ import {
   DefaultPlaceholdersCommentSchema,
   DefaultPlaceholdersMetaSchema,
   EventCategoryType,
-} from '@/types/'
+} from '@/types'
 import { BotMessageType } from '@/types/MainGenerator/BotMessageSchema'
 import { OmikujiResultProcessor } from '@main/scripts/OmikujiResult/OmikujiResultProcessor'
 import { useAppStore } from '@main/stores/useAppStore'

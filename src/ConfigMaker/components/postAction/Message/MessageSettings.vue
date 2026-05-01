@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { isDev, PostFlowMessageType, systemBotMap } from '@/types/'
+  import { isDev, PostFlowMessageType, systemBotMap } from '@/types'
   import IconSelector from '@config/components/postAction/IconSelector/IconSelector.vue'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useVisibilityAccess } from '@config/scripts/useAccessCheckerConfig'

@@ -66,7 +66,7 @@
 <script setup lang="ts">
   import { ref, computed, watch, onMounted } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { CommentBubbleSchema, ShowCharactersSchema, type ShowCharacters } from '@/types/'
+  import { CommentBubbleSchema, ShowCharactersSchema, type ShowCharacters } from '@/types'
   import CharacterSlot from './CharacterSlot.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import InformationCard from '@shared/components/parts/InformationCard.vue'

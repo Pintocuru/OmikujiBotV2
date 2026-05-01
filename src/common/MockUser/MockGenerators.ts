@@ -1,5 +1,5 @@
 // src/common/MockUser/MockGenerators.ts
-import { ExtraListsSchema, GameRankingType } from '@/types/'
+import { ExtraListsSchema, GameRankingType } from '@/types'
 import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/MainGenerator/BotMessageSchema'
 import {
   UserStatsRecord,

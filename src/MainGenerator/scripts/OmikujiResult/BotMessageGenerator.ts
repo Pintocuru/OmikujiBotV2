@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/OmikujiResult/BotMessageGenerator.ts
-import { BotMessageType, ProcessedPostAction } from '@/types/'
+import { BotMessageType, ProcessedPostAction } from '@/types'
 import { PostFlowType, OmikujiDataType, hasPostFlowMessage } from '@/types/OmikujiData/'
 import { createBotMessagesFromAction, createBotMessagesFromVariable } from './BotMessageHelpers'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'

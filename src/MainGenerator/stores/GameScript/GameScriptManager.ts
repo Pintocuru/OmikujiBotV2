@@ -1,5 +1,5 @@
 // src/MainGenerator/stores/GameScript/GameScriptManager.ts
-import { GameScriptsType, GameStateType, ScriptClass, ScriptGameKey, ScriptResult } from '@/types/'
+import { GameScriptsType, GameStateType, ScriptClass, ScriptGameKey, ScriptResult } from '@/types'
 import { gameExecuteMap } from '@game/GameScriptsMap'
 import { OmikenCommentType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserManager } from '../UserManager/UserManager'

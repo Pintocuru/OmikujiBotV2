@@ -12,7 +12,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterAnimationType, CharacterColorType } from '@/types/'
+  import { CharacterAnimationType, CharacterColorType } from '@/types'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'
 
   const props = defineProps<{

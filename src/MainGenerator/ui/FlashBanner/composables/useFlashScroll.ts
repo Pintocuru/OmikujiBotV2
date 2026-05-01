@@ -1,6 +1,6 @@
 // src/MainGenerator/ui/FlashBanner/composables/useFlashScroll.ts
 import { ref, watchEffect, onMounted, onUnmounted, nextTick } from 'vue'
-import type { FlashBannerType } from '@/types/OmikujiData/'
+import { FlashBannerType } from '@/types'
 
 interface UseFlashScrollOptions {
   getMessage: () => string
@@ -12,13 +12,6 @@ const SCROLL_THRESHOLD = 20
 
 /**
  * FlashBanner 共通スクロール制御 Composable
- *
- * 責務:
- *  - テキスト幅 / コンテナ幅取得
- *  - スクロール必要判定 (shouldScroll)
- *  - scrollSpeed ベースの duration 計算 (scrollDuration)
- *  - scrollReturnMode に応じた CSS クラス決定 (scrollClass)
- *  - ResizeObserver によるリサイズ追従
  */
 export function useFlashScroll({ getMessage, getSettings }: UseFlashScrollOptions) {
   const textRef = ref<HTMLElement | null>(null)
@@ -55,10 +48,8 @@ export function useFlashScroll({ getMessage, getSettings }: UseFlashScrollOption
     scrollClass.value = settings.scrollReturnMode === 'fade' ? 'animate-scroll-fade' : 'animate-scroll-loop'
   }
 
-  // watch → watchEffect に変更（依存関係を自動追跡）
-  // メッセージが変わったら即スクロール状態をリセットして再計測
   watchEffect(() => {
-    getMessage() // 依存として登録
+    getMessage()
     shouldScroll.value = false
     scrollClass.value = ''
     checkScrollNeeded()

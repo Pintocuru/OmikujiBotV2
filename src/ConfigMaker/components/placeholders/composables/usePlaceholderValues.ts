@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/placeholders/composables/usePlaceholderValues.ts
 import { ref, computed } from 'vue'
-import { WeightValuesArrayType, WeightValueSchema } from '@/types/'
+import { WeightValuesArrayType, WeightValueSchema } from '@/types'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 

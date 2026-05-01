@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { handelNormalizedValues, WeightValuesArrayType } from '@/types/'
+  import { handelNormalizedValues, WeightValuesArrayType } from '@/types'
   import { processTestPlaceholder } from '@config/components/postAction/preview/TestPlaceholderProcessor'
   import { useGetRecordData } from '@config/stores/useGetRecordData'
   import { swalToast } from '@/common/SweetAlert2/SweetAlert2Toast'

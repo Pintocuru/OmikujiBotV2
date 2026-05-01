@@ -43,7 +43,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { PlaceholderSchema } from '@/types/'
+  import { PlaceholderSchema } from '@/types'
   import { defaultPlaceholders } from '@/types/MainGenerator/DefaultPlaceholders'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import { useNavigationStore } from '@config/stores/useNavigationStore'

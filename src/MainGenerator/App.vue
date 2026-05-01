@@ -28,7 +28,7 @@
 
 <script setup lang="ts">
   import { computed, defineAsyncComponent, onMounted } from 'vue'
-  import { isDev, useFontFamily } from '@/types/'
+  import { isDev, useFontFamily } from '@/types'
   import { useAppInitializer } from '@main/composables/useAppInitializer'
   import { useRuleProcessor } from '@main/composables/useRuleProcessor'
   import { useAppStore } from '@main/stores/useAppStore'

@@ -116,7 +116,7 @@
     scriptGameKeys,
     GameRankingSchema,
     useFontFamily,
-  } from '@/types/'
+  } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'

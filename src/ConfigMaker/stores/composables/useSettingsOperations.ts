@@ -2,7 +2,7 @@
 import { Ref } from 'vue'
 import { OmikujiDataType } from '@/types/OmikujiData/OmikujiDataSchema'
 import { JsonMergeType } from '@/types/OmikujiData/JsonMergeType'
-import { UiType, UiConditions, UiCommonStyleType, FlagsType, SettingsType } from '@/types/'
+import { UiType, UiConditions, UiCommonStyleType, FlagsType, SettingsType } from '@/types'
 
 /**
  * カテゴリに属さないプロパティの操作機能を提供するコンポーザブル

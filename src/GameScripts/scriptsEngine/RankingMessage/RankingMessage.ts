@@ -1,5 +1,5 @@
 // src/GameScripts/scriptsEngine/RankingMessage/RankingMessage.ts
-import { BotMessageExtraSchema, BotMessageExtraType } from '@/types/'
+import { BotMessageExtraSchema, BotMessageExtraType } from '@/types'
 import { OmikenCommentType, UserNameType } from '@shared/types/OmikenComment/OmikenCommentSchema'
 import { UserNameSchema } from '@shared/types/OmikenComment/OmikenCommentSchema'
 

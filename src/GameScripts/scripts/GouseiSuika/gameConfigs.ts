@@ -1,5 +1,5 @@
 // src/GameScripts/scripts/GouseiSuika/gameConfigs.ts
-import { PostFlowWordPartyType } from '@/types/'
+import { PostFlowWordPartyType } from '@/types'
 
 /**
  * 型定義

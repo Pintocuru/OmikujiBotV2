@@ -21,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-  import { PostFlowType } from '@/types/'
+  import { PostFlowType } from '@/types'
   import PostActionRow from './tooltab/PostActionRow.vue'
 
   defineProps<{

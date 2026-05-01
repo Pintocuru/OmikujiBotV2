@@ -55,7 +55,7 @@
 <script setup lang="ts">
   import { computed, reactive } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { cookieComponentMap, CookieCounterSchema, CookieCounterCountersSchema, CookieCounterType } from '@/types/'
+  import { cookieComponentMap, CookieCounterSchema, CookieCounterCountersSchema, CookieCounterType } from '@/types'
   import CookieCounterPreview from './CookieCounterPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'

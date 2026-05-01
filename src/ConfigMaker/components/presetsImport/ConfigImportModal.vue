@@ -55,7 +55,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { UiKind } from '@/types/'
+  import { UiKind } from '@/types'
   import { ComponentImportConfig } from './ImportTypes'
   import { useImportManager } from './composables/useImportManager'
   import CategoryConfigSection from './CategoryConfigSection.vue'

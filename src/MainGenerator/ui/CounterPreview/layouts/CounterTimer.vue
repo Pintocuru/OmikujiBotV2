@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
   import { ref, watch, onBeforeUnmount } from 'vue'
-  import { CounterPreviewType } from '@/types/'
+  import { CounterPreviewType } from '@/types'
   import { useCounterDisplay } from './base/useCounterDisplay'
   import CounterCardBase from './base/CounterCardBase.vue'
   import UserNameBadge from './UserNameBadge.vue'

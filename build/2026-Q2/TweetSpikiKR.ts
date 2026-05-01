@@ -1,4 +1,4 @@
-// build/2026-Q2/TweetSpiki.ts
+// build/2026-Q2/TweetSpikiKR.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
 import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
 

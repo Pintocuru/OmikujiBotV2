@@ -73,7 +73,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { counterComponentMap, CounterPreviewSchema } from '@/types/'
+  import { counterComponentMap, CounterPreviewSchema } from '@/types'
   import CounterPreviewPreview from './CounterPreviewPreview.vue'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

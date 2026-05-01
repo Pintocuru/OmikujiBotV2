@@ -13,7 +13,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { StreamCounterSchema } from '@/types/'
+  import { StreamCounterSchema } from '@/types'
   import { useAppStore } from '@main/stores/useAppStore'
   import { useStreamCounters } from '@main/ui/common/useStreamCounters'
   import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'

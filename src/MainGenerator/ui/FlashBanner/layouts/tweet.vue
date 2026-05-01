@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import { CharacterAnimationType, CharacterColorType, FlashBannerType } from '@/types/'
+  import { CharacterAnimationType, CharacterColorType, FlashBannerType } from '@/types'
   import tweetParts from '../layouts/tweetParts.vue'
   import { useMessageTransition } from '../composables/useMessageTransition'
   import LayerImage from '@/common/LayerImage/LayerImage.vue'

@@ -81,7 +81,7 @@
 <script setup lang="ts">
   import { computed, onMounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { WinnerGroupSchema, useFontFamily, winnerComponentMap } from '@/types/'
+  import { WinnerGroupSchema, useFontFamily, winnerComponentMap } from '@/types'
   import { UserVisitRecord } from '@/types/MainGenerator/UserVisits'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'

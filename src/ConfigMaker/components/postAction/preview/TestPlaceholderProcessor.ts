@@ -2,7 +2,7 @@
 import { ContentPlaceholder } from '@main/scripts/ContentPlaceholder/processor'
 import { PlaceholderContext } from '@main/scripts/ContentPlaceholder/context'
 import { VariablePlaceholderProcessor } from '@main/scripts/VariablePlaceholder/VariableProcessor'
-import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types/'
+import { defaultPlaceholdersShortLabels, type PlaceholderType } from '@/types'
 import { PlaceholderVariable } from '@main/stores/PlaceholderVariable/PlaceholderVariable'
 import { DisplayVariableResolver } from '@main/scripts/DisplayVariable/DisplayVariableResolver'
 

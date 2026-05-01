@@ -6,7 +6,7 @@ import {
   WeightValuesArrayType,
   WeightValueType,
   hasPostFlowMessage,
-} from '@/types/'
+} from '@/types'
 import { findMatchingClosingBracket, isInlineRandomSyntax, parseInlineValues, selectRandomValue } from './parser'
 import { drawOmikuji } from '@shared/utils/omikuji/DrawOmikuji'
 

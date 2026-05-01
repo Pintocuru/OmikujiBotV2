@@ -1,6 +1,6 @@
 // src/ConfigMaker/components/postAction/Message/usePlaceholderEditor.ts
 import { computed, Ref, ref } from 'vue'
-import { PlaceholderSchema, PlaceholderType, handelNormalizedValues } from '@/types/'
+import { PlaceholderSchema, PlaceholderType, handelNormalizedValues } from '@/types'
 import { useOmikujiStore } from '@config/stores/useOmikujiStore'
 import { useGetRecordData } from '@config/stores/useGetRecordData'
 import { defaultBasePlaceholderLabel, defaultPlaceholderMap } from '@/types/MetaMaps/DefaultPlaceholderMaps'

@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
   import { computed } from 'vue'
-  import type { PostFlowBotType } from '@/types/'
+  import type { PostFlowBotType } from '@/types'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import MessageTextDialog from '../Message/MessageTextDialog.vue'
 

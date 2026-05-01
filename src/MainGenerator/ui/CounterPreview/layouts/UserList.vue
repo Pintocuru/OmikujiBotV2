@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-  import { CounterPreviewType } from '@/types/'
+  import { CounterPreviewType } from '@/types'
   import { useCounterDisplay } from './base/useCounterDisplay'
   import CounterCardBase from './base/CounterCardBase.vue'
   import UserNameBadge from './UserNameBadge.vue'

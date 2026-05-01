@@ -1,5 +1,5 @@
 // src/MainGenerator/scripts/BotMessage/addToastMessage.ts
-import { BotMessageBubbleSchema } from '@/types/'
+import { BotMessageBubbleSchema } from '@/types'
 import { useAppStore } from '@main/stores/useAppStore'
 import { useVisibilityAccess } from '../FeatureAccess/useAccessCheckerMain'
 

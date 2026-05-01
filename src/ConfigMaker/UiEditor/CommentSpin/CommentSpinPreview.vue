@@ -27,7 +27,7 @@
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { BotMessageBubbleSchema, isDev, useFontFamily } from '@/types/'
+  import { BotMessageBubbleSchema, isDev, useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import CommentSpinSelector from '@main/ui/CommentSpin/parts/CommentSpinSelector.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
