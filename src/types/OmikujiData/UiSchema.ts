@@ -16,6 +16,7 @@ import { StreamCounterSchema } from './UiSettings/StreamCounterSchema'
 import { DeadAirSchema } from './UiSettings/DeadAirSchema'
 import { LiveClockSchema } from './UiSettings/LiveClockSchema'
 import { CookieCounterSchema } from './UiSettings/CookieCounterSchema'
+import { KujibikiPanelSchema } from './UiSettings/KujibikiPanelSchema'
 
 /**
  * スロット定義
@@ -101,7 +102,8 @@ export const settingsSchemaMap = {
   streamCounter: StreamCounterSchema,
   cookieCounter: CookieCounterSchema,
   deadAir: DeadAirSchema,
-} as const
+  kujibikiPanel: KujibikiPanelSchema,
+} satisfies Record<UiKind, z.ZodTypeAny>
 
 export const UiSettingsSchema = z.object({
   bubble: CommentBubbleSchema.optional(),
@@ -117,7 +119,8 @@ export const UiSettingsSchema = z.object({
   streamCounter: StreamCounterSchema.optional(),
   cookieCounter: CookieCounterSchema.optional(),
   deadAir: DeadAirSchema.optional(),
-})
+  kujibikiPanel: KujibikiPanelSchema.optional(),
+} satisfies Record<UiKind, z.ZodTypeAny>)
 
 export type UiSettingsType = z.infer<typeof UiSettingsSchema>
 

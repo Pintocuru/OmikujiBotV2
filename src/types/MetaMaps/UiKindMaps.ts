@@ -121,4 +121,11 @@ export const uiKindMap = {
     icon: 'Bomb',
     description: 'test',
   },
+  kujibikiPanel: {
+    primarySlot: 'primary',
+    slots: ['primary', 'secondary'],
+    label: 'くじ引き',
+    icon: 'Bomb',
+    description: 'test',
+  },
 } as const

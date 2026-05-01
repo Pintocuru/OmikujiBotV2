@@ -14,6 +14,7 @@ import CommentSpinEditor from './CommentSpin/CommentSpinEditor.vue'
 import FontFamilyEditor from './CommonStyle/FontFamilyEditor.vue'
 import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
 import DeadAirEditor from './DeadAir/DeadAirEditor.vue'
+import KujibikiPanelEditor from './KujibikiPanel/KujibikiPanelEditor.vue'
 import LiveClockEditor from './LiveClock/LiveClockEditor.vue'
 import type { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
 import { UiKind } from '@/types'
@@ -163,6 +164,15 @@ export const uiItemMap: Record<string, UiItem> = {
     description: 'チャレンジ系',
     component: DeadAirEditor,
     targetKey: 'deadAir',
+    visibility: [],
+  },
+
+  kujibikiPanel: {
+    icon: 'Ticket',
+    title: 'くじ引き',
+    description: 'おみくじの抽選結果を表示するアイテムを表示',
+    component: KujibikiPanelEditor,
+    targetKey: 'kujibikiPanel',
     visibility: [],
   },
 

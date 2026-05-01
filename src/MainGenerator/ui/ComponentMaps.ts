@@ -16,4 +16,5 @@ export const COMPONENT_MAP_LOADER: Record<UiKind, () => Promise<any>> = {
   flashBanner: () => import('./FlashBanner/FlashBanner.vue'),
   commentSpin: () => import('./CommentSpin/CommentSpin.vue'),
   deadAir: () => import('./DeadAir/DeadAir.vue'),
+  kujibikiPanel: () => import('./KujibikiPanel/KujibikiPanel.vue'),
 }
