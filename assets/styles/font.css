@@ -1,64 +1,164 @@
 /* assets/font.css */
 
-/* Google Fonts 読み込み */
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Kaisei+Decol&family=Kosugi+Maru&family=M+PLUS+1p&family=Mochiy+Pop+One&family=Shippori+Mincho&family=WDXL+Lubrifont+JP+N&family=Kiwi+Maru&family=Hachi+Maru+Pop&display=swap');
-/* M PLUS 標準的なゴシック https://mplusfonts.github.io/ */
+/* ─────────────────────────────────────────────
+   Google Fonts は動的読み込み（FontFamilyMaps.ts）に移行済み。
+   @import は不要。クラス定義のみここで管理する。
+   ───────────────────────────────────────────── */
+
+/* M PLUS 標準的なゴシック */
 .font-mplus-1p {
   font-family: 'M PLUS 1p', sans-serif;
-  font-weight: 600;
 }
 
-/* しっぽり明朝 少し筆っぽいクセのある明朝 https://fontdasu.com/shippori-mincho/ */
+/* しっぽり明朝 少し筆っぽいクセのある明朝 */
 .font-shippori-mincho {
   font-family: 'Shippori Mincho', serif;
   font-weight: 600;
 }
 
-/* 小杉丸 柔らかい丸ゴシック https://free-fonts.jp/kosugimaru/ */
-.font-kosugi-maru {
-  font-family: 'Kosugi Maru', sans-serif;
-}
-
-/* 解星デコール うろこ付きのどちらかというと明朝 https://goodfreefonts.com/595/ */
-/* M PLUS 標準的なゴシック */
+/* 解星デコール うろこ付きのどちらかというと明朝 */
 .font-kaisei-decol {
   font-family: 'Kaisei Decol', serif;
   font-weight: 500;
 }
 
-/* ドットゴシック16 ドットだわー https://goodfreefonts.com/489/ */
+/* ドットゴシック16 ドット風 */
 .font-dot-gothic {
   font-family: 'DotGothic16', sans-serif;
 }
 
-/* 滑油字 縦に細長 https://goodfreefonts.com/2695/ */
-/* M PLUS 標準的なゴシック */
+/* 滑油字 縦に細長 */
 .font-wdxl-lubrifont {
   font-family: 'WDXL Lubrifont JP N', sans-serif;
 }
 
-/* モッチーポップ 創英角ポップ体のような踊る文字 https://f-font.com/jp/mochiypopone */
-/* M PLUS 標準的なゴシック */
+/* モッチーポップ 創英角ポップ体のような踊る文字 */
 .font-mochiy-pop {
   font-family: 'Mochiy Pop One', sans-serif;
 }
 
-/* Kiwi Maru（柔らかい丸みのある明朝） */
+/* Kiwi Maru 柔らかい丸みのある明朝 */
 .font-kiwi-maru {
   font-family: 'Kiwi Maru', serif;
 }
 
-/* Hachi Maru Pop（手書き風の丸文字） */
+/* Hachi Maru Pop 手書き風の丸文字 */
 .font-hachi-maru-pop {
   font-family: 'Hachi Maru Pop', cursive;
 }
 
-/* RocknRoll One（太くて勢いのあるポップ体） */
+/* RocknRoll One 太くて勢いのあるポップ体 */
 .font-rocknroll-one {
   font-family: 'RocknRoll One', sans-serif;
 }
 
-/* Dela Gothic One（超極太のロゴ向けゴシック） */
+/* Dela Gothic One 超極太のロゴ向けゴシック */
 .font-dela-gothic-one {
   font-family: 'Dela Gothic One', sans-serif;
+}
+
+/* ───── 明朝・セリフ系 ───── */
+
+/* Noto Serif JP 最も標準的な明朝 */
+.font-noto-serif-jp {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 600;
+}
+
+/* Zen Old Mincho 古風・格調ある明朝 */
+.font-zen-old-mincho {
+  font-family: 'Zen Old Mincho', serif;
+  font-weight: 600;
+}
+
+/* Zen Antique アンティーク調の崩れた風合い */
+.font-zen-antique {
+  font-family: 'Zen Antique', serif;
+}
+
+/* Yuji Mai ⚠️細め・大きめサイズ推奨 */
+.font-yuji-mai {
+  font-family: 'Yuji Mai', serif;
+}
+
+/* New Tegomin ⚠️細め・大きめサイズ推奨 */
+.font-new-tegomin {
+  font-family: 'New Tegomin', serif;
+}
+
+/* ───── ゴシック・サンセリフ系 ───── */
+
+/* Noto Sans JP 最も標準的なゴシック */
+.font-noto-sans-jp {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 600;
+}
+
+/* BIZ UDGothic UD書体・視認性重視 */
+.font-biz-ud-gothic {
+  font-family: 'BIZ UDGothic', sans-serif;
+  font-weight: 700;
+}
+
+/* M PLUS 2 M PLUS 1p より洗練・細め */
+.font-mplus-2 {
+  font-family: 'M PLUS 2', sans-serif;
+}
+
+/* LINE Seed JP LINEブランドフォント */
+.font-line-seed-jp {
+  font-family: 'LINE Seed JP_OTF', sans-serif;
+  font-weight: 700;
+}
+
+/* ───── 丸ゴシック ───── */
+
+/* 小杉丸 柔らかい丸ゴシック */
+.font-kosugi-maru {
+  font-family: 'Kosugi Maru', sans-serif;
+}
+
+.font-mplus-rounded-1c {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 600;
+}
+
+/* ───── 手書き・カジュアル系 ───── */
+
+/* Yusei Magic ざっくりした手書き風 */
+.font-yusei-magic {
+  font-family: 'Yusei Magic', sans-serif;
+}
+
+/* Zen Kurenaido やわらかい手書き風 */
+.font-zen-kurenaido {
+  font-family: 'Zen Kurenaido', sans-serif;
+}
+
+/* Klee One ⚠️細め・大きめサイズ推奨 */
+.font-klee-one {
+  font-family: 'Klee One', cursive;
+  font-weight: 600;
+}
+
+/* ───── 個性的・装飾系 ───── */
+
+/* Reggae One 太くてうねりのあるインパクト体 */
+.font-reggae-one {
+  font-family: 'Reggae One', cursive;
+}
+
+/* Stick ⚠️細め・大きめサイズ推奨 */
+.font-stick {
+  font-family: 'Stick', sans-serif;
+}
+
+/* Potta One 極太・丸い・OBS映え */
+.font-potta-one {
+  font-family: 'Potta One', cursive;
+}
+
+/* Rampart One 中空アウトライン体 */
+.font-rampart-one {
+  font-family: 'Rampart One', cursive;
 }
