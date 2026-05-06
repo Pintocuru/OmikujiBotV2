@@ -13,7 +13,7 @@
 
   <!-- アイテム表示設定 -->
   <SectionCard
-    v-if="hasAccess(itemSlotEnabled) && (isDev || !specialSet)"
+    v-if="hasAccess(itemSlotEnabled) && (isDev || isGod || !specialSet)"
     id="section-itemConditions"
     icon="LayoutGrid"
     :isOpen="activeSection === 'itemConditions'"

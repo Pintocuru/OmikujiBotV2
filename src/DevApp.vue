@@ -46,14 +46,14 @@
 
 <script setup lang="ts">
   import { ref } from 'vue'
-  import MainGenerator from './MainGenerator/App.vue'
-  import ConfigMaker from './ConfigMaker/App.vue'
+  import ConfigMaker from '@config/App.vue'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
+  import MainGenerator from '@main/App.vue'
+  import { useAppStore } from '@main/stores/useAppStore'
+  import DraggableWrapper from '@main/layouts/DraggableWrapper.vue'
   import AirComment from '@/common/AirComment/AirComment.vue'
   import DevMetaController from '@/common/DevMetaController/DevMetaController.vue'
   import { Settings, Cpu } from 'lucide-vue-next'
-  import { useAppStore } from './MainGenerator/stores/useAppStore'
-  import DraggableWrapper from '@main/layouts/DraggableWrapper.vue'
 
   const showMain = ref(false)
   const appStore = useAppStore()

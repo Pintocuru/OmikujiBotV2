@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/KujibikiPanel/parts/KujibikiPanelSelector.vue -->
 <template>
   <MotionWrapper v-if="hasMessage" :key="currentKey" :visible="true" :motion="settings.animation" class="w-full">
-    <component :is="currentComponent" :messages="messages" :animation="settings.animation" />
+    <component :is="currentComponent" :messages="messages" :label="settings.label" />
   </MotionWrapper>
 </template>
 

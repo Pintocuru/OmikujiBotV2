@@ -24,8 +24,18 @@
     </select>
   </SettingItem>
 
-  <!-- タイマー初期値 -->
-  <SettingItem label="タイマー初期値（分）" description="1〜60分">
+  <!-- タイトル -->
+  <SettingItem label="タイトル" description="タイトルを設定します">
+    <input
+      type="text"
+      class="input input-bordered w-full"
+      :value="kujibikiPanel.label"
+      @input="(e) => updateField('label', (e.target as HTMLInputElement).value)"
+    />
+  </SettingItem>
+
+  <!-- 表示時間 -->
+  <SettingItem label="表示時間（秒）" description="0なら常時表示します">
     <input
       type="number"
       class="input input-bordered w-24"

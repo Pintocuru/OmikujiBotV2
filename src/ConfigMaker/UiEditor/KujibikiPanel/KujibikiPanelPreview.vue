@@ -4,7 +4,7 @@
     <KujibikiPanelSelector :settings="settings" :messages="activeMessages" />
 
     <template #hud>
-      <button class="btn btn-xs btn-ghost" @click="hoge">🎲</button>
+      <button class="btn btn-xs btn-ghost" @click="fortune">🎲</button>
     </template>
   </HudPreview>
 </template>
@@ -20,16 +20,32 @@
   }>()
 
   const mockData = [
-    { slot0: '大吉', message: '運気は上昇の一途。思い切った行動が吉と出るでしょう。', name: 'さくらさん' },
-    { slot0: '中吉', message: '焦らず着実に進むことで道が開けます。', name: 'たろうさん' },
-    { slot0: '小吉', message: '小さな幸せを大切に。身近なところに喜びが隠れています。', name: 'はなこさん' },
+    { slot0: '大吉', slot1: '運気は上昇の一途。思い切った行動が吉と出るでしょう。', name: 'さくらさん', message: '1' },
+    { slot0: '中吉', slot1: '焦らず着実に進むことで道が開けます。', name: 'たろうさん', message: '1' },
+    {
+      slot0: '小吉',
+      slot1: '小さな幸せを大切に。身近なところに喜びが隠れています。',
+      name: 'はなこさん',
+      message: '1',
+    },
     {
       slot0: '吉',
-      message: '今は種まきの時期。丁寧に取り組む姿勢が後の大きな実りへと繋がります。',
+      slot1: '今は種まきの時期。丁寧に取り組む姿勢が後の大きな実りへと繋がります。',
       name: 'けんじさん',
+      message: '1',
     },
-    { slot0: '末吉', message: '焦りは禁物。じっくりと準備を整えれば、必ず好転の兆しが訪れます。', name: 'みきさん' },
-    { slot0: '凶', message: '今は嵐の前の静けさ。無理に動かず、内側を整える時期と捉えましょう。', name: 'りくさん' },
+    {
+      slot0: '末吉',
+      slot1: '焦りは禁物。じっくりと準備を整えれば、必ず好転の兆しが訪れます。',
+      name: 'みきさん',
+      message: '1',
+    },
+    {
+      slot0: '凶',
+      slot1: '今は嵐の前の静けさ。無理に動かず、内側を整える時期と捉えましょう。',
+      name: 'りくさん',
+      message: '1',
+    },
   ]
 
   const currentIndex = ref(0)
@@ -50,12 +66,15 @@
           iconKey: 'default',
           displaySeconds: props.settings.displaySeconds,
         },
-        slots: { slot0: entry.slot0 },
+        slots: {
+          slot0: entry.slot0,
+          slot1: entry.slot1,
+        },
       },
     ]
   })
 
-  const hoge = () => {
+  const fortune = () => {
     currentIndex.value++
   }
 </script>
