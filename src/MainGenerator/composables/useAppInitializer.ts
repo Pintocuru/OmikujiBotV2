@@ -106,7 +106,7 @@ async function syncWithServer() {
   const appStore = useAppStore()
   try {
     const serverData = await generatorApi.loadGeneratorConfig()
-    if (!serverData) return
+    if (!serverData) return // プラグインなし = null → ここで静かに終了
 
     appStore.loadData(serverData)
     postSystemMessage(`エディタープラグイン から ${appStore.data.meta.name} のデータを読み込みました`, {
@@ -114,9 +114,10 @@ async function syncWithServer() {
       speech: false,
     })
   } catch (err) {
+    // ここに来る時点で「本当に予期せぬエラー」のみ
     const msg = `エディタープラグインからデータ読み込みに失敗しました: ${err}`
     console.error(msg)
-    postSystemMessage(msg)
+    postSystemMessage(msg) // ← これを消す or コンソールだけにする
   }
 }
 

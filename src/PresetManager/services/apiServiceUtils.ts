@@ -42,11 +42,14 @@ export interface NormalizedResponse<T> {
  */
 export function normalizeApiResponse<T>(raw: any): NormalizedResponse<T> {
   if (raw && typeof raw === 'object' && 'code' in raw && 'response' in raw) {
-    return {
-      code: raw.code,
-      data: JSON.parse(raw.response) as T,
-    }
+    return { code: raw.code, data: JSON.parse(raw.response) as T }
   }
+
+  // codeだけある場合（エラーレスポンス）
+  if (raw && typeof raw === 'object' && 'code' in raw) {
+    return { code: raw.code, data: null as T }
+  }
+
   throw new Error('APIレスポンス形式が不正です')
 }
 

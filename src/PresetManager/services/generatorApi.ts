@@ -1,5 +1,5 @@
 // src/PresetManager/services/generatorApi.ts
-import { BaseApiClient } from './baseApiClient'
+import { BaseApiClient, ConnectionError } from './baseApiClient'
 
 /**
  * Generator関連のAPI
@@ -13,13 +13,14 @@ class GeneratorApiService extends BaseApiClient {
       const fileName = this.getGeneratorFileName(id)
       const response = await this.get('load-generator', { fileName })
 
-      if (response.code === 404) return null
+      if (response.code !== 200) return null
 
       this.validateResponse(response, '設定の読み込みに失敗しました')
 
       return response.data
-    } catch (err: any) {
-      if (err?.response?.status === 404) return null
+    } catch (err) {
+      if (err instanceof ConnectionError) return null
+      if ((err as any)?.response?.status === 404) return null
       throw err
     }
   }

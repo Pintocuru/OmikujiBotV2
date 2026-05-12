@@ -3,6 +3,13 @@ import axios, { AxiosInstance, AxiosError } from 'axios'
 import { isDev, SERVER_EXPRESS_URL, SERVER_PLUGIN_URL } from '@/types'
 import { getErrorMessage, normalizeApiResponse, NormalizedResponse } from './apiServiceUtils'
 
+export class ConnectionError extends Error {
+  constructor() {
+    super('サーバーに接続できませんでした')
+    this.name = 'ConnectionError'
+  }
+}
+
 /**
  * API通信の基盤クラス
  * 各ドメインAPIクラスはこれを継承して実装する
@@ -41,11 +48,17 @@ export abstract class BaseApiClient {
         if (error.response) {
           const status = error.response.status
           const url = error.config?.url || ''
+
+          // 400/404はプラグインなしの想定内 → ConnectionErrorとして返す
+          if (status === 400 || status === 404) {
+            throw new ConnectionError()
+          }
+
           throw new Error(getErrorMessage(url, status))
         }
 
         if (error.request) {
-          throw new Error('サーバーに接続できませんでした')
+          throw new ConnectionError()
         }
 
         throw new Error(`リクエストエラー: ${error.message}`)
