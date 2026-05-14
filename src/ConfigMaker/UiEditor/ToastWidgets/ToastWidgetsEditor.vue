@@ -38,9 +38,6 @@
       :model-value="commonStyle.defaultColor"
       @update:model-value="(value) => updateCommonStyleField('defaultColor', value)"
     />
-    <InformationCard>
-      <p>デフォルトカラーは、メイン表示・サブ表示共通です。</p>
-    </InformationCard>
   </template>
 
   <!-- 設定項目 -->
@@ -106,7 +103,6 @@
   import CharacterThumbnailsPreview from '@main/ui/ToastWidgets/parts/CharacterThumbnailsPreview.vue'
   import { useCharacterManager } from '@config/scripts/CharacterManager/useCharacterManager'
   import ColorModeSelector from '@config/components/common/ThemeColorPicker/ColorModeSelector.vue'
-  import InformationCard from '@shared/components/parts/InformationCard.vue'
   import { useCommonStyleUpdate } from '../CommonStyle/useCommonStyleUpdate'
   import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
 

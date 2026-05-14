@@ -7,6 +7,7 @@ import VarietySlot from './VarietySlot'
 import GogoBonus from './GogoBonus'
 import TweetSpiki from './TweetSpiki'
 import TweetSpikiKR from './TweetSpikiKR'
+import ToastWidget from './ToastWidget'
 
 export default [
   /* 完成されてないもの */
@@ -17,6 +18,7 @@ export default [
   // Golden65536,
   // VarietySlot,
   // GogoBonus,
-  TweetSpiki,
-  TweetSpikiKR,
+ // TweetSpiki,
+ // TweetSpikiKR,
+ ToastWidget
 ]
