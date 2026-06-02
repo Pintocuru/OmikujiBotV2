@@ -7,6 +7,7 @@ type UserId = string
 type EventKey = string
 
 type VisitEventListener = (record: UserVisitRecord) => void
+type VisitResetListener = () => void
 
 /**
  * eventKey 単位のユーザー訪問回数と抽選制限を管理するクラス
@@ -22,6 +23,8 @@ export class UserVisitManager {
    * イベントリスナー（eventKey別）
    */
   private readonly listeners = new Map<EventKey, Set<VisitEventListener>>()
+
+  private readonly resetListeners = new Set<VisitResetListener>()
 
   // =========================
   // 訪問記録
@@ -237,6 +240,7 @@ export class UserVisitManager {
    */
   resetAll(): void {
     this.visits.clear()
+    this.notifyReset()
   }
 
   // =========================
@@ -256,7 +260,16 @@ export class UserVisitManager {
     return () => this.listeners.get(eventKey)?.delete(listener)
   }
 
+  onReset(listener: VisitResetListener): () => void {
+    this.resetListeners.add(listener)
+    return () => this.resetListeners.delete(listener)
+  }
+
   private notifyListeners(eventKey: EventKey, record: UserVisitRecord): void {
     this.listeners.get(eventKey)?.forEach((l) => l(record))
+  }
+
+  private notifyReset() {
+    this.resetListeners.forEach((l) => l())
   }
 }

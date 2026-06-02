@@ -21,7 +21,7 @@ export default [
   // LenormandOracle,
   // RunicOracle,
   // HonjoFoxProject,
-  // BreakingSyoken,
+  BreakingSyoken,
   // FlightSeatNine,
   // FlightSeatGraduation,
   // StreamCounterCircle,

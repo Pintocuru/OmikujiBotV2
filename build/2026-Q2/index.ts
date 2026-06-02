@@ -18,7 +18,7 @@ export default [
   // Golden65536,
   // VarietySlot,
   // GogoBonus,
- // TweetSpiki,
- // TweetSpikiKR,
- ToastWidget
+  // TweetSpiki,
+  // TweetSpikiKR,
+  // ToastWidget
 ]

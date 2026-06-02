@@ -12,7 +12,7 @@ const PROJECT = {
   category: '2026-Q2',
   series: 'CommentSpin',
   licenseLabel: 'CC-BY 4.0',
-  extraFiles: [{ from: 'assets/Characters/SlotPortrait/', to: 'Characters/SlotPortrait/' }],
+  extraFiles: [{ from: 'assets/Characters/2026-Q2/SlotPortrait/', to: 'Characters/SlotPortrait/' }],
 } satisfies ProjectParams
 
 // バリエーション

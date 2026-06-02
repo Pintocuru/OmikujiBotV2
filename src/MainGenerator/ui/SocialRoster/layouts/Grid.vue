@@ -1,24 +1,22 @@
 <!-- src/MainGenerator/ui/SocialRoster/layouts/Grid.vue -->
 <template>
-  <div class="relative flex items-center justify-center">
-    <div
-      ref="gridRef"
-      class="grid w-full justify-center"
-      :style="{
-        gridTemplateColumns: props.maxColumns
-          ? `repeat(${props.maxColumns}, ${size}px)`
-          : `repeat(auto-fit, minmax(${size}px, max-content))`,
-      }"
-    >
-      <Cell
-        v-for="user in limitedUsers"
-        :key="`${user.userId}-${user.timestamp}`"
-        :size="size"
-        :seat="user"
-        :index="0"
-        :sortKey="sortKey"
-      />
-    </div>
+  <div
+    ref="gridRef"
+    class="grid"
+    :style="{
+      gridTemplateColumns: props.maxColumns
+        ? `repeat(${props.maxColumns}, ${size}px)`
+        : `repeat(auto-fit, minmax(${size}px, max-content))`,
+    }"
+  >
+    <Cell
+      v-for="user in limitedUsers"
+      :key="`${user.userId}-${user.timestamp}`"
+      :size="size"
+      :seat="user"
+      :index="0"
+      :sortKey="sortKey"
+    />
   </div>
 </template>
 

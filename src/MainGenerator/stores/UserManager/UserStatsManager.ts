@@ -3,6 +3,7 @@ import { UserStatsRecord } from '@/types'
 import { OmikenCommentType } from '@shared/types'
 
 type StatsEventListener = (record: UserStatsRecord) => void
+type StatsResetListener = () => void
 
 /**
  * 配信全体のユーザー統計を管理するクラス
@@ -11,6 +12,7 @@ type StatsEventListener = (record: UserStatsRecord) => void
 export class UserStatsManager {
   private readonly stats = new Map<string, UserStatsRecord>()
   private readonly listeners = new Set<StatsEventListener>()
+  private readonly resetListeners = new Set<StatsResetListener>()
 
   // コメントを受け取った時に呼び出す */
   recordComment(omiken: OmikenCommentType): UserStatsRecord {
@@ -99,6 +101,7 @@ export class UserStatsManager {
   // セッションリセット */
   reset(): void {
     this.stats.clear()
+    this.notifyReset()
   }
 
   // イベントリスナーを登録（解除用関数を返す） */
@@ -107,7 +110,16 @@ export class UserStatsManager {
     return () => this.listeners.delete(listener)
   }
 
+  onReset(listener: StatsResetListener): () => void {
+    this.resetListeners.add(listener)
+    return () => this.resetListeners.delete(listener)
+  }
+
   private notifyListeners(record: UserStatsRecord): void {
     this.listeners.forEach((l) => l(record))
+  }
+
+  private notifyReset(): void {
+    this.resetListeners.forEach((l) => l())
   }
 }

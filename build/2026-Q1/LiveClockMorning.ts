@@ -34,7 +34,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
   { project: 'LiveClockMorning', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'LiveClockMorning', type: 'JSON', accessLevel: 'basic' },
+  // { project: 'LiveClockMorning', type: 'JSON', accessLevel: 'basic' },
   { project: 'LiveClockMorningNight', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
