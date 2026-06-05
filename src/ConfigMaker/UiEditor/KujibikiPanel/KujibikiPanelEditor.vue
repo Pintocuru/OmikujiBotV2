@@ -5,6 +5,7 @@
 
   <!-- コンポーネント選択 -->
   <DisplayStyleSelector
+    :key="kujibikiPanel.animation"
     :modelValue="kujibikiPanel.component"
     :options="kujibikiComponentMap"
     @update:modelValue="(val) => updateField('component', val)"
@@ -45,6 +46,34 @@
       @change="(e) => updateField('displaySeconds', Number((e.target as HTMLInputElement).value))"
     />
   </SettingItem>
+
+  <!-- 画像系コンポーネント専用設定 -->
+  <SettingItem v-if="isVisual" label="画像パス" description="顔ハメ看板のフレーム画像を指定します">
+    <input
+      type="text"
+      class="input input-bordered w-full"
+      :value="kujibikiPanel.imagePath"
+      @input="(e) => updateField('imagePath', (e.target as HTMLInputElement).value)"
+    />
+  </SettingItem>
+
+  <SettingItem v-if="isVisual" label="アイコンサイズ" description="中央に配置するアイコンの大きさを設定します">
+    <div class="flex flex-col gap-2 w-full">
+      <!-- スライダー -->
+      <input
+        type="range"
+        min="16"
+        max="512"
+        step="8"
+        class="range range-primary w-full"
+        :value="kujibikiPanel.iconSize ?? 128"
+        @input="(e) => updateField('iconSize', Number((e.target as HTMLInputElement).value))"
+      />
+
+      <!-- 現在値の表示 -->
+      <div class="text-right text-sm opacity-70">{{ kujibikiPanel.iconSize ?? 128 }} px</div>
+    </div>
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
@@ -65,6 +94,11 @@
   const kujibikiPanel = computed<KujibikiPanelType>(
     () => data.value.components.settings.kujibikiPanel ?? KujibikiPanelSchema.parse({})
   )
+
+  const isVisual = computed(() => {
+    const comp = kujibikiPanel.value.component
+    return kujibikiComponentMap[comp]?.isVisual === true
+  })
 
   // Field update
   const updateField = (field: keyof KujibikiPanelType, value: unknown) => {

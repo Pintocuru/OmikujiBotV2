@@ -8,14 +8,22 @@ import { enterMotionKeys } from './CommentBubbleSchema'
 export const kujibikiComponentMap = {
   omikuji: {
     label: 'おみくじ',
+    isVisual: false,
     accessLevel: 'pro',
   },
   flower: {
     label: 'フラワー占い',
+    isVisual: false,
     accessLevel: 'basic',
   },
   tarot: {
     label: 'タロット',
+    isVisual: false,
+    accessLevel: 'pro',
+  },
+  faceCutout: {
+    label: '顔ハメ看板',
+    isVisual: true,
     accessLevel: 'pro',
   },
 } as const
@@ -28,5 +36,7 @@ export const KujibikiPanelSchema = z.object({
   label: z.string().default('くじ引き').catch('くじ引き'),
   animation: z.enum(enterMotionKeys).default('slideUp').catch('slideUp'),
   displaySeconds: z.number().min(0).max(60).default(10).catch(10),
+  imagePath: z.string().optional(),
+  iconSize: z.number().optional(),
 })
 export type KujibikiPanelType = z.infer<typeof KujibikiPanelSchema>
