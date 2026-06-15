@@ -17,6 +17,7 @@ import { DeadAirSchema } from './UiSettings/DeadAirSchema'
 import { LiveClockSchema } from './UiSettings/LiveClockSchema'
 import { CookieCounterSchema } from './UiSettings/CookieCounterSchema'
 import { KujibikiPanelSchema } from './UiSettings/KujibikiPanelSchema'
+import { GiftRankingSchema } from './UiSettings/GiftRankingSchema'
 
 /**
  * スロット定義
@@ -121,6 +122,7 @@ export const settingsSchemaMap = {
   cookieCounter: CookieCounterSchema,
   deadAir: DeadAirSchema,
   kujibikiPanel: KujibikiPanelSchema,
+  GiftRanking: GiftRankingSchema,
 } satisfies Record<UiKind, z.ZodTypeAny>
 
 export const UiSettingsSchema = z.object({
@@ -138,6 +140,7 @@ export const UiSettingsSchema = z.object({
   cookieCounter: CookieCounterSchema.optional(),
   deadAir: DeadAirSchema.optional(),
   kujibikiPanel: KujibikiPanelSchema.optional(),
+  GiftRanking: GiftRankingSchema.optional(),
 } satisfies Record<UiKind, z.ZodTypeAny>)
 
 export type UiSettingsType = z.infer<typeof UiSettingsSchema>

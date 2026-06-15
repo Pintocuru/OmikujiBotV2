@@ -1,6 +1,6 @@
 <!-- src/MainGenerator/ui/SocialRoster/parts/SocialRosterSelector.vue -->
 <template>
-  <div class="flex flex-col w-full">
+  <div class="flex flex-col">
     <div class="bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color.daisyUiTheme">
       <component
         :is="currentComponent"

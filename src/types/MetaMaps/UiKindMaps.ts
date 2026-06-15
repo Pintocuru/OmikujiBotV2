@@ -57,6 +57,13 @@ export const uiKindMap = {
     icon: 'Clock',
     description: 'メッセージを表示する時計です。',
   },
+  kujibikiPanel: {
+    primarySlot: 'primary',
+    slots: ['primary', 'secondary'],
+    label: 'くじ引き',
+    icon: 'Bomb',
+    description: 'test',
+  },
   toast: {
     primarySlot: 'secondary',
     slots: ['primary', 'secondary'], // primary でも選択可能
@@ -121,11 +128,11 @@ export const uiKindMap = {
     icon: 'Bomb',
     description: 'test',
   },
-  kujibikiPanel: {
-    primarySlot: 'primary',
-    slots: ['primary', 'secondary'],
-    label: 'くじ引き',
-    icon: 'Bomb',
-    description: 'test',
+  GiftRanking: {
+    primarySlot: 'extra',
+    slots: ['extra'],
+    label: 'ギフトランキング',
+    icon: 'Gift',
+    description: 'ギフトランキングを表示します',
   },
 } as const

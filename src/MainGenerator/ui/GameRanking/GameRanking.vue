@@ -14,15 +14,14 @@
   import CenteringWrapper from '@main/ui/common/CenteringWrapper.vue'
 
   const appStore = useAppStore()
-  const { data, botMessages } = storeToRefs(appStore)
+  const { botMessages } = storeToRefs(appStore)
 
-  const rankingSettings = computed(() => data.value.components.settings.ranking ?? GameRankingSchema.parse({}))
+  const rankingSettings = computed(() => GameRankingSchema.parse(appStore.data.components?.settings?.ranking ?? {}))
 
   const rankingMessages: ComputedRef<BotMessageExtraType[]> = computed(() => {
     const keys = rankingSettings.value?.targetScriptKeys
     if (!keys) return []
     return botMessages.value.filter((msg): msg is BotMessageExtraType => {
-      console.log(msg)
       if (msg.type !== 'extra' || !msg.lists) return false
       return rankingSettings.value.targetScriptKeys.includes(msg.scriptKey)
     })

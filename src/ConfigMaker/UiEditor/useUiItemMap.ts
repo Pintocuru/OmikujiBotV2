@@ -16,6 +16,7 @@ import DefaultColorEditor from './CommonStyle/DefaultColorEditor.vue'
 import DeadAirEditor from './DeadAir/DeadAirEditor.vue'
 import KujibikiPanelEditor from './KujibikiPanel/KujibikiPanelEditor.vue'
 import LiveClockEditor from './LiveClock/LiveClockEditor.vue'
+import GiftRankingEditor from './GiftRanking/GiftRankingEditor.vue'
 import type { LucideIconName } from '@shared/utils/LucideIcon/useLucideIcon'
 import { UiKind } from '@/types'
 
@@ -173,6 +174,14 @@ export const uiItemMap: Record<string, UiItem> = {
     description: 'おみくじの抽選結果を表示するアイテムを表示',
     component: KujibikiPanelEditor,
     targetKey: 'kujibikiPanel',
+    visibility: [],
+  },
+  GiftRanking: {
+    icon: 'Gift',
+    title: 'ランキングアイテム',
+    description: 'ゲームスクリプトで使うランキング表示',
+    component: GiftRankingEditor,
+    targetKey: 'GiftRanking',
     visibility: [],
   },
 

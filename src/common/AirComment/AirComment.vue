@@ -110,7 +110,7 @@
     try {
       await postComment(
         {
-          service: { id: 'StrawberryChocolate' },
+          service: { id: '26c434d4-db3b-4975-9061-093cf7cdb5b2' },
           comment: CommentPickSchema.parse({
             userId: username,
             name: username,
@@ -129,9 +129,7 @@
   }
 
   async function burstSend() {
-    for (let i = 0; i < 100; i++) {
-      setTimeout(sendComment, i * 5)
-    }
+    for (let i = 0; i < 100; i++) setTimeout(sendComment, i * 5)
   }
 
   onUnmounted(clearTimer)

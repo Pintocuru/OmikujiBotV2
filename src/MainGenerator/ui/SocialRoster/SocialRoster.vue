@@ -28,12 +28,12 @@
 
   onMounted(() => {
     if (isComment.value && settings.value.targetEventKey) {
+      // 特定のコメントイベントを購読する場合
       unsubscribes.push(appStore.userSession.visits.onVisit(settings.value.targetEventKey, registerUser))
-      // ★ resetEvent を購読してキャッシュをクリア
       unsubscribes.push(appStore.userSession.visits.onReset(clearAll))
     } else {
+      // 全イベントを購読する場合
       unsubscribes.push(appStore.userSession.stats.onUpdate(registerUser))
-      // ★ stats の reset も購読
       unsubscribes.push(appStore.userSession.stats.onReset(clearAll))
     }
   })

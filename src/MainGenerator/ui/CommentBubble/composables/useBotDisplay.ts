@@ -17,10 +17,6 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
 
   const comments = computed(() => botMessages.value.filter((m) => !!m.bubble?.message))
 
-  // MotionWrapper の after-leave から呼ばれる（CommentBubble 用途）
-  // FlashBanner では MotionWrapper がないため呼ばれないが、
-  // hideTimeout コールバック内で visible=false にした後、
-  // このメソッドを直接呼ぶことで即座にエントリを除去できる
   const removeComment = (messageId: string) => {
     const index = displayedComments.value.findIndex((item) => item.id === messageId)
     if (index === -1) return
@@ -87,16 +83,6 @@ export const useBotDisplay = (botMessages: Ref<BotMessageBubbleType[]>) => {
               target.display.visible = false
             }
 
-            // FlashBanner のように MotionWrapper がない場合はここで即 remove する
-            // MotionWrapper がある場合は after-leave イベントから removeComment が呼ばれるため
-            // 二重削除にならないよう、removeComment 内で index チェックを行っている
-            //
-            // ※ FlashBanner 側でこの composable を使う場合は、
-            //   onMessageChanged などのタイミングで removeComment を呼ぶか、
-            //   visible=false になった時点で currentMessage の computed が
-            //   自動的に defaultMessage へフォールバックするため、
-            //   エントリが残り続けても UI への影響はない。
-            //   ただし配列が肥大化しないよう LEAVE_ANIMATION_DELAY 後に remove する。
             setTimeout(() => {
               removeComment(targetId)
             }, DISPLAY_CONFIG.LEAVE_ANIMATION_DELAY)
