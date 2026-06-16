@@ -1,7 +1,12 @@
 <!-- src/MainGenerator/ui/GiftRanking/parts/GiftRankingSelector.vue -->
 <template>
-  <div v-if="hasMessage" :data-theme="settings.color" class="w-full">
-    <component :is="currentComponent" :messages="messages" :displayOptions="settings.displayOptions" />
+  <div v-if="hasMessage" class="bg-base-100 transparent-bg overflow-hidden" :data-theme="settings.color">
+    <component
+      :is="currentComponent"
+      :messages="messages"
+      :displayOptions="settings.displayOptions"
+      :iconSize="settings.iconSize"
+    />
   </div>
 </template>
 

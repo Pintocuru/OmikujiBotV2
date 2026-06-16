@@ -64,6 +64,7 @@ export const GiftRankingSchema = z.object({
   rankingLimit: z.number().int().min(1).max(100).default(10).catch(10), // 件数
   sortOrder: z.enum(giftSortOrder).default('new').catch('new'),
   minimumAmount: z.number().int().min(0).default(0).catch(0), // 最低金額
+  iconSize: z.number().default(80).catch(80),
   displayOptions: z
     .array(z.enum(giftDisplayOptionKeys))
     .default(['avatar', 'name', 'amount', 'rank'])

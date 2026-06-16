@@ -49,9 +49,10 @@
 </template>
 
 <script setup lang="ts">
+  import { GiftDisplayOption } from '@/types'
   import { GiftLayoutProps } from '../composables/types'
   import { formatPrice, rankRingClass, rankBadgeClass } from '../composables/useRankStyle'
 
   const props = defineProps<GiftLayoutProps>()
-  const show = (key: 'avatar' | 'name' | 'amount' | 'rank') => props.displayOptions.includes(key)
+  const show = (key: GiftDisplayOption) => props.displayOptions.includes(key)
 </script>

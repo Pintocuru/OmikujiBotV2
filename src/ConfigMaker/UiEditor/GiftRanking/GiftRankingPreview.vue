@@ -1,7 +1,7 @@
 <!-- src/ConfigMaker/UiEditor/GiftRanking/GiftRankingPreview.vue -->
 <template>
   <HudPreview>
-    <div class="bg-base-100 transparent-bg overflow-hidden" :class="[fontFamily]" :data-theme="giftRanking.color">
+    <div :class="[fontFamily]">
       <div v-if="previewMessages.length === 0">表示できるアイテムがありません</div>
       <!-- ランキングプレビュー -->
       <GiftRankingSelector :messages="previewMessages" :settings="giftRanking" />

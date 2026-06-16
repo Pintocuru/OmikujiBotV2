@@ -14,21 +14,6 @@
     @update:modelValue="(val) => updateField('component', val)"
   />
 
-  <!-- 表示オプション（isOption: true のコンポーネントのみ） -->
-  <SettingItem v-if="currentComponentDef.isOption" label="表示項目" description="ランキングに表示する項目を選択します">
-    <div class="flex flex-wrap gap-2">
-      <div
-        v-for="(opt, key) in giftDisplayOptionsMap"
-        :key="key"
-        class="badge badge-lg cursor-pointer whitespace-nowrap"
-        :class="giftRanking.displayOptions.includes(key) ? 'badge-primary' : 'badge-outline'"
-        @click="toggleDisplayOption(key)"
-      >
-        {{ opt.label }}
-      </div>
-    </div>
-  </SettingItem>
-
   <!-- テーマカラー -->
   <SettingItem v-if="isAdv" label="カラー" description="ランキングのテーマカラーを選択します" forceMode="adv">
     <select
@@ -41,6 +26,46 @@
       </option>
     </select>
   </SettingItem>
+
+  <!-- 表示オプション（isOption: true のコンポーネントのみ） -->
+  <template v-if="currentComponentDef.isOption">
+    <SettingItem label="表示項目" description="ランキングに表示する項目を選択します">
+      <div class="flex flex-wrap gap-2">
+        <div
+          v-for="(opt, key) in giftDisplayOptionsMap"
+          :key="key"
+          class="badge badge-lg cursor-pointer whitespace-nowrap"
+          :class="giftRanking.displayOptions.includes(key) ? 'badge-primary' : 'badge-outline'"
+          @click="toggleDisplayOption(key)"
+        >
+          {{ opt.label }}
+        </div>
+      </div>
+    </SettingItem>
+
+    <SettingItem
+      label="アイコンサイズ"
+      description="中央に配置するアイコンの大きさを設定します"
+      :showReset="true"
+      @reset="resetField('iconSize')"
+    >
+      <div class="flex flex-col gap-2 w-full">
+        <!-- スライダー -->
+        <input
+          type="range"
+          min="16"
+          max="512"
+          step="8"
+          class="range range-primary w-full"
+          :value="giftRanking.iconSize ?? 128"
+          @input="(e) => updateField('iconSize', Number((e.target as HTMLInputElement).value))"
+        />
+
+        <!-- 現在値の表示 -->
+        <div class="text-right text-sm opacity-70">{{ giftRanking.iconSize ?? 80 }} px</div>
+      </div>
+    </SettingItem>
+  </template>
 
   <!-- 順位のソート -->
   <SettingItem label="順位のソート" description="金額が高い順・新着順から選べます">
