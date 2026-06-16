@@ -14,6 +14,21 @@
     @update:modelValue="(val) => updateField('component', val)"
   />
 
+  <!-- 表示オプション（isOption: true のコンポーネントのみ） -->
+  <SettingItem v-if="currentComponentDef.isOption" label="表示項目" description="ランキングに表示する項目を選択します">
+    <div class="flex flex-wrap gap-2">
+      <div
+        v-for="(opt, key) in giftDisplayOptionsMap"
+        :key="key"
+        class="badge badge-lg cursor-pointer whitespace-nowrap"
+        :class="giftRanking.displayOptions.includes(key) ? 'badge-primary' : 'badge-outline'"
+        @click="toggleDisplayOption(key)"
+      >
+        {{ opt.label }}
+      </div>
+    </div>
+  </SettingItem>
+
   <!-- テーマカラー -->
   <SettingItem v-if="isAdv" label="カラー" description="ランキングのテーマカラーを選択します" forceMode="adv">
     <select
@@ -27,63 +42,61 @@
     </select>
   </SettingItem>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-    <!-- 順位のソート -->
-    <SettingItem label="順位のソート" description="金額が高い順・新着順から選べます">
-      <div class="flex flex-wrap gap-2">
-        <div
-          v-for="(label, key) in giftSortOrderMap"
-          :key="key"
-          class="badge badge-lg cursor-pointer whitespace-nowrap"
-          :class="giftRanking.sortOrder === key ? 'badge-primary' : 'badge-outline'"
-          @click="updateField('sortOrder', key)"
-        >
-          {{ label }}
-        </div>
+  <!-- 順位のソート -->
+  <SettingItem label="順位のソート" description="金額が高い順・新着順から選べます">
+    <div class="flex flex-wrap gap-2">
+      <div
+        v-for="(label, key) in giftSortOrderMap"
+        :key="key"
+        class="badge badge-lg cursor-pointer whitespace-nowrap"
+        :class="giftRanking.sortOrder === key ? 'badge-primary' : 'badge-outline'"
+        @click="updateField('sortOrder', key)"
+      >
+        {{ label }}
       </div>
-    </SettingItem>
+    </div>
+  </SettingItem>
 
-    <!-- 表示するランキング数 -->
-    <SettingItem
-      label="表示件数"
-      description="ランキングに表示する件数を設定します（最大100）"
-      :forceMode="'pro'"
-      :showReset="true"
-      @reset="resetField('rankingLimit')"
-    >
-      <input
-        type="number"
-        min="1"
-        max="100"
-        :disabled="!isAdv"
-        class="input input-bordered w-24"
-        :value="giftRanking.rankingLimit"
-        @input="(e) => updateField('rankingLimit', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
+  <!-- 表示するランキング数 -->
+  <SettingItem label="表示件数" description="表示する件数を設定" :showReset="true" @reset="resetField('rankingLimit')">
+    <input
+      type="number"
+      min="1"
+      :disabled="!isAdv"
+      class="input input-bordered w-24"
+      :value="giftRanking.rankingLimit"
+      @input="(e) => updateField('rankingLimit', Number((e.target as HTMLInputElement).value))"
+    />
+  </SettingItem>
 
-    <!-- 最低金額 -->
-    <SettingItem
-      label="最低金額"
-      description="この金額以上のギフトのみランキングに表示します"
-      :showReset="true"
-      @reset="resetField('minimumAmount')"
-    >
-      <input
-        type="number"
-        min="0"
-        class="input input-bordered w-24"
-        :value="giftRanking.minimumAmount"
-        @input="(e) => updateField('minimumAmount', Number((e.target as HTMLInputElement).value))"
-      />
-    </SettingItem>
-  </div>
+  <!-- 最低金額 -->
+  <SettingItem
+    label="最低金額"
+    description="この金額以上のギフトのみ表示"
+    :showReset="true"
+    @reset="resetField('minimumAmount')"
+  >
+    <input
+      type="number"
+      min="0"
+      step="100"
+      class="input input-bordered w-24"
+      :value="giftRanking.minimumAmount"
+      @input="(e) => updateField('minimumAmount', Number((e.target as HTMLInputElement).value))"
+    />
+  </SettingItem>
 </template>
 
 <script setup lang="ts">
   import { computed } from 'vue'
   import { storeToRefs } from 'pinia'
-  import { giftComponentMap, giftSortOrderMap, GiftRankingSchema } from '@/types'
+  import {
+    giftComponentMap,
+    giftDisplayOptionsMap,
+    giftSortOrderMap,
+    GiftRankingSchema,
+    GiftDisplayOption,
+  } from '@/types'
   import { useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
@@ -100,6 +113,9 @@
 
   const giftRanking = computed(() => GiftRankingSchema.parse(data.value.components?.settings?.GiftRanking ?? {}))
 
+  // 現在選択中のコンポーネント定義
+  const currentComponentDef = computed(() => giftComponentMap[giftRanking.value.component])
+
   const updateField = (field: keyof ReturnType<typeof GiftRankingSchema.parse>, value: any) => {
     omikujiStore.updateComponentSettings('GiftRanking', {
       ...giftRanking.value,
@@ -110,5 +126,11 @@
   const resetField = (field: keyof ReturnType<typeof GiftRankingSchema.parse>) => {
     const defaults = GiftRankingSchema.parse({})
     updateField(field, defaults[field])
+  }
+
+  const toggleDisplayOption = (key: GiftDisplayOption) => {
+    const current = giftRanking.value.displayOptions
+    const next = current.includes(key) ? current.filter((k) => k !== key) : [...current, key]
+    updateField('displayOptions', next)
   }
 </script>

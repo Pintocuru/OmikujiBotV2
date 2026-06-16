@@ -1,7 +1,7 @@
 <!-- src/MainGenerator/ui/GiftRanking/parts/GiftRankingSelector.vue -->
 <template>
   <div v-if="hasMessage" :data-theme="settings.color" class="w-full">
-    <component :is="currentComponent" :messages="messages" :settings="settings" />
+    <component :is="currentComponent" :messages="messages" :displayOptions="settings.displayOptions" />
   </div>
 </template>
 
@@ -9,6 +9,11 @@
   import { computed, type Component } from 'vue'
   import { GiftComponent, GiftRankingType } from '@/types'
   import grid from '../layouts/grid.vue'
+  import standard from '../layouts/standard.vue'
+  import list from '../layouts/list.vue'
+  import table from '../layouts/table.vue'
+  import scroll from '../layouts/scroll.vue'
+  import podium from '../layouts/podium.vue'
   import { OmikenCommentType } from '@shared/types'
 
   const props = defineProps<{
@@ -18,9 +23,13 @@
 
   const componentMap: Record<GiftComponent, Component> = {
     grid,
+    standard,
+    list,
+    table,
+    scroll,
+    podium,
   }
 
   const currentComponent = computed(() => componentMap[props.settings.component] ?? grid)
-
   const hasMessage = computed(() => props.messages.length > 0)
 </script>

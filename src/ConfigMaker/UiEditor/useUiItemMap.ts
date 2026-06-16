@@ -176,10 +176,11 @@ export const uiItemMap: Record<string, UiItem> = {
     targetKey: 'kujibikiPanel',
     visibility: [],
   },
+
   GiftRanking: {
     icon: 'Gift',
-    title: 'ランキングアイテム',
-    description: 'ゲームスクリプトで使うランキング表示',
+    title: 'ギフトランキング',
+    description: 'ギフト専用のランキング表示',
     component: GiftRankingEditor,
     targetKey: 'GiftRanking',
     visibility: [],
