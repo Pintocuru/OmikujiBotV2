@@ -21,11 +21,6 @@ export const giftComponentMap = {
     accessLevel: 'godMode',
     isOption: true,
   },
-  table: {
-    label: 'テーブル',
-    accessLevel: 'godMode',
-    isOption: true,
-  },
   scroll: {
     label: '横スクロール',
     accessLevel: 'godMode',
@@ -34,7 +29,7 @@ export const giftComponentMap = {
   podium: {
     label: '表彰台',
     accessLevel: 'godMode',
-    isOption: false, // 1〜3位は固定表示のため非対応
+    isOption: true, // 1〜3位は固定表示のため非対応
   },
 } as const
 const giftComponentsEnum = Object.keys(giftComponentMap) as GiftComponent[]

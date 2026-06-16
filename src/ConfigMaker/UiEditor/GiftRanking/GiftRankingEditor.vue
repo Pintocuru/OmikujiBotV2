@@ -1,11 +1,7 @@
 <!-- src/ConfigMaker/UiEditor/GiftRanking/GiftRankingEditor.vue -->
 <template>
   <!-- ランキングプレビュー -->
-  <HudPreview :isAdminOnly="true">
-    <div :class="[fontFamily]">
-      <GiftRankingPreview :messages="[]" :settings="giftRanking" />
-    </div>
-  </HudPreview>
+  <GiftRankingPreview :messages="[]" :settings="giftRanking" />
 
   <!-- コンポーネント選択 -->
   <DisplayStyleSelector
@@ -122,19 +118,16 @@
     GiftRankingSchema,
     GiftDisplayOption,
   } from '@/types'
-  import { useFontFamily } from '@/types'
   import { useOmikujiStore } from '@config/stores/useOmikujiStore'
   import SettingItem from '@config/components/parts/SettingItem.vue'
   import { useSettingMode } from '@config/scripts/useAccessCheckerConfig'
   import GiftRankingPreview from './GiftRankingPreview.vue'
   import { themes } from '@shared/styles/DaisyUiTheme'
-  import HudPreview from '@config/components/common/HudPreview/HudPreview.vue'
   import DisplayStyleSelector from '../CommonStyle/DisplayStyleSelector.vue'
 
   const omikujiStore = useOmikujiStore()
   const { data } = storeToRefs(omikujiStore)
   const { isAdv } = useSettingMode()
-  const fontFamily = computed(() => useFontFamily(data.value.components.commonStyle.fontFamily ?? 'default'))
 
   const giftRanking = computed(() => GiftRankingSchema.parse(data.value.components?.settings?.GiftRanking ?? {}))
 

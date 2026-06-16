@@ -11,30 +11,26 @@
         <div class="card-body items-center text-center p-3 pt-5 gap-1">
           <div
             v-if="show('rank')"
-            class="absolute top-1.5 left-1.5 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold"
+            class="absolute top-1.5 left-1.5 w-6 h-6 rounded-full flex items-center justify-center text-xl font-bold"
             :class="rankBadgeClass(index)"
           >
             {{ index + 1 }}
           </div>
 
-          <div v-if="show('avatar')" class="avatar">
-            <div class="rounded-full ring-2 w-12" :class="show('rank') ? rankRingClass(index) : 'ring-base-300'">
-              <img v-if="message.profileImage" :src="message.profileImage" :alt="message.userName" />
-              <div
-                v-else
-                class="bg-base-300 text-base-content w-full h-full flex items-center justify-center text-lg font-bold"
-              >
-                {{ message.userName?.charAt(0) ?? '?' }}
-              </div>
-            </div>
-          </div>
+          <RankingAvatar
+            v-if="show('avatar')"
+            :user-name="message.userName"
+            :profile-image="message.profileImage"
+            :size="iconSize"
+            :ring-class="show('rank') ? rankRingClass(index) : ''"
+          />
 
-          <p v-if="show('name')" class="text-xs font-medium text-base-content truncate w-full leading-tight">
+          <p v-if="show('name')" class="text-xl font-medium text-base-content truncate w-full leading-tight">
             {{ message.userName }}
           </p>
 
           <p v-if="show('amount')" class="font-bold leading-none" :class="rankAmountClass(index)">
-            <span class="text-xs opacity-70">¥</span>{{ formatPrice(message.giftPrice) }}
+            <span class="text-xl opacity-70">¥</span>{{ formatPrice(message.giftPrice) }}
           </p>
         </div>
       </div>
@@ -45,6 +41,7 @@
 <script setup lang="ts">
   import { GiftDisplayOption } from '@/types'
   import { GiftLayoutProps } from '../composables/types'
+  import RankingAvatar from './RankingAvatar.vue'
   import {
     formatPrice,
     rankRingClass,

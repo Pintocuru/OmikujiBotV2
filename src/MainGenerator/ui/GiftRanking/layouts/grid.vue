@@ -1,23 +1,16 @@
 <!-- src/MainGenerator/ui/GiftRanking/layouts/grid.vue -->
 <template>
-  <div class="grid grid-cols-3 gap-2 sm:grid-cols-4">
+  <div class="flex flex-row gap-4 justify-center">
     <div v-for="(message, index) in messages" :key="message.id" class="flex flex-col items-center gap-1 py-2">
-      <div v-if="show('avatar')" class="relative">
-        <div class="avatar">
-          <div
-            class="rounded-full"
-            :class="show('rank') ? rankRingClass(index) : ''"
-            :style="{ width: iconSize + 'px', height: iconSize + 'px' }"
-          >
-            <img v-if="message.profileImage" :src="message.profileImage" :alt="message.userName" />
-            <div
-              v-else
-              class="bg-base-300 text-base-content w-full h-full flex items-center justify-center text-lg font-bold"
-            >
-              {{ message.userName?.charAt(0) ?? '?' }}
-            </div>
-          </div>
-        </div>
+      <div class="relative">
+        <RankingAvatar
+          v-if="show('avatar')"
+          :user-name="message.userName"
+          :profile-image="message.profileImage"
+          :size="iconSize"
+          :ring-class="show('rank') ? rankRingClass(index) : ''"
+        />
+
         <div
           v-if="show('rank')"
           class="absolute -top-1 -left-1 w-5 h-5 rounded-full flex items-center justify-center text-lg font-bold"
@@ -25,10 +18,6 @@
         >
           {{ index + 1 }}
         </div>
-      </div>
-
-      <div v-else-if="show('rank')" class="badge font-bold" :class="rankBadgeClass(index)">
-        {{ index + 1 }}
       </div>
 
       <p v-if="show('name')" class="text-xl text-base-content truncate w-full text-center leading-tight">
@@ -43,10 +32,11 @@
 </template>
 
 <script setup lang="ts">
+  import { computed } from 'vue'
   import { GiftDisplayOption } from '@/types'
   import { GiftLayoutProps } from '../composables/types'
+  import RankingAvatar from './RankingAvatar.vue'
   import { formatPrice, rankRingClass, rankBadgeClass } from '../composables/useRankStyle'
-  import { computed } from 'vue'
 
   const props = defineProps<GiftLayoutProps>()
   const show = (key: GiftDisplayOption) => props.displayOptions.includes(key)

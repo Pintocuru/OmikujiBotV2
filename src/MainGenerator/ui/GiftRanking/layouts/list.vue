@@ -16,25 +16,21 @@
       </div>
 
       <!-- アバター -->
-      <div v-if="show('avatar')" class="avatar flex-shrink-0">
-        <div class="rounded-full w-8" :class="rankRingClass(index)">
-          <img v-if="message.profileImage" :src="message.profileImage" :alt="message.userName" />
-          <div
-            v-else
-            class="bg-base-300 text-base-content w-full h-full flex items-center justify-center text-sm font-bold"
-          >
-            {{ message.userName?.charAt(0) ?? '?' }}
-          </div>
-        </div>
-      </div>
+      <RankingAvatar
+        v-if="show('avatar')"
+        :user-name="message.userName"
+        :profile-image="message.profileImage"
+        :size="iconSize"
+        :ring-class="show('rank') ? rankRingClass(index) : ''"
+      />
 
       <!-- ユーザー名 -->
-      <p v-if="show('name')" class="flex-1 text-sm text-base-content truncate">
+      <p v-if="show('name')" class="flex-1 text-xl text-base-content truncate">
         {{ message.userName }}
       </p>
 
       <!-- 金額 -->
-      <p v-if="show('amount')" class="flex-shrink-0 text-sm font-bold text-primary">
+      <p v-if="show('amount')" class="flex-shrink-0 text-xl font-bold text-primary">
         <span class="text-xs opacity-60">¥</span>{{ formatPrice(message.giftPrice) }}
       </p>
     </div>
@@ -44,6 +40,7 @@
 <script setup lang="ts">
   import { GiftDisplayOption } from '@/types'
   import { GiftLayoutProps } from '../composables/types'
+  import RankingAvatar from './RankingAvatar.vue'
   import { formatPrice, rankRingClass, rankBadgeClass } from '../composables/useRankStyle'
 
   const props = defineProps<GiftLayoutProps>()

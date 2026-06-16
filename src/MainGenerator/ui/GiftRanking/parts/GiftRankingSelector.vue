@@ -16,7 +16,6 @@
   import grid from '../layouts/grid.vue'
   import standard from '../layouts/standard.vue'
   import list from '../layouts/list.vue'
-  import table from '../layouts/table.vue'
   import scroll from '../layouts/scroll.vue'
   import podium from '../layouts/podium.vue'
   import { OmikenCommentType } from '@shared/types'
@@ -30,7 +29,6 @@
     grid,
     standard,
     list,
-    table,
     scroll,
     podium,
   }
