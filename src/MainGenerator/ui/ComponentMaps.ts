@@ -17,4 +17,5 @@ export const COMPONENT_MAP_LOADER: Record<UiKind, () => Promise<any>> = {
   commentSpin: () => import('./CommentSpin/CommentSpin.vue'),
   deadAir: () => import('./DeadAir/DeadAir.vue'),
   kujibikiPanel: () => import('./KujibikiPanel/KujibikiPanel.vue'),
+  GiftRanking: () => import('./GiftRanking/GiftRanking.vue'),
 }

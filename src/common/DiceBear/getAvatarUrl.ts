@@ -9,7 +9,7 @@ export const getAvatarUrl = (name?: string) => {
   return `https://api.dicebear.com/9.x/${style}/svg?seed=${seed}&size=32`
 }
 
-const AVATAR_STYLES = ['avataaars', 'bottts', 'lorelei', 'notionists', 'open-peeps', 'pixel-art']
+const AVATAR_STYLES = ['bottts', 'lorelei', 'notionists', 'open-peeps', 'pixel-art']
 
 function hash(str: string): number {
   let h = 0
