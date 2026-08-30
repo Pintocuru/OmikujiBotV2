@@ -45,7 +45,7 @@ window.OmikujiLoader = {
       <div style="padding:40px;font-family:sans-serif;color:#d33;text-align:center">
         <h1>読み込みエラー</h1>
         <p>必要なファイルを読み込めませんでした。</p>
-        <p style="font-size:13px;color:#888">scripts/ フォルダが正しい場所にあるか確認してください。</p>
+        <p style="font-size:13px;color:#888">わんコメの custom フォルダに入れてから起動してください</p>
         ${detail ? `<pre style="font-size:11px;color:#aaa;margin-top:12px">${detail}</pre>` : ''}
       </div>
     `

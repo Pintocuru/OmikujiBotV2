@@ -11,7 +11,6 @@
             :size="iconSize"
             :ring-class="show('rank') ? rankRingClass(index) : ''"
           />
-
           <div
             v-if="show('rank')"
             class="absolute -top-1 -left-1 w-5 h-5 rounded-full flex items-center justify-center text-lg font-bold"
