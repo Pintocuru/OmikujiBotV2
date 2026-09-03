@@ -1,5 +1,5 @@
 /* assets\styles\DaisyUiAllObs.css */
-@import 'tailwindcss';
+@import 'tailwindcss/index.css';
 @import './safeList.css';
 
 @source "../../../../shared/**/*.{html,js,ts,jsx,tsx,vue}";

@@ -120,7 +120,7 @@ function migrateDisplaySettings(old: OmikujiDataTypeV1): any {
  * @param oldAction 古い PostAction オブジェクト
  * @returns 新しい PostAction オブジェクトの配列
  */
-const migratePostAction = (oldAction: any): PostActionType[] => {
+const migratePostAction = (oldAction: any): any[] => {
   const newActions: PostActionType[] = []
 
   // 基本的な共通フィールド

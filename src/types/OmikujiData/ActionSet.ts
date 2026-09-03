@@ -106,7 +106,7 @@ export const hasPostFlowMessage = (flow: PostFlowType): flow is PostFlowWithMess
 }
 
 // PostFlow わんコメ・BOTちゃんに投稿する型定義
-export const PostFlowSchema = z.discriminatedUnion('actionType', [
+export const PostFlowSchema = z.union([
   PostFlowMessageSchema,
   PostFlowSoundSchema,
   PostFlowWordPartySchema,
@@ -205,15 +205,16 @@ export const ActionSetBaseSchema = z.object({
 export const ActionSetSchema = ActionSetBaseSchema.transform((value) => {
   // 旧データ（string）の場合は自動変換
   if (value.special !== undefined) {
+    const { special, ...rest } = value
     return {
-      ...value,
+      ...rest,
       behavior: ActionBehaviorSchema.parse({
-        type: value.special === 'return' ? 'return' : 'continue',
-        countEvent: value.special === 'return',
+        type: special === 'return' ? 'return' : 'continue',
+        countEvent: special === 'return',
       }),
-      special: undefined,
     }
   }
+
   return value
 })
 

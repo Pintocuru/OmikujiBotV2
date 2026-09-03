@@ -201,11 +201,6 @@ export type ActionSetType = z.infer<typeof ActionSetSchema>
  * 古い単一のアクションから複数のアクションが生成される可能性があるため、配列を返します。
  */
 export function migratePostAction(oldAction: OldPostActionType): PostActionType[] {
-  if (oldAction.messageContent === undefined || oldAction.messageContent === null) {
-    const parseResult = PostActionSchema.safeParse(oldAction)
-    if (parseResult.success) return [parseResult.data]
-  }
-
   const newActions: PostActionType[] = []
 
   const baseFields = {
