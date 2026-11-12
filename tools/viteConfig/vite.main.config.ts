@@ -2,7 +2,7 @@
 import { defineConfig, mergeConfig, UserConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { createViteAliases } from './CreateViteAliases'
+import { createViteAliases } from './createViteAliases'
 import { baseViteConfig, } from '../../../../shared/utils/ViteConfig/viteConfigBase'
 
 // projectRoot の設定
