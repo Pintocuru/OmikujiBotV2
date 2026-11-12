@@ -1,7 +1,8 @@
 // tools/viteBuild/core/ViteRunner.ts
 import path from 'path'
-import { build, mergeConfig } from 'vite'
-import { baseViteConfig } from '../../../../../shared/utils/ViteConfig/viteConfigBase'
+import { build, type InlineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import tailwindcss from '@tailwindcss/vite'
 import { externalDynamicImportPlugin } from '../buildOptions/plugins'
 import type { ResolvedCoreBuildConfig } from '../types'
 
@@ -17,12 +18,13 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
   }
 
   for (const [name, entry] of Object.entries(config.entryPoints)) {
-    const baseConfig = baseViteConfig(config.packageRoot)
-    const viteConfig = mergeConfig(baseConfig, {
-      plugins: [externalDynamicImportPlugin()],
+    const viteConfig: InlineConfig = {
       configFile: false,
+      root: config.packageRoot,
       mode: 'production',
       envDir: false,
+      logLevel: 'warn',
+      plugins: [externalDynamicImportPlugin(), vue(), tailwindcss()],
       resolve: { alias: config.system.alias },
       esbuild: { drop: ['console', 'debugger'] },
       define: {
@@ -59,7 +61,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
           },
         },
       },
-    })
+    }
 
     await build(viteConfig)
     firstEntry = false
