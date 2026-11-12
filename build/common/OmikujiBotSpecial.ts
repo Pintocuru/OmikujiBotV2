@@ -1,6 +1,6 @@
 // build/common/OmikujiBotSpecial.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'OmikujiBotSpecial',
@@ -22,7 +22,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（proも存在するため両方定義）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'OmikujiBotSpecial', type: 'FULL', accessLevel: 'godMode', sourceProject: 'OmikujiBot' },
+  { project: 'OmikujiBotSpecial', accessLevel: 'godMode', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
