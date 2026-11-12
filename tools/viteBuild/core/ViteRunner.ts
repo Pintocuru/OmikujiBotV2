@@ -2,7 +2,6 @@
 import path from 'path'
 import { build, mergeConfig } from 'vite'
 import { baseViteConfig } from '../../../../../shared/utils/ViteConfig/viteConfigBase'
-import { createViteAliases } from '../../viteConfig/createViteAliases'
 import type { ResolvedCoreBuildConfig } from '../types'
 
 const EXTERNALS = ['vue', '@onecomme.com/onesdk']
@@ -10,7 +9,6 @@ const GLOBALS = { vue: 'Vue', '@onecomme.com/onesdk': 'OneSDK' }
 
 export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir: string): Promise<void> {
   const outputDir = path.join(config.packageRoot, 'dist', outputSubDir)
-  const aliases = createViteAliases(config.packageRoot)
   let firstEntry = true
 
   if (typeof config.entryPoints === 'string') {
@@ -23,7 +21,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
       configFile: false,
       mode: 'production',
       envDir: false,
-      resolve: { alias: aliases },
+      resolve: { alias: config.system.alias },
       define: {
         'process.env.NODE_ENV': JSON.stringify('production'),
         __VUE_OPTIONS_API__: JSON.stringify(true),
