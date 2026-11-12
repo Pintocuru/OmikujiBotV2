@@ -21,7 +21,7 @@ export async function buildPackages(options: BuildOptions): Promise<void> {
     throw new Error('[Build] FULL build requires at least one Core and one package target')
   }
 
-  const projectMap = new Map(projects.map((project) => [project.key, project]))
+  const projectMap = new Map<string, ProjectConfig>(projects.map((project): [string, ProjectConfig] => [project.key, project]))
   const coreConfigs = resolveCoreBuildConfigs(coreTargets, projectMap, system)
   const corePaths = new Map<string, string>()
   for (const config of coreConfigs) {
