@@ -38,7 +38,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
           formats: ['iife'],
           name: `OmikujiBot_${name}`,
           fileName: () => `scripts/${name}.js`,
-          cssFileName: name,
+          cssFileName: `scripts/${name}`,
         },
         rollupOptions: {
           external: EXTERNALS,
