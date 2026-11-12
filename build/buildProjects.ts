@@ -1,5 +1,5 @@
 // build/buildProjects.ts
-import { CoreBuildTarget, PackageBuildTarget } from '@shared/utils/webpackBuild/BuildTypes'
+import { CoreBuildTarget, PackageBuildTarget } from '../tools/viteBuild/types'
 import OmikujiBot from './core'
 import Common from './common'
 import set2025Q4 from './2025-Q4'
