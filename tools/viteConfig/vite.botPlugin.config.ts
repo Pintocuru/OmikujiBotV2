@@ -23,12 +23,12 @@ export default defineConfig(() => {
       lib: {
         entry: path.resolve(projectRoot, 'src/EditorPlugin/plugin.ts'),
         name: 'Plugin',
-        fileName: () => `EditorPlugin-${APP_VERSION}/plugin.js`,
+        fileName: () => 'plugin.js',
         formats: ['cjs'], // 出力形式は CommonJS 指定
       },
 
       // 出力ディレクトリ
-      outDir: 'dist',
+      outDir: path.resolve(projectRoot, 'dist', `EditorPlugin-${APP_VERSION}`),
       emptyOutDir: true,
 
       // ロールアップ設定
