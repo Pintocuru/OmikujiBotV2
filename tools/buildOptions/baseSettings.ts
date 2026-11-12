@@ -6,7 +6,7 @@ import { generateJsContent } from '@config/components/presetsExport/generateCont
 import { generateAccessLevelData } from './processJsonData'
 import { processMerge } from '../JsonMerge/JsonMergeProcessor'
 import { APP_VERSION, BUILD_DATE } from '@/version'
-import { ProjectConfig, ProjectParams } from '../viteBuild/types'
+import type { ProjectConfig, ProjectParams } from '../viteBuild/types'
 
 // ----- 定数 -----
 
