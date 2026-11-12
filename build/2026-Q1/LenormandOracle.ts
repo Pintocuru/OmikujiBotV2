@@ -1,6 +1,6 @@
 // build/2026-Q1/LenormandOracle.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'LenormandOracle',
@@ -19,8 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（adv を反映）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'LenormandOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'LenormandOracle', type: 'JSON', accessLevel: 'basic' },
+  { project: 'LenormandOracle', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
