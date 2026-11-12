@@ -1,6 +1,6 @@
 // build/2026-Q1/RunicOracle.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'RunicOracle',
@@ -19,8 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（adv を反映）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'RunicOracle', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'RunicOracle', type: 'JSON', accessLevel: 'basic' },
+  { project: 'RunicOracle', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
