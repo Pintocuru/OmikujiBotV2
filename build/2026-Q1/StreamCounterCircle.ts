@@ -1,6 +1,6 @@
 // build/2026-Q1/StreamCounterCircle.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'StreamCounterCircle',
@@ -24,11 +24,10 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'StreamCounterCircle', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  // { project: 'StreamCounterCircle', type: 'JSON', accessLevel: 'basic' },
-  { project: 'StreamCounterCircleUpVote', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'StreamCounterCircleBlack', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'StreamCounterCircleColor', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterCircle', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterCircleUpVote', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterCircleBlack', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterCircleColor', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
