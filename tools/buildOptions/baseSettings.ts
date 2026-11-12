@@ -17,15 +17,6 @@ export const DEFAULT_FILES_TO_COPY = [
   { from: 'assets/TemplateEntry/script.js', to: 'script.js' },
 ]
 
-/** OneSDK と おみくじデータ の外部スクリプト読み込みタグ */
-const HTML_SCRIPT_TAGS = `
-  <!-- OneSDK (外部読み込み) -->
-  <script src="http://localhost:11180/templates/preset/__origin/js/onesdk.js" defer></script>
-
-  <!-- おみくじデータ -->
-  <script src="./omikujiData.js" defer></script>
-`
-
 // ----- ファクトリ -----
 
 /** コアプロジェクト向けの共通ベース設定 */
@@ -34,7 +25,6 @@ export function createCoreBuildConfig(packageRoot: string) {
     version: `${BUILD_DATE}-${APP_VERSION}`,
     packageRoot,
     entryPoints: null,
-    addHtmlTemplate: HTML_SCRIPT_TAGS,
     licenseKey: {
       none: '',
       basic: '',
