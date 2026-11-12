@@ -1,6 +1,6 @@
 // build/2026-Q1/FlightSeatNine.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'FlightSeatNine',
@@ -24,8 +24,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'FlightSeatNine', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'FlightSeatNine', type: 'JSON', accessLevel: 'basic' },
+  { project: 'FlightSeatNine', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
