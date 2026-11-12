@@ -7,7 +7,6 @@
     "dev:omikujiBot": "tsx server/start-dev-server.ts",
     "updateFilesName:omikujiBot": "tsx tools/fileName/UpdateTsFiles.ts",
     "test:omikujiBot": "vitest run MetaRuleProcessor",
-    "build:omikujiBotVite": "vite build --config tools/viteConfig/vite.main.config.ts",
     "build:omikujiBotPlugin": "vite build --config tools/viteConfig/vite.botPlugin.config.ts",
     "build:omikujiBot": "tsx build/build.ts"
   },
