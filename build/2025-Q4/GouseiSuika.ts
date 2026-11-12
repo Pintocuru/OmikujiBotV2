@@ -1,6 +1,6 @@
 // build/2025-Q4/GouseiSuika.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'GouseiSuika',
@@ -19,8 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'GouseiSuika', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'GouseiSuika', type: 'JSON', accessLevel: 'basic' },
+  { project: 'GouseiSuika', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
