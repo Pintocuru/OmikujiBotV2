@@ -1,6 +1,6 @@
 // build/2025-Q4/BigBangFortune.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'BigBangFortune',
@@ -20,8 +20,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（必要なら追加）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'BigBangFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'BigBangFortune', type: 'JSON', accessLevel: 'basic' },
+  { project: 'BigBangFortune', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
