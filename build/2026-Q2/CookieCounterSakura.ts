@@ -1,6 +1,6 @@
 // build/2026-Q2/CookieCounterSakura.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'SakuraCounter',
@@ -25,9 +25,8 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'SakuraCounter', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  // { project: 'SakuraCounter', type: 'JSON', accessLevel: 'basic' },
-  // { project: 'SakuraCounterOhayou', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'SakuraCounter', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  // { project: 'SakuraCounterOhayou', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
