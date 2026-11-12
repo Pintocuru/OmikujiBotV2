@@ -25,6 +25,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
       envDir: false,
       logLevel: 'warn',
       plugins: [externalDynamicImportPlugin(), vue(), tailwindcss()],
+      css: { postcss: { plugins: [] } },
       resolve: { alias: config.system.alias },
       esbuild: { drop: ['console', 'debugger'] },
       define: {
