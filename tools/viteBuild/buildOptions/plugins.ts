@@ -1,5 +1,5 @@
 // tools/viteBuild/buildOptions/plugins.ts
-import type { Plugin, RollupWarning, WarningHandler } from 'rollup'
+import type { Plugin } from 'vite'
 
 /**
  * IIFE形式ではOneSDKの動的importをglobal参照へ変換する。
@@ -17,14 +17,3 @@ export function externalDynamicImportPlugin(): Plugin {
   }
 }
 
-/**
- * アプリケーションコード内の循環依存はビルドエラーにする。
- */
-export function failOnCircularDependency(warning: RollupWarning, defaultHandler: WarningHandler): void {
-  if (warning.code !== 'CIRCULAR_DEPENDENCY') {
-    defaultHandler(warning)
-    return
-  }
-  if (warning.ids?.some((id) => id.includes('node_modules'))) return
-  throw new Error(`[Build] 循環依存を検出しました: ${warning.message}`)
-}
