@@ -29,7 +29,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'TweetSpiki', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TweetSpiki', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
