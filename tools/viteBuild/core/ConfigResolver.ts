@@ -1,6 +1,5 @@
 // tools/viteBuild/core/ConfigResolver.ts
 import fs from 'fs'
-import path from 'path'
 import type {
   CoreBuildTarget,
   PackageBuildTarget,
@@ -21,6 +20,10 @@ export function resolveCoreBuildConfigs(
     const config = projects.get(project)
     if (!config) throw new Error(`[Build] Core project not found: ${project}`)
     if (!config.entryPoints) throw new Error(`[Build] Core entryPoints are missing: ${project}`)
+    const entries = typeof config.entryPoints === 'string' ? [config.entryPoints] : Object.values(config.entryPoints)
+    for (const entry of entries) {
+      if (!fs.existsSync(entry)) throw new Error(`[Build] Core entry not found: ${entry}`)
+    }
 
     return {
       ...config,
@@ -71,15 +74,3 @@ export function resolvePackageBuildConfigs(
   return resolved
 }
 
-export function resolveEntryPoints(config: ResolvedCoreBuildConfig): void {
-  if (typeof config.entryPoints === 'string') {
-    if (!fs.existsSync(config.entryPoints)) throw new Error(`[Build] Entry not found: ${config.entryPoints}`)
-    return
-  }
-
-  for (const [name, entry] of Object.entries(config.entryPoints)) {
-    if (!fs.existsSync(path.resolve(config.packageRoot, entry)) && !fs.existsSync(entry)) {
-      throw new Error(`[Build] Entry not found (${name}): ${entry}`)
-    }
-  }
-}
