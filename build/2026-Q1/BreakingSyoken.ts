@@ -1,6 +1,6 @@
 // build/2026-Q1/BreakingSyoken.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'BreakingSyoken',
@@ -33,14 +33,13 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'BreakingSyoken', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  // { project: 'BreakingSyoken', type: 'JSON', accessLevel: 'basic' },
+  { project: 'BreakingSyoken', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 
-  { project: 'BreakingSyokenRed', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenBlue', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenGreen', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenYellow', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'BreakingSyokenPremium', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'BreakingSyokenRed', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'BreakingSyokenBlue', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'BreakingSyokenGreen', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'BreakingSyokenYellow', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'BreakingSyokenPremium', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
