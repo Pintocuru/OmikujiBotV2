@@ -21,8 +21,8 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         OmikujiLoader.run({
-          cssFiles: ['common.css'],
-          jsFiles: ['common.js', 'vendors.js', 'MainGenerator.js'],
+          cssFiles: ['MainGenerator.css'],
+          jsFiles: ['MainGenerator.js'],
           requireOneComme: true,
           mountFn() {
             if (window.OmikujiBot?.mountMainGenerator) {
