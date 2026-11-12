@@ -1,6 +1,6 @@
 // build/2026-Q1/ValentineCoupling.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import { PackageBuildTarget, ProjectConfig, ProjectParams } from '@shared/utils/webpackBuild/BuildTypes'
+import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'ValentineCoupling',
