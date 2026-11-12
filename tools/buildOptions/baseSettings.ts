@@ -61,7 +61,6 @@ export function createProject(packageRoot: string, color: string, params: Projec
       godMode: getKey('godMode'),
     },
 
-    addHtmlTemplate: HTML_SCRIPT_TAGS,
 
     // --- プロジェクト固有フィールド ---
     key: id,
