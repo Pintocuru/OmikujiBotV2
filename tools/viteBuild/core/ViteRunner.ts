@@ -43,6 +43,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
           output: {
             globals: GLOBALS,
             inlineDynamicImports: true,
+            assetFileNames: '[name].[ext]',
           },
         },
       },
