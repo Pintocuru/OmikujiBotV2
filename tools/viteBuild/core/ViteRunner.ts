@@ -21,6 +21,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
     const viteConfig: InlineConfig = {
       configFile: false,
       root: config.packageRoot,
+      base: './',
       mode: 'production',
       envDir: false,
       logLevel: 'warn',
