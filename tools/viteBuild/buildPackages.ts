@@ -1,5 +1,6 @@
 // tools/viteBuild/buildPackages.ts
-import fs from 'fs/promises'
+import fs from 'fs'
+import fsPromises from 'fs/promises'
 import path from 'path'
 import type { CoreBuildTarget, PackageBuildTarget, ProjectConfig, SystemCommonData } from './types'
 import { resolveCoreBuildConfigs, resolvePackageBuildConfigs } from './core/ConfigResolver'
@@ -28,9 +29,18 @@ export async function buildPackages(options: BuildOptions): Promise<void> {
   }
   const packageConfigs = resolvePackageBuildConfigs(packageTargets, projectMap, system, corePaths)
 
+  // 出力先を削除する前に、コピー元の欠落を検出する。
+  for (const config of [...coreConfigs, ...packageConfigs]) {
+    for (const item of config.filesToCopy) {
+      const from = typeof item === 'string' ? item : item.from
+      const source = path.resolve(packageRoot, from)
+      if (!fs.existsSync(source)) throw new Error(`[Build] Copy source not found: ${source}`)
+    }
+  }
+
   const distRoot = path.join(packageRoot, 'dist')
-  await fs.rm(distRoot, { recursive: true, force: true })
-  await fs.mkdir(distRoot, { recursive: true })
+  await fsPromises.rm(distRoot, { recursive: true, force: true })
+  await fsPromises.mkdir(distRoot, { recursive: true })
 
   for (const config of coreConfigs) {
     const outputPath = await executeCoreBuild(config)
