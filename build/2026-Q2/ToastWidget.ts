@@ -1,6 +1,6 @@
 // build/2026-Q2/ToastWidget.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'ToastWidget',
@@ -25,7 +25,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'ToastWidget', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ToastWidget', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
