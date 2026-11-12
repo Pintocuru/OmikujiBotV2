@@ -1,7 +1,7 @@
 // tools/viteBuild/core/ViteRunner.ts
 import path from 'path'
 import { build, mergeConfig } from 'vite'
-import { baseViteConfig } from '../../../../shared/utils/ViteConfig/viteConfigBase'
+import { baseViteConfig } from '../../../../../shared/utils/ViteConfig/viteConfigBase'
 import { createViteAliases } from '../../viteConfig/createViteAliases'
 import type { ResolvedCoreBuildConfig } from '../types'
 
