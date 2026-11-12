@@ -1,5 +1,4 @@
 // tools/viteBuild/core/BuildExecutor.ts
-import path from 'path'
 import type { ResolvedCoreBuildConfig, ResolvedPackageBuildConfig } from '../types'
 import { cleanOutputDir, copyDirectoryRecursive, copyFiles } from '../utils/FileCopier'
 import { runViteCore } from './ViteRunner'
