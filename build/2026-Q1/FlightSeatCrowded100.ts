@@ -1,6 +1,6 @@
 // build/2026-Q1/FlightSeatCrowded100.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'FlightSeatCrowded100',
@@ -24,8 +24,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'FlightSeatCrowded100', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  // { project: 'FlightSeatCrowded100', type: 'JSON', accessLevel: 'basic' },
+  { project: 'FlightSeatCrowded100', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
