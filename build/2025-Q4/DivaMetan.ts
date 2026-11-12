@@ -1,6 +1,6 @@
 // build/2025-Q4/DivaMetan.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'DivaMetan',
@@ -33,7 +33,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（proも存在するため両方定義）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'DivaMetan', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'DivaMetan', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
