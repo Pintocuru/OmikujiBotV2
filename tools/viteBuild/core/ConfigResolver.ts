@@ -44,8 +44,8 @@ export function resolvePackageBuildConfigs(
     if (!config.template) throw new Error(`[Build] FULL package requires template metadata: ${target.project}`)
 
     const sourceCorePath = coreOutputPaths.get(target.sourceProject)
-    if (!sourceCorePath || !fs.existsSync(sourceCorePath)) {
-      throw new Error(`[Build] Core output not found for ${target.project}: ${target.sourceProject}`)
+    if (!sourceCorePath) {
+      throw new Error(`[Build] Core output is not registered for ${target.project}: ${target.sourceProject}`)
     }
 
     const accessSuffix = target.accessLevel === 'basic' ? '' : `${target.accessLevel}_`
