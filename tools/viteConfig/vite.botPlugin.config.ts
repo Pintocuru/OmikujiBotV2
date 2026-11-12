@@ -2,9 +2,8 @@
 import { defineConfig, mergeConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import tsconfig from '../../tsconfig.json'
 import { baseViteConfig, } from '../../../../shared/utils/ViteConfig/viteConfigBase'
-import { createAliases } from '../../../../shared/utils/webpackBuild/utils/CreateAliases'
+import { createViteAliases } from './createViteAliases'
 import { APP_VERSION } from '../../src/version'
 
 // projectRoot の設定
@@ -14,8 +13,7 @@ const projectRoot = path.resolve(__dirname, '../../')
 const base = baseViteConfig(projectRoot)
 
 // tsconfig.json からエイリアスを生成
-const tsAliases = createAliases(projectRoot, tsconfig)
-export const alias = { ...tsAliases }
+export const alias = { ...createViteAliases(projectRoot) }
 
 export default defineConfig(() => {
   return mergeConfig(base, {
