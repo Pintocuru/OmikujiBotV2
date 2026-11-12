@@ -22,6 +22,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
       mode: 'production',
       envDir: false,
       resolve: { alias: config.system.alias },
+      esbuild: { drop: ['console', 'debugger'] },
       define: {
         'process.env.NODE_ENV': JSON.stringify('production'),
         __VUE_OPTIONS_API__: JSON.stringify(true),
