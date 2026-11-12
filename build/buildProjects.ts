@@ -1,23 +1,21 @@
 // build/buildProjects.ts
-import { CoreBuildTarget, PackageBuildTarget } from '../tools/viteBuild/types'
+import type { CoreBuildTarget, PackageBuildTarget } from '../tools/viteBuild/types'
 import OmikujiBot from './core'
 import Common from './common'
-import set2025Q4 from './2025-Q4'
-import set2026Q1 from './2026-Q1'
 import set2026Q2 from './2026-Q2'
 
 /**
  * コアビルド設定リスト
  * エディターを更新したら必ずビルドする基盤部分
  */
-export const coreTargets: CoreBuildTarget[] = [
-  { project: 'OmikujiBot' }, // MainGenerator + ConfigMaker
-]
+export const coreTargets: CoreBuildTarget[] = [{ project: 'OmikujiBot' }]
 
-const packages = [OmikujiBot, Common, set2025Q4, set2026Q1, set2026Q2].flat()
+// 現在販売・配布対象として登録されているパッケージ群のみを解決する。
+// 未発売・停止中の定義は build index に残すが、ビルド時には評価しない。
+const activePackages = [Common, set2026Q2]
 
 export function getAllProjects(packageRoot: string) {
-  return packages.flatMap((p) => p.getProjects(packageRoot))
+  return [...OmikujiBot.getProjects(packageRoot), ...activePackages.flatMap((item) => item.getProjects(packageRoot))]
 }
 
-export const packageTargets: PackageBuildTarget[] = packages.flatMap((p) => p.buildTargets)
+export const packageTargets: PackageBuildTarget[] = activePackages.flatMap((item) => item.buildTargets)
