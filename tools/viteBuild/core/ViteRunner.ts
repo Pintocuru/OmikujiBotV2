@@ -2,6 +2,7 @@
 import path from 'path'
 import { build, mergeConfig } from 'vite'
 import { baseViteConfig } from '../../../../../shared/utils/ViteConfig/viteConfigBase'
+import { externalDynamicImportPlugin } from '../buildOptions/plugins'
 import type { ResolvedCoreBuildConfig } from '../types'
 
 const EXTERNALS = ['vue', '@onecomme.com/onesdk']
@@ -18,6 +19,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
   for (const [name, entry] of Object.entries(config.entryPoints)) {
     const baseConfig = baseViteConfig(config.packageRoot)
     const viteConfig = mergeConfig(baseConfig, {
+      plugins: [externalDynamicImportPlugin()],
       configFile: false,
       mode: 'production',
       envDir: false,
@@ -27,6 +29,7 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
         'process.env.NODE_ENV': JSON.stringify('production'),
         __VUE_OPTIONS_API__: JSON.stringify(true),
         __VUE_PROD_DEVTOOLS__: JSON.stringify(false),
+        __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false),
       },
       build: {
         outDir: outputDir,
@@ -41,6 +44,14 @@ export async function runViteCore(config: ResolvedCoreBuildConfig, outputSubDir:
         },
         rollupOptions: {
           external: EXTERNALS,
+          onwarn(warning, defaultHandler) {
+            if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+              defaultHandler(warning)
+              return
+            }
+            if (warning.ids?.some((id) => id.includes('node_modules'))) return
+            throw new Error(`[Build] 循環依存を検出しました: ${warning.message}`)
+          },
           output: {
             globals: GLOBALS,
             inlineDynamicImports: true,
