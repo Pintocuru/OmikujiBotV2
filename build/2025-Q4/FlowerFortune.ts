@@ -1,6 +1,6 @@
 // build/2025-Q4/FlowerFortune.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'FlowerFortune',
@@ -19,8 +19,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（推定）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'FlowerFortune', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'FlowerFortune', type: 'JSON', accessLevel: 'basic' },
+  { project: 'FlowerFortune', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
