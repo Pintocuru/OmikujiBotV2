@@ -1,5 +1,6 @@
 // tools/viteBuild/types.ts
-import type { AccessLevelType, PackageJsonType } from '@shared/types'
+import type { AccessLevelType } from '@shared/types'
+import type { OmikujiDataType } from '@/types/OmikujiData/'
 
 export type CopyFileItem = string | { from: string; to: string }
 
@@ -27,7 +28,7 @@ export interface TemplateConfig {
 export interface JsonConfig {
   jsonPath: string
   jsonPathRoot: string
-  assembleJsonData?: (data: PackageJsonType, jsonPathRoot: string) => Promise<PackageJsonType>
+  assembleJsonData?: (data: OmikujiDataType, jsonPathRoot: string) => Promise<PackageJsonType>
   generateAccessLevelData?: (data: PackageJsonType, targetLevel?: AccessLevelType) => PackageJsonType
   generateJsContent: (configData: string) => string
 }
