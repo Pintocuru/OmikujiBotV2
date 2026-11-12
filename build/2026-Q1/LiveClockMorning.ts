@@ -1,6 +1,6 @@
 // build/2026-Q1/LiveClockMorning.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'LiveClockMorning',
@@ -33,9 +33,8 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'LiveClockMorning', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  // { project: 'LiveClockMorning', type: 'JSON', accessLevel: 'basic' },
-  { project: 'LiveClockMorningNight', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'LiveClockMorning', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'LiveClockMorningNight', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
