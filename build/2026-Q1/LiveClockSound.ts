@@ -1,6 +1,6 @@
 // build/2026-Q1/LiveClockSound.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'LiveClockSound',
@@ -33,9 +33,8 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'LiveClockSound', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  // { project: 'LiveClockSound', type: 'JSON', accessLevel: 'basic' },
-  { project: 'LiveClockSoundAdv', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'LiveClockSound', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'LiveClockSoundAdv', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
