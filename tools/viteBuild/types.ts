@@ -80,13 +80,3 @@ export interface ResolvedPackageBuildConfig extends ProjectConfig {
   sourceCorePath: string
 }
 
-/**
- * 旧・未有効プロジェクト定義を保持するための型。
- * 新しい配布runnerはこの型を受け取らず、FULL専用 PackageBuildTarget のみを処理する。
- */
-export interface LegacyPackageBuildTarget {
-  project: string
-  type: 'FULL' | 'PATCH' | 'JSON'
-  accessLevel: AccessLevelType
-  sourceProject?: string
-}
