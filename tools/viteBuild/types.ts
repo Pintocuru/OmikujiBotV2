@@ -28,8 +28,8 @@ export interface TemplateConfig {
 export interface JsonConfig {
   jsonPath: string
   jsonPathRoot: string
-  assembleJsonData?: (data: OmikujiDataType, jsonPathRoot: string) => Promise<PackageJsonType>
-  generateAccessLevelData?: (data: PackageJsonType, targetLevel?: AccessLevelType) => PackageJsonType
+  assembleJsonData?: (data: OmikujiDataType, jsonPathRoot: string) => Promise<OmikujiDataType>
+  generateAccessLevelData?: (data: OmikujiDataType, targetLevel?: AccessLevelType) => OmikujiDataType
   generateJsContent: (configData: string) => string
 }
 
