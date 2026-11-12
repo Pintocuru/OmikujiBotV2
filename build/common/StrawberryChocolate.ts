@@ -1,6 +1,6 @@
 // build/common/StrawberryChocolate.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'StrawberryChocolate',
