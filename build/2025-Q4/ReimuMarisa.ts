@@ -1,6 +1,6 @@
 // build/2025-Q4/ReimuMarisa.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'ReimuMarisa',
@@ -37,7 +37,7 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'ReimuMarisa', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'ReimuMarisa', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
