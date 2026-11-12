@@ -16,8 +16,8 @@
       // DOMContentLoaded で実行。defer との競合なし
       document.addEventListener('DOMContentLoaded', function () {
         OmikujiLoader.run({
-          cssFiles: ['common.css', 'ConfigMaker.css'],
-          jsFiles: ['common.js', 'vendors.js', 'ConfigMaker.js'],
+          cssFiles: ['ConfigMaker.css'],
+          jsFiles: ['ConfigMaker.js'],
           requireOneComme: false,
           mountFn() {
             if (window.OmikujiBot?.mountConfigMaker) {
