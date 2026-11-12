@@ -41,7 +41,6 @@ export interface ProjectConfig {
   banner?: string
   packageRoot: string
   entryPoints: string | Record<string, string> | null
-  addHtmlTemplate: string
   template: TemplateConfig | null
   json?: JsonConfig
   licenseLabel: string
