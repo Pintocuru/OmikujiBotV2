@@ -1,6 +1,6 @@
 // build/2026-Q2/TweetSpikiKR.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'TweetSpikiKR',
@@ -29,7 +29,7 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'TweetSpikiKR', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TweetSpikiKR', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
