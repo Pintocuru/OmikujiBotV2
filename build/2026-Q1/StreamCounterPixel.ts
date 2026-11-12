@@ -1,6 +1,6 @@
 // build/2026-Q1/StreamCounterPixel.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'StreamCounterPixel',
@@ -24,11 +24,10 @@ function getProjects(packageRoot: string): ProjectConfig[] {
 
 // ビルドターゲット
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'StreamCounterPixelOhayou', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  // { project: 'StreamCounterPixelOhayou', type: 'JSON', accessLevel: 'basic' },
-  { project: 'StreamCounterPixelUpVote', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'StreamCounterPixelBlack', type: 'FULL', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
-  { project: 'StreamCounterPixelEva', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterPixelOhayou', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterPixelUpVote', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterPixelBlack', accessLevel: 'adv', sourceProject: 'OmikujiBot' },
+  { project: 'StreamCounterPixelEva', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 
 export default { getProjects, buildTargets }
