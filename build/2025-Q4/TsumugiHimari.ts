@@ -1,6 +1,6 @@
 // build/2025-Q4/TsumugiHimari.ts
 import { createProject } from '../../tools/buildOptions/baseSettings'
-import type { LegacyPackageBuildTarget as PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
+import type { PackageBuildTarget, ProjectConfig, ProjectParams } from '../../tools/viteBuild/types'
 
 const PROJECT = {
   key: 'TsumugiHimari',
@@ -34,8 +34,8 @@ const COLOR_VARIANTS = [''] as const
 
 // ビルドターゲット（両方定義）
 const buildTargets: PackageBuildTarget[] = [
-  { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
-  { project: 'TsumugiHimari', type: 'FULL', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
+  { project: 'TsumugiHimari', accessLevel: 'basic', sourceProject: 'OmikujiBot' },
+  { project: 'TsumugiHimari', accessLevel: 'pro', sourceProject: 'OmikujiBot' },
 ]
 
 // プロジェクト一覧
