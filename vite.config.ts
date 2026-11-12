@@ -2,7 +2,7 @@
 import { defineConfig, mergeConfig, UserConfig } from 'vite'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { createViteAliases } from './tools/viteConfig/CreateViteAliases'
+import { createViteAliases } from './tools/viteConfig/createViteAliases'
 import { baseViteConfig, } from '../../shared/utils/ViteConfig/viteConfigBase'
 import { characterAssetsPlugin } from './tools/viteConfig/characterAssetsPlugin'
 import { soundAssetsPlugin } from './tools/viteConfig/soundAssetsPlugin'
