@@ -1,1 +1,908 @@
-{"meta":{"id":"TweetSpikiKR-2026.06.02-2.14.1","name":"방송용 스피키  TweetSpikiKR","description":"스피키가 시청자에게 인사하는 생성기","version":"2026.06.02-2.14.1","generatorName":"omikuji-bot","generatorVersion":"2.14.1","dataVersion":2.20140013001,"author":"Pintocuru(せすじピンとしてます)","tags":["트릭컬","スピキ","스피키"],"license":"利用規約に従う","url":"https://pintocuru.booth.pm/items/8281303","banner":"https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2026-Q2/TweetSpiki/TweetSpikiKR.webp"},"jsonMerge":[],"comments":{"FirstSagiSpiki":{"id":"FirstSagiSpiki","key":"FirstSagiSpiki","name":"첫방 사기:Spiki","description":"初見詐欺なんてひどいです！","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2026-04-29T02:45:43.914Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#3F51B5","tags":["트릭컬","スピキ","스피키","初見詐欺"],"accessLevel":"basic","omikuji":[{"id":"b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb","key":"b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb","name":"初見詐欺","description":"","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2025-08-16T09:51:49.474Z","order":0,"isEnabled":true,"daisyColor":"primary","editorColor":"#3B82F6","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"thinking","sound":"fail","soundPath":"","message":{"bubble":"<<\n'<<user>>님 첫방 아니에요!',\n'으아아!! 첫방 아니야!',\n'엣!? <<user>>님 첫방이에요!?'\n>>\n","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/aau.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"actionCooldownSeconds":0,"weight":1,"isPriority":false,"criteria":null},{"id":"1767486455920","key":"1767486455920","name":"ホントの初見(1-5回)","description":"","createdAt":"2026-01-04T00:27:35.920Z","updatedAt":"2026-01-04T00:27:35.920Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["FirstSyokenSpiki"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"continue","isCountEvent":false,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":true,"criteria":{"conditions":["count"],"userName":[],"access":[],"gift":[],"syoken":[],"count":{"comparison":"upperBound","unit":"tc","value":5},"comment":[]}}],"ruleType":"comments","trigger":{"conditions":["comment"],"userName":[],"access":[],"gift":[],"comment":["初見(?!さん)","はじめまして","처음\\s?(뵙겠습니다|뵈어요|입니다)|첫\\s?(방문|방)"]},"limits":{"cooldownSeconds":0,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}},"CheckNumberSpiki":{"id":"CheckNumberSpiki","key":"CheckNumberSpiki","name":"댓글 수 표시:Spiki","description":"コメント数の表示","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2026-04-29T02:48:37.458Z","order":3,"isEnabled":true,"daisyColor":"primary","editorColor":"#3F51B5","tags":["트릭컬","スピキ","스피키","コメント数表示"],"accessLevel":"basic","omikuji":[{"id":"4d17c161-f7ce-48a1-a819-863431a8b73c","key":"4d17c161-f7ce-48a1-a819-863431a8b73c","name":"コメント数表示:Spiki","description":"","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2025-08-16T09:51:49.474Z","order":0,"isEnabled":true,"daisyColor":"primary","editorColor":"#3B82F6","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"thinking","sound":"transition","soundPath":"","message":{"bubble":"<<user>>님 [<<tc>>]번이에요!","isToast":true}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/tyowaya.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":false,"criteria":null}],"ruleType":"comments","trigger":{"conditions":["comment"],"userName":[],"access":[],"gift":[],"comment":["^コメント$","^댓글$"]},"limits":{"cooldownSeconds":0,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}},"GiftSpiki":{"id":"GiftSpiki","key":"GiftSpiki","name":"선물:Spiki","description":"配信でのギフト","createdAt":"2025-08-11T15:34:29.297Z","updatedAt":"2026-04-29T02:48:57.003Z","order":4,"isEnabled":true,"daisyColor":"primary","editorColor":"#FF9800","tags":["트릭컬","スピキ","스피키","ギフト"],"accessLevel":"basic","omikuji":[{"id":"7688204f-b7de-4516-bc4d-a7cfb379dfc3","key":"7688204f-b7de-4516-bc4d-a7cfb379dfc3","name":"ギフト","description":"","createdAt":"2025-08-11T15:34:29.297Z","updatedAt":"2025-08-11T15:34:29.297Z","order":0,"isEnabled":true,"daisyColor":"primary","editorColor":"#3B82F6","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"sound","sound":"cash","soundPath":""},{"delaySeconds":0.5,"actionType":"message","characterKey":"spiki","iconKey":"happy","sound":"carnival","soundPath":"","message":{"bubble":"<<user>>님의 기프트 [<<price>>]!","isToast":false}},{"delaySeconds":0.5,"actionType":"sound","sound":"","soundPath":"spiki/uwaaa.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":false,"criteria":null}],"ruleType":"comments","trigger":{"conditions":["gift"],"userName":[],"access":[],"gift":["all"],"comment":[]},"limits":{"cooldownSeconds":0,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}},"FirstSyokenSpiki":{"id":"FirstSyokenSpiki","key":"FirstSyokenSpiki","name":"첫방 판정:Spiki","description":"初見かどうかを見抜きます","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2026-04-29T02:50:25.701Z","order":5,"isEnabled":true,"daisyColor":"primary","editorColor":"#E65100","tags":["트릭컬","スピキ","스피키","初見判定"],"accessLevel":"basic","omikuji":[{"id":"315c1260-131e-44d0-8020-1ab5cd420621","key":"315c1260-131e-44d0-8020-1ab5cd420621","name":"初見","description":"","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2025-08-16T09:51:49.474Z","order":0,"isEnabled":true,"daisyColor":"primary","editorColor":"#3B82F6","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["FirstSyokenSpiki"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":true,"criteria":{"conditions":["syoken"],"userName":[],"access":[],"gift":[],"syoken":["syoken"],"count":{"comparison":"lowerBound","unit":"draws","value":1},"comment":[]}},{"id":"1767509750837","key":"1767509750837","name":"久しぶり","description":"","createdAt":"2026-01-04T06:55:50.837Z","updatedAt":"2026-01-04T06:55:50.837Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"happy","sound":"congrats","soundPath":"","message":{"bubble":"<<\n'<<user>>님 오랜만이에요!',\n'<<user>>님 돌아왔어요!',\n'<<user>>님 또 왔어요!'\n>>","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/tyowaya.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":true,"criteria":{"conditions":["syoken"],"userName":[],"access":[],"gift":[],"syoken":["again"],"count":{"comparison":"lowerBound","unit":"draws","value":1},"comment":[]}},{"id":"1767509789237","key":"1767509789237","name":"こんにちは","description":"","createdAt":"2026-01-04T06:56:29.237Z","updatedAt":"2026-01-04T06:56:29.237Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"happy","sound":"collect","soundPath":"","message":{"bubble":"<<\n'<<user>>님 어서오세요!',\n'<<user>>님 왔어요!',\n'와아! <<user>>님이다!'\n>>","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/tyowaya.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":true,"criteria":{"conditions":["syoken"],"userName":[],"access":[],"gift":[],"syoken":["firstVisit"],"count":{"comparison":"lowerBound","unit":"draws","value":1},"comment":[]}}],"ruleType":"comments","trigger":{"conditions":[],"userName":[],"access":[],"gift":[],"comment":[]},"limits":{"cooldownSeconds":0,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}},"CountStreamSpiki":{"id":"CountStreamSpiki","key":"CountStreamSpiki","name":"코멘트 체크:Spiki","description":"コメントチェック","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2026-04-29T02:51:37.265Z","order":6,"isEnabled":true,"daisyColor":"primary","editorColor":"#E65100","tags":["트릭컬","スピキ","스피키","コメントチェック"],"accessLevel":"basic","omikuji":[{"id":"b5aac496-d7d5-4748-913b-cbcba4e34454","key":"b5aac496-d7d5-4748-913b-cbcba4e34454","name":"配信枠コメント50回","description":"","createdAt":"2025-08-16T09:51:49.474Z","updatedAt":"2025-08-16T09:51:49.474Z","order":0,"isEnabled":true,"daisyColor":"primary","editorColor":"#3B82F6","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"angry","sound":"baseball","soundPath":"","message":{"bubble":"[<<lc>>]번째 댓글은 <<user>>님!","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/aau.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":true,"criteria":{"conditions":["count"],"userName":[],"access":[],"gift":[],"syoken":[],"count":{"comparison":"loop","unit":"lc","value":50},"comment":[]}},{"id":"1767511957448","key":"1767511957448","name":"個人コメント100回","description":"","createdAt":"2026-01-04T07:32:37.448Z","updatedAt":"2026-01-04T07:32:37.448Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"angry","sound":"baseball","soundPath":"","message":{"bubble":"<<user>>님 [<<tc>>]번째 기념이에요!","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/aau.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":true,"criteria":{"conditions":["count"],"userName":[],"access":[],"gift":[],"syoken":[],"count":{"comparison":"loop","unit":"tc","value":100},"comment":[]}}],"ruleType":"comments","trigger":{"conditions":[],"userName":[],"access":[],"gift":[],"comment":[]},"limits":{"cooldownSeconds":0,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}},"B7jf_LO0ciKg4GYU5qtXh":{"id":"yfxqCxssHff4MZzvQh-og","key":"B7jf_LO0ciKg4GYU5qtXh","name":"스피키열심히했는데…","description":"ｽﾋﾟｷｦｲｼﾞﾒﾇﾝﾃﾞ…","createdAt":"2026-04-28T23:41:21.894Z","updatedAt":"2026-04-29T05:41:19.997Z","order":2,"isEnabled":true,"daisyColor":"primary","editorColor":"#3F51B5","tags":["트릭컬","スピキ","스피키"],"accessLevel":"basic","omikuji":[{"id":"9sOk17RN2kxohVww9hOvG","key":"7xXyBvYmUL7ldTfVFOiR9","name":"ｽﾋﾟｷｦｲｼﾞﾒﾇﾝﾃﾞ","description":"","createdAt":"2026-04-28T22:43:12.780Z","updatedAt":"2026-04-28T22:43:12.781Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"sad","sound":"","soundPath":"spiki/nunde.mp3","message":{"bubble":"스피키열심히했는데…!","isToast":false}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"actionCooldownSeconds":2,"weight":1,"isPriority":false,"criteria":null}],"ruleType":"comments","trigger":{"conditions":["comment"],"userName":[],"access":[],"gift":[],"comment":["いじめる","スピッキー","スピキ","すぴき","ｽﾋﾟｷ","스피키","스핔이"]},"limits":{"cooldownSeconds":3,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}}},"timers":{},"metas":{"UpVotePeekSpiki":{"id":"1294df69-4454-4878-8535-dabdb9baf495","key":"UpVotePeekSpiki","name":"좋아요 증가:Spiki","description":"高評価ありがとう！","createdAt":"2026-02-05T01:34:04.746Z","updatedAt":"2026-04-29T02:52:22.131Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#4CAF50","tags":["트릭컬","スピキ","스피키","閲覧数チェック"],"accessLevel":"basic","omikuji":[{"id":"1578ab2f-5b8f-4ca1-8533-7a9aff477371","key":"1d22b839-1139-41cf-8f79-de9fb36e78f2","name":"高評価がピーク時よりも多いとき","description":"","createdAt":"2026-02-05T01:23:18.358Z","updatedAt":"2026-02-05T01:23:18.358Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"happy","sound":"jingle","soundPath":"","message":{"bubble":"와아!<<\n'좋아요다!',\n'좋아요 기뻐!',\n'좋아요 고마워!'\n>>","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/aau.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":false,"criteria":null}],"ruleType":"metas","trigger":{"condition":"upVote","upVote":{"comparison":"greaterThanPeak"},"viewer":{"comparison":"changed","value":0}}}},"reactions":{"ReactionCountSpiki":{"id":"HbKa43WuBvtPwscvSXreu","key":"ReactionCountSpiki","name":"리액션이 많이 눌렸을 때","description":"いっぱい押してね","createdAt":"2026-04-07T13:28:06.041Z","updatedAt":"2026-04-29T02:53:17.370Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#4CAF50","tags":["트릭컬","スピキ","스피키"],"accessLevel":"basic","omikuji":[{"id":"EjxscTtsT59NmXTxIwQi5","key":"kuVhhlOz6J1dw3uzj4Lxb","name":"レベルMAX時","description":"","createdAt":"2026-04-07T13:11:38.292Z","updatedAt":"2026-04-07T13:11:38.292Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"happy","sound":"","soundPath":"spiki/tyowayo.mp3","message":{"bubble":"좋아요～ 좋아요～","isToast":false}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"actionCooldownSeconds":3,"weight":1,"isPriority":false,"criteria":null}],"ruleType":"reaction","trigger":{"platform":"youtube","reactions":["heart","smile","celebrate","surprise","praise"],"comparison":"burstReach","value":1,"triggerLevel":3}}},"actionSets":{"FirstSyokenSpiki":{"id":"1767539629815-molbgp","key":"FirstSyokenSpiki","name":"첫방분:Spiki","description":"初見さんいらっしゃい！","createdAt":"2026-01-04T15:13:49.815Z","updatedAt":"2026-04-29T03:24:01.756Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#E65100","tags":["트릭컬","スピキ","스피키","初見判定"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"message","characterKey":"spiki","iconKey":"happy","sound":"fanfare","soundPath":"","message":{"bubble":"<<\n'첫방분 좋아요～',\n'<<user>>님 어서오세요～',\n'와아! 첫방분이다!'\n>>","isToast":false}},{"delaySeconds":0,"actionType":"sound","sound":"","soundPath":"spiki/tyowayo.mp3"}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}}},"placeholders":{},"characters":{"spiki":{"id":"QeIsCU_X9c8FopkZtczdh","key":"spiki","name":"스피키","description":"스피키 괴롭히지 마…","createdAt":"2026-04-28T23:00:36.620Z","updatedAt":"2026-04-29T02:57:11.510Z","order":1,"isEnabled":true,"daisyColor":"primary","tags":["트릭컬","スピキ","스피키"],"accessLevel":"basic","version":"0.0.0","displayName":"","image":{"default":{"label":"デフォルト(default)","src":["spiki/mouth_1.webp","spiki/eye_1.webp","spiki/body.webp"],"animation":{"type":"tilt","duration":5,"loop":true}},"happy":{"label":"嬉しい(happy)","src":["spiki/eye_2.webp","spiki/mouth_2.webp","spiki/body.webp"],"animation":{"type":"combo","duration":1.5,"loop":true}},"surprised":{"label":"驚き(surprised)","src":["spiki/eye_1.webp","spiki/mouth_2.webp","spiki/body.webp"],"animation":{"type":"rubberBand","duration":2.6,"loop":true}},"sad":{"label":"悲しみ(sad)","src":["spiki/eye_1.webp","spiki/mouth_2.webp","spiki/body.webp"],"animation":{"type":"shake","duration":1.5,"loop":true}},"angry":{"label":"怒り(angry)","src":["spiki/eye_1.webp","spiki/mouth_2.webp","spiki/body.webp"],"animation":{"type":"bounce","duration":1.5,"loop":true}},"thinking":{"label":"考え中(thinking)","src":["spiki/mouth_1.webp","spiki/eye_1.webp","spiki/body.webp"],"animation":{"type":"jello","duration":1.5,"loop":true}}},"color":{"isTheme":true,"daisyUiTheme":"dracula","backFrom":"neutral","backTo":"neutral","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"displayOption":{"mode":"none","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}},"spiki_r":{"id":"nUK5riDylpHET3OFb_WxL","key":"spiki_r","name":"스피키(왼쪽 방향)","description":"스피키 괴롭히지 마…","createdAt":"2026-04-29T02:24:07.533Z","updatedAt":"2026-04-29T02:57:14.047Z","order":2,"isEnabled":true,"daisyColor":"primary","tags":["트릭컬","スピキ","스피키"],"accessLevel":"basic","version":"0.0.0","displayName":"","image":{"default":{"label":"デフォルト(default)","src":["spiki_r/mouth_1.webp","spiki_r/eye_1.webp","spiki_r/body.webp"],"animation":{"type":"tilt","duration":5,"loop":true}},"happy":{"label":"嬉しい(happy)","src":["spiki_r/eye_2.webp","spiki_r/mouth_2.webp","spiki_r/body.webp"],"animation":{"type":"combo","duration":1.5,"loop":true}},"surprised":{"label":"驚き(surprised)","src":["spiki_r/eye_1.webp","spiki_r/mouth_2.webp","spiki_r/body.webp"],"animation":{"type":"rubberBand","duration":2.6,"loop":true}},"sad":{"label":"悲しみ(sad)","src":["spiki_r/eye_1.webp","spiki_r/mouth_2.webp","spiki_r/body.webp"],"animation":{"type":"shake","duration":1.5,"loop":true}},"angry":{"label":"怒り(angry)","src":["spiki_r/eye_1.webp","spiki_r/mouth_2.webp","spiki_r/body.webp"],"animation":{"type":"bounce","duration":1.5,"loop":true}},"thinking":{"label":"考え中(thinking)","src":["spiki_r/mouth_1.webp","spiki_r/eye_1.webp","spiki_r/body.webp"],"animation":{"type":"jello","duration":1.5,"loop":true}}},"color":{"isTheme":true,"daisyUiTheme":"dracula","backFrom":"neutral","backTo":"neutral","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"displayOption":{"mode":"none","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}}},"components":{"conditions":[{"slot":"primary","kind":"flashBanner"}],"enableSecondary":false,"specialSet":null,"commonStyle":{"fontFamily":"kosugiMaru","defaultColor":{"isTheme":true,"daisyUiTheme":"light","backFrom":"primary","backTo":"secondary","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"defaultVoice":{"mode":"comment","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}},"settings":{"bubble":{"showCharacters":{"center":[],"slot1":["spiki"],"slot2":[],"slot3":[],"slot4":[]},"characterSize":32,"bubbleMotionEnter":"slideUp","bubbleTextAnimate":false,"bubbleTextSpeed":50},"flashBanner":{"component":"tweet","label":"","iconSize":40,"displaySeconds":null,"showItemOnRight":false,"defaultCharacterKey":"spiki","defaultMessage":"<<\n'아아우! 구독해 주세요~',\n'동시 시청자[<<viewer>>] / 좋아요[<<upVote>>]',\n'으아아! 댓글 달아 주세요~',\n'댓글 참여 인원 [<<commenter>>]',\n'[<<winner>>님]도 댓글 남겨주셨어요~',\n'구독자[<<follower>>]명~',\n'좋아요 좋아요~',\n'호박이 좋아요~'\n>>","scrollSpeed":60,"scrollReturnMode":"loop"}}},"featureUsage":{"usage":{"comments":"basic","timers":"none","metas":"basic","reactions":"basic","actionSets":"basic","placeholders":"none","characters":"basic"},"components":["bubble","toast","ranking"],"gameScripts":[],"developer":{"licenseVisible":"basic","jsonMergeSettings":"basic","itemSlotEnabled":"basic"}},"settings":{"commentType":"OneComme","soundEnabled":true,"ignoreUserPattern":"__INFO__|__ERROR__","includeExternalComments":false,"uiPlacement":"center","basicDelaySeconds":1,"locale":"ja","licenseKeyHash":"2c26b46b68ffc68ff99b453c1d304134","daisyUiTheme":"dracula","initialCategory":"comments"}}
+{
+  "meta": {
+    "id": "TweetSpikiKR-2026.06.02-2.14.1",
+    "name": "방송용 스피키  TweetSpikiKR",
+    "description": "스피키가 시청자에게 인사하는 생성기",
+    "version": "2026.06.02-2.14.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.14.1",
+    "dataVersion": 2.20140013001,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": ["트릭컬", "スピキ", "스피키"],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/8281303",
+    "banner": "https://raw.githubusercontent.com/Pintocuru/OmikujiBot-Docs/refs/heads/main/2026-Q2/TweetSpiki/TweetSpikiKR.webp"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "FirstSagiSpiki": {
+      "id": "FirstSagiSpiki",
+      "key": "FirstSagiSpiki",
+      "name": "첫방 사기:Spiki",
+      "description": "初見詐欺なんてひどいです！",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-04-29T02:45:43.914Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#3F51B5",
+      "tags": ["트릭컬", "スピキ", "스피키", "初見詐欺"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "key": "b3c8e1aa-aaaf-4330-b1e-6f4d3cfa73cb",
+          "name": "初見詐欺",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "thinking",
+              "sound": "fail",
+              "soundPath": "",
+              "message": {
+                "bubble": "<<\n'<<user>>님 첫방 아니에요!',\n'으아아!! 첫방 아니야!',\n'엣!? <<user>>님 첫방이에요!?'\n>>\n",
+                "isToast": false
+              }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/aau.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "actionCooldownSeconds": 0,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "1767486455920",
+          "key": "1767486455920",
+          "name": "ホントの初見(1-5回)",
+          "description": "",
+          "createdAt": "2026-01-04T00:27:35.920Z",
+          "updatedAt": "2026-01-04T00:27:35.920Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [{ "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["FirstSyokenSpiki"] }],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "continue",
+            "isCountEvent": false,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": ["count"],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": { "comparison": "upperBound", "unit": "tc", "value": 5 },
+            "comment": []
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": ["comment"],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": ["初見(?!さん)", "はじめまして", "처음\\s?(뵙겠습니다|뵈어요|입니다)|첫\\s?(방문|방)"]
+      },
+      "limits": { "cooldownSeconds": 0, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    },
+    "CheckNumberSpiki": {
+      "id": "CheckNumberSpiki",
+      "key": "CheckNumberSpiki",
+      "name": "댓글 수 표시:Spiki",
+      "description": "コメント数の表示",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-04-29T02:48:37.458Z",
+      "order": 3,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#3F51B5",
+      "tags": ["트릭컬", "スピキ", "스피키", "コメント数表示"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "key": "4d17c161-f7ce-48a1-a819-863431a8b73c",
+          "name": "コメント数表示:Spiki",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "thinking",
+              "sound": "transition",
+              "soundPath": "",
+              "message": { "bubble": "<<user>>님 [<<tc>>]번이에요!", "isToast": true }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/tyowaya.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": ["comment"],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": ["^コメント$", "^댓글$"]
+      },
+      "limits": { "cooldownSeconds": 0, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    },
+    "GiftSpiki": {
+      "id": "GiftSpiki",
+      "key": "GiftSpiki",
+      "name": "선물:Spiki",
+      "description": "配信でのギフト",
+      "createdAt": "2025-08-11T15:34:29.297Z",
+      "updatedAt": "2026-04-29T02:48:57.003Z",
+      "order": 4,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FF9800",
+      "tags": ["트릭컬", "スピキ", "스피키", "ギフト"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "key": "7688204f-b7de-4516-bc4d-a7cfb379dfc3",
+          "name": "ギフト",
+          "description": "",
+          "createdAt": "2025-08-11T15:34:29.297Z",
+          "updatedAt": "2025-08-11T15:34:29.297Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": 0, "actionType": "sound", "sound": "cash", "soundPath": "" },
+            {
+              "delaySeconds": 0.5,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "happy",
+              "sound": "carnival",
+              "soundPath": "",
+              "message": { "bubble": "<<user>>님의 기프트 [<<price>>]!", "isToast": false }
+            },
+            { "delaySeconds": 0.5, "actionType": "sound", "sound": "", "soundPath": "spiki/uwaaa.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": { "conditions": ["gift"], "userName": [], "access": [], "gift": ["all"], "comment": [] },
+      "limits": { "cooldownSeconds": 0, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    },
+    "FirstSyokenSpiki": {
+      "id": "FirstSyokenSpiki",
+      "key": "FirstSyokenSpiki",
+      "name": "첫방 판정:Spiki",
+      "description": "初見かどうかを見抜きます",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-04-29T02:50:25.701Z",
+      "order": 5,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#E65100",
+      "tags": ["트릭컬", "スピキ", "스피키", "初見判定"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "key": "315c1260-131e-44d0-8020-1ab5cd420621",
+          "name": "初見",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [{ "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["FirstSyokenSpiki"] }],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": ["syoken"],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": ["syoken"],
+            "count": { "comparison": "lowerBound", "unit": "draws", "value": 1 },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767509750837",
+          "key": "1767509750837",
+          "name": "久しぶり",
+          "description": "",
+          "createdAt": "2026-01-04T06:55:50.837Z",
+          "updatedAt": "2026-01-04T06:55:50.837Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "happy",
+              "sound": "congrats",
+              "soundPath": "",
+              "message": {
+                "bubble": "<<\n'<<user>>님 오랜만이에요!',\n'<<user>>님 돌아왔어요!',\n'<<user>>님 또 왔어요!'\n>>",
+                "isToast": false
+              }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/tyowaya.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": ["syoken"],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": ["again"],
+            "count": { "comparison": "lowerBound", "unit": "draws", "value": 1 },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767509789237",
+          "key": "1767509789237",
+          "name": "こんにちは",
+          "description": "",
+          "createdAt": "2026-01-04T06:56:29.237Z",
+          "updatedAt": "2026-01-04T06:56:29.237Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "happy",
+              "sound": "collect",
+              "soundPath": "",
+              "message": {
+                "bubble": "<<\n'<<user>>님 어서오세요!',\n'<<user>>님 왔어요!',\n'와아! <<user>>님이다!'\n>>",
+                "isToast": false
+              }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/tyowaya.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": ["syoken"],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": ["firstVisit"],
+            "count": { "comparison": "lowerBound", "unit": "draws", "value": 1 },
+            "comment": []
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": { "conditions": [], "userName": [], "access": [], "gift": [], "comment": [] },
+      "limits": { "cooldownSeconds": 0, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    },
+    "CountStreamSpiki": {
+      "id": "CountStreamSpiki",
+      "key": "CountStreamSpiki",
+      "name": "코멘트 체크:Spiki",
+      "description": "コメントチェック",
+      "createdAt": "2025-08-16T09:51:49.474Z",
+      "updatedAt": "2026-04-29T02:51:37.265Z",
+      "order": 6,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#E65100",
+      "tags": ["트릭컬", "スピキ", "스피키", "コメントチェック"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "key": "b5aac496-d7d5-4748-913b-cbcba4e34454",
+          "name": "配信枠コメント50回",
+          "description": "",
+          "createdAt": "2025-08-16T09:51:49.474Z",
+          "updatedAt": "2025-08-16T09:51:49.474Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "editorColor": "#3B82F6",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "angry",
+              "sound": "baseball",
+              "soundPath": "",
+              "message": { "bubble": "[<<lc>>]번째 댓글은 <<user>>님!", "isToast": false }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/aau.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": ["count"],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": { "comparison": "loop", "unit": "lc", "value": 50 },
+            "comment": []
+          }
+        },
+        {
+          "id": "1767511957448",
+          "key": "1767511957448",
+          "name": "個人コメント100回",
+          "description": "",
+          "createdAt": "2026-01-04T07:32:37.448Z",
+          "updatedAt": "2026-01-04T07:32:37.448Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "angry",
+              "sound": "baseball",
+              "soundPath": "",
+              "message": { "bubble": "<<user>>님 [<<tc>>]번째 기념이에요!", "isToast": false }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/aau.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": true,
+          "criteria": {
+            "conditions": ["count"],
+            "userName": [],
+            "access": [],
+            "gift": [],
+            "syoken": [],
+            "count": { "comparison": "loop", "unit": "tc", "value": 100 },
+            "comment": []
+          }
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": { "conditions": [], "userName": [], "access": [], "gift": [], "comment": [] },
+      "limits": { "cooldownSeconds": 0, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    },
+    "B7jf_LO0ciKg4GYU5qtXh": {
+      "id": "yfxqCxssHff4MZzvQh-og",
+      "key": "B7jf_LO0ciKg4GYU5qtXh",
+      "name": "스피키열심히했는데…",
+      "description": "ｽﾋﾟｷｦｲｼﾞﾒﾇﾝﾃﾞ…",
+      "createdAt": "2026-04-28T23:41:21.894Z",
+      "updatedAt": "2026-04-29T05:41:19.997Z",
+      "order": 2,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#3F51B5",
+      "tags": ["트릭컬", "スピキ", "스피키"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "9sOk17RN2kxohVww9hOvG",
+          "key": "7xXyBvYmUL7ldTfVFOiR9",
+          "name": "ｽﾋﾟｷｦｲｼﾞﾒﾇﾝﾃﾞ",
+          "description": "",
+          "createdAt": "2026-04-28T22:43:12.780Z",
+          "updatedAt": "2026-04-28T22:43:12.781Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "sad",
+              "sound": "",
+              "soundPath": "spiki/nunde.mp3",
+              "message": { "bubble": "스피키열심히했는데…!", "isToast": false }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "actionCooldownSeconds": 2,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": ["comment"],
+        "userName": [],
+        "access": [],
+        "gift": [],
+        "comment": ["いじめる", "スピッキー", "スピキ", "すぴき", "ｽﾋﾟｷ", "스피키", "스핔이"]
+      },
+      "limits": { "cooldownSeconds": 3, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    }
+  },
+  "timers": {},
+  "metas": {
+    "UpVotePeekSpiki": {
+      "id": "1294df69-4454-4878-8535-dabdb9baf495",
+      "key": "UpVotePeekSpiki",
+      "name": "좋아요 증가:Spiki",
+      "description": "高評価ありがとう！",
+      "createdAt": "2026-02-05T01:34:04.746Z",
+      "updatedAt": "2026-04-29T02:52:22.131Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#4CAF50",
+      "tags": ["트릭컬", "スピキ", "스피키", "閲覧数チェック"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "1578ab2f-5b8f-4ca1-8533-7a9aff477371",
+          "key": "1d22b839-1139-41cf-8f79-de9fb36e78f2",
+          "name": "高評価がピーク時よりも多いとき",
+          "description": "",
+          "createdAt": "2026-02-05T01:23:18.358Z",
+          "updatedAt": "2026-02-05T01:23:18.358Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "happy",
+              "sound": "jingle",
+              "soundPath": "",
+              "message": { "bubble": "와아!<<\n'좋아요다!',\n'좋아요 기뻐!',\n'좋아요 고마워!'\n>>", "isToast": false }
+            },
+            { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/aau.mp3" }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "metas",
+      "trigger": {
+        "condition": "upVote",
+        "upVote": { "comparison": "greaterThanPeak" },
+        "viewer": { "comparison": "changed", "value": 0 }
+      }
+    }
+  },
+  "reactions": {
+    "ReactionCountSpiki": {
+      "id": "HbKa43WuBvtPwscvSXreu",
+      "key": "ReactionCountSpiki",
+      "name": "리액션이 많이 눌렸을 때",
+      "description": "いっぱい押してね",
+      "createdAt": "2026-04-07T13:28:06.041Z",
+      "updatedAt": "2026-04-29T02:53:17.370Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#4CAF50",
+      "tags": ["트릭컬", "スピキ", "스피키"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "EjxscTtsT59NmXTxIwQi5",
+          "key": "kuVhhlOz6J1dw3uzj4Lxb",
+          "name": "レベルMAX時",
+          "description": "",
+          "createdAt": "2026-04-07T13:11:38.292Z",
+          "updatedAt": "2026-04-07T13:11:38.292Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            {
+              "delaySeconds": 0,
+              "actionType": "message",
+              "characterKey": "spiki",
+              "iconKey": "happy",
+              "sound": "",
+              "soundPath": "spiki/tyowayo.mp3",
+              "message": { "bubble": "좋아요～ 좋아요～", "isToast": false }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "actionCooldownSeconds": 3,
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "reaction",
+      "trigger": {
+        "platform": "youtube",
+        "reactions": ["heart", "smile", "celebrate", "surprise", "praise"],
+        "comparison": "burstReach",
+        "value": 1,
+        "triggerLevel": 3
+      }
+    }
+  },
+  "actionSets": {
+    "FirstSyokenSpiki": {
+      "id": "1767539629815-molbgp",
+      "key": "FirstSyokenSpiki",
+      "name": "첫방분:Spiki",
+      "description": "初見さんいらっしゃい！",
+      "createdAt": "2026-01-04T15:13:49.815Z",
+      "updatedAt": "2026-04-29T03:24:01.756Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#E65100",
+      "tags": ["트릭컬", "スピキ", "스피키", "初見判定"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "message",
+          "characterKey": "spiki",
+          "iconKey": "happy",
+          "sound": "fanfare",
+          "soundPath": "",
+          "message": {
+            "bubble": "<<\n'첫방분 좋아요～',\n'<<user>>님 어서오세요～',\n'와아! 첫방분이다!'\n>>",
+            "isToast": false
+          }
+        },
+        { "delaySeconds": 0, "actionType": "sound", "sound": "", "soundPath": "spiki/tyowayo.mp3" }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    }
+  },
+  "placeholders": {},
+  "characters": {
+    "spiki": {
+      "id": "QeIsCU_X9c8FopkZtczdh",
+      "key": "spiki",
+      "name": "스피키",
+      "description": "스피키 괴롭히지 마…",
+      "createdAt": "2026-04-28T23:00:36.620Z",
+      "updatedAt": "2026-04-29T02:57:11.510Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "tags": ["트릭컬", "スピキ", "스피키"],
+      "accessLevel": "basic",
+      "version": "0.0.0",
+      "displayName": "",
+      "image": {
+        "default": {
+          "label": "デフォルト(default)",
+          "src": ["spiki/mouth_1.webp", "spiki/eye_1.webp", "spiki/body.webp"],
+          "animation": { "type": "tilt", "duration": 5, "loop": true }
+        },
+        "happy": {
+          "label": "嬉しい(happy)",
+          "src": ["spiki/eye_2.webp", "spiki/mouth_2.webp", "spiki/body.webp"],
+          "animation": { "type": "combo", "duration": 1.5, "loop": true }
+        },
+        "surprised": {
+          "label": "驚き(surprised)",
+          "src": ["spiki/eye_1.webp", "spiki/mouth_2.webp", "spiki/body.webp"],
+          "animation": { "type": "rubberBand", "duration": 2.6, "loop": true }
+        },
+        "sad": {
+          "label": "悲しみ(sad)",
+          "src": ["spiki/eye_1.webp", "spiki/mouth_2.webp", "spiki/body.webp"],
+          "animation": { "type": "shake", "duration": 1.5, "loop": true }
+        },
+        "angry": {
+          "label": "怒り(angry)",
+          "src": ["spiki/eye_1.webp", "spiki/mouth_2.webp", "spiki/body.webp"],
+          "animation": { "type": "bounce", "duration": 1.5, "loop": true }
+        },
+        "thinking": {
+          "label": "考え中(thinking)",
+          "src": ["spiki/mouth_1.webp", "spiki/eye_1.webp", "spiki/body.webp"],
+          "animation": { "type": "jello", "duration": 1.5, "loop": true }
+        }
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dracula",
+        "backFrom": "neutral",
+        "backTo": "neutral",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "displayOption": { "mode": "none", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    },
+    "spiki_r": {
+      "id": "nUK5riDylpHET3OFb_WxL",
+      "key": "spiki_r",
+      "name": "스피키(왼쪽 방향)",
+      "description": "스피키 괴롭히지 마…",
+      "createdAt": "2026-04-29T02:24:07.533Z",
+      "updatedAt": "2026-04-29T02:57:14.047Z",
+      "order": 2,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "tags": ["트릭컬", "スピキ", "스피키"],
+      "accessLevel": "basic",
+      "version": "0.0.0",
+      "displayName": "",
+      "image": {
+        "default": {
+          "label": "デフォルト(default)",
+          "src": ["spiki_r/mouth_1.webp", "spiki_r/eye_1.webp", "spiki_r/body.webp"],
+          "animation": { "type": "tilt", "duration": 5, "loop": true }
+        },
+        "happy": {
+          "label": "嬉しい(happy)",
+          "src": ["spiki_r/eye_2.webp", "spiki_r/mouth_2.webp", "spiki_r/body.webp"],
+          "animation": { "type": "combo", "duration": 1.5, "loop": true }
+        },
+        "surprised": {
+          "label": "驚き(surprised)",
+          "src": ["spiki_r/eye_1.webp", "spiki_r/mouth_2.webp", "spiki_r/body.webp"],
+          "animation": { "type": "rubberBand", "duration": 2.6, "loop": true }
+        },
+        "sad": {
+          "label": "悲しみ(sad)",
+          "src": ["spiki_r/eye_1.webp", "spiki_r/mouth_2.webp", "spiki_r/body.webp"],
+          "animation": { "type": "shake", "duration": 1.5, "loop": true }
+        },
+        "angry": {
+          "label": "怒り(angry)",
+          "src": ["spiki_r/eye_1.webp", "spiki_r/mouth_2.webp", "spiki_r/body.webp"],
+          "animation": { "type": "bounce", "duration": 1.5, "loop": true }
+        },
+        "thinking": {
+          "label": "考え中(thinking)",
+          "src": ["spiki_r/mouth_1.webp", "spiki_r/eye_1.webp", "spiki_r/body.webp"],
+          "animation": { "type": "jello", "duration": 1.5, "loop": true }
+        }
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "dracula",
+        "backFrom": "neutral",
+        "backTo": "neutral",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "displayOption": { "mode": "none", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    }
+  },
+  "components": {
+    "conditions": [{ "slot": "primary", "kind": "flashBanner" }],
+    "enableSecondary": false,
+    "specialSet": null,
+    "commonStyle": {
+      "fontFamily": "kosugiMaru",
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "light",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    },
+    "settings": {
+      "bubble": {
+        "showCharacters": { "center": [], "slot1": ["spiki"], "slot2": [], "slot3": [], "slot4": [] },
+        "characterSize": 32,
+        "bubbleMotionEnter": "slideUp",
+        "bubbleTextAnimate": false,
+        "bubbleTextSpeed": 50
+      },
+      "flashBanner": {
+        "component": "tweet",
+        "label": "",
+        "iconSize": 40,
+        "displaySeconds": null,
+        "showItemOnRight": false,
+        "defaultCharacterKey": "spiki",
+        "defaultMessage": "<<\n'아아우! 구독해 주세요~',\n'동시 시청자[<<viewer>>] / 좋아요[<<upVote>>]',\n'으아아! 댓글 달아 주세요~',\n'댓글 참여 인원 [<<commenter>>]',\n'[<<winner>>님]도 댓글 남겨주셨어요~',\n'구독자[<<follower>>]명~',\n'좋아요 좋아요~',\n'호박이 좋아요~'\n>>",
+        "scrollSpeed": 60,
+        "scrollReturnMode": "loop"
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "none",
+      "metas": "basic",
+      "reactions": "basic",
+      "actionSets": "basic",
+      "placeholders": "none",
+      "characters": "basic"
+    },
+    "components": ["bubble", "toast", "ranking"],
+    "gameScripts": [],
+    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "basic", "itemSlotEnabled": "basic" }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "soundEnabled": true,
+    "ignoreUserPattern": "__INFO__|__ERROR__",
+    "includeExternalComments": false,
+    "uiPlacement": "center",
+    "basicDelaySeconds": 1,
+    "locale": "ja",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "daisyUiTheme": "dracula",
+    "initialCategory": "comments"
+  }
+}

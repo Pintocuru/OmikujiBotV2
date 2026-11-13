@@ -1,1 +1,89 @@
-{"meta":{"id":"T-JZCNdzt5WwP5QSRIUKI","name":"unknown","description":"","version":"0.0.1","generatorName":"omikuji-bot","generatorVersion":"2.14.2-beta1","dataVersion":2.20140022001,"author":"Pintocuru","tags":[],"license":"CC-BY 4.0"},"jsonMerge":[],"comments":{},"timers":{},"metas":{},"reactions":{},"actionSets":{},"placeholders":{},"characters":{},"components":{"conditions":[{"slot":"extra","kind":"GiftRanking"}],"enableSecondary":true,"specialSet":null,"commonStyle":{"fontFamily":"kaiseiDecol","defaultColor":{"isTheme":true,"daisyUiTheme":"bumblebee","backFrom":"info","backTo":"info","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"defaultVoice":{"mode":"comment","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}},"settings":{"GiftRanking":{"component":"grid","color":"bumblebee","rankingLimit":1,"sortOrder":"high","minimumAmount":0,"iconSize":256,"displayOptions":["avatar"]}}},"featureUsage":{"usage":{"comments":"none","timers":"none","metas":"none","reactions":"none","actionSets":"none","placeholders":"none","characters":"none"},"components":["bubble","toast","flashBanner","liveClock","ranking","winnerGroup","deadAir","flightSeat","counter","streamCounter","socialRoster"],"gameScripts":["WinnerGroup"],"developer":{"licenseVisible":"basic","jsonMergeSettings":"none","itemSlotEnabled":"basic"}},"settings":{"commentType":"OneComme","soundEnabled":false,"ignoreUserPattern":"__INFO__","includeExternalComments":false,"uiPlacement":"center","basicDelaySeconds":0,"locale":"ja","licenseKeyHash":"2c26b46b68ffc68ff99b453c1d304134","daisyUiTheme":"dracula","initialCategory":"components"}}
+{
+  "meta": {
+    "id": "T-JZCNdzt5WwP5QSRIUKI",
+    "name": "unknown",
+    "description": "",
+    "version": "0.0.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.14.2-beta1",
+    "dataVersion": 2.20140022001,
+    "author": "Pintocuru",
+    "tags": [],
+    "license": "CC-BY 4.0"
+  },
+  "jsonMerge": [],
+  "comments": {},
+  "timers": {},
+  "metas": {},
+  "reactions": {},
+  "actionSets": {},
+  "placeholders": {},
+  "characters": {},
+  "components": {
+    "conditions": [{ "slot": "extra", "kind": "GiftRanking" }],
+    "enableSecondary": true,
+    "specialSet": null,
+    "commonStyle": {
+      "fontFamily": "kaiseiDecol",
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "bumblebee",
+        "backFrom": "info",
+        "backTo": "info",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    },
+    "settings": {
+      "GiftRanking": {
+        "component": "grid",
+        "color": "bumblebee",
+        "rankingLimit": 1,
+        "sortOrder": "high",
+        "minimumAmount": 0,
+        "iconSize": 256,
+        "displayOptions": ["avatar"]
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "none",
+      "timers": "none",
+      "metas": "none",
+      "reactions": "none",
+      "actionSets": "none",
+      "placeholders": "none",
+      "characters": "none"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "flashBanner",
+      "liveClock",
+      "ranking",
+      "winnerGroup",
+      "deadAir",
+      "flightSeat",
+      "counter",
+      "streamCounter",
+      "socialRoster"
+    ],
+    "gameScripts": ["WinnerGroup"],
+    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "none", "itemSlotEnabled": "basic" }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "soundEnabled": false,
+    "ignoreUserPattern": "__INFO__",
+    "includeExternalComments": false,
+    "uiPlacement": "center",
+    "basicDelaySeconds": 0,
+    "locale": "ja",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "daisyUiTheme": "dracula",
+    "initialCategory": "components"
+  }
+}

@@ -8,10 +8,7 @@
     "generatorVersion": "2.9.0-beta4",
     "dataVersion": 2.20090002004,
     "author": "Pintocuru(せすじピンとしてます)",
-    "tags": [
-      "バレンタイン・カップリング",
-      "ラッキーメンバーズ"
-    ],
+    "tags": ["バレンタイン・カップリング", "ラッキーメンバーズ"],
     "license": "CC-BY 4.0",
     "url": "https://pintocuru.booth.pm/items/7432682",
     "banner": ""
@@ -28,9 +25,7 @@
       "order": 1,
       "isEnabled": true,
       "editorColor": "#CE93D8",
-      "tags": [
-        "ラッキーメンバーズ"
-      ],
+      "tags": ["ラッキーメンバーズ"],
       "accessLevel": "basic",
       "omikuji": [
         {
@@ -69,20 +64,11 @@
       ],
       "ruleType": "comments",
       "trigger": {
-        "conditions": [
-          "comment"
-        ],
+        "conditions": ["comment"],
         "userName": [],
         "access": [],
         "gift": [],
-        "comment": [
-          "^カップ",
-          "^かっぷ",
-          "^coupling",
-          "^ペア",
-          "^ぺあ",
-          "^pear"
-        ]
+        "comment": ["^カップ", "^かっぷ", "^coupling", "^ペア", "^ぺあ", "^pear"]
       },
       "limits": {
         "cooldownSeconds": 3,
@@ -123,13 +109,7 @@
     "settings": {
       "bubble": {
         "showCharacters": {
-          "center": [
-            "chocolate",
-            "cafelatte",
-            "honjoFox",
-            "omiken",
-            "omiken_2"
-          ],
+          "center": ["chocolate", "cafelatte", "honjoFox", "omiken", "omiken_2"],
           "slot1": [],
           "slot2": [],
           "slot3": [],
@@ -146,9 +126,7 @@
         "showThumbnail": []
       },
       "ranking": {
-        "targetScriptKeys": [
-          "basicList"
-        ],
+        "targetScriptKeys": ["basicList"],
         "title": "🍉スイカランキング🍉",
         "color": "lofi",
         "limit": 5,
@@ -196,14 +174,8 @@
       "placeholders": "none",
       "characters": "none"
     },
-    "components": [
-      "bubble",
-      "toast",
-      "winnerGroup"
-    ],
-    "gameScripts": [
-      "WinnerGroup"
-    ],
+    "components": ["bubble", "toast", "winnerGroup"],
+    "gameScripts": ["WinnerGroup"],
     "developer": {
       "licenseVisible": "basic",
       "jsonMergeSettings": "none"

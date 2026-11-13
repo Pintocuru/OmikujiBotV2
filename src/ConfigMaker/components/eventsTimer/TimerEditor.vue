@@ -3,7 +3,7 @@
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">
     <GlobalCharacterChanger category="timers" />
-     <IconKeyChanger category="timers" />  
+    <IconKeyChanger category="timers" />
   </div>
 
   <!-- タブ部分 -->

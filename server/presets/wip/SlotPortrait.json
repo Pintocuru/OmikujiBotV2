@@ -1,1 +1,1275 @@
-{"meta":{"id":"mT2gUSh9IzRVXDwfxznC3","name":"unknown","description":"","version":"0.0.1","generatorName":"omikuji-bot","generatorVersion":"2.12.0-beta19","dataVersion":2.20120002019,"author":"Pintocuru","tags":[],"license":"CC-BY 4.0"},"jsonMerge":[],"comments":{"SlotPortrait":{"id":"MghuCcrvOiG_RNywRiRwW","key":"SlotPortrait","name":"イラストガチャメーカー","description":"「どりんくる」を使ったサンプルです。","createdAt":"2026-04-08T05:38:54.159Z","updatedAt":"2026-04-15T12:27:22.253Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#4CAF50","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","omikuji":[{"id":"W9RX35XtjzkouWjxRMAE1","key":"W9RX35XtjzkouWjxRMAE1","name":"darjeeling","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_normal"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"darjeeling","sound":"","message":{"bubble":"紅茶兄弟 ダージリン\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":5,"isPriority":false,"criteria":null},{"id":"h5CitD9vpLS8jFy70p8N6","key":"h5CitD9vpLS8jFy70p8N6","name":"dimbula","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_normal"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"dimbula","sound":"","message":{"bubble":"紅茶兄弟 ディンブラ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":5,"isPriority":false,"criteria":null},{"id":"U8L4IJDATuaJes8XKXewM","key":"U8L4IJDATuaJes8XKXewM","name":"chai","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_normal"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"chai","sound":"","message":{"bubble":"チャイ＝マグカップ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":5,"isPriority":false,"criteria":null},{"id":"EsUErWW9_SDQD1kYciHr9","key":"EsUErWW9_SDQD1kYciHr9","name":"mamono","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_normal"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"mamono","sound":"","message":{"bubble":"マモノ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":5,"isPriority":false,"criteria":null},{"id":"EvAbXvZlvjRe6JUtApDKU","key":"EvAbXvZlvjRe6JUtApDKU","name":"mio","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_normal"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"mio","sound":"","message":{"bubble":"ミオ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":5,"isPriority":false,"criteria":null},{"id":"ijq9vbvr737PGg0g8cAVU","key":"ijq9vbvr737PGg0g8cAVU","name":"cafelatte","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_Rare"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"cafelatte","sound":"","message":{"bubble":"カペラテ＝フロート\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}},{"delaySeconds":4,"actionType":"actionSet","actionSetKeys":["result_rare"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":4,"isPriority":false,"criteria":null},{"id":"H2tdthB11UO5VZK5Z1BJ6","key":"H2tdthB11UO5VZK5Z1BJ6","name":"cora","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_Rare"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"cora","sound":"","message":{"bubble":"コーラ＝フロート\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}},{"delaySeconds":4,"actionType":"actionSet","actionSetKeys":["result_rare"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":4,"isPriority":false,"criteria":null},{"id":"uPKzYAW74xegny0AKGOWR","key":"uPKzYAW74xegny0AKGOWR","name":"yoggle","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_Rare"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"yoggle","sound":"","message":{"bubble":"ヨーグル＝ソース\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}},{"delaySeconds":4,"actionType":"actionSet","actionSetKeys":["result_rare"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":4,"isPriority":false,"criteria":null},{"id":"mK-zJdXnTRWffvzuieg4K","key":"mK-zJdXnTRWffvzuieg4K","name":"chocolate","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_SR"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"chocolate","sound":"","message":{"bubble":"ストロベリーショコラ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}},{"delaySeconds":4,"actionType":"actionSet","actionSetKeys":["result_SR"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":3,"isPriority":false,"criteria":null},{"id":"eEVBUDc9OlzYh9YY9LAJ1","key":"eEVBUDc9OlzYh9YY9LAJ1","name":"milk","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_SR"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"milk","sound":"","message":{"bubble":"ミルク＝トーフ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}},{"delaySeconds":4,"actionType":"actionSet","actionSetKeys":["result_SR"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":3,"isPriority":false,"criteria":null},{"id":"-VZLG-k3hZR0RPK0Pic3M","key":"-VZLG-k3hZR0RPK0Pic3M","name":"syrup","description":"","createdAt":"2025-09-13T23:27:05.003Z","updatedAt":"2025-09-13T23:27:05.003Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":-1,"actionType":"actionSet","actionSetKeys":["Yokoku_SSR"]},{"delaySeconds":1,"actionType":"message","characterKey":"SlotPortrait","iconKey":"syrup","sound":"","message":{"bubble":"ブルーベリーシロップ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}","isToast":true}},{"delaySeconds":4,"actionType":"actionSet","actionSetKeys":["result_SSR"]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":""},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":2,"isPriority":false,"criteria":null}],"ruleType":"comments","trigger":{"conditions":[],"userName":[],"access":["moderator","owner"],"gift":["all"],"comment":[""]},"limits":{"cooldownSeconds":0,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}}},"timers":{},"metas":{},"reactions":{},"actionSets":{"dark_chance":{"id":"pst4y1Tu1AZEOMHb9axPE","key":"dark_chance","name":"予告:文字 チャーンス","description":"魂のルフラン","createdAt":"2026-04-15T07:09:23.175Z","updatedAt":"2026-04-15T11:54:33.088Z","order":7,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_cha","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_maybe":{"id":"xFlqywBdh4dsjVLuniRV2","key":"dark_maybe","name":"予告:文字 まさか！","description":"暴走…？","createdAt":"2026-04-15T07:08:07.515Z","updatedAt":"2026-04-15T11:54:33.088Z","order":6,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_may","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"none":{"id":"vNvEKQFLHCvJCU4nO-OBz","key":"none","name":"予告:なし(ダミー)","description":"","createdAt":"2026-04-15T07:02:53.664Z","updatedAt":"2026-04-15T12:32:14.686Z","order":5,"isEnabled":true,"daisyColor":"primary","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_gekiatsu":{"id":"l7wpEllkPCxarIx5sWDDa","key":"dark_gekiatsu","name":"予告:文字 激アツ","description":"激アツと申したか！","createdAt":"2026-04-15T07:10:52.927Z","updatedAt":"2026-04-15T11:54:33.088Z","order":8,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_gek","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_god":{"id":"YHabKW66ibprrfy0sKNLB","key":"dark_god","name":"予告:文字 降臨","description":"[GOD][GOD][GOD]","createdAt":"2026-04-15T07:10:57.360Z","updatedAt":"2026-04-15T11:54:33.088Z","order":9,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_god","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_uchimura":{"id":"AZMQ7nTXAKWyaeD4hdfg5","key":"dark_uchimura","name":"予告:文字 これは！","description":"違います。","createdAt":"2026-04-15T07:10:58.741Z","updatedAt":"2026-04-15T11:54:33.088Z","order":10,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_uch","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_sugoi":{"id":"0HsQ4UFRxS11yKD5f6Dut","key":"dark_sugoi","name":"予告:文字 すごい！","description":"あぁん♡","createdAt":"2026-04-15T07:12:22.417Z","updatedAt":"2026-04-15T11:54:33.089Z","order":11,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_sug","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_Ninomiya":{"id":"eMyCXaGLcK9uL0xRRaY67","key":"dark_Ninomiya","name":"予告:文字 我、SSRぞ?","description":"あれー？新人俳優ごときが俺にそんな口きいていいのかなー？","createdAt":"2026-04-15T07:12:24.006Z","updatedAt":"2026-04-15T11:54:33.089Z","order":12,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_Nin","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_FriedRice":{"id":"rm05s7B4YanT4QKUfKp_E","key":"dark_FriedRice","name":"予告:文字 チャーハン","description":"ニニフ","createdAt":"2026-04-15T07:12:25.385Z","updatedAt":"2026-04-15T11:54:33.089Z","order":13,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_Fri","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_TenkaHubu":{"id":"aVUeC7tU1PQYu0U3PZn2-","key":"dark_TenkaHubu","name":"予告:文字 いま視聴をやめると後悔するでござるよ","description":"ちくわ","createdAt":"2026-04-15T07:12:26.526Z","updatedAt":"2026-04-15T11:54:33.089Z","order":14,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_Ten","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"dark_subscription":{"id":"a9dbx-tsvQQ7s8Xke0_cI","key":"dark_subscription","name":"予告:文字 今のうちにチャンネル登録と高評価、動画のハイプ、サブスクライブ、ニコニ広告、SNS のリツイート、いいねをお願いします！","description":"お願いします!","createdAt":"2026-04-15T07:29:48.077Z","updatedAt":"2026-04-15T11:54:33.089Z","order":15,"isEnabled":true,"daisyColor":"primary","editorColor":"#FFCC80","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"dark_sub","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"result_rare":{"id":"O4bEeVpQm6lkTmLz7EQzY","key":"result_rare","name":"result: レア出現","description":"","createdAt":"2026-04-15T07:32:52.766Z","updatedAt":"2026-04-15T11:54:33.089Z","order":16,"isEnabled":true,"daisyColor":"primary","editorColor":"#CE93D8","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["result_bg"]},{"delaySeconds":0.1,"actionType":"wordParty","wordPartyId":"result_ra","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"result_SSR":{"id":"I5a7vO1lwlEHDwdrfaG70","key":"result_SSR","name":"result: SSR出現","description":"","createdAt":"2026-04-15T07:33:56.117Z","updatedAt":"2026-04-15T11:54:33.089Z","order":18,"isEnabled":true,"daisyColor":"primary","editorColor":"#CE93D8","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["result_bg"]},{"delaySeconds":0.1,"actionType":"wordParty","wordPartyId":"result_SS","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"result_SR":{"id":"PIevdjL5MEtuA9kxiOv8o","key":"result_SR","name":"result: SR出現","description":"","createdAt":"2026-04-15T07:33:54.691Z","updatedAt":"2026-04-15T11:54:33.089Z","order":17,"isEnabled":true,"daisyColor":"primary","editorColor":"#CE93D8","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["result_bg"]},{"delaySeconds":0.1,"actionType":"wordParty","wordPartyId":"result_SR","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"result_bg":{"id":"8zfcp25Q-in6ZJ1O1doIy","key":"result_bg","name":"result: 背景","description":"","createdAt":"2026-04-15T07:37:01.350Z","updatedAt":"2026-04-15T11:54:33.089Z","order":19,"isEnabled":true,"daisyColor":"primary","editorColor":"#CE93D8","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"result_bg","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"runby_heart_3":{"id":"EYekDhOSgZEI8F88ikkhd","key":"runby_heart_3","name":"固定表示:ハート♡3個","description":"","createdAt":"2026-04-15T10:40:18.329Z","updatedAt":"2026-04-15T11:54:33.089Z","order":20,"isEnabled":true,"daisyColor":"primary","editorColor":"#80DEEA","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"run_hea_R","wordParty":""},{"delaySeconds":0.1,"actionType":"wordParty","wordPartyId":"run_hea_L","wordParty":""},{"delaySeconds":0.2,"actionType":"wordParty","wordPartyId":"run_hea_R","wordParty":""}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"runby_heart_20":{"id":"RJdlLHmu2YKn9K7h43GV2","key":"runby_heart_20","name":"固定表示:ハート♡20個","description":"","createdAt":"2026-04-15T10:42:43.678Z","updatedAt":"2026-04-15T11:54:33.090Z","order":22,"isEnabled":true,"daisyColor":"primary","editorColor":"#80DEEA","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["runby_heart_10"]},{"delaySeconds":0.6,"actionType":"wordParty","wordPartyId":"run_hea_R","wordParty":"","repeat":3},{"delaySeconds":0.7,"actionType":"wordParty","wordPartyId":"run_hea_L","wordParty":"","repeat":4},{"delaySeconds":0.8,"actionType":"wordParty","wordPartyId":"run_hea_R","wordParty":"","repeat":3}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"runby_heart_10":{"id":"UGZkYk6QirizxLTPAA6ep","key":"runby_heart_10","name":"固定表示:ハート♡10個","description":"","createdAt":"2026-04-15T10:43:03.921Z","updatedAt":"2026-04-15T11:54:33.090Z","order":21,"isEnabled":true,"daisyColor":"primary","editorColor":"#80DEEA","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["runby_heart_3"]},{"delaySeconds":0.3,"actionType":"wordParty","wordPartyId":"run_hea_L","wordParty":"","repeat":2},{"delaySeconds":0.4,"actionType":"wordParty","wordPartyId":"run_hea_R","wordParty":"","repeat":2},{"delaySeconds":0.5,"actionType":"wordParty","wordPartyId":"run_hea_L","wordParty":"","repeat":3}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"fall_star_3":{"id":"TAGAeilu0ncZjrJAtcamH","key":"fall_star_3","name":"落下物:星🌟3個","description":"","createdAt":"2026-04-15T11:40:05.423Z","updatedAt":"2026-04-15T11:54:33.090Z","order":23,"isEnabled":true,"daisyColor":"primary","editorColor":"#EF9A9A","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":3}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"fall_star_10":{"id":"5vtVBWpOpIqvdr6oAsnXt","key":"fall_star_10","name":"落下物:星🌟10個","description":"","createdAt":"2026-04-15T11:42:53.873Z","updatedAt":"2026-04-15T11:54:33.090Z","order":24,"isEnabled":true,"daisyColor":"primary","editorColor":"#EF9A9A","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["fall_star_3"]},{"delaySeconds":0.5,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":3},{"delaySeconds":0.7,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":4}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"fall_star_20":{"id":"4LnNnCSaqpoCp-X9GL5pG","key":"fall_star_20","name":"落下物:星🌟20個","description":"","createdAt":"2026-04-15T11:44:53.798Z","updatedAt":"2026-04-15T11:54:33.090Z","order":25,"isEnabled":true,"daisyColor":"primary","editorColor":"#EF9A9A","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":["fall_star_10"]},{"delaySeconds":1,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":2},{"delaySeconds":1.2,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":2},{"delaySeconds":1.4,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":2},{"delaySeconds":1.6,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":2},{"delaySeconds":1.8,"actionType":"wordParty","wordPartyId":"fall_sta","wordParty":"","repeat":2}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"Yokoku_normal":{"id":"t64UiEoSD7mdW5XLmBa3v","key":"Yokoku_normal","name":"N予告","description":"レアリティ:N の演出です","createdAt":"2026-04-15T07:01:40.421Z","updatedAt":"2026-04-15T11:54:33.091Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#9E9E9E","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":[{"weight":50,"content":"none"},{"weight":10,"content":"dark_maybe"},{"weight":4,"content":"dark_chance"},{"weight":10,"content":"dark_uchimura"},{"weight":10,"content":"runby_heart_3"},{"weight":4,"content":"runby_heart_10"},{"weight":10,"content":"fall_star_3"},{"weight":2,"content":"fall_star_10"}]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"Yokoku_Rare":{"id":"2jbJY6Cdo6YyXabHhL7at","key":"Yokoku_Rare","name":"R予告","description":"レアリティ:R の演出です","createdAt":"2026-04-15T11:53:20.803Z","updatedAt":"2026-04-15T11:59:35.870Z","order":2,"isEnabled":true,"daisyColor":"primary","editorColor":"#9E9E9E","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":[{"weight":20,"content":"none"},{"weight":5,"content":"dark_maybe"},{"weight":15,"content":"dark_chance"},{"weight":5,"content":"runby_heart_3"},{"weight":15,"content":"runby_heart_10"},{"weight":5,"content":"fall_star_3"},{"weight":15,"content":"fall_star_10"},{"weight":2,"content":"dark_gekiatsu"},{"weight":2,"content":"runby_heart_20"},{"weight":2,"content":"fall_star_20"},{"weight":14,"content":"dark_sugoi"}]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"Yokoku_SR":{"id":"lXFh1Jyxy1bQ-IVJUjP2V","key":"Yokoku_SR","name":"SR予告","description":"レアリティ:N の演出です","createdAt":"2026-04-15T11:54:16.152Z","updatedAt":"2026-04-15T12:05:21.356Z","order":3,"isEnabled":true,"daisyColor":"primary","editorColor":"#9E9E9E","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":[{"weight":10,"content":"none"},"dark_maybe",{"weight":15,"content":"dark_chance"},"runby_heart_3",{"weight":15,"content":"runby_heart_10"},"fall_star_3",{"weight":16,"content":"fall_star_10"},{"weight":10,"content":"dark_gekiatsu"},{"weight":10,"content":"runby_heart_20"},{"weight":10,"content":"fall_star_20"},{"weight":11,"content":"dark_sugoi"}]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}},"Yokoku_SSR":{"id":"Ic6QrZgGMGf86v_5Il21O","key":"Yokoku_SSR","name":"SSR予告","description":"レアリティ:N の演出です","createdAt":"2026-04-15T11:54:18.607Z","updatedAt":"2026-04-15T12:12:41.181Z","order":4,"isEnabled":true,"daisyColor":"primary","editorColor":"#9E9E9E","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"actionSet","actionSetKeys":[{"weight":5,"content":"none"},"dark_maybe","dark_chance",{"weight":6,"content":"dark_uchimura"},"runby_heart_3",{"weight":2,"content":"runby_heart_10"},"fall_star_3",{"weight":2,"content":"fall_star_10"},{"weight":20,"content":"dark_gekiatsu"},{"weight":6,"content":"dark_god"},{"weight":2,"content":"dark_FriedRice"},{"weight":2,"content":"dark_TenkaHubu"},{"weight":11,"content":"dark_subscription"},{"weight":20,"content":"runby_heart_20"},{"weight":20,"content":"fall_star_20"}]}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}}}},"placeholders":{},"characters":{"SlotPortrait":{"id":"uogU0b5jyvspaGnEP9Rg8","key":"SlotPortrait","name":"イラストガチャメーカー","description":"600x800(3:4)のイラストを想定しています。","createdAt":"2026-04-10T05:24:11.525Z","updatedAt":"2026-04-13T04:54:19.418Z","order":1,"isEnabled":true,"daisyColor":"primary","tags":["コメントスピン","イラストガチャメーカー"],"accessLevel":"basic","version":"0.0.0","url":"https://pintocuru.booth.pm/","displayName":"","image":{"frame_n":{"label":"frame_n_600x800","src":["SlotPortrait/frame_n.webp"]},"frame_r":{"label":"frame_r_600x800","src":["SlotPortrait/frame_r.webp"]},"frame_sr":{"label":"frame_sr_600x800","src":["SlotPortrait/frame_sr.webp"]},"frame_ssr":{"label":"frame_ssr_600x800","src":["SlotPortrait/frame_ssr.webp"]},"drinkuru":{"label":"drinkuru","src":["SlotPortrait/drinkuru.webp"]},"darjeeling":{"label":"darjeeling","src":["SlotPortrait/frame_n.webp","SlotPortrait/darjeeling.webp"]},"chai":{"label":"chai","src":["SlotPortrait/frame_n.webp","SlotPortrait/chai.webp"]},"dimbula":{"label":"dimbula","src":["SlotPortrait/frame_n.webp","SlotPortrait/dimbula.webp"]},"mamono":{"label":"mamono","src":["SlotPortrait/frame_n.webp","SlotPortrait/mamono.webp"]},"mio":{"label":"mio","src":["SlotPortrait/frame_n.webp","SlotPortrait/mio.webp"]},"cora":{"label":"cora","src":["SlotPortrait/frame_r.webp","SlotPortrait/cora.webp"]},"cafelatte":{"label":"capelatte","src":["SlotPortrait/frame_r.webp","SlotPortrait/cafelatte.webp"]},"yoggle":{"label":"yoggle","src":["SlotPortrait/frame_r.webp","SlotPortrait/yoggle.webp"]},"chocolate":{"label":"chocolate","src":["SlotPortrait/frame_sr.webp","SlotPortrait/chocolate.webp"]},"milk":{"label":"milk","src":["SlotPortrait/frame_sr.webp","SlotPortrait/milk.webp"]},"syrup":{"label":"syrup","src":["SlotPortrait/frame_ssr.webp","SlotPortrait/syrup.webp"]}},"color":{"isTheme":true,"daisyUiTheme":"pastel","backFrom":"primary","backTo":"primary","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"displayOption":{"mode":"none","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}}},"components":{"conditions":[{"slot":"primary","kind":"commentSpin"}],"enableSecondary":false,"specialSet":null,"commonStyle":{"fontFamily":"default","defaultColor":{"isTheme":true,"daisyUiTheme":"light","backFrom":"primary","backTo":"secondary","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"defaultVoice":{"mode":"comment","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}},"settings":{"commentSpin":{"component":"popup","animation":"vertical","size":{"width":300,"height":400},"logoPath":"SlotPortrait/drinkuru.webp"}}},"featureUsage":{"usage":{"comments":"basic","timers":"none","metas":"none","reactions":"basic","actionSets":"basic","placeholders":"none","characters":"basic"},"components":["bubble","toast","flashBanner","liveClock","ranking","winnerGroup","deadAir","flightSeat","counter","streamCounter","socialRoster"],"gameScripts":[],"developer":{"licenseVisible":"basic","jsonMergeSettings":"none","itemSlotEnabled":"basic"}},"settings":{"commentType":"OneComme","soundEnabled":true,"ignoreUserPattern":"__INFO__","includeExternalComments":true,"uiPlacement":"center","locale":"ja","licenseKeyHash":"2c26b46b68ffc68ff99b453c1d304134","daisyUiTheme":"light","initialCategory":"components"}}
+{
+  "meta": {
+    "id": "mT2gUSh9IzRVXDwfxznC3",
+    "name": "unknown",
+    "description": "",
+    "version": "0.0.1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.12.0-beta19",
+    "dataVersion": 2.20120002019,
+    "author": "Pintocuru",
+    "tags": [],
+    "license": "CC-BY 4.0"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "SlotPortrait": {
+      "id": "MghuCcrvOiG_RNywRiRwW",
+      "key": "SlotPortrait",
+      "name": "イラストガチャメーカー",
+      "description": "「どりんくる」を使ったサンプルです。",
+      "createdAt": "2026-04-08T05:38:54.159Z",
+      "updatedAt": "2026-04-15T12:27:22.253Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#4CAF50",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "W9RX35XtjzkouWjxRMAE1",
+          "key": "W9RX35XtjzkouWjxRMAE1",
+          "name": "darjeeling",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_normal"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "darjeeling",
+              "sound": "",
+              "message": {
+                "bubble": "紅茶兄弟 ダージリン\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "h5CitD9vpLS8jFy70p8N6",
+          "key": "h5CitD9vpLS8jFy70p8N6",
+          "name": "dimbula",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_normal"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "dimbula",
+              "sound": "",
+              "message": {
+                "bubble": "紅茶兄弟 ディンブラ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "U8L4IJDATuaJes8XKXewM",
+          "key": "U8L4IJDATuaJes8XKXewM",
+          "name": "chai",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_normal"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "chai",
+              "sound": "",
+              "message": {
+                "bubble": "チャイ＝マグカップ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "EsUErWW9_SDQD1kYciHr9",
+          "key": "EsUErWW9_SDQD1kYciHr9",
+          "name": "mamono",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_normal"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "mamono",
+              "sound": "",
+              "message": {
+                "bubble": "マモノ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "EvAbXvZlvjRe6JUtApDKU",
+          "key": "EvAbXvZlvjRe6JUtApDKU",
+          "name": "mio",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_normal"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "mio",
+              "sound": "",
+              "message": {
+                "bubble": "ミオ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 5,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "ijq9vbvr737PGg0g8cAVU",
+          "key": "ijq9vbvr737PGg0g8cAVU",
+          "name": "cafelatte",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_Rare"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "cafelatte",
+              "sound": "",
+              "message": {
+                "bubble": "カペラテ＝フロート\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            },
+            { "delaySeconds": 4, "actionType": "actionSet", "actionSetKeys": ["result_rare"] }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 4,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "H2tdthB11UO5VZK5Z1BJ6",
+          "key": "H2tdthB11UO5VZK5Z1BJ6",
+          "name": "cora",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_Rare"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "cora",
+              "sound": "",
+              "message": {
+                "bubble": "コーラ＝フロート\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            },
+            { "delaySeconds": 4, "actionType": "actionSet", "actionSetKeys": ["result_rare"] }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 4,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "uPKzYAW74xegny0AKGOWR",
+          "key": "uPKzYAW74xegny0AKGOWR",
+          "name": "yoggle",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_Rare"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "yoggle",
+              "sound": "",
+              "message": {
+                "bubble": "ヨーグル＝ソース\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            },
+            { "delaySeconds": 4, "actionType": "actionSet", "actionSetKeys": ["result_rare"] }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 4,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "mK-zJdXnTRWffvzuieg4K",
+          "key": "mK-zJdXnTRWffvzuieg4K",
+          "name": "chocolate",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_SR"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "chocolate",
+              "sound": "",
+              "message": {
+                "bubble": "ストロベリーショコラ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            },
+            { "delaySeconds": 4, "actionType": "actionSet", "actionSetKeys": ["result_SR"] }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "eEVBUDc9OlzYh9YY9LAJ1",
+          "key": "eEVBUDc9OlzYh9YY9LAJ1",
+          "name": "milk",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_SR"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "milk",
+              "sound": "",
+              "message": {
+                "bubble": "ミルク＝トーフ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            },
+            { "delaySeconds": 4, "actionType": "actionSet", "actionSetKeys": ["result_SR"] }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 3,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "-VZLG-k3hZR0RPK0Pic3M",
+          "key": "-VZLG-k3hZR0RPK0Pic3M",
+          "name": "syrup",
+          "description": "",
+          "createdAt": "2025-09-13T23:27:05.003Z",
+          "updatedAt": "2025-09-13T23:27:05.003Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": -1, "actionType": "actionSet", "actionSetKeys": ["Yokoku_SSR"] },
+            {
+              "delaySeconds": 1,
+              "actionType": "message",
+              "characterKey": "SlotPortrait",
+              "iconKey": "syrup",
+              "sound": "",
+              "message": {
+                "bubble": "ブルーベリーシロップ\n{{\n  slot1 = '0'  // 出現後受付をストップする時間(秒)\n }}",
+                "isToast": true
+              }
+            },
+            { "delaySeconds": 4, "actionType": "actionSet", "actionSetKeys": ["result_SSR"] }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": "" },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 2,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": {
+        "conditions": [],
+        "userName": [],
+        "access": ["moderator", "owner"],
+        "gift": ["all"],
+        "comment": [""]
+      },
+      "limits": { "cooldownSeconds": 0, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    }
+  },
+  "timers": {},
+  "metas": {},
+  "reactions": {},
+  "actionSets": {
+    "dark_chance": {
+      "id": "pst4y1Tu1AZEOMHb9axPE",
+      "key": "dark_chance",
+      "name": "予告:文字 チャーンス",
+      "description": "魂のルフラン",
+      "createdAt": "2026-04-15T07:09:23.175Z",
+      "updatedAt": "2026-04-15T11:54:33.088Z",
+      "order": 7,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_cha", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_maybe": {
+      "id": "xFlqywBdh4dsjVLuniRV2",
+      "key": "dark_maybe",
+      "name": "予告:文字 まさか！",
+      "description": "暴走…？",
+      "createdAt": "2026-04-15T07:08:07.515Z",
+      "updatedAt": "2026-04-15T11:54:33.088Z",
+      "order": 6,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_may", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "none": {
+      "id": "vNvEKQFLHCvJCU4nO-OBz",
+      "key": "none",
+      "name": "予告:なし(ダミー)",
+      "description": "",
+      "createdAt": "2026-04-15T07:02:53.664Z",
+      "updatedAt": "2026-04-15T12:32:14.686Z",
+      "order": 5,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_gekiatsu": {
+      "id": "l7wpEllkPCxarIx5sWDDa",
+      "key": "dark_gekiatsu",
+      "name": "予告:文字 激アツ",
+      "description": "激アツと申したか！",
+      "createdAt": "2026-04-15T07:10:52.927Z",
+      "updatedAt": "2026-04-15T11:54:33.088Z",
+      "order": 8,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_gek", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_god": {
+      "id": "YHabKW66ibprrfy0sKNLB",
+      "key": "dark_god",
+      "name": "予告:文字 降臨",
+      "description": "[GOD][GOD][GOD]",
+      "createdAt": "2026-04-15T07:10:57.360Z",
+      "updatedAt": "2026-04-15T11:54:33.088Z",
+      "order": 9,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_god", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_uchimura": {
+      "id": "AZMQ7nTXAKWyaeD4hdfg5",
+      "key": "dark_uchimura",
+      "name": "予告:文字 これは！",
+      "description": "違います。",
+      "createdAt": "2026-04-15T07:10:58.741Z",
+      "updatedAt": "2026-04-15T11:54:33.088Z",
+      "order": 10,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_uch", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_sugoi": {
+      "id": "0HsQ4UFRxS11yKD5f6Dut",
+      "key": "dark_sugoi",
+      "name": "予告:文字 すごい！",
+      "description": "あぁん♡",
+      "createdAt": "2026-04-15T07:12:22.417Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 11,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_sug", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_Ninomiya": {
+      "id": "eMyCXaGLcK9uL0xRRaY67",
+      "key": "dark_Ninomiya",
+      "name": "予告:文字 我、SSRぞ?",
+      "description": "あれー？新人俳優ごときが俺にそんな口きいていいのかなー？",
+      "createdAt": "2026-04-15T07:12:24.006Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 12,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_Nin", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_FriedRice": {
+      "id": "rm05s7B4YanT4QKUfKp_E",
+      "key": "dark_FriedRice",
+      "name": "予告:文字 チャーハン",
+      "description": "ニニフ",
+      "createdAt": "2026-04-15T07:12:25.385Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 13,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_Fri", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_TenkaHubu": {
+      "id": "aVUeC7tU1PQYu0U3PZn2-",
+      "key": "dark_TenkaHubu",
+      "name": "予告:文字 いま視聴をやめると後悔するでござるよ",
+      "description": "ちくわ",
+      "createdAt": "2026-04-15T07:12:26.526Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 14,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_Ten", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "dark_subscription": {
+      "id": "a9dbx-tsvQQ7s8Xke0_cI",
+      "key": "dark_subscription",
+      "name": "予告:文字 今のうちにチャンネル登録と高評価、動画のハイプ、サブスクライブ、ニコニ広告、SNS のリツイート、いいねをお願いします！",
+      "description": "お願いします!",
+      "createdAt": "2026-04-15T07:29:48.077Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 15,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#FFCC80",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "dark_sub", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "result_rare": {
+      "id": "O4bEeVpQm6lkTmLz7EQzY",
+      "key": "result_rare",
+      "name": "result: レア出現",
+      "description": "",
+      "createdAt": "2026-04-15T07:32:52.766Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 16,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#CE93D8",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["result_bg"] },
+        { "delaySeconds": 0.1, "actionType": "wordParty", "wordPartyId": "result_ra", "wordParty": "" }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "result_SSR": {
+      "id": "I5a7vO1lwlEHDwdrfaG70",
+      "key": "result_SSR",
+      "name": "result: SSR出現",
+      "description": "",
+      "createdAt": "2026-04-15T07:33:56.117Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 18,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#CE93D8",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["result_bg"] },
+        { "delaySeconds": 0.1, "actionType": "wordParty", "wordPartyId": "result_SS", "wordParty": "" }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "result_SR": {
+      "id": "PIevdjL5MEtuA9kxiOv8o",
+      "key": "result_SR",
+      "name": "result: SR出現",
+      "description": "",
+      "createdAt": "2026-04-15T07:33:54.691Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 17,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#CE93D8",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["result_bg"] },
+        { "delaySeconds": 0.1, "actionType": "wordParty", "wordPartyId": "result_SR", "wordParty": "" }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "result_bg": {
+      "id": "8zfcp25Q-in6ZJ1O1doIy",
+      "key": "result_bg",
+      "name": "result: 背景",
+      "description": "",
+      "createdAt": "2026-04-15T07:37:01.350Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 19,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#CE93D8",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [{ "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "result_bg", "wordParty": "" }],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "runby_heart_3": {
+      "id": "EYekDhOSgZEI8F88ikkhd",
+      "key": "runby_heart_3",
+      "name": "固定表示:ハート♡3個",
+      "description": "",
+      "createdAt": "2026-04-15T10:40:18.329Z",
+      "updatedAt": "2026-04-15T11:54:33.089Z",
+      "order": 20,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#80DEEA",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "run_hea_R", "wordParty": "" },
+        { "delaySeconds": 0.1, "actionType": "wordParty", "wordPartyId": "run_hea_L", "wordParty": "" },
+        { "delaySeconds": 0.2, "actionType": "wordParty", "wordPartyId": "run_hea_R", "wordParty": "" }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "runby_heart_20": {
+      "id": "RJdlLHmu2YKn9K7h43GV2",
+      "key": "runby_heart_20",
+      "name": "固定表示:ハート♡20個",
+      "description": "",
+      "createdAt": "2026-04-15T10:42:43.678Z",
+      "updatedAt": "2026-04-15T11:54:33.090Z",
+      "order": 22,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#80DEEA",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["runby_heart_10"] },
+        { "delaySeconds": 0.6, "actionType": "wordParty", "wordPartyId": "run_hea_R", "wordParty": "", "repeat": 3 },
+        { "delaySeconds": 0.7, "actionType": "wordParty", "wordPartyId": "run_hea_L", "wordParty": "", "repeat": 4 },
+        { "delaySeconds": 0.8, "actionType": "wordParty", "wordPartyId": "run_hea_R", "wordParty": "", "repeat": 3 }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "runby_heart_10": {
+      "id": "UGZkYk6QirizxLTPAA6ep",
+      "key": "runby_heart_10",
+      "name": "固定表示:ハート♡10個",
+      "description": "",
+      "createdAt": "2026-04-15T10:43:03.921Z",
+      "updatedAt": "2026-04-15T11:54:33.090Z",
+      "order": 21,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#80DEEA",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["runby_heart_3"] },
+        { "delaySeconds": 0.3, "actionType": "wordParty", "wordPartyId": "run_hea_L", "wordParty": "", "repeat": 2 },
+        { "delaySeconds": 0.4, "actionType": "wordParty", "wordPartyId": "run_hea_R", "wordParty": "", "repeat": 2 },
+        { "delaySeconds": 0.5, "actionType": "wordParty", "wordPartyId": "run_hea_L", "wordParty": "", "repeat": 3 }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "fall_star_3": {
+      "id": "TAGAeilu0ncZjrJAtcamH",
+      "key": "fall_star_3",
+      "name": "落下物:星🌟3個",
+      "description": "",
+      "createdAt": "2026-04-15T11:40:05.423Z",
+      "updatedAt": "2026-04-15T11:54:33.090Z",
+      "order": 23,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#EF9A9A",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 3 }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "fall_star_10": {
+      "id": "5vtVBWpOpIqvdr6oAsnXt",
+      "key": "fall_star_10",
+      "name": "落下物:星🌟10個",
+      "description": "",
+      "createdAt": "2026-04-15T11:42:53.873Z",
+      "updatedAt": "2026-04-15T11:54:33.090Z",
+      "order": 24,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#EF9A9A",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["fall_star_3"] },
+        { "delaySeconds": 0.5, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 3 },
+        { "delaySeconds": 0.7, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 4 }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "fall_star_20": {
+      "id": "4LnNnCSaqpoCp-X9GL5pG",
+      "key": "fall_star_20",
+      "name": "落下物:星🌟20個",
+      "description": "",
+      "createdAt": "2026-04-15T11:44:53.798Z",
+      "updatedAt": "2026-04-15T11:54:33.090Z",
+      "order": 25,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#EF9A9A",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        { "delaySeconds": 0, "actionType": "actionSet", "actionSetKeys": ["fall_star_10"] },
+        { "delaySeconds": 1, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 2 },
+        { "delaySeconds": 1.2, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 2 },
+        { "delaySeconds": 1.4, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 2 },
+        { "delaySeconds": 1.6, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 2 },
+        { "delaySeconds": 1.8, "actionType": "wordParty", "wordPartyId": "fall_sta", "wordParty": "", "repeat": 2 }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "Yokoku_normal": {
+      "id": "t64UiEoSD7mdW5XLmBa3v",
+      "key": "Yokoku_normal",
+      "name": "N予告",
+      "description": "レアリティ:N の演出です",
+      "createdAt": "2026-04-15T07:01:40.421Z",
+      "updatedAt": "2026-04-15T11:54:33.091Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#9E9E9E",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "actionSet",
+          "actionSetKeys": [
+            { "weight": 50, "content": "none" },
+            { "weight": 10, "content": "dark_maybe" },
+            { "weight": 4, "content": "dark_chance" },
+            { "weight": 10, "content": "dark_uchimura" },
+            { "weight": 10, "content": "runby_heart_3" },
+            { "weight": 4, "content": "runby_heart_10" },
+            { "weight": 10, "content": "fall_star_3" },
+            { "weight": 2, "content": "fall_star_10" }
+          ]
+        }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "Yokoku_Rare": {
+      "id": "2jbJY6Cdo6YyXabHhL7at",
+      "key": "Yokoku_Rare",
+      "name": "R予告",
+      "description": "レアリティ:R の演出です",
+      "createdAt": "2026-04-15T11:53:20.803Z",
+      "updatedAt": "2026-04-15T11:59:35.870Z",
+      "order": 2,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#9E9E9E",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "actionSet",
+          "actionSetKeys": [
+            { "weight": 20, "content": "none" },
+            { "weight": 5, "content": "dark_maybe" },
+            { "weight": 15, "content": "dark_chance" },
+            { "weight": 5, "content": "runby_heart_3" },
+            { "weight": 15, "content": "runby_heart_10" },
+            { "weight": 5, "content": "fall_star_3" },
+            { "weight": 15, "content": "fall_star_10" },
+            { "weight": 2, "content": "dark_gekiatsu" },
+            { "weight": 2, "content": "runby_heart_20" },
+            { "weight": 2, "content": "fall_star_20" },
+            { "weight": 14, "content": "dark_sugoi" }
+          ]
+        }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "Yokoku_SR": {
+      "id": "lXFh1Jyxy1bQ-IVJUjP2V",
+      "key": "Yokoku_SR",
+      "name": "SR予告",
+      "description": "レアリティ:N の演出です",
+      "createdAt": "2026-04-15T11:54:16.152Z",
+      "updatedAt": "2026-04-15T12:05:21.356Z",
+      "order": 3,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#9E9E9E",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "actionSet",
+          "actionSetKeys": [
+            { "weight": 10, "content": "none" },
+            "dark_maybe",
+            { "weight": 15, "content": "dark_chance" },
+            "runby_heart_3",
+            { "weight": 15, "content": "runby_heart_10" },
+            "fall_star_3",
+            { "weight": 16, "content": "fall_star_10" },
+            { "weight": 10, "content": "dark_gekiatsu" },
+            { "weight": 10, "content": "runby_heart_20" },
+            { "weight": 10, "content": "fall_star_20" },
+            { "weight": 11, "content": "dark_sugoi" }
+          ]
+        }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    },
+    "Yokoku_SSR": {
+      "id": "Ic6QrZgGMGf86v_5Il21O",
+      "key": "Yokoku_SSR",
+      "name": "SSR予告",
+      "description": "レアリティ:N の演出です",
+      "createdAt": "2026-04-15T11:54:18.607Z",
+      "updatedAt": "2026-04-15T12:12:41.181Z",
+      "order": 4,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#9E9E9E",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "type": "postActions",
+      "postActions": [
+        {
+          "delaySeconds": 0,
+          "actionType": "actionSet",
+          "actionSetKeys": [
+            { "weight": 5, "content": "none" },
+            "dark_maybe",
+            "dark_chance",
+            { "weight": 6, "content": "dark_uchimura" },
+            "runby_heart_3",
+            { "weight": 2, "content": "runby_heart_10" },
+            "fall_star_3",
+            { "weight": 2, "content": "fall_star_10" },
+            { "weight": 20, "content": "dark_gekiatsu" },
+            { "weight": 6, "content": "dark_god" },
+            { "weight": 2, "content": "dark_FriedRice" },
+            { "weight": 2, "content": "dark_TenkaHubu" },
+            { "weight": 11, "content": "dark_subscription" },
+            { "weight": 20, "content": "runby_heart_20" },
+            { "weight": 20, "content": "fall_star_20" }
+          ]
+        }
+      ],
+      "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+      "behavior": {
+        "type": "return",
+        "isCountEvent": true,
+        "countEvent": 1,
+        "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+      }
+    }
+  },
+  "placeholders": {},
+  "characters": {
+    "SlotPortrait": {
+      "id": "uogU0b5jyvspaGnEP9Rg8",
+      "key": "SlotPortrait",
+      "name": "イラストガチャメーカー",
+      "description": "600x800(3:4)のイラストを想定しています。",
+      "createdAt": "2026-04-10T05:24:11.525Z",
+      "updatedAt": "2026-04-13T04:54:19.418Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "tags": ["コメントスピン", "イラストガチャメーカー"],
+      "accessLevel": "basic",
+      "version": "0.0.0",
+      "url": "https://pintocuru.booth.pm/",
+      "displayName": "",
+      "image": {
+        "frame_n": { "label": "frame_n_600x800", "src": ["SlotPortrait/frame_n.webp"] },
+        "frame_r": { "label": "frame_r_600x800", "src": ["SlotPortrait/frame_r.webp"] },
+        "frame_sr": { "label": "frame_sr_600x800", "src": ["SlotPortrait/frame_sr.webp"] },
+        "frame_ssr": { "label": "frame_ssr_600x800", "src": ["SlotPortrait/frame_ssr.webp"] },
+        "drinkuru": { "label": "drinkuru", "src": ["SlotPortrait/drinkuru.webp"] },
+        "darjeeling": { "label": "darjeeling", "src": ["SlotPortrait/frame_n.webp", "SlotPortrait/darjeeling.webp"] },
+        "chai": { "label": "chai", "src": ["SlotPortrait/frame_n.webp", "SlotPortrait/chai.webp"] },
+        "dimbula": { "label": "dimbula", "src": ["SlotPortrait/frame_n.webp", "SlotPortrait/dimbula.webp"] },
+        "mamono": { "label": "mamono", "src": ["SlotPortrait/frame_n.webp", "SlotPortrait/mamono.webp"] },
+        "mio": { "label": "mio", "src": ["SlotPortrait/frame_n.webp", "SlotPortrait/mio.webp"] },
+        "cora": { "label": "cora", "src": ["SlotPortrait/frame_r.webp", "SlotPortrait/cora.webp"] },
+        "cafelatte": { "label": "capelatte", "src": ["SlotPortrait/frame_r.webp", "SlotPortrait/cafelatte.webp"] },
+        "yoggle": { "label": "yoggle", "src": ["SlotPortrait/frame_r.webp", "SlotPortrait/yoggle.webp"] },
+        "chocolate": { "label": "chocolate", "src": ["SlotPortrait/frame_sr.webp", "SlotPortrait/chocolate.webp"] },
+        "milk": { "label": "milk", "src": ["SlotPortrait/frame_sr.webp", "SlotPortrait/milk.webp"] },
+        "syrup": { "label": "syrup", "src": ["SlotPortrait/frame_ssr.webp", "SlotPortrait/syrup.webp"] }
+      },
+      "color": {
+        "isTheme": true,
+        "daisyUiTheme": "pastel",
+        "backFrom": "primary",
+        "backTo": "primary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "displayOption": { "mode": "none", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    }
+  },
+  "components": {
+    "conditions": [{ "slot": "primary", "kind": "commentSpin" }],
+    "enableSecondary": false,
+    "specialSet": null,
+    "commonStyle": {
+      "fontFamily": "default",
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "light",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    },
+    "settings": {
+      "commentSpin": {
+        "component": "popup",
+        "animation": "vertical",
+        "size": { "width": 300, "height": 400 },
+        "logoPath": "SlotPortrait/drinkuru.webp"
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "none",
+      "metas": "none",
+      "reactions": "basic",
+      "actionSets": "basic",
+      "placeholders": "none",
+      "characters": "basic"
+    },
+    "components": [
+      "bubble",
+      "toast",
+      "flashBanner",
+      "liveClock",
+      "ranking",
+      "winnerGroup",
+      "deadAir",
+      "flightSeat",
+      "counter",
+      "streamCounter",
+      "socialRoster"
+    ],
+    "gameScripts": [],
+    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "none", "itemSlotEnabled": "basic" }
+  },
+  "settings": {
+    "commentType": "OneComme",
+    "soundEnabled": true,
+    "ignoreUserPattern": "__INFO__",
+    "includeExternalComments": true,
+    "uiPlacement": "center",
+    "locale": "ja",
+    "licenseKeyHash": "2c26b46b68ffc68ff99b453c1d304134",
+    "daisyUiTheme": "light",
+    "initialCategory": "components"
+  }
+}

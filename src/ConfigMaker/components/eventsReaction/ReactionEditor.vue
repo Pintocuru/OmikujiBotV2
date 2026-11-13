@@ -3,7 +3,7 @@
   <!-- 便利ボタン群 -->
   <div class="flex justify-end gap-2">
     <GlobalCharacterChanger category="reactions" />
-     <IconKeyChanger category="reactions" />  
+    <IconKeyChanger category="reactions" />
   </div>
 
   <!-- タブ部分 -->

@@ -27,13 +27,7 @@ export function getTotalGold(dwarfs: Dwarf[]): number {
   return dwarfs.reduce((sum, d) => sum + d.gold + d.redChest, 0)
 }
 
-export function createMessage(
-  user: string,
-  day: number,
-  dwarfs: Dwarf[],
-  items: string,
-  payout: number
-): string {
+export function createMessage(user: string, day: number, dwarfs: Dwarf[], items: string, payout: number): string {
   const winType = GAME_CONFIG.WIN_THRESHOLDS.find(([threshold]) => payout >= threshold)?.[1] || '合計'
   const goldText = dwarfs.map((d, i) => (i === 2 ? `${d.gold + d.redChest}!` : `${d.gold + d.redChest}/`)).join('')
 

@@ -4,7 +4,7 @@
   <div class="flex justify-end gap-2">
     <!-- 全体キャラ変更 -->
     <GlobalCharacterChanger category="comments" />
-     <IconKeyChanger category="comments" />  
+    <IconKeyChanger category="comments" />
   </div>
 
   <!-- タブ部分 -->

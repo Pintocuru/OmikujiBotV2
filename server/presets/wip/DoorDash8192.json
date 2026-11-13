@@ -1,1 +1,213 @@
-{"meta":{"id":"Server200Fortune-ver2026.02.05-2.1.0-alpha1","name":"おみくじ BOT ルノルマンカード OmikujiBot Server200Fortune-ADV","description":"配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT","version":"ver2026.02.05-2.1.0-alpha1","generatorName":"omikuji-bot","generatorVersion":"2.11.0-beta6","dataVersion":2.20110002006,"author":"Pintocuru(せすじピンとしてます)","tags":["おみくじBOT","占い","Fortune","ルノルマンカード","Lenormand"],"license":"利用規約に従う","url":"https://pintocuru.booth.pm/items/7915987"},"jsonMerge":[],"comments":{"DoorDash8192":{"id":"Server200Fortune","key":"DoorDash8192","name":"ドアダッシュ","description":"","createdAt":"2025-09-13T22:02:36.595Z","updatedAt":"2026-03-27T03:01:48.825Z","order":1,"isEnabled":true,"daisyColor":"primary","editorColor":"#A5D6A7","tags":[],"accessLevel":"basic","omikuji":[{"id":"4eb74945-792b-490f-b29f-b8cf42429fc3","key":"333e28ad-1249-46d8-9e87-8855a5d6707a","name":"成功","description":"","createdAt":"2026-02-27T03:58:41.707Z","updatedAt":"2026-02-27T03:58:41.707Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordParty":"DoorDashSuccess"},{"delaySeconds":1.5,"actionType":"message","characterKey":null,"iconKey":"default","sound":"","message":{"bubble":"{{\n  // 失敗フラグがある場合は 1、なければ成功値を代入\n  val = bool(door_fail<<userId>>) ? 1 : door_suc<<userId>>;\n  suc = door_s_count<<userId>>;\n\n  /* 成功回数をベースに次の確率を計算\n     成功していれば 2倍、そうでなければ 2固定\n  */\n  val = bool(door_suc<<userId>>) ? val * 2 : 2;\n  suc = suc + 1;\n  door_suc_total = door_suc_total + 1; \n\n  door_suc<<userId>> = val;\n  door_s_count<<userId>> = suc;\n  door_fail<<userId>> = 0; // 成功したので失敗フラグをリセット\n\n  text = str('1/', val);\n  symbol = str('◯', door_s_count<<userId>> , ' ×' , door_f_count<<userId>> );\n  variant = 'primary';\n  unique = 'true';\n}}","isToast":false}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":false,"criteria":null},{"id":"55ee8a10-f88c-4dfd-823f-7dbaca47fe79","key":"55ee8a10-f88c-4dfd-823f-7dbaca47fe79","name":"失敗","description":"","createdAt":"2026-02-27T03:58:41.707Z","updatedAt":"2026-02-27T03:58:41.707Z","order":0,"isEnabled":true,"daisyColor":"primary","tags":[],"accessLevel":"basic","type":"postActions","postActions":[{"delaySeconds":0,"actionType":"wordParty","wordParty":"DoorDashFailed"},{"delaySeconds":1.5,"actionType":"message","characterKey":null,"iconKey":"default","sound":"","message":{"bubble":"{{\n  // 【状態の初期化】\n  // 直前の試行が「成功」だった場合は、分母を初期値の 1 にリセット。\n  // そうでなければ、現在の累積されている「失敗値」をベースに計算を開始します。\n  val = bool(door_suc<<userId>>) ? 1 : door_fail<<userId>>;\n  suc = door_f_count<<userId>>;\n\n  // 【連続記録の更新】\n  // すでに「失敗」の状態が継続している場合、現在の分母を 2倍 に増幅。\n  // 初めての失敗、またはリセット直後なら 2 に設定し、累積失敗カウントを +1 します。\n  val = bool(door_fail<<userId>>) ? val * 2 : 2;\n  suc = suc + 1;\n  door_fall_total = door_fall_total + 1;\n\n  // 【データの永続化】\n  // 算出された分母と累積カウントを保存。\n  // 失敗の状態を更新するため、対となる「成功フラグ」は 0 で上書きします。\n  door_fail<<userId>> = val;\n  door_f_count<<userId>> = suc;\n  door_suc<<userId>> = 0;\n\n  // 【UI表示用データ】\n  // 現在の確率（1/x形式）と、これまでの◯×履歴を視覚化\n  text = str('1/', val);\n  symbol = str('◯', door_s_count<<userId>> , ' ×' , door_f_count<<userId>> );\n  \n  // 表示スタイルは標準（neutral）に設定\n  variant = 'neutral';\n  unique = 'true';\n}}","isToast":false}}],"gameScripts":{"delaySeconds":0,"scriptId":null,"queryString":"","characterKey":null},"special":"return","behavior":{"type":"return","isCountEvent":true,"countEvent":1,"log":{"targetKey":"","logFormat":"<<user>> <<score>> <<createdAt>>","logLimit":5}},"weight":1,"isPriority":false,"criteria":null}],"ruleType":"comments","trigger":{"conditions":["comment"],"userName":[],"access":[],"gift":[],"comment":["ドア"]},"limits":{"cooldownSeconds":3,"cooldownMessage":null,"isRepeatAllowed":0,"repeatMessage":null}}},"timers":{},"metas":{},"reactions":{},"actionSets":{},"placeholders":{},"characters":{},"components":{"conditions":[{"slot":"extra","kind":"streamCounter"}],"enableSecondary":false,"specialSet":null,"commonStyle":{"fontFamily":"mplus1p","defaultColor":{"isTheme":true,"daisyUiTheme":"acid","backFrom":"primary","backTo":"secondary","nameColor":"#212121","textColor":"#212121","backgroundColor":"#FAFAFA"},"defaultVoice":{"mode":"comment","imageBase64":"","frameId":"","rpgVoice":"rpg_voice_a5"}},"settings":{"ranking":{"targetScriptKeys":["basicList"],"title":"🚪ドアダッシュ🚪","color":"acid","limit":5,"sortOrder":"new","component":"rankStandard"},"streamCounter":{"component":"basicCirclePlain","color":"light","colorCycle":["info","success","warning","error"],"labelStyle":"lucide","defaultCounters":["syoken","commenter","upVote","viewer"],"eventCounters":[],"variableCounters":[{"id":"9b485d6f-07f0-4af9-90e4-3176a2c6374d","type":"variable","target":"door_suc_total","label":"成功"},{"id":"d3f75f97-d462-4f38-bbde-ce1165af8f37","type":"variable","target":"door_fall_total","label":"失敗"}]},"cookieCounter":{"component":"sakura","color":{"daisyUiTheme":"dark","backFrom":"primary","backTo":"secondary"},"counters":[{"id":"0b909c80-3e20-4f91-a365-ff01ec50869e","type":"variable","target":"door_suc_total","label":"ドア"},{"id":"c11dfb04-9178-4be3-a351-4d3bab01db44","type":"variable","target":"door_fall_total","label":"失敗"}]}}},"featureUsage":{"usage":{"comments":"basic","timers":"none","metas":"none","reactions":"none","actionSets":"none","placeholders":"none","characters":"none"},"components":["bubble","toast","flashBanner"],"gameScripts":[],"developer":{"licenseVisible":"basic","jsonMergeSettings":"none","itemSlotEnabled":"pro"}},"settings":{"locale":"ja","commentType":"OneComme","licenseKeyHash":"5d41402abc4b2a76b9719d911017c592","daisyUiTheme":"acid","initialCategory":"comments","soundEnabled":true,"ignoreUserPattern":"__INFO__|__ERROR__","includeExternalComments":false}}
+{
+  "meta": {
+    "id": "Server200Fortune-ver2026.02.05-2.1.0-alpha1",
+    "name": "おみくじ BOT ルノルマンカード OmikujiBot Server200Fortune-ADV",
+    "description": "配信者のためのコメントアプリ「わんコメ」で使用できる、ジェネレーターBOT",
+    "version": "ver2026.02.05-2.1.0-alpha1",
+    "generatorName": "omikuji-bot",
+    "generatorVersion": "2.11.0-beta6",
+    "dataVersion": 2.20110002006,
+    "author": "Pintocuru(せすじピンとしてます)",
+    "tags": ["おみくじBOT", "占い", "Fortune", "ルノルマンカード", "Lenormand"],
+    "license": "利用規約に従う",
+    "url": "https://pintocuru.booth.pm/items/7915987"
+  },
+  "jsonMerge": [],
+  "comments": {
+    "DoorDash8192": {
+      "id": "Server200Fortune",
+      "key": "DoorDash8192",
+      "name": "ドアダッシュ",
+      "description": "",
+      "createdAt": "2025-09-13T22:02:36.595Z",
+      "updatedAt": "2026-03-27T03:01:48.825Z",
+      "order": 1,
+      "isEnabled": true,
+      "daisyColor": "primary",
+      "editorColor": "#A5D6A7",
+      "tags": [],
+      "accessLevel": "basic",
+      "omikuji": [
+        {
+          "id": "4eb74945-792b-490f-b29f-b8cf42429fc3",
+          "key": "333e28ad-1249-46d8-9e87-8855a5d6707a",
+          "name": "成功",
+          "description": "",
+          "createdAt": "2026-02-27T03:58:41.707Z",
+          "updatedAt": "2026-02-27T03:58:41.707Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": 0, "actionType": "wordParty", "wordParty": "DoorDashSuccess" },
+            {
+              "delaySeconds": 1.5,
+              "actionType": "message",
+              "characterKey": null,
+              "iconKey": "default",
+              "sound": "",
+              "message": {
+                "bubble": "{{\n  // 失敗フラグがある場合は 1、なければ成功値を代入\n  val = bool(door_fail<<userId>>) ? 1 : door_suc<<userId>>;\n  suc = door_s_count<<userId>>;\n\n  /* 成功回数をベースに次の確率を計算\n     成功していれば 2倍、そうでなければ 2固定\n  */\n  val = bool(door_suc<<userId>>) ? val * 2 : 2;\n  suc = suc + 1;\n  door_suc_total = door_suc_total + 1; \n\n  door_suc<<userId>> = val;\n  door_s_count<<userId>> = suc;\n  door_fail<<userId>> = 0; // 成功したので失敗フラグをリセット\n\n  text = str('1/', val);\n  symbol = str('◯', door_s_count<<userId>> , ' ×' , door_f_count<<userId>> );\n  variant = 'primary';\n  unique = 'true';\n}}",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        },
+        {
+          "id": "55ee8a10-f88c-4dfd-823f-7dbaca47fe79",
+          "key": "55ee8a10-f88c-4dfd-823f-7dbaca47fe79",
+          "name": "失敗",
+          "description": "",
+          "createdAt": "2026-02-27T03:58:41.707Z",
+          "updatedAt": "2026-02-27T03:58:41.707Z",
+          "order": 0,
+          "isEnabled": true,
+          "daisyColor": "primary",
+          "tags": [],
+          "accessLevel": "basic",
+          "type": "postActions",
+          "postActions": [
+            { "delaySeconds": 0, "actionType": "wordParty", "wordParty": "DoorDashFailed" },
+            {
+              "delaySeconds": 1.5,
+              "actionType": "message",
+              "characterKey": null,
+              "iconKey": "default",
+              "sound": "",
+              "message": {
+                "bubble": "{{\n  // 【状態の初期化】\n  // 直前の試行が「成功」だった場合は、分母を初期値の 1 にリセット。\n  // そうでなければ、現在の累積されている「失敗値」をベースに計算を開始します。\n  val = bool(door_suc<<userId>>) ? 1 : door_fail<<userId>>;\n  suc = door_f_count<<userId>>;\n\n  // 【連続記録の更新】\n  // すでに「失敗」の状態が継続している場合、現在の分母を 2倍 に増幅。\n  // 初めての失敗、またはリセット直後なら 2 に設定し、累積失敗カウントを +1 します。\n  val = bool(door_fail<<userId>>) ? val * 2 : 2;\n  suc = suc + 1;\n  door_fall_total = door_fall_total + 1;\n\n  // 【データの永続化】\n  // 算出された分母と累積カウントを保存。\n  // 失敗の状態を更新するため、対となる「成功フラグ」は 0 で上書きします。\n  door_fail<<userId>> = val;\n  door_f_count<<userId>> = suc;\n  door_suc<<userId>> = 0;\n\n  // 【UI表示用データ】\n  // 現在の確率（1/x形式）と、これまでの◯×履歴を視覚化\n  text = str('1/', val);\n  symbol = str('◯', door_s_count<<userId>> , ' ×' , door_f_count<<userId>> );\n  \n  // 表示スタイルは標準（neutral）に設定\n  variant = 'neutral';\n  unique = 'true';\n}}",
+                "isToast": false
+              }
+            }
+          ],
+          "gameScripts": { "delaySeconds": 0, "scriptId": null, "queryString": "", "characterKey": null },
+          "special": "return",
+          "behavior": {
+            "type": "return",
+            "isCountEvent": true,
+            "countEvent": 1,
+            "log": { "targetKey": "", "logFormat": "<<user>> <<score>> <<createdAt>>", "logLimit": 5 }
+          },
+          "weight": 1,
+          "isPriority": false,
+          "criteria": null
+        }
+      ],
+      "ruleType": "comments",
+      "trigger": { "conditions": ["comment"], "userName": [], "access": [], "gift": [], "comment": ["ドア"] },
+      "limits": { "cooldownSeconds": 3, "cooldownMessage": null, "isRepeatAllowed": 0, "repeatMessage": null }
+    }
+  },
+  "timers": {},
+  "metas": {},
+  "reactions": {},
+  "actionSets": {},
+  "placeholders": {},
+  "characters": {},
+  "components": {
+    "conditions": [{ "slot": "extra", "kind": "streamCounter" }],
+    "enableSecondary": false,
+    "specialSet": null,
+    "commonStyle": {
+      "fontFamily": "mplus1p",
+      "defaultColor": {
+        "isTheme": true,
+        "daisyUiTheme": "acid",
+        "backFrom": "primary",
+        "backTo": "secondary",
+        "nameColor": "#212121",
+        "textColor": "#212121",
+        "backgroundColor": "#FAFAFA"
+      },
+      "defaultVoice": { "mode": "comment", "imageBase64": "", "frameId": "", "rpgVoice": "rpg_voice_a5" }
+    },
+    "settings": {
+      "ranking": {
+        "targetScriptKeys": ["basicList"],
+        "title": "🚪ドアダッシュ🚪",
+        "color": "acid",
+        "limit": 5,
+        "sortOrder": "new",
+        "component": "rankStandard"
+      },
+      "streamCounter": {
+        "component": "basicCirclePlain",
+        "color": "light",
+        "colorCycle": ["info", "success", "warning", "error"],
+        "labelStyle": "lucide",
+        "defaultCounters": ["syoken", "commenter", "upVote", "viewer"],
+        "eventCounters": [],
+        "variableCounters": [
+          {
+            "id": "9b485d6f-07f0-4af9-90e4-3176a2c6374d",
+            "type": "variable",
+            "target": "door_suc_total",
+            "label": "成功"
+          },
+          {
+            "id": "d3f75f97-d462-4f38-bbde-ce1165af8f37",
+            "type": "variable",
+            "target": "door_fall_total",
+            "label": "失敗"
+          }
+        ]
+      },
+      "cookieCounter": {
+        "component": "sakura",
+        "color": { "daisyUiTheme": "dark", "backFrom": "primary", "backTo": "secondary" },
+        "counters": [
+          {
+            "id": "0b909c80-3e20-4f91-a365-ff01ec50869e",
+            "type": "variable",
+            "target": "door_suc_total",
+            "label": "ドア"
+          },
+          {
+            "id": "c11dfb04-9178-4be3-a351-4d3bab01db44",
+            "type": "variable",
+            "target": "door_fall_total",
+            "label": "失敗"
+          }
+        ]
+      }
+    }
+  },
+  "featureUsage": {
+    "usage": {
+      "comments": "basic",
+      "timers": "none",
+      "metas": "none",
+      "reactions": "none",
+      "actionSets": "none",
+      "placeholders": "none",
+      "characters": "none"
+    },
+    "components": ["bubble", "toast", "flashBanner"],
+    "gameScripts": [],
+    "developer": { "licenseVisible": "basic", "jsonMergeSettings": "none", "itemSlotEnabled": "pro" }
+  },
+  "settings": {
+    "locale": "ja",
+    "commentType": "OneComme",
+    "licenseKeyHash": "5d41402abc4b2a76b9719d911017c592",
+    "daisyUiTheme": "acid",
+    "initialCategory": "comments",
+    "soundEnabled": true,
+    "ignoreUserPattern": "__INFO__|__ERROR__",
+    "includeExternalComments": false
+  }
+}
