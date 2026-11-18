@@ -1,3 +1,4 @@
+// src/MainGenerator/ui/GiftRanking/composables/types.ts
 import { GiftDisplayOption } from '@/types'
 import { OmikenCommentType } from '@shared/types'
 

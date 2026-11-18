@@ -1,3 +1,4 @@
+<!-- src/MainGenerator/ui/GiftRanking/layouts/RankingAvatar.vue -->
 <template>
   <div class="avatar">
     <div class="rounded-full" :class="ringClass" :style="{ width: size + 'px', height: size + 'px' }">
